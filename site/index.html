@@ -2,613 +2,377 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Daily Interview English</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=yes">
+<title>Interview English</title>
 <style>
-  :root {
-    --bg: #f8f7f4; --card: #fff; --text: #1a1a1a; --text2: #666;
-    --text3: #999; --border: #e8e6e0; --accent: #2563eb; --accent2: #0891b2;
-    --good: #16a34a; --bad: #dc2626; --tag-bg: #f0f4ff; --tag-text: #1d4ed8;
-    --shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.55;
-    -webkit-font-smoothing: antialiased; max-width: 100vw; overflow-x: hidden;
-  }
-  header {
-    padding: 20px 16px 16px; position: sticky; top: 0; z-index: 10;
-    background: var(--bg); border-bottom: 1px solid var(--border);
-  }
-  header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
-  header p  { font-size: 13px; color: var(--text2); margin-top: 2px; }
-
-  nav.tabs {
-    display: flex; padding: 0 16px; background: var(--bg);
-    position: sticky; top: 72px; z-index: 9; border-bottom: 1px solid var(--border);
-  }
-  nav.tabs a {
-    flex: 1; padding: 12px 4px; font-size: 14px; font-weight: 500;
-    color: var(--text3); text-align: center; text-decoration: none;
-    border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap;
-  }
-  nav.tabs a.active, .section:target ~ nav a[href*="today"],
-  #today:target ~ nav a[href="#today"],
-  #patterns:target ~ nav a[href="#patterns"],
-  #frameworks:target ~ nav a[href="#frameworks"],
-  #history:target ~ nav a[href="#history"] { color: var(--text); border-bottom-color: var(--accent); }
-
-  main { padding: 12px 16px 100px; }
-  .section { display: none; }
-  .section:target, .section:first-of-type { display: block; }
-
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow);
-  }
-  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .card-tag {
-    font-size: 11px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.4px; padding: 3px 8px; border-radius: 6px;
-    background: var(--tag-bg); color: var(--tag-text);
-  }
-  .card-source { font-size: 11px; color: var(--text3); margin-left: auto; }
-  .card-title { font-size: 16px; font-weight: 650; margin-bottom: 6px; }
-  .card-desc  { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 12px; }
-
-  audio { width: 100%; height: 40px; margin-bottom: 12px; border-radius: 8px; }
-
-  .example-block {
-    background: #f9fafb; border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px; margin-bottom: 8px;
-  }
-  .example-block .context { font-size: 11px; font-weight: 600; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
-  .example-block .quote { font-size: 14px; color: var(--text); font-style: italic; padding: 4px 0; }
-  .example-block .why { font-size: 12px; color: var(--text2); margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
-
-  .feedback-row { display: flex; align-items: center; gap: 8px; font-size: 13px; padding-top: 10px; border-top: 1px solid var(--border); }
-  .feedback-row .label { color: var(--text3); font-size: 12px; }
-  .btn-good, .btn-bad {
-    font-size: 18px; padding: 6px 14px; border: 1px solid var(--border);
-    border-radius: 20px; background: #fff; cursor: pointer; transition: all 0.15s; line-height: 1;
-  }
-  .btn-good:active { background: #dcfce7; border-color: var(--good); }
-  .btn-bad:active  { background: #fef2f2; border-color: var(--bad); }
-  .confirm { font-size: 12px; display: none; }
-  .confirm-good { color: var(--good); }
-  .confirm-bad  { color: #9b6a4a; }
-
-  .pattern-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow);
-  }
-  .pattern-card .phrase { font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
-  .pattern-card .summary { font-size: 12px; color: var(--text2); }
-  .pattern-card details { margin-top: 10px; }
-  .pattern-card details summary { font-size: 12px; color: var(--accent); cursor: pointer; }
-
-  .tip-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow);
-  }
-  .tip-card .tip-name { font-size: 15px; font-weight: 650; margin-bottom: 4px; }
-  .tip-card .tip-explanation { font-size: 13px; color: var(--text2); margin-bottom: 8px; }
-  .tip-card ol { padding-left: 24px; }
-  .tip-card ol li { font-size: 13px; padding: 4px 0; }
-
-  .history-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 0; border-bottom: 1px solid var(--border);
-  }
-  .history-date { font-size: 12px; color: var(--text3); min-width: 80px; }
-  .history-title { font-size: 14px; flex: 1; }
-  .history-pattern { font-size: 12px; color: var(--accent); }
-
-  .empty { text-align: center; padding: 48px 20px; color: var(--text3); }
-  .empty .icon { font-size: 40px; margin-bottom: 12px; }
-  .subscribe-bar {
-    display: flex; gap: 8px; justify-content: center;
-    padding: 12px 16px; flex-wrap: wrap;
-  }
-  .subscribe-bar a {
-    font-size: 12px; color: var(--text2); text-decoration: none;
-    padding: 6px 12px; border: 1px solid var(--border);
-    border-radius: 16px; background: var(--card);
-  }
-  .toast {
-    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-    background: #1a1a1a; color: #fff; font-size: 13px;
-    padding: 10px 20px; border-radius: 20px; z-index: 100;
-    opacity: 0; transition: opacity 0.2s; pointer-events: none;
-  }
-  .toast.show { opacity: 1; }
+  :root{--bg:#f8f7f4;--card:#fff;--t:#1a1a1a;--t2:#666;--t3:#999;--b:#e8e6e0;--a:#2563eb;--a2:#0891b2;--g:#16a34a;--r:#dc2626;--tag-bg:#f0f4ff;--tag-t:#1d4ed8}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;background:var(--bg);color:var(--t);line-height:1.5;-webkit-font-smoothing:antialiased}
+  header{padding:10px 14px 8px;background:var(--bg);border-bottom:1px solid var(--b)}
+  header h1{font-size:17px;font-weight:700;letter-spacing:-.2px}
+  header p{font-size:11px;color:var(--t2);margin-top:1px}
+  nav{display:flex;background:var(--bg);border-bottom:1px solid var(--b)}
+  nav a{flex:1;padding:10px 2px;font-size:13px;font-weight:500;color:var(--t3);text-align:center;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+  nav a.sel{color:var(--t);border-bottom-color:var(--a)}
+  main{padding:10px 14px 80px}
+  .pg{display:none}
+  .pg.on{display:block}
+  .card{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:14px;margin-bottom:10px}
+  .ch{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+  .tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;padding:2px 7px;border-radius:5px;background:var(--tag-bg);color:var(--tag-t)}
+  .src{font-size:10px;color:var(--t3);margin-left:auto}
+  .ct{font-size:15px;font-weight:650;margin-bottom:4px;letter-spacing:-.2px}
+  .cd{font-size:12px;color:var(--t2);margin-bottom:10px}
+  audio{width:100%;height:36px;margin-bottom:10px;border-radius:8px}
+  .ex{background:#f9fafb;border:1px solid var(--b);border-radius:8px;padding:10px;margin-bottom:6px}
+  .ex .ctx{font-size:10px;font-weight:600;color:var(--a2);text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+  .ex .q{font-size:13px;color:var(--t);font-style:italic;padding:2px 0}
+  .ex .w{font-size:11px;color:var(--t2);margin-top:3px;padding-top:3px;border-top:1px solid var(--b)}
+  .fr{display:flex;align-items:center;gap:6px;font-size:12px;padding-top:8px;border-top:1px solid var(--b)}
+  .fr .lbl{color:var(--t3);font-size:11px}
+  .btn{font-size:16px;padding:5px 12px;border:1px solid var(--b);border-radius:16px;background:#fff;cursor:pointer}
+  .btn:active{background:#dcfce7;border-color:var(--g)}
+  .btn2:active{background:#fef2f2;border-color:var(--r)}
+  .cf{font-size:11px;display:none}
+  .cg{color:var(--g)}.cb{color:#9b6a4a}
+  .pc{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:12px;margin-bottom:8px}
+  .pc .ph{font-size:14px;font-weight:600;color:var(--a);margin-bottom:3px}
+  .pc .ps{font-size:11px;color:var(--t2)}
+  .pc details{margin-top:8px}
+  .pc details summary{font-size:11px;color:var(--a);cursor:pointer}
+  .tc{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:12px;margin-bottom:8px}
+  .tc .tn{font-size:14px;font-weight:650;margin-bottom:3px}
+  .tc .te{font-size:12px;color:var(--t2);margin-bottom:6px}
+  .tc ol{padding-left:20px;font-size:12px}
+  .tc ol li{padding:3px 0}
+  .hi{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--b)}
+  .hi:last-child{border-bottom:none}
+  .hd{font-size:11px;color:var(--t3);min-width:72px}
+  .ht{font-size:13px;flex:1}
+  .hp{font-size:11px;color:var(--a)}
+  .empty{text-align:center;padding:40px 16px;color:var(--t3)}
+  .empty .ic{font-size:36px;margin-bottom:10px}
+  .sub{display:flex;gap:6px;justify-content:center;padding:10px 14px;flex-wrap:wrap}
+  .sub a{font-size:11px;color:var(--t2);text-decoration:none;padding:5px 10px;border:1px solid var(--b);border-radius:14px;background:var(--card)}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;font-size:12px;padding:8px 16px;border-radius:16px;z-index:100;opacity:0;transition:opacity.2s;pointer-events:none}
+  .toast.on{opacity:1}
+  .sect{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;padding:14px 0 6px}
 </style>
 </head>
 <body>
 
 <header>
   <h1>Interview English</h1>
-  <p>Daily patterns &amp; frameworks for software engineers</p>
+  <p>Patterns &amp; frameworks for software engineers · ~28 min daily</p>
 </header>
 
-<nav class="tabs">
-  <a href="#today" class="active">Today</a>
-  <a href="#patterns">Patterns</a>
-  <a href="#frameworks">Frameworks</a>
-  <a href="#history">History</a>
+<nav>
+  <a href="#today" class="sel" onclick="showTab('today')">Today</a>
+  <a href="#patterns" onclick="showTab('patterns')">Patterns</a>
+  <a href="#frameworks" onclick="showTab('frameworks')">History</a>
 </nav>
 
 <main>
-  <!-- TODAY TAB — Initially shows loading state, JS enriches it -->
-  <section class="section" id="today">
+  <!-- TODAY TAB -->
+  <section class="pg on" id="pg-today">
     <div class="card">
-      <div class="card-header">
-        <span class="card-tag">Today's Episode</span>
-        <span class="card-source">~30 min</span>
+      <div class="ch">
+        <span class="tag">Today's Episode</span>
+        <span class="src" id="ep-src">~28 min</span>
       </div>
-      <div class="card-title">Loading latest episode...</div>
-      <div class="card-desc">4 patterns, 2 frameworks, article discussion, practice prompts, and a review section.</div>
-      <audio controls preload="none" id="latest-audio"></audio>
-      <div id="latest-examples"></div>
-      <div class="feedback-row" id="latest-feedback">
-        <span class="label">Useful?</span>
-        <button class="btn-good" onclick="voteLatest('good')">👍</button>
-        <button class="btn-bad"  onclick="voteLatest('bad')">👎</button>
-        <span class="confirm confirm-good">✓ Found useful</span>
-        <span class="confirm confirm-bad">✓ Noted</span>
+      <div class="ct" id="ep-title">Loading latest episode...</div>
+      <div class="cd" id="ep-desc">6 patterns · 3 frameworks · deep dive · common mistakes · cultural context · practice prompts · Q&A</div>
+      <audio controls preload="none" id="ep-audio"></audio>
+      <div class="fr">
+        <span class="lbl">Useful?</span>
+        <button class="btn" onclick="vote('good')">👍</button>
+        <button class="btn btn2" onclick="vote('bad')">👎</button>
+        <span class="cf cg">✓ Found useful</span>
+        <span class="cf cb">✓ Noted</span>
       </div>
     </div>
-    <div id="latest-tip"></div>
+    <div id="ep-extra"></div>
   </section>
 
-  <!-- PATTERNS TAB — Fully server-rendered, no JS needed -->
-  <section class="section" id="patterns">
+  <!-- PATTERNS TAB -->
+  <section class="pg" id="pg-patterns">
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">opinion</div>
-
-    <div class="pattern-card">
-      <div class="phrase">The way I see it is...</div>
-      <div class="summary">State an opinion without sounding rigid or defensive.</div>
-      <details>
-        <summary>3 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Code review disagreement</div>
-          <div class="quote">"The way I see it is, this approach trades a bit of readability for a significant performance gain. The hot path runs 200 times per second — that's where we need to optimize."</div>
-          <div class="why">Grounds the opinion in measurable impact. Makes it an engineering argument, not a preference.</div>
+    <div class="sect">opinion</div>
+    <div class="pc">
+      <div class="ph">The way I see it is...</div>
+      <div class="ps">State an opinion without sounding rigid or defensive.</div>
+      <details><summary>3 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Code review disagreement</div>
+          <div class="q">"The way I see it is, this approach trades a bit of readability for a significant performance gain. The hot path runs 200 times per second — that's where we need to optimize."</div>
+          <div class="w">Grounds the opinion in measurable impact. Makes it an engineering argument, not a preference.</div>
         </div>
-        <div class="example-block">
-          <div class="context">System design discussion</div>
-          <div class="quote">"The way I see it is, we should start with a simple Postgres-backed solution and only introduce Kafka when we actually hit the throughput limits. Premature event sourcing has cost us before."</div>
-          <div class="why">Shows you've learned from past mistakes. References real trade-offs without sounding dismissive.</div>
+        <div class="ex">
+          <div class="ctx">System design discussion</div>
+          <div class="q">"The way I see it is, we should start with a simple Postgres-backed solution and only introduce Kafka when we actually hit the throughput limits."</div>
+          <div class="w">Shows you've learned from past mistakes. References real trade-offs.</div>
         </div>
-        <div class="example-block">
-          <div class="context">Stakeholder pushback</div>
-          <div class="quote">"The way I see it is, the two-week delay gives us enough time to add proper monitoring. Shipping without observability means we're blind for the first month — and that's when most incidents happen."</div>
-          <div class="why">Frames the decision in terms of risk, not preference. Makes the business case for engineering quality.</div>
+        <div class="ex">
+          <div class="ctx">Stakeholder pushback</div>
+          <div class="q">"The way I see it is, the two-week delay gives us enough time to add proper monitoring. Shipping without observability means we're blind for the first month."</div>
+          <div class="w">Frames the decision in terms of risk, not preference.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Observed in senior engineers at Stripe, Shopify engineering blogs</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Senior engineers at Stripe, Shopify engineering blogs</div>
       </details>
     </div>
 
-    <div class="pattern-card">
-      <div class="phrase">I'd argue that...</div>
-      <div class="summary">Push back constructively with conviction. Stronger than "I think."</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Pushing back on a deadline</div>
-          <div class="quote">"I'd argue that launching without the rate limiter is riskier than delaying by a week. If we get a traffic spike from that partner integration, we won't just be slow — we'll be down."</div>
-          <div class="why">Not 'I think' or 'I feel.' Signals you've thought this through and have evidence.</div>
+    <div class="pc">
+      <div class="ph">I'd argue that...</div>
+      <div class="ps">Push back constructively with conviction. Stronger than "I think."</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Pushing back on a deadline</div>
+          <div class="q">"I'd argue that launching without the rate limiter is riskier than delaying by a week. If we get a traffic spike, we won't just be slow — we'll be down."</div>
+          <div class="w">Signals you've thought this through and have evidence.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Debate/discussion patterns, common in senior IC roles</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Debate/discussion patterns, senior IC roles</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">self-description</div>
-
-    <div class="pattern-card">
-      <div class="phrase">What clicked for me was...</div>
-      <div class="summary">Explain a key realization naturally — stronger than "I realized."</div>
-      <details>
-        <summary>2 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Explaining a career pivot</div>
-          <div class="quote">"What clicked for me was realizing that with coding agents, I could build software tailored to a team's exact workflow instead of being stuck with whatever someone else decided to build."</div>
-          <div class="why">Shows intrinsic motivation. You didn't read about AI — you saw a way to solve a real problem.</div>
+    <div class="sect">self-description</div>
+    <div class="pc">
+      <div class="ph">What clicked for me was...</div>
+      <div class="ps">Explain a key realization naturally — stronger than "I realized."</div>
+      <details><summary>2 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Explaining a career pivot</div>
+          <div class="q">"What clicked for me was realizing that with coding agents, I could build software tailored to a team's exact workflow instead of being stuck with whatever someone else decided to build."</div>
+          <div class="w">Shows intrinsic motivation. You saw a way to solve a real problem.</div>
         </div>
-        <div class="example-block">
-          <div class="context">Explaining a design choice</div>
-          <div class="quote">"What clicked for me was that our users didn't need more features — they needed the existing ones to work together without manual steps in between."</div>
-          <div class="why">Demonstrates user empathy and the ability to identify the real problem.</div>
+        <div class="ex">
+          <div class="ctx">Explaining a design choice</div>
+          <div class="q">"What clicked for me was that our users didn't need more features — they needed the existing ones to work together without manual steps in between."</div>
+          <div class="w">Demonstrates user empathy and identifying the real problem.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Behavioral interviews, Amazon 'Learn and Be Curious' LP</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Behavioral interviews, Amazon 'Learn and Be Curious' LP</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">transitional</div>
-
-    <div class="pattern-card">
-      <div class="phrase">That said...</div>
-      <div class="summary">Acknowledge the other side without weakening your position.</div>
-      <details>
-        <summary>2 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Trade-off discussion</div>
-          <div class="quote">"The migration added about three weeks to the timeline. That said, it eliminated an entire class of PagerDuty alerts we'd been fighting for six months."</div>
-          <div class="why">Acknowledges the cost honestly, then reframes with concrete impact.</div>
+    <div class="sect">transitional</div>
+    <div class="pc">
+      <div class="ph">That said...</div>
+      <div class="ps">Acknowledge the other side without weakening your position.</div>
+      <details><summary>2 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Trade-off discussion</div>
+          <div class="q">"The migration added about three weeks to the timeline. That said, it eliminated an entire class of PagerDuty alerts we'd been fighting for six months."</div>
+          <div class="w">Acknowledges the cost honestly, then reframes with concrete impact.</div>
         </div>
-        <div class="example-block">
-          <div class="context">Admitting a limitation</div>
-          <div class="quote">"Our approach doesn't handle the multi-region failover case well yet. That said, we're currently single-region anyway, and the design has a clear path to add multi-region support when we need it."</div>
-          <div class="why">Honest about limitations. Shows you've thought ahead without over-engineering.</div>
+        <div class="ex">
+          <div class="ctx">Admitting a limitation</div>
+          <div class="q">"Our approach doesn't handle the multi-region failover case well yet. That said, we're currently single-region anyway, and the design has a clear path to add multi-region support."</div>
+          <div class="w">Honest about limitations. Shows you've thought ahead.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Engineering decision records (ADRs), Amazon 'Have Backbone' LP</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Engineering decision records (ADRs), Amazon 'Have Backbone' LP</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">refining</div>
-
-    <div class="pattern-card">
-      <div class="phrase">Let me re-center...</div>
-      <div class="summary">Recover from going off track mid-answer. Signals self-awareness.</div>
-      <details>
-        <summary>2 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Interview answer going off track</div>
-          <div class="quote">"Let me re-center. The core question is about how I handled the timeline conflict. There were three things I did — first, I quantified the risk of rushing versus the cost of delaying..."</div>
-          <div class="why">Shows you can notice you're rambling and recover. Stronger than a perfect answer.</div>
+    <div class="sect">refining</div>
+    <div class="pc">
+      <div class="ph">Let me re-center...</div>
+      <div class="ps">Recover from going off track mid-answer. Signals self-awareness.</div>
+      <details><summary>2 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Interview answer going off track</div>
+          <div class="q">"Let me re-center. The core question is about how I handled the timeline conflict. There were three things I did — first, I quantified the risk of rushing versus the cost of delaying..."</div>
+          <div class="w">Shows you can notice you're rambling and recover.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Executive communication training</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Executive communication training</div>
       </details>
     </div>
 
-    <div class="pattern-card">
-      <div class="phrase">The crux of it is...</div>
-      <div class="summary">Get to the absolute core in one phrase. Forces clarity.</div>
-      <details>
-        <summary>2 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Explaining a complex incident</div>
-          <div class="quote">"The crux of it is that our connection pool was configured for peak traffic but not for the idle timeout behavior of the new database version. Everything else was a symptom of that one mismatch."</div>
-          <div class="why">Distills a complex incident into one root cause. Shows you can separate signal from noise.</div>
+    <div class="pc">
+      <div class="ph">The crux of it is...</div>
+      <div class="ps">Get to the absolute core in one phrase. Forces clarity.</div>
+      <details><summary>2 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Explaining a complex incident</div>
+          <div class="q">"The crux of it is that our connection pool was configured for peak traffic but not for the idle timeout behavior of the new database version. Everything else was a symptom."</div>
+          <div class="w">Distills a complex incident into one root cause.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Engineering leadership patterns, 'Staff Engineer' by Will Larson</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: 'Staff Engineer' by Will Larson</div>
       </details>
     </div>
 
-    <div class="pattern-card">
-      <div class="phrase">To put a finer point on it...</div>
-      <div class="summary">Refine a previous statement to be more precise or impactful.</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Closing a point strongly</div>
-          <div class="quote">"To put a finer point on it — we didn't just speed up triage. We eliminated the need for manual triage entirely."</div>
-          <div class="why">Shows you're thinking critically about your own words.</div>
+    <div class="pc">
+      <div class="ph">To put a finer point on it...</div>
+      <div class="ps">Refine a previous statement to be more precise or impactful.</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Closing a point strongly</div>
+          <div class="q">"To put a finer point on it — we didn't just speed up triage. We eliminated the need for manual triage entirely."</div>
+          <div class="w">Shows you're thinking critically about your own words.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Executive communication, management consulting patterns</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Executive communication, management consulting</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">impact</div>
-
-    <div class="pattern-card">
-      <div class="phrase">This resulted in...</div>
-      <div class="summary">Direct cause-to-effect. Always follow with a number.</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Closing a STAR story</div>
-          <div class="quote">"This resulted in the CVE remediation workload dropping by 80 percent. Developers went from dreading the security queue to clearing it proactively."</div>
-          <div class="why">Quantified result + behavioral change + organizational spread = Staff-level impact signal.</div>
+    <div class="sect">impact</div>
+    <div class="pc">
+      <div class="ph">This resulted in...</div>
+      <div class="ps">Direct cause-to-effect. Always follow with a number.</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Closing a STAR story</div>
+          <div class="q">"This resulted in the CVE remediation workload dropping by 80 percent. Developers went from dreading the security queue to clearing it proactively."</div>
+          <div class="w">Quantified result + behavioral change = Staff-level impact signal.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: STAR-LA framework, Staff engineer expectations</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: STAR-LA framework, Staff engineer expectations</div>
       </details>
     </div>
 
-    <div class="pattern-card">
-      <div class="phrase">Before this... After this...</div>
-      <div class="summary">The simplest impact pattern. Before/after contrast creates instant understanding.</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Describing impact in an interview</div>
-          <div class="quote">"Before this, triaging a single CVE took about 45 minutes of manual investigation. After this, the AI diagnoses it overnight and developers see a dashboard in the morning. The workload dropped by 80 percent."</div>
-          <div class="why">Numbers + contrast = memorable. The interviewer can visualize the change.</div>
+    <div class="pc">
+      <div class="ph">Before this... After this...</div>
+      <div class="ps">The simplest impact pattern. Before/after contrast.</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Describing impact in an interview</div>
+          <div class="q">"Before this, triaging a single CVE took about 45 minutes. After this, the AI diagnoses it overnight and developers see a dashboard in the morning. The workload dropped by 80 percent."</div>
+          <div class="w">Numbers + contrast = memorable. The interviewer can visualize it.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: STAR method, Amazon 'Deliver Results' LP</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: STAR method, Amazon 'Deliver Results' LP</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">bridging</div>
-
-    <div class="pattern-card">
-      <div class="phrase">I haven't worked directly with X. What I can tell you is...</div>
-      <div class="summary">Honest about gaps, confident about adjacent experience.</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Asked about a technology you don't know</div>
-          <div class="quote">"I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the concepts transfer directly. I've been systematically working through 'Production Kubernetes' to close the gap."</div>
-          <div class="why">Three signals in one: honesty about the gap, evidence of adjacent competence, proactive plan to close it.</div>
+    <div class="sect">bridging</div>
+    <div class="pc">
+      <div class="ph">I haven't worked directly with X. What I can tell you is...</div>
+      <div class="ps">Honest about gaps, confident about adjacent experience.</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Asked about a technology you don't know</div>
+          <div class="q">"I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the concepts transfer. I've been systematically working through 'Production Kubernetes' to close the gap."</div>
+          <div class="w">Honesty + adjacent competence + proactive plan = three signals in one.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Staff engineer interview patterns</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Staff engineer interview patterns</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">emphasis</div>
-
-    <div class="pattern-card">
-      <div class="phrase">What I'd really highlight is...</div>
-      <div class="summary">Direct attention to what matters most. Shows you can separate signal from noise.</div>
-      <details>
-        <summary>2 examples</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Summarizing project impact</div>
-          <div class="quote">"What I'd really highlight is that the adoption was organic. Nobody mandated these tools — the BA team started using them because the quality was genuinely there."</div>
-          <div class="why">Organic adoption is stronger evidence of value than any metric.</div>
+    <div class="sect">emphasis</div>
+    <div class="pc">
+      <div class="ph">What I'd really highlight is...</div>
+      <div class="ps">Direct attention to what matters most.</div>
+      <details><summary>2 examples</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Summarizing project impact</div>
+          <div class="q">"What I'd really highlight is that the adoption was organic. Nobody mandated these tools — the BA team started using them because the quality was genuinely there."</div>
+          <div class="w">Organic adoption is stronger evidence of value than any metric.</div>
         </div>
-        <div class="example-block">
-          <div class="context">Answering 'what was the key to success?'</div>
-          <div class="quote">"What I'd really highlight is how the team's velocity changed after we rebuilt the workflow. The technology was straightforward — the process change was what made the difference."</div>
-          <div class="why">Shifts focus from technical implementation to organizational impact. Staff-level thinking.</div>
-        </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: Behavioral interview best practices, Amazon 'Deliver Results' LP</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: Behavioral interview best practices</div>
       </details>
     </div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--text3);padding:16px 0 8px;text-transform:uppercase;letter-spacing:0.5px">elaboration</div>
-
-    <div class="pattern-card">
-      <div class="phrase">To give you a concrete example...</div>
-      <div class="summary">Bridge from abstract claim to specific evidence. Makes answers tangible.</div>
-      <details>
-        <summary>1 example</summary>
-        <div class="example-block" style="margin-top:8px">
-          <div class="context">Behavioral interview answer</div>
-          <div class="quote">"To give you a concrete example — one of our business analysts spent two full days a week compiling data from five different systems. The agent I built now does it in 30 minutes while she focuses on the analysis that actually needs human judgment."</div>
-          <div class="why">Abstract → Concrete: '2 days → 30 minutes, 5 systems, named role.' Specificity creates credibility.</div>
+    <div class="sect">elaboration</div>
+    <div class="pc">
+      <div class="ph">To give you a concrete example...</div>
+      <div class="ps">Bridge from abstract claim to specific evidence.</div>
+      <details><summary>1 example</summary>
+        <div class="ex" style="margin-top:8px">
+          <div class="ctx">Behavioral interview answer</div>
+          <div class="q">"To give you a concrete example — one of our business analysts spent two full days a week compiling data from five different systems. The agent I built now does it in 30 minutes while she focuses on analysis that needs human judgment."</div>
+          <div class="w">Abstract → Concrete: '2 days → 30 minutes, 5 systems.' Specificity creates credibility.</div>
         </div>
-        <div style="font-size:11px;color:var(--text3);margin-top:8px">Source: STAR method, behavioral interview best practices</div>
+        <div style="font-size:10px;color:var(--t3);margin-top:6px">Source: STAR method, behavioral interview best practices</div>
       </details>
     </div>
   </section>
 
-  <!-- FRAMEWORKS TAB — Fully server-rendered -->
-  <section class="section" id="frameworks">
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">thinking</span>
-        <span class="card-source">Behavioral interview research</span>
-      </div>
-      <div class="tip-name">4-Second Pause Protocol</div>
-      <div class="tip-explanation">Structure your answer before you start talking.</div>
-      <ol>
-        <li>Breathe. Don't rush to fill the silence. Silence signals confidence.</li>
-        <li>Identify what competency they're actually testing.</li>
-        <li>Pick the closest relevant story from your inventory.</li>
-        <li>Lock in your opening sentence and start. State your structure upfront.</li>
-      </ol>
+  <!-- HISTORY TAB -->
+  <section class="pg" id="pg-frameworks">
+    <div class="tc">
+      <div class="ch"><span class="tag">thinking</span><span class="src">Behavioral interview research</span></div>
+      <div class="tn">4-Second Pause Protocol</div>
+      <div class="te">Structure your answer before you start talking.</div>
+      <ol><li>Breathe. Don't rush to fill the silence.</li><li>Identify what competency they're actually testing.</li><li>Pick the closest relevant story from your inventory.</li><li>Lock in your opening sentence. State your structure upfront.</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">storytelling</span>
-        <span class="card-source">Amazon behavioral interviewing</span>
-      </div>
-      <div class="tip-name">STAR-LA Framework</div>
-      <div class="tip-explanation">Tell stories that demonstrate Staff-level organizational impact.</div>
-      <ol>
-        <li><strong>Situation</strong> — Set the scene in 1-2 sentences.</li>
-        <li><strong>Task</strong> — What was your responsibility? 1 sentence.</li>
-        <li><strong>Action</strong> — What YOU specifically did. Use "I" not "we." 50% of the answer.</li>
-        <li><strong>Result</strong> — Quantified outcome with numbers.</li>
-        <li><strong>Learning</strong> — What principle did you extract?</li>
-        <li><strong>Application</strong> — How have you applied this since? (Staff-level differentiator)</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">storytelling</span><span class="src">Amazon behavioral interviewing</span></div>
+      <div class="tn">STAR-LA Framework</div>
+      <div class="te">Tell stories that demonstrate Staff-level organizational impact.</div>
+      <ol><li><b>Situation</b> — Set the scene in 1-2 sentences.</li><li><b>Task</b> — Your responsibility? 1 sentence.</li><li><b>Action</b> — What YOU did. Use "I" not "we." 50% of the answer.</li><li><b>Result</b> — Quantified outcome with numbers.</li><li><b>Learning</b> — What principle did you extract?</li><li><b>Application</b> — How have you applied this since? (Staff differentiator)</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">thinking</span>
-        <span class="card-source">Management consulting patterns</span>
-      </div>
-      <div class="tip-name">Structure-First Approach</div>
-      <div class="tip-explanation">State your structure before your content — gives the interviewer a mental map.</div>
-      <ol>
-        <li>Say: "I'll walk you through this in three parts."</li>
-        <li>Name the parts: "First the situation, then what I did, finally the outcome and what I learned."</li>
-        <li>This keeps you on track and demonstrates meta-cognition.</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">bridging</span><span class="src">Staff engineer interview patterns</span></div>
+      <div class="tn">Three Ways to Say "I Don't Know"</div>
+      <div class="te">Transform ignorance into demonstrated problem-solving.</div>
+      <ol><li><b>Honest Redirect:</b> "I don't know that, but here's the closest analogue..."</li><li><b>Principle-Based:</b> "I haven't faced that. My operating principle is..."</li><li><b>Strength Pivot:</b> "I haven't worked with X. When I ramped up on Y..."</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">bridging</span>
-        <span class="card-source">Staff engineer interview patterns</span>
-      </div>
-      <div class="tip-name">Three Ways to Say "I Don't Know"</div>
-      <div class="tip-explanation">Transform ignorance into demonstrated problem-solving ability.</div>
-      <ol>
-        <li><strong>Honest Redirect:</strong> "I don't know that specific answer, but here's the closest analogue..."</li>
-        <li><strong>Principle-Based:</strong> "I haven't faced that exact situation. My operating principle is..."</li>
-        <li><strong>Strength Pivot:</strong> "I haven't worked directly with X. However, when I ramped up on Y..."</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">thinking</span><span class="src">Management consulting</span></div>
+      <div class="tn">Structure-First Approach</div>
+      <div class="te">State your structure before your content.</div>
+      <ol><li>Say: "I'll walk you through this in three parts."</li><li>Name them: "First the situation, then what I did, finally the outcome."</li><li>This keeps you on track and demonstrates meta-cognition.</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">thinking</span>
-        <span class="card-source">Google/Meta structured interviewing</span>
-      </div>
-      <div class="tip-name">3-Layer Question Deconstruction</div>
-      <div class="tip-explanation">Answer what they're actually asking, not just what they said.</div>
-      <ol>
-        <li><strong>Layer 1 — Surface ask:</strong> What words did they use?</li>
-        <li><strong>Layer 2 — Competency:</strong> What trait does a perfect answer demonstrate?</li>
-        <li><strong>Layer 3 — Staff dimension:</strong> How does this show organizational impact?</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">thinking</span><span class="src">Google/Meta structured interviewing</span></div>
+      <div class="tn">3-Layer Question Deconstruction</div>
+      <div class="te">Answer what they're actually asking, not just what they said.</div>
+      <ol><li><b>Layer 1 — Surface:</b> What words did they use?</li><li><b>Layer 2 — Competency:</b> What trait does a perfect answer show?</li><li><b>Layer 3 — Staff:</b> How does this show organizational impact?</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">storytelling</span>
-        <span class="card-source">TED talk coaching patterns</span>
-      </div>
-      <div class="tip-name">Hook-Flow-Landing</div>
-      <div class="tip-explanation">Grab attention in 10 seconds, leave a takeaway in 15.</div>
-      <ol>
-        <li><strong>Hook (10 sec):</strong> Start with the most interesting element. Never lead with background.</li>
-        <li><strong>Flow (60-90 sec):</strong> Chronological. Cut every detail that doesn't serve the point.</li>
-        <li><strong>Landing (15 sec):</strong> "The reason I tell this story is..." — state the meaning explicitly.</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">storytelling</span><span class="src">TED talk coaching</span></div>
+      <div class="tn">Hook-Flow-Landing</div>
+      <div class="te">Grab attention in 10 seconds, leave a takeaway in 15.</div>
+      <ol><li><b>Hook (10s):</b> Start with the most interesting element.</li><li><b>Flow (60-90s):</b> Chronological. Cut irrelevant details.</li><li><b>Landing (15s):</b> "The reason I tell this story is..."</li></ol>
     </div>
-
-    <div class="tip-card">
-      <div class="card-header">
-        <span class="card-tag">delivery</span>
-        <span class="card-source">Executive communication training</span>
-      </div>
-      <div class="tip-name">Verbal Signposting</div>
-      <div class="tip-explanation">7 phrases that make anything you say sound more organized.</div>
-      <ol>
-        <li>"There are three things at play here..." — Forces enumeration</li>
-        <li>"Let me pressure-test that..." — Shows self-critique in real time</li>
-        <li>"The crux of it is..." — Signals you've found the core issue</li>
-        <li>"Another way to frame this is..." — Demonstrates cognitive flexibility</li>
-        <li>"The trade-off I'm making is..." — Shows decision-making awareness</li>
-        <li>"If I step back for a moment..." — Strategic pause</li>
-        <li>"To put a finer point on it..." — Shows you're refining, not rambling</li>
-      </ol>
+    <div class="tc">
+      <div class="ch"><span class="tag">delivery</span><span class="src">Executive communication training</span></div>
+      <div class="tn">Verbal Signposting</div>
+      <div class="te">7 phrases that make anything sound more organized.</div>
+      <ol><li>"There are three things at play here..."</li><li>"Let me pressure-test that..."</li><li>"The crux of it is..."</li><li>"Another way to frame this is..."</li><li>"The trade-off I'm making is..."</li><li>"If I step back for a moment..."</li><li>"To put a finer point on it..."</li></ol>
     </div>
-  </section>
-
-  <!-- HISTORY TAB — Lists past episodes -->
-  <section class="section" id="history">
-    <div class="empty"><p>Loading episode history...</p></div>
   </section>
 </main>
 
-<div class="subscribe-bar">
+<div class="sub">
   <a href="/rss.xml">RSS</a>
   <a href="https://podcasts.apple.com/podcast/daily-interview-english">Apple Podcasts</a>
   <a href="https://open.spotify.com/show/daily-interview-english">Spotify</a>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-// This JS enhances the page but is NOT required for content.
-// All patterns and frameworks are server-rendered HTML.
-
-(async function() {
-  let manifest = null;
-  let latestVote = null;
-
-  try {
-    const resp = await fetch('/manifest.json');
-    if (resp.ok) manifest = await resp.json();
-  } catch(_) {}
-
-  const episodes = manifest?.episodes || [];
-
-  // ── Enhance Today tab ──
-  if (episodes.length > 0) {
-    const latest = episodes[episodes.length - 1];
-    latestVote = localStorage.getItem('feedback-' + latest.id);
-
-    // Update title
-    const titleEl = document.querySelector('#today .card-title');
-    if (titleEl) titleEl.textContent = '#' + latest.id + ': ' + (latest.pattern || 'Episode');
-
-    // Update description
-    const descEl = document.querySelector('#today .card-desc');
-    if (descEl) descEl.textContent = latest.description || '';
-
-    // Update audio
-    const audioEl = document.getElementById('latest-audio');
-    if (audioEl && latest.file_url) audioEl.src = latest.file_url;
-
-    // Update source
-    const sourceEl = document.querySelector('#today .card-source');
-    if (sourceEl) sourceEl.textContent = '📡 ' + (latest.pattern_id || 'curated');
-
-    // Restore vote
-    if (latestVote === 'good' || latestVote === 'bad') {
-      const row = document.getElementById('latest-feedback');
-      if (row) {
-        row.querySelectorAll('button').forEach(b => b.style.display = 'none');
-        row.querySelector('.label').style.display = 'none';
-        const conf = row.querySelector(latestVote === 'good' ? '.confirm-good' : '.confirm-bad');
-        if (conf) conf.style.display = 'inline';
-      }
+let episodeId=null;
+function showTab(t){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('sel'));document.getElementById('pg-'+t).classList.add('on');document.querySelector('nav a[href="#'+t+'"]').classList.add('sel');history.replaceState(null,'','#'+t);return false}
+(function(){
+  fetch('/manifest.json').then(r=>r.json()).then(d=>{
+    let eps=d.episodes||[];
+    if(!eps.length)return;
+    let ep=eps[eps.length-1];
+    episodeId=ep.id;
+    document.getElementById('ep-title').textContent='#'+ep.id+': '+(ep.pattern||ep.title||'');
+    document.getElementById('ep-desc').textContent='6 patterns · 3 frameworks · deep dive · common mistakes · cultural context · practice · listener Q&A';
+    document.getElementById('ep-src').textContent='~28 min';
+    let a=document.getElementById('ep-audio');
+    if(a&&ep.file_url)a.src=ep.file_url;
+    let v=localStorage.getItem('feedback-'+ep.id);
+    if(v==='good'||v==='bad'){
+      let row=document.querySelector('.fr');
+      row.querySelectorAll('button').forEach(b=>b.style.display='none');
+      row.querySelector('.lbl').style.display='none';
+      row.querySelector(v==='good'?'.cg':'.cb').style.display='inline'
     }
-  }
-
-  // ── Enhance History tab ──
-  const histEl = document.querySelector('#history');
-  if (histEl && episodes.length > 0) {
-    histEl.innerHTML = episodes.slice().reverse().map(ep => {
-      const vote = localStorage.getItem('feedback-' + ep.id);
-      return '<div class="history-item">' +
-        '<div class="history-date">' + ep.date + '</div>' +
-        '<div class="history-title">#' + ep.id + ': ' + (ep.pattern || ep.title || '') + '</div>' +
-        '<div class="history-pattern">' + (ep.tip || '') + '</div>' +
-        (vote ? '<div class="history-vote">' + (vote==='good'?'👍':'👎') + '</div>' : '') +
-        '</div>';
-    }).join('');
-  } else if (histEl && episodes.length === 0) {
-    histEl.innerHTML = '<div class="empty"><div class="icon">🎧</div><p>First episode tomorrow</p></div>';
-  }
+  }).catch(()=>{});
+  if(window.location.hash==='#patterns')showTab('patterns');
+  if(window.location.hash==='#frameworks')showTab('frameworks')
 })();
-
-// ── Feedback ──
-async function voteLatest(rating) {
-  const row = document.getElementById('latest-feedback');
-  if (!row) return;
-  row.querySelectorAll('button').forEach(b => b.style.display = 'none');
-  row.querySelector('.label').textContent = '...';
-
-  try {
-    await fetch('/api/feedback', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({episode: 1, rating, date: new Date().toISOString().split('T')[0]})
-    });
-    localStorage.setItem('feedback-1', rating);
-    row.querySelector('.label').style.display = 'none';
-    row.querySelector(rating === 'good' ? '.confirm-good' : '.confirm-bad').style.display = 'inline';
-  } catch(_) {
-    row.querySelectorAll('button').forEach(b => b.style.display = '');
-    row.querySelector('.label').textContent = 'Useful?';
-  }
+async function vote(r){
+  let row=document.querySelector('.fr');
+  row.querySelectorAll('button').forEach(b=>b.style.display='none');
+  row.querySelector('.lbl').textContent='...';
+  try{
+    await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({episode:episodeId||1,rating:r,date:new Date().toISOString().split('T')[0]})});
+    if(episodeId)localStorage.setItem('feedback-'+episodeId,r);
+    row.querySelector('.lbl').style.display='none';
+    row.querySelector(r==='good'?'.cg':'.cb').style.display='inline'
+  }catch(_){row.querySelectorAll('button').forEach(b=>b.style.display='');row.querySelector('.lbl').textContent='Useful?'}
 }
-
-// ── Tab navigation (enhancement over anchor-based) ──
-document.querySelectorAll('nav.tabs a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    document.querySelectorAll('nav.tabs a').forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-
-    const target = this.getAttribute('href').substring(1);
-    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-    const el = document.getElementById(target);
-    if (el) el.style.display = 'block';
-
-    if (target === 'today') {
-      history.replaceState(null, '', '#today');
-    }
-    e.preventDefault();
-  });
-});
-
-// Show today by default
-document.getElementById('today').style.display = 'block';
-if (window.location.hash === '#patterns') document.querySelector('a[href="#patterns"]')?.click();
-if (window.location.hash === '#frameworks') document.querySelector('a[href="#frameworks"]')?.click();
-if (window.location.hash === '#history') document.querySelector('a[href="#history"]')?.click();
+function toast(m){let t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1500)}
 </script>
 </body>
 </html>
