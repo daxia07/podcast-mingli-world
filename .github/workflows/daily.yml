@@ -1,0 +1,53 @@
+name: Daily Podcast
+
+on:
+  schedule:
+    - cron: '0 18 * * *'   # 4 AM AEST (18:00 UTC)
+    - cron: '0 19 * * *'   # 5 AM AEST (19:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  arrange:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install pyyaml
+      - run: npm install
+      - run: python scripts/arrange.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+  publish:
+    needs: arrange
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: pip install pyyaml feedparser edge-tts
+      - run: npm install
+      - run: python scripts/curate.py
+      - run: python scripts/generate.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - run: python scripts/publish.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          BASE_URL: ${{ vars.BASE_URL }}
+      - name: Commit and push manifest
+        run: |
+          git config user.name "podcast-bot"
+          git config user.email "bot@podcast.mingli.world"
+          git add manifest.json data/today.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Publish episode $(date +%Y-%m-%d)"
+          git push
