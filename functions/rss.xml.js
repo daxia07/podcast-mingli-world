@@ -2,16 +2,17 @@ export async function onRequest(context) {
   const { env } = context;
   try {
     const obj = await env.FEEDBACK_BUCKET.get("rss.xml");
-    if (!obj) return new Response("<rss/>", {
-      headers: { "Content-Type": "application/rss+xml", "Access-Control-Allow-Origin": "*" }
-    });
+    if (!obj) {
+      return new Response('<rss version="2.0"><channel><title>No episodes yet</title></channel></rss>', {
+        headers: { 'Content-Type': 'application/rss+xml', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
     return new Response(obj.body, {
-      headers: { "Content-Type": "application/rss+xml", "Access-Control-Allow-Origin": "*" }
+      headers: { 'Content-Type': 'application/rss+xml', 'Access-Control-Allow-Origin': '*' }
     });
   } catch (e) {
-    return new Response("<rss/>", {
-      status: 500,
-      headers: { "Content-Type": "application/rss+xml", "Access-Control-Allow-Origin": "*" }
+    return new Response('<rss version="2.0"><channel><title>Error</title></channel></rss>', {
+      headers: { 'Content-Type': 'application/rss+xml', 'Access-Control-Allow-Origin': '*' }
     });
   }
 }

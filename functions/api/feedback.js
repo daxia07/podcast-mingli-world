@@ -1,44 +1,35 @@
-export async function onRequest(context) {
+export async function onRequestPost(context) {
   const { request, env } = context;
 
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    });
-  }
-
-  if (request.method === 'POST') {
-    try {
-      const { episode, rating, date } = await request.json();
-      if (!episode || !rating || !date) {
-        return new Response('missing fields', { status: 400 });
-      }
-
-      const key = `feedback/${date}.json`;
-      const existing = await env.FEEDBACK_BUCKET.get(key);
-      const data = existing
-        ? { ...await existing.json(), [String(episode)]: rating }
-        : { [String(episode)]: rating };
-
-      await env.FEEDBACK_BUCKET.put(key, JSON.stringify(data));
-
-      return new Response('ok', {
-        headers: { 'Access-Control-Allow-Origin': '*' }
-      });
-    } catch (e) {
-      return new Response('invalid', {
+  try {
+    const { episode, rating, date } = await request.json();
+    if (!episode || !rating || !date) {
+      return new Response(JSON.stringify({ error: 'missing fields' }), {
         status: 400,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       });
     }
-  }
 
-  return new Response('not found', {
-    status: 404,
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    const key = `feedback/${date}_ep${episode}.json`;
+    await env.FEEDBACK_BUCKET.put(key, JSON.stringify({ episode, rating, date }));
+
+    return new Response(JSON.stringify({ status: 'ok' }), {
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'failed' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    });
+  }
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    }
   });
 }

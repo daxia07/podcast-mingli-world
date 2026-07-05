@@ -4,11 +4,14 @@
   "private": true,
   "description": "Daily Interview English — personal learning podcast",
   "scripts": {
-    "deploy": "wrangler pages deploy site --project-name podcast-landing",
+    "deploy": "wrangler pages deploy site --project-name podcast-landing --branch main",
     "dev": "wrangler pages dev site",
     "test:arrange": "python3 scripts/arrange.py",
-    "test:curate": "python3 scripts/curate.py",
+    "test:curate": "python3 scripts/curate.py", 
     "test:generate": "python3 scripts/generate.py",
     "test:publish": "python3 scripts/publish.py"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
