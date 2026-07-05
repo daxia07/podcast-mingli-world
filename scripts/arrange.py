@@ -32,19 +32,17 @@ def list_feedback():
         episode_patterns[str(ep["id"])] = ep.get("pattern_id")
         episode_tips[str(ep["id"])] = ep.get("tip_id")
 
-    # Try to read feedback from the last 30 days
+    # Only scan episode IDs that exist in the manifest, for the last 7 days
     from datetime import timedelta
     today = datetime.now(timezone.utc)
+    known_ids = list(episode_patterns.keys())
 
-    found_any = False
-    for i in range(30):
+    for i in range(7):
         d = (today - timedelta(days=i)).strftime("%Y-%m-%d")
-        # Try known episode IDs
-        for ep_id in range(1, 100):
+        for ep_id in known_ids:
             key = f"feedback/{d}_ep{ep_id}.json"
             data = get_json(key)
             if data:
-                found_any = True
                 rating = data.get("rating")
                 episode_id = str(data.get("episode"))
                 pattern_id = episode_patterns.get(episode_id)
@@ -53,9 +51,6 @@ def list_feedback():
                     pattern_stats[pattern_id][rating] += 1
                 if tip_id and rating in ("good", "bad"):
                     tip_stats[tip_id][rating] += 1
-
-    if found_any:
-        print(f"  Found feedback from the last 30 days")
 
     return pattern_stats, tip_stats
 
