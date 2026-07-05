@@ -122,7 +122,7 @@ def main():
     # Generate and upload RSS
     print("Generating RSS...")
     rss_xml = generate_rss(manifest)
-    upload_bytes("rss.xml", rss_xml.encode(), "application/rss+xml")
+    upload_bytes("rss.xml", rss_xml.encode())
 
     # Save manifest locally for git push
     local_manifest_path = os.path.join(os.path.dirname(script_dir), "manifest.json")
