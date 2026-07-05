@@ -340,7 +340,18 @@ const EMBEDDED_PATTERNS = [
         quote: "This resulted in the CVE remediation workload dropping by 80 percent. Developers went from dreading the security queue to clearing it proactively. The same approach was later adopted by two other teams.",
         why: "Quantified result + behavioral change + organizational spread = Staff-level impact signal." }
     ],
-    source: "STAR-LA framework, Staff engineer expectations" }
+    source: "STAR-LA framework, Staff engineer expectations" },
+  { id: "what-id-highlight", phrase: "What I'd really highlight is...", category: "emphasis", difficulty: 1,
+    summary: "Direct attention to what matters most. Shows you can separate signal from noise.",
+    contexts: [
+      { context: "Summarizing project impact",
+        quote: "What I'd really highlight is that the adoption was organic. Nobody mandated these tools — the BA team started using them because the quality was genuinely there.",
+        why: "Organic adoption is stronger evidence of value than any metric. Shows you built something people actually want." },
+      { context: "Answering 'what was the key to success?'",
+        quote: "What I'd really highlight is how the team's velocity changed after we rebuilt the workflow. The technology was straightforward — the process change was what made the difference.",
+        why: "Shifts focus from technical implementation to organizational impact. Staff-level thinking." }
+    ],
+    source: "Behavioral interview best practices, Amazon 'Deliver Results' LP" }
 ];
 
 const EMBEDDED_TIPS = [
@@ -382,7 +393,7 @@ const EMBEDDED_TIPS = [
       "Example: 'Tell me about a production mistake' → Tests accountability, honesty, systems thinking → Did you change the system so others don't make the same mistake?"
     ],
     source: "Interview rubric analysis, Google/Meta/Amazon structured interviewing" },
-  { id: "i-dont-know", name: "Three Ways to Say I Don't Know", category: "bridging",
+  { id: "i-dont-know-bridging", name: "Three Ways to Say I Don't Know", category: "bridging",
     summary: "Transform ignorance into demonstrated problem-solving.",
     steps: [
       "Version 1 — Honest Redirect: 'I don't know that specific answer, but here's the closest analogue...'",
