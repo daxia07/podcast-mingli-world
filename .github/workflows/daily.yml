@@ -48,6 +48,6 @@ jobs:
         run: |
           git config user.name "podcast-bot"
           git config user.email "bot@podcast.mingli.world"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git add manifest.json data/today.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Publish episode $(date +%Y-%m-%d)"
-          git push
+          git diff --staged --quiet || git commit -m "Publish episode $(date +%Y-%m-%d)" && git push || true
