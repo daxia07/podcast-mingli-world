@@ -21,6 +21,97 @@
       "tip": "4-Second Pause Protocol",
       "pattern_id": "the-way-i-see-it",
       "tip_id": "four-second-pause"
+    },
+    {
+      "id": 2,
+      "date": "2026-07-05",
+      "title": "What clicked for me was... \u2014 4-Second Pause Protocol",
+      "description": "Welcome to Daily Interview English. Episode 2, July 05, 2026.  Today's episode draws from Changelog: \"From open source hits to OpenAI (Interview)\".  Today's pattern: \"What clicked for me was...\"  Use this to explain a key realization or motivation. It's more natural than 'I realized' and signals genuine insight.  Here are three examples. Repeat each one out loud after me.  Example 1. What clicked for me was realizing that coding agents let me build software tailored to a team's exact workflow.",
+      "duration": "5:00",
+      "file_size_bytes": 721440,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "What clicked for me was...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "what-clicked-for-me",
+      "tip_id": "four-second-pause"
+    },
+    {
+      "id": 3,
+      "date": "2026-07-05",
+      "title": "The way I see it is... \u2014 STAR-LA Framework",
+      "description": "Welcome to Daily Interview English. Episode 3, July 05, 2026.  Today's episode draws from Changelog: \"From open source hits to OpenAI (Interview)\".  Today's pattern: \"The way I see it is...\"  States an opinion without sounding rigid. Signals 'this is my view but I'm open to discussion.'  Here are three examples. Repeat each one out loud after me.  Example 1. The way I see it is, we should optimize for latency first and add caching layers later.  Example 2. The way I see it is, this trade-off fav",
+      "duration": "5:00",
+      "file_size_bytes": 870336,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "The way I see it is...",
+      "tip": "STAR-LA Framework",
+      "pattern_id": "the-way-i-see-it",
+      "tip_id": "star-la"
+    },
+    {
+      "id": 4,
+      "date": "2026-07-05",
+      "title": "That said... \u2014 Three Ways to Say I Don't Know",
+      "description": "Welcome to Daily Interview English. Episode 4, July 05, 2026.  Today's pattern: \"That said...\"  Introduces a counterpoint or qualification. More natural than 'however' in speech.  Here are three examples. Repeat each one out loud after me.  Example 1. That said, the trade-off was worth it given the timeline we were working with.  Example 2. That said, I'd do the migration differently if I were starting today.  Example 3. That said, the approach worked well for our scale and I'd recommend it for",
+      "duration": "5:00",
+      "file_size_bytes": 798380,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "That said...",
+      "tip": "Three Ways to Say I Don't Know",
+      "pattern_id": "that-said",
+      "tip_id": "i-dont-know-bridging"
+    },
+    {
+      "id": 5,
+      "date": "2026-07-05",
+      "title": "What I'd really highlight is... \u2014 4-Second Pause Protocol",
+      "description": "Welcome to Daily Interview English. Episode 5, July 05, 2026.  Today's pattern: \"What I'd really highlight is...\"  Directs attention to the most important part. Shows you know what matters and what's detail.  Here are three examples. Repeat each one out loud after me.  Example 1. What I'd really highlight is that the adoption was organic \u2014 nobody mandated these tools.  Example 2. What I'd really highlight is how the team's velocity changed after we rebuilt the workflow.  Example 3. What I'd real",
+      "duration": "5:00",
+      "file_size_bytes": 668780,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "What I'd really highlight is...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "what-id-highlight",
+      "tip_id": "four-second-pause"
+    },
+    {
+      "id": 6,
+      "date": "2026-07-05",
+      "title": "To put a finer point on it... \u2014 4-Second Pause Protocol",
+      "description": "Welcome to Daily Interview English. Episode 6, July 05, 2026.  Today's pattern: \"To put a finer point on it...\"  Refines a previous statement to be more precise or impactful. Shows you're thinking critically about your own words.  Here are three examples. Repeat each one out loud after me.  Example 1. To put a finer point on it \u2014 we didn't just speed up triage. We eliminated the need for manual triage entirely.  Example 2. To put a finer point on it \u2014 the real innovation wasn't the AI. It was re",
+      "duration": "5:00",
+      "file_size_bytes": 730604,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "To put a finer point on it...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "to-put-a-finer-point-on-it",
+      "tip_id": "four-second-pause"
+    },
+    {
+      "id": 7,
+      "date": "2026-07-05",
+      "title": "I haven't worked directly with that. What I can tell you is... \u2014 4-Second Pause Protocol",
+      "description": "Welcome to Daily Interview English. Episode 7, July 05, 2026.  Today's pattern: \"I haven't worked directly with that. What I can tell you is...\"  Honest about gaps, confident about adjacent experience. Transforms a weakness into a demonstration of learning ability.  Here are three examples. Repeat each one out loud after me.  Example 1. I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the",
+      "duration": "5:00",
+      "file_size_bytes": 761324,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "I haven't worked directly with that. What I can tell you is...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "i-havent-worked-with-that",
+      "tip_id": "four-second-pause"
+    },
+    {
+      "id": 8,
+      "date": "2026-07-05",
+      "title": "This resulted in... \u2014 4-Second Pause Protocol",
+      "description": "Welcome to Daily Interview English. Episode 8, July 05, 2026.  Today's pattern: \"This resulted in...\"  Simple, direct cause-to-effect. Always follow with a number or specific outcome.  Here are three examples. Repeat each one out loud after me.  Example 1. This resulted in the CVE workload dropping by 80 percent within the first month.  Example 2. This resulted in the BA team adopting the agents without any formal rollout \u2014 they just started using them.  Example 3. This resulted in us shipping t",
+      "duration": "5:00",
+      "file_size_bytes": 675116,
+      "file_url": "https://podcast-landing-868.pages.dev/episodes/2026-07-05.mp3",
+      "pattern": "This resulted in...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "this-resulted-in",
+      "tip_id": "four-second-pause"
     }
   ]
 }
