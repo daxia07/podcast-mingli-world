@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Interview English</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fafaf8; color: #1a1a1a; line-height: 1.6;
+    max-width: 680px; margin: 0 auto; padding: 24px 16px 80px;
+  }
+  header { text-align: center; padding: 48px 0 32px; border-bottom: 1px solid #e5e5e0; margin-bottom: 32px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  header p { font-size: 15px; color: #666; max-width: 440px; margin: 0 auto 16px; }
+  .subscribe-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .subscribe-links a {
+    font-size: 13px; color: #555; text-decoration: none;
+    padding: 6px 14px; border: 1px solid #d5d5d0; border-radius: 20px;
+    transition: background 0.15s;
+  }
+  .subscribe-links a:hover { background: #f0f0eb; }
+  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #999; margin: 32px 0 12px; }
+  article { background: #fff; border: 1px solid #eaeae5; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  .ep-number { font-size: 12px; font-weight: 600; color: #aaa; }
+  .ep-title { font-size: 18px; font-weight: 650; margin: 4px 0 2px; letter-spacing: -0.3px; }
+  .ep-meta { font-size: 13px; color: #888; margin-bottom: 12px; }
+  .ep-desc { font-size: 14px; color: #444; margin-bottom: 16px; line-height: 1.55; }
+  audio { width: 100%; margin-bottom: 16px; border-radius: 8px; }
+  .feedback-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #777; min-height: 32px; }
+  .feedback-row .label { color: #999; }
+  .btn-good, .btn-bad {
+    font-size: 18px; padding: 6px 14px; border: 1px solid #e0e0db;
+    border-radius: 20px; background: #fff; cursor: pointer;
+    transition: all 0.15s; line-height: 1;
+  }
+  .btn-good:hover { background: #f0faf0; border-color: #8cc98c; }
+  .btn-bad:hover  { background: #faf0f0; border-color: #d48c8c; }
+  .btn-good:disabled, .btn-bad:disabled { opacity: 0.35; cursor: not-allowed; }
+  .confirm { font-size: 13px; display: none; }
+  .confirm.show { display: inline; }
+  .confirm-good { color: #4a9b4a; }
+  .confirm-bad  { color: #9b6a4a; }
+  .error-msg { font-size: 13px; color: #c44; display: none; }
+  .error-msg.show { display: inline; }
+  .empty-state { text-align: center; padding: 60px 20px; color: #888; }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state p { font-size: 15px; margin-bottom: 8px; }
+  @media (max-width: 500px) {
+    header { padding: 32px 0 24px; } header h1 { font-size: 22px; }
+    article { padding: 16px; border-radius: 10px; } .ep-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Daily Interview English</h1>
+  <p>5-minute daily episodes: English patterns, interview frameworks, and speaking practice for tech professionals.</p>
+  <div class="subscribe-links">
+    <a href="/rss.xml">RSS</a>
+    <a href="https://podcasts.apple.com/podcast/daily-interview-english">Apple Podcasts</a>
+    <a href="https://open.spotify.com/show/daily-interview-english">Spotify</a>
+  </div>
+</header>
+<main id="episodes"></main>
+<script>
+const MANIFEST_URL = '/manifest.json';
+
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+}
+
+function groupByDate(episodes) {
+  const groups = [];
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+
+  episodes.forEach(ep => {
+    let label;
+    if (ep.date === today) label = 'Today';
+    else if (ep.date === yesterday) label = 'Yesterday';
+    else label = formatDate(ep.date);
+
+    let group = groups.find(g => g.label === label);
+    if (!group) { group = { label, episodes: [] }; groups.push(group); }
+    group.episodes.push(ep);
+  });
+  return groups;
+}
+
+function render(manifest) {
+  const main = document.getElementById('episodes');
+  if (!manifest.episodes || !manifest.episodes.length) {
+    main.innerHTML = `<div class="empty-state">
+      <div class="icon">🎧</div>
+      <p><strong>First episode tomorrow.</strong></p>
+      <p>Subscribe now and it'll be waiting.</p>
+    </div>`;
+    return;
+  }
+
+  const sorted = [...manifest.episodes].reverse();
+  const groups = groupByDate(sorted);
+
+  main.innerHTML = groups.map(g =>
+    `<div class="section-label">${g.label}</div>` +
+    g.episodes.map(ep => {
+      const prevVote = localStorage.getItem(`feedback-${ep.id}`);
+      let feedbackHTML;
+      if (prevVote === 'good') {
+        feedbackHTML = `<span class="confirm confirm-good show">✓ You found this useful</span>`;
+      } else if (prevVote === 'bad') {
+        feedbackHTML = `<span class="confirm confirm-bad show">✓ Thanks — will adjust</span>`;
+      } else {
+        feedbackHTML = `
+          <span class="label">Was this useful?</span>
+          <button class="btn-good" onclick="vote(${ep.id},'good',this)">👍</button>
+          <button class="btn-bad"  onclick="vote(${ep.id},'bad',this)">👎</button>
+          <span class="confirm confirm-good">✓ Thanks — noted.</span>
+          <span class="confirm confirm-bad">✓ Thanks — will adjust.</span>
+          <span class="error-msg">⚠ Couldn't save. Try again?</span>`;
+      }
+      return `
+        <article>
+          <span class="ep-number">#${ep.id}</span>
+          <h2 class="ep-title">${ep.title}</h2>
+          <div class="ep-meta">${formatDate(ep.date)} · ${ep.duration || ''}${ep.pattern ? ` · pattern: "${ep.pattern}"` : ''}${ep.tip ? ` · ${ep.tip}` : ''}</div>
+          <p class="ep-desc">${ep.description}</p>
+          <audio controls src="${ep.file_url}" preload="none"></audio>
+          <div class="feedback-row" data-episode="${ep.id}">${feedbackHTML}</div>
+        </article>`;
+    }).join('')
+  ).join('');
+}
+
+async function vote(episodeId, rating, btn) {
+  const row = btn.closest('.feedback-row');
+  const btnGood = row.querySelector('.btn-good');
+  const btnBad  = row.querySelector('.btn-bad');
+  const label   = row.querySelector('.label');
+
+  btnGood.disabled = true;
+  btnBad.disabled = true;
+  if (label) label.textContent = 'Sending...';
+
+  try {
+    const resp = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ episode: episodeId, rating, date: new Date().toISOString().split('T')[0] })
+    });
+    if (!resp.ok) throw new Error('bad response');
+
+    localStorage.setItem(`feedback-${episodeId}`, rating);
+    // Re-render to show voted state
+    row.querySelector('.label')?.style && (row.querySelector('.label').style.display = 'none');
+    if (btnGood) btnGood.style.display = 'none';
+    if (btnBad) btnBad.style.display = 'none';
+    row.querySelector(rating === 'good' ? '.confirm-good' : '.confirm-bad').classList.add('show');
+
+  } catch (e) {
+    const errMsg = row.querySelector('.error-msg');
+    errMsg.classList.add('show');
+    btnGood.disabled = false;
+    btnBad.disabled = false;
+    if (label) label.textContent = 'Was this useful?';
+    setTimeout(() => errMsg.classList.remove('show'), 5000);
+  }
+}
+
+// Load
+(async () => {
+  try {
+    const resp = await fetch(MANIFEST_URL);
+    if (resp.ok) { render(await resp.json()); return; }
+  } catch (_) {}
+  // Fallback: empty state
+  render({ episodes: [] });
+})();
+</script>
+</body>
+</html>

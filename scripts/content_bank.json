@@ -1,0 +1,464 @@
+{
+  "patterns": [
+    {
+      "id": "what-clicked-for-me",
+      "phrase": "What clicked for me was...",
+      "category": "self-description",
+      "difficulty": 1,
+      "examples": [
+        "What clicked for me was realizing that coding agents let me build software tailored to a team's exact workflow.",
+        "What clicked for me was that we didn't need better tools — we needed a completely different workflow.",
+        "What clicked for me was that the real bottleneck wasn't technology, it was how the team communicated requirements."
+      ],
+      "explanation": "Use this to explain a key realization or motivation. It's more natural than 'I realized' and signals genuine insight.",
+      "when_to_use": "Explaining career pivots, project origins, or why you chose an unconventional approach."
+    },
+    {
+      "id": "what-im-looking-for",
+      "phrase": "What I'm really looking for is...",
+      "category": "self-description",
+      "difficulty": 1,
+      "examples": [
+        "What I'm really looking for is a team where AI tooling is a strategic priority, not a side project.",
+        "What I'm really looking for is the chance to build platforms that impact thousands of engineers, not dozens.",
+        "What I'm really looking for is the complexity of fintech combined with the speed of an AI-native company."
+      ],
+      "explanation": "States your goals clearly and with conviction. Much stronger than 'I want to work on interesting problems.'",
+      "when_to_use": "Answering 'what are you looking for?' or 'why this company?'"
+    },
+    {
+      "id": "over-time-i-became",
+      "phrase": "Over time I became the...",
+      "category": "self-description",
+      "difficulty": 1,
+      "examples": [
+        "Over time I became the AI pioneer in the organization, even though that wasn't my original role.",
+        "Over time I became the person teams came to when they needed to automate something that seemed impossible.",
+        "Over time I became the bridge between the security team and the platform engineering group."
+      ],
+      "explanation": "Shows growth trajectory. More natural than listing promotions or title changes.",
+      "when_to_use": "Walk me through your background. Tell me about yourself."
+    },
+    {
+      "id": "the-way-i-see-it",
+      "phrase": "The way I see it is...",
+      "category": "opinion-stating",
+      "difficulty": 1,
+      "examples": [
+        "The way I see it is, we should optimize for latency first and add caching layers later.",
+        "The way I see it is, this trade-off favors reliability over raw speed at our current scale.",
+        "The way I see it is, the team needs clarity on priorities more than another tool right now."
+      ],
+      "explanation": "States an opinion without sounding rigid. Signals 'this is my view but I'm open to discussion.'",
+      "when_to_use": "Design discussions, code review disagreements, stakeholder proposals, system design interviews."
+    },
+    {
+      "id": "id-argue-that",
+      "phrase": "I'd argue that...",
+      "category": "opinion-stating",
+      "difficulty": 2,
+      "examples": [
+        "I'd argue that we should solve the data consistency problem first before adding more services.",
+        "I'd argue that this approach is simpler to maintain, even if it takes slightly longer to build initially.",
+        "I'd argue that the cost of not doing this is higher than the cost of doing it."
+      ],
+      "explanation": "Stronger than 'I think' but still respectful. Invites counterargument rather than shutting down discussion.",
+      "when_to_use": "When you have conviction about a decision but want to remain collaborative."
+    },
+    {
+      "id": "i-see-it-differently",
+      "phrase": "I see it a bit differently...",
+      "category": "opinion-stating",
+      "difficulty": 2,
+      "examples": [
+        "I see it a bit differently — I think the bottleneck is in the data layer, not the API layer.",
+        "I see it a bit differently. The customer impact is bigger than the engineering effort here.",
+        "I see it a bit differently. We might be optimizing for a problem we don't have yet."
+      ],
+      "explanation": "The gentlest way to disagree. 'A bit' softens it. Opens a conversation rather than starting an argument.",
+      "when_to_use": "Disagreeing with peers, especially in cross-functional settings where relationships matter."
+    },
+    {
+      "id": "that-said",
+      "phrase": "That said...",
+      "category": "transitional",
+      "difficulty": 2,
+      "examples": [
+        "That said, the trade-off was worth it given the timeline we were working with.",
+        "That said, I'd do the migration differently if I were starting today.",
+        "That said, the approach worked well for our scale and I'd recommend it for similar situations."
+      ],
+      "explanation": "Introduces a counterpoint or qualification. More natural than 'however' in speech.",
+      "when_to_use": "After making a strong point, when you want to acknowledge the other side."
+    },
+    {
+      "id": "building-on-that",
+      "phrase": "Building on that...",
+      "category": "transitional",
+      "difficulty": 1,
+      "examples": [
+        "Building on that, we also realized the same pattern applied to our deployment pipeline.",
+        "Building on that, the next logical step was to apply the same approach to the mobile team.",
+        "Building on that, the feedback from the first rollout directly shaped the second version."
+      ],
+      "explanation": "Connects two ideas smoothly. Shows you're thinking in systems, not isolated anecdotes.",
+      "when_to_use": "When you want to show how one project led to another, or how a pattern generalized."
+    },
+    {
+      "id": "the-other-piece-was",
+      "phrase": "The other piece was...",
+      "category": "transitional",
+      "difficulty": 1,
+      "examples": [
+        "The other piece was security. We couldn't just automate — we had to do it safely.",
+        "The other piece was getting buy-in from the BA team. The technology was the easy part.",
+        "The other piece was making sure the solution would scale beyond my own team."
+      ],
+      "explanation": "Introduces a second dimension. Great for showing you think about problems holistically.",
+      "when_to_use": "When telling a story with multiple workstreams or considerations."
+    },
+    {
+      "id": "what-id-highlight",
+      "phrase": "What I'd really highlight is...",
+      "category": "emphasis",
+      "difficulty": 1,
+      "examples": [
+        "What I'd really highlight is that the adoption was organic — nobody mandated these tools.",
+        "What I'd really highlight is how the team's velocity changed after we rebuilt the workflow.",
+        "What I'd really highlight is that we achieved this with zero additional infrastructure cost."
+      ],
+      "explanation": "Directs attention to the most important part. Shows you know what matters and what's detail.",
+      "when_to_use": "When a story has multiple results and you want to emphasize the main one."
+    },
+    {
+      "id": "the-key-thing-is",
+      "phrase": "The key thing to understand is...",
+      "category": "emphasis",
+      "difficulty": 1,
+      "examples": [
+        "The key thing to understand is that the agents don't just automate tasks — they shape what gets built.",
+        "The key thing to understand is that we weren't replacing anyone's job. We were removing the boring parts.",
+        "The key thing to understand is that the 80 percent reduction came from the workflow change, not the AI alone."
+      ],
+      "explanation": "Signals you're about to say something important. Makes the listener lean in.",
+      "when_to_use": "When explaining something counterintuitive or easily misunderstood."
+    },
+    {
+      "id": "to-put-a-finer-point-on-it",
+      "phrase": "To put a finer point on it...",
+      "category": "refining",
+      "difficulty": 3,
+      "examples": [
+        "To put a finer point on it — we didn't just speed up triage. We eliminated the need for manual triage entirely.",
+        "To put a finer point on it — the real innovation wasn't the AI. It was redesigning the workflow around what AI could do.",
+        "To put a finer point on it — this wasn't about tools. This was about changing how the team thought about automation."
+      ],
+      "explanation": "Refines a previous statement to be more precise or impactful. Shows you're thinking critically about your own words.",
+      "when_to_use": "When you want to sharpen a point you just made. Especially effective in closing statements."
+    },
+    {
+      "id": "let-me-recenter",
+      "phrase": "Let me re-center. The core question is...",
+      "category": "refining",
+      "difficulty": 2,
+      "examples": [
+        "Let me re-center. The core question is whether this architecture can handle our growth over the next 18 months.",
+        "Let me re-center. What we're really trying to decide is whether to build or buy this capability.",
+        "Let me re-center. The fundamental trade-off here is speed versus correctness."
+      ],
+      "explanation": "Recovers from going off track. Mid-sentence stop, anchor back to the main question, restart with structure.",
+      "when_to_use": "When you realize mid-answer that you're rambling or going off on a tangent."
+    },
+    {
+      "id": "the-crux-of-it",
+      "phrase": "The crux of it is...",
+      "category": "refining",
+      "difficulty": 2,
+      "examples": [
+        "The crux of it is that we needed to trust the AI's diagnosis before developers would use it.",
+        "The crux of it is that the existing workflow had been optimized for years and changing it felt risky.",
+        "The crux of it is that security and velocity weren't actually in conflict — they were both blocked by the same bottleneck."
+      ],
+      "explanation": "Gets to the absolute core of an issue in one phrase. Forces you to find the essence.",
+      "when_to_use": "When an answer is getting complex and you need to land the main point."
+    },
+    {
+      "id": "i-havent-worked-with-that",
+      "phrase": "I haven't worked directly with that. What I can tell you is...",
+      "category": "bridging",
+      "difficulty": 2,
+      "examples": [
+        "I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the scheduling and networking concepts transfer directly.",
+        "I haven't worked directly with Golang in production. What I can tell you is that I've built systems in Kotlin, Rust, and Python, and my ramp-up pattern is consistent across languages."
+      ],
+      "explanation": "Honest about gaps, confident about adjacent experience. Transforms a weakness into a demonstration of learning ability.",
+      "when_to_use": "When asked about a technology or experience you genuinely don't have."
+    },
+    {
+      "id": "heres-how-id-ramp-up",
+      "phrase": "Here's how I'd ramp up on that...",
+      "category": "bridging",
+      "difficulty": 2,
+      "examples": [
+        "Here's how I'd ramp up on that. I'd start by reading the existing architecture decisions and PRs from the last quarter to understand the patterns. Then I'd pair with someone on the team for the first week.",
+        "Here's how I'd ramp up on that. I learn best by building. I'd take a small, well-defined task and work through it end to end, asking for code review at each step."
+      ],
+      "explanation": "Shows you have a repeatable learning process. More convincing than 'I'm a fast learner.'",
+      "when_to_use": "Follow-up to acknowledging a gap. Shows you're proactive about closing it."
+    },
+    {
+      "id": "this-resulted-in",
+      "phrase": "This resulted in...",
+      "category": "impact",
+      "difficulty": 1,
+      "examples": [
+        "This resulted in the CVE workload dropping by 80 percent within the first month.",
+        "This resulted in the BA team adopting the agents without any formal rollout — they just started using them.",
+        "This resulted in us shipping the migration three weeks ahead of schedule with zero data issues."
+      ],
+      "explanation": "Simple, direct cause-to-effect. Always follow with a number or specific outcome.",
+      "when_to_use": "Closing any STAR story. The Result section."
+    },
+    {
+      "id": "before-this-after-this",
+      "phrase": "Before this... After this...",
+      "category": "impact",
+      "difficulty": 1,
+      "examples": [
+        "Before this, triaging a single CVE took about 45 minutes. After this, it took under 5.",
+        "Before this, the BA team spent three days producing reports manually. After this, it runs in under 30 minutes.",
+        "Before this, developers avoided the security review process. After this, they proactively requested it."
+      ],
+      "explanation": "The simplest and most powerful impact pattern. Before/after contrast creates an instant mental picture of the change.",
+      "when_to_use": "Whenever you have a measurable improvement to describe."
+    },
+    {
+      "id": "the-lesson-i-took",
+      "phrase": "The lesson I took away was...",
+      "category": "impact",
+      "difficulty": 1,
+      "examples": [
+        "The lesson I took away was that adoption is a design problem, not a communication problem. If you build the right thing, people use it.",
+        "The lesson I took away was that you can't bolt AI onto a broken workflow. You have to rethink the workflow first.",
+        "The lesson I took away was that the hardest part of internal tooling isn't the technology — it's understanding the existing workflow deeply enough to improve it."
+      ],
+      "explanation": "Ends every story with a generalizable insight. The difference between 'something that happened to me' and 'a pattern I now recognize.'",
+      "when_to_use": "End of every STAR-LA answer. The Learning and Application sections."
+    },
+    {
+      "id": "to-give-you-a-concrete-example",
+      "phrase": "To give you a concrete example...",
+      "category": "elaboration",
+      "difficulty": 1,
+      "examples": [
+        "To give you a concrete example — one BA spent two days a week compiling data from five different systems. The agent now does it in 30 minutes while she focuses on analysis.",
+        "To give you a concrete example — we found a vulnerability in a library that our commercial scanner had missed for six months. The AI flagged it because it understood how we were actually using that library."
+      ],
+      "explanation": "Bridges from abstract claim to specific evidence. Makes your answer tangible.",
+      "when_to_use": "After making a general claim. The interviewer needs evidence, not assertions."
+    },
+    {
+      "id": "what-that-looked-like-in-practice",
+      "phrase": "What that looked like in practice was...",
+      "category": "elaboration",
+      "difficulty": 2,
+      "examples": [
+        "What that looked like in practice was a dashboard that developers checked every morning instead of a Jira queue they dreaded.",
+        "What that looked like in practice was the BA team building their own agent customizations without asking me for help."
+      ],
+      "explanation": "Turns abstract descriptions into concrete scenes. Makes your story visual.",
+      "when_to_use": "When you've described a system or process and want to make it feel real."
+    },
+    {
+      "id": "thats-a-great-question",
+      "phrase": "That's a great question. Let me think about that for a moment.",
+      "category": "thinking-time",
+      "difficulty": 1,
+      "examples": [
+        "That's a great question. Let me think about that for a moment... [3 second pause] So, the situation was..."
+      ],
+      "explanation": "Buying time without sounding lost. Acknowledges the question, signals you're being thoughtful, gives you 3-4 seconds to structure.",
+      "when_to_use": "Any unexpected question. Always say this instead of 'um' or 'hmm.'"
+    },
+    {
+      "id": "im-glad-you-asked-that",
+      "phrase": "I'm glad you asked that.",
+      "category": "thinking-time",
+      "difficulty": 1,
+      "examples": [
+        "I'm glad you asked that. It's something I've thought about a lot because...",
+        "I'm glad you asked that. It actually connects to a broader point about how we think about automation."
+      ],
+      "explanation": "Warmth + confidence. Turns a potentially challenging question into a welcome invitation.",
+      "when_to_use": "When you have a strong answer ready. Especially for 'why are you leaving' or 'tell me about a weakness.'"
+    }
+  ],
+  "tips": [
+    {
+      "id": "four-second-pause",
+      "name": "4-Second Pause Protocol",
+      "category": "thinking-out-loud",
+      "duration_min": 3,
+      "segments": [
+        "Second one. Breathe. Don't rush to fill the silence.",
+        "Second two. Identify what competency they are actually testing.",
+        "Second three. Pick the closest relevant story you have.",
+        "Second four. Lock in your opening sentence and start."
+      ],
+      "explanation": "When you get an unexpected question, four seconds of structured thinking produces a better answer than four seconds of rambling."
+    },
+    {
+      "id": "structure-first",
+      "name": "Structure-First Approach",
+      "category": "thinking-out-loud",
+      "duration_min": 3,
+      "segments": [
+        "Before answering, tell the interviewer how you'll structure your response.",
+        "Say: 'I'll walk you through this in three parts. First the situation, then what I did, and finally the outcome.'",
+        "This does three things at once: shows organized thinking, gives the interviewer a mental map, and keeps you on track."
+      ],
+      "explanation": "Stating your structure before your content makes you sound organized even before you've said anything substantive."
+    },
+    {
+      "id": "verbal-signposting",
+      "name": "Verbal Signposting",
+      "category": "thinking-out-loud",
+      "duration_min": 3,
+      "segments": [
+        "Learn 7 signpost phrases that make anything you say sound more organized.",
+        "Try these: 'There are three things at play here.' 'The crux of it is.' 'Let me pressure-test that.' 'Another way to frame this is.' 'The trade-off I'm making is.' 'If I step back for a moment.' 'To put a finer point on it.'",
+        "These work because they tell the listener where you are in your thought process. Even if you're figuring it out as you go, you sound structured."
+      ],
+      "explanation": "Signposts are the verbal equivalent of headings in a document. They tell the listener where you are and where you're going."
+    },
+    {
+      "id": "pause-and-anchor",
+      "name": "Pause-and-Anchor Technique",
+      "category": "thinking-out-loud",
+      "duration_min": 3,
+      "segments": [
+        "You're mid-sentence and realize you're going off track. Don't keep talking.",
+        "Stop. Mid-sentence is fine. Better than another 30 seconds of rambling.",
+        "Say: 'Let me re-center. The core question is actually...'",
+        "Then restart with your structure. The interviewer will respect the recovery more than a perfect-but-rambling answer."
+      ],
+      "explanation": "The ability to notice you're off track and recover gracefully is a stronger signal than never going off track."
+    },
+    {
+      "id": "star-la",
+      "name": "STAR-LA Framework",
+      "category": "story-structure",
+      "duration_min": 4,
+      "segments": [
+        "Situation — Set the scene in 1-2 sentences.",
+        "Task — What was your responsibility? 1 sentence.",
+        "Action — What you specifically did. Use I not we. 3-4 sentences. This is 50 percent of the answer.",
+        "Result — Quantified outcome. 2 sentences with numbers.",
+        "Learning — What principle did you extract? 1-2 sentences.",
+        "Application — How have you applied this since? 1-2 sentences.",
+        "Total target: 90 to 120 seconds. The LA part (learning and application) is what makes this a Staff-level answer instead of a Senior-level answer."
+      ],
+      "explanation": "STAR is the baseline. Adding Learning and Application shows you extract principles from experience and propagate them — that's the Staff engineer job."
+    },
+    {
+      "id": "question-deconstruction",
+      "name": "3-Layer Question Deconstruction",
+      "category": "story-structure",
+      "duration_min": 4,
+      "segments": [
+        "Every question has three layers.",
+        "Layer one: the surface ask. The words they actually said.",
+        "Layer two: the competency being tested. What trait does a perfect answer demonstrate?",
+        "Layer three: the Staff-level dimension. How does this answer show organizational impact, not just personal achievement?",
+        "Example question: 'Tell me about a time you made a mistake that affected production.'",
+        "Layer one: describe a production incident. Layer two: honesty, accountability, technical rigor. Layer three: did you change the system so others don't make the same mistake?"
+      ],
+      "explanation": "Answering the surface question gets you a 'meets expectations.' Answering the subtext gets you 'strong hire.'"
+    },
+    {
+      "id": "i-dont-know-bridging",
+      "name": "Three Ways to Say I Don't Know",
+      "category": "bridging",
+      "duration_min": 4,
+      "segments": [
+        "Never just say 'I don't know' and stop. Transform ignorance into demonstrated problem-solving.",
+        "Version one, the honest redirect for factual gaps: 'I don't know that specific answer, but here's the closest analogue from my experience.'",
+        "Version two, the principle-based answer for experience gaps: 'I haven't faced that exact situation, but my operating principle in similar contexts is...'",
+        "Version three, the strength pivot for domain gaps: 'I haven't worked directly with X. However, when I ramped up on Y, here's the approach I used that got me productive in two weeks.'"
+      ],
+      "explanation": "Strong candidates don't know everything. They know how to figure things out and can articulate that process."
+    },
+    {
+      "id": "hook-flow-landing",
+      "name": "Hook-Flow-Landing Structure",
+      "category": "story-structure",
+      "duration_min": 4,
+      "segments": [
+        "Hook — your first 10 seconds. Start with the most interesting element. Never lead with background.",
+        "Weak hook: 'In 2023 I was working at GBST on the tax team and we had this database...'",
+        "Strong hook: 'We discovered we'd been silently dropping transactions for two weeks. I was the engineer on call.'",
+        "Flow — 60 to 90 seconds. Chronological. Cut every detail that doesn't serve the point.",
+        "Landing — your last 15 seconds. The meaning. 'The reason I tell this story is that it fundamentally changed how I think about observability.'"
+      ],
+      "explanation": "Interviewers see 5 to 8 candidates. Your story needs to grab attention in the first 10 seconds and leave a takeaway in the last 15."
+    },
+    {
+      "id": "acknowledge-reframe",
+      "name": "Acknowledge-Reframe Bridge",
+      "category": "bridging",
+      "duration_min": 3,
+      "segments": [
+        "For when a question exposes a genuine weakness.",
+        "Step one: acknowledge honestly. 'I'm glad you asked that. I haven't operated Kubernetes at the scale you're describing.'",
+        "Step two: reframe to adjacent strength. 'What I can tell you is that I've designed distributed systems handling 50K requests per second, and the scheduling and networking concepts transfer directly.'",
+        "Step three: describe your plan. 'I've been systematically working through Production Kubernetes and running a home cluster to build operational intuition.'"
+      ],
+      "explanation": "Honest about gaps, confident about adjacent experience, proactive about closing the gap. Three signals in one answer."
+    },
+    {
+      "id": "so-what-test",
+      "name": "The So What Test",
+      "category": "story-structure",
+      "duration_min": 3,
+      "segments": [
+        "After every answer, the interviewer should never wonder 'so what?' Pre-empt it.",
+        "After telling your story, add one sentence: 'This matters because it demonstrates that I can take something from idea to production adoption across multiple teams.'",
+        "This is not arrogance. It's clarity. You're connecting the dots for them instead of hoping they'll do it themselves."
+      ],
+      "explanation": "The strongest candidates explicitly state what their story proves. Don't make the interviewer infer."
+    }
+  ],
+  "prompts": [
+    {"id": "quick-decision", "text": "Tell me about a time you had to make a quick decision with limited information.", "competency": "judgment-under-pressure"},
+    {"id": "disagreement", "text": "Tell me about a time you disagreed with a senior stakeholder.", "competency": "courageous-communication"},
+    {"id": "influence-without-authority", "text": "Tell me about a time you had to influence a decision without formal authority.", "competency": "leadership"},
+    {"id": "failure", "text": "Tell me about a project that didn't go as planned. What happened?", "competency": "accountability"},
+    {"id": "ambiguous-problem", "text": "Tell me about a time you had to solve a problem that wasn't clearly defined.", "competency": "ambiguity-navigation"},
+    {"id": "learned-fast", "text": "Tell me about a time you had to learn something completely new, quickly.", "competency": "learning-agility"},
+    {"id": "conflicting-priorities", "text": "Tell me about a time you had to manage conflicting priorities from different stakeholders.", "competency": "stakeholder-management"},
+    {"id": "mentored-someone", "text": "Tell me about someone you helped grow professionally.", "competency": "developing-others"},
+    {"id": "raised-the-bar", "text": "Tell me about a time you improved something that was already working.", "competency": "high-standards"},
+    {"id": "build-vs-buy", "text": "Tell me about a build-versus-buy decision you were involved in.", "competency": "judgment"},
+    {"id": "bad-news", "text": "Tell me about a time you had to deliver difficult feedback or bad news.", "competency": "communication"},
+    {"id": "process-improvement", "text": "Tell me about a process you changed that made your team more effective.", "competency": "engineering-mindset"},
+    {"id": "cross-team", "text": "Tell me about a time you had to coordinate work across multiple teams.", "competency": "collaboration"},
+    {"id": "technical-decision", "text": "Tell me about a technical decision you made that turned out to be wrong.", "competency": "self-awareness"},
+    {"id": "customer-impact", "text": "Tell me about a time you went beyond the requirements to solve a real customer problem.", "competency": "customer-focus"},
+    {"id": "scaling-challenge", "text": "Tell me about a time you had to redesign something to handle significant growth.", "competency": "systems-thinking"},
+    {"id": "security-incident", "text": "Tell me about a time security requirements conflicted with delivery timelines.", "competency": "risk-management"},
+    {"id": "automation", "text": "Tell me about something you automated that had a big impact.", "competency": "efficiency"},
+    {"id": "team-disagreement", "text": "Tell me about a time the team was split on a technical decision and how you resolved it.", "competency": "conflict-resolution"},
+    {"id": "why-this-company", "text": "Why do you want to work here specifically?", "competency": "motivation"}
+  ],
+  "categories": {
+    "self-description": {"priority": 1, "description": "Phrases for describing yourself, your career, and your motivations"},
+    "opinion-stating": {"priority": 2, "description": "Phrases for stating opinions without sounding defensive"},
+    "transitional": {"priority": 3, "description": "Phrases for connecting ideas smoothly"},
+    "emphasis": {"priority": 4, "description": "Phrases for directing attention to what matters"},
+    "refining": {"priority": 5, "description": "Phrases for sharpening and recovering mid-answer"},
+    "bridging": {"priority": 6, "description": "Phrases for handling gaps in experience gracefully"},
+    "impact": {"priority": 7, "description": "Phrases for describing results and outcomes"},
+    "elaboration": {"priority": 8, "description": "Phrases for making abstract claims concrete"},
+    "thinking-time": {"priority": 9, "description": "Phrases for buying time without sounding lost"}
+  }
+}

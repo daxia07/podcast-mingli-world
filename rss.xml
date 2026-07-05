@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Daily Interview English</title>
+    <link>https://71ad242b.podcast-landing-868.pages.dev</link>
+    <description>Daily 5-minute episodes: English patterns, interview frameworks, and speaking practice for tech professionals.</description>
+    <language>en</language>
+    <itunes:image href="https://71ad242b.podcast-landing-868.pages.dev/artwork.jpg"/>
+    <itunes:category text="Education"/>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:author>Ming Li</itunes:author>
+    <item>
+      <title>The Way I See It — 4-Second Pause Protocol</title>
+      <description>The very first episode. Today's pattern: 'The way I see it is...' for stating opinions without sounding defensive. Plus: the 4-Second Pause Protocol for unexpected interview questions.</description>
+      <itunes:summary>The very first episode. Today's pattern: 'The way I see it is...' for stating opinions without sounding defensive. Plus: the 4-Second Pause Protocol for unexpected interview questions.</itunes:summary>
+      <enclosure url="https://71ad242b.podcast-landing-868.pages.dev/episodes/2026-07-06.mp3" length="965664" type="audio/mpeg"/>
+      <guid>https://71ad242b.podcast-landing-868.pages.dev/episodes/2026-07-06.mp3</guid>
+      <pubDate>2026-07-06T06:00:00+10:00</pubDate>
+      <duration>4:30</duration>
+    </item>
+  </channel>
+</rss>

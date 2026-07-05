@@ -1,0 +1,26 @@
+{
+  "title": "Daily Interview English",
+  "description": "Daily 5-minute episodes: English patterns, interview frameworks, and speaking practice for tech professionals.",
+  "author": "Ming Li",
+  "language": "en",
+  "artwork_url": "https://71ad242b.podcast-landing-868.pages.dev/artwork.jpg",
+  "categories": [
+    "Education",
+    "Language Learning"
+  ],
+  "episodes": [
+    {
+      "id": 1,
+      "date": "2026-07-06",
+      "title": "The Way I See It \u2014 4-Second Pause Protocol",
+      "description": "The very first episode. Today's pattern: 'The way I see it is...' for stating opinions without sounding defensive. Plus: the 4-Second Pause Protocol for unexpected interview questions.",
+      "duration": "4:30",
+      "file_size_bytes": 965664,
+      "file_url": "https://71ad242b.podcast-landing-868.pages.dev/episodes/2026-07-06.mp3",
+      "pattern": "The way I see it is...",
+      "tip": "4-Second Pause Protocol",
+      "pattern_id": "the-way-i-see-it",
+      "tip_id": "four-second-pause"
+    }
+  ]
+}

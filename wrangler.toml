@@ -1,0 +1,7 @@
+name = "podcast-landing"
+pages_build_output_dir = "site"
+compatibility_date = "2026-07-05"
+
+[[r2_buckets]]
+binding = "FEEDBACK_BUCKET"
+bucket_name = "podcast-mingli-world"
