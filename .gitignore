@@ -6,8 +6,7 @@ __pycache__/
 .DS_Store
 node_modules/
 .wrangler/
-.vercel
+.vercel/
+.deveco/
 feedback/
-.env*
-data/
-feedback/
+episodes/

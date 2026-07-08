@@ -8,7 +8,7 @@ from xml.dom import minidom
 
 from r2_utils import upload, get_json, upload_json, upload_bytes
 
-BASE_URL = os.environ.get("BASE_URL", "https://podcast-landing-868.pages.dev")
+BASE_URL = os.environ.get("BASE_URL", "https://podcast.mingli.world")
 
 
 def generate_rss(manifest):
@@ -75,7 +75,7 @@ def main():
         manifest = {
             "title": "Daily Interview English",
             "description": "Daily 5-minute episodes: English patterns, interview frameworks, and speaking practice for tech professionals.",
-            "author": "Ming Li",
+            "author": "Daily Interview English",
             "language": "en",
             "artwork_url": f"{BASE_URL}/artwork.jpg",
             "categories": ["Education", "Language Learning"],

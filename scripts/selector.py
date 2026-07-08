@@ -13,10 +13,10 @@ import json, os, sys, sqlite3, argparse
 from datetime import datetime, timezone
 
 
-TUTOR_DB = os.path.expanduser("~/projects/generic-tutor/data/tutor.db")
+TUTOR_DB = os.environ.get("TUTOR_DB_PATH", os.path.expanduser("~/projects/generic-tutor/data/tutor.db"))
 CONTENT_BANK_PATH = os.path.join(os.path.dirname(__file__), "content_bank.json")
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
-KNOWLEDGE_DIR = os.path.expanduser("~/projects/generic-tutor/knowledge")
+KNOWLEDGE_DIR = os.environ.get("KNOWLEDGE_DIR_PATH", os.path.expanduser("~/projects/generic-tutor/knowledge"))
 
 
 def load_content_bank():
@@ -375,7 +375,7 @@ def main():
     print(f"Plan written: {plan_path}")
 
     print("\nNext steps:")
-    print(f"  cd ~/projects/podcast-mingli-world")
+    print(f"  cd {os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}")
     print(f"  python3 scripts/generate.py     # edge-tts → episode.mp3")
     print(f"  python3 scripts/publish.py      # upload to R2 + update manifest")
 

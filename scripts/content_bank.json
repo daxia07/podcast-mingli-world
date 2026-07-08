@@ -1186,7 +1186,7 @@
       "duration_min": 4,
       "segments": [
         "Hook \u2014 your first 10 seconds. Start with the most interesting element. Never lead with background.",
-        "Weak hook: 'In 2023 I was working at GBST on the tax team and we had this database...'",
+        "Weak hook: 'In 2023 I was working at a fintech company on the tax team and we had this database...'",
         "Strong hook: 'We discovered we'd been silently dropping transactions for two weeks. I was the engineer on call.'",
         "Flow \u2014 60-90 seconds. Chronological. Cut every detail that doesn't serve the point.",
         "Landing \u2014 your last 15 seconds. 'The reason I tell this story is that it fundamentally changed how I think about observability.'"
