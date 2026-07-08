@@ -85,21 +85,36 @@ def main():
     existing_ids = {ep["id"] for ep in manifest["episodes"]}
     next_id = max(existing_ids) + 1 if existing_ids else 1
 
-    # Read plan for metadata
-    plan = get_json("plan.json") or {}
+    # Read plan for metadata — local file first (selector.py output), then R2
+    local_plan_path = os.path.join(data_dir, "plan.json")
+    plan = {}
+    if os.path.exists(local_plan_path):
+        with open(local_plan_path) as f:
+            plan = json.load(f)
+    if not plan:
+        plan = get_json("plan.json") or {}
+
+    # Build title — support both selector.py format (topic + concepts) and
+    # legacy format (pattern_phrase + tip_name)
+    if "topic" in plan and "primary_concept_title" in plan:
+        topic_label = plan["topic"].replace("-", " ").title()
+        concept_title = plan["primary_concept_title"]
+        title = f"{topic_label}: {concept_title}"
+    else:
+        title = f"{plan.get('pattern_phrase', 'Episode')} — {plan.get('tip_name', 'Tip')}"
 
     episode_entry = {
         "id": next_id,
         "date": episode_date,
-        "title": f"{plan.get('pattern_phrase', 'Episode')} — {plan.get('tip_name', 'Tip')}",
+        "title": title,
         "description": description,
         "duration": "5:00",
         "file_size_bytes": file_size,
         "file_url": f"{BASE_URL}/episodes/{episode_date}.mp3",
-        "pattern": plan.get("pattern_phrase", ""),
+        "pattern": plan.get("pattern_phrase", plan.get("primary_concept_title", "")),
         "tip": plan.get("tip_name", ""),
-        "pattern_id": plan.get("pattern_id"),
-        "tip_id": plan.get("tip_id")
+        "pattern_id": plan.get("pattern_id", plan.get("primary_concept_id")),
+        "tip_id": plan.get("tip_id", plan.get("topic", ""))
     }
 
     # Upload MP3
