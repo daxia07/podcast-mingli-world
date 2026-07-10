@@ -13,33 +13,33 @@ YOUTUBE_DIR = os.path.join(DATA_DIR, "youtube")
 
 YOUTUBE_VIDEOS = [
     {
-        "id": 49, "theme": "yt-exponent-payment",
-        "title": "Exponent: Design a Payment System",
-        "url": "https://www.youtube.com/watch?v=WI8y-5PDBQM",
+        "id": 49, "theme": "yt-payment-system",
+        "title": "Design a Payment System — System Design Interview",
+        "url": "https://www.youtube.com/watch?v=ruxGKk51aHo",
         "playlist_id": "sd-youtube",
     },
     {
-        "id": 50, "theme": "yt-exponent-instagram",
-        "title": "Exponent: Design Instagram",
-        "url": "https://www.youtube.com/watch?v=VJxfZ3jMeps",
+        "id": 50, "theme": "yt-uber-eats",
+        "title": "Design Uber Eats — with Senior Netflix Engineer",
+        "url": "https://www.youtube.com/watch?v=dgawYAH0pO4",
         "playlist_id": "sd-youtube",
     },
     {
-        "id": 51, "theme": "yt-jordan-chat",
-        "title": "Jordan: Design a Chat System",
-        "url": "https://www.youtube.com/watch?v=B7w0wIN4mRQ",
+        "id": 51, "theme": "yt-messenger-whatsapp",
+        "title": "Design Facebook Messenger/WhatsApp — with Ex-Google SWE",
+        "url": "https://www.youtube.com/watch?v=-3Ge8EooS3g",
         "playlist_id": "sd-youtube",
     },
     {
-        "id": 52, "theme": "yt-exponent-url-shortener",
-        "title": "Exponent: Design a URL Shortener",
-        "url": "https://www.youtube.com/watch?v=4v6dWQO8vCE",
+        "id": 52, "theme": "yt-tiktok",
+        "title": "System Design Mock Interview: Design TikTok — with Google TPM",
+        "url": "https://www.youtube.com/watch?v=Z-0g_aJL5Fw",
         "playlist_id": "sd-youtube",
     },
     {
-        "id": 53, "theme": "yt-gaurav-sd-prep",
-        "title": "Gaurav Sen: System Design Interview Prep",
-        "url": "https://www.youtube.com/watch?v=mFM0O8QN3A8",
+        "id": 53, "theme": "yt-upi-gaurav",
+        "title": "UPI System Design Mock Interview — Gaurav Sen",
+        "url": "https://www.youtube.com/watch?v=QpLy0_c_RXk",
         "playlist_id": "sd-youtube",
     },
 ]

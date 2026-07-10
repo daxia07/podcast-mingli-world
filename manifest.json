@@ -636,6 +636,66 @@
       "pattern": "Mock Interview",
       "tip": "Interview Practice",
       "playlist_id": "sd-mock-interviews"
+    },
+    {
+      "id": 49,
+      "date": "2026-07-10",
+      "title": "Design a Payment System — System Design Interview (YouTube extract)",
+      "description": "YouTube audio extract: Design a Payment System. System Design Interview (YouTube extract).",
+      "duration": "40:51",
+      "file_size_bytes": 39217388,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-yt-payment-system.mp3",
+      "pattern": "YouTube Extract",
+      "tip": "YouTube Audio",
+      "playlist_id": "sd-youtube"
+    },
+    {
+      "id": 50,
+      "date": "2026-07-10",
+      "title": "Design Uber Eats — with Senior Netflix Engineer (YouTube extract)",
+      "description": "YouTube audio extract: Design Uber Eats. with Senior Netflix Engineer (YouTube extract).",
+      "duration": "56:30",
+      "file_size_bytes": 54247148,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-yt-uber-eats.mp3",
+      "pattern": "YouTube Extract",
+      "tip": "YouTube Audio",
+      "playlist_id": "sd-youtube"
+    },
+    {
+      "id": 51,
+      "date": "2026-07-10",
+      "title": "Design Messenger/WhatsApp — with Ex-Google SWE (YouTube extract)",
+      "description": "YouTube audio extract: Design Messenger/WhatsApp. with Ex-Google SWE (YouTube extract).",
+      "duration": "26:19",
+      "file_size_bytes": 25279340,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-yt-messenger-whatsapp.mp3",
+      "pattern": "YouTube Extract",
+      "tip": "YouTube Audio",
+      "playlist_id": "sd-youtube"
+    },
+    {
+      "id": 52,
+      "date": "2026-07-10",
+      "title": "Mock Interview: Design TikTok — with Google TPM (YouTube extract)",
+      "description": "YouTube audio extract: Mock Interview: Design TikTok. with Google TPM (YouTube extract).",
+      "duration": "28:00",
+      "file_size_bytes": 26885228,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-yt-tiktok.mp3",
+      "pattern": "YouTube Extract",
+      "tip": "YouTube Audio",
+      "playlist_id": "sd-youtube"
+    },
+    {
+      "id": 53,
+      "date": "2026-07-10",
+      "title": "UPI System Design Mock Interview — Gaurav Sen (YouTube extract)",
+      "description": "YouTube audio extract: UPI System Design Mock Interview. Gaurav Sen (YouTube extract).",
+      "duration": "31:09",
+      "file_size_bytes": 29905004,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-yt-upi-gaurav.mp3",
+      "pattern": "YouTube Extract",
+      "tip": "YouTube Audio",
+      "playlist_id": "sd-youtube"
     }
   ],
   "playlists": [
@@ -733,6 +793,17 @@
         14,
         15,
         16
+      ]
+    },
+    {
+      "id": "sd-youtube",
+      "name": "SD: Expert Interviews",
+      "episode_ids": [
+        49,
+        50,
+        51,
+        52,
+        53
       ]
     }
   ]
