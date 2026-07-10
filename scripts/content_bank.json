@@ -920,10 +920,79 @@
           "Analytics: stream view events to data warehouse for reporting and ML training"
         ],
         "estimates": "500M hours watched/day, 500 hours uploaded/minute, 1B+ videos, 80% of traffic from CDN",
-        "bottlenecks": "Transcoding pipeline throughput. CDN cache efficiency. Live streaming latency. Recommendation relevance."
-      }
-    ],
-    "architecture_patterns": [
+         "bottlenecks": "Transcoding pipeline throughput. CDN cache efficiency. Live streaming latency. Recommendation relevance."
+      },
+      {
+        "id": "design-payment-system",
+        "name": "Design a Payment System (Stripe/Square)",
+        "category": "fintech",
+        "difficulty": 3,
+        "description": "Process payments reliably: accept, authorize, capture, settle. Handle failures, retries, and reconciliation.",
+        "key_components": [
+          "Payment API: POST /payments with idempotency key, amount, currency, payment method",
+          "Payment state machine: pending, authorized, captured, failed, refunded, disputed",
+          "Idempotency: every request carries an idempotency key, server deduplicates within a window",
+          "Double-charge prevention: check if payment for this key already exists before processing",
+          "Reconciliation: daily batch compare internal records with bank/processor statements",
+          "Ledger: append-only double-entry ledger records every financial movement",
+          "Async settlement: payment captured synchronously, settlement with bank happens asynchronously"
+        ],
+        "estimates": "10K TPS peak, 864M transactions/day, 200 bytes per transaction = ~170GB/day, 5-year retention = ~300TB",
+        "bottlenecks": "Idempotency at scale. Reconciliation consistency. Payment provider API reliability. Regulatory compliance (PCI DSS)."
+      },
+      {
+        "id": "design-ledger-system",
+        "name": "Design a Ledger System (Double-Entry Accounting)",
+        "category": "fintech",
+        "difficulty": 3,
+        "description": "Immutable, append-only ledger that records every financial transaction as double-entry pairs. The source of truth for account balances.",
+        "key_components": [
+          "Double-entry: every transaction has debit and credit entries that must balance to zero",
+          "Append-only: entries are never updated or deleted, corrections are new reversing entries",
+          "Account balances: derived by summing all entries for an account, cached in materialized view",
+          "Transaction isolation: database-level ACID for each transaction pair",
+          "Audit trail: every entry has timestamp, actor, reference, and correlation ID",
+          "Reconciliation: periodic checksums verify total debits equal total credits across all accounts"
+        ],
+        "estimates": "1M accounts, 10K transactions/second, each transaction = 2 entries, 5-year retention = ~150TB",
+        "bottlenecks": "Write throughput on single ledger. Balance query performance without materialized views. Historical query performance at scale."
+      },
+      {
+        "id": "design-trading-platform",
+        "name": "Design a Trading Platform (Stock Exchange)",
+        "category": "fintech",
+        "difficulty": 3,
+        "description": "Match buy and sell orders in real-time with low latency. Support order types, price-time priority, and market data feeds.",
+        "key_components": [
+          "Order book: sorted lists of buy (bid) and sell (ask) orders per instrument, ordered by price then time",
+          "Matching engine: matches compatible orders, executes trades, FIFO within same price level",
+          "Order types: market order, limit order, stop-loss, fill-or-kill, immediate-or-cancel",
+          "Market data: real-time feed of trades, quotes, and depth via WebSocket or FIX protocol",
+          "Risk management: position limits, margin checks, circuit breakers for extreme moves",
+          "Clearing and settlement: T+2 settlement, netting of obligations, central counterparty"
+        ],
+        "estimates": "100K orders/second, 10M daily trades, microsecond latency requirement, 5000 instruments",
+        "bottlenecks": "Matching engine latency (must be sub-millisecond). Order book updates at peak volume. Market data fan-out to millions of subscribers."
+      },
+      {
+        "id": "design-fraud-detection",
+        "name": "Design a Fraud Detection System",
+        "category": "fintech",
+        "difficulty": 3,
+        "description": "Detect fraudulent transactions in real-time using rules and ML models. Balance precision (catch fraud) with recall (don't block legitimate users).",
+        "key_components": [
+          "Feature store: real-time and batch features for each transaction — amount, velocity, device fingerprint, geolocation",
+          "Rules engine: deterministic rules for obvious fraud — amount > threshold, velocity > limit, known bad device",
+          "ML scoring: trained model scores transaction probability of fraud, threshold determines accept/review/reject",
+          "Decision pipeline: rules first (fast, deterministic), then ML (slower, probabilistic), then manual review queue",
+          "Feedback loop: labeled outcomes (confirmed fraud or false positive) retrain models continuously",
+          "Alert system: real-time alerts to fraud ops team, case management for manual review"
+        ],
+        "estimates": "10K TPS, <100ms decision latency, 0.1% fraud rate means ~10 fraud cases/second, false positive rate target <5%",
+        "bottlenecks": "Feature computation latency. Model inference at scale. False positive impact on user experience. Concept drift (fraud patterns evolve)."
+       }
+     ],
+     "architecture_patterns": [
       {
         "id": "event-driven",
         "name": "Event-Driven Architecture",

@@ -396,8 +396,8 @@ function renderEpisode(ep,idx){
 }
 
 function getPlaylistIcon(id){
-  var icons={'compilations':'\uD83C\uDFAF','self-intro':'\uD83C\uDFA4','prepared-qa':'\u2753','sd-concepts':'\uD83D\uDCC0','sd-cases':'\uD83C\uDFD7\uFE0F','sd-patterns':'\uD83D\uDD17','sd-deep-dive':'\uD83C\uDF9B\uFE0F','interview-patterns':'\uD83D\uDCAC'};
-  return icons[id]||'\uD83C\uDFB5';
+  var icons={'compilations':'🎯','self-intro':'🎤','prepared-qa':'❓','sd-think-aloud':'🧠','sd-estimation':'🔢','sd-mock-interviews':'🎭','sd-deep-dive':'🎧','sd-concepts':'💿','sd-cases':'🏗️','sd-patterns':'🔗','interview-patterns':'💬'};
+  return icons[id]||'🎵';
 }
 
 function togglePlaylistSection(pid){
@@ -413,7 +413,7 @@ function renderHome(){
   if(!playlists.length){area.innerHTML='';return;}
 
   var html='';
-  var order=['sd-concepts','sd-cases','sd-patterns','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
+  var order=['sd-think-aloud','sd-estimation','sd-mock-interviews','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
   var sorted=order.map(function(id){for(var i=0;i<playlists.length;i++){if(playlists[i].id===id)return playlists[i];}return null;}).filter(Boolean);
   var remaining=playlists.filter(function(p){return order.indexOf(p.id)===-1;});
   var all=sorted.concat(remaining);
@@ -447,7 +447,7 @@ function renderHome(){
 function renderPlaylistsTab(){
   var area=document.getElementById('playlistsTabList');
   if(!playlists.length){area.innerHTML='<div class="empty-state"><div class="empty-icon">\uD83C\uDFB5</div><div class="empty-title">No playlists</div></div>';return;}
-  var order=['sd-concepts','sd-cases','sd-patterns','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
+  var order=['sd-think-aloud','sd-estimation','sd-mock-interviews','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
   var sorted=order.map(function(id){for(var i=0;i<playlists.length;i++){if(playlists[i].id===id)return playlists[i];}return null;}).filter(Boolean);
   var remaining=playlists.filter(function(p){return order.indexOf(p.id)===-1;});
   var all=sorted.concat(remaining);

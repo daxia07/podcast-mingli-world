@@ -1,6 +1,6 @@
 {
   "title": "Daily Interview English",
-  "description": "Daily 5-minute episodes: English patterns, interview frameworks, and speaking practice for tech professionals.",
+  "description": "Think-aloud system design walkthroughs, estimation practice, mock interviews, and English patterns for tech professionals preparing for interviews.",
   "author": "Daily Interview English",
   "language": "en",
   "artwork_url": "https://podcast.mingli.world/artwork.jpg",
@@ -327,147 +327,147 @@
     },
     {
       "id": 23,
-      "date": "2026-07-08",
-      "title": "System Design Fundamentals — CAP, ACID vs BASE, Consensus",
-      "description": "System design episode: System Design Fundamentals",
-      "duration": "5:40",
-      "file_size_bytes": 2725676,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-fundamentals.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "SD Fundamentals Think-Aloud — CAP, ACID vs BASE, Consensus",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through three fundamental concepts: CAP theorem, ACID versus BASE, and consensus protocols. These come up in almost every system design interview, not as direct questions, but as the vocabulary you need when discussing trade-offs.  I'm going to reason through these out loud, exactly like I would in an actual interview. Listen for how I connect concepts to real systems and name trade-offs explicitly.  Let's start with CAP theorem.  OK, so",
+      "duration": "7:10",
+      "file_size_bytes": 3442988,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-fundamentals.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-concepts"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 24,
-      "date": "2026-07-08",
-      "title": "Infrastructure Essentials — Load Balancing, Caching, CDN, Message Queues",
-      "description": "System design episode: Infrastructure Essentials",
-      "duration": "7:45",
-      "file_size_bytes": 3721196,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-infrastructure.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Infrastructure Think-Aloud — Load Balancing, Caching, CDN, Message Queues",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through four infrastructure building blocks: load balancing, caching, content delivery networks, and message queues. These are the components you'll reference in almost every system design interview.  Let me reason through each one out loud, focusing on the trade-offs and when to pick which option.  Let's start with load balancing.  OK, so load balancing is about distributing incoming traffic across multiple servers. The first question I'",
+      "duration": "7:31",
+      "file_size_bytes": 3612908,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-infrastructure.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-concepts"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 25,
-      "date": "2026-07-08",
-      "title": "Data Architecture — Sharding, Replication, Partitioning",
-      "description": "System design episode: Data Architecture",
-      "duration": "5:57",
-      "file_size_bytes": 2857004,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-data.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Data Architecture Think-Aloud — Sharding, Replication, Partitioning",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through data architecture: sharding, replication, and consistent hashing. These are the techniques you use when your data is too big for a single machine, which in an interview, it almost always is.  Let me reason through each one, focusing on the trade-offs and the failure scenarios.  Let's start with database sharding.  So, sharding is about horizontally partitioning your data across multiple database instances. Each shard holds a subse",
+      "duration": "6:30",
+      "file_size_bytes": 3123884,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-data.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-concepts"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 26,
-      "date": "2026-07-08",
-      "title": "API & Microservices — API Design, Microservices Architecture",
-      "description": "System design episode: API & Microservices",
-      "duration": "4:46",
-      "file_size_bytes": 2290028,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-api-microservices.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "API & Microservices Think-Aloud — API Design, Microservices Architecture",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through API design and microservices architecture. These come up in almost every system design interview because they define how your system's components communicate and how you decompose a large system into manageable pieces.  Let's start with API design.  So, the three main API styles are REST, gRPC, and GraphQL. Let me think through when to use each.  REST is the default choice. It's resource-oriented, uses HTTP verbs, and is stateless",
+      "duration": "6:03",
+      "file_size_bytes": 2910956,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-api-microservices.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-concepts"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 27,
-      "date": "2026-07-08",
-      "title": "Reliability Engineering — Idempotency, Rate Limiting, Observability",
-      "description": "System design episode: Reliability Engineering",
-      "duration": "6:15",
-      "file_size_bytes": 3005996,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-reliability.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Reliability Think-Aloud — Idempotency, Rate Limiting, Observability",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through three reliability topics: idempotency, rate limiting, and observability. These are what separate systems that work in demos from systems that work in production.  Let me reason through each one, focusing on the failure scenarios and how to handle them.  Let's start with idempotency.  So, an operation is idempotent if executing it multiple times has the same effect as executing it once. This sounds abstract, but it's critical in di",
+      "duration": "6:29",
+      "file_size_bytes": 3114476,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-reliability.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-concepts"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 28,
-      "date": "2026-07-08",
-      "title": "Classic System Design I — URL Shortener + Chat System",
-      "description": "System design episode: Classic System Design I",
-      "duration": "4:53",
-      "file_size_bytes": 2349548,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-classic-1.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "URL Shortener Think-Aloud — Full walkthrough with estimation",
+      "description": "Welcome to System Design Think-Aloud. Today we're doing a full walkthrough of a classic interview problem: design a URL shortener like Bitly.  I'm going to work through this exactly like I would in an interview. Clarify requirements, estimate scale, design the high-level architecture, dive deep into the key component, and name the trade-offs.  Let's get started.  So the problem is: design a URL shortener. The first thing I'd do is clarify the requirements.  What are the functional requirements?",
+      "duration": "6:28",
+      "file_size_bytes": 3109676,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-classic-1.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-cases"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 29,
-      "date": "2026-07-08",
-      "title": "Classic System Design II — News Feed + Search Autocomplete",
-      "description": "System design episode: Classic System Design II",
-      "duration": "3:58",
-      "file_size_bytes": 1911596,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-classic-2.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Chat System Think-Aloud — Real-time messaging, WebSocket vs polling",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through another classic: design a chat system like WhatsApp or Slack.  Let me work through this step by step, exactly like in an interview.  So, the problem is: design a real-time messaging system. First, let me clarify the requirements. We need to support one-on-one chats and group chats. Users need to see when their contacts are online. Messages should be stored so you can see history when you log back in. And we need to handle push not",
+      "duration": "5:40",
+      "file_size_bytes": 2724332,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-classic-2.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-cases"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 30,
-      "date": "2026-07-08",
-      "title": "Classic System Design III — Notification System + Web Crawler",
-      "description": "System design episode: Classic System Design III",
-      "duration": "4:10",
-      "file_size_bytes": 2001836,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-classic-3.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "News Feed Think-Aloud — Fan-out, caching, ranking",
+      "description": "Welcome to System Design Think-Aloud. Today we're working through design a news feed, the Instagram or Twitter problem. This is one of the most common system design interview questions because it touches on so many concepts: fan-out strategies, caching, ranking, and real-time updates.  Let me work through this step by step.  So, the problem is: generate a personalized feed of posts from people you follow. Users can post, follow other users, and scroll through their feed. The feed should be ranke",
+      "duration": "3:03",
+      "file_size_bytes": 1098000,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-classic-3.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-cases"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 31,
-      "date": "2026-07-08",
-      "title": "Advanced System Design I — Object Storage + Key-Value Store",
-      "description": "System design episode: Advanced System Design I",
-      "duration": "4:31",
-      "file_size_bytes": 2173100,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-advanced-1.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Payment System Think-Aloud — Fintech: idempotency, double-charge, reconciliation",
+      "description": "Welcome to System Design Think-Aloud. Today we're designing a payment system, which is one of the most important fintech system design questions. If you're interviewing for a fintech company, this WILL come up.  I'm going to work through this as if I'm in an actual interview, focusing on the things that make payment systems different from other systems: financial correctness, idempotency, reconciliation, and regulatory compliance.  Let's start by clarifying the requirements. A payment system nee",
+      "duration": "6:55",
+      "file_size_bytes": 3325100,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-fintech-payment.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-cases"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 32,
-      "date": "2026-07-08",
-      "title": "Advanced System Design II — Location Service + Video Streaming",
-      "description": "System design episode: Advanced System Design II",
-      "duration": "4:23",
-      "file_size_bytes": 2105132,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-advanced-2.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Ledger System Think-Aloud — Fintech: double-entry, append-only, ACID, audit",
+      "description": "Welcome to System Design Think-Aloud. Today we're designing a ledger system, the double-entry accounting system that records every financial transaction. This is the source of truth for account balances in any fintech company.  Let me reason through this step by step.  So, what is a ledger? At its core, a ledger records every financial movement as a pair of entries. Every transaction has a debit entry and a credit entry, and they must always balance to zero. If I transfer a hundred dollars from",
+      "duration": "5:49",
+      "file_size_bytes": 2796524,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-fintech-ledger.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-cases"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 33,
-      "date": "2026-07-08",
-      "title": "Architecture Patterns I — Event-Driven, CQRS, Sidecar",
-      "description": "System design episode: Architecture Patterns I",
-      "duration": "5:03",
-      "file_size_bytes": 2432300,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-arch-patterns-1.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Trading Platform Think-Aloud — Fintech: order matching, real-time feeds, FIFO",
+      "description": "Welcome to System Design Think-Aloud. Today we're designing a trading platform, like a stock exchange. This is one of the hardest system design problems because of the extreme latency requirements. We're talking sub-millisecond matching, which means the architecture is fundamentally different from typical web systems.  Let me work through this step by step.  So, a trading platform matches buy and sell orders. The core component is the order book. For each instrument, like a stock, there's a list",
+      "duration": "6:10",
+      "file_size_bytes": 2966636,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-fintech-trading.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-patterns"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 34,
-      "date": "2026-07-08",
-      "title": "Architecture Patterns II — Circuit Breaker, Bulkhead, Saga, Strangler Fig, Backpressure",
-      "description": "System design episode: Architecture Patterns II",
-      "duration": "8:02",
-      "file_size_bytes": 3857132,
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-08-sd-arch-patterns-2.mp3",
-      "pattern": "System Design",
+      "date": "2026-07-10",
+      "title": "Fraud Detection Think-Aloud — Fintech: stream processing, feature stores, rules vs ML",
+      "description": "Welcome to System Design Think-Aloud. Today we're designing a fraud detection system. This is a fascinating problem because it's at the intersection of real-time stream processing, machine learning, and human operations. And it has one of the most interesting trade-offs in all of system design: catching more fraud versus creating more false positives that annoy legitimate customers.  Let me work through this step by step.  So, the problem is: detect fraudulent transactions in real-time. When a t",
+      "duration": "6:59",
+      "file_size_bytes": 3359084,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-sd-fintech-fraud.mp3",
+      "pattern": "Think-Aloud",
       "tip": "RESHADED Framework",
-      "playlist_id": "sd-patterns"
+      "playlist_id": "sd-think-aloud"
     },
     {
       "id": 35,
@@ -576,6 +576,66 @@
       "pattern": "api-gateway",
       "tip": "ByteByteGo YouTube",
       "playlist_id": "sd-deep-dive"
+    },
+    {
+      "id": 44,
+      "date": "2026-07-10",
+      "title": "Estimation Practice I — Twitter QPS, Google storage, WhatsApp bandwidth",
+      "description": "Welcome to Estimation Practice. Today we're working through 3 back-of-envelope estimation problems.  The key to estimation is being explicit about your assumptions, showing your math step by step, and sanity-checking your answer. Let's practice.  Problem 1: Twitter QPS and Storage.  So the question is: Estimate the queries per second and storage for Twitter.  Let me start by stating my assumptions.  Assumption 1: 1.5 billion total users  Assumption 2: 300 million daily active users  Assumption 3",
+      "duration": "6:39",
+      "file_size_bytes": 3199340,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-estimation-1.mp3",
+      "pattern": "Estimation",
+      "tip": "Back-of-Envelope",
+      "playlist_id": "sd-estimation"
+    },
+    {
+      "id": 45,
+      "date": "2026-07-10",
+      "title": "Estimation Practice II — Payment TPS, Netflix CDN, Uber location writes",
+      "description": "Welcome to Estimation Practice. Today we're working through 3 back-of-envelope estimation problems.  The key to estimation is being explicit about your assumptions, showing your math step by step, and sanity-checking your answer. Let's practice.  Problem 1: Payment System TPS.  So the question is: Estimate transactions per second for a global payment processor like Stripe.  Let me start by stating my assumptions.  Assumption 1: Processes payments for 1 million businesses  Assumption 2: Average b",
+      "duration": "7:07",
+      "file_size_bytes": 3417452,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-estimation-2.mp3",
+      "pattern": "Estimation",
+      "tip": "Back-of-Envelope",
+      "playlist_id": "sd-estimation"
+    },
+    {
+      "id": 46,
+      "date": "2026-07-10",
+      "title": "Mock Interview: Payment System — Full mock system design interview",
+      "description": "[INTERVIEWER] Hi, thanks for coming in today. I'd like to do a system design interview with you. The problem is: design a system for Design a Payment System (Stripe/Square). Before we dive in, how would you approach this?  [CANDIDATE] Great, thanks. So before I start drawing boxes, let me clarify the requirements. What's the primary use case here?  [INTERVIEWER] Process payments reliably: accept, authorize, capture, settle. Handle failures, retries, and reconciliation. What questions do you have",
+      "duration": "5:26",
+      "file_size_bytes": 2613548,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-mock-payment-system.mp3",
+      "pattern": "Mock Interview",
+      "tip": "Interview Practice",
+      "playlist_id": "sd-mock-interviews"
+    },
+    {
+      "id": 47,
+      "date": "2026-07-10",
+      "title": "Mock Interview: URL Shortener — Full mock system design interview",
+      "description": "[INTERVIEWER] Hi, thanks for coming in today. I'd like to do a system design interview with you. The problem is: design a system for Design a URL Shortener (Bitly). Before we dive in, how would you approach this?  [CANDIDATE] Great, thanks. So before I start drawing boxes, let me clarify the requirements. What's the primary use case here?  [INTERVIEWER] Convert long URLs to short ones. Handle billions of URLs, support redirects, and track analytics. What questions do you have?  [CANDIDATE] OK, s",
+      "duration": "5:26",
+      "file_size_bytes": 2612972,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-mock-url-shortener.mp3",
+      "pattern": "Mock Interview",
+      "tip": "Interview Practice",
+      "playlist_id": "sd-mock-interviews"
+    },
+    {
+      "id": 48,
+      "date": "2026-07-10",
+      "title": "Mock Interview: News Feed — Full mock system design interview",
+      "description": "[INTERVIEWER] Hi, thanks for coming in today. I'd like to do a system design interview with you. The problem is: design a system for Design a News Feed (Twitter/Instagram). Before we dive in, how would you approach this?  [CANDIDATE] Great, thanks. So before I start drawing boxes, let me clarify the requirements. What's the primary use case here?  [INTERVIEWER] Generate a personalized feed of posts from people you follow. Support ranking, pagination, and real-time updates. What questions do you",
+      "duration": "5:21",
+      "file_size_bytes": 2573420,
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-10-mock-news-feed.mp3",
+      "pattern": "Mock Interview",
+      "tip": "Interview Practice",
+      "playlist_id": "sd-mock-interviews"
     }
   ],
   "playlists": [
@@ -604,33 +664,53 @@
       ]
     },
     {
-      "id": "sd-concepts",
-      "name": "SD: Core Concepts",
+      "id": "sd-think-aloud",
+      "name": "SD: Think-Aloud",
       "episode_ids": [
         23,
         24,
         25,
         26,
-        27
-      ]
-    },
-    {
-      "id": "sd-cases",
-      "name": "SD: Case Studies",
-      "episode_ids": [
+        27,
         28,
         29,
         30,
         31,
-        32
+        32,
+        33,
+        34
       ]
     },
     {
-      "id": "sd-patterns",
-      "name": "SD: Architecture Patterns",
+      "id": "sd-estimation",
+      "name": "SD: Estimation Practice",
       "episode_ids": [
-        33,
-        34
+        44,
+        45
+      ]
+    },
+    {
+      "id": "sd-mock-interviews",
+      "name": "SD: Mock Interviews",
+      "episode_ids": [
+        46,
+        47,
+        48
+      ]
+    },
+    {
+      "id": "sd-deep-dive",
+      "name": "SD: Deep Dive Listening",
+      "episode_ids": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
       ]
     },
     {
@@ -653,21 +733,6 @@
         14,
         15,
         16
-      ]
-    },
-    {
-      "id": "sd-deep-dive",
-      "name": "SD: Deep Dive Listening",
-      "episode_ids": [
-        35,
-        36,
-        37,
-        38,
-        39,
-        40,
-        41,
-        42,
-        43
       ]
     }
   ]
