@@ -21,10 +21,38 @@ var catKeys=Object.keys(catLabels);
 var sdCatLabels={fundamentals:"Fundamentals",infrastructure:"Infrastructure",data:"Data",architecture:"Architecture",reliability:"Reliability","reliability-pattern":"Reliability Patterns",pattern:"Arch Patterns",classic:"Classic",advanced:"Advanced"};
 
 var audio=null;
+var saveTimer=null;
+var completedEps={};
 
 function getAudio(){
   if(!audio)audio=document.getElementById('spAudio');
   return audio;
+}
+
+function saveProgress(){
+  var a=getAudio();
+  if(!a||playlistIdx<0)return;
+  var data={
+    epId:currentEpId,
+    position:a.currentTime||0,
+    playlistId:currentPlaylist,
+    playlistIdx:playlistIdx,
+    ts:Date.now()
+  };
+  localStorage.setItem('playerProgress',JSON.stringify(data));
+  localStorage.setItem('completedEps',JSON.stringify(completedEps));
+}
+
+function loadProgress(){
+  try{completedEps=JSON.parse(localStorage.getItem('completedEps'))||{};}catch(e){completedEps={};}
+  var raw=localStorage.getItem('playerProgress');
+  if(!raw)return null;
+  try{return JSON.parse(raw);}catch(e){return null;}
+}
+
+function markCompleted(epId){
+  completedEps[String(epId)]=true;
+  localStorage.setItem('completedEps',JSON.stringify(completedEps));
 }
 
 function switchTab(t){
@@ -87,8 +115,16 @@ function playIdx(idx,epList){
   currentEpId=ep.id;
   if(ep.playlist_id)currentPlaylist=ep.playlist_id;
   var a=getAudio();
+  a.pause();
+  a.removeAttribute('src');
+  a.load();
   if(ep.file_url)a.src=ep.file_url;
-  a.play().then(function(){isPlaying=true;updateAllPlayerUI();}).catch(function(){});
+  a.load();
+  a.play().then(function(){isPlaying=true;updateAllPlayerUI();}).catch(function(){
+    isPlaying=false;
+    updateAllPlayerUI();
+    showResumeHint();
+  });
   isPlaying=true;
   updateAllPlayerUI();
   var sp=document.getElementById('stickyPlayer');
@@ -101,8 +137,21 @@ function playIdx(idx,epList){
   updateFeedbackUI(ep.id);
   updateNowPlayingCards();
   renderPlaylist();
-  localStorage.setItem('lastPlaylistIdx',String(idx));
-  localStorage.setItem('lastPlaylist',currentPlaylist);
+  saveProgress();
+}
+
+function showResumeHint(){
+  var hint=document.getElementById('resumeHint');
+  if(!hint)return;
+  hint.style.display='flex';
+  clearTimeout(hint._timer);
+  hint._timer=setTimeout(function(){hint.style.display='none';},5000);
+}
+
+function resumePlay(){
+  var a=getAudio();
+  a.play().then(function(){isPlaying=true;updateAllPlayerUI();}).catch(function(){});
+  document.getElementById('resumeHint').style.display='none';
 }
 
 function playEpisode(idx){playIdx(idx);}
@@ -263,10 +312,11 @@ function renderPlaylist(){
   if(pl)html+='<div class="fp-pl-header">'+pl.name+'</div>';
   epList.forEach(function(ep){
     var isCurrent=ep.id===currentEpId;
+    var isDone=completedEps[String(ep.id)];
     var globalIdx=episodes.indexOf(ep);
     html+='<div class="fp-pl-item'+(isCurrent?' now-playing':'')+'" onclick="playIdx('+globalIdx+')">'+
-      '<div class="fp-pl-num">'+ep.id+'</div>'+
-      '<div class="fp-pl-info"><div class="fp-pl-title">'+(ep.title||ep.pattern)+'</div>'+
+      '<div class="fp-pl-num">'+(isDone?'\u2713':ep.id)+'</div>'+
+      '<div class="fp-pl-info"><div class="fp-pl-title'+(isDone?' completed':'')+'">'+(ep.title||ep.pattern)+'</div>'+
       '<div class="fp-pl-meta">'+ep.date+' \u00B7 '+(ep.duration||'~5 min')+'</div></div>'+
       (isCurrent?'<span class="fp-pl-now-badge">NOW</span>':'')+
       '</div>';
@@ -285,6 +335,7 @@ function renderPlaylist(){
 
 function setupAudioEvents(){
   var a=getAudio();
+  var _saveTick=0;
   a.addEventListener('timeupdate',function(){
     if(isPlayerOpen||document.getElementById('stickyPlayer').classList.contains('on')){
       var cur=a.currentTime||0,dur=a.duration||0;
@@ -295,11 +346,20 @@ function setupAudioEvents(){
         document.getElementById('fpTimeCurrent').textContent=fmtTime(cur);
       }
     }
+    var now=Date.now();
+    if(now-_saveTick>5000){_saveTick=now;saveProgress();}
   });
   a.addEventListener('loadedmetadata',function(){
     if(isPlayerOpen)document.getElementById('fpTimeDuration').textContent=fmtTime(a.duration);
+    var saved=loadProgress();
+    if(saved&&saved.position>0&&String(saved.epId)===String(currentEpId)){
+      a.currentTime=saved.position;
+    }
   });
+  a.addEventListener('pause',function(){isPlaying=false;updateAllPlayerUI();saveProgress();});
+  a.addEventListener('play',function(){isPlaying=true;updateAllPlayerUI();});
   a.addEventListener('ended',function(){
+    markCompleted(currentEpId);
     if(loopMode==='one'){a.currentTime=0;a.play().catch(function(){});return;}
     var epList=getPlaylistEpisodes(currentPlaylist);
     var localIdx=-1;
@@ -308,9 +368,8 @@ function setupAudioEvents(){
     if(loopMode==='all'){var gIdx=episodes.indexOf(epList[0]);playIdx(gIdx);return;}
     isPlaying=false;
     updateAllPlayerUI();
+    saveProgress();
   });
-  a.addEventListener('play',function(){isPlaying=true;updateAllPlayerUI();});
-  a.addEventListener('pause',function(){isPlaying=false;updateAllPlayerUI();});
 }
 
 function setupSwipeClose(){
@@ -477,9 +536,10 @@ function renderPlaylistsTab(){
     epList.forEach(function(ep){
       var globalIdx=episodes.indexOf(ep);
       var isNP=String(ep.id)===String(currentEpId)&&isPlaying;
+      var isDone=completedEps[String(ep.id)];
       html+='<div class="pl-tab-ep'+(isNP?' now-playing':'')+'" onclick="playIdx('+globalIdx+')">';
-      html+='<div class="pl-tab-ep-num">'+ep.id+'</div>';
-      html+='<div class="pl-tab-ep-info"><div class="pl-tab-ep-title">'+(ep.title||ep.pattern)+'</div><div class="pl-tab-ep-meta">'+ep.date+' \u00B7 '+(ep.duration||'~5 min')+'</div></div>';
+      html+='<div class="pl-tab-ep-num">'+(isDone?'\u2713':ep.id)+'</div>';
+      html+='<div class="pl-tab-ep-info"><div class="pl-tab-ep-title'+(isDone?' completed':'')+'">'+(ep.title||ep.pattern)+'</div><div class="pl-tab-ep-meta">'+ep.date+' \u00B7 '+(ep.duration||'~5 min')+'</div></div>';
       if(isNP)html+='<span class="pl-tab-ep-now">NOW</span>';
       html+='</div>';
     });
@@ -652,17 +712,34 @@ function init(){
     if(!episodes.length)return;
     renderHome();
 
-    var lastIdx=parseInt(localStorage.getItem('lastPlaylistIdx'),10);
-    var lastPl=localStorage.getItem('lastPlaylist')||'all';
-    if(!isNaN(lastIdx)&&lastIdx>=0&&lastIdx<episodes.length){
-      playlistIdx=lastIdx;
-      currentEpId=episodes[lastIdx].id;
-      currentPlaylist=episodes[lastIdx].playlist_id||lastPl;
-      var sp=document.getElementById('stickyPlayer');
-      document.getElementById('spTitle').textContent='#'+episodes[lastIdx].id+': '+(episodes[lastIdx].pattern||episodes[lastIdx].title);
-      sp.classList.add('on');
-      document.getElementById('appContent').classList.add('has-player');
-      updatePlaylistLabel();
+    var saved=loadProgress();
+    if(saved&&saved.epId!=null){
+      var epIdx=-1;
+      for(var i=0;i<episodes.length;i++){if(episodes[i].id===saved.epId){epIdx=i;break;}}
+      if(epIdx>=0){
+        playlistIdx=epIdx;
+        currentEpId=saved.epId;
+        currentPlaylist=saved.playlistId||'all';
+        var ep=episodes[epIdx];
+        var sp=document.getElementById('stickyPlayer');
+        document.getElementById('spTitle').textContent='#'+ep.id+': '+(ep.title||ep.pattern);
+        sp.classList.add('on');
+        document.getElementById('appContent').classList.add('has-player');
+        updatePlaylistLabel();
+
+        var a=getAudio();
+        if(ep.file_url)a.src=ep.file_url;
+        if(saved.position>0){
+          a.addEventListener('loadedmetadata',function onMeta(){
+            a.currentTime=saved.position;
+            a.removeEventListener('loadedmetadata',onMeta);
+            var fpDur=document.getElementById('fpTimeDuration');
+            if(fpDur)fpDur.textContent=fmtTime(a.duration);
+            updateAllPlayerUI();
+          });
+        }
+        updateAllPlayerUI();
+      }
     }
   }).catch(function(){});
   var hash=window.location.hash.replace('#','');
