@@ -606,22 +606,71 @@ function renderFrameworks(){
 
 function renderPractice(){
   var list=document.getElementById('practiceList'),prompts=CONTENT.prompts;
-  if(searchQuery){var sq=searchQuery;prompts=prompts.filter(function(p){return p.text.toLowerCase().indexOf(sq)!==-1||p.competency.toLowerCase().indexOf(sq)!==-1});}
+  if(searchQuery){var sq=searchQuery;prompts=prompts.filter(function(p){return p.text.toLowerCase().indexOf(sq)!==-1||p.competency.toLowerCase().indexOf(sq)!==-1||p.category===sq});}
   if(!prompts.length){list.innerHTML='<div class="empty-state"><div class="empty-icon">\uD83D\uDCDD</div><div class="empty-title">No prompts found</div></div>';return;}
-  var isSD=false,behavCount=0,sdCount=0;
-  prompts.forEach(function(p){if(p.competency==='system-design')sdCount++;else behavCount++;});
-  var html='';
-  if(behavCount)html+='<div class="sect-header">Behavioral <span class="sect-count">'+behavCount+' prompts</span></div>';
+  var awxPrompts=[],behavPrompts=[],sdPrompts=[];
   prompts.forEach(function(p){
-    if(p.competency==='system-design'&&!isSD){isSD=true;html+='<div class="sect-header">System Design <span class="sect-count">'+sdCount+' prompts</span></div>';}
-    var cls=p.competency==='system-design'?'sd-case-badge advanced':'prac-comp';
+    if(p.category==='airwallex')awxPrompts.push(p);
+    else if(p.competency==='system-design')sdPrompts.push(p);
+    else behavPrompts.push(p);
+  });
+  var html='';
+  if(awxPrompts.length){
+    html+='<div class="awx-section"><div class="sect-header awx-header"><span class="awx-badge">\uD83C\uDDE6\uD83C\uDDFA Airwallex Interview Prep</span> <span class="sect-count">'+awxPrompts.length+' targeted prompts</span></div>';
+    html+='<div class="awx-subtitle">High-probability system design questions for fintech interviews — with how-to-respond guides</div>';
+    awxPrompts.forEach(function(p){
+      html+='<div class="prac-card awx-card"><div class="awx-tag">'+p.id.replace('awx-design-','').replace(/-/g,' ')+'</div><div class="prac-q">'+p.text+'</div>';
+      if(p.hint)html+='<div class="awx-key-respond"><span class="awx-respond-label">Key Response Angle</span> '+p.hint+'</div>';
+      html+='<details open><summary class="awx-summary">How to respond</summary><div class="prac-guide">';
+      if(p.sample_answer)html+='<div class="prac-section"><div class="prac-section-title">Sample Answer</div><div class="prac-sample">'+p.sample_answer+'</div></div>';
+      if(p.structure&&p.structure.length){
+        html+='<div class="prac-section"><div class="prac-section-title">Answer Structure</div><ol>';
+        p.structure.forEach(function(s){html+='<li>'+s+'</li>';});
+        html+='</ol></div>';
+      }
+      if(p.pitfalls&&p.pitfalls.length){
+        html+='<div class="prac-section"><div class="prac-section-title">Common Pitfalls</div><ul>';
+        p.pitfalls.forEach(function(pi){html+='<li>'+pi+'</li>';});
+        html+='</ul></div>';
+      }
+      html+='</div></details></div>';
+    });
+    html+='</div>';
+  }
+  if(behavPrompts.length)html+='<div class="sect-header">Behavioral <span class="sect-count">'+behavPrompts.length+' prompts</span></div>';
+  behavPrompts.forEach(function(p){
+    var cls='prac-comp';
     html+='<div class="prac-card"><div class="'+cls+'">'+p.competency.replace(/-/g,' ')+'</div><div class="prac-q">'+p.text+'</div>';
     if(p.framework)html+='<div class="prac-framework"><span class="prac-label">Framework</span> '+p.framework+'</div>';
     if(p.patterns&&p.patterns.length){
       html+='<div class="prac-patterns"><span class="prac-label">Patterns</span> ';
-      p.patterns.forEach(function(pat,i){
-        html+='<span class="prac-pat-chip">'+pat+'</span>';
-      });
+      p.patterns.forEach(function(pat,i){html+='<span class="prac-pat-chip">'+pat+'</span>';});
+      html+='</div>';
+    }
+    html+='<details><summary>Show answer guide</summary><div class="prac-guide">';
+    if(p.structure&&p.structure.length){
+      html+='<div class="prac-section"><div class="prac-section-title">Answer Structure</div><ol>';
+      p.structure.forEach(function(s){html+='<li>'+s+'</li>';});
+      html+='</ol></div>';
+    }
+    if(p.sample_answer)html+='<div class="prac-section"><div class="prac-section-title">Sample Answer</div><div class="prac-sample">'+p.sample_answer+'</div></div>';
+    if(p.pitfalls&&p.pitfalls.length){
+      html+='<div class="prac-section"><div class="prac-section-title">Common Pitfalls</div><ul>';
+      p.pitfalls.forEach(function(pi){html+='<li>'+pi+'</li>';});
+      html+='</ul></div>';
+    }
+    if(p.hint)html+='<div class="prac-hint">'+p.hint+'</div>';
+    html+='</div></details></div>';
+  });
+  var isSD=false;
+  sdPrompts.forEach(function(p){
+    if(!isSD){isSD=true;html+='<div class="sect-header">System Design <span class="sect-count">'+sdPrompts.length+' prompts</span></div>';}
+    var cls='sd-case-badge advanced';
+    html+='<div class="prac-card"><div class="'+cls+'">'+p.competency.replace(/-/g,' ')+'</div><div class="prac-q">'+p.text+'</div>';
+    if(p.framework)html+='<div class="prac-framework"><span class="prac-label">Framework</span> '+p.framework+'</div>';
+    if(p.patterns&&p.patterns.length){
+      html+='<div class="prac-patterns"><span class="prac-label">Patterns</span> ';
+      p.patterns.forEach(function(pat,i){html+='<span class="prac-pat-chip">'+pat+'</span>';});
       html+='</div>';
     }
     html+='<details><summary>Show answer guide</summary><div class="prac-guide">';

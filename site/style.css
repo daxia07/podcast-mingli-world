@@ -294,3 +294,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display"
 .resume-hint svg{width:16px;height:16px;fill:#fff;stroke:none;flex-shrink:0}
 .fp-pl-title.completed,.pl-tab-ep-title.completed{color:var(--t3);text-decoration:line-through;text-decoration-color:var(--t3)}
 .fp-pl-num{font-size:11px;font-weight:700;color:var(--a);min-width:24px;text-align:center;flex-shrink:0}
+
+.awx-section{margin-bottom:20px}
+.awx-header{background:linear-gradient(135deg,#1a3a5c,#2d5f8a);color:#fff;padding:16px;border-radius:16px 16px 0 0}
+.awx-header .sect-count{color:rgba(255,255,255,.7)}
+.awx-badge{font-size:15px;font-weight:800;letter-spacing:-.3px}
+.awx-subtitle{font-size:12px;color:rgba(255,255,255,.8);padding:0 16px 14px;background:linear-gradient(135deg,#1a3a5c,#2d5f8a);margin:0}
+.awx-card{border-left:3px solid #2d5f8a;background:#f8fbff}
+.awx-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#1a3a5c;background:#e0ecf7;padding:3px 8px;border-radius:4px;margin-bottom:8px}
+.awx-key-respond{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:12px;line-height:1.5}
+.awx-respond-label{display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#f57f17;margin-bottom:4px}
+.awx-summary{color:#1a3a5c;font-weight:600;font-size:13px}
+.awx-card details[open] .awx-summary{margin-bottom:8px}
