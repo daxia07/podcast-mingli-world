@@ -671,4 +671,9 @@ function init(){
 
 function setupInfiniteScroll(){}
 
+async function doLogout(){
+  await fetch('/api/logout',{method:'POST'});
+  window.location.href='/login';
+}
+
 init();setupAudioEvents();setupSwipeClose();
