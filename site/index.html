@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#007aff">
 <title>Interview English</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/artwork-192.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -156,5 +158,20 @@
 
 <div class="toast" id="toast"></div>
 <script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(reg){
+    reg.onupdatefound=function(){
+      var nw=reg.installing;
+      nw.onstatechange=function(){
+        if(nw.state==='installed'&&navigator.serviceWorker.controller){
+          var t=document.getElementById('toast');
+          if(t){t.textContent='Update available — reload for latest version';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},5000);}
+        }
+      };
+    };
+  }).catch(function(){});
+}
+</script>
 </body>
 </html>

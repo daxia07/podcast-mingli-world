@@ -27,6 +27,11 @@ EPISODES = [
     {"id": 55, "theme": "mock-top-k-heavy-hitters", "title": "Mock Interview: Top-K / Heavy Hitters", "subtitle": "Finding the most frequent items in a data stream at scale"},
     {"id": 56, "theme": "mock-chat-system", "title": "Mock Interview: Real-Time Chat", "subtitle": "Designing a WhatsApp-like messaging system"},
     {"id": 57, "theme": "mock-location-service", "title": "Mock Interview: Location-Based Service", "subtitle": "Designing nearby-driver search and real-time tracking"},
+    {"id": 63, "theme": "mock-web-crawler", "title": "Mock Interview: Web Crawler", "subtitle": "Designing a scalable distributed web crawler with politeness and dedup"},
+    {"id": 64, "theme": "mock-key-value-store", "title": "Mock Interview: Distributed Key-Value Store", "subtitle": "Designing a DynamoDB-like KV store with consistent hashing and quorum"},
+    {"id": 65, "theme": "mock-rate-limiter", "title": "Mock Interview: Rate Limiter", "subtitle": "Designing API rate limiting with token bucket and distributed counters"},
+    {"id": 66, "theme": "mock-video-streaming", "title": "Mock Interview: Video Streaming (YouTube)", "subtitle": "Designing video upload, transcoding, CDN delivery, and adaptive bitrate"},
+    {"id": 67, "theme": "mock-ride-sharing", "title": "Mock Interview: Ride Sharing (Uber)", "subtitle": "Designing driver matching, surge pricing, and real-time location tracking"},
 ]
 
 

@@ -7,6 +7,11 @@ from .fx_ledger import build as build_fx_ledger
 from .top_k import build as build_top_k
 from .chat_system import build as build_chat_system
 from .location_service import build as build_location_service
+from .web_crawler import build as build_web_crawler
+from .key_value_store import build as build_key_value_store
+from .rate_limiter import build as build_rate_limiter
+from .video_streaming import build as build_video_streaming
+from .ride_sharing import build as build_ride_sharing
 
 BUILDERS = {
     "mock-cross-border-payments": build_cross_border_payments,
@@ -18,4 +23,9 @@ BUILDERS = {
     "mock-top-k-heavy-hitters": build_top_k,
     "mock-chat-system": build_chat_system,
     "mock-location-service": build_location_service,
+    "mock-web-crawler": build_web_crawler,
+    "mock-key-value-store": build_key_value_store,
+    "mock-rate-limiter": build_rate_limiter,
+    "mock-video-streaming": build_video_streaming,
+    "mock-ride-sharing": build_ride_sharing,
 }
