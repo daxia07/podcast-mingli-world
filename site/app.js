@@ -169,7 +169,7 @@ function updatePlaylistLabel(){
   if(!label)return;
   var pl=null;
   for(var i=0;i<playlists.length;i++){if(playlists[i].id===currentPlaylist){pl=playlists[i];break;}}
-  label.textContent=pl?pl.name:'All Episodes';
+  label.textContent=pl?pl.title:'All Episodes';
   label.style.display=pl?'block':'none';
 }
 
@@ -309,7 +309,7 @@ function renderPlaylist(){
   var pl=null;
   for(var i=0;i<playlists.length;i++){if(playlists[i].id===currentPlaylist){pl=playlists[i];break;}}
   var html='';
-  if(pl)html+='<div class="fp-pl-header">'+pl.name+'</div>';
+  if(pl)html+='<div class="fp-pl-header">'+pl.title+'</div>';
   epList.forEach(function(ep){
     var isCurrent=ep.id===currentEpId;
     var isDone=completedEps[String(ep.id)];
@@ -455,7 +455,7 @@ function renderEpisode(ep,idx){
 }
 
 function getPlaylistIcon(id){
-  var icons={'compilations':'🎯','self-intro':'🎤','prepared-qa':'❓','sd-think-aloud':'🧠','sd-estimation':'🔢','sd-mock-interviews':'🎭','sd-deep-dive':'🎧','sd-youtube':'📺','sd-concepts':'💿','sd-cases':'🏗️','sd-patterns':'🔗','interview-patterns':'💬'};
+  var icons={'compilations':'🎯','self-intro':'🎤','prepared-qa':'❓','sd-think-aloud':'🧠','sd-estimation':'🔢','sd-mock-interviews':'🎭','sd-deep-dive':'🎧','sd-youtube':'📺','sd-concepts':'💿','sd-cases':'🏗️','sd-patterns':'🔗','interview-patterns':'💬','system-design':'📐','airwallex-domain':'🏦'};
   return icons[id]||'🎵';
 }
 
@@ -472,7 +472,7 @@ function renderHome(){
   if(!playlists.length){area.innerHTML='';return;}
 
   var html='';
-  var order=['sd-think-aloud','sd-estimation','sd-mock-interviews','sd-youtube','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
+  var order=['airwallex-domain','sd-mock-interviews','sd-youtube','system-design','sd-think-aloud','sd-estimation','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
   var sorted=order.map(function(id){for(var i=0;i<playlists.length;i++){if(playlists[i].id===id)return playlists[i];}return null;}).filter(Boolean);
   var remaining=playlists.filter(function(p){return order.indexOf(p.id)===-1;});
   var all=sorted.concat(remaining);
@@ -485,7 +485,7 @@ function renderHome(){
     html+='<div class="playlist-section'+(isArchive?' archived':'')+'">';
     html+='<div class="playlist-header" onclick="togglePlaylistSection(\''+pl.id+'\')">';
     html+='<span class="playlist-icon">'+getPlaylistIcon(pl.id)+'</span>';
-    html+='<span class="playlist-name">'+pl.name+'</span>';
+    html+='<span class="playlist-name">'+pl.title+'</span>';
     html+='<span class="playlist-count">'+epList.length+'</span>';
     html+='<svg class="playlist-chevron'+(isExpanded?' expanded':'')+'" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
     html+='</div>';
@@ -506,7 +506,7 @@ function renderHome(){
 function renderPlaylistsTab(){
   var area=document.getElementById('playlistsTabList');
   if(!playlists.length){area.innerHTML='<div class="empty-state"><div class="empty-icon">\uD83C\uDFB5</div><div class="empty-title">No playlists</div></div>';return;}
-  var order=['sd-think-aloud','sd-estimation','sd-mock-interviews','sd-youtube','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
+  var order=['airwallex-domain','sd-mock-interviews','sd-youtube','system-design','sd-think-aloud','sd-estimation','sd-deep-dive','compilations','self-intro','prepared-qa','interview-patterns'];
   var sorted=order.map(function(id){for(var i=0;i<playlists.length;i++){if(playlists[i].id===id)return playlists[i];}return null;}).filter(Boolean);
   var remaining=playlists.filter(function(p){return order.indexOf(p.id)===-1;});
   var all=sorted.concat(remaining);
@@ -524,7 +524,7 @@ function renderPlaylistsTab(){
     html+='<div class="pl-tab-section'+(isArchive?' archived':'')+'">';
     html+='<div class="pl-tab-header" onclick="togglePlaylistTab(\''+pl.id+'\')">';
     html+='<span class="pl-tab-icon">'+getPlaylistIcon(pl.id)+'</span>';
-    html+='<div class="pl-tab-info"><div class="pl-tab-name">'+pl.name+'</div><div class="pl-tab-count">'+epList.length+' episode'+(epList.length!==1?'s':'')+'</div></div>';
+    html+='<div class="pl-tab-info"><div class="pl-tab-name">'+pl.title+'</div><div class="pl-tab-count">'+epList.length+' episode'+(epList.length!==1?'s':'')+'</div></div>';
     html+='<svg class="pl-tab-chevron'+(expandedPlaylists['tab-'+pl.id]?' expanded':'')+'" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
     html+='</div>';
 
@@ -757,7 +757,8 @@ function init(){
 
   fetch('/manifest.json').then(function(r){return r.json()}).then(function(d){
     episodes=d.episodes||[];
-    playlists=d.playlists||[];
+    var rawPl=d.playlists||[];
+    playlists=Array.isArray(rawPl)?rawPl:Object.keys(rawPl).map(function(k){var p=rawPl[k];p.id=k;p.name=p.name||p.title;return p;});
     if(!episodes.length)return;
     renderHome();
 
