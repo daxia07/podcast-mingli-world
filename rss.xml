@@ -10,6 +10,78 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:author>Daily Interview English</itunes:author>
     <item>
+      <title>Mock Interview: Fraud Detection System</title>
+      <description>Designing real-time rule+ML scoring with feature engineering and feedback loops. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing real-time rule+ML scoring with feature engineering and feedback loops. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-fraud-detection.mp3" length="17239532" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-fraud-detection.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>35:54</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Feature Store / ML Infrastructure</title>
+      <description>Designing point-in-time features, batch/streaming unification, and low-latency serving. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing point-in-time features, batch/streaming unification, and low-latency serving. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-feature-store.mp3" length="17620460" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-feature-store.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>36:42</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Global Treasury Network</title>
+      <description>Designing multi-entity cash pooling, payment netting, and cross-border treasury management. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing multi-entity cash pooling, payment netting, and cross-border treasury management. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-global-treasury.mp3" length="17452844" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-global-treasury.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>36:21</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Metrics &amp; Monitoring Pipeline</title>
+      <description>Designing time-series storage, cardinality control, and SLO-driven alerting. Generic system design mock interview.</description>
+      <itunes:summary>Designing time-series storage, cardinality control, and SLO-driven alerting. Generic system design mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-metrics-pipeline.mp3" length="17482028" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-metrics-pipeline.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>36:25</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Job Scheduler</title>
+      <description>Designing reliable job scheduling with idempotency, retry, and failure handling. Generic system design mock interview.</description>
+      <itunes:summary>Designing reliable job scheduling with idempotency, retry, and failure handling. Generic system design mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-job-scheduler.mp3" length="17703980" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-job-scheduler.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>36:52</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Security Automation Platform</title>
+      <description>Designing AI-powered CVE triage, one-click remediation, and compliance audit trail. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing AI-powered CVE triage, one-click remediation, and compliance audit trail. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-security-automation.mp3" length="18457004" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-security-automation.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>38:27</duration>
+    </item>
+    <item>
+      <title>Mock Interview: AI Agent Platform (AgentOS)</title>
+      <description>Designing an internal AI platform with sandboxed agents, policy enforcement, and spec-driven development. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing an internal AI platform with sandboxed agents, policy enforcement, and spec-driven development. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-ai-agent-platform.mp3" length="20816300" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-ai-agent-platform.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>43:21</duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Wallet (Auticuro)</title>
+      <description>Designing a lockless single-threaded wallet with Raft consensus and exactly-once semantics. Airwallex-domain mock interview.</description>
+      <itunes:summary>Designing a lockless single-threaded wallet with Raft consensus and exactly-once semantics. Airwallex-domain mock interview.</itunes:summary>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-distributed-wallet.mp3" length="18884588" type="audio/mpeg"/>
+      <guid>https://podcast.mingli.world/episodes/mock-v2-mock-distributed-wallet.mp3</guid>
+      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
+      <duration>39:20</duration>
+    </item>
+    <item>
       <title>Mock Interview: Ride Sharing (Uber)</title>
       <description>Designing driver matching, surge pricing, and real-time location tracking. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
       <itunes:summary>Designing driver matching, surge pricing, and real-time location tracking. Two-voice mock interview with e2e walkthrough and thinking beats.</itunes:summary>

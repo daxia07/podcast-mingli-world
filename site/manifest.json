@@ -599,6 +599,94 @@
       "file_size_bytes": 17098220,
       "pattern": "mock-interview",
       "tip": "Ride Sharing (Uber)"
+    },
+    {
+      "id": 68,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Distributed Wallet (Auticuro)",
+      "description": "Designing a lockless single-threaded wallet with Raft consensus and exactly-once semantics. Airwallex-domain mock interview.",
+      "duration": "39:20",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-distributed-wallet.mp3",
+      "file_size_bytes": 18884588,
+      "pattern": "mock-interview",
+      "tip": "Distributed Wallet (Auticuro)"
+    },
+    {
+      "id": 69,
+      "date": "2026-07-14",
+      "title": "Mock Interview: AI Agent Platform (AgentOS)",
+      "description": "Designing an internal AI platform with sandboxed agents, policy enforcement, and spec-driven development. Airwallex-domain mock interview.",
+      "duration": "43:21",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-ai-agent-platform.mp3",
+      "file_size_bytes": 20816300,
+      "pattern": "mock-interview",
+      "tip": "AI Agent Platform (AgentOS)"
+    },
+    {
+      "id": 70,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Security Automation Platform",
+      "description": "Designing AI-powered CVE triage, one-click remediation, and compliance audit trail. Airwallex-domain mock interview.",
+      "duration": "38:27",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-security-automation.mp3",
+      "file_size_bytes": 18457004,
+      "pattern": "mock-interview",
+      "tip": "Security Automation Platform"
+    },
+    {
+      "id": 71,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Distributed Job Scheduler",
+      "description": "Designing reliable job scheduling with idempotency, retry, and failure handling. Generic system design mock interview.",
+      "duration": "36:52",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-job-scheduler.mp3",
+      "file_size_bytes": 17703980,
+      "pattern": "mock-interview",
+      "tip": "Distributed Job Scheduler"
+    },
+    {
+      "id": 72,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Metrics & Monitoring Pipeline",
+      "description": "Designing time-series storage, cardinality control, and SLO-driven alerting. Generic system design mock interview.",
+      "duration": "36:25",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-metrics-pipeline.mp3",
+      "file_size_bytes": 17482028,
+      "pattern": "mock-interview",
+      "tip": "Metrics & Monitoring Pipeline"
+    },
+    {
+      "id": 73,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Global Treasury Network",
+      "description": "Designing multi-entity cash pooling, payment netting, and cross-border treasury management. Airwallex-domain mock interview.",
+      "duration": "36:21",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-global-treasury.mp3",
+      "file_size_bytes": 17452844,
+      "pattern": "mock-interview",
+      "tip": "Global Treasury Network"
+    },
+    {
+      "id": 74,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Feature Store / ML Infrastructure",
+      "description": "Designing point-in-time features, batch/streaming unification, and low-latency serving. Airwallex-domain mock interview.",
+      "duration": "36:42",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-feature-store.mp3",
+      "file_size_bytes": 17620460,
+      "pattern": "mock-interview",
+      "tip": "Feature Store / ML Infrastructure"
+    },
+    {
+      "id": 75,
+      "date": "2026-07-14",
+      "title": "Mock Interview: Fraud Detection System",
+      "description": "Designing real-time rule+ML scoring with feature engineering and feedback loops. Airwallex-domain mock interview.",
+      "duration": "35:54",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-fraud-detection.mp3",
+      "file_size_bytes": 17239532,
+      "pattern": "mock-interview",
+      "tip": "Fraud Detection System"
     }
   ],
   "playlists": {
@@ -643,7 +731,15 @@
         64,
         65,
         66,
-        67
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
       ],
       "icon": "🎭"
     },
@@ -658,6 +754,21 @@
         62
       ],
       "icon": "📺"
+    },
+    "airwallex-domain": {
+      "title": "Airwallex Domain — System Design",
+      "description": "Mock interviews covering Airwallex-specific system design topics: distributed wallet, AI agents, security automation, FX, treasury, feature store, and fraud detection.",
+      "episode_ids": [
+        49,
+        54,
+        68,
+        69,
+        70,
+        73,
+        74,
+        75
+      ],
+      "icon": "🏦"
     }
   }
 }

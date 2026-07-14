@@ -32,6 +32,14 @@ EPISODES = [
     {"id": 65, "theme": "mock-rate-limiter", "title": "Mock Interview: Rate Limiter", "subtitle": "Designing API rate limiting with token bucket and distributed counters"},
     {"id": 66, "theme": "mock-video-streaming", "title": "Mock Interview: Video Streaming (YouTube)", "subtitle": "Designing video upload, transcoding, CDN delivery, and adaptive bitrate"},
     {"id": 67, "theme": "mock-ride-sharing", "title": "Mock Interview: Ride Sharing (Uber)", "subtitle": "Designing driver matching, surge pricing, and real-time location tracking"},
+    {"id": 68, "theme": "mock-distributed-wallet", "title": "Mock Interview: Distributed Wallet (Auticuro)", "subtitle": "Designing a lockless single-threaded wallet with Raft consensus and exactly-once"},
+    {"id": 69, "theme": "mock-ai-agent-platform", "title": "Mock Interview: AI Agent Platform (AgentOS)", "subtitle": "Designing an internal AI platform with sandboxed agents and policy enforcement"},
+    {"id": 70, "theme": "mock-security-automation", "title": "Mock Interview: Security Automation Platform", "subtitle": "Designing AI-powered CVE triage, remediation, and compliance audit trail"},
+    {"id": 71, "theme": "mock-job-scheduler", "title": "Mock Interview: Distributed Job Scheduler", "subtitle": "Designing reliable job scheduling with idempotency and failure handling"},
+    {"id": 72, "theme": "mock-metrics-pipeline", "title": "Mock Interview: Metrics & Monitoring Pipeline", "subtitle": "Designing time-series storage, cardinality control, and SLO-driven alerting"},
+    {"id": 73, "theme": "mock-global-treasury", "title": "Mock Interview: Global Treasury Network", "subtitle": "Designing multi-entity cash pooling, netting, and cross-border treasury"},
+    {"id": 74, "theme": "mock-feature-store", "title": "Mock Interview: Feature Store / ML Infrastructure", "subtitle": "Designing point-in-time features, batch/streaming unification (AirSkiff)"},
+    {"id": 75, "theme": "mock-fraud-detection", "title": "Mock Interview: Fraud Detection System", "subtitle": "Designing real-time rule+ML scoring with feature engineering and feedback loops"},
 ]
 
 
