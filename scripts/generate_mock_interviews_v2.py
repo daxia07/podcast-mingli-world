@@ -40,6 +40,18 @@ EPISODES = [
     {"id": 73, "theme": "mock-global-treasury", "title": "Mock Interview: Global Treasury Network", "subtitle": "Designing multi-entity cash pooling, netting, and cross-border treasury"},
     {"id": 74, "theme": "mock-feature-store", "title": "Mock Interview: Feature Store / ML Infrastructure", "subtitle": "Designing point-in-time features, batch/streaming unification (AirSkiff)"},
     {"id": 75, "theme": "mock-fraud-detection", "title": "Mock Interview: Fraud Detection System", "subtitle": "Designing real-time rule+ML scoring with feature engineering and feedback loops"},
+    {"id": 76, "theme": "mock-back-of-envelope", "title": "Back-of-Envelope Estimation Masterclass", "subtitle": "Power numbers, default values, and estimation techniques for all 12 interview topics"},
+    {"id": 77, "theme": "mock-system-design-qa", "title": "System Design Q&A — Power Answers", "subtitle": "Killer questions, structured answers, and common mistakes for all 12 interview topics"},
+    {"id": 78, "theme": "mock-multi-region-infrastructure", "title": "Mock Interview: Multi-Region Global Infrastructure", "subtitle": "Active-active, synchronous replication, RPO/RTO, data sovereignty, failover"},
+    {"id": 79, "theme": "mock-low-latency-fx-pricing", "title": "Mock Interview: Low-Latency FX Pricing System", "subtitle": "WebSocket streaming, sub-100ms, price aggregation, backpressure handling"},
+    {"id": 80, "theme": "mock-idempotent-api", "title": "Mock Interview: Idempotent API for Financial Operations", "subtitle": "Client-generated keys, Redis+PostgreSQL dedup, Saga step idempotency"},
+    {"id": 81, "theme": "mock-kyc-onboarding", "title": "Mock Interview: KYC/Onboarding System", "subtitle": "Fuzzy matching, risk scoring, ongoing monitoring, GDPR pseudonymization"},
+    {"id": 82, "theme": "mock-wallet-ledger", "title": "Mock Interview: Multi-Currency Wallet & Double-Entry Ledger", "subtitle": "Immutable journals, balance projections, concurrency, FX conversion, rebuild"},
+    {"id": 83, "theme": "mock-card-issuing", "title": "Mock Interview: Card Authorization & Issuing Platform", "subtitle": "Atomic holds, dedup, clearing, reversals, 150ms SLA, stand-in mode"},
+    {"id": 84, "theme": "mock-reconciliation", "title": "Mock Interview: Bank & Partner Reconciliation", "subtitle": "Matching engine, aggregate control, exception handling, safe repairs"},
+    {"id": 85, "theme": "mock-bulk-payouts", "title": "Mock Interview: Bulk Payouts & Batch Payments", "subtitle": "Streaming validation, partner rate limiting, item idempotency, partial cancellation"},
+    {"id": 86, "theme": "mock-webhook-delivery", "title": "Mock Interview: Webhook & Event Delivery Platform", "subtitle": "Transactional outbox, signed delivery, SSRF protection, retry isolation"},
+    {"id": 87, "theme": "mock-financial-ai-assistant", "title": "Mock Interview: Financial AI Assistant / AgentOS", "subtitle": "Tiered actions, prompt injection defense, RAG, strong auth for money movement"},
 ]
 
 

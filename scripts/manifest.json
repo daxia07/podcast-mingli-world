@@ -687,6 +687,126 @@
       "file_size_bytes": 17239532,
       "pattern": "mock-interview",
       "tip": "Fraud Detection System"
+    },
+    {
+      "id": 76,
+      "title": "Back-of-Envelope Estimation Masterclass",
+      "duration": "35:54",
+      "description": "Every number you need for system design interviews, organized around 12 real interview problems. Power numbers, latency defaults, throughput benchmarks, fintech-specific numbers, and how to derive any number from first principles when you forget.",
+      "date": "2025-07-14T10:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-boe.mp3",
+      "file_size_bytes": 17240300
+    },
+    {
+      "id": 77,
+      "title": "System Design Q&A — Power Answers",
+      "duration": "37:15",
+      "description": "Deep Q&A covering the 12 Airwallex interview topics — 5 generic plus 7 domain-specific. For each: killer questions interviewers ask, structured answers that score, common mistakes that lose points, and cross-cutting patterns like RESHADED.",
+      "date": "2025-07-14T10:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-sdqa.mp3",
+      "file_size_bytes": 17883116
+    },
+    {
+      "id": 78,
+      "title": "Mock Interview: Multi-Region Global Infrastructure",
+      "description": "Active-active reads, leader-per-entity writes, synchronous replication, RPO <1min, RTO <5min, data sovereignty per jurisdiction, split-brain prevention, chaos engineering drills.",
+      "duration": "26:25",
+      "date": "2025-07-14T11:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-multi-region.mp3",
+      "file_size_bytes": 12685100
+    },
+    {
+      "id": 79,
+      "title": "Mock Interview: Low-Latency FX Pricing System",
+      "description": "WebSocket price streaming, sub-100ms end-to-end, best bid/ask aggregation across providers, backpressure throttling, indicative vs tradeable rates, rate audit trail for regulators.",
+      "duration": "23:57",
+      "date": "2025-07-14T11:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-fx-pricing.mp3",
+      "file_size_bytes": 11498156
+    },
+    {
+      "id": 80,
+      "title": "Mock Interview: Idempotent API for Financial Operations",
+      "description": "Client-generated idempotency keys, Redis for speed + PostgreSQL for truth, same-transaction atomicity, unique constraint dedup, saga step idempotency, background reaper for stale records.",
+      "duration": "19:54",
+      "date": "2025-07-14T12:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-idempotent-api.mp3",
+      "file_size_bytes": 9560492
+    },
+    {
+      "id": 81,
+      "title": "Mock Interview: KYC/Onboarding System",
+      "description": "Multi-jurisdiction KYC, fuzzy name matching (double metaphone + Levenshtein), risk scoring, ongoing monitoring, GDPR pseudonymization, KYC GenAI for false positive reduction, 5-min auto-approval.",
+      "duration": "20:02",
+      "date": "2025-07-14T12:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/sd-kyc-onboarding.mp3",
+      "file_size_bytes": 9623276
+    },
+    {
+      "id": 82,
+      "title": "Mock Interview: Multi-Currency Wallet & Double-Entry Ledger",
+      "description": "Immutable double-entry journal as source of truth, balance projections for reads, atomic reserve/settle/release flows, optimistic concurrency with version checks, FX conversion with balanced legs per currency, rounding entries, and balance rebuild from journal replay. Covers the same fundamentals as Airwallex's core ledger system.",
+      "duration": "17:55",
+      "date": "2025-07-15T10:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-wallet-ledger.mp3",
+      "file_size_bytes": 8602604,
+      "pattern": "mock-interview",
+      "tip": "Multi-Currency Wallet & Double-Entry Ledger"
+    },
+    {
+      "id": 83,
+      "title": "Mock Interview: Card Authorization & Issuing Platform",
+      "description": "Authorization hold lifecycle, atomic check-and-reserve, deduplication by network transaction ID, clearing matching, partial clearing and incremental authorizations, disputes, stand-in mode with bounded offline limits, and card controls. 150ms SLA for real-time authorization decisions.",
+      "duration": "15:44",
+      "date": "2025-07-15T10:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-card-issuing.mp3",
+      "file_size_bytes": 7552940,
+      "pattern": "mock-interview",
+      "tip": "Card Authorization & Issuing Platform"
+    },
+    {
+      "id": 84,
+      "title": "Mock Interview: Bank & Partner Reconciliation",
+      "description": "Reconciliation as a continuous control system, not a nightly report. Immutable evidence ingestion, multi-phase matching algorithm (exact reference then fuzzy candidates), aggregate balance control, exception case management, safe repairs via compensating journals. Zero tolerance for unexplained money differences.",
+      "duration": "15:29",
+      "date": "2025-07-15T11:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-reconciliation.mp3",
+      "file_size_bytes": 7435628,
+      "pattern": "mock-interview",
+      "tip": "Bank & Partner Reconciliation"
+    },
+    {
+      "id": 85,
+      "title": "Mock Interview: Bulk Payouts & Batch Payments",
+      "description": "Million-row batch processing with streaming validation, deterministic item keys for idempotency, partner-sharded work queues with rate limits, lease-based worker claims, aggregate funding reservation, partial cancellation semantics, and downloadable results. All-or-nothing for validation/funding, independent per-item execution.",
+      "duration": "16:43",
+      "date": "2025-07-15T11:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-bulk-payouts.mp3",
+      "file_size_bytes": 8029868,
+      "pattern": "mock-interview",
+      "tip": "Bulk Payouts & Batch Payments"
+    },
+    {
+      "id": 86,
+      "title": "Mock Interview: Webhook & Event Delivery Platform",
+      "description": "Transactional outbox pattern for guaranteed event creation, at-least-once delivery with merchant deduplication, per-endpoint queues for tenant isolation, HMAC-signed payloads with timestamp, SSRF protection (DNS rebinding, private IP blocks, redirect limits), exponential backoff with jitter, event replay, and event-list API for recovery.",
+      "duration": "16:52",
+      "date": "2025-07-15T12:00:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-webhook-delivery.mp3",
+      "file_size_bytes": 8100716,
+      "pattern": "mock-interview",
+      "tip": "Webhook & Event Delivery Platform"
+    },
+    {
+      "id": 87,
+      "title": "Mock Interview: Financial AI Assistant / AgentOS",
+      "description": "LLM as untrusted planner, never the authorization layer. Tiered action model (Tier 0-3), deterministic policy engine, tool allowlists, server-generated payment intents with canonical summaries, prompt injection defense (6 layers), RAG for documentation, permissioned APIs for account data, step-up authentication for money movement, cross-tenant isolation at infrastructure level.",
+      "duration": "17:47",
+      "date": "2025-07-15T12:30:00Z",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-financial-ai-assistant.mp3",
+      "file_size_bytes": 8541932,
+      "pattern": "mock-interview",
+      "tip": "Financial AI Assistant / AgentOS"
     }
   ],
   "playlists": {
@@ -702,7 +822,19 @@
         25,
         26,
         27,
-        28
+        28,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
       ],
       "concepts": [
         "cap-theorem",
@@ -739,7 +871,17 @@
         72,
         73,
         74,
-        75
+        75,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
       ],
       "icon": "🎭"
     },
@@ -766,9 +908,47 @@
         70,
         73,
         74,
-        75
+        75,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
       ],
       "icon": "🏦"
+    },
+    "interview-prep": {
+      "title": "Airwallex Interview Prep — Complete",
+      "description": "Complete coverage of all 12 Airwallex system design interview questions. Cross-border payments, payment rails, FX pricing, wallet/ledger, fraud detection, card issuing, reconciliation, bulk payouts, webhooks, AI assistant, KYC/onboarding, and multi-region infrastructure.",
+      "episode_ids": [
+        49,
+        82,
+        54,
+        79,
+        75,
+        83,
+        84,
+        85,
+        86,
+        87,
+        81,
+        78
+      ],
+      "concepts": []
+    },
+    "interview-support": {
+      "title": "Interview Support — Estimation & Q&A",
+      "description": "Back-of-envelope estimation masterclass covering all 12 interview topics, plus system design Q&A with killer questions and power answers for every topic.",
+      "episode_ids": [
+        76,
+        77
+      ],
+      "concepts": []
     }
   }
 }

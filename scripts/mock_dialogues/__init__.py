@@ -20,6 +20,18 @@ from .metrics_pipeline import build as build_metrics_pipeline
 from .global_treasury import build as build_global_treasury
 from .feature_store import build as build_feature_store
 from .fraud_detection import build as build_fraud_detection
+from .back_of_envelope import build as build_back_of_envelope
+from .system_design_qa import build as build_system_design_qa
+from .multi_region_infrastructure import build as build_multi_region_infrastructure
+from .low_latency_fx_pricing import build as build_low_latency_fx_pricing
+from .idempotent_api import build as build_idempotent_api
+from .kyc_onboarding import build as build_kyc_onboarding
+from .wallet_ledger import build as build_wallet_ledger
+from .card_issuing import build as build_card_issuing
+from .reconciliation import build as build_reconciliation
+from .bulk_payouts import build as build_bulk_payouts
+from .webhook_delivery import build as build_webhook_delivery
+from .financial_ai_assistant import build as build_financial_ai_assistant
 
 BUILDERS = {
     "mock-cross-border-payments": build_cross_border_payments,
@@ -44,4 +56,16 @@ BUILDERS = {
     "mock-global-treasury": build_global_treasury,
     "mock-feature-store": build_feature_store,
     "mock-fraud-detection": build_fraud_detection,
+    "mock-back-of-envelope": build_back_of_envelope,
+    "mock-system-design-qa": build_system_design_qa,
+    "mock-multi-region-infrastructure": build_multi_region_infrastructure,
+    "mock-low-latency-fx-pricing": build_low_latency_fx_pricing,
+    "mock-idempotent-api": build_idempotent_api,
+    "mock-kyc-onboarding": build_kyc_onboarding,
+    "mock-wallet-ledger": build_wallet_ledger,
+    "mock-card-issuing": build_card_issuing,
+    "mock-reconciliation": build_reconciliation,
+    "mock-bulk-payouts": build_bulk_payouts,
+    "mock-webhook-delivery": build_webhook_delivery,
+    "mock-financial-ai-assistant": build_financial_ai_assistant,
 }
