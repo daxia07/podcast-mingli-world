@@ -397,7 +397,7 @@
       "title": "Mock Interview: Cross-Border Payments",
       "description": "Design a cross-border payment pipeline with FX conversion, idempotency keys, compliance screening, and bank connector adapters. Covers the full saga pattern with compensating actions — the same architecture Airwallex uses for multi-currency transfers across 50+ countries.",
       "duration": "33:03",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-cross-border-payments.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-cross-border-payments.mp3",
       "pattern": "mock-interview",
       "tip": "Cross-Border Payments",
       "file_size_bytes": 15868460
@@ -408,7 +408,7 @@
       "title": "Mock Interview: Distributed Cache",
       "description": "Full mock system design interview: designing a Redis-like distributed caching system with consistent hashing, virtual nodes, replication, and rebalancing. Two-voice dialogue.",
       "duration": "31:06",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-distributed-cache.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-distributed-cache.mp3",
       "pattern": "mock-interview",
       "tip": "Distributed Cache",
       "file_size_bytes": 14930732
@@ -419,7 +419,7 @@
       "title": "Mock Interview: Notification System",
       "description": "Full mock system design interview: designing a multi-channel notification system supporting push, email, and SMS with templates, preferences, and delivery tracking. Two-voice dialogue.",
       "duration": "27:24",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-notification-system.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-notification-system.mp3",
       "pattern": "mock-interview",
       "tip": "Notification System",
       "file_size_bytes": 13154540
@@ -430,7 +430,7 @@
       "title": "Mock Interview: Typeahead / Search Autocomplete",
       "description": "Full mock system design interview: designing a sub-50ms autocomplete system using tries, pre-computed suggestions, and Lambda architecture for freshness. Two-voice dialogue.",
       "duration": "26:18",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-typeahead-search.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-typeahead-search.mp3",
       "pattern": "mock-interview",
       "tip": "Typeahead Search",
       "file_size_bytes": 12626348
@@ -441,7 +441,7 @@
       "title": "Mock Interview: Object Storage (S3)",
       "description": "Full mock system design interview: designing a durable object storage system with erasure coding, multipart upload, and 11-nines durability. Two-voice dialogue.",
       "duration": "26:58",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-object-storage.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-object-storage.mp3",
       "pattern": "mock-interview",
       "tip": "Object Storage",
       "file_size_bytes": 12951404
@@ -452,7 +452,7 @@
       "title": "Mock Interview: FX & Multi-Currency Ledger",
       "description": "Design an FX rate engine with provider aggregation, rate locking with TTL, and a per-currency double-entry ledger with three-entry cross-currency transfers. Covers the same fundamentals as Airwallex's real-time FX engine serving 130+ currency pairs.",
       "duration": "27:22",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-fx-ledger.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-fx-ledger.mp3",
       "pattern": "mock-interview",
       "tip": "FX & Multi-Currency Ledger",
       "file_size_bytes": 13143212
@@ -463,7 +463,7 @@
       "title": "Mock Interview: Top-K / Heavy Hitters",
       "description": "Full mock system design interview: finding the most frequent items in a data stream at scale using Count-Min Sketch, heaps, and sliding window algorithms. Two-voice dialogue.",
       "duration": "26:51",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-top-k-heavy-hitters.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-top-k-heavy-hitters.mp3",
       "pattern": "mock-interview",
       "tip": "Top-K Heavy Hitters",
       "file_size_bytes": 12894188
@@ -474,7 +474,7 @@
       "title": "Mock Interview: Real-Time Chat",
       "description": "Full mock system design interview: designing a WhatsApp-like messaging system with WebSocket delivery, read receipts, and group chat fan-out. Two-voice dialogue.",
       "duration": "27:54",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-chat-system.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-chat-system.mp3",
       "pattern": "mock-interview",
       "tip": "Real-Time Chat",
       "file_size_bytes": 13394540
@@ -485,7 +485,7 @@
       "title": "Mock Interview: Location-Based Service",
       "description": "Full mock system design interview: designing nearby-driver search and real-time location tracking using geohash, quadtree, and S2 geometry. Two-voice dialogue.",
       "duration": "27:21",
-      "file_url": "https://podcast.mingli.world/episodes/2026-07-12-mock-v2-mock-location-service.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/mock-v2-mock-location-service.mp3",
       "pattern": "mock-interview",
       "tip": "Location-Based Service",
       "file_size_bytes": 13129964

@@ -1,6 +1,6 @@
-var CACHE_V='interview-en-v9';
+var CACHE_V='interview-en-v10';
 var SHELL=['/','/style.css','/app.js','/manifest.json','/manifest.webmanifest'];
-var AUDIO_CACHE='interview-audio-v9';
+var AUDIO_CACHE='interview-audio-v10';
 
 self.addEventListener('install',function(e){
   e.waitUntil(caches.open(CACHE_V).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));
