@@ -306,3 +306,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display"
 .awx-respond-label{display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#f57f17;margin-bottom:4px}
 .awx-summary{color:#1a3a5c;font-weight:600;font-size:13px}
 .awx-card details[open] .awx-summary{margin-bottom:8px}
+.awx-playlist-banner{background:linear-gradient(135deg,#1a3a5c,#2d5f8a);border-radius:12px;padding:14px 16px;margin-bottom:12px;color:#fff}
+.awx-banner-title{font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:6px}
+.awx-banner-desc{font-size:12px;line-height:1.6;color:rgba(255,255,255,.85);margin-bottom:10px}
+.awx-banner-topics{display:flex;flex-wrap:wrap;gap:6px}
+.awx-topic-chip{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;background:rgba(255,255,255,.2);color:#fff;padding:3px 8px;border-radius:4px}
+.pl-tab-ep-desc{font-size:11px;color:var(--t3);line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}

@@ -491,6 +491,11 @@ function renderHome(){
     html+='</div>';
 
     html+='<div class="playlist-body'+(isExpanded?' expanded':'')+'">';
+    if(pl.id==='airwallex-domain'){
+      html+='<div class="awx-playlist-banner"><div class="awx-banner-title">Airwallex System Design Prep</div>';
+      html+='<div class="awx-banner-desc">Mock interviews based on Airwallex\'s real architecture: Auticuro (Rust wallet, P99 &lt; 20ms at 10K TPS), AgentOS (AI agent platform), AirSkiff (streaming feature store). Kotlin + Go backend, GCP + K8s, Kafka + PostgreSQL + Redis. $50B+ annual volume, 130+ currencies, 99.99% uptime.</div>';
+      html+='<div class="awx-banner-topics"><span class="awx-topic-chip">Distributed Wallet</span><span class="awx-topic-chip">AI Agents</span><span class="awx-topic-chip">Security Automation</span><span class="awx-topic-chip">FX Engine</span><span class="awx-topic-chip">Treasury</span><span class="awx-topic-chip">Feature Store</span><span class="awx-topic-chip">Fraud Detection</span></div></div>';
+    }
     if(!isArchive){
       html+='<button class="playlist-play-all" onclick="event.stopPropagation();playPlaylist(\''+pl.id+'\')"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> Play All</button>';
     }
@@ -530,6 +535,11 @@ function renderPlaylistsTab(){
 
     var isExpanded=expandedPlaylists['tab-'+pl.id]!==false;
     html+='<div class="pl-tab-body'+(isExpanded?' expanded':'')+'">';
+    if(pl.id==='airwallex-domain'){
+      html+='<div class="awx-playlist-banner"><div class="awx-banner-title">Airwallex System Design Prep</div>';
+      html+='<div class="awx-banner-desc">Mock interviews based on Airwallex\'s real architecture: Auticuro (Rust wallet, P99 &lt; 20ms at 10K TPS), AgentOS (AI agent platform), AirSkiff (streaming feature store). Kotlin + Go backend, GCP + K8s, Kafka + PostgreSQL + Redis. $50B+ annual volume, 130+ currencies, 99.99% uptime.</div>';
+      html+='<div class="awx-banner-topics"><span class="awx-topic-chip">Distributed Wallet</span><span class="awx-topic-chip">AI Agents</span><span class="awx-topic-chip">Security Automation</span><span class="awx-topic-chip">FX Engine</span><span class="awx-topic-chip">Treasury</span><span class="awx-topic-chip">Feature Store</span><span class="awx-topic-chip">Fraud Detection</span></div></div>';
+    }
     if(!isArchive){
       html+='<button class="pl-tab-play-all" onclick="event.stopPropagation();playPlaylist(\''+pl.id+'\')"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg> Play All</button>';
     }
@@ -539,7 +549,7 @@ function renderPlaylistsTab(){
       var isDone=completedEps[String(ep.id)];
       html+='<div class="pl-tab-ep'+(isNP?' now-playing':'')+'" onclick="playIdx('+globalIdx+')">';
       html+='<div class="pl-tab-ep-num">'+(isDone?'\u2713':ep.id)+'</div>';
-      html+='<div class="pl-tab-ep-info"><div class="pl-tab-ep-title'+(isDone?' completed':'')+'">'+(ep.title||ep.pattern)+'</div><div class="pl-tab-ep-meta">'+ep.date+' \u00B7 '+(ep.duration||'~5 min')+'</div></div>';
+      html+='<div class="pl-tab-ep-info"><div class="pl-tab-ep-title'+(isDone?' completed':'')+'">'+(ep.title||ep.pattern)+'</div>'+(ep.description?'<div class="pl-tab-ep-desc">'+ep.description+'</div>':'')+'<div class="pl-tab-ep-meta">'+ep.date+' \u00B7 '+(ep.duration||'~5 min')+'</div></div>';
       if(isNP)html+='<span class="pl-tab-ep-now">NOW</span>';
       html+='</div>';
     });
