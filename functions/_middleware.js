@@ -136,6 +136,12 @@ export async function onRequest(context) {
   }
 
   if (pathname === '/login' || pathname.startsWith('/login/')) {
+    const cookieHeader = request.headers.get('Cookie') || '';
+    const match = cookieHeader.match(new RegExp(`${COOKIE_NAME}=([^;]+)`));
+    const token = match ? match[1] : null;
+    if (await validateToken(token, authSecret)) {
+      return Response.redirect(new URL('/', request.url).href, 302);
+    }
     return new Response(LOGIN_HTML, {
       headers: { 'Content-Type': 'text/html; charset=utf-8' },
     });
