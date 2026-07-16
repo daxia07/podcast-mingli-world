@@ -85,6 +85,55 @@ EPISODES = [
         "title": "Coding Prep 7: Mock Screen Dry Run",
         "subtitle": "60-minute narration script. Brackets + merge intervals. Test week recap.",
     },
+    {
+        "id": 308,
+        "key": "ep08-stack",
+        "script": "ep08-valid-parentheses-stack.txt",
+        "title": "Coding Prep 8: Valid Parentheses + Stack",
+        "subtitle": "Week 2 · Nesting muscle · Min stack note. Pair with Stack & Queue.",
+    },
+    {
+        "id": 309,
+        "key": "ep09-intervals",
+        "script": "ep09-merge-intervals.txt",
+        "title": "Coding Prep 9: Merge Intervals",
+        "subtitle": "Sort by start, sweep merge. Calendar/range muscle.",
+    },
+    {
+        "id": 310,
+        "key": "ep10-linked-list",
+        "script": "ep10-linked-list.txt",
+        "title": "Coding Prep 10: Linked List Reverse + Cycle",
+        "subtitle": "Three-pointer reverse · Floyd fast/slow.",
+    },
+    {
+        "id": 311,
+        "key": "ep11-binary-search",
+        "script": "ep11-binary-search.txt",
+        "title": "Coding Prep 11: Binary Search + Rotated",
+        "subtitle": "Closed interval · sorted half on rotated array.",
+    },
+    {
+        "id": 312,
+        "key": "ep12-dp",
+        "script": "ep12-dp-fundamentals.txt",
+        "title": "Coding Prep 12: DP Fundamentals",
+        "subtitle": "Define the cell · stairs · robber · coin change.",
+    },
+    {
+        "id": 313,
+        "key": "ep13-tree-dfs",
+        "script": "ep13-tree-dfs.txt",
+        "title": "Coding Prep 13: Tree DFS",
+        "subtitle": "Depth · invert · same tree. Complements BFS week 1.",
+    },
+    {
+        "id": 314,
+        "key": "ep14-mock-week2",
+        "script": "ep14-mock-screen-week2.txt",
+        "title": "Coding Prep 14: Mock Screen Week 2",
+        "subtitle": "Min stack · cycle · stairs · full pattern checklist.",
+    },
 ]
 
 

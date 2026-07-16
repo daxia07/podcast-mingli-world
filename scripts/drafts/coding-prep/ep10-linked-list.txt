@@ -1,0 +1,60 @@
+Linked list day. Reverse a list, then cycle detection with fast and slow. Pointer discipline under stress. No AI. Speak before solve. Pair with DP Search List unit — list section — in the app.
+
+Problem one. Reverse a singly linked list. Return new head.
+
+Cold open. Eight counts. Iterative three pointers. One through eight.
+
+Model: prev null, curr head. While curr: save next, curr next equals prev, prev equals curr, curr equals saved next. Return prev. Draw one two three on paper in your head.
+
+Ritual. Restate. Clarify empty and single node. In place expected. Recursive alternative okay if you state stack space.
+
+Walk. One arrow two arrow three arrow null.
+Start prev null curr one. Save two. One points null. prev one curr two.
+Save three. Two points one. prev two curr three.
+Save null. Three points two. prev three curr null. Done. Head three.
+
+Dead-end: losing the next pointer before saving — list breaks. Always save next first. Recursive reverse is elegant but O of n call stack — say that trade-off for large n.
+
+Edges. Empty null. Single node. Two nodes. Long list.
+
+Complexity iterative O of n time O of one space.
+
+Problem two. Linked list cycle. Does the list contain a cycle? Optional follow-up: return cycle entrance.
+
+Cold open. Eight counts. Structure without extra memory. One through eight.
+
+Model: Floyd. Slow one step, fast two steps. If they meet, cycle. If fast hits null, no cycle. With a set of seen nodes also works O of n space — state both, prefer fast slow when they ask O of one space.
+
+Why it works in one line: fast gains on slow inside the loop and must lap.
+
+Entrance follow-up. After meet, put one pointer at head, other at meet. Advance both one step — they meet at entrance. You can mention it even if not asked — shows depth.
+
+Walk no cycle. One two three null. Fast reaches null — false.
+Walk cycle. One two three two… eventually meet inside the loop — true.
+
+Edges. Empty. Single with self loop. Single no loop. Cycle at head. Cycle deep.
+
+Complexity O of n time, O of one space for Floyd.
+
+Pattern cue. Need previous links — reverse with three pointers. Cycle or middle of list — fast slow. Merge two sorted lists — dummy head two pointers.
+
+Transfer. Fifteen seconds. Find middle of list. One through fifteen.
+
+Model: slow fast from head, when fast at end slow at middle. Same family.
+
+Speed recap.
+
+Reverse: prev curr next dance, return prev. Cycle: slow plus one fast plus two, meet means cycle. Optional entrance reset to head. O of n. No AI.
+
+Say-back.
+One: save next first when reverse.
+Two: return prev.
+Three: floyd cycle.
+Four: set alternative with space.
+Five: middle is slow fast too.
+
+App: list questions in DP Search List unit. Code reverse and has cycle without AI.
+
+Next: binary search fundamentals.
+
+This was Coding Prep. Linked list. Go code.

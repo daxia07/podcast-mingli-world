@@ -1,0 +1,52 @@
+Tree DFS day. Complements week one BFS level order. Max depth, invert binary tree, same tree. No AI. Speak before solve. Pair with Trees and Graphs in the app.
+
+Problem one. Maximum depth of binary tree. Root to leaf longest path length in nodes.
+
+Cold open. Six counts. One line recurrence. One through six.
+
+Model: if null depth zero. Else one plus max of depth left and depth right. Recursive DFS. Iterative stack or level BFS also works — BFS depth is number of levels.
+
+Walk. Skewed left chain of three — depth three. Balanced small — compute both sides.
+
+Edges. Empty zero. Single node one.
+
+Complexity O of n time O of height stack.
+
+Problem two. Invert binary tree. Swap every left and right child recursively.
+
+Cold open. Six counts. One through six.
+
+Model: if null return. Swap left and right, then invert both children — or invert then swap, be consistent. Return root.
+
+Dead-end: only swapping at root. Must visit all nodes.
+
+Problem three. Same tree. Are two trees structurally identical with same values?
+
+Cold open. Eight counts. One through eight.
+
+Model: both null true. One null false. Values differ false. Else same left and same right recursively. BFS pairing queues also fine.
+
+Pattern cue. Hierarchy and subtrees — DFS recursion. Level batches — BFS queue. Path sums and LCA — DFS with state. Grid components — you already did flood.
+
+Path sum bonus twenty seconds. Does any root to leaf sum to target? DFS remaining sum, at leaf check zero. Mention if they pivot.
+
+Transfer. Fifteen seconds. Lowest common ancestor BST versus binary tree. One through fifteen.
+
+Model: BST use value ranges walk down. General binary tree DFS postorder find.
+
+Speed recap.
+
+Tree DFS: null base cases. Depth one plus max children. Invert swap and recurse. Same tree pairwise null and value. BFS still for levels. O of n. No AI.
+
+Say-back.
+One: null base.
+Two: depth formula.
+Three: invert all nodes.
+Four: same tree both sides.
+Five: BFS vs DFS when.
+
+App: tree questions. Code invert and max depth without AI. Re-speak ep06 level order speed recap after — link BFS and DFS in one day.
+
+Next: week two mock — second dress rehearsal with DP and list flavor.
+
+This was Coding Prep. Tree DFS. Go code.

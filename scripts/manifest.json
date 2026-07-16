@@ -252,6 +252,146 @@
       "audio_fit": "excellent"
     },
     {
+      "id": 314,
+      "title": "Coding Prep 14: Mock Screen Week 2",
+      "subtitle": "Min stack \u00b7 cycle \u00b7 stairs \u00b7 full pattern checklist.",
+      "description": "Week two dress rehearsal. Different problems than episode seven. You will narrate stack or intervals leftovers, then a list or DP medium shape, under the same sixty minute script. No AI. Mouth first.  Hour shape again. Zero to five settle and read. Five to twelve clarify naive optimize agree. Twelve to thirty five code narrating. Thirty five to forty five edges and fix. Second problem if any \u2014 smaller ritual. Last five complexity and your questions.  Stuck line. Two options I\u2026",
+      "theme": "coding-prep-ep14-mock-week2",
+      "filename": "coding-prep-ep14-mock-week2.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
+      "duration": "3:55",
+      "file_size_bytes": 1880684,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 572
+    },
+    {
+      "id": 313,
+      "title": "Coding Prep 13: Tree DFS",
+      "subtitle": "Depth \u00b7 invert \u00b7 same tree. Complements BFS week 1.",
+      "description": "Tree DFS day. Complements week one BFS level order. Max depth, invert binary tree, same tree. No AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Maximum depth of binary tree. Root to leaf longest path length in nodes.  Cold open. Six counts. One line recurrence. One through six.  Model: if null depth zero. Else one plus max of depth left and depth right. Recursive DFS. Iterative stack or level BFS also works \u2014 BFS depth is number of levels.  Walk.\u2026",
+      "theme": "coding-prep-ep13-tree-dfs",
+      "filename": "coding-prep-ep13-tree-dfs.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep13-tree-dfs.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep13-tree-dfs.mp3",
+      "duration": "2:49",
+      "file_size_bytes": 1357484,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 381
+    },
+    {
+      "id": 312,
+      "title": "Coding Prep 12: DP Fundamentals",
+      "subtitle": "Define the cell \u00b7 stairs \u00b7 robber \u00b7 coin change.",
+      "description": "Dynamic programming fundamentals. Climbing stairs, house robber, coin change fewest coins. The speech pattern matters more than memorizing ten problems. No AI. Speak before solve. Pair with DP Search List in the app.  What DP is in interview words. Optimal substructure \u2014 big answer builds from smaller. Overlapping subproblems \u2014 same sub-answers reused. You define dp meaning in one sentence, base cases, recurrence, then iterate bottom up or memo top down. Always state that sen\u2026",
+      "theme": "coding-prep-ep12-dp",
+      "filename": "coding-prep-ep12-dp.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep12-dp.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep12-dp.mp3",
+      "duration": "3:57",
+      "file_size_bytes": 1897196,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 563
+    },
+    {
+      "id": 311,
+      "title": "Coding Prep 11: Binary Search + Rotated",
+      "subtitle": "Closed interval \u00b7 sorted half on rotated array.",
+      "description": "Binary search day. Sorted array lookup, then the rotated array half-sorted trick. Log n comfort for screens. No AI. Speak before solve. Pair with DP Search List binary search questions in the app.  Problem one. Classic. Sorted array ascending, find target index or negative one. No duplicates for the base version \u2014 clarify.  Cold open. Eight counts. Loop invariant and how left right move. One through eight.  Model: left zero, right n minus one, while left less or equal right.\u2026",
+      "theme": "coding-prep-ep11-binary-search",
+      "filename": "coding-prep-ep11-binary-search.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep11-binary-search.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep11-binary-search.mp3",
+      "duration": "3:39",
+      "file_size_bytes": 1760108,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 527
+    },
+    {
+      "id": 310,
+      "title": "Coding Prep 10: Linked List Reverse + Cycle",
+      "subtitle": "Three-pointer reverse \u00b7 Floyd fast/slow.",
+      "description": "Linked list day. Reverse a list, then cycle detection with fast and slow. Pointer discipline under stress. No AI. Speak before solve. Pair with DP Search List unit \u2014 list section \u2014 in the app.  Problem one. Reverse a singly linked list. Return new head.  Cold open. Eight counts. Iterative three pointers. One through eight.  Model: prev null, curr head. While curr: save next, curr next equals prev, prev equals curr, curr equals saved next. Return prev. Draw one two three on pa\u2026",
+      "theme": "coding-prep-ep10-linked-list",
+      "filename": "coding-prep-ep10-linked-list.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep10-linked-list.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep10-linked-list.mp3",
+      "duration": "3:24",
+      "file_size_bytes": 1633772,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 496
+    },
+    {
+      "id": 309,
+      "title": "Coding Prep 9: Merge Intervals",
+      "subtitle": "Sort by start, sweep merge. Calendar/range muscle.",
+      "description": "Merge Intervals. Sort plus linear scan. Shows up in calendars, bookings, and range logic. No AI. Speak before solve. Pair with Intervals and Design in the app.  Problem. Given a list of intervals, each a start and end, merge all overlapping ones. Return the merged list sorted by start.  Cold open. Ten counts. First step and merge rule. One through ten.  Model: sort by start ascending. Keep a current interval. For each next: if next start is less or equal current end, merge \u2014\u2026",
+      "theme": "coding-prep-ep09-intervals",
+      "filename": "coding-prep-ep09-intervals.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep09-intervals.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep09-intervals.mp3",
+      "duration": "3:25",
+      "file_size_bytes": 1647404,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 483
+    },
+    {
+      "id": 308,
+      "title": "Coding Prep 8: Valid Parentheses + Stack",
+      "subtitle": "Week 2 \u00b7 Nesting muscle \u00b7 Min stack note. Pair with Stack & Queue.",
+      "description": "Week two opens with stack muscle. Valid Parentheses, then a quick Min Stack design note. No AI. You speak before I solve. Pair with Stack and Queue in the app.  Problem. Given a string of brackets only \u2014 round, square, curly \u2014 return true if every opener has a matching closer in the right order.  Cold open. Ten counts. Structure and end condition. One through ten.  Model: stack. On open, push. On close, stack must be non empty and top must match this closer \u2014 then pop. End: s\u2026",
+      "theme": "coding-prep-ep08-stack",
+      "filename": "coding-prep-ep08-stack.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep08-stack.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep08-stack.mp3",
+      "duration": "3:07",
+      "file_size_bytes": 1499564,
+      "date": "2026-07-16",
+      "pub_date": "2026-07-16",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 445
+    },
+    {
       "id": 307,
       "title": "Coding Prep 7: Mock Screen Dry Run",
       "subtitle": "60-minute narration script. Brackets + merge intervals. Test week recap.",
@@ -1632,7 +1772,14 @@
         304,
         305,
         306,
-        307
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314
       ],
       "icon": "\ud83d\udcbb"
     },

@@ -1,53 +1,45 @@
 # Coding Prep Playlist — Series plan
 
-**Status:** Full series ep00–ep07 scripted + published for Airwallex coding screen  
-**Audience:** Commute / gym / walk — muscle memory under time pressure  
-**Voice:** BrianNeural think-aloud  
+**Status:** Weeks 1–2 complete — ep00–ep14 (15 think-alouds) published  
 **Companion app:** https://learn.mingli.world coding path  
-**Companion YT:** playlist `coding-youtube`  
+**Companion YT:** playlist `coding-youtube` (week-1 aligned)  
 **Speech design:** `SPEECH-ENHANCEMENT.md`
 
-## Listen order (test week)
+## Week 1 — core screen patterns
 
-| Ep | Title | App unit | Role |
-|----|--------|----------|------|
-| 0 | Airwallex Screen Ritual | Interview Process | Daily open / night-before |
-| 1 | Two Sum | Two Sum Deep Drill | Day 1 |
-| 2 | HashMap Family | HashMap Patterns | Day 2 |
-| 3 | Longest Unique Substring | Longest Substring Deep Drill | Day 3 |
-| 4 | Two Pointers | Two Pointers | Day 4 |
-| 5 | LRU Cache | LRU Deep Drill | Day 5 |
-| 6 | Islands + Level Order | Trees & Graphs | Day 6 |
-| 7 | Mock Screen Dry Run | Process + Complexity | Day 7 / dress rehearsal |
+| Ep | Title | App unit |
+|----|--------|----------|
+| 0 | Airwallex Screen Ritual | Interview Process |
+| 1 | Two Sum | Two Sum Deep Drill |
+| 2 | HashMap Family | HashMap Patterns |
+| 3 | Longest Unique Substring | Longest Substring Deep Drill |
+| 4 | Two Pointers | Two Pointers |
+| 5 | LRU Cache | LRU Deep Drill |
+| 6 | Islands + Level Order | Trees & Graphs |
+| 7 | Mock Screen Dry Run | Process + Complexity |
 
-**Plus:** Coding YouTube audio-first (11 NeetCode clips) same day order.
+## Week 2 — gap coverage
 
-## Daily loop until the test
+| Ep | Title | App unit |
+|----|--------|----------|
+| 8 | Valid Parentheses + Stack | Stack & Queue |
+| 9 | Merge Intervals | Intervals & Design |
+| 10 | Linked List Reverse + Cycle | DP / Search / List |
+| 11 | Binary Search + Rotated | DP / Search / List |
+| 12 | DP Fundamentals | DP / Search / List |
+| 13 | Tree DFS | Trees & Graphs |
+| 14 | Mock Screen Week 2 | Process + Complexity |
 
-1. Morning: re-speak one **speed recap** (2 min)  
-2. Commute: Coding Prep ep or Coding YouTube for that day + say-back  
-3. Evening: app options cold + 15–25 min code **without AI**  
-4. Night before: ep00 only, sleep  
+## Daily loop
 
-## Generate / publish
+1. Morning: one **speed recap** (~2 min)  
+2. Commute: that day’s ep (+ YT if week 1 pattern)  
+3. Evening: app cold + 15–25 min code **without AI**  
+4. Night before test: ep00 only  
+
+## Generate
 
 ```bash
-cd scripts
-python3 generate_coding_prep.py --all --force-tts --publish
-python3 publish_coding_youtube.py --download --publish   # if YT audio missing
+python3 generate_coding_prep.py --all --publish
+# force rebuild: --force-tts
 ```
-
-## Scripts
-
-```
-ep00-airwallex-coding-ritual.txt
-ep01-two-sum-think-aloud.txt
-ep02-hashmap-family.txt
-ep03-longest-substring.txt
-ep04-two-pointers.txt
-ep05-lru-cache.txt
-ep06-islands-bfs.txt
-ep07-mock-screen.txt
-```
-
-Pure spoken prose only. Spoken count-out pauses for TTS.

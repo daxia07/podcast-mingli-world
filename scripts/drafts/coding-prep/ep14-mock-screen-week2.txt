@@ -1,0 +1,47 @@
+Week two dress rehearsal. Different problems than episode seven. You will narrate stack or intervals leftovers, then a list or DP medium shape, under the same sixty minute script. No AI. Mouth first.
+
+Hour shape again. Zero to five settle and read. Five to twelve clarify naive optimize agree. Twelve to thirty five code narrating. Thirty five to forty five edges and fix. Second problem if any — smaller ritual. Last five complexity and your questions.
+
+Stuck line. Two options I see, constraint that decides, ask if allowed. Never silent five minutes.
+
+Problem A. Cold open twelve counts. Design: implement a stack that supports push pop top and getMin in constant time. One through twelve.
+
+Model speech. Clarify capacity unbounded for interview. Use two stacks or pairs: value and min so far. Push: if empty min is value else min of value and last min. Pop both tracks. Top and getMin peek. Complexity O of one each. Edges empty getMin — define error. Walk push two push one getMin one pop getMin two.
+
+If you blanked, rewind until min history is automatic.
+
+Problem B. Cold open fifteen counts. Linked list: reverse nodes in between left and right positions inclusive — or if that is heavy, reverse whole list then explain how you would bound it. Prefer: detect cycle true false with O of one space. One through fifteen.
+
+Model. Floyd slow fast. No cycle if fast null. Meet implies cycle. Complexity O of n O of one. Edges self loop single node.
+
+Problem C lightning. Ten counts. Climbing stairs n equals four — answer and recurrence. One through ten.
+
+Model. dp i equals dp i minus one plus dp i minus two. Base one and two. Ways one two three five for n one to four. Answer five for four.
+
+Week one plus week two pattern deck — re-speak as a single checklist every morning from here.
+
+Ritual eight steps. Map complement two sum. Seen set and anagram keys and top k. Window unique. Water move shorter. Three sum sort pair. LRU map list. Islands flood. Level order queue. Stack parentheses. Merge intervals sort scan. List reverse and floyd. Binary search and rotated half. DP define cell stairs robber coins. Tree depth invert same.
+
+Fintech flavor thirty seconds for Airwallex chat. Idempotency key same request same result. Money use integer minor units not float. FX multi hop can be graph of rates. Rate limit sliding window or token bucket. You may not get these as LC — they help conversation and take-home.
+
+Success criteria for test week.
+One: ritual under twenty seconds.
+Two: any week one speed recap under ninety seconds.
+Three: any week two speed recap under ninety seconds.
+Four: one timed medium with voice memo over thirty five minutes.
+Five: no AI in the dry run.
+
+If a pattern still freezes you, do not add more passive listening. Loop that one episode's speed recap plus two coded variants the same day.
+
+Say-back for this episode.
+One: hour timeline.
+Two: min stack design.
+Three: floyd cycle.
+Four: stairs fib.
+Five: full checklist exists — use it.
+
+App: mix Process Complexity with one weak unit from week two. Timer forty minutes. Narrate to voice memo. Compare to these model speeches.
+
+You now have fourteen coding prep think-alouds plus the YouTube audio pack. Enough material. The scarce resource is deliberate practice under the clock.
+
+This was Coding Prep. Week two mock. Go train.

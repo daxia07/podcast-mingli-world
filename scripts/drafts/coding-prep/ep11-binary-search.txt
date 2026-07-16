@@ -1,0 +1,55 @@
+Binary search day. Sorted array lookup, then the rotated array half-sorted trick. Log n comfort for screens. No AI. Speak before solve. Pair with DP Search List binary search questions in the app.
+
+Problem one. Classic. Sorted array ascending, find target index or negative one. No duplicates for the base version — clarify.
+
+Cold open. Eight counts. Loop invariant and how left right move. One through eight.
+
+Model: left zero, right n minus one, while left less or equal right. Mid left plus right minus left over two — avoid overflow style. If nums mid equals target return mid. If nums mid less than target, left equals mid plus one. Else right equals mid minus one. End negative one.
+
+Ritual. Restate. Clarify sorted unique. Closed interval. Naive linear scan O of n first. Then log n.
+
+Walk. Array one three five seven nine. Target seven.
+Left zero right four. Mid two value five. Five less than seven, left three.
+Mid three value seven. Hit. Return three.
+
+Dead-end infinite loop: mid equals left plus right over two with wrong bound updates, like right equals mid when you needed mid minus one on a closed interval. Pick inclusive bounds and be consistent. Off-by-one is the whole game — walk an example every time before coding.
+
+Edges. Empty. Single element hit and miss. Target below min or above max. Target at ends.
+
+Complexity O of log n time O of one space.
+
+Problem two. Search in rotated sorted array. Distinct values. Array was sorted, then rotated at unknown pivot. Find target index.
+
+Cold open. Ten counts. How do you know which half is sorted? One through ten.
+
+Model: still binary search. At mid, at least one half is sorted. If left half sorted — nums left less or equal nums mid — check if target in that range, else go right. If right half sorted, check target there. Continue.
+
+Walk. Array four five six seven zero one two. Target zero.
+You keep discarding the half that cannot hold target. Eventually land on zero.
+
+Dead-end: trying to find pivot first in a separate pass then binary — works but longer. One-pass half sorted is cleaner speech.
+
+Duplicates version is harder — say if duplicates allowed, worst case degrades and you may need linear fallback when nums left equals nums mid equals nums right. Clarify distinct first.
+
+Pattern cue. Sorted property — binary search. Answer is monotonic predicate — binary search on answer. Rotated — identify sorted half each step.
+
+Transfer. Fifteen seconds. First bad version API isBad — approach. One through fifteen.
+
+Model: binary search lowest true index. Same left right mid pattern on a boolean.
+
+Speed recap.
+
+Binary search closed interval, mid compare, move left or right. Rotated: each step one half sorted, probe if target inside. State O of log n. Walk edges. No AI.
+
+Say-back.
+One: inclusive left right.
+Two: mid avoid sticky loops.
+Three: rotated sorted half.
+Four: duplicates caveat.
+Five: first bad is binary on predicate.
+
+App: binary search items cold. Code classic search, then one rotated if time.
+
+Next: dynamic programming one dimension — stairs robber coins.
+
+This was Coding Prep. Binary search. Go code.

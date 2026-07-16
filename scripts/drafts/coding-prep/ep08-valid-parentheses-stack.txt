@@ -1,0 +1,51 @@
+Week two opens with stack muscle. Valid Parentheses, then a quick Min Stack design note. No AI. You speak before I solve. Pair with Stack and Queue in the app.
+
+Problem. Given a string of brackets only — round, square, curly — return true if every opener has a matching closer in the right order.
+
+Cold open. Ten counts. Structure and end condition. One through ten.
+
+Model: stack. On open, push. On close, stack must be non empty and top must match this closer — then pop. End: stack empty. Empty string is valid. Wrong closer or leftover opens is false.
+
+Ritual. Restate. Clarify character set. Naive wrong ideas. Improve. Example. Edges. Complexity.
+
+Naive people say: count opens and closes equal. That fails on close first or wrong nesting like open square close paren. Say the counter dead-end, then stack.
+
+Walk. String open paren, open square, close square, close paren.
+Push open paren. Push open square. See close square — top is open square — match pop. See close paren — top open paren — match pop. Stack empty — true.
+
+Second. Close paren first. Stack empty on close — false.
+Third. Open open close. End stack not empty — false.
+Fourth. Open square close paren. Types mismatch — false.
+
+Code in words. Map closer to opener, or push expected closer when you see open. Loop chars. At end return stack empty.
+
+Edges. Empty true. Single char false. Only opens. Only closes. Long nested. Interleaved types.
+
+Complexity O of n time, O of n space worst case all opens.
+
+Dead-end recovery line. If I used counters only, I'd miss order — switching to stack for nesting.
+
+Min Stack side quest, sixty seconds. Design stack with push pop top and get min in O of one. Two stacks, or store pairs of value and current min. On push, new min is min of value and previous min. On pop, min history pops with the value.
+
+Pattern cue. Nesting, matching, undo last — stack. Level order — queue. Say it.
+
+Transfer. Fifteen seconds. Next greater element to the right — structure name only. One through fifteen.
+
+Model: monotonic decreasing stack of indices or values while scanning. Same LIFO family.
+
+Speed recap.
+
+Valid parentheses: stack opens, match closes, empty at end. Counters are not enough. O of n. Min stack: store running min with each push. No AI.
+
+Say-back.
+One: push opens.
+Two: pop match on close.
+Three: empty end.
+Four: counter dead-end.
+Five: min stack pairs.
+
+App: Stack and Queue unit cold. Code valid parentheses without AI. Then one min stack if time.
+
+Next: merge intervals — sort and scan.
+
+This was Coding Prep. Stack. Go code.
