@@ -1,0 +1,61 @@
+Two pointers day. Container With Most Water, then Three Sum moves. Same family: sorted or end-based indices that remove nested loops. No AI. Speak before solve. Pair with Two Pointers unit in the app.
+
+Problem one. You have an array height of non-negative integers. Vertical lines at each index. Choose two lines so the container holds max water. Area is min of the two heights times distance between indices.
+
+Cold open, eight counts. Naive and optimal move rule. One. Two. Three. Four. Five. Six. Seven. Eight.
+
+Model naive: try every pair i less than j, area equals min height i height j times j minus i. Track max. O of n squared.
+
+Optimal: left zero, right n minus one. Compute area. Move the shorter line inward. Why? Width always shrinks when you move. Height can only improve if you replace the shorter side. Moving the taller side cannot help the min. Repeat until left meets right.
+
+Ritual lock. Restate. Clarify. Naive. Improve. Example. Code. Edges. Complexity.
+
+Walk. Heights one, eight, six, two, five, four, eight, three, seven.
+
+Left zero height one, right eight height seven. Area min one seven times eight equals eight. Move left because one is shorter.
+Left at eight. Area min eight seven times seven equals forty-nine. Best forty-nine.
+Heights equal-ish — move the smaller. Continue… eventually best is forty-nine for this classic example.
+
+Dead-end: move both every time, or always move left. That loses optima. Always move the current shorter pointer. If equal, you may move either — say you move both carefully or one; be consistent.
+
+Edges: length less than two — area zero. All zeros. Strictly increasing. Single peak.
+
+Complexity O of n time, O of one space after input.
+
+Pattern cue. Opposite ends, maximize or minimize under min of heights — move the limiting side.
+
+Problem two. Three Sum. Array of integers, find all unique triplets that sum to zero. No duplicate triplets in the answer.
+
+Cold attempt, ten counts. Structure only. One through ten.
+
+Model: sort first. For each index i, run two pointers on the rest for target equal to negative nums i. Skip duplicate i values. When sum too small, left plus plus. Too big, right minus minus. Equal, record, then skip dups on left and right.
+
+Walk. nums negative one, zero, one, two, negative one, negative four. Sorted: negative four, negative one, negative one, zero, one, two.
+
+i at negative four. Need four. left negative one, right two… adjust until done. Eventually triplets: negative one negative one two, and negative one zero one. Classic.
+
+Dead-end: nested three loops then unique with a set of sorted tuples — correct but O of n cubed and slow to code cleanly under stress. Say cubic, then sort plus two pointers O of n squared.
+
+Edges: fewer than three elements empty answer. All positive. All negative. Many zeros — one triplet zero zero zero if three zeros exist. Duplicates everywhere — skipping is the skill.
+
+Complexity: sort O of n log n, then O of n squared. Space O of one extra besides output, or O of n if sort not in place.
+
+Transfer. Twenty seconds. Two Sum on a sorted array returning indices or values — which tool? One through twelve.
+
+Model: two pointers from ends if sorted and you want values or you track original indices in pairs. Map if unsorted indices required. That links day one and day four.
+
+Speed recap.
+
+Two pointers. Water: left right ends, area min height times width, move shorter. Three sum: sort, fix i, two pointers for complement, skip duplicates. Always narrate O of n squared nested first. No AI.
+
+Say-back.
+One: water move shorter.
+Two: three sum sort plus pair.
+Three: skip dups.
+Four: link to two sum sorted.
+
+App: Two Pointers lesson. Code container water, then three sum if time. YouTube day four clips optional.
+
+Next: LRU Cache design — map plus list for O of one.
+
+This was Coding Prep. Two pointers. Go code.

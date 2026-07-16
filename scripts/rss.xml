@@ -5,261 +5,807 @@
     <link>https://podcast.mingli.world</link>
     <description>Daily 5-minute episodes: English patterns, interview frameworks, and speaking practice for tech professionals.</description>
     <language>en</language>
-    <itunes:image href="https://podcast.mingli.world/artwork.jpg"/>
-    <itunes:category text="Education"/>
-    <itunes:explicit>false</itunes:explicit>
     <itunes:author>Daily Interview English</itunes:author>
+    <itunes:image href="https://podcast.mingli.world/artwork.jpg"/>
+    <item>
+      <title>NeetCode: Two Sum II Sorted (LC 167)</title>
+      <description>Bonus · Two pointers contrast to Day 1 map. Audio-fit: excellent. Pair: Coding Prep ep01-two-sum + app two-sum-deep-drill. Source: https://www.youtube.com/watch?v=cQ1Oz4ckceM</description>
+      <guid isPermaLink="false">411</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-two-sum-ii.mp3" type="audio/mpeg" length="7349612"/>
+      <itunes:duration>7:39</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Binary Tree Level Order (LC 102)</title>
+      <description>Day 6 · Queue BFS levels. Audio-fit: good. Pair: Coding Prep ep06-islands-bfs + app trees-graphs. Source: https://www.youtube.com/watch?v=6ZnyEApgFYg</description>
+      <guid isPermaLink="false">410</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-level-order.mp3" type="audio/mpeg" length="9069164"/>
+      <itunes:duration>9:26</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Number of Islands (LC 200)</title>
+      <description>Day 6 · BFS/DFS flood fill. Audio-fit: medium. Pair: Coding Prep ep06-islands-bfs + app trees-graphs. Source: https://www.youtube.com/watch?v=pV2kpPD66nE</description>
+      <guid isPermaLink="false">409</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-islands.mp3" type="audio/mpeg" length="9716588"/>
+      <itunes:duration>10:07</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: LRU Cache (LC 146)</title>
+      <description>Day 5 · Map + doubly linked list O(1). Audio-fit: medium. Pair: Coding Prep ep05-lru + app lru-cache-deep-drill. Source: https://www.youtube.com/watch?v=7ABFKPK2hD4</description>
+      <guid isPermaLink="false">408</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-lru.mp3" type="audio/mpeg" length="15946220"/>
+      <itunes:duration>16:36</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: 3Sum (LC 15)</title>
+      <description>Day 4 · Sort + two pointers + skip dups. Audio-fit: good. Pair: Coding Prep ep04-two-pointers + app two-pointers. Source: https://www.youtube.com/watch?v=jzZsG8n2R9A</description>
+      <guid isPermaLink="false">407</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-3sum.mp3" type="audio/mpeg" length="11465324"/>
+      <itunes:duration>11:56</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Container With Most Water (LC 11)</title>
+      <description>Day 4 · Two pointers move shorter. Audio-fit: good. Pair: Coding Prep ep04-two-pointers + app two-pointers. Source: https://www.youtube.com/watch?v=UuiTKBwPgAo</description>
+      <guid isPermaLink="false">406</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-water.mp3" type="audio/mpeg" length="10964972"/>
+      <itunes:duration>11:25</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Longest Substring No Repeat (LC 3)</title>
+      <description>Day 3 · Sliding window expand/shrink. Audio-fit: excellent. Pair: Coding Prep ep03-longest-substring + app longest-substring-deep-drill. Source: https://www.youtube.com/watch?v=wiGpQwVHdE0</description>
+      <guid isPermaLink="false">405</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-longest-substr.mp3" type="audio/mpeg" length="6151916"/>
+      <itunes:duration>6:24</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Top K Frequent (LC 347)</title>
+      <description>Day 2 · Bucket / heap · skip pure drawing seconds. Audio-fit: good. Pair: Coding Prep ep02-hashmap-family + app hashmap-patterns. Source: https://www.youtube.com/watch?v=YPTqKIgVk-k</description>
+      <guid isPermaLink="false">404</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-top-k.mp3" type="audio/mpeg" length="12549356"/>
+      <itunes:duration>13:04</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Group Anagrams (LC 49)</title>
+      <description>Day 2 · Count-key map · verbalizable. Audio-fit: good. Pair: Coding Prep ep02-hashmap-family + app hashmap-patterns. Source: https://www.youtube.com/watch?v=vzdNOK2oB2E</description>
+      <guid isPermaLink="false">403</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-group-anagrams.mp3" type="audio/mpeg" length="7747820"/>
+      <itunes:duration>8:04</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Contains Duplicate (LC 217)</title>
+      <description>Day 2 · HashSet seen · audio-first. Audio-fit: excellent. Pair: Coding Prep ep02-hashmap-family + app hashmap-patterns. Source: https://www.youtube.com/watch?v=3OamzN90kPg</description>
+      <guid isPermaLink="false">402</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-contains-dup.mp3" type="audio/mpeg" length="6225644"/>
+      <itunes:duration>6:29</itunes:duration>
+    </item>
+    <item>
+      <title>NeetCode: Two Sum (LC 1)</title>
+      <description>Day 1 · HashMap complement · audio-first. Audio-fit: excellent. Pair: Coding Prep ep01-two-sum + app two-sum-deep-drill. Source: https://www.youtube.com/watch?v=KLlXCFG5TnA</description>
+      <guid isPermaLink="false">401</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-coding-two-sum.mp3" type="audio/mpeg" length="7510124"/>
+      <itunes:duration>7:49</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 7: Mock Screen Dry Run</title>
+      <description>This is the dress rehearsal. Not a new algorithm. A sixty minute Airwallex style coding screen compressed into a narration you can run cold. No AI. Mouth first. After this, open Process and Complexity drills, then do one timed medium offline.  Setup. You have about sixty minutes. Easy to medium problems. They want clarify, naive, optimize, working code, edges, complexity. Background chat may eat a few minutes. Medium should feel comfortable in thirty to forty minutes with pra…</description>
+      <guid isPermaLink="false">307</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep07-mock-screen.mp3" type="audio/mpeg" length="2538284"/>
+      <itunes:duration>5:17</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 6: Islands + Level Order</title>
+      <description>Graphs and trees day. Number of Islands, then Binary Tree Level Order. BFS and DFS flood muscle. No AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Grid of water zero and land one. Island is four-connected land. Count islands. Diagonal usually does not connect — clarify.  Cold open, eight counts. Approach and complexity. One through eight.  Model: scan every cell. When you find land, increment count, then flood fill mark all connected land as wate…</description>
+      <guid isPermaLink="false">306</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep06-islands-bfs.mp3" type="audio/mpeg" length="1903532"/>
+      <itunes:duration>3:57</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 5: LRU Cache Design</title>
+      <description>LRU Cache. Design problem. Airwallex and many screens love this because it is structure plus clear operations, not a one-shot formula. No AI. You speak the design before code. Pair with the LRU deep drill in the app.  Problem. Implement LRUCache with capacity. Methods: get key returns value or negative one if missing. Put key value inserts or updates. When over capacity, evict the least recently used key. Both get and put must be average O of one.  Cold open. Ten counts. Name…</description>
+      <guid isPermaLink="false">305</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep05-lru.mp3" type="audio/mpeg" length="2085932"/>
+      <itunes:duration>4:20</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 4: Two Pointers</title>
+      <description>Two pointers day. Container With Most Water, then Three Sum moves. Same family: sorted or end-based indices that remove nested loops. No AI. Speak before solve. Pair with Two Pointers unit in the app.  Problem one. You have an array height of non-negative integers. Vertical lines at each index. Choose two lines so the container holds max water. Area is min of the two heights times distance between indices.  Cold open, eight counts. Naive and optimal move rule. One. Two. Three…</description>
+      <guid isPermaLink="false">304</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep04-two-pointers.mp3" type="audio/mpeg" length="2224556"/>
+      <itunes:duration>4:37</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 3: Longest Unique Substring</title>
+      <description>Longest Substring Without Repeating Characters. Sliding window muscle. Airwallex medium comfort. No AI. You speak before I solve. After this, open the Longest Substring deep drill in the app.  Problem. Given a string s, return the length of the longest substring with all unique characters. Substring means contiguous.  Cold open. I'll count to ten. Say: clarifier, naive idea and Big-O, window idea in one sentence. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten.  Mod…</description>
+      <guid isPermaLink="false">303</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep03-longest-substring.mp3" type="audio/mpeg" length="2282348"/>
+      <itunes:duration>4:45</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 2: HashMap Family</title>
+      <description>Today is the HashMap family. Three shapes, one muscle: memory of what you have already seen. Contains Duplicate. Group Anagrams. Top K Frequent. No AI. You speak before I solve.  Airwallex wants process. Naive first. Then the structure. Map or set is not magic — it is O of one average lookup that buys you a linear scan.  Cold open. Problem one: given an integer array, return true if any value appears at least twice, else false.  I'll count to eight. Out loud: clarifier, naive…</description>
+      <guid isPermaLink="false">302</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep02-hashmap-family.mp3" type="audio/mpeg" length="2624492"/>
+      <itunes:duration>5:27</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 1: Two Sum Think-Aloud</title>
+      <description>Alright. Interviewer just said: Two Sum. Given an array of integers called nums, and an integer target, return the indices of the two numbers that add up to target.  I'm going to work this the way I would in a real screen. No AI. Out loud. Naive first, then better. And I'm going to make the mistakes people actually make, so you hear the recovery.  Important: you speak before I solve. After this episode, open the tutor app and run the Two Sum deep drill — eight multiple-choice…</description>
+      <guid isPermaLink="false">301</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep01-two-sum.mp3" type="audio/mpeg" length="4414700"/>
+      <itunes:duration>9:11</itunes:duration>
+    </item>
+    <item>
+      <title>Coding Prep 0: Airwallex Screen Ritual</title>
+      <description>Hey. This is a short one. Think of it as the pre-flight checklist for coding interviews — specifically the Airwallex style tech screen.  If you already know the format, you can jump ahead mentally to the ritual. If you don't, stay with me for a few minutes so you don't waste a sixty-minute interview on the wrong game.  Airwallex's engineering blog is unusually clear. The tech screen is like LeetCode easy and medium. They care that you understand basic algorithms and can apply…</description>
+      <guid isPermaLink="false">300</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/coding-prep-ep00-ritual.mp3" type="audio/mpeg" length="2106284"/>
+      <itunes:duration>4:23</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Distributed Job Scheduler</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — claim, lease, workers. Source: applications/airwallex/interview-speeches/speech-job_scheduler.md</description>
+      <guid isPermaLink="false">213</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-job_scheduler.mp3" type="audio/mpeg" length="2222828"/>
+      <itunes:duration>4:37</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Card Authorization (Q6)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — hot path hold, dedupe. Source: applications/airwallex/interview-speeches/speech-q6.md</description>
+      <guid isPermaLink="false">212</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q6.mp3" type="audio/mpeg" length="1702892"/>
+      <itunes:duration>3:32</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Bulk Payouts (Q8)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — item idempotency, rate limits. Source: applications/airwallex/interview-speeches/speech-q8.md</description>
+      <guid isPermaLink="false">211</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q8.mp3" type="audio/mpeg" length="2049836"/>
+      <itunes:duration>4:16</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: KYC Onboarding (Q11)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — case workflow, AI≠truth. Source: applications/airwallex/interview-speeches/speech-q11.md</description>
+      <guid isPermaLink="false">210</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q11.mp3" type="audio/mpeg" length="1763948"/>
+      <itunes:duration>3:40</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Multi-Region (Q12)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — home cell, fence, HA vs C. Source: applications/airwallex/interview-speeches/speech-q12.md</description>
+      <guid isPermaLink="false">209</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q12.mp3" type="audio/mpeg" length="2169644"/>
+      <itunes:duration>4:31</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: FX Quotes (Q3)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — indicative vs executable. Source: applications/airwallex/interview-speeches/speech-q3.md</description>
+      <guid isPermaLink="false">208</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q3.mp3" type="audio/mpeg" length="1808492"/>
+      <itunes:duration>3:46</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Fraud AML Sanctions (Q5)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — hard then soft, fail closed. Source: applications/airwallex/interview-speeches/speech-q5.md</description>
+      <guid isPermaLink="false">207</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q5.mp3" type="audio/mpeg" length="1943468"/>
+      <itunes:duration>4:02</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Reconciliation (Q7)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — match, case, repair journals. Source: applications/airwallex/interview-speeches/speech-q7.md</description>
+      <guid isPermaLink="false">206</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q7.mp3" type="audio/mpeg" length="1978604"/>
+      <itunes:duration>4:07</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: AgentOS Assistant (Q10)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — untrusted planner, policy tiers. Source: applications/airwallex/interview-speeches/speech-q10.md</description>
+      <guid isPermaLink="false">205</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q10.mp3" type="audio/mpeg" length="2352428"/>
+      <itunes:duration>4:53</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Webhook Delivery (Q9)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — outbox, backoff, SSRF. Source: applications/airwallex/interview-speeches/speech-q9.md</description>
+      <guid isPermaLink="false">204</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q9.mp3" type="audio/mpeg" length="2415980"/>
+      <itunes:duration>5:01</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Payment Gateway API (Q2)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — idempotent accept, bulkheads. Source: applications/airwallex/interview-speeches/speech-q2.md</description>
+      <guid isPermaLink="false">203</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q2.mp3" type="audio/mpeg" length="2624684"/>
+      <itunes:duration>5:28</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Cross-Border Payment (Q1)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — state machine, unknown timeout. Source: applications/airwallex/interview-speeches/speech-q1.md</description>
+      <guid isPermaLink="false">202</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q1.mp3" type="audio/mpeg" length="2607404"/>
+      <itunes:duration>5:25</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Double-Entry Ledger (Q4L)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — journal SoT, outbox. Source: applications/airwallex/interview-speeches/speech-q4l.md</description>
+      <guid isPermaLink="false">201</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q4l.mp3" type="audio/mpeg" length="2998892"/>
+      <itunes:duration>6:14</itunes:duration>
+    </item>
+    <item>
+      <title>Awx Speech: Distributed Wallet (Q4W)</title>
+      <description>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — Raft, SM, dedup, CQRS. Source: applications/airwallex/interview-speeches/speech-q4w.md</description>
+      <guid isPermaLink="false">200</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q4w.mp3" type="audio/mpeg" length="4279340"/>
+      <itunes:duration>8:54</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Financial AI Assistant / AgentOS</title>
+      <description>LLM as untrusted planner, never the authorization layer. Tiered action model (Tier 0-3), deterministic policy engine, tool allowlists, server-generated payment intents with canonical summaries, prompt injection defense (6 layers), RAG for documentation, permissioned APIs for account data, step-up authentication for money movement, cross-tenant isolation at infrastructure level.</description>
+      <guid isPermaLink="false">87</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-financial-ai-assistant.mp3" type="audio/mpeg" length="8541932"/>
+      <itunes:duration>17:47</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Webhook &amp; Event Delivery Platform</title>
+      <description>Transactional outbox pattern for guaranteed event creation, at-least-once delivery with merchant deduplication, per-endpoint queues for tenant isolation, HMAC-signed payloads with timestamp, SSRF protection (DNS rebinding, private IP blocks, redirect limits), exponential backoff with jitter, event replay, and event-list API for recovery.</description>
+      <guid isPermaLink="false">86</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-webhook-delivery.mp3" type="audio/mpeg" length="8100716"/>
+      <itunes:duration>16:52</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Bulk Payouts &amp; Batch Payments</title>
+      <description>Million-row batch processing with streaming validation, deterministic item keys for idempotency, partner-sharded work queues with rate limits, lease-based worker claims, aggregate funding reservation, partial cancellation semantics, and downloadable results. All-or-nothing for validation/funding, independent per-item execution.</description>
+      <guid isPermaLink="false">85</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-bulk-payouts.mp3" type="audio/mpeg" length="8029868"/>
+      <itunes:duration>16:43</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Bank &amp; Partner Reconciliation</title>
+      <description>Reconciliation as a continuous control system, not a nightly report. Immutable evidence ingestion, multi-phase matching algorithm (exact reference then fuzzy candidates), aggregate balance control, exception case management, safe repairs via compensating journals. Zero tolerance for unexplained money differences.</description>
+      <guid isPermaLink="false">84</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-reconciliation.mp3" type="audio/mpeg" length="7435628"/>
+      <itunes:duration>15:29</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Card Authorization &amp; Issuing Platform</title>
+      <description>Authorization hold lifecycle, atomic check-and-reserve, deduplication by network transaction ID, clearing matching, partial clearing and incremental authorizations, disputes, stand-in mode with bounded offline limits, and card controls. 150ms SLA for real-time authorization decisions.</description>
+      <guid isPermaLink="false">83</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-card-issuing.mp3" type="audio/mpeg" length="7552940"/>
+      <itunes:duration>15:44</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Multi-Currency Wallet &amp; Double-Entry Ledger</title>
+      <description>Immutable double-entry journal as source of truth, balance projections for reads, atomic reserve/settle/release flows, optimistic concurrency with version checks, FX conversion with balanced legs per currency, rounding entries, and balance rebuild from journal replay. Covers the same fundamentals as Airwallex's core ledger system.</description>
+      <guid isPermaLink="false">82</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-wallet-ledger.mp3" type="audio/mpeg" length="8602604"/>
+      <itunes:duration>17:55</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: KYC/Onboarding System</title>
+      <description>Multi-jurisdiction KYC, fuzzy name matching (double metaphone + Levenshtein), risk scoring, ongoing monitoring, GDPR pseudonymization, KYC GenAI for false positive reduction, 5-min auto-approval.</description>
+      <guid isPermaLink="false">81</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-kyc-onboarding.mp3" type="audio/mpeg" length="9623276"/>
+      <itunes:duration>20:02</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Idempotent API for Financial Operations</title>
+      <description>Client-generated idempotency keys, Redis for speed + PostgreSQL for truth, same-transaction atomicity, unique constraint dedup, saga step idempotency, background reaper for stale records.</description>
+      <guid isPermaLink="false">80</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-idempotent-api.mp3" type="audio/mpeg" length="9560492"/>
+      <itunes:duration>19:54</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Low-Latency FX Pricing System</title>
+      <description>WebSocket price streaming, sub-100ms end-to-end, best bid/ask aggregation across providers, backpressure throttling, indicative vs tradeable rates, rate audit trail for regulators.</description>
+      <guid isPermaLink="false">79</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-fx-pricing.mp3" type="audio/mpeg" length="11498156"/>
+      <itunes:duration>23:57</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Multi-Region Global Infrastructure</title>
+      <description>Active-active reads, leader-per-entity writes, synchronous replication, RPO &lt;1min, RTO &lt;5min, data sovereignty per jurisdiction, split-brain prevention, chaos engineering drills.</description>
+      <guid isPermaLink="false">78</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-multi-region.mp3" type="audio/mpeg" length="12685100"/>
+      <itunes:duration>26:25</itunes:duration>
+    </item>
+    <item>
+      <title>System Design Q&amp;A — Power Answers</title>
+      <description>Deep Q&amp;A covering the 12 Airwallex interview topics — 5 generic plus 7 domain-specific. For each: killer questions interviewers ask, structured answers that score, common mistakes that lose points, and cross-cutting patterns like RESHADED.</description>
+      <guid isPermaLink="false">77</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-sdqa.mp3" type="audio/mpeg" length="17883116"/>
+      <itunes:duration>37:15</itunes:duration>
+    </item>
+    <item>
+      <title>Back-of-Envelope Estimation Masterclass</title>
+      <description>Every number you need for system design interviews, organized around 12 real interview problems. Power numbers, latency defaults, throughput benchmarks, fintech-specific numbers, and how to derive any number from first principles when you forget.</description>
+      <guid isPermaLink="false">76</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-boe.mp3" type="audio/mpeg" length="17240300"/>
+      <itunes:duration>35:54</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Fraud Detection System</title>
+      <description>Design a fraud detection system with rule-based + ML ensemble scoring, real-time feature engineering (velocity, amount, location, behavioral), point-in-time correctness, and feedback loops for model improvement. Covers Airwallex's approach to global transaction monitoring with low false-positive rates.</description>
+      <guid isPermaLink="false">75</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-fraud-detection.mp3" type="audio/mpeg" length="17239532"/>
+      <itunes:duration>35:54</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Feature Store / ML Infrastructure</title>
+      <description>Design a feature store like Airwallex's AirSkiff: batch/streaming unification where the same feature logic works for both real-time and batch, point-in-time joins to prevent ML data leakage, low-latency online serving (2-150ms), and a feature registry for cross-team reuse. 100+ features, 10K TPS serving.</description>
+      <guid isPermaLink="false">74</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-feature-store.mp3" type="audio/mpeg" length="17620460"/>
+      <itunes:duration>36:42</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Global Treasury Network</title>
+      <description>Design a global treasury network for multi-entity cash management: notional pooling, zero-balancing sweeps, payment netting to reduce FX costs, inter-company settlements, and per-jurisdiction regulatory constraints. Covers the same challenges Airwallex faces connecting 50+ countries with capital controls.</description>
+      <guid isPermaLink="false">73</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-global-treasury.mp3" type="audio/mpeg" length="17452844"/>
+      <itunes:duration>36:21</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Metrics &amp; Monitoring Pipeline</title>
+      <description>Designing time-series storage, cardinality control, and SLO-driven alerting. Generic system design mock interview.</description>
+      <guid isPermaLink="false">72</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-metrics-pipeline.mp3" type="audio/mpeg" length="17482028"/>
+      <itunes:duration>36:25</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Job Scheduler</title>
+      <description>Designing reliable job scheduling with idempotency, retry, and failure handling. Generic system design mock interview.</description>
+      <guid isPermaLink="false">71</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-job-scheduler.mp3" type="audio/mpeg" length="17703980"/>
+      <itunes:duration>36:52</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Security Automation Platform</title>
+      <description>Design a security automation platform like the CVE lifecycle system: overnight AI diagnosis, morning dashboard with triaged findings, built-in discussion bot, one-click remediation. Covers SAST/DAST/SCA integration, transitive dependency scanning, and shadow-mode validation — matching Airwallex's security-first fintech requirements.</description>
+      <guid isPermaLink="false">70</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-security-automation.mp3" type="audio/mpeg" length="18457004"/>
+      <itunes:duration>38:27</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: AI Agent Platform (AgentOS)</title>
+      <description>Design Airwallex's AgentOS platform: plugin-based AI agents with sandboxed execution, natural-language intent parsing, real-time policy enforcement, and audit trails. Covers the SDD (Spec-Driven Development) pipeline where agents produce specs, users approve, and code is verified against the spec.</description>
+      <guid isPermaLink="false">69</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-ai-agent-platform.mp3" type="audio/mpeg" length="20816300"/>
+      <itunes:duration>43:21</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Wallet (Auticuro)</title>
+      <description>Design a distributed wallet using Airwallex's Auticuro architecture: single-threaded state machine with NO LOCKS, Raft consensus for strong consistency, RocksDB WriteBatch for atomic persistence, client-provided dedup_id for exactly-once semantics. P99 &lt; 20ms at 10K TPS. CQRS with 4-thread design per node.</description>
+      <guid isPermaLink="false">68</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-distributed-wallet.mp3" type="audio/mpeg" length="18884588"/>
+      <itunes:duration>39:20</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Ride Sharing (Uber)</title>
+      <description>Designing driver matching, surge pricing, and real-time location tracking. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
+      <guid isPermaLink="false">67</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-ride-sharing.mp3" type="audio/mpeg" length="17098220"/>
+      <itunes:duration>35:37</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Video Streaming (YouTube)</title>
+      <description>Designing video upload, transcoding, CDN delivery, and adaptive bitrate. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
+      <guid isPermaLink="false">66</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-video-streaming.mp3" type="audio/mpeg" length="18071276"/>
+      <itunes:duration>37:38</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Rate Limiter</title>
+      <description>Designing API rate limiting with token bucket and distributed counters. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
+      <guid isPermaLink="false">65</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-rate-limiter.mp3" type="audio/mpeg" length="17763308"/>
+      <itunes:duration>37:00</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Key-Value Store</title>
+      <description>Designing a DynamoDB-like KV store with consistent hashing and quorum. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
+      <guid isPermaLink="false">64</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-key-value-store.mp3" type="audio/mpeg" length="16622636"/>
+      <itunes:duration>34:37</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Web Crawler</title>
+      <description>Designing a scalable distributed web crawler with politeness and dedup. Two-voice mock interview with e2e walkthrough and thinking beats.</description>
+      <guid isPermaLink="false">63</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-web-crawler.mp3" type="audio/mpeg" length="17888108"/>
+      <itunes:duration>37:15</itunes:duration>
+    </item>
+    <item>
+      <title>UPI System Design — Gaurav Sen Mock Interview</title>
+      <description>YouTube-extracted mock system design interview: designing India's UPI payment system with Gaurav Sen.</description>
+      <guid isPermaLink="false">62</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-upi-gaurav.mp3" type="audio/mpeg" length="29905004"/>
+      <itunes:duration>36:00</itunes:duration>
+    </item>
+    <item>
+      <title>Design TikTok — Google TPM Mock Interview</title>
+      <description>YouTube-extracted mock system design interview: designing TikTok with a Google Technical Program Manager.</description>
+      <guid isPermaLink="false">61</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-tiktok.mp3" type="audio/mpeg" length="26885228"/>
+      <itunes:duration>32:00</itunes:duration>
+    </item>
+    <item>
+      <title>Design Messenger/WhatsApp — Ex-Google SWE</title>
+      <description>YouTube-extracted expert system design interview: designing Facebook Messenger and WhatsApp with an ex-Google SWE.</description>
+      <guid isPermaLink="false">60</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-messenger-whatsapp.mp3" type="audio/mpeg" length="25279340"/>
+      <itunes:duration>26:00</itunes:duration>
+    </item>
+    <item>
+      <title>Design Uber Eats — Netflix Engineer</title>
+      <description>YouTube-extracted expert system design interview: designing Uber Eats with a senior Netflix engineer. Real interview walkthrough.</description>
+      <guid isPermaLink="false">59</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-uber-eats.mp3" type="audio/mpeg" length="54247148"/>
+      <itunes:duration>42:00</itunes:duration>
+    </item>
+    <item>
+      <title>Design a Payment System — Expert Interview</title>
+      <description>YouTube-extracted expert system design interview: designing a payment system like Stripe. Real interview walkthrough with an experienced engineer.</description>
+      <guid isPermaLink="false">58</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/yt-payment-system.mp3" type="audio/mpeg" length="39217388"/>
+      <itunes:duration>56:00</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Location-Based Service</title>
+      <description>Full mock system design interview: designing nearby-driver search and real-time location tracking using geohash, quadtree, and S2 geometry. Two-voice dialogue.</description>
+      <guid isPermaLink="false">57</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-location-service.mp3" type="audio/mpeg" length="13129964"/>
+      <itunes:duration>27:21</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Real-Time Chat</title>
+      <description>Full mock system design interview: designing a WhatsApp-like messaging system with WebSocket delivery, read receipts, and group chat fan-out. Two-voice dialogue.</description>
+      <guid isPermaLink="false">56</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-chat-system.mp3" type="audio/mpeg" length="13394540"/>
+      <itunes:duration>27:54</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Top-K / Heavy Hitters</title>
+      <description>Full mock system design interview: finding the most frequent items in a data stream at scale using Count-Min Sketch, heaps, and sliding window algorithms. Two-voice dialogue.</description>
+      <guid isPermaLink="false">55</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-top-k-heavy-hitters.mp3" type="audio/mpeg" length="12894188"/>
+      <itunes:duration>26:51</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: FX &amp; Multi-Currency Ledger</title>
+      <description>Design an FX rate engine with provider aggregation, rate locking with TTL, and a per-currency double-entry ledger with three-entry cross-currency transfers. Covers the same fundamentals as Airwallex's real-time FX engine serving 130+ currency pairs.</description>
+      <guid isPermaLink="false">54</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-fx-ledger.mp3" type="audio/mpeg" length="13143212"/>
+      <itunes:duration>27:22</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Object Storage (S3)</title>
+      <description>Full mock system design interview: designing a durable object storage system with erasure coding, multipart upload, and 11-nines durability. Two-voice dialogue.</description>
+      <guid isPermaLink="false">53</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-object-storage.mp3" type="audio/mpeg" length="12951404"/>
+      <itunes:duration>26:58</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Typeahead / Search Autocomplete</title>
+      <description>Full mock system design interview: designing a sub-50ms autocomplete system using tries, pre-computed suggestions, and Lambda architecture for freshness. Two-voice dialogue.</description>
+      <guid isPermaLink="false">52</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-typeahead-search.mp3" type="audio/mpeg" length="12626348"/>
+      <itunes:duration>26:18</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Notification System</title>
+      <description>Full mock system design interview: designing a multi-channel notification system supporting push, email, and SMS with templates, preferences, and delivery tracking. Two-voice dialogue.</description>
+      <guid isPermaLink="false">51</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-notification-system.mp3" type="audio/mpeg" length="13154540"/>
+      <itunes:duration>27:24</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Distributed Cache</title>
+      <description>Full mock system design interview: designing a Redis-like distributed caching system with consistent hashing, virtual nodes, replication, and rebalancing. Two-voice dialogue.</description>
+      <guid isPermaLink="false">50</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-distributed-cache.mp3" type="audio/mpeg" length="14930732"/>
+      <itunes:duration>31:06</itunes:duration>
+    </item>
+    <item>
+      <title>Mock Interview: Cross-Border Payments</title>
+      <description>Design a cross-border payment pipeline with FX conversion, idempotency keys, compliance screening, and bank connector adapters. Covers the full saga pattern with compensating actions — the same architecture Airwallex uses for multi-currency transfers across 50+ countries.</description>
+      <guid isPermaLink="false">49</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-cross-border-payments.mp3" type="audio/mpeg" length="15868460"/>
+      <itunes:duration>33:03</itunes:duration>
+    </item>
     <item>
       <title>API Gateway Explained (ByteByteGo)</title>
       <description>What an API gateway does: authentication, rate limiting, request routing, protocol translation, and service discovery. How it fits into a microservices architecture.</description>
-      <itunes:summary>What an API gateway does: authentication, rate limiting, request routing, protocol translation, and service discovery. How it fits into a microservices architecture.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/bytebytego-api-gateway.mp3" length="3297068" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/bytebytego-api-gateway.mp3</guid>
-      <pubDate>2026-07-17T06:00:00+10:00</pubDate>
-      <duration>10:00</duration>
+      <guid isPermaLink="false">28</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-bb-api-gateway.mp3" type="audio/mpeg" length="3297068"/>
+      <itunes:duration>10:00</itunes:duration>
     </item>
     <item>
       <title>How a URL Shortener Works — System Design Walkthrough (ByteByteGo)</title>
       <description>End-to-end system design for a URL shortener: hash functions, base62 encoding, database schema, caching strategy, and scaling to millions of URLs.</description>
-      <itunes:summary>End-to-end system design for a URL shortener: hash functions, base62 encoding, database schema, caching strategy, and scaling to millions of URLs.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/bytebytego-url-shortener.mp3" length="6463916" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/bytebytego-url-shortener.mp3</guid>
-      <pubDate>2026-07-16T06:00:00+10:00</pubDate>
-      <duration>10:00</duration>
+      <guid isPermaLink="false">27</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-bb-url-shortener.mp3" type="audio/mpeg" length="6463916"/>
+      <itunes:duration>10:00</itunes:duration>
     </item>
     <item>
       <title>Rate Limiter Design — Token Bucket &amp; Leaky Bucket (ByteByteGo)</title>
       <description>Token bucket, leaky bucket, fixed window, sliding window — the four rate limiting algorithms explained. How to scale rate limiters in a distributed system.</description>
-      <itunes:summary>Token bucket, leaky bucket, fixed window, sliding window — the four rate limiting algorithms explained. How to scale rate limiters in a distributed system.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/bytebytego-rate-limiter.mp3" length="7450412" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/bytebytego-rate-limiter.mp3</guid>
-      <pubDate>2026-07-15T06:00:00+10:00</pubDate>
-      <duration>10:00</duration>
+      <guid isPermaLink="false">26</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-bb-rate-limiter.mp3" type="audio/mpeg" length="7450412"/>
+      <itunes:duration>10:00</itunes:duration>
     </item>
     <item>
       <title>CAP Theorem Simplified (ByteByteGo)</title>
       <description>Why distributed systems must choose between Consistency, Availability, and Partition Tolerance. Clear explanation with real-world database examples (CP vs AP systems).</description>
-      <itunes:summary>Why distributed systems must choose between Consistency, Availability, and Partition Tolerance. Clear explanation with real-world database examples (CP vs AP systems).</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/bytebytego-cap-theorem.mp3" length="5314604" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/bytebytego-cap-theorem.mp3</guid>
-      <pubDate>2026-07-14T06:00:00+10:00</pubDate>
-      <duration>10:00</duration>
+      <guid isPermaLink="false">25</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-bb-cap-theorem.mp3" type="audio/mpeg" length="5314604"/>
+      <itunes:duration>10:00</itunes:duration>
     </item>
     <item>
       <title>Consistent Hashing Explained (ByteByteGo)</title>
       <description>Visual explainer on consistent hashing — how distributed systems assign keys to nodes and minimize redistribution when nodes are added or removed. Core concept for sharding and distributed caches.</description>
-      <itunes:summary>Visual explainer on consistent hashing — how distributed systems assign keys to nodes and minimize redistribution when nodes are added or removed. Core concept for sharding and distributed caches.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/bytebytego-consistent-hashing.mp3" length="7738796" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/bytebytego-consistent-hashing.mp3</guid>
-      <pubDate>2026-07-13T06:00:00+10:00</pubDate>
-      <duration>10:00</duration>
+      <guid isPermaLink="false">24</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-bb-consistent-hashing.mp3" type="audio/mpeg" length="7738796"/>
+      <itunes:duration>10:00</itunes:duration>
     </item>
     <item>
       <title>Message Queues &amp; Event-Driven Architecture — Patterns &amp; Tradeoffs</title>
       <description>Chris Patterson (MassTransit creator) on message brokers vs event streaming, sagas vs routing slips, transactional outbox pattern, dead-letter queues. Transport-agnostic architectural patterns for distributed systems.</description>
-      <itunes:summary>Chris Patterson (MassTransit creator) on message brokers vs event streaming, sagas vs routing slips, transactional outbox pattern, dead-letter queues. Transport-agnostic architectural patterns for distributed systems.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/se654-event-driven-message-queues.mp3" length="102085202" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/se654-event-driven-message-queues.mp3</guid>
-      <pubDate>2026-07-12T06:00:00+10:00</pubDate>
-      <duration>60:00</duration>
+      <guid isPermaLink="false">23</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-se654-event-driven-message-queues.mp3" type="audio/mpeg" length="102085202"/>
+      <itunes:duration>60:00</itunes:duration>
     </item>
     <item>
       <title>Rate Limiting &amp; High-Traffic Systems — Real Incident Walkthrough</title>
       <description>Mojtaba Sarooghi (Queue-it) on handling flash traffic: 100K to 100M requests in one minute, cold-start failures, DynamoDB at 200K TPS, rate limiting algorithms, and bot detection (98% of traffic is bots during ticket drops).</description>
-      <itunes:summary>Mojtaba Sarooghi (Queue-it) on handling flash traffic: 100K to 100M requests in one minute, cold-start failures, DynamoDB at 200K TPS, rate limiting algorithms, and bot detection (98% of traffic is bots during ticket drops).</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/se700-waiting-rooms-high-traffic.mp3" length="100153206" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/se700-waiting-rooms-high-traffic.mp3</guid>
-      <pubDate>2026-07-11T06:00:00+10:00</pubDate>
-      <duration>60:00</duration>
+      <guid isPermaLink="false">22</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-se700-waiting-rooms-high-traffic.mp3" type="audio/mpeg" length="100153206"/>
+      <itunes:duration>60:00</itunes:duration>
     </item>
     <item>
       <title>Event Sourcing &amp; CQRS — Architecture Deep Dive</title>
       <description>Martin Dilger (author of Understanding Event Sourcing) explains event stores, projections, CQRS, event versioning, and why Kafka is NOT an event store. Practical adoption strategy: 2-day modeling workshop + 1-day build.</description>
-      <itunes:summary>Martin Dilger (author of Understanding Event Sourcing) explains event stores, projections, CQRS, event versioning, and why Kafka is NOT an event store. Practical adoption strategy: 2-day modeling workshop + 1-day build.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/se720-eventsourcing.mp3" length="82633719" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/se720-eventsourcing.mp3</guid>
-      <pubDate>2026-07-10T06:00:00+10:00</pubDate>
-      <duration>60:00</duration>
+      <guid isPermaLink="false">21</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-se720-eventsourcing.mp3" type="audio/mpeg" length="82633719"/>
+      <itunes:duration>60:00</itunes:duration>
     </item>
     <item>
       <title>System Design Interviews — The Complete Framework</title>
       <description>Sriram Panyam (ex-Google, ex-LinkedIn) breaks down the system design interview: 5-phase approach, 25 canonical problems, what interviewers look for at each level, and the key mindset shift from buzzword-driven to requirement-driven design. The single best SDI resource.</description>
-      <itunes:summary>Sriram Panyam (ex-Google, ex-LinkedIn) breaks down the system design interview: 5-phase approach, 25 canonical problems, what interviewers look for at each level, and the key mindset shift from buzzword-driven to requirement-driven design. The single best SDI resource.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/system-design/se704-system-design-interviews.mp3" length="67324801" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/system-design/se704-system-design-interviews.mp3</guid>
-      <pubDate>2026-07-09T06:00:00+10:00</pubDate>
-      <duration>60:00</duration>
+      <guid isPermaLink="false">20</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/sd-se704-system-design-interviews.mp3" type="audio/mpeg" length="67324801"/>
+      <itunes:duration>60:00</itunes:duration>
     </item>
     <item>
       <title>System Design: Scalability Fundamentals</title>
       <description>============================================================ System Design Playlist — Auto-generated Episode Date: 2026-07-08 Concepts: Scalability Fundamentals, CAP Theorem, SQL Fundamentals ============================================================  [INTRO — 30 sec]  Welcome to the System Design Playlist. You're in phase 1 with 0 concepts mastered out of 25. Today we're reviewing 3 concepts that are due for spaced repetition.   ============================================================ SEG</description>
-      <itunes:summary>============================================================ System Design Playlist — Auto-generated Episode Date: 2026-07-08 Concepts: Scalability Fundamentals, CAP Theorem, SQL Fundamentals ============================================================  [INTRO — 30 sec]  Welcome to the System Design Playlist. You're in phase 1 with 0 concepts mastered out of 25. Today we're reviewing 3 concepts that are due for spaced repetition.   ============================================================ SEG</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08.mp3" length="3577824" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-08.mp3</guid>
-      <pubDate>2026-07-08T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">19</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08.mp3" type="audio/mpeg" length="3577824"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>Airwallex Prepared Q&amp;A — 7 Key Interview Questions</title>
       <description>Special practice episode: prepared answers for 7 key interview questions. Tell me about yourself, Why this company, Why leaving current role, Built something from zero, Worked with non-engineers, Security approach, What you're looking for. Each uses STAR-LA or Structure-First with your real stories. Includes key numbers quick reference.</description>
-      <itunes:summary>Special practice episode: prepared answers for 7 key interview questions. Tell me about yourself, Why this company, Why leaving current role, Built something from zero, Worked with non-engineers, Security approach, What you're looking for. Each uses STAR-LA or Structure-First with your real stories. Includes key numbers quick reference.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08b-prepared-qa.mp3" length="5889260" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-08b-prepared-qa.mp3</guid>
-      <pubDate>2026-07-08T06:00:00+10:00</pubDate>
-      <duration>12:16</duration>
+      <guid isPermaLink="false">18</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08b-prepared-qa.mp3" type="audio/mpeg" length="5889260"/>
+      <itunes:duration>12:16</itunes:duration>
     </item>
     <item>
       <title>Self-Introduction Practice — Present-Past-Future</title>
       <description>Special practice episode: your self-introduction using the Present-Past-Future framework. Covers trading systems experience, legacy migration, early coding agent adoption, vulnerability platform, security tool ($100K+ subscription replacement), internal dev platform, outside interests, and the interview close. Includes section-by-section breakdown, memory anchors, and a 60-second backup.</description>
-      <itunes:summary>Special practice episode: your self-introduction using the Present-Past-Future framework. Covers trading systems experience, legacy migration, early coding agent adoption, vulnerability platform, security tool ($100K+ subscription replacement), internal dev platform, outside interests, and the interview close. Includes section-by-section breakdown, memory anchors, and a 60-second backup.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08a-self-intro.mp3" length="4694636" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-08a-self-intro.mp3</guid>
-      <pubDate>2026-07-08T06:00:00+10:00</pubDate>
-      <duration>9:47</duration>
+      <guid isPermaLink="false">17</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-08a-self-intro.mp3" type="audio/mpeg" length="4694636"/>
+      <itunes:duration>9:47</itunes:duration>
     </item>
     <item>
       <title>What I'm really looking for is... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 16, July 07, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 16, July 07, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-07.mp3" length="10175616" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-07.mp3</guid>
-      <pubDate>2026-07-07T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">16</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-07.mp3" type="audio/mpeg" length="10175616"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>What clicked for me was... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 15, July 07, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 15, July 07, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-07.mp3" length="10231920" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-07.mp3</guid>
-      <pubDate>2026-07-07T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">15</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-07.mp3" type="audio/mpeg" length="10231920"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>The way I see it is... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 14, July 06, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 14, July 06, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" length="10109520" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-06.mp3</guid>
-      <pubDate>2026-07-06T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">14</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" type="audio/mpeg" length="10109520"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>Over time I became the... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 13, July 06, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 13, July 06, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" length="10141056" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-06.mp3</guid>
-      <pubDate>2026-07-06T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">13</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" type="audio/mpeg" length="10141056"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>What I'm really looking for is... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 12, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 12, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="10206576" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">12</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="10206576"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>What clicked for me was... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 11, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 11, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="10216080" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">11</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="10216080"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>That's a great question. Let me think about that for a moment. — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 10, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 10, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Six English patterns you can use in real engineering conversations. Three interview frameworks to structure your answers. A discussion of today's article. A deep dive into one pattern with multiple real-world scenarios. And a review of patterns from earlier this week.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="9947948" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">10</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="9947948"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>To give you a concrete example... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 9, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Four English patterns you can use in real engineering conversations. Two interview frameworks to structure your answers. A discussion of today's article. And a review of patterns from earlier this week.  Let's get started.  ── Pattern 1 of 4: &quot;To give you a concrete exam</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 9, July 05, 2026.  I'm your host, and this is your daily 30-minute practice session for software engineers preparing for English-language interviews.  Here's what we're covering today. Four English patterns you can use in real engineering conversations. Two interview frameworks to structure your answers. A discussion of today's article. And a review of patterns from earlier this week.  Let's get started.  ── Pattern 1 of 4: &quot;To give you a concrete exam</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="3734828" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">9</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="3734828"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>This resulted in... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 8, July 05, 2026.  Today's pattern: &quot;This resulted in...&quot;  Simple, direct cause-to-effect. Always follow with a number or specific outcome.  Here are three examples. Repeat each one out loud after me.  Example 1. This resulted in the CVE workload dropping by 80 percent within the first month.  Example 2. This resulted in the BA team adopting the agents without any formal rollout — they just started using them.  Example 3. This resulted in us shipping t</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 8, July 05, 2026.  Today's pattern: &quot;This resulted in...&quot;  Simple, direct cause-to-effect. Always follow with a number or specific outcome.  Here are three examples. Repeat each one out loud after me.  Example 1. This resulted in the CVE workload dropping by 80 percent within the first month.  Example 2. This resulted in the BA team adopting the agents without any formal rollout — they just started using them.  Example 3. This resulted in us shipping t</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="675116" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">8</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="675116"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>I haven't worked directly with that. What I can tell you is... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 7, July 05, 2026.  Today's pattern: &quot;I haven't worked directly with that. What I can tell you is...&quot;  Honest about gaps, confident about adjacent experience. Transforms a weakness into a demonstration of learning ability.  Here are three examples. Repeat each one out loud after me.  Example 1. I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 7, July 05, 2026.  Today's pattern: &quot;I haven't worked directly with that. What I can tell you is...&quot;  Honest about gaps, confident about adjacent experience. Transforms a weakness into a demonstration of learning ability.  Here are three examples. Repeat each one out loud after me.  Example 1. I haven't worked directly with Kubernetes at that scale. What I can tell you is that I've designed distributed systems handling 50K requests per second, and the</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="761324" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">7</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="761324"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>To put a finer point on it... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 6, July 05, 2026.  Today's pattern: &quot;To put a finer point on it...&quot;  Refines a previous statement to be more precise or impactful. Shows you're thinking critically about your own words.  Here are three examples. Repeat each one out loud after me.  Example 1. To put a finer point on it — we didn't just speed up triage. We eliminated the need for manual triage entirely.  Example 2. To put a finer point on it — the real innovation wasn't the AI. It was re</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 6, July 05, 2026.  Today's pattern: &quot;To put a finer point on it...&quot;  Refines a previous statement to be more precise or impactful. Shows you're thinking critically about your own words.  Here are three examples. Repeat each one out loud after me.  Example 1. To put a finer point on it — we didn't just speed up triage. We eliminated the need for manual triage entirely.  Example 2. To put a finer point on it — the real innovation wasn't the AI. It was re</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="730604" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">6</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="730604"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>What I'd really highlight is... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 5, July 05, 2026.  Today's pattern: &quot;What I'd really highlight is...&quot;  Directs attention to the most important part. Shows you know what matters and what's detail.  Here are three examples. Repeat each one out loud after me.  Example 1. What I'd really highlight is that the adoption was organic — nobody mandated these tools.  Example 2. What I'd really highlight is how the team's velocity changed after we rebuilt the workflow.  Example 3. What I'd real</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 5, July 05, 2026.  Today's pattern: &quot;What I'd really highlight is...&quot;  Directs attention to the most important part. Shows you know what matters and what's detail.  Here are three examples. Repeat each one out loud after me.  Example 1. What I'd really highlight is that the adoption was organic — nobody mandated these tools.  Example 2. What I'd really highlight is how the team's velocity changed after we rebuilt the workflow.  Example 3. What I'd real</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="668780" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">5</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="668780"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>That said... — Three Ways to Say I Don't Know</title>
       <description>Welcome to Daily Interview English. Episode 4, July 05, 2026.  Today's pattern: &quot;That said...&quot;  Introduces a counterpoint or qualification. More natural than 'however' in speech.  Here are three examples. Repeat each one out loud after me.  Example 1. That said, the trade-off was worth it given the timeline we were working with.  Example 2. That said, I'd do the migration differently if I were starting today.  Example 3. That said, the approach worked well for our scale and I'd recommend it for</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 4, July 05, 2026.  Today's pattern: &quot;That said...&quot;  Introduces a counterpoint or qualification. More natural than 'however' in speech.  Here are three examples. Repeat each one out loud after me.  Example 1. That said, the trade-off was worth it given the timeline we were working with.  Example 2. That said, I'd do the migration differently if I were starting today.  Example 3. That said, the approach worked well for our scale and I'd recommend it for</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="798380" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">4</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="798380"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>The way I see it is... — STAR-LA Framework</title>
       <description>Welcome to Daily Interview English. Episode 3, July 05, 2026.  Today's episode draws from Changelog: &quot;From open source hits to OpenAI (Interview)&quot;.  Today's pattern: &quot;The way I see it is...&quot;  States an opinion without sounding rigid. Signals 'this is my view but I'm open to discussion.'  Here are three examples. Repeat each one out loud after me.  Example 1. The way I see it is, we should optimize for latency first and add caching layers later.  Example 2. The way I see it is, this trade-off fav</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 3, July 05, 2026.  Today's episode draws from Changelog: &quot;From open source hits to OpenAI (Interview)&quot;.  Today's pattern: &quot;The way I see it is...&quot;  States an opinion without sounding rigid. Signals 'this is my view but I'm open to discussion.'  Here are three examples. Repeat each one out loud after me.  Example 1. The way I see it is, we should optimize for latency first and add caching layers later.  Example 2. The way I see it is, this trade-off fav</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="870336" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">3</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="870336"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>What clicked for me was... — 4-Second Pause Protocol</title>
       <description>Welcome to Daily Interview English. Episode 2, July 05, 2026.  Today's episode draws from Changelog: &quot;From open source hits to OpenAI (Interview)&quot;.  Today's pattern: &quot;What clicked for me was...&quot;  Use this to explain a key realization or motivation. It's more natural than 'I realized' and signals genuine insight.  Here are three examples. Repeat each one out loud after me.  Example 1. What clicked for me was realizing that coding agents let me build software tailored to a team's exact workflow.</description>
-      <itunes:summary>Welcome to Daily Interview English. Episode 2, July 05, 2026.  Today's episode draws from Changelog: &quot;From open source hits to OpenAI (Interview)&quot;.  Today's pattern: &quot;What clicked for me was...&quot;  Use this to explain a key realization or motivation. It's more natural than 'I realized' and signals genuine insight.  Here are three examples. Repeat each one out loud after me.  Example 1. What clicked for me was realizing that coding agents let me build software tailored to a team's exact workflow.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" length="721440" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-05.mp3</guid>
-      <pubDate>2026-07-05T06:00:00+10:00</pubDate>
-      <duration>5:00</duration>
+      <guid isPermaLink="false">2</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-05.mp3" type="audio/mpeg" length="721440"/>
+      <itunes:duration>5:00</itunes:duration>
     </item>
     <item>
       <title>The Way I See It — 4-Second Pause Protocol</title>
       <description>The very first episode. Today's pattern: 'The way I see it is...' for stating opinions without sounding defensive. Plus: the 4-Second Pause Protocol for unexpected interview questions.</description>
-      <itunes:summary>The very first episode. Today's pattern: 'The way I see it is...' for stating opinions without sounding defensive. Plus: the 4-Second Pause Protocol for unexpected interview questions.</itunes:summary>
-      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" length="965664" type="audio/mpeg"/>
-      <guid>https://podcast.mingli.world/episodes/2026-07-06.mp3</guid>
-      <pubDate>2026-07-06T06:00:00+10:00</pubDate>
-      <duration>4:30</duration>
+      <guid isPermaLink="false">1</guid>
+      <pubDate>2026-07-16</pubDate>
+      <enclosure url="https://podcast.mingli.world/episodes/2026-07-06.mp3" type="audio/mpeg" length="965664"/>
+      <itunes:duration>4:30</itunes:duration>
     </item>
   </channel>
 </rss>

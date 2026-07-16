@@ -20,29 +20,50 @@ const LOGIN_HTML = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,maximum-scale=1">
-<title>Sign In</title>
+<meta name="theme-color" content="#f7f6f3">
+<title>Mingli — Sign in</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-family:system-ui,-apple-system,sans-serif}
-.card{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px;width:100%;max-width:360px}
-.logo{text-align:center;margin-bottom:24px}
-.logo h1{font-size:24px;color:#4b4b4b;font-weight:700}
-.logo p{font-size:14px;color:#999;margin-top:4px}
-label{display:block;font-size:14px;font-weight:600;color:#4b4b4b;margin-bottom:6px}
-input{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:12px;font-size:15px;outline:none;transition:border .2s}
-input:focus{border-color:#58cc02}
+body{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:#f7f6f3;color:#14161c;
+  font-family:"SF Pro Text","Segoe UI",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;padding:24px;
+}
+.card{
+  background:#fff;border:1px solid #e4e2db;border-radius:16px;
+  box-shadow:0 1px 2px rgba(20,22,28,.04),0 12px 40px rgba(20,22,28,.06);
+  padding:36px 32px;width:100%;max-width:380px;
+}
+.logo{margin-bottom:28px}
+.logo .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2f4f8f;margin-right:10px;vertical-align:middle}
+.logo h1{font-size:1.4rem;font-weight:650;letter-spacing:-.03em;display:inline;vertical-align:middle}
+.logo p{font-size:.9rem;color:#8b909d;margin-top:10px;font-weight:450;line-height:1.45}
+label{display:block;font-size:.8rem;font-weight:600;color:#4a4f5c;margin-bottom:7px;letter-spacing:.01em}
+input{
+  width:100%;padding:12px 14px;border:1px solid #e4e2db;border-radius:12px;
+  font-size:.95rem;outline:none;background:#fff;transition:border-color .15s,box-shadow .15s;
+}
+input:focus{border-color:#a8b8d8;box-shadow:0 0 0 3px rgba(47,79,143,.12)}
 .form-group{margin-bottom:16px}
-button{width:100%;padding:12px;background:#58cc02;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s}
-button:hover{background:#46a302}
+button{
+  width:100%;padding:13px;margin-top:6px;background:#14161c;color:#fff;border:none;
+  border-radius:12px;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:-.01em;
+  transition:opacity .15s;
+}
+button:hover{opacity:.92}
 button:disabled{opacity:.5;cursor:not-allowed}
-.error{font-size:13px;color:#d32f2f;background:#fde8e8;border-radius:8px;padding:8px 12px;margin-bottom:12px}
+.error{
+  font-size:.82rem;color:#9b1c1c;background:#fdecec;border:1px solid #f5c6c6;
+  border-radius:10px;padding:10px 12px;margin-bottom:14px;font-weight:500;
+}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">
-    <h1>Mingli</h1>
-    <p>Sign in to continue</p>
+    <h1><span class="dot" aria-hidden="true"></span>Mingli</h1>
+    <p>Interview prep podcast — sign in to continue</p>
   </div>
   <div id="error" style="display:none" class="error"></div>
   <form id="loginForm">
@@ -54,7 +75,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <label for="password">Password</label>
       <input id="password" type="password" autocomplete="current-password" required>
     </div>
-    <button type="submit" id="submitBtn">Sign In</button>
+    <button type="submit" id="submitBtn">Sign in</button>
   </form>
 </div>
 <script>
@@ -62,14 +83,14 @@ document.getElementById('loginForm').addEventListener('submit', async(e)=>{
   e.preventDefault();
   const btn=document.getElementById('submitBtn');
   const errEl=document.getElementById('error');
-  btn.disabled=true;btn.textContent='Signing in...';errEl.style.display='none';
+  btn.disabled=true;btn.textContent='Signing in…';errEl.style.display='none';
   try{
     const res=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:document.getElementById('username').value,password:document.getElementById('password').value})});
     if(res.ok){window.location.reload();return}
     const data=await res.json();
     errEl.textContent=data.error||'Login failed';errEl.style.display='block';
   }catch{errEl.textContent='Network error';errEl.style.display='block'}
-  finally{btn.disabled=false;btn.textContent='Sign In'}
+  finally{btn.disabled=false;btn.textContent='Sign in'}
 });
 </script>
 </body>

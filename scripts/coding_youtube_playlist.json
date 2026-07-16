@@ -1,0 +1,129 @@
+{
+  "playlist_id": "coding-youtube",
+  "title": "Coding YouTube — Audio-First",
+  "description": "NeetCode short walkthroughs ranked for pure audio: brute → optimal spoken. Pair with Coding Prep think-alouds + tutor deep drills. Personal study archive only.",
+  "icon": "🎧",
+  "videos": [
+    {
+      "id": 401,
+      "theme": "yt-coding-two-sum",
+      "title": "NeetCode: Two Sum (LC 1)",
+      "subtitle": "Day 1 · HashMap complement · audio-first",
+      "url": "https://www.youtube.com/watch?v=KLlXCFG5TnA",
+      "day": 1,
+      "pair_coding_prep": "ep01-two-sum",
+      "pair_app": "two-sum-deep-drill",
+      "audio_fit": "excellent"
+    },
+    {
+      "id": 402,
+      "theme": "yt-coding-contains-dup",
+      "title": "NeetCode: Contains Duplicate (LC 217)",
+      "subtitle": "Day 2 · HashSet seen · audio-first",
+      "url": "https://www.youtube.com/watch?v=3OamzN90kPg",
+      "day": 2,
+      "pair_coding_prep": "ep02-hashmap-family",
+      "pair_app": "hashmap-patterns",
+      "audio_fit": "excellent"
+    },
+    {
+      "id": 403,
+      "theme": "yt-coding-group-anagrams",
+      "title": "NeetCode: Group Anagrams (LC 49)",
+      "subtitle": "Day 2 · Count-key map · verbalizable",
+      "url": "https://www.youtube.com/watch?v=vzdNOK2oB2E",
+      "day": 2,
+      "pair_coding_prep": "ep02-hashmap-family",
+      "pair_app": "hashmap-patterns",
+      "audio_fit": "good"
+    },
+    {
+      "id": 404,
+      "theme": "yt-coding-top-k",
+      "title": "NeetCode: Top K Frequent (LC 347)",
+      "subtitle": "Day 2 · Bucket / heap · skip pure drawing seconds",
+      "url": "https://www.youtube.com/watch?v=YPTqKIgVk-k",
+      "day": 2,
+      "pair_coding_prep": "ep02-hashmap-family",
+      "pair_app": "hashmap-patterns",
+      "audio_fit": "good"
+    },
+    {
+      "id": 405,
+      "theme": "yt-coding-longest-substr",
+      "title": "NeetCode: Longest Substring No Repeat (LC 3)",
+      "subtitle": "Day 3 · Sliding window expand/shrink",
+      "url": "https://www.youtube.com/watch?v=wiGpQwVHdE0",
+      "day": 3,
+      "pair_coding_prep": "ep03-longest-substring",
+      "pair_app": "longest-substring-deep-drill",
+      "audio_fit": "excellent"
+    },
+    {
+      "id": 406,
+      "theme": "yt-coding-water",
+      "title": "NeetCode: Container With Most Water (LC 11)",
+      "subtitle": "Day 4 · Two pointers move shorter",
+      "url": "https://www.youtube.com/watch?v=UuiTKBwPgAo",
+      "day": 4,
+      "pair_coding_prep": "ep04-two-pointers",
+      "pair_app": "two-pointers",
+      "audio_fit": "good"
+    },
+    {
+      "id": 407,
+      "theme": "yt-coding-3sum",
+      "title": "NeetCode: 3Sum (LC 15)",
+      "subtitle": "Day 4 · Sort + two pointers + skip dups",
+      "url": "https://www.youtube.com/watch?v=jzZsG8n2R9A",
+      "day": 4,
+      "pair_coding_prep": "ep04-two-pointers",
+      "pair_app": "two-pointers",
+      "audio_fit": "good"
+    },
+    {
+      "id": 408,
+      "theme": "yt-coding-lru",
+      "title": "NeetCode: LRU Cache (LC 146)",
+      "subtitle": "Day 5 · Map + doubly linked list O(1)",
+      "url": "https://www.youtube.com/watch?v=7ABFKPK2hD4",
+      "day": 5,
+      "pair_coding_prep": "ep05-lru",
+      "pair_app": "lru-cache-deep-drill",
+      "audio_fit": "medium"
+    },
+    {
+      "id": 409,
+      "theme": "yt-coding-islands",
+      "title": "NeetCode: Number of Islands (LC 200)",
+      "subtitle": "Day 6 · BFS/DFS flood fill",
+      "url": "https://www.youtube.com/watch?v=pV2kpPD66nE",
+      "day": 6,
+      "pair_coding_prep": "ep06-islands-bfs",
+      "pair_app": "trees-graphs",
+      "audio_fit": "medium"
+    },
+    {
+      "id": 410,
+      "theme": "yt-coding-level-order",
+      "title": "NeetCode: Binary Tree Level Order (LC 102)",
+      "subtitle": "Day 6 · Queue BFS levels",
+      "url": "https://www.youtube.com/watch?v=6ZnyEApgFYg",
+      "day": 6,
+      "pair_coding_prep": "ep06-islands-bfs",
+      "pair_app": "trees-graphs",
+      "audio_fit": "good"
+    },
+    {
+      "id": 411,
+      "theme": "yt-coding-two-sum-ii",
+      "title": "NeetCode: Two Sum II Sorted (LC 167)",
+      "subtitle": "Bonus · Two pointers contrast to Day 1 map",
+      "url": "https://www.youtube.com/watch?v=cQ1Oz4ckceM",
+      "day": 1,
+      "pair_coding_prep": "ep01-two-sum",
+      "pair_app": "two-sum-deep-drill",
+      "audio_fit": "excellent"
+    }
+  ]
+}

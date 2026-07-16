@@ -5,172 +5,209 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#007aff">
-<title>Interview English</title>
+<meta name="theme-color" content="#f7f6f3">
+<title>Mingli — Interview Podcast</title>
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="apple-touch-icon" href="/artwork-192.png">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css?v=23">
 </head>
 <body>
-<div class="app">
-  <header class="app-header">
-    <h1>Interview English</h1>
-    <div class="hdr-right">
-      <button class="hdr-icon" onclick="toggleSearch()" id="searchToggle" title="Search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<div class="app" id="app">
+
+  <!-- HOME -->
+  <section class="tab on" id="tab-home" data-tab="home">
+    <header class="topbar">
+      <h1 class="brand"><span class="mark" aria-hidden="true"></span>Mingli</h1>
+      <button type="button" class="icon-btn" id="btnLogout" title="Sign out" aria-label="Sign out">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </button>
-      <button class="hdr-icon" onclick="doLogout()" title="Logout">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      </button>
+    </header>
+    <div class="scroll" id="homeScroll">
+      <p class="greet" id="greet"><strong>Listen</strong>Interview prep audio</p>
+      <div id="continueCard" class="continue-card" hidden></div>
+      <h2 class="section-label">Shows</h2>
+      <div class="show-row" id="showRow"></div>
+      <h2 class="section-label">Featured</h2>
+      <div id="featuredList" class="ep-list"></div>
     </div>
-  </header>
+  </section>
 
-  <div class="search-bar" id="searchBar" style="display:none">
-    <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input type="search" placeholder="Search patterns, frameworks..." id="searchInput" oninput="doSearch(this.value)">
-  </div>
-
-  <div class="app-content" id="appContent">
-    <div class="tab on" id="tab-home">
-      <div id="heroArea"></div>
-      <div id="statsArea"></div>
-      <div id="playlistArea"></div>
-    </div>
-
-    <div class="tab" id="tab-patterns">
-      <div class="cat-chips" id="catChips"></div>
-      <div id="patternsList"></div>
-    </div>
-
-    <div class="tab" id="tab-frameworks">
-      <div id="frameworksList"></div>
-    </div>
-
-    <div class="tab" id="tab-practice">
-      <div id="practiceList"></div>
-    </div>
-
-    <div class="tab" id="tab-playlists">
-      <div id="playlistsTabList"></div>
-    </div>
-  </div>
-
-  <div class="sticky-player" id="stickyPlayer">
-    <button class="sp-play-btn" id="spPlayBtn" onclick="togglePlay(event)">
-      <svg viewBox="0 0 24 24" id="spPlayIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    </button>
-    <div class="sp-center" onclick="openPlayer()">
-      <div class="sp-title" id="spTitle">-</div>
-      <div class="sp-playlist-label" id="spPlaylistLabel"></div>
-      <div class="sp-progress" onclick="seekFromMiniEvent(event); event.stopPropagation();">
-        <div class="sp-progress-fill" id="spProgressFill"></div>
+  <!-- LIBRARY -->
+  <section class="tab" id="tab-library" data-tab="library">
+    <header class="topbar">
+      <h1 class="brand">Library</h1>
+    </header>
+    <div class="scroll">
+      <div class="seg" id="libSeg">
+        <button type="button" class="seg-btn on" data-lib="shows">Shows</button>
+        <button type="button" class="seg-btn" data-lib="finished">Finished</button>
       </div>
+      <div id="libraryList" class="lib-list"></div>
     </div>
-    <button class="sp-next-btn" onclick="playNext(event)">
-      <svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="tab" id="tab-search" data-tab="search">
+    <header class="topbar">
+      <h1 class="brand">Search</h1>
+    </header>
+    <div class="scroll">
+      <div class="search-wrap">
+        <input type="search" id="searchInput" placeholder="Search episodes, shows, solutions…" autocomplete="off" />
+      </div>
+      <div id="searchResults" class="ep-list"></div>
+    </div>
+  </section>
+
+  <!-- ME -->
+  <section class="tab" id="tab-me" data-tab="me">
+    <header class="topbar">
+      <h1 class="brand">Account</h1>
+    </header>
+    <div class="scroll">
+      <div class="me-card">
+        <p class="me-title">Tutor drills</p>
+        <p class="me-sub">Options-only deep drills after audio. Pair each Coding Prep episode with the matching lesson.</p>
+        <a class="me-link" href="https://learn.mingli.world" target="_blank" rel="noopener">Open learn.mingli.world →</a>
+      </div>
+      <div class="me-card">
+        <p class="me-title">Solution boards</p>
+        <p class="me-sub">Toggle boards in the player for clarify → naive → optimal → edges. Not a full transcript.</p>
+      </div>
+      <button type="button" class="btn-secondary" id="btnLogout2">Sign out</button>
+    </div>
+  </section>
+
+  <!-- SHOW DETAIL -->
+  <section class="overlay" id="showDetail" hidden>
+    <header class="topbar">
+      <button type="button" class="icon-btn" id="showBack" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="brand-sm" id="showTitle">Show</h1>
+      <span class="spacer"></span>
+    </header>
+    <div class="scroll">
+      <div class="show-hero">
+        <div class="show-art" id="showArt"><span class="mono">SD</span></div>
+        <h2 id="showName"></h2>
+        <p class="show-desc" id="showDesc"></p>
+        <div class="row-btns">
+          <button type="button" class="btn-primary" id="showPlayAll">Play all</button>
+          <button type="button" class="btn-ghost" id="showQueueAll">Add to queue</button>
+        </div>
+      </div>
+      <h2 class="section-label">Episodes</h2>
+      <div id="showEpisodes" class="ep-list"></div>
+    </div>
+  </section>
+
+  <!-- FULL PLAYER -->
+  <section class="player-full" id="playerFull" hidden>
+    <header class="topbar player-top">
+      <button type="button" class="icon-btn" id="playerClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="player-show-name" id="playerShowName">Podcast</div>
+      <span class="spacer"></span>
+    </header>
+
+    <div class="player-main" id="playerMain">
+      <div class="player-art" id="playerArt"><span class="mono">CP</span></div>
+      <h2 class="player-title" id="playerTitle">—</h2>
+      <p class="player-sub" id="playerSub">—</p>
+
+      <div class="seek-row">
+        <span class="t" id="tCur">0:00</span>
+        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek" />
+        <span class="t" id="tDur">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button type="button" class="ctrl" id="btnPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        </button>
+        <button type="button" class="ctrl sm" id="btnBack15" aria-label="Back 15 seconds">−15</button>
+        <button type="button" class="ctrl play" id="btnPlay" aria-label="Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+        </button>
+        <button type="button" class="ctrl sm" id="btnFwd15" aria-label="Forward 15 seconds">+15</button>
+        <button type="button" class="ctrl" id="btnNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+        </button>
+      </div>
+
+      <div class="player-tools">
+        <button type="button" class="chip" id="btnSpeed">1×</button>
+        <button type="button" class="chip solutions-toggle" id="btnSolutions">
+          Solutions <span class="toggle-dot" id="solDot"></span>
+        </button>
+      </div>
+      <p class="hint" id="solHint" hidden>No solution board for this episode yet.</p>
+    </div>
+
+    <div class="solutions" id="solutionsPanel" hidden>
+      <div class="sol-head">
+        <div>
+          <div class="sol-label">Solution board</div>
+          <div class="sol-meta">Browse freely · not a transcript</div>
+        </div>
+        <button type="button" class="chip on" id="btnSolutionsOff">On</button>
+      </div>
+      <div class="sol-tabs" id="solTabs"></div>
+      <div class="sol-body" id="solBody"></div>
+      <a class="sol-tutor" id="solTutor" href="#" target="_blank" rel="noopener" hidden>Open tutor deep drill →</a>
+    </div>
+
+    <div class="queue-block">
+      <button type="button" class="queue-toggle" id="queueToggle">
+        <span>Queue</span>
+        <span id="queueCount">0</span>
+      </button>
+      <div class="queue-list" id="queueList" hidden></div>
+    </div>
+  </section>
+
+  <!-- MINI PLAYER -->
+  <div class="mini" id="mini" hidden>
+    <button type="button" class="mini-play" id="miniPlay" aria-label="Play">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+    </button>
+    <div class="mini-mid" id="miniOpen">
+      <div class="mini-title" id="miniTitle">—</div>
+      <div class="mini-bar"><div class="mini-fill" id="miniFill"></div></div>
+    </div>
+    <button type="button" class="mini-next" id="miniNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
     </button>
   </div>
-  <audio preload="metadata" id="spAudio"></audio>
 
-  <div class="resume-hint" id="resumeHint" style="display:none" onclick="resumePlay()">
-    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    <span>Tap to continue playing</span>
-  </div>
+  <audio id="audio" preload="metadata"></audio>
 
-  <div class="full-player" id="fullPlayer">
-    <div class="fp-top-bar">
-      <button class="fp-back-btn" onclick="closePlayer()" title="Back to list">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        <span>Back</span>
-      </button>
-      <div class="fp-drag-handle" id="fpDragHandle">
-        <div class="fp-chevron"></div>
-      </div>
-      <div style="width:60px"></div>
-    </div>
-    <div class="fp-artwork" id="fpArtwork">
-      <div class="fp-ep-num" id="fpEpNum">#1</div>
-      <div class="fp-ep-pattern" id="fpEpPattern"></div>
-    </div>
-    <div class="fp-title" id="fpTitle">-</div>
-    <div class="fp-sub" id="fpSub">-</div>
-    <div class="fp-seek-row">
-      <span class="fp-time" id="fpTimeCurrent">0:00</span>
-      <input type="range" class="fp-seek" id="fpSeek" min="0" max="1000" value="0" oninput="seekFromSlider(this.value)">
-      <span class="fp-time" id="fpTimeDuration">0:00</span>
-    </div>
-    <div class="fp-controls">
-      <button class="fp-ctrl" onclick="playPrev()" title="Previous">
-        <svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="4" x2="5" y2="20"/></svg>
-      </button>
-      <button class="fp-ctrl fp-ctrl-sm" onclick="seekRel(-15)" title="Rewind 15s">
-        <svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/><text x="9" y="16" font-size="7" fill="currentColor" font-weight="700">15</text></svg>
-      </button>
-      <button class="fp-ctrl fp-ctrl-play" id="fpPlayBtn" onclick="togglePlay()">
-        <svg viewBox="0 0 24 24" id="fpPlayIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </button>
-      <button class="fp-ctrl fp-ctrl-sm" onclick="seekRel(15)" title="Forward 15s">
-        <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/><text x="9" y="16" font-size="7" fill="currentColor" font-weight="700">15</text></svg>
-      </button>
-      <button class="fp-ctrl" onclick="playNext()" title="Next">
-        <svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
-      </button>
-    </div>
-    <div class="fp-loop-row">
-      <button class="fp-loop-btn" id="fpLoopBtn" onclick="cycleLoopMode()">
-        <svg viewBox="0 0 24 24" class="loop-icon"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-        <span id="fpLoopLabel" class="fp-loop-label">Loop off</span>
-      </button>
-    </div>
-    <div class="fp-playlist-toggle" onclick="togglePlaylist()">
-      <span>Playlist</span>
-      <span class="fp-playlist-count" id="fpPlaylistCount">0 episodes</span>
-      <svg viewBox="0 0 24 24" id="fpPlaylistChevron"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="fp-playlist" id="fpPlaylist">
-      <div class="fp-playlist-list" id="fpPlaylistList"></div>
-    </div>
-  </div>
-
-  <nav class="bottom-nav">
-    <button class="nav-item on" data-tab="home" onclick="switchTab('home')">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  <nav class="bottom-nav" id="bottomNav">
+    <button type="button" class="nav-item on" data-tab="home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
       <span>Home</span>
     </button>
-    <button class="nav-item" data-tab="patterns" onclick="switchTab('patterns')">
-      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-      <span>Patterns</span>
+    <button type="button" class="nav-item" data-tab="library">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>Library</span>
     </button>
-    <button class="nav-item" data-tab="frameworks" onclick="switchTab('frameworks')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <span>Frameworks</span>
+    <button type="button" class="nav-item" data-tab="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Search</span>
     </button>
-    <button class="nav-item" data-tab="practice" onclick="switchTab('practice')">
-      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <span>Practice</span>
-    </button>
-    <button class="nav-item" data-tab="playlists" onclick="switchTab('playlists')">
-      <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-      <span>Playlists</span>
+    <button type="button" class="nav-item" data-tab="me">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Account</span>
     </button>
   </nav>
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="app.js"></script>
+<script src="/app.js?v=23"></script>
 <script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js').then(function(reg){
-    reg.onupdatefound=function(){
-      var nw=reg.installing;
-      nw.onstatechange=function(){
-        if(nw.state==='installed'&&navigator.serviceWorker.controller){
-          var t=document.getElementById('toast');
-          if(t){t.textContent='Update available — reload for latest version';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},5000);}
-        }
-      };
-    };
-  }).catch(function(){});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(function () {});
 }
 </script>
 </body>

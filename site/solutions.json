@@ -1,0 +1,139 @@
+{
+  "300": {
+    "title": "Airwallex Screen Ritual",
+    "problem": "How to run every coding screen",
+    "sections": [
+      {
+        "id": "clarify",
+        "title": "Clarify first",
+        "body": [
+          "Restate the problem in one or two sentences out loud.",
+          "Ask: input size, sorted?, duplicates, empty input, same index twice?, no-solution contract, output order.",
+          "For strings: character set and case sensitivity."
+        ]
+      },
+      {
+        "id": "naive",
+        "title": "Naive approach",
+        "body": [
+          "Always state a correct brute force first — even if you never type it.",
+          "Example: nested loops O(n²) for pair problems.",
+          "Airwallex wants progression: trivial → improve."
+        ]
+      },
+      {
+        "id": "optimal",
+        "title": "Improve",
+        "body": [
+          "Name the data structure: HashMap, two pointers, sliding window, stack, heap.",
+          "Say why it wins on time or space.",
+          "Then code with full-word names while narrating."
+        ]
+      },
+      {
+        "id": "edges",
+        "title": "Edges & complexity",
+        "body": [
+          "Universal edges: empty, single element, all equal, negatives/zeros, max n.",
+          "End with time + auxiliary space (not just 'input size').",
+          "If stuck: name approach A vs B and ask which direction is more productive."
+        ]
+      },
+      {
+        "id": "live",
+        "title": "Live rules",
+        "body": [
+          "No AI tools in live real-time interviews unless they explicitly allow it.",
+          "Prep with AI is fine; the screen is unassisted thinking.",
+          "Target: medium comfort in ~30–40 minutes."
+        ]
+      },
+      {
+        "id": "sayback",
+        "title": "Say it back",
+        "body": [
+          "Clarify → naive → optimize → example → code → edges → complexity.",
+          "Open the tutor app after listening and drill options cold."
+        ]
+      }
+    ]
+  },
+  "301": {
+    "title": "Two Sum",
+    "problem": "Return indices of two numbers that sum to target",
+    "sections": [
+      {
+        "id": "clarify",
+        "title": "Clarify",
+        "body": [
+          "Exactly one solution guaranteed?",
+          "Distinct indices only (no using the same element twice)?",
+          "Negatives / zeros / duplicates allowed?",
+          "Must return indices (not values)? May I mutate the array?"
+        ]
+      },
+      {
+        "id": "naive",
+        "title": "Naive",
+        "body": [
+          "For each i, for each j > i: if nums[i] + nums[j] == target, return [i, j].",
+          "Time O(n²), extra space O(1).",
+          "Say this first in the interview even if you skip typing it."
+        ]
+      },
+      {
+        "id": "optimal",
+        "title": "Optimal — HashMap",
+        "body": [
+          "Map value → index of numbers already seen.",
+          "For each i with value x: complement = target − x.",
+          "If complement is in the map, return [map[complement], i].",
+          "Else store map[x] = i.",
+          "Critical: look up complement BEFORE insert so a single value cannot pair with itself."
+        ]
+      },
+      {
+        "id": "walk",
+        "title": "Walkthrough",
+        "body": [
+          "nums = [2, 7, 11, 15], target = 9.",
+          "i=0, x=2 → need 7, miss → store {2:0}.",
+          "i=1, x=7 → need 2, hit at 0 → return [0, 1].",
+          "Done; later elements unused."
+        ]
+      },
+      {
+        "id": "edges",
+        "title": "Edges & traps",
+        "body": [
+          "[3, 3], target 6 → first stores 3@0; second finds complement at 0 → [0, 1].",
+          "Do not return values instead of indices.",
+          "Do not pair an element with its own index.",
+          "If no guaranteed solution, define empty/error return after the loop."
+        ]
+      },
+      {
+        "id": "complexity",
+        "title": "Complexity & trade-off",
+        "body": [
+          "Time O(n) expected with hash map.",
+          "Auxiliary space O(n) for the map.",
+          "If only values needed and sorting is allowed: sort O(n log n) + two pointers O(n), but original indices need (value, index) pairs."
+        ]
+      },
+      {
+        "id": "sayback",
+        "title": "Say it back",
+        "body": [
+          "Clarifiers: unique solution, distinct indices, negatives, duplicates.",
+          "Naive nested loops O(n²).",
+          "Map value→index; lookup before insert.",
+          "Walk [2,7,11,15]→[0,1].",
+          "O(n) time, O(n) space.",
+          "Then open tutor: Two Sum deep drill (8 options)."
+        ]
+      }
+    ],
+    "tutorPath": "/session?conceptId=two-sum-deep-drill&mode=learn"
+  }
+}

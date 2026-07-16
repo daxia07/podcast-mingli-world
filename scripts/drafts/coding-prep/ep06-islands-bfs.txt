@@ -1,0 +1,65 @@
+Graphs and trees day. Number of Islands, then Binary Tree Level Order. BFS and DFS flood muscle. No AI. Speak before solve. Pair with Trees and Graphs in the app.
+
+Problem one. Grid of water zero and land one. Island is four-connected land. Count islands. Diagonal usually does not connect — clarify.
+
+Cold open, eight counts. Approach and complexity. One through eight.
+
+Model: scan every cell. When you find land, increment count, then flood fill mark all connected land as water or visited. Flood is DFS recursive or BFS queue. Time O of rows times cols. Space O of the grid for the queue worst case or recursion depth.
+
+Ritual. Restate. Clarify. Naive — maybe union find overkill for first pass. Improve with DFS BFS. Example. Edges. Complexity.
+
+Walk. Grid:
+one one zero zero
+one one zero zero
+zero zero one zero
+zero zero zero one
+
+First one at zero zero. Count one. Flood the two by two block of ones. Mark visited.
+Next unvisited one at two two. Count two. Flood single cell.
+Next at three three. Count three. Answer three.
+
+Dead-end: counting land cells instead of components. Or eight-direction when problem says four. Or mutating without permission — ask if you may modify the grid. If not, use a visited matrix.
+
+BFS flood. Queue start cell, mark visited. While queue: pop, for each of four neighbors in bounds and land and not visited, mark and push.
+
+DFS same neighbors recursively.
+
+I prefer BFS in interviews if recursion depth on large grid worries me. Say that trade-off.
+
+Edges. Empty grid. All water. All land one island. Single cell. Skinny snake shape.
+
+Problem two. Binary Tree Level Order Traversal. Given root, return values level by level as a list of lists.
+
+Cold open, six counts. Structure. One through six.
+
+Model: BFS with a queue. While queue not empty: take current level size, pop that many nodes, collect values, push children. Each batch is one level.
+
+Walk. Tree one, left two, right three, then three has children four five… classic level order one then two three then next level.
+
+Dead-end: DFS with depth parameter building lists also works — say it as alternative. BFS is the default speech for level order.
+
+Edges. Empty tree. Single node. Skewed left chain — each level one node. Complete tree.
+
+Complexity O of n time, O of n queue space for wide level.
+
+Pattern cue. Connected components on grid — flood. Level by level — queue BFS with size batches. Shortest path unweighted — BFS. Say with me.
+
+Transfer. Fifteen seconds. Clone a graph. Approach. One through fifteen.
+
+Model: map old node to new node, BFS or DFS copy neighbors. Same visited idea as islands.
+
+Speed recap.
+
+Islands: scan, on land count plus plus and flood DFS or BFS mark visited, O of r c. Level order: queue, process level size, push children. Always clarify four vs eight connect. No AI.
+
+Say-back.
+One: islands are components.
+Two: flood from each unvisited land.
+Three: level order queue batches.
+Four: O of n for tree, O of cells for grid.
+
+App: Trees and Graphs unit. Code number of islands. Optional level order. YouTube islands is medium audio-fit — restate flood in words after.
+
+Next episode: full mock screen narration dry run — sixty minutes compressed.
+
+This was Coding Prep. Islands and BFS. Go code.

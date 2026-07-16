@@ -1,0 +1,54 @@
+LRU Cache. Design problem. Airwallex and many screens love this because it is structure plus clear operations, not a one-shot formula. No AI. You speak the design before code. Pair with the LRU deep drill in the app.
+
+Problem. Implement LRUCache with capacity. Methods: get key returns value or negative one if missing. Put key value inserts or updates. When over capacity, evict the least recently used key. Both get and put must be average O of one.
+
+Cold open. Ten counts. Name the two structures and what each gives you. One through ten.
+
+Model: HashMap from key to node for O of one lookup. Doubly linked list for recency order. Most recent at one end, least recent at the other. Dummy head and tail nodes keep edge code clean.
+
+Ritual. Restate. Clarify capacity at least one. Value domain. Thread safety usually not required unless asked. Then naive, improve, operations, edges, complexity.
+
+Naive design people say first: array of pairs plus scan for LRU — get is O of n. Or timestamp heap — log n. Say them. Then: we need O of one, so map plus doubly linked list.
+
+Operations in words.
+
+Get key. If key not in map, return negative one. If present, move that node to the most recent end, return its value. Moving is: unlink from current neighbors, insert after head or before tail depending on your convention. Pick one convention and stick. I use head is most recent.
+
+Put key value. If key exists, update value, move node to most recent. If key is new, create node, insert most recent, add to map. If size exceeds capacity, remove the least recent node — the one before tail — delete from map and list.
+
+Why doubly linked? Unlink a middle node in O of one when you have the node pointer from the map. Singly list cannot unlink middle without predecessor search.
+
+Walk capacity two.
+Put one a. List: one. Map has one.
+Put two b. List: two then one, if head is newest… actually if head is most recent: two at head side, one toward tail.
+Get one. One becomes most recent. Order one then two toward tail as older.
+Put three c. Capacity full. Evict least recent — two. Insert three. Map has one and three.
+
+Dead-end: use only a queue and map without ability to remove middle — then get cannot refresh mid elements in O of one. Or Python OrderedDict without knowing the idea — interviewers want the list plus map speech even if language has a helper.
+
+Edges. Capacity one: every new put may evict. Get missing. Put update same key should not grow size. Repeated get same key stays most recent. Negative keys if allowed — map still fine.
+
+Complexity. Get and put O of one average. Space O of capacity.
+
+Pattern cue. When I hear O of one get put with eviction policy — map to node, list for order. LFU is frequency buckets — different. Don't mix.
+
+Transfer. Fifteen seconds. Design a rate limiter allowing n requests per window — structures only. One through fifteen.
+
+Model: timestamps queue per key, or token bucket counters. Not LRU, but same design speech: clarify, structure, complexity.
+
+Speed recap.
+
+LRU. Capacity fixed. Map key to doubly linked node. List order is recency. Get: map lookup, move front, return value or miss. Put: update or insert front, if over capacity pop tail and map delete. O of one. Naive array scan stated first. No AI.
+
+Say-back.
+One: map plus doubly list.
+Two: get moves to recent.
+Three: put may evict least recent.
+Four: dummy head tail.
+Five: O of one.
+
+App: LRU deep drill cold. Implement once without AI. YouTube LRU clip is medium for pure audio — use eyes if the list confuses, then re-speak this recap blind.
+
+Next: graphs and trees — islands and level order BFS.
+
+This was Coding Prep. LRU. Go code.

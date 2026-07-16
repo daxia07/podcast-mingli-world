@@ -1,0 +1,64 @@
+Longest Substring Without Repeating Characters. Sliding window muscle. Airwallex medium comfort. No AI. You speak before I solve. After this, open the Longest Substring deep drill in the app.
+
+Problem. Given a string s, return the length of the longest substring with all unique characters. Substring means contiguous.
+
+Cold open. I'll count to ten. Say: clarifier, naive idea and Big-O, window idea in one sentence. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten.
+
+Model clarifiers: empty string length zero. Character set — ASCII or unicode. Case sensitive usually yes.
+
+Naive: for every start index i, expand j until a repeat, track max length. Worst O of n squared if you rescan the window each time.
+
+Better: sliding window with a set or map of characters in the current window. Right expands. When s of right is already in the window, shrink left until it is gone. Track max of right minus left plus one.
+
+Ritual. Restate. Clarify. Naive. Improve. Example. Code narrating. Edges. Complexity.
+
+Concrete example. s equals a b c a b c b b.
+
+Start left zero, right zero, set empty, best zero.
+
+Right a — not in set. Add a. Window a. Best one.
+Right b — add. Window a b. Best two.
+Right c — add. Window a b c. Best three.
+Right a — a is in set. Shrink left: remove a at left zero, left becomes one. Now a not in set. Add a. Window b c a. Best still three.
+Right b — b in set. Shrink: remove b at left one, left two. Add b. Window c a b. Best three.
+Right c — c in set. Shrink remove c, left three. Add c. Window a b c. Best three.
+Right b — b in set. Shrink until b gone… eventually window ends with last b alone or short unique. Best remains three.
+
+The answer for a b c a b c b b is three — a b c.
+
+Second example. s equals b b b b. Window never grows past one. Answer one.
+
+Third. s equals empty. Answer zero. s equals space or single char. Answer length of that.
+
+Dead-end people take: restart the whole window from right when they see a duplicate, throwing away good prefix. That is wrong when the duplicate is only with an old left character. Always shrink left just enough. Prefer last-seen index map: left equals max of left and last index of this char plus one. That jumps left in one step.
+
+Map version. Map character to last index seen. For right from zero to n minus one: if char in map, left equals max of left and map of char plus one. Update map char to right. Best equals max of best and right minus left plus one.
+
+Why max with left? Because last index might be before left already — stale. Never move left backward.
+
+Edges checklist. Empty. Length one. All unique — answer n. All same — answer one. Repeats at end. Unicode if they ask.
+
+Complexity. Time O of n because left and right each move at most n times. Space O of min of n and alphabet size.
+
+Pattern cue. Contiguous segment, constraint on uniqueness or count — sliding window. Expand right, shrink left when invalid. Say it.
+
+Transfer. Twenty seconds. Longest repeating character replacement with at most k changes — just the approach name. One through twelve.
+
+Model: still a window. Valid when window length minus count of most frequent char is at most k. Shrink when invalid. Same expand shrink muscle.
+
+Speed recap.
+
+Longest unique substring. Window left right. Set or last-index map of chars in window. Expand right. If duplicate, advance left until unique. Track max length. O of n time. Empty zero, all same one. Naive O of n squared stated first. No AI.
+
+Say-back.
+One: problem is max length unique contiguous.
+Two: naive all starts.
+Three: window expand shrink.
+Four: last-index map left never decreases.
+Five: O of n.
+
+App: Longest Substring deep drill, cold. Code it once without AI. Optional YouTube window clip, then re-speak the speed recap at one point two five x.
+
+Next: two pointers — container water and three sum moves.
+
+This was Coding Prep. Sliding window. Go code.
