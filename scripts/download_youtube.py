@@ -42,6 +42,60 @@ YOUTUBE_VIDEOS = [
         "url": "https://www.youtube.com/watch?v=QpLy0_c_RXk",
         "playlist_id": "sd-youtube",
     },
+    {
+        "id": 88, "theme": "yt-behavioral-exponent",
+        "title": "Behavioral Interview for Software Engineers — Exponent",
+        "url": "https://www.youtube.com/watch?v=IZw4q36YpVs",
+        "playlist_id": "behavioral-youtube",
+    },
+    {
+        "id": 89, "theme": "yt-behavioral-dan-croitor",
+        "title": "Amazon Behavioral Interview — Leadership Principles — Dan Croitor",
+        "url": "https://www.youtube.com/watch?v=9ON1ZUV5O0c",
+        "playlist_id": "behavioral-youtube",
+    },
+    {
+        "id": 90, "theme": "yt-behavioral-kevin-naughton",
+        "title": "Behavioral Interview Tips for Software Engineers — Kevin Naughton Jr",
+        "url": "https://www.youtube.com/watch?v=DJ0de7NA5Bw",
+        "playlist_id": "behavioral-youtube",
+    },
+    {
+        "id": 91, "theme": "yt-behavioral-joma",
+        "title": "How to Answer Behavioral Interview Questions — Joma Tech",
+        "url": "https://www.youtube.com/watch?v=qt8tVPHl2gg",
+        "playlist_id": "behavioral-youtube",
+    },
+    {
+        "id": 92, "theme": "yt-behavioral-tech-by-nick",
+        "title": "Tell Me About a Time You Had a Conflict — Tech by Nick",
+        "url": "https://www.youtube.com/watch?v=CAiuPfJ7tiU",
+        "playlist_id": "behavioral-youtube",
+    },
+    {
+        "id": 93, "theme": "yt-infosec-security-interview",
+        "title": "Information Security Interview Questions — Infosec",
+        "url": "https://www.youtube.com/watch?v=Zh0MiA1h49E",
+        "playlist_id": "infosec-youtube",
+    },
+    {
+        "id": 94, "theme": "yt-infosec-zero-trust",
+        "title": "Zero Trust Architecture Explained — IBM Technology",
+        "url": "https://www.youtube.com/watch?v=pIFYKFqSRUk",
+        "playlist_id": "infosec-youtube",
+    },
+    {
+        "id": 95, "theme": "yt-infosec-owasp",
+        "title": "OWASP Top 10 Security Vulnerabilities — Java Guides",
+        "url": "https://www.youtube.com/watch?v=QC3yl6gZfII",
+        "playlist_id": "infosec-youtube",
+    },
+    {
+        "id": 96, "theme": "yt-infosec-supply-chain",
+        "title": "Software Supply Chain Security — SLSA and Sigstore — CNCF",
+        "url": "https://www.youtube.com/watch?v=b1csKPMxt6E",
+        "playlist_id": "infosec-youtube",
+    },
 ]
 
 

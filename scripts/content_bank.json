@@ -2441,6 +2441,381 @@
         "Some banks have daily cutoff times — queue payments that miss the cutoff"
       ],
       "hint": "This is a uniquely fintech problem. Airwallex connects to 50+ banking partners. Show you understand: adapter pattern, circuit breaker per bank, and the reality that banks are unreliable."
+    },
+    {
+      "id": "why-leaving",
+      "text": "Why are you leaving your current company?",
+      "competency": "motivation",
+      "framework": "Structure-First",
+      "patterns": [
+        "What I'm really looking for is...",
+        "What clicked for me was...",
+        "Over time I became the..."
+      ],
+      "structure": [
+        "Frame as pull, not push (attracted to new, not fleeing old)",
+        "Acknowledge what you learned at current company (gratitude, not bitterness)",
+        "Connect the gap: what you've outgrown or what's missing",
+        "Why THIS company specifically fills that gap",
+        "What you'll contribute, not just what you'll get"
+      ],
+      "sample_answer": "What I'm really looking for is the chance to build platforms that impact thousands of engineers, not dozens. My current company has been incredible for learning — I built their entire AI security automation pipeline from scratch. But at our scale, there's only so far platform work can go. What clicked for me was reading your engineering blog about the internal developer platform — the fact that you measure developer productivity as a first-class metric tells me platform engineering is a strategic function, not a cost center. I want to bring my experience building adoption-obsessed internal tools to an environment where they'll reach 10x more engineers.",
+      "pitfalls": [
+        "Never badmouth your current company or manager",
+        "Don't say 'more money' or 'better title' as the primary reason",
+        "Don't be vague — 'looking for growth' applies everywhere",
+        "Don't skip the gratitude for what you learned"
+      ]
+    },
+    {
+      "id": "biggest-weakness",
+      "text": "What is your biggest weakness?",
+      "competency": "self-awareness",
+      "framework": "Acknowledge-Reframe",
+      "patterns": [
+        "I'm glad you asked that...",
+        "Here's how I'd ramp up on that...",
+        "Looking back, I would..."
+      ],
+      "structure": [
+        "Pick a real weakness (not 'I work too hard')",
+        "Show you've already been working on it",
+        "Describe the specific strategy you use to compensate",
+        "Give evidence of improvement",
+        "Connect to how it makes you better at something else"
+      ],
+      "sample_answer": "I'm glad you asked that. My biggest weakness is that I tend to optimize for depth over breadth — I'll dive deep into one system and lose sight of cross-cutting concerns. I discovered this when I spent three weeks perfecting our caching layer and missed that the real bottleneck was the API gateway. Here's how I've been working on it: I now start every investigation with a 5-minute 'blast radius scan' — I check dashboards for every component in the request path before diving deep into any single one. It's not natural for me, but it's made me much faster at finding the actual root cause. The upside of this weakness is that when I do find the right thing to dive into, I go much deeper than most engineers would.",
+      "pitfalls": [
+        "Don't pick a fake weakness ('perfectionism', 'working too hard')",
+        "Don't pick a weakness that's critical for the role",
+        "Don't just state the weakness — show the improvement plan",
+        "Don't end on the weakness — end on the compensation strategy"
+      ]
+    },
+    {
+      "id": "tight-deadline",
+      "text": "Tell me about a time you had to meet a tight deadline.",
+      "competency": "execution-under-pressure",
+      "framework": "STAR-LA",
+      "patterns": [
+        "The key thing to understand is...",
+        "The trade-off here is...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "Context: what was the deadline and why it was tight",
+        "How you scoped — what you cut vs what you kept",
+        "How you communicated trade-offs to stakeholders",
+        "Execution: how you delivered",
+        "Principle for handling time pressure"
+      ],
+      "sample_answer": "We had two weeks to deliver a compliance feature that the regulators required by quarter-end. The key thing to understand is that we couldn't cut scope on compliance — every requirement was mandatory. The trade-off here is between code quality and delivery certainty. I proposed: ship the minimum viable implementation that satisfies every regulatory requirement, but skip the polish — no custom UI, use the framework defaults, no performance optimization beyond meeting the latency SLA. I wrote a one-page scope document listing exactly what was in and out, got stakeholder sign-off in 30 minutes, and the team executed against that scope with zero scope creep. This resulted in shipping on time, passing the compliance audit, and we refactored the rough edges in the next sprint. The lesson I took away was that tight deadlines are a scoping problem, not an effort problem — you don't work harder, you scope smarter.",
+      "pitfalls": [
+        "Don't describe a self-imposed deadline that wasn't really tight",
+        "Don't say 'I just worked late' — show the strategy",
+        "Don't skip the scoping decision — that's the key signal",
+        "Don't sacrifice quality silently — communicate the trade-offs"
+      ]
+    },
+    {
+      "id": "received-critical-feedback",
+      "text": "Tell me about the most constructive feedback you've received.",
+      "competency": "growth-mindset",
+      "framework": "Hook-Flow-Landing",
+      "patterns": [
+        "What surprised me was...",
+        "The lesson I took away was...",
+        "Looking back, I would..."
+      ],
+      "structure": [
+        "The feedback: who gave it and what they said (be specific)",
+        "Your initial reaction (honest, not 'I was grateful')",
+        "How you processed it",
+        "What you changed as a result",
+        "How it's made you better since"
+      ],
+      "sample_answer": "My skip-level manager told me that I was solving problems people didn't know they had yet. What surprised me was that I thought being proactive was a strength — and it is, but I was so far ahead that the team couldn't follow. I was designing solutions for problems that wouldn't surface for months, and the team felt like requirements were changing under them. My initial reaction was defensive — I was trying to help. But I realized the feedback was about timing, not intent. I changed my approach: I still identify problems early, but I now socialize them as observations first and let the team discover the need before I propose the solution. This resulted in my proposals getting adopted 3x more often because the team felt ownership rather than being handed a solution. The lesson I took away was that being right is not the same as being effective — timing and framing matter as much as the idea.",
+      "pitfalls": [
+        "Don't pick trivial feedback ('someone said I should comment more')",
+        "Don't pick feedback that's actually a compliment in disguise",
+        "Don't skip your honest initial reaction",
+        "Don't describe feedback you disagreed with and never changed"
+      ]
+    },
+    {
+      "id": "right-decision-unpopular",
+      "text": "Tell me about a time you made the right decision that was initially unpopular.",
+      "competency": "courageous-leadership",
+      "framework": "STAR-LA",
+      "patterns": [
+        "I know this might be unpopular, but...",
+        "I'd argue that...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "The decision and why it was unpopular",
+        "Your reasoning (data, principles, experience)",
+        "How you communicated it (not just 'I decided')",
+        "How you managed the resistance",
+        "Outcome and what you learned about leadership"
+      ],
+      "sample_answer": "I know this might be unpopular, but I cancelled our migration to microservices six months into the project. The team had already built 3 services and was excited about the architecture. I'd argue that the data showed we weren't ready: our deployment frequency was once per week, our on-call rotation had 40% signal-to-noise, and the team didn't have experience operating distributed systems. Moving to microservices would increase our operational surface area by 5x without solving our actual bottleneck, which was slow CI pipelines. I communicated this by showing the data: our monolith's problem wasn't scaling, it was build time. I proposed: fix CI first (3 weeks), then migrate one service as a proof of concept, then decide. This resulted in CI time dropping from 12 minutes to 3, and the one service we did migrate was deployed 10x more often than the monolith equivalent. The lesson I took away was that the hardest part of saying no is not the decision — it's showing people what yes looks like instead.",
+      "pitfalls": [
+        "Don't describe a decision where everyone eventually agreed easily",
+        "Don't skip the data or reasoning — they want to see how you decide",
+        "Don't be smug about being right — show empathy for the other side",
+        "Don't skip how you managed the emotional resistance"
+      ]
+    },
+    {
+      "id": "worked-with-difficult-person",
+      "text": "Tell me about a time you worked with someone difficult.",
+      "competency": "collaboration",
+      "framework": "STAR-LA",
+      "patterns": [
+        "The key thing to understand is...",
+        "Building on that...",
+        "The lesson I took away was..."
+      ],
+      "structure": [
+        "Context: who was difficult and in what way (be specific but professional)",
+        "Your analysis of WHY they were difficult (empathy, not blame)",
+        "Your strategy for working with them effectively",
+        "A specific turning point in the relationship",
+        "Outcome and principle"
+      ],
+      "sample_answer": "I worked with a senior engineer who rejected every PR within 5 minutes with lengthy comments. The key thing to understand is that he wasn't being difficult for the sake of it — he'd been burned by a production incident caused by insufficient review and was overcompensating. Instead of arguing in PR comments, I asked him to pair with me on a feature for 30 minutes. During the pairing, I saw his review philosophy in action and understood what he was optimizing for. Building on that, I proposed: I'd adopt his review checklist as a pre-submission self-review, and he'd separate blocking comments from suggestions. He agreed because I'd shown I valued his concern. The lesson I took away was that difficult behavior usually comes from a valid concern expressed ineffectively — find the concern and you find the path forward.",
+      "pitfalls": [
+        "Don't describe someone as universally terrible — show empathy",
+        "Don't skip the analysis of why they behave that way",
+        "Don't describe avoiding the person — show how you engaged",
+        "Don't make yourself the hero who 'fixed' them — show mutual adaptation"
+      ]
+    },
+    {
+      "id": "dealt-with-ambiguity",
+      "text": "Tell me about a time you had to move forward with incomplete information.",
+      "competency": "ambiguity-navigation",
+      "framework": "STAR-LA",
+      "patterns": [
+        "The first thing I would do is...",
+        "At a high level...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "What was ambiguous and why you couldn't wait for clarity",
+        "How you reduced the ambiguity (framework, assumptions, data)",
+        "The decision you made and your reasoning",
+        "How you validated your assumptions as you went",
+        "Outcome and what you learned about operating under ambiguity"
+      ],
+      "sample_answer": "We were building a new FX pricing service and the product team hadn't finalized which currency pairs to support at launch. We had 3 weeks until the demo and no finalized spec. The first thing I would do is reduce the ambiguity myself. I proposed: build for the 10 most traded pairs (covering 90% of volume), with a configuration layer that makes adding pairs a deploy-time change, not a code change. At a high level, this means the architecture supports any number of pairs, but we only configure 10 initially. I documented my assumptions and got a 15-minute sign-off from the product lead. Two days before launch, they added 5 more pairs — it took 30 minutes because of the config-driven design. This resulted in the demo being successful and the product team trusting engineering to make reasonable scope decisions. The lesson I took away was that ambiguity is an invitation to lead — if you wait for perfect clarity, you'll wait forever.",
+      "pitfalls": [
+        "Don't describe a situation where you just guessed",
+        "Don't skip how you reduced the ambiguity — that's the key signal",
+        "Don't describe a situation where there actually was a clear answer",
+        "Don't forget to mention how you validated assumptions after"
+      ]
+    },
+    {
+      "id": "promoted-adopted-standard",
+      "text": "Tell me about a time you promoted a new standard or practice that others adopted.",
+      "competency": "organizational-influence",
+      "framework": "STAR-LA",
+      "patterns": [
+        "What I'd really highlight is...",
+        "Building on that...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "The standard or practice and why it was needed",
+        "How you introduced it (not mandated — persuaded)",
+        "The adoption strategy: early adopters, evidence, scaling",
+        "How you handled resistance or skepticism",
+        "Organizational impact and principle"
+      ],
+      "sample_answer": "I noticed that every team had a different way of handling API errors — some used HTTP status codes, some used custom error objects, some returned 200 with error details in the body. What I'd really highlight is that this wasn't just inconsistent — it was causing real bugs when teams integrated. I wrote an RFC for a standardized error response format with a clear taxonomy. Instead of mandating it, I implemented it in my team's service first and documented the migration path. Building on that, I showed other teams the before/after: their integration tests went from 200 lines of error handling to 30. Three teams adopted it voluntarily within a month. This resulted in a 60% reduction in error-handling bugs across services. The lesson I took away was that standards spread through evidence, not mandates — show the benefit, make adoption easy, and let people choose.",
+      "pitfalls": [
+        "Don't describe mandating something as a manager — show influence",
+        "Don't skip the adoption strategy — how did you get people to use it",
+        "Don't describe something that only your team uses",
+        "Don't skip the measurable organizational impact"
+      ]
+    },
+    {
+      "id": "balanced-quality-speed",
+      "text": "Tell me about a time you had to balance code quality with shipping speed.",
+      "competency": "engineering-judgment",
+      "framework": "STAR-LA",
+      "patterns": [
+        "The trade-off here is...",
+        "That said...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "The context: what was the pressure to ship fast",
+        "The quality concern: what would be sacrificed",
+        "Your analysis of the trade-off (not absolute — risk-based)",
+        "The compromise you reached",
+        "Outcome and what you learned about quality-speed balance"
+      ],
+      "sample_answer": "The product team needed a new payment method live in 2 weeks for a partnership launch. The trade-off here is between the risk of shipping fast and the risk of missing the partnership deadline. I proposed a tiered approach: implement the happy path with full idempotency and double-entry ledger integrity (non-negotiable for financial code), but skip the admin UI — use CLI commands for configuration instead. That said, I documented every shortcut we took as a tracked tech debt item with estimated fix time. We shipped on time with zero financial data integrity issues. The admin UI took another 2 weeks, but the partnership launch wasn't blocked. This resulted in a process where every shortcut has a ticket and a scheduled fix. The lesson I took away was that quality is not binary — it's about knowing which corners are safe to cut and which aren't, and making the cut corners visible.",
+      "pitfalls": [
+        "Don't say 'I never compromise on quality' — unrealistic",
+        "Don't describe shipping garbage — show you protected what matters",
+        "Don't skip the tracking of technical debt incurred",
+        "Don't frame speed as always the enemy of quality"
+      ]
+    },
+    {
+      "id": "handled-production-incident",
+      "text": "Walk me through how you handle a production incident from alert to post-mortem.",
+      "competency": "incident-management",
+      "framework": "Structured approach",
+      "patterns": [
+        "The first thing I would do is...",
+        "At a high level...",
+        "The lesson I took away was..."
+      ],
+      "structure": [
+        "Alert response: acknowledge, communicate, assemble team",
+        "Triage: mitigate first, root-cause later",
+        "Investigation: hypothesis-driven, binary search approach",
+        "Resolution: what you did to fix it",
+        "Post-mortem: 5 Whys, action items with owners, blameless culture"
+      ],
+      "sample_answer": "The first thing I would do is acknowledge the incident and open a communication channel — a Slack incident channel and a status page update. At a high level, my priority order is: mitigate, communicate, investigate, fix, prevent. For mitigation, I check: can we roll back? Can we failover? Can we feature-flag off the affected path? A 5-minute rollback that restores 90% of traffic is better than a 2-hour root cause hunt. For investigation, I use a binary search approach: eliminate halves of the system until I find the failing component. Recent deployments, downstream dependencies, infrastructure changes — check these first. After resolution, I write a blameless post-mortem with a timeline, root cause, 5 Whys analysis, and action items with owners and deadlines. The lesson I took away was that every incident is a systems problem — if an incident can happen, the system should prevent it or detect it faster.",
+      "pitfalls": [
+        "Don't start debugging before mitigating — reduce blast radius first",
+        "Don't work alone — communicate early and often",
+        "Don't skip the post-mortem — the real value is preventing recurrence",
+        "Don't focus on who made the mistake — focus on why the system allowed it"
+      ]
+    },
+    {
+      "id": "infosec-security-vs-delivery",
+      "text": "Tell me about a time security requirements conflicted with delivery timelines. How did you balance them?",
+      "competency": "risk-management",
+      "framework": "STAR-LA",
+      "patterns": [
+        "I'd argue that...",
+        "The trade-off here is...",
+        "We can mitigate that by..."
+      ],
+      "structure": [
+        "The security requirement and the delivery pressure",
+        "Your risk analysis (probabilistic, not absolute)",
+        "How you balanced the trade-off — what compromise",
+        "The creative solution that addressed both",
+        "Outcome and principle for security vs speed"
+      ],
+      "sample_answer": "Security required all API calls to use mTLS, but implementing it would delay our launch by 3 weeks. I'd argue that the trade-off here is between perfect security and actual security — shipping without any auth is dangerous, but a 3-week delay means 3 weeks with zero customers getting value. We can mitigate that by layering our approach: ship with API key auth (sufficient for launch), add mTLS in the next sprint (2 weeks post-launch), and put all internal services behind a VPN in the meantime. This resulted in launching on time, zero security incidents during the 2-week window, and mTLS shipping 2 weeks later. The lesson I took away was that risk management is about reducing risk to acceptable levels, not eliminating it — and a shipped product with good-enough security beats an unshipped product with perfect security.",
+      "pitfalls": [
+        "Don't describe a situation where security was clearly non-negotiable (e.g., PCI compliance)",
+        "Don't dismiss security concerns — show you took them seriously",
+        "Don't skip the compromise — they want to see creative problem-solving",
+        "Don't frame it as security always winning or always losing"
+      ]
+    },
+    {
+      "id": "infosec-vulnerability-response",
+      "text": "Tell me about a time you discovered or responded to a security vulnerability.",
+      "competency": "security-awareness",
+      "framework": "STAR-LA",
+      "patterns": [
+        "The first thing I would do is...",
+        "The key thing to understand is...",
+        "This resulted in..."
+      ],
+      "structure": [
+        "How you discovered the vulnerability",
+        "Your immediate actions (containment, assessment, disclosure)",
+        "How you communicated it (transparency, not panic)",
+        "The fix: both immediate and systemic",
+        "What you changed to prevent similar vulnerabilities"
+      ],
+      "sample_answer": "I found a vulnerability in our API that allowed one tenant to access another tenant's data through an IDOR — insecure direct object reference. The first thing I would do is assess the blast radius: how long has this existed, how many tenants are affected, is it being actively exploited. I checked the access logs and found no evidence of exploitation, but the vulnerability had existed for 6 months. The key thing to understand is that this wasn't a code bug — it was a missing authorization check in our API framework. I immediately deployed a hotfix adding the authorization check, then audited all other endpoints for the same pattern. I found 3 more endpoints with the same issue. I wrote an RFC for a framework-level authorization middleware that makes this class of vulnerability impossible by default. This resulted in zero IDOR vulnerabilities in subsequent security audits. The lesson I took away was that individual fixes are band-aids — you have to fix the pattern that allowed the vulnerability to exist.",
+      "pitfalls": [
+        "Don't describe a minor issue (an informational finding from a scanner)",
+        "Don't skip the blast radius assessment — show systematic thinking",
+        "Don't just fix the one instance — show you fixed the class of vulnerability",
+        "Don't skip the communication aspect — how you informed stakeholders"
+      ]
+    },
+    {
+      "id": "infosec-designed-secure-system",
+      "text": "Tell me about a time you designed a system with security as a first-class requirement.",
+      "competency": "security-by-design",
+      "framework": "STAR-LA",
+      "patterns": [
+        "At a high level...",
+        "The trade-off here is...",
+        "Under normal conditions... Under edge cases..."
+      ],
+      "structure": [
+        "The system and why security was critical",
+        "Threat model: what attacks were you defending against",
+        "Security architecture: defense in depth, least privilege, audit trail",
+        "Trade-offs you made (security vs performance, vs developer experience)",
+        "How you validated the security posture (pen testing, audit, bug bounty)"
+      ],
+      "sample_answer": "I designed an internal secrets management service that stored API keys and credentials for all our integrations. At a high level, the threat model was: external attackers trying to exfiltrate credentials, and internal engineers accidentally exposing them in logs or code. I designed defense in depth: encryption at rest with KMS-managed keys, encryption in transit with mTLS, access control with per-team IAM policies, and an immutable audit trail logging every access. The trade-off here is between security and developer experience — making secrets too hard to access means people will store them in plaintext. I built a CLI that fetches secrets at runtime and injects them as environment variables, so developers never see or touch the actual values. Under normal conditions, secrets are fetched in 50ms. Under edge cases — KMS unavailable — we fall back to a cached encrypted copy that expires after 5 minutes. This resulted in zero credential leaks in 18 months and a 90% adoption rate across all teams. The lesson I took away was that security features must be easier to use than the insecure alternative — if the secure path has more friction, people will bypass it.",
+      "pitfalls": [
+        "Don't describe bolting security on after the fact — show it was designed in",
+        "Don't skip the threat model — they want to see you think like an attacker",
+        "Don't ignore the developer experience trade-off",
+        "Don't describe a system that's so secure nobody uses it"
+      ]
+    },
+    {
+      "id": "infosec-compliance-framework",
+      "text": "How do you approach implementing compliance requirements (PCI DSS, SOC 2, GDPR) in a software system?",
+      "competency": "compliance-engineering",
+      "framework": "Structure-First",
+      "patterns": [
+        "My approach to [X] is...",
+        "The key thing to understand is...",
+        "Under normal conditions... Under edge cases..."
+      ],
+      "structure": [
+        "How you interpret the requirement (legal/technical translation)",
+        "How you design the technical controls (encryption, access, audit)",
+        "How you build compliance into the development process (not bolt-on)",
+        "How you handle the ongoing proof (audits, evidence collection, monitoring)",
+        "Trade-offs: compliance cost vs risk, automation vs manual process"
+      ],
+      "sample_answer": "My approach to compliance is to treat it as a product requirement, not a checkbox. The key thing to understand is that most compliance frameworks share the same core controls: access control, encryption, audit logging, and change management. I design these as platform capabilities that every service inherits by default. For PCI DSS specifically: we never store raw card numbers (tokenization), all payment data is encrypted at rest and in transit, access to payment systems requires MFA and is logged immutably, and we run quarterly vulnerability scans. Under normal conditions, compliance is automatic — services inherit the platform controls. Under edge cases — a team needs to access production data for debugging — we have a break-glass process that requires approval, time-limits access, and creates an immutable audit entry. This resulted in passing our PCI audit on the first try and reducing the audit preparation effort from 3 months to 2 weeks because evidence collection was automated.",
+      "pitfalls": [
+        "Don't treat compliance as a one-time project — it's ongoing",
+        "Don't skip the automation — manual compliance doesn't scale",
+        "Don't ignore the developer experience of compliance controls",
+        "Don't describe compliance without mentioning how you prove it (audits)"
+      ]
+    },
+    {
+      "id": "infosec-zero-trust",
+      "text": "How would you design a zero-trust architecture for a microservices platform?",
+      "competency": "security-architecture",
+      "framework": "RESHADED",
+      "patterns": [
+        "At a high level...",
+        "The trade-off here is...",
+        "The failure mode I'm most concerned about is..."
+      ],
+      "structure": [
+        "Principles: never trust, always verify; least privilege; assume breach",
+        "Identity: service identity via mTLS/spiffe, human identity via SSO/MFA",
+        "Authorization: per-request authorization, not just perimeter auth",
+        "Network: no implicit trust based on network location, microsegmentation",
+        "Observability: audit every access, detect anomalies, alert on deviations"
+      ],
+      "sample_answer": "At a high level, zero trust means removing the concept of a trusted internal network. Every request is authenticated and authorized regardless of where it comes from. The trade-off here is between security granularity and operational complexity. I'd implement: service identity using SPIFFE/SPIRE — each service gets a cryptographically verifiable identity via mTLS. Authorization is per-endpoint using Open Policy Agent — every API call is checked against a policy, not just at the gateway. For humans: SSO with MFA, short-lived tokens, and per-action authorization for sensitive operations. The failure mode I'm most concerned about is a compromised service identity — if an attacker gets a service's mTLS certificate, they can impersonate it. We mitigate with automatic certificate rotation every 24 hours and anomaly detection on service behavior. We can mitigate that by also validating the workload identity — not just the cryptographic identity, but verifying the process running on the node matches what's expected.",
+      "pitfalls": [
+        "Don't equate zero trust with 'no firewall' — it's about verification, not removal",
+        "Don't skip service identity — it's the foundation of zero trust for microservices",
+        "Don't ignore the operational overhead — observability and policy management are costs",
+        "Don't describe only the network layer — zero trust spans identity, access, and data"
+      ]
     }
   ],
   "categories": {
@@ -2797,6 +3172,227 @@
           "heap",
           "intervals"
         ]
+      }
+    ]
+  },
+  "info_security": {
+    "core_concepts": [
+      {
+        "id": "owasp-top-10",
+        "name": "OWASP Top 10 Vulnerabilities",
+        "category": "web-security",
+        "description": "The ten most critical web application security risks. Every software engineer should recognize and prevent these.",
+        "key_points": [
+          "A01 Broken Access Control: users accessing data or functions they shouldn't — IDOR, privilege escalation, missing auth checks",
+          "A02 Cryptographic Failures: sensitive data exposed due to weak encryption, missing TLS, or storing plaintext secrets",
+          "A03 Injection: SQL injection, XSS, command injection — unsanitized user input interpreted as code",
+          "A04 Insecure Design: missing threat modeling, no security architecture, business logic flaws",
+          "A05 Security Misconfiguration: default credentials, open cloud storage, verbose error messages, unused features enabled",
+          "A06 Vulnerable Components: using libraries with known CVEs — dependency management and scanning",
+          "A07 Auth Failures: weak passwords, missing MFA, session fixation, credential stuffing",
+          "A08 Data Integrity Failures: insecure deserialization, untrusted CI/CD pipelines, missing integrity checks",
+          "A09 Logging Failures: not logging security events, no alerting on anomalies, log injection",
+          "A10 SSRF: server making requests to unintended locations — metadata endpoints, internal services"
+        ],
+        "trade_offs": "Security vs developer velocity. Comprehensive validation vs user experience. Logging verbosity vs performance and privacy.",
+        "real_examples": "Equifax breach: A06 (unpatched Apache Struts). Capital One: A05 (SSRF via misconfigured IAM). Twitter: A01 (broken access control on admin tools)."
+      },
+      {
+        "id": "authentication-authorization",
+        "name": "Authentication & Authorization Patterns",
+        "category": "identity",
+        "description": "How systems verify who you are (authentication) and what you can do (authorization). The foundation of every secure system.",
+        "key_points": [
+          "Authentication: verify identity — passwords, MFA, OAuth2/OIDC, SAML, certificates, biometrics",
+          "Authorization: verify permissions — RBAC, ABAC, ACLs, policy engines (OPA, Casbin)",
+          "OAuth2 flows: authorization code (web), PKCE (mobile), client credentials (service-to-service)",
+          "JWT: stateless token with claims — but don't put secrets in it, it's base64 not encrypted",
+          "Session management: server-side sessions vs stateless tokens, rotation, absolute timeout",
+          "Principle of least privilege: grant minimum permissions needed, not maximum convenient"
+        ],
+        "trade_offs": "Stateless tokens (JWT) vs server-side sessions. Granular authorization vs complexity. MFA vs user friction. Token lifetime vs security.",
+        "real_examples": "Stripe: API keys with restricted permissions per key. AWS IAM: policy-based with resource-level permissions. Google: OAuth2 + context-aware access."
+      },
+      {
+        "id": "encryption-at-rest-transit",
+        "name": "Encryption at Rest and in Transit",
+        "category": "cryptography",
+        "description": "Protecting data where it lives (at rest) and as it moves (in transit). Two different problems requiring different solutions.",
+        "key_points": [
+          "At rest: encrypt databases, object storage, backups — AES-256, KMS-managed keys, envelope encryption",
+          "In transit: TLS 1.3 for all communications, mTLS for service-to-service, certificate rotation",
+          "Key management: KMS (AWS/Azure/GCP), HSM for high-security, envelope encryption for performance",
+          "Certificate management: Let's Encrypt for public, internal CA + cert-manager for services",
+          "Perfect forward secrecy: each session uses a unique key — compromising one session doesn't compromise all",
+          "Don't roll your own crypto — use established libraries (libsodium, BoringSSL, Tink)"
+        ],
+        "trade_offs": "KMS call overhead vs local key caching. mTLS certificate management complexity vs security. Encryption granularity vs performance.",
+        "real_examples": "AWS: SSE-KMS for S3, RDS encryption with KMS. Stripe: TLS 1.2+ for all API calls, AES-256 for data at rest. Cloudflare: automatic TLS termination + origin encryption."
+      },
+      {
+        "id": "threat-modeling",
+        "name": "Threat Modeling (STRIDE)",
+        "category": "security-process",
+        "description": "Systematic approach to identifying, quantifying, and addressing security threats before they become vulnerabilities.",
+        "key_points": [
+          "STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
+          "Process: diagram the system → identify assets → identify threats → prioritize → mitigate",
+          "Data flow diagrams: trace how data moves through the system and where it crosses trust boundaries",
+          "Trust boundaries: where privilege levels change — network perimeters, service boundaries, user roles",
+          "Attack trees: map out how an attacker could achieve a goal, branch by branch",
+          "Threat modeling is a team sport — include engineers, product, security, and operations"
+        ],
+        "trade_offs": "Thoroughness vs time investment. Threat modeling every feature vs only high-risk ones. Documentation overhead vs security coverage.",
+        "real_examples": "Microsoft: STRIDE since 1999, integrated into SDLC. AWS: threat modeling required for all new services. Google: threat modeling in design reviews."
+      },
+      {
+        "id": "incident-response",
+        "name": "Security Incident Response",
+        "category": "security-operations",
+        "description": "How to detect, contain, investigate, and recover from security incidents. Every organization needs a plan before the breach happens.",
+        "key_points": [
+          "Preparation: incident response plan, team roster, communication channels, runbooks, war room protocol",
+          "Detection: SIEM alerts, anomaly detection, threat intelligence feeds, log analysis",
+          "Containment: isolate affected systems, revoke compromised credentials, block attack vectors",
+          "Eradication: remove attacker access, patch vulnerabilities, rotate secrets",
+          "Recovery: restore from clean backups, verify system integrity, monitor for re-compromise",
+          "Lessons learned: blameless post-mortem, update runbooks, improve detection, share findings"
+        ],
+        "trade_offs": "Speed of containment vs forensic evidence preservation. Communication transparency vs legal/regulatory requirements. Isolation vs service availability.",
+        "real_examples": "SolarWinds: supply chain attack requiring forensic analysis of build pipeline. Capital One: SSRF via misconfigured WAF, contained by revoking access. NIST SP 800-61: the standard incident response framework."
+      },
+      {
+        "id": "secret-management",
+        "name": "Secrets Management",
+        "category": "security-operations",
+        "description": "How to store, distribute, and rotate sensitive credentials without exposing them in code, config, or logs.",
+        "key_points": [
+          "Never hardcode secrets: no secrets in source code, Docker images, environment variables in CI logs",
+          "Secret stores: HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, GCP Secret Manager",
+          "Rotation: automatic rotation on schedule and on compromise, zero-downtime rotation strategies",
+          "Injection: secrets injected at runtime via sidecar (Vault Agent) or init containers, never baked into images",
+          "Least privilege: services access only the secrets they need, audit trail on every access",
+          "Development: .env files for local dev (gitignored), never production secrets in dev"
+        ],
+        "trade_offs": "Centralized vault vs distributed management. Runtime injection vs build-time binding. Rotation frequency vs operational disruption.",
+        "real_examples": "Stripe: Vault for API key management with automatic rotation. Netflix: Vault with sidecar injection. Shopify: secrets injected via Kubernetes init containers."
+      },
+      {
+        "id": "supply-chain-security",
+        "name": "Software Supply Chain Security",
+        "category": "security-process",
+        "description": "Protecting the integrity of your software from source code to production deployment. The attack surface you don't directly control.",
+        "key_points": [
+          "Dependency management: lock files, vulnerability scanning (Snyk, Dependabot, Trivy), SBOM (Software Bill of Materials)",
+          "CI/CD security: signed commits, protected branches, pinned build images, hermetic builds",
+          "Container security: minimal base images, vulnerability scanning, signed images, admission controllers",
+          "Artifact signing: Sigstore/Cosign for container images, npm provenance for packages",
+          "SLSA framework: Supply-chain Levels for Software Artifacts — provenance, build integrity, verification",
+          "Third-party risk: vendor security assessments, API security reviews, monitoring vendor breaches"
+        ],
+        "trade_offs": "Dependency freshness vs stability. Build security vs build speed. Minimal images vs developer convenience. Verification overhead vs trust.",
+        "real_examples": "SolarWinds: compromised build pipeline injected backdoor. Codecov: compromised Docker image exfiltrated CI secrets. PyPI/npm: typosquatting and malicious packages."
+      },
+      {
+        "id": "compliance-regulations",
+        "name": "Compliance & Regulatory Frameworks",
+        "category": "governance",
+        "description": "Legal and regulatory requirements that impose specific security controls. Non-compliance can result in fines, loss of license, or criminal liability.",
+        "key_points": [
+          "PCI DSS: payment card data — encryption, access control, logging, quarterly scans, annual audit",
+          "SOC 2: service organization controls — security, availability, processing integrity, confidentiality, privacy",
+          "GDPR: EU personal data — data minimization, consent, right to erasure, 72-hour breach notification",
+          "HIPAA: US health data — PHI encryption, access controls, audit trails, business associate agreements",
+          "ISO 27001: information security management system — risk assessment, controls, continuous improvement",
+          "Automate evidence collection: continuous control monitoring, automated audit trails, policy-as-code"
+        ],
+        "trade_offs": "Compliance cost vs risk of non-compliance. Strict controls vs developer productivity. Global operations vs regional requirements. Automation investment vs manual audit cost.",
+        "real_examples": "Stripe: PCI DSS Level 1 as a service provider. Airbnb: SOC 2 Type II for trust. Vanta/Drata: compliance automation platforms. AWS Artifact: on-demand compliance reports."
+      },
+      {
+        "id": "zero-trust-architecture",
+        "name": "Zero Trust Architecture",
+        "category": "security-architecture",
+        "description": "Security model that assumes no implicit trust — every request must be authenticated and authorized regardless of network location.",
+        "key_points": [
+          "Never trust, always verify: authenticate and authorize every request, internal or external",
+          "Least privilege access: grant minimum permissions, time-bound and context-aware",
+          "Microsegmentation: isolate workloads, limit lateral movement, per-service network policies",
+          "Service identity: SPIFFE/SPIRE for workload identity, mTLS for service-to-service auth",
+          "Continuous verification: real-time posture assessment, device health checks, behavioral analytics",
+          "Assume breach: design for containment, limit blast radius, detect anomalies fast"
+        ],
+        "trade_offs": "Security granularity vs operational complexity. Per-request authorization overhead vs performance. Microsegmentation management vs network simplicity.",
+        "real_examples": "Google BeyondCorp: zero trust for employee access. Cloudflare Access: zero trust application gateway. Istio: service mesh with mTLS and authorization policies. Cilium: eBPF-based network policy."
+      },
+      {
+        "id": "api-security",
+        "name": "API Security Best Practices",
+        "category": "web-security",
+        "description": "Securing the APIs that power modern applications — from authentication to rate limiting to input validation.",
+        "key_points": [
+          "Authentication: API keys, OAuth2, JWT validation — never trust client-side tokens without verification",
+          "Authorization: per-endpoint, per-resource, per-action — not just 'is authenticated'",
+          "Rate limiting: per-client, per-endpoint — prevent abuse, brute force, and DDoS",
+          "Input validation: schema validation, type checking, sanitization — never trust user input",
+          "Output encoding: prevent injection in responses, CORS configuration, security headers",
+          "API gateway: centralized auth, rate limiting, logging, request/response validation"
+        ],
+        "trade_offs": "Strict validation vs API flexibility. Rate limit strictness vs legitimate usage patterns. Centralized gateway vs microservice autonomy.",
+        "real_examples": "Stripe: per-key rate limits with tiered limits, idempotency keys. GitHub: API rate limiting with X-RateLimit headers. Cloudflare: API schema validation at the edge."
+      }
+    ],
+    "interview_scenarios": [
+      {
+        "id": "design-secrets-management",
+        "name": "Design a Secrets Management Service",
+        "category": "system-design-security",
+        "difficulty": 2,
+        "description": "Design a service that stores, distributes, and rotates secrets for microservices. Must prevent secrets from appearing in code, logs, or CI output.",
+        "key_components": [
+          "Storage: encrypted at rest with KMS, envelope encryption for performance",
+          "Access control: per-service IAM policies, audit trail on every access",
+          "Distribution: sidecar pattern (Vault Agent) or init container injection",
+          "Rotation: automatic on schedule + on-demand for compromises",
+          "Audit: immutable log of every read, write, and rotation event",
+          "High availability: multi-region replication, automatic failover"
+        ],
+        "estimates": "100 services, 1000 secrets, 10K reads/sec, 99.99% availability, <50ms read latency",
+        "bottlenecks": "KMS call overhead for every decryption. Secret rotation without downtime. Audit log volume at scale."
+      },
+      {
+        "id": "design-vulnerability-scanner",
+        "name": "Design a Vulnerability Scanning Pipeline",
+        "category": "system-design-security",
+        "difficulty": 2,
+        "description": "Design a CI/CD pipeline that scans every commit for vulnerabilities in code, dependencies, and container images. Must not block legitimate merges for too long.",
+        "key_components": [
+          "SAST: static analysis on source code (Semgrep, CodeQL) — runs on every PR",
+          "SCA: dependency scanning (Snyk, Dependabot) — checks for known CVEs",
+          "DAST: dynamic testing on deployed environments — runs on staging",
+          "Container scanning: scan images for OS and library vulnerabilities (Trivy, Grype)",
+          "Policy engine: block merge if critical/high findings, allow info/low with tracking ticket",
+          "SBOM: generate Software Bill of Materials for every release artifact"
+        ],
+        "estimates": "500 PRs/day, 2000 dependencies per service, 50 container images/day, <5 min scan per PR",
+        "bottlenecks": "Scan latency blocking developer workflow. False positive fatigue. Keeping vulnerability databases current. Monorepo scan times."
+      },
+      {
+        "id": "design-incident-response-platform",
+        "name": "Design an Incident Response Platform",
+        "category": "system-design-security",
+        "difficulty": 3,
+        "description": "Design a platform that detects security incidents, orchestrates response, and produces audit-compliant post-mortems.",
+        "key_components": [
+          "Detection: SIEM integration, anomaly detection on logs and metrics, threat intelligence feed",
+          "Alerting: severity classification, on-call routing, SLA-based escalation",
+          "Orchestration: automated containment actions (isolate host, revoke key, block IP)",
+          "Collaboration: war room creation, timeline tracking, evidence preservation",
+          "Investigation: log correlation, forensics data collection, timeline reconstruction",
+          "Post-mortem: auto-generate timeline, 5 Whys template, action item tracking"
+        ],
+        "estimates": "1000 alerts/day, 10 real incidents/week, 99.9% alert accuracy target, <5 min automated containment",
+        "bottlenecks": "Alert fatigue from false positives. Forensic evidence preservation during containment. Cross-team coordination under pressure. Regulatory notification deadlines."
       }
     ]
   }
