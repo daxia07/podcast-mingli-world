@@ -1,0 +1,57 @@
+Hey. This is the reset episode for the Airwallex AI Team coding interview. If you learned an older story about a long background chat and a total AI ban, park it. The official guide is specific. Sixty minutes with a senior engineer. Two minutes intro. Thirty minutes coding with AI strictly off. Twenty five to thirty minutes technical deep dive with AI on. The problem is a real world scenario focused on AI, not a random trivia quiz. They still care about algorithms and clean code. They also grade how you use AI in the second half.
+
+Listen to this until the clock is boring. Muscle memory is the product.
+
+Segment zero. Before the call. Zoom desktop app, not the browser. External monitors off or disconnected. Full screen share. Local IDE ready. For you that means PyCharm with every AI completion disabled, and Claude Code installed but closed. Python interpreter runs. You can execute a tiny script. Do not open the agent until they say you are in the deep dive.
+
+Segment one. Two minutes intro. Not ten. Not a life story. Sixty to ninety seconds. Who you are, relevant AI tooling or fintech work, why this team, then stop and let them hand you the problem. If you ramble, you steal time from coding.
+
+Segment two. Thirty minutes coding. AI is banned. That means no Copilot, no Claude Code, no ChatGPT, no tab complete that writes logic for you. If they suspect AI in this segment, the guide says the application can be terminated and future opportunities closed. Treat that as absolute.
+
+When the problem appears, do not type. Run the ritual.
+
+Step one. Restate the problem in your own words, out loud, one or two sentences. Catch misreads early. Scenario stories hide requirements. Restating forces the real contract onto the table.
+
+Step two. Ask two or three clarifying questions that change the design. Not a performance of curiosity. Input size. Per tenant or global. What to return on failure. Empty input. Duplicates. Idempotency. Clock monotonic or wall. Character set. Mutability. Pick the forks.
+
+Step three. Naive approach and complexity. Say the brute force even if you already see the map or the window. They want progression. Naive proves you can get correct under pressure.
+
+Step four. Improve. Name the structure and why it wins. Hash map. Sliding window. Stack. Heap. Token bucket. Map plus doubly linked list. Pitch the choice. Constraint. Rejected alternative. What you buy. What you pay.
+
+Step five. Hand walk a tiny example before you type. Three or four steps. If you cannot walk it, you do not understand it yet.
+
+Step six. Code while narrating. Full names. Say what the loop is doing. Silence for long stretches loses the signal that you are in control.
+
+Step seven. Edges. Empty. Single element. Capacity one. Burst. Unknown key. Duplicate job id. The edges that break your clever line.
+
+Step eight. Complexity. Time and space. Auxiliary space separate from input. Free points. Say them.
+
+Part one success is not perfect optimal. Part one success is a working solution you can defend, with enough time left to talk. If you have eight minutes left and happy path works, do not start a heroic rewrite. Add critical edges, state complexity, name what you would improve next. That sets up the deep dive.
+
+Stuck script. Use it. I am between approach A and approach B. A is nested loops, O of n squared. B uses this structure for linear time. Given n up to ten to the five, I take B. If I am missing a constraint, tell me. Freezing sounds weak. A fork sounds strong.
+
+Segment three. Deep dive. Twenty five to thirty minutes. Now AI is allowed. They listed Cursor, Claude Code, Copilot. You prefer Claude Code. Open it only when this segment starts. Work on the same project you just wrote. The grade is AI tool proficiency plus communication. Not who can paste the biggest generation.
+
+How to think about part two is a whole episode of its own. The one line version for this clock episode: directed prompts, read every diff, run or walk tests, reject nonsense out loud, you stay lead.
+
+Time management across the hour. Rough guide. Minutes zero to two intro. Minutes two to five restate and approach. Minutes five to twenty eight code and edges. Minutes twenty eight to thirty complexity and known gaps. Minutes thirty two to sixty deep dive with AI. Adjust if they run the segments with verbal markers. Your job is to notice the switch and not jump early.
+
+What this means for practice this week. Every study day has two modes. Mode A, thirty minutes PyCharm, AI off, scenario framed problem. Mode B, fifteen to twenty minutes Claude Code on that same code. Twice this week, full sixty minute mock with a hard switch at about minute thirty two. Night before, listen to this episode again. No new algorithms. Checklist only.
+
+Trap clinic for the clock.
+
+Trap one. Training as if AI is banned the whole interview, then freezing when they ask you to use Claude Code. Fix. Practice the switch.
+
+Trap two. Training only pure LeetCode numbers and choking when the prompt is a product story about tenants and model calls. Fix. Same patterns, scenario wrapper.
+
+Trap three. Using twelve minutes for intro because old blogs said background chat. Fix. Ninety seconds max.
+
+Trap four. Opening the agent in part one for a tiny hint. Fix. Absolute no. The risk is not worth a two line autocomplete.
+
+Trap five. Perfecting Big O on paper while nothing runs. Fix. Working code first.
+
+Morning card. Two, thirty, twenty five. AI off, then AI on. Restate. Clarify. Naive. Improve. Example. Code. Edges. Complexity. Working solution beats unfinished genius. Deep dive improves your code, not a stranger's.
+
+That is the clock. Next in the update set: AI deep dive monologue, AI scenario think aloud, and interviewer fit for Tianxiao Huang on episode twenty two. Patterns from earlier episodes still matter. This episode is the spine.
+
+See you in the deep dive pilot.

@@ -1,0 +1,23 @@
+[NARRATOR] Complexity and edges drill. Short loop. Speak with the candidate.
+
+[INTERVIEWER] State time and space for token bucket allow.
+
+[CANDIDATE] Time O of one expected. Space O of number of clients.
+
+[INTERVIEWER] Edges for array problems almost always?
+
+[CANDIDATE] Empty, single element, all equal, already sorted, reverse sorted, duplicates, negatives, min and max values.
+
+[INTERVIEWER] Edges for design capacity structures?
+
+[CANDIDATE] Capacity zero or one, get miss, update existing, eviction order, repeated access freshness.
+
+[INTERVIEWER] Edges for money?
+
+[CANDIDATE] Zero, negative reject, overflow awareness, integer minor units, rounding policy.
+
+[INTERVIEWER] When is O of n squared unacceptable?
+
+[CANDIDATE] When n is one e five style large. Say the constraint that kills nested loops.
+
+[NARRATOR] End drill. State edges before interviewer asks.

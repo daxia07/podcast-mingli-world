@@ -13,3 +13,5 @@ episodes/
 .wrangler
 data/
 feedback/
+.vercel
+.env*

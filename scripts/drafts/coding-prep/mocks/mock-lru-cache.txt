@@ -1,0 +1,111 @@
+[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.
+
+[INTERVIEWER] Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. I will give a real world scenario. I want you to clarify requirements, explain your approach, walk an example, describe full word pseudocode, and cover corner cases and complexity. Ready?
+
+[CANDIDATE] Yes. Please go ahead with the problem.
+
+[INTERVIEWER] Here is the problem. We cache expensive large language model completions so repeated identical prompts do not hit the model again. Each cache entry is a key and a value. Think of the key as a prompt hash string, and the value as a small integer handle or token count for this exercise. I need an L R U cache with fixed capacity set at construction. The API is get of key, which returns the value or a miss sentinel, and put of key and value, which inserts or updates and marks that key most recently used. When the number of keys would exceed capacity, evict the least recently used key before or as you insert. Functional requirements: average constant time for get and put. Get on a miss must not insert. Put on an existing key must update the value and refresh recency. Non functional: clear structure, honest complexity, and you must not start typing before the contract is clear. What questions do you have?
+
+[CANDIDATE] I will restate first. I need a fixed capacity associative cache with recency order. Get returns the value or miss without side effects on miss. Put inserts or updates and always marks the key as most recently used. On overflow, evict least recently used. Target average O of one per operation. Clarifying questions that change the design. Is capacity always a positive integer at construction? What exact miss sentinel should get return? Are keys hashable strings only? Are values integers only for this cut? Single threaded is fine unless you want locks. Should get of a missing key create anything? I assume no. Should put of an existing key count as one size or stay the same size? I assume same size. May capacity be one? May I use a sentinel value negative one for miss?
+
+[INTERVIEWER] Capacity is a positive integer. Miss returns negative one. Keys are strings. Values are integers. Single threaded for implementation. Get miss does not insert. Put update does not grow size. Capacity one is allowed. Negative one is the miss sentinel. Tell me naive versus improved before code.
+
+[CANDIDATE] Naive approach. Keep a list of key value pairs ordered by recency, plus maybe a map for lookup that still forces list moves costing O of n. Get scans the list, on hit moves the pair to the most recent end. Put scans for update or appends, and if over capacity removes the least recent end. This is easy to explain but each operation is linear in capacity. If capacity is thousands and get is hot, that is too slow for a model response cache under agent traffic. Improved approach. Hash map from key to node, plus a doubly linked list ordered by recency. I put most recent at the head and least recent at the tail. Dummy head and dummy tail nodes simplify insert and remove because every real node always has non null neighbors. Get: if key not in map return miss. Else remove the node from its list position, insert it after head, return value. Put: if key exists, update value, remove node, insert after head. If key is new, create node after head, map the key, and if map size exceeds capacity, remove the node before the tail dummy and delete that key from the map. Product framing for an M L infrastructure audience: this is how I bound memory for cached model completions keyed by prompt hash under a hard capacity. I will still hand walk before claiming O of one.
+
+[INTERVIEWER] Why dummies instead of null checks at the ends?
+
+[CANDIDATE] Dummies remove special cases when the list is empty or when you remove the only real node. Every real node always has a previous and a next. Under interview pressure, fewer branches means fewer off by one pointer bugs. The cost is two sentinel nodes that never hold real keys.
+
+[INTERVIEWER] Why store the key inside the node if the map already has the key?
+
+[CANDIDATE] When I evict the least recent node, I need the key to delete the map entry. The node is found from the tail, not from a key lookup. Without key on the node I would have to scan the map by value, which destroys O of one eviction.
+
+[INTERVIEWER] Hand walk capacity two. Speak every eviction and every list order. Head is most recent.
+
+[CANDIDATE] Start empty. Put A one. List after head is A then tail. Size one. Put B two. List is B, A. Size two. Get A. Move A to head. List is A, B. Put C three. Size would be three, so evict least recent which is B at tail prev. Delete B from map. Insert C at head. List is C, A. Get B returns miss, negative one, and does not insert. Get A returns one and moves A to head. List is A, C. Put D four. Evict C, insert D. List is D, A. Put A nine. Update A value to nine and move A to head. List is A, D. Size still two. No accidental growth on update.
+
+[INTERVIEWER] Describe classes, fields, and method signatures.
+
+[CANDIDATE] Class Node with key, value, prev, next. Class L R U Cache. Constructor takes capacity, validates capacity is at least one, creates dummy head and dummy tail with head next equals tail and tail prev equals head, empty dict mapping key to node, and stores capacity. Public get key returns int. Public put key value returns none. Private remove node and private add to head keep get and put short. I may expose size for tests but it is not required by the stated API.
+
+[INTERVIEWER] Full word pseudocode for remove, add to head, get, and put. Speak as if I cannot see a screen.
+
+[CANDIDATE] Remove node. Set node prev next equal to node next. Set node next prev equal to node prev. Optionally clear node prev and next to help garbage collection. Add to head. Set node next equal to head next. Set node prev equal to head. Set head next prev equal to node. Set head next equal to node. Method get key. If key not in map, return negative one. Node equals map of key. Remove node. Add node to head. Return node value. Method put key value. If key in map, node equals map of key, set node value to value, remove node, add to head, return. Else create node with key and value, add to head, map key to node. If map length greater than capacity, l r u equals tail prev, remove l r u, delete map entry for l r u key. Load bearing order on put new: insert and map first, then evict if over capacity. Load bearing eviction target is tail prev, never the tail dummy, never the head dummy. On get we always move. On put update we always move.
+
+[INTERVIEWER] What specifically breaks if you forget to move on get?
+
+[CANDIDATE] A hot key that is only read never becomes most recent. Cold keys that were written later look newer. Under pressure the hot key can be evicted while cold keys stay. That violates L R U semantics even if put paths look correct. Get must refresh recency.
+
+[INTERVIEWER] What breaks if you evict head next instead of tail prev?
+
+[CANDIDATE] You evict the most recently used entry. The cache becomes M R U eviction, which is wrong for a response cache that should keep hot prompts. Also hand walk tests fail immediately on the first overflow after a get.
+
+[INTERVIEWER] Walk corner cases one by one and say what the code should do.
+
+[CANDIDATE] Capacity one: put A, put B must evict A, get A misses. Update existing key: put A one, put A two, size stays one, get A returns two. Repeated get of the only key never self evicts incorrectly. Miss does not create a key. Eviction removes the map entry so later get misses cleanly. Empty string key is a valid key unless product policy rejects it; I will accept it and document. Constructor capacity zero or negative raises. Two different keys with same value are independent. Put after filling capacity always leaves size equal capacity.
+
+[INTERVIEWER] Name the unit tests you would write before claiming done.
+
+[CANDIDATE] test capacity two hand walk sequence with exact get returns. test capacity one thrash. test update existing does not grow. test get miss returns negative one and leaves size unchanged. test repeated get prevents eviction of that key when a third key arrives. test constructor rejects non positive capacity. Those pin the contract without flaky timing.
+
+[INTERVIEWER] Complexity and space. Be precise.
+
+[CANDIDATE] Each get and put does a constant number of pointer updates plus hash map operations expected O of one. Space is O of capacity for nodes and map entries. I do not claim worst case O of one for pathological hash collisions unless we discuss a different map, but interview standard is average O of one.
+
+[INTERVIEWER] Python Ordered Dict can implement L R U in a few lines. Why still explain map plus list?
+
+[CANDIDATE] Ordered Dict is valid in Python and I would use it in production Python if allowed. In an interview I still explain the map plus doubly linked list because it shows I understand eviction mechanics, ports to languages without Ordered Dict, and lets me debug pointer mistakes out loud. If the interviewer prefers Ordered Dict, I can implement that after stating the same recency rules: move to end on get and put, pop item false on overflow.
+
+[INTERVIEWER] I extend the problem: also support a peek that reads without refreshing recency. How do you adapt?
+
+[CANDIDATE] Add peek key that returns map value or miss without calling remove and add. Get remains the refreshing path. Tests must show peek does not save a key from eviction when a newer put arrives. Small API addition, no structure rewrite.
+
+[INTERVIEWER] Thread safety if two threads call get and put?
+
+[CANDIDATE] Single threaded here. Smallest correct change is one mutex around get and put bodies. Finer locks are hard because list and map must stay consistent. Production might use a concurrent L R U library or shard by key hash. I would not invent lock free list surgery live unless asked.
+
+[INTERVIEWER] TTL plus L R U together?
+
+[CANDIDATE] Follow up, not first cut. One clean design is store expiry on the node, check on get, and still evict by L R U when full. Expired entries can be lazily deleted on access or swept. Mixing two eviction policies without tests is a common mess, so I keep pure L R U until product asks for TTL.
+
+[INTERVIEWER] How would you size capacity for model responses in a real gateway?
+
+[CANDIDATE] I would measure average value size, set a memory budget, and derive capacity as budget divided by average entry size with headroom. I would also track hit rate. If hit rate is tiny, capacity or key design is wrong. That is product ops, not the coding core, but it shows I know the cache is a means to save model spend.
+
+[INTERVIEWER] You have a working happy path and a few minutes left. What do you do?
+
+[CANDIDATE] I do not start TTL or distribution. I encode the capacity two hand walk as a test, add capacity one and update tests, restate O of one, and write a short docstring that head is most recent and miss is negative one. Working readable code beats unfinished cleverness.
+
+[INTERVIEWER] Good. Simulate the implementation phase. Narrate the code you would type in order, as if I am watching your editor. Full words.
+
+[CANDIDATE] I start file lru cache.py. I define class Node with init key value, prev none, next none. I define class L R U Cache. Constructor validates capacity at least one, stores capacity, creates head and tail Node dummies with dummy keys, links head next to tail and tail prev to head, creates empty dict named map or cache.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I implement remove node with the two pointer rewires. I implement add to head with the four pointer assignments carefully. I mentally test on an empty list between dummies: after add, head next is the node and tail prev is the node.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I implement get. If key not in map return negative one. Node equals map key. Remove node. Add to head. Return node value. I implement put. If key in map, update value, remove, add to head, return. Else create node, add to head, map key to node. If length of map greater than capacity, node equals tail prev, remove it, delete map of node key.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I write tests from the hand walk. Cache capacity two. Put A one, put B two, get A equals one, put C three, get B equals negative one, get A equals one, put D four, get C equals negative one, put A nine, get A equals nine. If a test fails, I check whether I evicted head by mistake or forgot to move on get.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I add capacity one thrash and update existing size tests. I re-run until green. I speak complexity: average O of one time, O of capacity space. I stop.
+
+[INTERVIEWER] Before we close, summarize the whole solution in about one minute.
+
+[CANDIDATE] I implement L R U with a hash map plus doubly linked list for a model response cache. Capacity is fixed and positive. Get returns value or negative one and refreshes recency on hit. Put inserts or updates and refreshes recency. Overflow evicts the node before the tail dummy and deletes its map key. Dummy head and tail simplify pointers. Key is stored on the node for O of one eviction. Tests follow the capacity two hand walk plus capacity one and update cases. Average O of one per operation, space O of capacity. Follow ups include peek without refresh, locking, and optional TTL. Ordered Dict is a Python shortcut I can use if the interviewer prefers, after stating the same semantics.
+
+[INTERVIEWER] What would you do differently if this shipped in a gateway tomorrow?
+
+[CANDIDATE] I would add metrics for hits, misses, and evictions, bound total memory not only entry count if values vary in size, and consider keying carefully so prompt hashes do not collide. I would keep the same recency rules so unit tests still match production behavior.
+
+[INTERVIEWER] Any open questions for product before shipping?
+
+[CANDIDATE] Whether values are large strings that need size based eviction, whether we need per tenant capacity, and whether stale model versions must invalidate keys. Those change the structure more than pointer details.
+
+[NARRATOR] Speed recap for daily muscle memory. Problem: fixed capacity L R U for model response cache. Clarify: miss negative one, strings to ints, single thread, get miss no insert. Naive: list scan O of n. Better: map plus doubly linked list, head most recent, tail least, dummy ends. Get move front. Put update move front. Evict tail prev. Key on node for eviction. Tests: capacity two walk, capacity one, update no growth. Complexity average O of one time, O of capacity space. Replay until you can perform the candidate role without this recording, then code for thirty minutes with AI off.

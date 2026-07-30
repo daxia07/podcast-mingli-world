@@ -1,0 +1,205 @@
+"""Mock coding interview (~20 min): Idempotency key store — payments style."""
+
+
+def build():
+    d = []
+
+    d.append(("narrator",
+        'This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.'))
+
+    d.append(("interviewer",
+        'Hi, thanks for coming in. One coding problem for this block. Python fine. No AI tools. Clarify, design, hand walk, full word pseudocode, corners, complexity. Ready?'))
+
+    d.append(("candidate",
+        'Yes. Please go ahead.'))
+
+    d.append(("interviewer",
+        'Here is the problem. Payment and agent tool APIs must be safe under client retries. Clients send an idempotency key and a hash of the request body. I need an in memory idempotency store. First successful begin for a key should let the handler run side effects once. When the handler finishes, we store the response. A later begin with the same key and same body hash must return the stored response without re running side effects. Same key with a different body hash is a client error. Functional requirements: distinguish proceed, cached replay, in progress, and body mismatch. Non functional: clear states, honest complexity, small enough for a coding block. What questions do you have?'))
+
+    d.append(("candidate",
+        'Restating. Map each idempotency key to a record of body hash, lifecycle status, and optional response. begin decides whether the caller may execute, must wait, may reuse a cached response, or has conflicting body. complete stores the success response. Clarifying questions. Is TTL required in the first cut? Single threaded enough for implementation? What should concurrent double begin on a new key do conceptually even if we code single threaded first? Response type opaque string ok? Keys are strings? Do we cache failure responses the same way as success? Is body hash provided by the caller or computed inside the store from raw body? Should complete without begin error?'))
+
+    d.append(("interviewer",
+        'No TTL in the first cut, but mention how you would add it. Single threaded implementation is fine. In progress must be a distinct outcome. Response is an opaque string. Keys are strings. Body hash is provided by the caller as a string. Caching failure responses is a policy we can discuss; support storing a completed response either way. complete without begin should error. Design a small class.'))
+
+    d.append(("candidate",
+        'Naive approach. No store. Client retries re run the payment. Double charge. That fails the product contract. Slightly better naive: store only final responses, but then two parallel first requests both proceed. Better approach for this cut. Record per key with status processing or completed, body hash, and response. Method begin key body hash returns a structured outcome: proceed, cached with response, in progress, or mismatch. Method complete key response marks completed. Optional fail key response stores a completed error payload so retries see the same failure. Product framing: this is how checkout and agent tool calls avoid double side effects under mobile retries and gateway timeouts. I will hand walk the state machine before code.'))
+
+    d.append(("interviewer",
+        'Why body hash rather than storing the full raw body?'))
+
+    d.append(("candidate",
+        'Constant size records, less sensitive data in the store, and still detects when the client reuses a key with different parameters. The hash must be stable for equivalent bodies. I assume the platform documents canonicalization before hash. The store just compares strings equality.'))
+
+    d.append(("interviewer",
+        'Hand walk a full sequence. Speak every begin and complete outcome.'))
+
+    d.append(("candidate",
+        'begin K hash one on empty store: create record processing with hash one, return proceed. Handler runs side effect, say create payment. complete K with response R: set response R, status completed. begin K hash one again: hash matches, status completed, return cached R. begin K hash two: hash differs, return mismatch error, do not overwrite. begin K two hash one: different key, no record, return proceed for that other key. Separate timeline: begin K hash one returns proceed, then before complete, another begin K hash one returns in progress, not a second proceed. That prevents double side effects when the first call is still running.'))
+
+    d.append(("interviewer",
+        'Describe classes and method signatures.'))
+
+    d.append(("candidate",
+        'Enum or string constants for outcomes: proceed, cached, in progress, mismatch. Enum for status: processing, completed. Dataclass Record with body hash, status, response optional string. Class Idempotency Store with a dict from key to Record. begin key body hash returns a small result object or tuple of outcome and optional response. complete key response returns none or raises. I may add fail key response as a thin wrapper that stores a completed error payload. Constructor empty map. Optional later: now function and ttl seconds for expiry.'))
+
+    d.append(("interviewer",
+        'Full word pseudocode for begin and complete.'))
+
+    d.append(("candidate",
+        'Method begin key body hash. If key not in map: create Record with body hash, status processing, response none, store it, return proceed. Record equals map key. If record body hash is not equal to body hash: return mismatch. If record status is completed: return cached with record response. If record status is processing: return in progress. Else raise unexpected status. Method complete key response. If key not in map: raise unknown key. Record equals map key. If already completed: either no op if response equals stored, or raise conflict if different; I will choose raise on conflicting double complete for safety. Set record response to response, status completed, write back. Load bearing: always compare hash before returning cached. Load bearing: first begin creates processing, not completed. Load bearing: complete does not run if mismatch path never created the side effect path incorrectly.'))
+
+    d.append(("interviewer",
+        'What specifically breaks if begin returns proceed again while status is processing?'))
+
+    d.append(("candidate",
+        'Two handlers execute side effects for one logical request. Double charge, double transfer, double agent tool mutation. In progress exists to make that failure mode visible. In a real multi threaded system I would also need locking or a compare and set at the database so two threads cannot both create the first record.'))
+
+    d.append(("interviewer",
+        'Walk corner cases one by one.'))
+
+    d.append(("candidate",
+        'complete without begin raises. begin then complete then complete again: second complete should be safe no op if same response, or conflict if different; I document one policy and test it. mismatch never changes stored hash. empty string key: accept or reject by policy; I accept and document. missing response on complete: reject. very long keys: still fine in memory map. begin cached must not require complete again. fail path: store completed error so client retry sees same error without re executing. TTL not implemented but records would need created at timestamp and lazy delete on begin when expired, only if status completed or also abandon stale processing with care.'))
+
+    d.append(("interviewer",
+        'Name unit tests before claiming done.'))
+
+    d.append(("candidate",
+        'test begin proceed then complete then begin returns cached same response. test same key different hash returns mismatch and does not change record. test begin twice before complete returns in progress on second call. test complete without begin raises. test two different keys both proceed. test double complete same response. Optional test fail then replay returns cached error. Those pin the state machine.'))
+
+    d.append(("interviewer",
+        'Complexity and space.'))
+
+    d.append(("candidate",
+        'begin and complete are expected O of one hash map operations. Space O of number of distinct keys stored. Without TTL this grows without bound, so production needs retention policy.'))
+
+    d.append(("interviewer",
+        'How is this different from a rate limiter?'))
+
+    d.append(("candidate",
+        'Rate limiter answers how many calls may proceed per time window. Idempotency answers whether this logical request already ran and what to return. Both may wrap a handler, but mixing them into one class confuses two concerns. I keep separate objects.'))
+
+    d.append(("interviewer",
+        'Where would you put this in production under multiple API instances?'))
+
+    d.append(("candidate",
+        'A shared store with strong uniqueness on the idempotency key, typically a database row with unique key constraint inside a transaction, or a carefully designed Redis flow with SET if not exists and TTL. In memory only works for single process demos and tests. The state machine stays the same; the durability layer changes.'))
+
+    d.append(("interviewer",
+        'Should failure responses be cached?'))
+
+    d.append(("candidate",
+        'Often yes for validation errors so retries are stable. For transient infrastructure failures, product may prefer not to cache so a retry can succeed. I expose complete for success and optionally fail or complete with error payload, and I ask product which errors are final. In the interview I implement one completed state that can hold either.'))
+
+    d.append(("interviewer",
+        'I extend: while in progress, a second client should be able to wait until complete and then receive cached. First cut returns in progress. How would you extend without rewriting begin?'))
+
+    d.append(("candidate",
+        'Add wait for key with timeout that polls or sleeps on a condition variable until status completed or timeout. begin stays non blocking. This is a follow up; I would not block begin itself because request threads should not all hang without an explicit wait API.'))
+
+    d.append(("interviewer",
+        'Thread safety smallest correct change for multi threaded single process?'))
+
+    d.append(("candidate",
+        'A mutex around begin and complete bodies so map and record updates are atomic. For create path, hold the lock while checking missing key and inserting processing. That prevents double proceed races. Per key locks are an optimization after correctness.'))
+
+    d.append(("interviewer",
+        'You have a few minutes left. What do you finish?'))
+
+    d.append(("candidate",
+        'I solidify tests for replay, mismatch, and in progress. I document outcome enum. I do not build Redis. Working state machine beats unfinished distributed design.'))
+
+    d.append(("interviewer",
+        'Simulate implementation. Narrate typing order.'))
+
+    d.append(("candidate",
+        'I create idempotency.py. I define Outcome constants and Status constants. I define a dataclass Record with body hash, status, response. I define class Idempotency Store with self records equals empty dict.'))
+
+    d.append(("interviewer",
+        'Continue.'))
+
+    d.append(("candidate",
+        'I implement begin with branches: missing create processing return proceed; hash mismatch return mismatch; completed return cached; processing return in progress. I implement complete with unknown key check, set response and completed.'))
+
+    d.append(("interviewer",
+        'Continue.'))
+
+    d.append(("candidate",
+        'I write tests: proceed complete replay; mismatch; in progress; complete without begin. I run until green. If replay returns proceed I forgot completed branch. If mismatch overwrites I recheck equality order.'))
+
+    d.append(("interviewer",
+        'Continue.'))
+
+    d.append(("candidate",
+        'I speak O of one time and O of keys space, mention TTL as follow up, stop.'))
+
+    d.append(("interviewer",
+        'One minute summary.'))
+
+    d.append(("candidate",
+        'I built an in memory idempotency store for payment style retries. begin key body hash returns proceed, cached, in progress, or mismatch. First begin creates a processing record. complete stores the response as completed. Replays with the same hash return the same response without new side effects. Different hash is a client error. Tests cover replay, mismatch, and in progress. Expected O of one operations, space O of keys. Production needs shared storage and TTL. Failures may be cached by policy. Separate from rate limiting.'))
+
+    d.append(("interviewer",
+        'Production tomorrow differences?'))
+
+    d.append(("candidate",
+        'Durable unique key store, TTL, metrics on replay rate and mismatch rate, and request body canonicalization documented for clients. Same outcomes at the API boundary.'))
+
+    d.append(("interviewer",
+        'Open product questions?'))
+
+    d.append(("candidate",
+        'TTL length per endpoint, whether in progress should block or return seven eight seven, and which errors are final versus retryable. Those change client UX more than the core map.'))
+
+    d.append(("interviewer",
+        'Model the state machine as explicit transitions. List every legal transition.'))
+
+    d.append(("candidate",
+        'From missing, begin with hash h goes to processing with hash h, outcome proceed. From processing with hash h, begin with h goes to same processing, outcome in progress. From processing with h, begin with h prime not equal h goes to mismatch without state change. From processing, complete with response r goes to completed with r. From completed with h and r, begin with h returns cached r. From completed with h, begin with h prime returns mismatch. From completed, complete again with same r is no op or idempotent complete. From completed, complete with different r is conflict error. Missing complete is error. Those transitions are the spec tests must pin.'))
+
+    d.append(("interviewer",
+        'Sketch a sequence diagram style walk for a flaky mobile client that retries three times.'))
+
+    d.append(("candidate",
+        'Client send one begin K hash, proceed, server starts payment, network timeout before response. Client send two begin K hash, in progress, client waits or shows pending. Server complete stores R. Client send three begin K hash, cached R, client shows success. Side effect ran once. If client send two had used a different JSON field order but same logical body, hash must still match because of canonicalization. If it does not, we get a false mismatch, which is a platform bug outside the store.'))
+
+    d.append(("interviewer",
+        'How do you test canonicalization is not your store bug?'))
+
+    d.append(("candidate",
+        'Unit tests for the store pass raw hash strings. Separate tests for the hash helper over reordered keys. I do not mix those layers in one class. Interview store stays pure on hash equality.'))
+
+    d.append(("interviewer",
+        'Deadlock risk if wait for uses the same global lock as begin?'))
+
+    d.append(("candidate",
+        'Yes. If begin holds the lock and wait for needs complete to take the lock, design condition variables correctly: wait releases the lock. Simpler interview choice: non blocking begin only, clients poll. I state that tradeoff.'))
+
+    d.append(("interviewer",
+        'Compare HTTP seven eight seven to returning cached body with two hundred.'))
+
+    d.append(("candidate",
+        'Cached successful replay often returns the original status code and body, which might be two hundred. In progress may map to four zero nine or four two five or seven eight seven depending on platform standards. Mismatch is often four two two or four zero nine. I map outcomes to H T T P in a thin adapter, not inside the core store.'))
+
+    d.append(("interviewer",
+        'Observability fields you would log without leaking P I I.'))
+
+    d.append(("candidate",
+        'Key fingerprint not raw key if keys are sensitive, outcome enum, latency of first proceed to complete, mismatch count, replay count. Never log full payment payloads from the response store in plain debug at high volume without sampling.'))
+
+    d.append(("interviewer",
+        'If complete never comes, processing records leak. Mitigation?'))
+
+    d.append(("candidate",
+        'TTL on processing that moves to abandoned or allows a new proceed after expiry with care, plus alerts on stuck processing age. First cut in memory has no TTL; I mention the leak explicitly so it is not a silent flaw.'))
+
+    d.append(("interviewer",
+        'Write the Result type fields in words.'))
+
+    d.append(("candidate",
+        'outcome string or enum, response optional string, error message optional. begin always returns Result. complete returns none or raises. Callers branch on outcome before side effects: only proceed may charge.'))
+
+    d.append(("narrator",
+        'Speed recap. Problem: idempotency key store for safe retries. Clarify: body hash, in progress, no TTL first cut, single thread. Naive: no store double charges. Better: record hash status response. begin proceed cached in progress mismatch. complete stores response. Always compare hash. Tests: replay mismatch in progress. O of one time, O of keys space. Production shared DB or Redis plus TTL. Replay until you can perform the candidate role, then code thirty minutes AI off.'))
+
+    return d

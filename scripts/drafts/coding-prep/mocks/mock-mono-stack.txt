@@ -1,0 +1,163 @@
+[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. No system design detour and no AI tools. Listen with your ears. Second play: pause and answer before the candidate. Third play: shadow the candidate for muscle memory.
+
+[INTERVIEWER] Hi, thanks for coming in. One coding problem. Python fine. No AI. Clarify, design, hand walk, full word pseudocode, corners, complexity. Ready?
+
+[CANDIDATE] Yes. Please go ahead.
+
+[INTERVIEWER] Here is the problem. You are given a list of daily temperatures as integers. For each day, compute how many days you must wait until a warmer temperature appears. If there is no future warmer day, the answer for that day is zero. Return a list of integers the same length as the input. This is the classic daily temperatures pattern, and it is one of the few tagged LeetCode style problems in our ecosystem, so treat it as a real coding bar. What questions do you have?
+
+[CANDIDATE] Restating. Input temperatures index i is the temperature on day i. Output answer i is the smallest positive distance j minus i such that temperatures j is strictly greater than temperatures i, or zero if no such j exists. Clarifying questions. Is the comparison strict greater, not greater or equal? Are temperatures always within a documented range like thirty to one hundred, or arbitrary ints? Can the list be empty? Single pass required or is O of n squared acceptable as a first cut I then improve? May I use O of n extra space? Zero based indices for distance in days, counting the gap in indices?
+
+[INTERVIEWER] Strictly warmer. Temperatures are reasonable ints. Empty input returns empty list. O of n squared as a stated naive approach is fine if you then deliver linear. Extra O of n space is fine. Distance is j minus i in indices. Proceed.
+
+[CANDIDATE] Naive approach. For each day i, scan i plus one to the end until finding a warmer day, record distance or zero. Time O of n squared, space O of one extra besides the answer array. Fine for tiny n, too slow for large series. Improved approach. Monotonic stack of indices of days waiting for a warmer day, kept in decreasing temperature order from bottom to top. Scan left to right. While stack is not empty and today is strictly warmer than the day at stack top, pop that index, set answer at that index to today index minus that index. Then push today index. Days left on the stack at the end never see a warmer day and stay zero if we initialized the answer with zeros. Product framing if this appears in analytics: waiting time until a condition improves, same structure as next greater element. I will hand walk before claiming linear.
+
+[INTERVIEWER] Why store indices on the stack rather than temperatures?
+
+[CANDIDATE] I need both the temperature to compare and the index to write the distance. Index alone lets me read temperature from the array and compute j minus i. Storing only temperature loses the position for the answer write.
+
+[INTERVIEWER] Hand walk temperatures seventy three, seventy four, seventy five, seventy one, sixty nine, seventy two, seventy six, seventy three. Speak stack and writes.
+
+[CANDIDATE] Initialize answer all zeros. Day zero value seventy three, stack empty, push zero. Stack zero. Day one seventy four: warmer than seventy three, pop zero, answer zero equals one, push one. Stack one. Day two seventy five: warmer than seventy four, pop one, answer one equals one, push two. Stack two. Day three seventy one: cooler, push three. Stack two, three. Day four sixty nine: cooler, push four. Stack two, three, four. Day five seventy two: warmer than sixty nine, pop four, answer four equals one. Still warmer than seventy one, pop three, answer three equals two. Not warmer than seventy five, stop. Push five. Stack two, five. Day six seventy six: warmer than seventy two, pop five, answer five equals one. Warmer than seventy five, pop two, answer two equals four. Push six. Stack six. Day seven seventy three: cooler, push seven. End. Stack leftovers stay zero. Final answers: one, one, four, two, one, one, zero, zero. That matches the classic example.
+
+[INTERVIEWER] What is the invariant of the stack?
+
+[CANDIDATE] Indices from bottom to top have strictly decreasing temperatures. So the top is the closest previous day that has not yet found a warmer day and is the coldest among unresolved days in the stack sense. When today is warmer, it resolves a suffix of unresolved colder days.
+
+[INTERVIEWER] Full word pseudocode.
+
+[CANDIDATE] Function daily temperatures temperatures. N equals length. Answer equals list of n zeros. Stack empty list of indices. For i from zero to n minus one: while stack not empty and temperatures i is greater than temperatures at stack top: prev equals pop stack. Answer at prev equals i minus prev. Push i onto stack. Return answer. Load bearing: strict greater. Load bearing: store indices. Load bearing: initialize zeros for days that never resolve.
+
+[INTERVIEWER] Why is total time linear if there is a while inside the for?
+
+[CANDIDATE] Each index is pushed at most once and popped at most once. The while runs proportional to pops across the whole algorithm, not n times n. Total push and pop operations O of n, so time O of n. Space O of n for stack and answer in the worst case of strictly decreasing series where nothing pops until the end, and even then answer stays zero.
+
+[INTERVIEWER] Walk corners.
+
+[CANDIDATE] Empty list returns empty. Single day returns zero. Strictly increasing: every answer is one except last zero. Strictly decreasing: all zeros. All equal: all zeros because not strict warmer. Two elements warmer tomorrow: answer one zero. Plateau then spike: earlier equals wait until the spike. Large n: must not use quadratic nested scan in the final code.
+
+[INTERVIEWER] Unit tests you would write.
+
+[CANDIDATE] test classic example answers one one four two one one zero zero. test empty. test single. test all equal. test strictly decreasing. test strictly increasing. Those pin strict comparison and zero fill.
+
+[INTERVIEWER] Next greater element to the right is the same pattern. How would you phrase the generalization?
+
+[CANDIDATE] For each position find the next index to the right whose value is greater, or a sentinel if none. Monotonic decreasing stack of indices while scanning left to right, or sometimes right to left variants. Distance versus value is only what you write into the answer array.
+
+[INTERVIEWER] Right to left alternative?
+
+[CANDIDATE] You can scan from the right and maintain candidates of future warmer days. Left to right with waiting indices is the version I prefer to implement under pressure because the writes happen when you discover the warmer day and the math is simply i minus prev.
+
+[INTERVIEWER] I extend: return the warmer temperature itself, or negative one if none, instead of the wait in days.
+
+[CANDIDATE] Same stack. When you pop prev, write temperatures i into answer prev instead of i minus prev. Initialize answer with negative one. Structure unchanged.
+
+[INTERVIEWER] I extend again: circular array next warmer, like next greater element two. What changes?
+
+[CANDIDATE] Imagine the array concatenated logically. Scan two n with index modulo n, still push carefully so each index resolves at most once, or use a first pass to seed. I would state it as a follow up and implement only if time remains, because off by one bugs on modulo are common.
+
+[INTERVIEWER] Simulate coding. Narrate order.
+
+[CANDIDATE] I write function daily temperatures. N length, answer zeros, stack empty. Loop i with while warmer pop and set distance, then push i. Return answer.
+
+[INTERVIEWER] Continue.
+
+[CANDIDATE] I encode the classic example as a test and all equal as a test. If answers are wrong on equals I used greater or equal by mistake. If distances off by one I used j minus i plus one incorrectly.
+
+[INTERVIEWER] Continue.
+
+[CANDIDATE] I speak O of n time amortized, O of n space. Stop. No quadratic double loop left in the file.
+
+[INTERVIEWER] One minute summary.
+
+[CANDIDATE] Daily temperatures: for each day, days until a strictly warmer day, else zero. Naive nested scan O of n squared. Better monotonic stack of indices in decreasing temperature order. Left to right, pop while today warmer, write i minus prev, push i. Zeros remain for never warmer. Each index push pop once, O of n time and space. Tests cover classic example, equals, mono tone sequences. Follow ups: next greater value, circular variant.
+
+[INTERVIEWER] Production analytics angle in one line?
+
+[CANDIDATE] Same structure answers waiting time until a metric exceeds a prior sample, useful in monitoring style feature engineering, but the interview core is the stack discipline.
+
+[INTERVIEWER] Prove the amortized linear bound more carefully.
+
+[CANDIDATE] There are n iterations of the outer for loop. The inner while pops. Across the whole run the number of pops cannot exceed the number of pushes, and pushes equal n. So total while body executions are at most n. Each iteration of for does O of one work plus the pops charged to that global budget. Total O of n.
+
+[INTERVIEWER] Hand walk all equals seventy, seventy, seventy.
+
+[CANDIDATE] Push zero. Day one equal not strictly greater, push one. Day two equal, push two. End. Answers all zero. If I had used greater or equal I would wrongly resolve equals. Strictness is load bearing for this problem statement.
+
+[INTERVIEWER] Hand walk strictly decreasing five four three two one.
+
+[CANDIDATE] Push every index, never pop, answers all zero. Stack size n. This is the space worst case and a good unit test.
+
+[INTERVIEWER] Hand walk strictly increasing one two three four.
+
+[CANDIDATE] Each new day pops the previous single top, writes distance one, pushes. Answers one one one zero. Last day zero.
+
+[INTERVIEWER] Implement next greater element to the right returning values in full word pseudocode using the same stack.
+
+[CANDIDATE] Answer init negative ones. Stack indices. For i in range n: while stack and nums i greater than nums stack top: prev pop, answer prev equals nums i. Push i. Return answer. Same structure as temperatures with different write payload.
+
+[INTERVIEWER] When would you choose right to left scan?
+
+[CANDIDATE] Some problems ask for previous greater or maintain a structure of candidates toward one side. For this daily temperatures problem left to right waiting indices is clearer under interview stress. I can implement either if asked but I default left to right.
+
+[INTERVIEWER] Common off by one on distance?
+
+[CANDIDATE] Writing i minus prev plus one counts an extra day. The number of days you wait until day j from i is j minus i. Example day zero to day one is wait one, not two. Tests catch this immediately on the classic fixture.
+
+[INTERVIEWER] If temperatures came as a stream and n is huge, can you online the algorithm?
+
+[CANDIDATE] The classic algorithm needs future values, so pure online emission of final answers for early days requires buffering unresolved indices until a warmer day or end of stream. That is still the same stack; you emit when you pop or at end flush zeros. Memory is unresolved days, worst case n.
+
+[INTERVIEWER] Relate to stock span problems briefly.
+
+[CANDIDATE] Stock span uses a monotonic stack for consecutive days with price less or equal today looking backward. Same family of tools, different comparison direction and output. Naming the family shows pattern transfer without coding the wrong problem.
+
+[INTERVIEWER] Final implementation checklist before you say done.
+
+[CANDIDATE] Strict greater, index stack, zero init, i minus prev, classic test, equals test, mono tone tests, O of n spoken. No nested j loop left in the file.
+
+[INTERVIEWER] Let us simulate the full coding phase the way the long rate limiter mock does. Narrate file creation and the first lines you type.
+
+[CANDIDATE] I create daily_temperatures.py. I define function daily temperatures that takes a list of ints named temperatures and returns a list of ints. I set n equals length of temperatures. I set answer equals a list of n zeros. I set stack equals an empty list that will hold indices. I write a for loop i in range n.
+
+[INTERVIEWER] Continue. Inside the loop what exact condition do you type?
+
+[CANDIDATE] While stack is not empty and temperatures at i is greater than temperatures at stack minus one, meaning stack top: I pop prev from stack, then set answer at prev equals i minus prev. After the while, I append i to stack. After the for loop I return answer. I keep names temperatures and answer long on screen share.
+
+[INTERVIEWER] Continue. First tests you type.
+
+[CANDIDATE] I write assert daily temperatures of the classic list equals the classic answers. I write assert all zeros for equal temperatures. I write assert all zeros for strictly decreasing. I write assert ones then zero for strictly increasing. I run the file or pytest until green.
+
+[INTERVIEWER] A bug appears: answers are correct except every distance is one too large. Diagnosis?
+
+[CANDIDATE] I used i minus prev plus one. I remove the plus one. Re-run classic fixture. Green. I do not refactor further.
+
+[INTERVIEWER] Second bug: equals resolve to distance. Diagnosis?
+
+[CANDIDATE] I wrote greater or equal in the while. I change to strict greater. Equals test goes green.
+
+[INTERVIEWER] How do you comment the complexity in the docstring without essay writing?
+
+[CANDIDATE] One line: each index pushed and popped at most once, time O of n, space O of n. Done.
+
+[INTERVIEWER] If the interviewer asks you to code next greater element two circular, outline only the delta in under one minute.
+
+[CANDIDATE] Loop i over range two n, index equals i modulo n, same while pop using nums index, but only push during the first pass i less than n, and only write answers when answer still sentinel. I would need extra care not to infinite loop. I treat it as bonus after base is solid.
+
+[INTERVIEWER] Relate monotonic stack to the R P N stack so you do not confuse tools.
+
+[CANDIDATE] R P N stack holds values for operators. Monotonic stack holds indices with a monotonicity invariant to answer next greater or smaller queries. Both are stacks but different invariants. Naming the invariant prevents cargo culting stack on every problem.
+
+[INTERVIEWER] What would a weak answer sound like so you can avoid it?
+
+[CANDIDATE] Jumping to code without restating strict warmer. Or only describing O of n squared with no stack. Or saying stack of temperatures without indices. I avoid those by restate, naive, improved, hand walk, then code.
+
+[INTERVIEWER] Time check style: you have eight minutes left in a real thirty minute block. What do you prioritize?
+
+[CANDIDATE] Working classic test green, equals test green, spoken complexity. Not circular follow up. Not fancy generators.
+
+[INTERVIEWER] One more hand walk: temperatures seventy two seventy one seventy four.
+
+[CANDIDATE] Push zero for seventy two. Day one seventy one cooler push one. Day two seventy four warmer: pop one write answer one equals one, pop zero write answer zero equals two, push two. Answers two one zero. Clean.
+
+[NARRATOR] Speed recap. Next warmer day distances. Strict greater. Naive O of n squared. Monotonic decreasing index stack. Pop write i minus prev. Each index once, O of n. Classic example muscle memory. Code AI off after listen.

@@ -1,0 +1,58 @@
+"""Clarify-only gym: restate + forking questions."""
+
+
+def build():
+    d = []
+
+    d.append(("narrator",
+        'Clarify gym. Only restating and questions. No full solutions. Train the first three minutes of every problem.'))
+
+    d.append(("interviewer",
+        'Problem sketch 1. We need something for agent traffic so one customer cannot overwhelm the model API. Do not code. Clarify only.'))
+
+    d.append(("candidate",
+        'Restating: per customer admission control for model calls. Questions: per client or global, burst and sustained, return type on reject, in memory or distributed, thread safety, cost per call.'))
+
+    d.append(("interviewer",
+        'Good enough to start designing.'))
+
+    d.append(("interviewer",
+        'Problem sketch 2. Make refunds work for our merchants with different policies. Do not code. Clarify only.'))
+
+    d.append(("candidate",
+        'Restating: apply merchant specific refund rules to requests against original payments. Questions: partial refunds, amount units, window days source, first failure or all reasons, batch atomicity, currency and original rate.'))
+
+    d.append(("interviewer",
+        'Good enough to start designing.'))
+
+    d.append(("interviewer",
+        'Problem sketch 3. Convert money between currencies as well as possible. Do not code. Clarify only.'))
+
+    d.append(("candidate",
+        'Restating: multi hop conversion with best rate product. Questions: directed edges only, best product required, graph size, rounding, invalid rates, same currency.'))
+
+    d.append(("interviewer",
+        'Good enough to start designing.'))
+
+    d.append(("interviewer",
+        'Problem sketch 4. Keep the hottest model responses but memory is limited. Do not code. Clarify only.'))
+
+    d.append(("candidate",
+        'Restating: fixed capacity cache with eviction of least recently used entries. Questions: capacity units, get and put complexity target, null values, thread safety, key equals prompt hash plus model.'))
+
+    d.append(("interviewer",
+        'Good enough to start designing.'))
+
+    d.append(("interviewer",
+        'Problem sketch 5. Validate math expressions safely for a policy engine. Do not code. Clarify only.'))
+
+    d.append(("candidate",
+        'Restating: evaluate an expression string to a number with defined operators. Questions: operator set, precedence, parentheses, integer or float, error on malformed, empty input.'))
+
+    d.append(("interviewer",
+        'Good enough to start designing.'))
+
+    d.append(("narrator",
+        'Rule: only ask questions whose answers change structure or return type. Always restate first. Two or three questions beat ten decorative ones.'))
+
+    return d

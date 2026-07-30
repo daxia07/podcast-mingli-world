@@ -10,6 +10,156 @@
   ],
   "episodes": [
     {
+      "id": 464,
+      "title": "Infosec: Zero Trust Architecture + API Security",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "infosec-zero-trust-api",
+      "filename": "infosec-zero-trust-api.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/infosec-zero-trust-api.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/infosec-zero-trust-api.mp3",
+      "duration": "6:11",
+      "file_size_bytes": 2968748,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-interview",
+      "source": "tts"
+    },
+    {
+      "id": 463,
+      "title": "Infosec: Supply Chain Security + Compliance",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "infosec-supplychain-compliance",
+      "filename": "infosec-supplychain-compliance.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/infosec-supplychain-compliance.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/infosec-supplychain-compliance.mp3",
+      "duration": "6:28",
+      "file_size_bytes": 3107756,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-interview",
+      "source": "tts"
+    },
+    {
+      "id": 462,
+      "title": "Infosec: Incident Response + Secrets Management",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "infosec-incident-secrets",
+      "filename": "infosec-incident-secrets.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/infosec-incident-secrets.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/infosec-incident-secrets.mp3",
+      "duration": "6:17",
+      "file_size_bytes": 3017516,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-interview",
+      "source": "tts"
+    },
+    {
+      "id": 461,
+      "title": "Infosec: Encryption + Threat Modeling",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "infosec-encryption-threatmodel",
+      "filename": "infosec-encryption-threatmodel.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/infosec-encryption-threatmodel.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/infosec-encryption-threatmodel.mp3",
+      "duration": "6:09",
+      "file_size_bytes": 2953196,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-interview",
+      "source": "tts"
+    },
+    {
+      "id": 460,
+      "title": "Infosec: OWASP Top 10 + Authentication Patterns",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "infosec-owasp-auth",
+      "filename": "infosec-owasp-auth.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/infosec-owasp-auth.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/infosec-owasp-auth.mp3",
+      "duration": "6:53",
+      "file_size_bytes": 3306284,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-interview",
+      "source": "tts"
+    },
+    {
+      "id": 454,
+      "title": "Behavioral: Quality vs Speed + Production Incidents",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "behavioral-quality-incident",
+      "filename": "behavioral-quality-incident.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/behavioral-quality-incident.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/behavioral-quality-incident.mp3",
+      "duration": "5:56",
+      "file_size_bytes": 2850284,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-interview",
+      "source": "tts"
+    },
+    {
+      "id": 453,
+      "title": "Behavioral: Navigating Ambiguity + Driving Standards",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "behavioral-ambiguity-standards",
+      "filename": "behavioral-ambiguity-standards.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/behavioral-ambiguity-standards.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/behavioral-ambiguity-standards.mp3",
+      "duration": "6:06",
+      "file_size_bytes": 2929964,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-interview",
+      "source": "tts"
+    },
+    {
+      "id": 452,
+      "title": "Behavioral: Unpopular Decisions + Difficult People",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "behavioral-unpopular-difficult",
+      "filename": "behavioral-unpopular-difficult.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/behavioral-unpopular-difficult.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/behavioral-unpopular-difficult.mp3",
+      "duration": "6:00",
+      "file_size_bytes": 2887916,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-interview",
+      "source": "tts"
+    },
+    {
+      "id": 451,
+      "title": "Behavioral: Tight Deadlines + Critical Feedback",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "behavioral-deadline-feedback",
+      "filename": "behavioral-deadline-feedback.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/behavioral-deadline-feedback.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/behavioral-deadline-feedback.mp3",
+      "duration": "5:43",
+      "file_size_bytes": 2745644,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-interview",
+      "source": "tts"
+    },
+    {
+      "id": 450,
+      "title": "Behavioral: Why Leaving + Biggest Weakness",
+      "description": "TTS-generated practice episode for behavioral interview preparation.",
+      "theme": "behavioral-why-leaving-weakness",
+      "filename": "behavioral-why-leaving-weakness.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/behavioral-why-leaving-weakness.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/behavioral-why-leaving-weakness.mp3",
+      "duration": "5:07",
+      "file_size_bytes": 2458028,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-interview",
+      "source": "tts"
+    },
+    {
       "id": 411,
       "title": "NeetCode: Two Sum II Sorted (LC 167)",
       "subtitle": "Bonus \u00b7 Two pointers contrast to Day 1 map",
@@ -252,304 +402,924 @@
       "audio_fit": "excellent"
     },
     {
-      "id": 314,
-      "title": "Coding Prep 14: Mock Screen Week 2",
-      "subtitle": "Min stack \u00b7 cycle \u00b7 stairs \u00b7 full pattern checklist.",
-      "description": "Week two dress rehearsal. Different problems than episode seven. You will narrate stack or intervals leftovers, then a list or DP medium shape, under the same sixty minute script. No AI. Mouth first.  Hour shape again. Zero to five settle and read. Five to twelve clarify naive optimize agree. Twelve to thirty five code narrating. Thirty five to forty five edges and fix. Second problem if any \u2014 smaller ritual. Last five complexity and your questions.  Stuck line. Two options I\u2026",
-      "theme": "coding-prep-ep14-mock-week2",
-      "filename": "coding-prep-ep14-mock-week2.mp3",
-      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
-      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
-      "duration": "3:55",
-      "file_size_bytes": 1880684,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "id": 352,
+      "title": "Coding Mock: Coin Change (Min Coins DP)",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 unbounded knapsack \u00b7 not greedy. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-coin-change",
+      "filename": "coding-prep-mock-coin-change.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-coin-change.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-coin-change.mp3",
+      "duration": "17:34",
+      "file_size_bytes": 8435756,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 572
+      "words": 2657
+    },
+    {
+      "id": 351,
+      "title": "Coding Mock: Number of Islands",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 grid DFS flood fill. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-num-islands",
+      "filename": "coding-prep-mock-num-islands.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-num-islands.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-num-islands.mp3",
+      "duration": "16:12",
+      "file_size_bytes": 7777196,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2445
+    },
+    {
+      "id": 350,
+      "title": "Coding Mock: Merge Intervals",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 sort + scan \u00b7 touch merges. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-merge-intervals",
+      "filename": "coding-prep-mock-merge-intervals.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-merge-intervals.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-merge-intervals.mp3",
+      "duration": "18:19",
+      "file_size_bytes": 8797292,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2703
+    },
+    {
+      "id": 349,
+      "title": "Coding Mock: Container With Most Water",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 two pointers \u00b7 move shorter. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-container-water",
+      "filename": "coding-prep-mock-container-water.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-container-water.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-container-water.mp3",
+      "duration": "17:08",
+      "file_size_bytes": 8231084,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2637
+    },
+    {
+      "id": 348,
+      "title": "Coding Mock: Longest Substring No Repeat",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 sliding window \u00b7 LC3. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-longest-substring",
+      "filename": "coding-prep-mock-longest-substring.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-longest-substring.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-longest-substring.mp3",
+      "duration": "17:56",
+      "file_size_bytes": 8614124,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2503
+    },
+    {
+      "id": 347,
+      "title": "Coding Mock: Two Sum (Hash Map)",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 complement map \u00b7 indices. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-two-sum",
+      "filename": "coding-prep-mock-two-sum.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-two-sum.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-two-sum.mp3",
+      "duration": "17:14",
+      "file_size_bytes": 8272940,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2598
+    },
+    {
+      "id": 346,
+      "title": "Coding Mock: FX Arbitrage (Bellman-Ford)",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 \u2212log rates \u00b7 negative cycle. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. About twenty minutes. Two voices. No AI. Ear only first play. Pause second. Shadow third.  [INTERVIEWER] Hi, thanks for coming in. One coding problem. Python fine. No AI. This pairs with best rate conversion but focuses on arbitrage detection. Clarify, design, hand walk, pseudocode, corners, complexity. Ready?  [CANDIDATE] Yes. Please go ahead.  [INTERVIEWER] Here is the problem. You are given a lis\u2026",
+      "theme": "coding-prep-mock-bellman-ford",
+      "filename": "coding-prep-mock-bellman-ford.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-bellman-ford.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-bellman-ford.mp3",
+      "duration": "16:42",
+      "file_size_bytes": 8021996,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2810
+    },
+    {
+      "id": 345,
+      "title": "Coding Mock: FX Anomaly Detector",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 5-min window \u00b7 10% vs average. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. About twenty minutes of two voice dialogue. No AI tools. Ear only first. Pause on second play. Shadow on third.  [INTERVIEWER] Hi, thanks for coming in. One coding problem. Python fine. No AI. Clarify, design, hand walk, pseudocode, corners, complexity. Ready?  [CANDIDATE] Yes. Please go ahead.  [INTERVIEWER] Here is the problem, framed like a historical take home style task. You process a stream of\u2026",
+      "theme": "coding-prep-mock-fx-anomaly",
+      "filename": "coding-prep-mock-fx-anomaly.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-fx-anomaly.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-fx-anomaly.mp3",
+      "duration": "17:04",
+      "file_size_bytes": 8199596,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2536
+    },
+    {
+      "id": 344,
+      "title": "Coding Mock: Daily Temperatures (Monotonic Stack)",
+      "subtitle": "~20 min \u00b7 two-voice \u00b7 next warmer \u00b7 LC 739 pattern. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. No system design detour and no AI tools. Listen with your ears. Second play: pause and answer before the candidate. Third play: shadow the candidate for muscle memory.  [INTERVIEWER] Hi, thanks for coming in. One coding problem. Python fine. No AI. Clarify, design, hand walk, full word pseudocode, corners, complexity. Ready?  [CANDID\u2026",
+      "theme": "coding-prep-mock-mono-stack",
+      "filename": "coding-prep-mock-mono-stack.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-mono-stack.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-mono-stack.mp3",
+      "duration": "17:12",
+      "file_size_bytes": 8257772,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2570
+    },
+    {
+      "id": 343,
+      "title": "Coding Drill: Complexity & Edges Call-Response",
+      "subtitle": "Short daily \u00b7 Big-O + edge lists by problem type.",
+      "description": "[NARRATOR] Complexity and edges drill. Short loop. Speak with the candidate.  [INTERVIEWER] State time and space for token bucket allow.  [CANDIDATE] Time O of one expected. Space O of number of clients.  [INTERVIEWER] Edges for array problems almost always?  [CANDIDATE] Empty, single element, all equal, already sorted, reverse sorted, duplicates, negatives, min and max values.  [INTERVIEWER] Edges for design capacity structures?  [CANDIDATE] Capacity zero or one, get miss, u\u2026",
+      "theme": "coding-prep-mock-complexity-edges",
+      "filename": "coding-prep-mock-complexity-edges.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-complexity-edges.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-complexity-edges.mp3",
+      "duration": "0:57",
+      "file_size_bytes": 458156,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 122
+    },
+    {
+      "id": 342,
+      "title": "Coding Mock: Idempotency Key Store",
+      "subtitle": "~18\u201320 min \u00b7 two-voice \u00b7 body hash \u00b7 replay \u00b7 mismatch. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. One coding problem for th\u2026",
+      "theme": "coding-prep-mock-idempotency",
+      "filename": "coding-prep-mock-idempotency.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-idempotency.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-idempotency.mp3",
+      "duration": "17:40",
+      "file_size_bytes": 8481644,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2475
+    },
+    {
+      "id": 341,
+      "title": "Coding Mock: RPN Expression Evaluator",
+      "subtitle": "~18\u201320 min \u00b7 two-voice \u00b7 stack \u00b7 pop order \u00b7 \u00f70. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. Single coding problem for\u2026",
+      "theme": "coding-prep-mock-rpn",
+      "filename": "coding-prep-mock-rpn.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-rpn.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-rpn.mp3",
+      "duration": "17:57",
+      "file_size_bytes": 8620652,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2585
+    },
+    {
+      "id": 340,
+      "title": "Coding Mock: LRU Cache (Model Responses)",
+      "subtitle": "~18\u201320 min \u00b7 two-voice \u00b7 map+DLL \u00b7 eviction \u00b7 O(1). No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We will spend this block\u2026",
+      "theme": "coding-prep-mock-lru-cache",
+      "filename": "coding-prep-mock-lru-cache.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-lru-cache.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-lru-cache.mp3",
+      "duration": "17:30",
+      "file_size_bytes": 8402156,
+      "date": "2026-07-22",
+      "pub_date": "2026-07-22",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2737
+    },
+    {
+      "id": 339,
+      "title": "Coding Drill: Wrong Answers Clinic",
+      "subtitle": "Bad line \u2192 fix line \u00b7 AI policy \u00b7 FX \u00b7 money \u00b7 silence.",
+      "description": "[NARRATOR] Wrong answers clinic. Hear the failure, then the fix line. Replay until the fix is automatic.  [INTERVIEWER] Candidate said: I will just start coding the optimal solution now.  [CANDIDATE] Better: I will restate, ask two clarifiers, state a naive approach, then improve.  [INTERVIEWER] Candidate said: I opened Copilot because the first thirty minutes are hard.  [CANDIDATE] Better: AI stays off until the deep dive segment. Violation risk is extreme.  [INTERVIEWER] Ca\u2026",
+      "theme": "coding-prep-mock-wrong-answers",
+      "filename": "coding-prep-mock-wrong-answers.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-wrong-answers.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-wrong-answers.mp3",
+      "duration": "1:53",
+      "file_size_bytes": 905516,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 237
+    },
+    {
+      "id": 338,
+      "title": "Coding Drill: 90s Intro Variants",
+      "subtitle": "Three intros \u00b7 under two minutes \u00b7 no flattery.",
+      "description": "[NARRATOR] Intro drills. Official budget about two minutes. Aim sixty to ninety seconds. Substance, not flattery.  [INTERVIEWER] Please introduce yourself briefly.  [CANDIDATE] I am Mingxia. I build AI tooling and automation in fintech contexts, including multi agent workflows and production safety checks. I care about clean interfaces, tests, and systems that stay correct under retries. I am excited about Airwallex because you combine global financial infrastructure with an\u2026",
+      "theme": "coding-prep-mock-intro-drills",
+      "filename": "coding-prep-mock-intro-drills.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-intro-drills.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-intro-drills.mp3",
+      "duration": "1:27",
+      "file_size_bytes": 701036,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 186
+    },
+    {
+      "id": 337,
+      "title": "Coding Drill: Clarify Gym",
+      "subtitle": "Restate + forking questions only \u00b7 five vague prompts.",
+      "description": "[NARRATOR] Clarify gym. Only restating and questions. No full solutions. Train the first three minutes of every problem.  [INTERVIEWER] Problem sketch 1. We need something for agent traffic so one customer cannot overwhelm the model API. Do not code. Clarify only.  [CANDIDATE] Restating: per customer admission control for model calls. Questions: per client or global, burst and sustained, return type on reject, in memory or distributed, thread safety, cost per call.  [INTERVIE\u2026",
+      "theme": "coding-prep-mock-clarify-gym",
+      "filename": "coding-prep-mock-clarify-gym.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-clarify-gym.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-clarify-gym.mp3",
+      "duration": "2:25",
+      "file_size_bytes": 1167020,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 286
+    },
+    {
+      "id": 336,
+      "title": "Coding Drill: Stuck Recovery Lines",
+      "subtitle": "Short loops \u00b7 fork script \u00b7 bug fix \u00b7 time pressure.",
+      "description": "[NARRATOR] Stuck recovery pack. Short two voice drills. When you freeze, you need lines not panic. Replay daily.  [INTERVIEWER] You have been quiet for a while. What are you thinking?  [CANDIDATE] Let me take a step back and think systematically. I am between two approaches. A is nested loops, O of n squared. B uses a hash map for constant lookups. Given n can be large, I should take B. If I am missing a constraint, tell me.  [INTERVIEWER] Good. Continue with B.  [NARRATOR] R\u2026",
+      "theme": "coding-prep-mock-stuck-recovery",
+      "filename": "coding-prep-mock-stuck-recovery.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-stuck-recovery.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-stuck-recovery.mp3",
+      "duration": "2:10",
+      "file_size_bytes": 1046060,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 320
+    },
+    {
+      "id": 335,
+      "title": "Coding Mock: Part 2 AI Deep Dive Pilot",
+      "subtitle": "Two-voice \u00b7 directed prompts \u00b7 verify/reject \u00b7 Claude Code.",
+      "description": "[NARRATOR] Coding mock, part two only. Technical deep dive with AI tools allowed. About twenty minutes. Assume part one already produced a working token bucket rate limiter without AI. Interviewer reviews. Candidate uses Claude Code with directed prompts and verification. Loop this until the pilot script is automatic.  [INTERVIEWER] We are now in the technical deep dive. AI assisted tools are allowed. You may open Claude Code or similar. We will improve the solution you alrea\u2026",
+      "theme": "coding-prep-mock-ai-deep-dive-part2",
+      "filename": "coding-prep-mock-ai-deep-dive-part2.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-ai-deep-dive-part2.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-ai-deep-dive-part2.mp3",
+      "duration": "8:53",
+      "file_size_bytes": 4268588,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1308
+    },
+    {
+      "id": 334,
+      "title": "Coding Mock: Full Dual-Mode Hour (Intro+Problem+AI Dive)",
+      "subtitle": "Dress rehearsal \u00b7 pause mid-ep to code 30m AI-off \u00b7 then deep dive.",
+      "description": "[NARRATOR] Full coding interview simulation. About one hour of content. Segment one short intro. Segment two problem without AI. Segment three deep dive with AI allowed. Two voices. Listen as a dress rehearsal. You may pause between segments to actually code.  [INTERVIEWER] Welcome. This is a sixty minute coding interview. Two minutes for a brief intro, then a coding problem without AI tools, then a technical deep dive where AI tools are allowed. Please start with a short int\u2026",
+      "theme": "coding-prep-mock-full-hour-dual-mode",
+      "filename": "coding-prep-mock-full-hour-dual-mode.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-full-hour-dual-mode.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-full-hour-dual-mode.mp3",
+      "duration": "27:55",
+      "file_size_bytes": 13407020,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 4104
+    },
+    {
+      "id": 333,
+      "title": "Coding Mock: Stream Top-K + Moving Average",
+      "subtitle": "~20 min problem block \u00b7 two-voice \u00b7 stream window \u00b7 corners. No AI.",
+      "description": "[NARRATOR] Coding mock interview. Stream top K types and moving average. Problem segment only. About twenty minutes. Two voices. No AI.  [INTERVIEWER] Hi. No AI in this block. You will process a stream of transactions. Each event has a type string and an integer amount. Build a class that ingests events one by one, answers top K types by frequency so far, and answers the moving average of amounts over the last N events. Prefer efficient updates. Clarify first.  [CANDIDATE] Re\u2026",
+      "theme": "coding-prep-mock-stream-topk",
+      "filename": "coding-prep-mock-stream-topk.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-stream-topk.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-stream-topk.mp3",
+      "duration": "17:46",
+      "file_size_bytes": 8534636,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2609
+    },
+    {
+      "id": 332,
+      "title": "Coding Mock: Refund Rules Engine",
+      "subtitle": "~20 min problem block \u00b7 two-voice \u00b7 rules engine \u00b7 corners. No AI.",
+      "description": "[NARRATOR] Coding mock interview. Batch refund processor with rules. Problem segment only. About twenty minutes. The interviewer leaves ambiguity on purpose. No AI.  [INTERVIEWER] Hi. Coding problem, no AI. Implement a batch refund processor. Each refund request has transaction id, amount, currency, reason, merchant id, and request timestamp. Rules you must enforce: cannot refund more than the original payment including prior refunds; cannot continue after fully refunded; mer\u2026",
+      "theme": "coding-prep-mock-refund-rules",
+      "filename": "coding-prep-mock-refund-rules.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-refund-rules.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-refund-rules.mp3",
+      "duration": "18:47",
+      "file_size_bytes": 9023660,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2536
+    },
+    {
+      "id": 331,
+      "title": "Coding Mock: Currency Best Rate",
+      "subtitle": "~20 min problem block \u00b7 two-voice \u00b7 Dijkstra \u2212log \u00b7 corners. No AI.",
+      "description": "[NARRATOR] Coding mock interview. Currency best rate conversion. Problem segment only. About twenty minutes. Two voices. No AI. Listen, pause, answer, then shadow.  [INTERVIEWER] Hi. One coding problem. No AI tools. Clarify before code. We will go deep on approach, pseudocode, corners, and complexity. Ready?  [CANDIDATE] Ready.  [INTERVIEWER] Build a currency converter. Input rates are triples: from currency, to currency, and a positive multiplier rate. Implement convert amou\u2026",
+      "theme": "coding-prep-mock-currency-best-rate",
+      "filename": "coding-prep-mock-currency-best-rate.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-currency-best-rate.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-currency-best-rate.mp3",
+      "duration": "18:25",
+      "file_size_bytes": 8843756,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2617
+    },
+    {
+      "id": 330,
+      "title": "Coding Mock: Rate Limiter (Agent API)",
+      "subtitle": "~20 min problem block \u00b7 two-voice \u00b7 token bucket \u00b7 corners. No AI.",
+      "description": "[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.  [INTERVIEWER] Hi, thanks for coming in. We are going to spend thi\u2026",
+      "theme": "coding-prep-mock-rate-limiter",
+      "filename": "coding-prep-mock-rate-limiter.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-mock-rate-limiter.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-mock-rate-limiter.mp3",
+      "duration": "19:04",
+      "file_size_bytes": 9160364,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 2773
+    },
+    {
+      "id": 322,
+      "title": "Coding Prep 22: Interviewer Fit \u2014 Tianxiao Huang",
+      "subtitle": "ML EM signals \u00b7 stoic calm \u00b7 infra framing \u00b7 AI pilot. Pair Interviewer Fit sheet.",
+      "description": "Hey. This monologue is about who is on the other side of the screen and how that changes your mouth, not your algorithms. Replay until the adaptation lines are automatic. Pair with the tutor sheet Interviewer Fit Tianxiao Huang. Clock and dual AI policy still live in episode nineteen. Ritual still lives in episode zero. This episode is the human layer.  Your coding interviewer is Tianxiao Huang. Engineering Manager at Airwallex in Shanghai. Chinese name Huang Tianxiao. Public\u2026",
+      "theme": "coding-prep-ep22-interviewer-tianxiao",
+      "filename": "coding-prep-ep22-interviewer-tianxiao.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep22-interviewer-tianxiao.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep22-interviewer-tianxiao.mp3",
+      "duration": "5:30",
+      "file_size_bytes": 2643308,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 801
+    },
+    {
+      "id": 321,
+      "title": "Coding Prep 21: AI Scenario Think-Aloud",
+      "subtitle": "Rate limiter scenario \u00b7 full ritual \u00b7 LRU mini. Pair AI Scenario Coding.",
+      "description": "Hey. This is a full think aloud for an Airwallex style part one problem. Real world scenario focused on AI. Thirty minutes. No AI tools. You will hear the ritual on a product shaped prompt, not a bare LeetCode title. Replay until you can steal the pacing and the words.  The problem statement, as if the interviewer said it.  We are building a small service that calls a foundation model. Each tenant has a rate limit so one customer cannot burn the whole budget. Design and imple\u2026",
+      "theme": "coding-prep-ep21-ai-scenario",
+      "filename": "coding-prep-ep21-ai-scenario.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep21-ai-scenario.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep21-ai-scenario.mp3",
+      "duration": "7:45",
+      "file_size_bytes": 3725420,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1169
+    },
+    {
+      "id": 320,
+      "title": "Coding Prep 20: AI Deep Dive Pilot",
+      "subtitle": "Claude Code part 2 \u00b7 directed prompts \u00b7 verify loop. Pair AI Deep Dive sheet.",
+      "description": "Hey. This monologue is only about the second half of the Airwallex coding interview. Twenty five to thirty minutes. Technical deep dive. AI is allowed. They want to see how you use it. Not whether a model can replace you.  Replay this until the prompt templates come out of your mouth without thinking.  Context. You already spent thirty minutes without AI. You should have a working solution, some edges, complexity spoken, and a short list of known gaps. The interviewer will re\u2026",
+      "theme": "coding-prep-ep20-ai-deep-dive",
+      "filename": "coding-prep-ep20-ai-deep-dive.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep20-ai-deep-dive.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep20-ai-deep-dive.mp3",
+      "duration": "6:34",
+      "file_size_bytes": 3157868,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1032
+    },
+    {
+      "id": 319,
+      "title": "Coding Prep 19: Interview Clock + Dual AI",
+      "subtitle": "2/30/25 structure \u00b7 AI off then on \u00b7 ritual reset. Pair Process 2026.",
+      "description": "Hey. This is the reset episode for the Airwallex AI Team coding interview. If you learned an older story about a long background chat and a total AI ban, park it. The official guide is specific. Sixty minutes with a senior engineer. Two minutes intro. Thirty minutes coding with AI strictly off. Twenty five to thirty minutes technical deep dive with AI on. The problem is a real world scenario focused on AI, not a random trivia quiz. They still care about algorithms and clean c\u2026",
+      "theme": "coding-prep-ep19-interview-clock",
+      "filename": "coding-prep-ep19-interview-clock.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep19-interview-clock.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep19-interview-clock.mp3",
+      "duration": "6:40",
+      "file_size_bytes": 3203372,
+      "date": "2026-07-21",
+      "pub_date": "2026-07-21",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1012
+    },
+    {
+      "id": 318,
+      "title": "Coding Prep 18: Design-in-Code",
+      "subtitle": "Token bucket \u00b7 circuit breaker \u00b7 idempotency \u00b7 outbox.",
+      "description": "Design-in-code day. Not a pure LeetCode formula. Four production primitives Airwallex-shaped AI scenario screens love: token bucket rate limiter, circuit breaker, idempotency key store, and a one-minute outbox. Part one is no AI. Mentor path. Thinking, traps, pseudocode, why pitch per piece, then a combined close. Pair with the design-in-code tutor unit and episode twenty one scenario monologue.  Why this episode exists. Vault Day six and the fill-in drills mark these as gap\u2026",
+      "theme": "coding-prep-ep18-design-in-code",
+      "filename": "coding-prep-ep18-design-in-code.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep18-design-in-code.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep18-design-in-code.mp3",
+      "duration": "9:09",
+      "file_size_bytes": 4396652,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1218
+    },
+    {
+      "id": 317,
+      "title": "Coding Prep 17: FX Arbitrage \u2014 Bellman-Ford",
+      "subtitle": "Negative cycle \u00b7 \u2212log \u00b7 V\u22121 + detect \u00b7 pseudocode + why.",
+      "description": "Arbitrage detection. Partner episode to best-rate Dijkstra. Question: does a cycle of exchange rates let me start with one unit and end with more than one after a loop? If yes, the rate feed is inconsistent \u2014 free lunch. Part one practice: no AI. Mentor path. Pair with graph paths FX drill, Bellman-Ford section.  Problem. Given a graph of currency rates, return true if arbitrage exists reachable from a start currency, else false. Same model: edge A to B with positive rate mea\u2026",
+      "theme": "coding-prep-ep17-fx-bellman",
+      "filename": "coding-prep-ep17-fx-bellman.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep17-fx-bellman.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep17-fx-bellman.mp3",
+      "duration": "7:37",
+      "file_size_bytes": 3656684,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1102
+    },
+    {
+      "id": 316,
+      "title": "Coding Prep 16: FX Best Rate \u2014 Dijkstra",
+      "subtitle": "BFS vs best product \u00b7 \u2212log rates \u00b7 pseudocode + why.",
+      "description": "Week three continues with Airwallex-shaped graph coding. Best-rate currency conversion. Not fewest hops \u2014 best product of exchange rates along a path. This upgrades the naive BFS FX story. Part one practice: no AI. Mentor path. Pair later with the graph paths FX deep drill in the app.  Problem. You have directed exchange rates between currencies \u2014 or undirected if every rate has an inverse. Given amount, from currency, to currency, return the best converted amount, or define\u2026",
+      "theme": "coding-prep-ep16-fx-dijkstra",
+      "filename": "coding-prep-ep16-fx-dijkstra.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep16-fx-dijkstra.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep16-fx-dijkstra.mp3",
+      "duration": "8:36",
+      "file_size_bytes": 4129196,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1226
+    },
+    {
+      "id": 315,
+      "title": "Coding Prep 15: Monotonic Stack",
+      "subtitle": "Daily Temperatures \u00b7 next greater \u00b7 trap clinic \u00b7 pseudocode + why.",
+      "description": "Alright. Week three gap closure. Pattern: monotonic stack. Interviewer says Daily Temperatures \u2014 LeetCode seven thirty-nine style. Given a list of daily temperatures, for each day return how many days you wait until a warmer temperature. If none, return zero for that day.  I'm going to think out loud the way I would on a part one screen. No AI for the solve. No countdown quizzes. Mentor path: naive, branch, optimal, traps, then clean pseudocode and why I chose this. After thi\u2026",
+      "theme": "coding-prep-ep15-monotonic",
+      "filename": "coding-prep-ep15-monotonic.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep15-monotonic.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep15-monotonic.mp3",
+      "duration": "8:30",
+      "file_size_bytes": 4084268,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1228
+    },
+    {
+      "id": 314,
+      "title": "Coding Prep 14: Mock Screen Week 2",
+      "subtitle": "Min stack \u00b7 cycle \u00b7 stairs \u00b7 full pattern checklist.",
+      "description": "Week two dress rehearsal. Different problems than episode seven. You will narrate stack or list or DP shapes under the official Airwallex AI Team clock. Mouth first. Replay until the hour is boring. Pair with Interview Process 2026. Then run a real dual mode mock offline.  Official hour again. Two minutes intro. Thirty minutes coding, AI off. Twenty five to thirty minutes deep dive, AI on with Claude Code. Part one goal: working solution. Part two goal: improve your code with\u2026",
+      "theme": "coding-prep-ep14-mock-week2",
+      "filename": "coding-prep-ep14-mock-week2.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep14-mock-week2.mp3",
+      "duration": "4:13",
+      "file_size_bytes": 2030636,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 596
     },
     {
       "id": 313,
       "title": "Coding Prep 13: Tree DFS",
       "subtitle": "Depth \u00b7 invert \u00b7 same tree. Complements BFS week 1.",
-      "description": "Tree DFS day. Complements week one BFS level order. Max depth, invert binary tree, same tree. No AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Maximum depth of binary tree. Root to leaf longest path length in nodes.  Cold open. Six counts. One line recurrence. One through six.  Model: if null depth zero. Else one plus max of depth left and depth right. Recursive DFS. Iterative stack or level BFS also works \u2014 BFS depth is number of levels.  Walk.\u2026",
+      "description": "Tree DFS day. Complements week one BFS level order. Max depth, invert binary tree, same tree. Part one practice: no AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Maximum depth of binary tree. Root to leaf longest path length in nodes.  Cold open. Six counts. One line recurrence. One through six.  Model: if null depth zero. Else one plus max of depth left and depth right. Recursive DFS. Iterative stack or level BFS also works \u2014 BFS depth is numbe\u2026",
       "theme": "coding-prep-ep13-tree-dfs",
       "filename": "coding-prep-ep13-tree-dfs.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep13-tree-dfs.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep13-tree-dfs.mp3",
-      "duration": "2:49",
-      "file_size_bytes": 1357484,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "2:54",
+      "file_size_bytes": 1400492,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 381
+      "words": 391
     },
     {
       "id": 312,
       "title": "Coding Prep 12: DP Fundamentals",
       "subtitle": "Define the cell \u00b7 stairs \u00b7 robber \u00b7 coin change.",
-      "description": "Dynamic programming fundamentals. Climbing stairs, house robber, coin change fewest coins. The speech pattern matters more than memorizing ten problems. No AI. Speak before solve. Pair with DP Search List in the app.  What DP is in interview words. Optimal substructure \u2014 big answer builds from smaller. Overlapping subproblems \u2014 same sub-answers reused. You define dp meaning in one sentence, base cases, recurrence, then iterate bottom up or memo top down. Always state that sen\u2026",
+      "description": "Dynamic programming fundamentals. Climbing stairs, house robber, coin change fewest coins. The speech pattern matters more than memorizing ten problems. Part one practice: no AI. Speak before solve. Pair with DP Search List in the app.  What DP is in interview words. Optimal substructure \u2014 big answer builds from smaller. Overlapping subproblems \u2014 same sub-answers reused. You define dp meaning in one sentence, base cases, recurrence, then iterate bottom up or memo top down. Al\u2026",
       "theme": "coding-prep-ep12-dp",
       "filename": "coding-prep-ep12-dp.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep12-dp.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep12-dp.mp3",
-      "duration": "3:57",
-      "file_size_bytes": 1897196,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "3:59",
+      "file_size_bytes": 1918316,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 563
+      "words": 568
     },
     {
       "id": 311,
       "title": "Coding Prep 11: Binary Search + Rotated",
       "subtitle": "Closed interval \u00b7 sorted half on rotated array.",
-      "description": "Binary search day. Sorted array lookup, then the rotated array half-sorted trick. Log n comfort for screens. No AI. Speak before solve. Pair with DP Search List binary search questions in the app.  Problem one. Classic. Sorted array ascending, find target index or negative one. No duplicates for the base version \u2014 clarify.  Cold open. Eight counts. Loop invariant and how left right move. One through eight.  Model: left zero, right n minus one, while left less or equal right.\u2026",
+      "description": "Binary search day. Sorted array lookup, then the rotated array half-sorted trick. Log n comfort for screens. Part one practice: no AI. Speak before solve. Pair with DP Search List binary search questions in the app.  Problem one. Classic. Sorted array ascending, find target index or negative one. No duplicates for the base version \u2014 clarify.  Cold open. Eight counts. Loop invariant and how left right move. One through eight.  Model: left zero, right n minus one, while left le\u2026",
       "theme": "coding-prep-ep11-binary-search",
       "filename": "coding-prep-ep11-binary-search.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep11-binary-search.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep11-binary-search.mp3",
-      "duration": "3:39",
-      "file_size_bytes": 1760108,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "3:42",
+      "file_size_bytes": 1781228,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 527
+      "words": 532
     },
     {
       "id": 310,
       "title": "Coding Prep 10: Linked List Reverse + Cycle",
       "subtitle": "Three-pointer reverse \u00b7 Floyd fast/slow.",
-      "description": "Linked list day. Reverse a list, then cycle detection with fast and slow. Pointer discipline under stress. No AI. Speak before solve. Pair with DP Search List unit \u2014 list section \u2014 in the app.  Problem one. Reverse a singly linked list. Return new head.  Cold open. Eight counts. Iterative three pointers. One through eight.  Model: prev null, curr head. While curr: save next, curr next equals prev, prev equals curr, curr equals saved next. Return prev. Draw one two three on pa\u2026",
+      "description": "Linked list day. Reverse a list, then cycle detection with fast and slow. Pointer discipline under stress. Part one practice: no AI. Speak before solve. Pair with DP Search List unit \u2014 list section \u2014 in the app.  Problem one. Reverse a singly linked list. Return new head.  Cold open. Eight counts. Iterative three pointers. One through eight.  Model: prev null, curr head. While curr: save next, curr next equals prev, prev equals curr, curr equals saved next. Return prev. Draw\u2026",
       "theme": "coding-prep-ep10-linked-list",
       "filename": "coding-prep-ep10-linked-list.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep10-linked-list.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep10-linked-list.mp3",
-      "duration": "3:24",
-      "file_size_bytes": 1633772,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "3:29",
+      "file_size_bytes": 1676396,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 496
+      "words": 507
     },
     {
       "id": 309,
       "title": "Coding Prep 9: Merge Intervals",
       "subtitle": "Sort by start, sweep merge. Calendar/range muscle.",
-      "description": "Merge Intervals. Sort plus linear scan. Shows up in calendars, bookings, and range logic. No AI. Speak before solve. Pair with Intervals and Design in the app.  Problem. Given a list of intervals, each a start and end, merge all overlapping ones. Return the merged list sorted by start.  Cold open. Ten counts. First step and merge rule. One through ten.  Model: sort by start ascending. Keep a current interval. For each next: if next start is less or equal current end, merge \u2014\u2026",
+      "description": "Merge Intervals. Sort plus linear scan. Shows up in calendars, bookings, and range logic. Part one practice: no AI. Speak before solve. Pair with Intervals and Design in the app.  Problem. Given a list of intervals, each a start and end, merge all overlapping ones. Return the merged list sorted by start.  Cold open. Ten counts. First step and merge rule. One through ten.  Model: sort by start ascending. Keep a current interval. For each next: if next start is less or equal cu\u2026",
       "theme": "coding-prep-ep09-intervals",
       "filename": "coding-prep-ep09-intervals.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep09-intervals.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep09-intervals.mp3",
-      "duration": "3:25",
-      "file_size_bytes": 1647404,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "3:31",
+      "file_size_bytes": 1690988,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 483
+      "words": 494
     },
     {
       "id": 308,
       "title": "Coding Prep 8: Valid Parentheses + Stack",
       "subtitle": "Week 2 \u00b7 Nesting muscle \u00b7 Min stack note. Pair with Stack & Queue.",
-      "description": "Week two opens with stack muscle. Valid Parentheses, then a quick Min Stack design note. No AI. You speak before I solve. Pair with Stack and Queue in the app.  Problem. Given a string of brackets only \u2014 round, square, curly \u2014 return true if every opener has a matching closer in the right order.  Cold open. Ten counts. Structure and end condition. One through ten.  Model: stack. On open, push. On close, stack must be non empty and top must match this closer \u2014 then pop. End: s\u2026",
+      "description": "Week two opens with stack muscle. Valid Parentheses, then a quick Min Stack design note. Part one practice: no AI. You speak before I solve. Pair with Stack and Queue in the app.  Problem. Given a string of brackets only \u2014 round, square, curly \u2014 return true if every opener has a matching closer in the right order.  Cold open. Ten counts. Structure and end condition. One through ten.  Model: stack. On open, push. On close, stack must be non empty and top must match this closer\u2026",
       "theme": "coding-prep-ep08-stack",
       "filename": "coding-prep-ep08-stack.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep08-stack.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep08-stack.mp3",
-      "duration": "3:07",
-      "file_size_bytes": 1499564,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "3:13",
+      "file_size_bytes": 1550636,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 445
+      "words": 458
     },
     {
       "id": 307,
       "title": "Coding Prep 7: Mock Screen Dry Run",
       "subtitle": "60-minute narration script. Brackets + merge intervals. Test week recap.",
-      "description": "This is the dress rehearsal. Not a new algorithm. A sixty minute Airwallex style coding screen compressed into a narration you can run cold. No AI. Mouth first. After this, open Process and Complexity drills, then do one timed medium offline.  Setup. You have about sixty minutes. Easy to medium problems. They want clarify, naive, optimize, working code, edges, complexity. Background chat may eat a few minutes. Medium should feel comfortable in thirty to forty minutes with pra\u2026",
+      "description": "This is the dress rehearsal. Not a new algorithm. A sixty minute Airwallex AI Team style coding interview compressed into a narration you can run cold. Mouth first. Replay until the hour feels automatic. Pair with Interview Process 2026 and Complexity in the app. Then do one full timed mock offline with a hard AI switch.  Official clock. Two minutes intro. Thirty minutes coding, AI strictly off. Twenty five to thirty minutes technical deep dive, AI on, Claude Code allowed. Pr\u2026",
       "theme": "coding-prep-ep07-mock-screen",
       "filename": "coding-prep-ep07-mock-screen.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep07-mock-screen.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep07-mock-screen.mp3",
-      "duration": "5:17",
-      "file_size_bytes": 2538284,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "6:32",
+      "file_size_bytes": 3139244,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 755
+      "words": 948
     },
     {
       "id": 306,
       "title": "Coding Prep 6: Islands + Level Order",
       "subtitle": "Flood fill + BFS queue batches. Trees & graphs muscle.",
-      "description": "Graphs and trees day. Number of Islands, then Binary Tree Level Order. BFS and DFS flood muscle. No AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Grid of water zero and land one. Island is four-connected land. Count islands. Diagonal usually does not connect \u2014 clarify.  Cold open, eight counts. Approach and complexity. One through eight.  Model: scan every cell. When you find land, increment count, then flood fill mark all connected land as wate\u2026",
+      "description": "Graphs and trees day. Number of Islands, then Binary Tree Level Order. BFS and DFS flood muscle. Part one practice: no AI. Speak before solve. Pair with Trees and Graphs in the app.  Problem one. Grid of water zero and land one. Island is four-connected land. Count islands. Diagonal usually does not connect \u2014 clarify.  Cold open, eight counts. Approach and complexity. One through eight.  Model: scan every cell. When you find land, increment count, then flood fill mark all con\u2026",
       "theme": "coding-prep-ep06-islands-bfs",
       "filename": "coding-prep-ep06-islands-bfs.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep06-islands-bfs.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep06-islands-bfs.mp3",
-      "duration": "3:57",
-      "file_size_bytes": 1903532,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "4:00",
+      "file_size_bytes": 1924460,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 557
+      "words": 562
     },
     {
       "id": 305,
       "title": "Coding Prep 5: LRU Cache Design",
       "subtitle": "Map + doubly linked list for O(1) get/put.",
-      "description": "LRU Cache. Design problem. Airwallex and many screens love this because it is structure plus clear operations, not a one-shot formula. No AI. You speak the design before code. Pair with the LRU deep drill in the app.  Problem. Implement LRUCache with capacity. Methods: get key returns value or negative one if missing. Put key value inserts or updates. When over capacity, evict the least recently used key. Both get and put must be average O of one.  Cold open. Ten counts. Name\u2026",
+      "description": "LRU Cache. Design problem. Airwallex and many screens love this because it is structure plus clear operations, not a one-shot formula. Part one practice: no AI. You speak the design before code. Pair with the LRU deep drill in the app.  Problem. Implement LRUCache with capacity. Methods: get key returns value or negative one if missing. Put key value inserts or updates. When over capacity, evict the least recently used key. Both get and put must be average O of one.  Cold ope\u2026",
       "theme": "coding-prep-ep05-lru",
       "filename": "coding-prep-ep05-lru.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep05-lru.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep05-lru.mp3",
-      "duration": "4:20",
-      "file_size_bytes": 2085932,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "4:26",
+      "file_size_bytes": 2133740,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 653
+      "words": 659
     },
     {
       "id": 304,
       "title": "Coding Prep 4: Two Pointers",
       "subtitle": "Container water + 3Sum moves. Move the shorter line.",
-      "description": "Two pointers day. Container With Most Water, then Three Sum moves. Same family: sorted or end-based indices that remove nested loops. No AI. Speak before solve. Pair with Two Pointers unit in the app.  Problem one. You have an array height of non-negative integers. Vertical lines at each index. Choose two lines so the container holds max water. Area is min of the two heights times distance between indices.  Cold open, eight counts. Naive and optimal move rule. One. Two. Three\u2026",
+      "description": "Two pointers day. Container With Most Water, then Three Sum moves. Same family: sorted or end-based indices that remove nested loops. Part one practice: no AI. Speak before solve. Pair with Two Pointers unit in the app.  Problem one. You have an array height of non-negative integers. Vertical lines at each index. Choose two lines so the container holds max water. Area is min of the two heights times distance between indices.  Cold open, eight counts. Naive and optimal move ru\u2026",
       "theme": "coding-prep-ep04-two-pointers",
       "filename": "coding-prep-ep04-two-pointers.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep04-two-pointers.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep04-two-pointers.mp3",
-      "duration": "4:37",
-      "file_size_bytes": 2224556,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "4:40",
+      "file_size_bytes": 2244716,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 662
+      "words": 667
     },
     {
       "id": 303,
       "title": "Coding Prep 3: Longest Unique Substring",
       "subtitle": "Sliding window expand/shrink. Pair with deep drill.",
-      "description": "Longest Substring Without Repeating Characters. Sliding window muscle. Airwallex medium comfort. No AI. You speak before I solve. After this, open the Longest Substring deep drill in the app.  Problem. Given a string s, return the length of the longest substring with all unique characters. Substring means contiguous.  Cold open. I'll count to ten. Say: clarifier, naive idea and Big-O, window idea in one sentence. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten.  Mod\u2026",
+      "description": "Longest Substring Without Repeating Characters. Sliding window muscle. Airwallex medium comfort. Part one practice: no AI. You speak before I solve. After this, open the Longest Substring deep drill in the app.  Problem. Given a string s, return the length of the longest substring with all unique characters. Substring means contiguous.  Cold open. I'll count to ten. Say: clarifier, naive idea and Big-O, window idea in one sentence. One. Two. Three. Four. Five. Six. Seven. Eig\u2026",
       "theme": "coding-prep-ep03-longest-substring",
       "filename": "coding-prep-ep03-longest-substring.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep03-longest-substring.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep03-longest-substring.mp3",
-      "duration": "4:45",
-      "file_size_bytes": 2282348,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "4:48",
+      "file_size_bytes": 2311532,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 711
+      "words": 717
     },
     {
       "id": 302,
       "title": "Coding Prep 2: HashMap Family",
       "subtitle": "Duplicate \u00b7 Anagrams \u00b7 Top K. Seen-before muscle memory.",
-      "description": "Today is the HashMap family. Three shapes, one muscle: memory of what you have already seen. Contains Duplicate. Group Anagrams. Top K Frequent. No AI. You speak before I solve.  Airwallex wants process. Naive first. Then the structure. Map or set is not magic \u2014 it is O of one average lookup that buys you a linear scan.  Cold open. Problem one: given an integer array, return true if any value appears at least twice, else false.  I'll count to eight. Out loud: clarifier, naive\u2026",
+      "description": "Today is the HashMap family. Three shapes, one muscle: memory of what you have already seen. Contains Duplicate. Group Anagrams. Top K Frequent. Part one practice: no AI. You speak before I solve.  Airwallex wants process. Naive first. Then the structure. Map or set is not magic \u2014 it is O of one average lookup that buys you a linear scan.  Cold open. Problem one: given an integer array, return true if any value appears at least twice, else false.  I'll count to eight. Out lou\u2026",
       "theme": "coding-prep-ep02-hashmap-family",
       "filename": "coding-prep-ep02-hashmap-family.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep02-hashmap-family.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep02-hashmap-family.mp3",
-      "duration": "5:27",
-      "file_size_bytes": 2624492,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "5:34",
+      "file_size_bytes": 2675180,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
-      "words": 810
+      "words": 824
     },
     {
       "id": 301,
       "title": "Coding Prep 1: Two Sum Think-Aloud",
-      "subtitle": "Map complement, cold open, speed recap. Pair with app deep drill.",
-      "description": "Alright. Interviewer just said: Two Sum. Given an array of integers called nums, and an integer target, return the indices of the two numbers that add up to target.  I'm going to work this the way I would in a real screen. No AI. Out loud. Naive first, then better. And I'm going to make the mistakes people actually make, so you hear the recovery.  Important: you speak before I solve. After this episode, open the tutor app and run the Two Sum deep drill \u2014 eight multiple-choice\u2026",
+      "subtitle": "Map complement \u00b7 trap clinic \u00b7 pseudocode + why pitch. Pair with app deep drill.",
+      "description": "Alright. Interviewer just said: Two Sum. Given an array of integers called nums, and an integer target, return the indices of the two numbers that add up to target.  I'm going to work this the way I would in a real part one screen. No AI for the solve. Out loud. Naive first, then better. I'll make the mistakes people actually make so you hear the recovery. No countdown quizzes. You ride along inside the thinking. After this episode, open the tutor app and run the Two Sum deep\u2026",
       "theme": "coding-prep-ep01-two-sum",
       "filename": "coding-prep-ep01-two-sum.mp3",
       "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep01-two-sum.mp3",
       "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep01-two-sum.mp3",
-      "duration": "9:11",
-      "file_size_bytes": 4414700,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
+      "duration": "11:48",
+      "file_size_bytes": 5666732,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
+      "playlist": "coding-prep",
+      "playlist_ids": [
+        "coding-prep"
+      ],
+      "tip_id": "coding-prep-playlist",
+      "words": 1811
+    },
+    {
+      "id": 300,
+      "title": "Coding Prep 0: Airwallex Screen Ritual",
+      "subtitle": "8-step ritual \u00b7 stuck script \u00b7 dual-mode note. Pair ep19 clock + Process 2026.",
+      "description": "Hey. This is the pre-flight for coding interviews. Airwallex AI Team Stage 1, and honestly most company screens that still want you to think out loud. Replay this until the eight step ritual is automatic. For the official sixty minute clock and dual AI policy, also loop episode nineteen. This episode owns the ritual. Episode nineteen owns the clock. Episode twenty owns Claude Code in the deep dive.  I'm not going to quiz you with countdowns. I'm going to walk the thinking pro\u2026",
+      "theme": "coding-prep-ep00-ritual",
+      "filename": "coding-prep-ep00-ritual.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep00-ritual.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep00-ritual.mp3",
+      "duration": "9:18",
+      "file_size_bytes": 4472108,
+      "date": "2026-07-20",
+      "pub_date": "2026-07-20",
       "playlist": "coding-prep",
       "playlist_ids": [
         "coding-prep"
       ],
       "tip_id": "coding-prep-playlist",
       "words": 1405
-    },
-    {
-      "id": 300,
-      "title": "Coding Prep 0: Airwallex Screen Ritual",
-      "subtitle": "Clarify \u2192 naive \u2192 optimize \u2192 edges \u2192 complexity. No AI in live rounds.",
-      "description": "Hey. This is a short one. Think of it as the pre-flight checklist for coding interviews \u2014 specifically the Airwallex style tech screen.  If you already know the format, you can jump ahead mentally to the ritual. If you don't, stay with me for a few minutes so you don't waste a sixty-minute interview on the wrong game.  Airwallex's engineering blog is unusually clear. The tech screen is like LeetCode easy and medium. They care that you understand basic algorithms and can apply\u2026",
-      "theme": "coding-prep-ep00-ritual",
-      "filename": "coding-prep-ep00-ritual.mp3",
-      "file_url": "https://podcast.mingli.world/episodes/coding-prep-ep00-ritual.mp3",
-      "audio_url": "https://podcast.mingli.world/episodes/coding-prep-ep00-ritual.mp3",
-      "duration": "4:23",
-      "file_size_bytes": 2106284,
-      "date": "2026-07-16",
-      "pub_date": "2026-07-16",
-      "playlist": "coding-prep",
-      "playlist_ids": [
-        "coding-prep"
-      ],
-      "tip_id": "coding-prep-playlist",
-      "words": 682
     },
     {
       "id": 213,
@@ -565,7 +1335,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-job_scheduler.mp3"
     },
     {
       "id": 212,
@@ -581,7 +1352,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q6.mp3"
     },
     {
       "id": 211,
@@ -597,7 +1369,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q8.mp3"
     },
     {
       "id": 210,
@@ -613,7 +1386,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q11.mp3"
     },
     {
       "id": 209,
@@ -629,7 +1403,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q12.mp3"
     },
     {
       "id": 208,
@@ -645,7 +1420,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q3.mp3"
     },
     {
       "id": 207,
@@ -661,7 +1437,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q5.mp3"
     },
     {
       "id": 206,
@@ -677,7 +1454,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q7.mp3"
     },
     {
       "id": 205,
@@ -693,7 +1471,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q10.mp3"
     },
     {
       "id": 204,
@@ -709,7 +1488,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q9.mp3"
     },
     {
       "id": 203,
@@ -725,7 +1505,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q2.mp3"
     },
     {
       "id": 202,
@@ -741,7 +1522,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q1.mp3"
     },
     {
       "id": 201,
@@ -757,7 +1539,8 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q4l.mp3"
     },
     {
       "id": 200,
@@ -773,7 +1556,143 @@
       "playlist_ids": [
         "awx-10min-speeches"
       ],
-      "words": 0
+      "words": 0,
+      "file_url": "https://podcast.mingli.world/episodes/awx-speech-q4w.mp3"
+    },
+    {
+      "id": 96,
+      "title": "Zero Trust Architecture \u2014 NIST 800-207 (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-infosec-zero-trust-nist",
+      "filename": "yt-infosec-zero-trust-nist.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-infosec-zero-trust-nist.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-infosec-zero-trust-nist.mp3",
+      "duration": "8:40",
+      "file_size_bytes": 8324972,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 95,
+      "title": "OWASP Top 10 Web App Security Risks Explained (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-infosec-owasp-explained",
+      "filename": "yt-infosec-owasp-explained.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-infosec-owasp-explained.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-infosec-owasp-explained.mp3",
+      "duration": "14:40",
+      "file_size_bytes": 14090348,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 94,
+      "title": "Zero Trust Explained in 4 Minutes (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-infosec-zero-trust-4min",
+      "filename": "yt-infosec-zero-trust-4min.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-infosec-zero-trust-4min.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-infosec-zero-trust-4min.mp3",
+      "duration": "3:20",
+      "file_size_bytes": 3212780,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 93,
+      "title": "OWASP Top 10 2025 \u2014 Complete Guide (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-infosec-owasp-2025",
+      "filename": "yt-infosec-owasp-2025.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-infosec-owasp-2025.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-infosec-owasp-2025.mp3",
+      "duration": "23:21",
+      "file_size_bytes": 22432748,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "infosec-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 92,
+      "title": "Answering Behavioral Questions \u2014 Shockingly Uncomplicated (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-behavioral-uncomplicated",
+      "filename": "yt-behavioral-uncomplicated.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-behavioral-uncomplicated.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-behavioral-uncomplicated.mp3",
+      "duration": "27:59",
+      "file_size_bytes": 26879084,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 91,
+      "title": "Behavioral Interview \u2014 Ex-Meta & Amazon Managers (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-behavioral-meta-amazon",
+      "filename": "yt-behavioral-meta-amazon.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-behavioral-meta-amazon.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-behavioral-meta-amazon.mp3",
+      "duration": "64:20",
+      "file_size_bytes": 61763564,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 90,
+      "title": "Cracking the Behavioral Interview for Developers (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-behavioral-cracking",
+      "filename": "yt-behavioral-cracking.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-behavioral-cracking.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-behavioral-cracking.mp3",
+      "duration": "8:00",
+      "file_size_bytes": 7687148,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 89,
+      "title": "Top 10 Behavioral SE Interview Questions (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-behavioral-top10-questions",
+      "filename": "yt-behavioral-top10-questions.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-behavioral-top10-questions.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-behavioral-top10-questions.mp3",
+      "duration": "5:49",
+      "file_size_bytes": 5591660,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-youtube",
+      "source": "youtube"
+    },
+    {
+      "id": 88,
+      "title": "Behavioral Interview \u2014 STAR Technique Answers (YouTube)",
+      "description": "YouTube-extracted expert interview audio.",
+      "theme": "yt-behavioral-star-answers",
+      "filename": "yt-behavioral-star-answers.mp3",
+      "file_url": "https://podcast.mingli.world/episodes/yt-behavioral-star-answers.mp3",
+      "audio_url": "https://podcast.mingli.world/episodes/yt-behavioral-star-answers.mp3",
+      "duration": "14:24",
+      "file_size_bytes": 13833836,
+      "date": "2026-07-30",
+      "pub_date": "2026-07-30",
+      "playlist": "behavioral-youtube",
+      "source": "youtube"
     },
     {
       "id": 87,
@@ -1763,7 +2682,7 @@
     },
     "coding-prep": {
       "title": "Coding Prep \u2014 Airwallex Muscle Memory",
-      "description": "Think-aloud coding interviews: clarify \u2192 naive \u2192 optimize \u2192 edges \u2192 complexity. Cold open, dead-end recovery, speed recap. Pair with tutor deep drills + Coding YouTube.",
+      "description": "Mentor monologues + two-voice coding mocks: interviewer sets problem, candidate clarifies, pseudocode, corners. Dual AI clock ep19\u201322. Loop for muscle memory. Pair learn.mingli.world coding-prep.",
       "episode_ids": [
         300,
         301,
@@ -1779,7 +2698,38 @@
         311,
         312,
         313,
-        314
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352
       ],
       "icon": "\ud83d\udcbb"
     },
@@ -1800,6 +2750,41 @@
         411
       ],
       "icon": "\ud83c\udfa7"
+    },
+    "behavioral-interview": {
+      "title": "Behavioral Interview Practice",
+      "description": "TTS practice episodes for behavioral interview questions",
+      "episode_ids": [],
+      "icon": "\ud83c\udfaf"
+    },
+    "infosec-interview": {
+      "title": "Info Security Interview Prep",
+      "description": "TTS practice episodes for infosec interview questions",
+      "episode_ids": [],
+      "icon": "\ud83d\udd12"
+    },
+    "behavioral-youtube": {
+      "title": "Behavioral Interview \u2014 Expert Audio",
+      "description": "YouTube-extracted expert behavioral interview advice",
+      "episode_ids": [
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "icon": "\ud83c\udfac"
+    },
+    "infosec-youtube": {
+      "title": "InfoSec \u2014 Expert Audio",
+      "description": "YouTube-extracted infosec and security interview content",
+      "episode_ids": [
+        93,
+        94,
+        95,
+        96
+      ],
+      "icon": "\ud83c\udfac"
     }
   }
 }

@@ -1,0 +1,57 @@
+Arbitrage detection. Partner episode to best-rate Dijkstra. Question: does a cycle of exchange rates let me start with one unit and end with more than one after a loop? If yes, the rate feed is inconsistent — free lunch. Part one practice: no AI. Mentor path. Pair with graph paths FX drill, Bellman-Ford section.
+
+Problem. Given a graph of currency rates, return true if arbitrage exists reachable from a start currency, else false. Same model: edge A to B with positive rate means multiply by rate when converting.
+
+Thinking open. Restate: arbitrage means a cycle whose rate product is strictly greater than one. Example: USD to EUR to GBP to USD multiplies to one point zero four — end with more USD than you started.
+
+Ritual. Restate. Clarify. Naive. Improve. Example. Edges. Complexity.
+
+Clarifiers. Directed quotes only or inverses inserted? Start currency — only cycles reachable from start, or any cycle in the graph? Interview: usually reachable from start, or check all components. Rates positive. Self-loops rate greater than one is trivial arbitrage.
+
+Naive. Enumerate cycles, compute products. Exponential and messy. Say it, then transform.
+
+Decision branch. Same -log transform as Dijkstra. Product greater than one if and only if sum of log rates greater than zero if and only if sum of negative log rates less than zero. So arbitrage equals a negative cycle in the graph of weights equal to negative log of rate.
+
+Dijkstra cannot reliably detect negative cycles and assumes non-negative weights in the classic greedy sense — after -log, weights can be negative when rate is greater than one, because -log of a number greater than one is negative. So even "positive FX rates" produce negative edge weights in -log space whenever rate is greater than one. That is why best-rate episode hand-waved carefully, and why arbitrage needs Bellman-Ford: it handles negative weights and the extra relaxation detects negative cycles.
+
+Bellman-Ford idea. Build edge list of from, to, weight equals negative log rate. Distance map: infinity except start zero. Relax all edges V minus one times: if dist from plus weight is less than dist to, update dist to. After V minus one rounds, if any edge can still relax, a negative cycle is reachable — return true. Else false. Early exit if a round does no updates.
+
+Why V minus one. Longest simple path has at most V minus one edges. After that many full relaxations, shortest path distances are final if no negative cycle. One more successful relaxation implies a cycle that keeps improving distance — negative cycle.
+
+Hand-walk numbers. Rates: USD to EUR zero point eight five, EUR to GBP zero point seven two, GBP to USD one point seven zero. Product zero point eight five times zero point seven two times one point seven zero is about one point zero four. Arbitrage true. In -log space the three weights sum negative — cycle improves distance forever in the model.
+
+Trap clinic.
+
+Trap one: use Dijkstra and claim no arbitrage if it finishes. Dijkstra is not the negative-cycle detector. Recovery: Bellman-Ford V-th relaxation.
+
+Trap two: check product less than one only on a guessed cycle. Recovery: systematic BF on full edge list.
+
+Trap three: forget reachable from start — initialize all nodes zero and detect phantom. Interview variants differ; state: dist start zero, others infinity, only relax through reachable nodes.
+
+Trap four: wrong transform — use log without negative and look for positive cycle without flipping the test. Recovery: negative cycle in -log graph equals product greater than one.
+
+Trap five: V iterations of relax as the main loop instead of V minus one then one check. Recovery: V minus one to settle, then one pass to detect.
+
+Trap six: silent on precision. Logs and floats can be noisy near product equals one; interview mention epsilon if needed; for drill exact toy numbers.
+
+Edges. No edges false. Single rate no cycle false. Self-loop rate greater than one true. Two-node mutual rates whose product greater than one true. Disconnected arbitrage elsewhere — depends on start reachability.
+
+Complexity. Time O of V times E. Space O of V plus E. Fine for tens of currencies.
+
+Choice table — own this speech. BFS: fewest hops, unweighted. Dijkstra: best path when you minimize non-negative weights; for max product with care on weight signs, use for routing when you assume no helpful negative cycles or use potentials — interview default for best rate with positive rates and no arb hunt. Bellman-Ford: negative weights OK, detect negative cycle equals arbitrage. If the question is "can I go around and end up better off?" — Bellman-Ford.
+
+Airwallex link. FX rate feeds must not admit arbitrage loops; settlement and netting graphs use the same negative-cycle idea for imbalance. Say full words: Bellman-Ford, negative cycle, not BF acronym only.
+
+Sibling. Same algorithm on additive fee graphs looking for negative fee loops — different domain, same detector.
+
+Pseudocode. Build list of edges from, to, weight equals negative log of rate. Set dist of every currency to infinity. Set dist of start to zero. For round from one to V minus one: for each edge, if dist of from is finite and dist from plus weight is less than dist of to, set dist of to to that sum. Optionally break early if no update. Then for each edge once more: if same improve condition holds, return true. Return false. Load-bearing line: one more successful relaxation after V minus one rounds means negative cycle means arbitrage.
+
+Why I chose this. Constraint: detect whether any cycle multiplies rates above one, rates positive, graph may create negative -log edges. Rejected cycle enumeration as primary. Rejected Dijkstra as detector. What Bellman-Ford buys: correct shortest paths with negative weights and an explicit negative-cycle test on the V-th pass. Cost: O of V E, slower than Dijkstra, acceptable for small FX graphs and required for the question. Close: arbitrage detection is Bellman-Ford on -log rates; true if negative cycle reachable — that's the three-minute pitch.
+
+Speed recap. Arbitrage: cycle product greater than one. Weight equals negative log rate. Negative cycle in that graph. Bellman-Ford relax V minus one times, then one more for detect. Reachability from start via dist infinity. Not Dijkstra. BFS is hops only. O of V E. Part one: no AI.
+
+App: graph paths FX — arbitrage section cold. Implement has_arbitrage on a toy graph without AI. Optional deep dive for reachability edges.
+
+Next: design-in-code — token bucket, circuit breaker, idempotency store, outbox one-liner. Bridges coding screen to production Airwallex primitives.
+
+This was Coding Prep. FX Bellman-Ford. Go code it without AI, then a short deep dive.

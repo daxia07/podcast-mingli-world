@@ -1,0 +1,275 @@
+[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.
+
+[INTERVIEWER] Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. Clarify requirements, explain approach, hand walk an example, give full word pseudocode, cover corners and complexity, then narrate implementation. Ready?
+
+[CANDIDATE] Yes. Please go ahead with the problem.
+
+[INTERVIEWER] Here is the problem. Given an m by n two d binary grid which represents a map of one as land and zero as water, return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are surrounded by water. Four way connectivity only.
+
+[CANDIDATE] Restating. Count connected components of land cells under four neighbor adjacency. Clarifying. May I mutate the grid? Diagonal connections? Empty grid? Chars or ints for zero one?
+
+[INTERVIEWER] Mutation allowed. Four directions only not eight. Empty returns zero. Chars one and zero are fine.
+
+[CANDIDATE] Approach is standard graph traversal rather than a false naive. Iterate each cell. On land, increment count and flood fill mark all reachable land via D F S or B F S, setting cells to water or using visited. Each flood is one island. Time O of rows times cols. Union find is an alternative with more code.
+
+[INTERVIEWER] Why is the improved approach worth the extra structure?
+
+[CANDIDATE] Because interviewers want to see you map a grid to an implicit graph and write a clean flood without leaking connectivity mistakes. This pattern underpins many grid problems.
+
+[INTERVIEWER] Hand walk a small two island mental grid.
+
+[CANDIDATE] Top left land blob flood as island one. Separated land elsewhere flood as island two. Water never increments. Count two.
+
+[INTERVIEWER] All land one by three grid.
+
+[CANDIDATE] First cell starts flood of entire grid. Count one. No second increment.
+
+[INTERVIEWER] Checker pattern of lands not diagonal connected.
+
+[CANDIDATE] With four connectivity each land is its own island if only diagonals touch. Eight connectivity would differ. Restate four.
+
+[INTERVIEWER] Why mark visited when enqueue in B F S?
+
+[CANDIDATE] Prevent the same land from entering the queue many times from different neighbors, which wastes time and can blow memory.
+
+[INTERVIEWER] Describe the API you will implement, then full word pseudocode.
+
+[CANDIDATE] Function num islands grid. If not grid return zero. r c dimensions. Def sink i j: if out of bounds or water return; set water; sink four neighbors. count zero. For each cell if land: count plus one; sink. Return count. Load bearing: increment then flood. Load bearing: four deltas only.
+
+[INTERVIEWER] Walk corner cases one by one.
+
+[CANDIDATE] Empty zero. All water zero. All land one. Single cell. Border lands. Two islands fixture. Large island recursion depth concern.
+
+[INTERVIEWER] Name the unit tests you would write before claiming done.
+
+[CANDIDATE] test all water. test all land. test two islands. test single. Optional iterative stack version test same results.
+
+[INTERVIEWER] Complexity, precise.
+
+[CANDIDATE] Time O of r c. Space O of r c worst recursion or queue. Iterative stack avoids Python recursion limits on huge islands.
+
+[INTERVIEWER] Eight connected?
+
+[CANDIDATE] Only if problem says so. Add diagonal deltas.
+
+[INTERVIEWER] Max area of island?
+
+[CANDIDATE] Return size from flood, track max.
+
+[INTERVIEWER] Union find sketch.
+
+[CANDIDATE] Union right and down neighbors of lands, count parents of lands.
+
+[INTERVIEWER] Surrounded regions family?
+
+[CANDIDATE] Same flood tools, different starts and marks.
+
+[INTERVIEWER] You have a working happy path and a few minutes left. What do you do?
+
+[CANDIDATE] I do not start a harder follow up. I lock the tests we named, restate complexity, and keep the code readable. Working correct code beats unfinished cleverness.
+
+[INTERVIEWER] Simulate the implementation phase. Narrate what you type in order as if I watch your editor.
+
+[CANDIDATE] I write dimensions and sink helper with four deltas.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I write nested loops with count and sink.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I test fixtures. If recursion depth concerns me I rewrite sink iterative.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I speak O of r c and stop.
+
+[INTERVIEWER] Bug counts land cells not islands.
+
+[CANDIDATE] Forgot flood mark; every land increments. Fix mark whole component.
+
+[INTERVIEWER] Bug off by one on borders.
+
+[CANDIDATE] Bounds checks before grid access. Add border land tests.
+
+[INTERVIEWER] Before we close, summarize the whole solution in about one minute.
+
+[CANDIDATE] Number of islands counts connected land components with four way flood fill D F S or B F S. Mark visited by mutating to water. O of cells time. Tests cover all water, all land, multi island. Iterative flood if recursion is risky. Not eight connected unless asked.
+
+[INTERVIEWER] What would you do differently if this shipped tomorrow versus interview code?
+
+[CANDIDATE] I would add property tests or random differential checks against a slow oracle where feasible, metrics if it sits on a hot path, and clearer error types at A P I boundaries. The core algorithm stays the same.
+
+[INTERVIEWER] Any open questions you would ask before calling the design final?
+
+[CANDIDATE] Constraints on n, whether input is trusted, and which follow up variant product actually needs. Those change validation and A P I more than the core loop.
+
+[INTERVIEWER] Technique clinic: grid as graph.
+
+[CANDIDATE] Each cell is a vertex. Four way land to land adjacency defines edges. Water cells are absent vertices or vertices without edges. Islands are connected components among land vertices. Counting components is: iterate vertices, on unvisited land run D F S or B F S to mark the component, increment once per successful start. This is textbook graph traversal with an implicit edge function.
+
+[INTERVIEWER] Clinic: choose D F S vs B F S vs union find for interviews.
+
+[CANDIDATE] D F S recursive is shortest to type. B F S iterative is safe for large components. Union find shines when you already think in disjoint sets or online edge additions. I default to recursive D F S with a note I can convert to iterative stack if needed. All are O of cells for this static grid.
+
+[INTERVIEWER] Clinic: mark order bugs.
+
+[CANDIDATE] If you increment count for every land cell without flooding, you count cells not islands. If you flood but forget to mark the starting cell, you may infinite loop. If you mark after recursion instead of before, neighbors may reenter. Pattern: mark when you visit, then recurse neighbors.
+
+[INTERVIEWER] Clinic: directions array style.
+
+[CANDIDATE] I keep a list of four delta pairs one zero minus one zero zero one zero minus one. Loop deltas for clean code and fewer typos than four copy pasted blocks. Easy to extend to eight by adding diagonals if the problem changes.
+
+[INTERVIEWER] Clinic: input types chars versus ints.
+
+[CANDIDATE] Many problems use character one and zero. Compare to character one carefully not integer one. I check type in the first fixture. Mixing causes zero islands falsely.
+
+[INTERVIEWER] Clinic: parallel flood thought experiment.
+
+[CANDIDATE] You could start floods from multiple seeds with care not to double count using atomics on marks, but that is not interview scope. Sequential scan is expected. I avoid over engineering.
+
+[INTERVIEWER] Clinic: related problems list quickly.
+
+[CANDIDATE] Max area of island, perimeter of island, surrounded regions, walls and gates, pacific atlantic water flow, number of closed islands. All flood or multi source B F S variants. Learning islands unlocks the family.
+
+[INTERVIEWER] Clinic: complexity constants.
+
+[CANDIDATE] Each cell is written to water at most once and read a constant number of times from neighbors. So time linear in cells even with four neighbor checks. Space linear worst case for stack or queue.
+
+[INTERVIEWER] Final pseudocode recitation.
+
+[CANDIDATE] count zero. for each cell if land count plus one and sink component. sink marks water and recurses four neighbors with bounds checks. return count.
+
+[INTERVIEWER] Minute summary.
+
+[CANDIDATE] Number of islands is connected component count on a grid graph with four connectivity. Flood fill each unvisited land and increment once. Linear in cells. Mutation or visited both fine. Do not use eight connectivity unless asked. Tests all water all land multi island.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Count four connected land components in a grid. Flood fill each unvisited land and increment once.
+
+[INTERVIEWER] Graph view.
+
+[CANDIDATE] Cells vertices, four land edges, components are islands. D F S or B F S marks a component.
+
+[INTERVIEWER] Mutation.
+
+[CANDIDATE] Setting land to water marks visited. Allowed here. Otherwise use visited matrix.
+
+[INTERVIEWER] Four not eight.
+
+[CANDIDATE] Diagonals do not connect unless problem says eight. Wrong connectivity is a silent bug.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I receive a grid of land and water. I count islands where land connects up down left right. I scan every cell. When I find land I add one to the count and flood fill to mark the whole connected land mass so I will not count it again. Time linear in the number of cells. I can write recursive D F S or iterative B F S. I will test all water, all land, and a multi island fixture.
+
+[INTERVIEWER] Recursion limit.
+
+[CANDIDATE] Huge single island may blow Python recursion. Iterative stack flood is safer. Same marks.
+
+[INTERVIEWER] Related family.
+
+[CANDIDATE] Max area island, surrounded regions, walls gates. Same flood tools.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Flood fill components four ways, O of cells, tests multi island, code AI off.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Count four connected land components in a grid. Flood fill each unvisited land and increment once.
+
+[INTERVIEWER] Graph view.
+
+[CANDIDATE] Cells vertices, four land edges, components are islands. D F S or B F S marks a component.
+
+[INTERVIEWER] Mutation.
+
+[CANDIDATE] Setting land to water marks visited. Allowed here. Otherwise use visited matrix.
+
+[INTERVIEWER] Four not eight.
+
+[CANDIDATE] Diagonals do not connect unless problem says eight. Wrong connectivity is a silent bug.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I receive a grid of land and water. I count islands where land connects up down left right. I scan every cell. When I find land I add one to the count and flood fill to mark the whole connected land mass so I will not count it again. Time linear in the number of cells. I can write recursive D F S or iterative B F S. I will test all water, all land, and a multi island fixture.
+
+[INTERVIEWER] Recursion limit.
+
+[CANDIDATE] Huge single island may blow Python recursion. Iterative stack flood is safer. Same marks.
+
+[INTERVIEWER] Related family.
+
+[CANDIDATE] Max area island, surrounded regions, walls gates. Same flood tools.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Flood fill components four ways, O of cells, tests multi island, code AI off.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Count four connected land components in a grid. Flood fill each unvisited land and increment once.
+
+[INTERVIEWER] Graph view.
+
+[CANDIDATE] Cells vertices, four land edges, components are islands. D F S or B F S marks a component.
+
+[INTERVIEWER] Mutation.
+
+[CANDIDATE] Setting land to water marks visited. Allowed here. Otherwise use visited matrix.
+
+[INTERVIEWER] Four not eight.
+
+[CANDIDATE] Diagonals do not connect unless problem says eight. Wrong connectivity is a silent bug.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I receive a grid of land and water. I count islands where land connects up down left right. I scan every cell. When I find land I add one to the count and flood fill to mark the whole connected land mass so I will not count it again. Time linear in the number of cells. I can write recursive D F S or iterative B F S. I will test all water, all land, and a multi island fixture.
+
+[INTERVIEWER] Recursion limit.
+
+[CANDIDATE] Huge single island may blow Python recursion. Iterative stack flood is safer. Same marks.
+
+[INTERVIEWER] Related family.
+
+[CANDIDATE] Max area island, surrounded regions, walls gates. Same flood tools.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Flood fill components four ways, O of cells, tests multi island, code AI off.
+
+[INTERVIEWER] We still have room for deliberate practice. Answer as in a real interview with complete sentences.
+
+[CANDIDATE] Understood. I will keep restating the contract, naming the naive approach, naming the improved approach, walking an example, giving pseudocode, listing tests, and stating complexity before I claim done.
+
+[INTERVIEWER] What does good clarifying sound like under time pressure?
+
+[CANDIDATE] Three to six questions that change the design: input guarantees, return types, edge policies like empty input, and whether mutation is allowed. I avoid twenty trivial questions. Then I commit and design.
+
+[INTERVIEWER] What does bad clarifying sound like?
+
+[CANDIDATE] Silence then coding, or only asking questions that do not affect the algorithm. Or arguing style guides for five minutes. I will not do that.
+
+[INTERVIEWER] Narrate how you use the last five minutes of a thirty minute block.
+
+[CANDIDATE] I freeze features. I write or re-run the highest value tests. I restate complexity. I clean names if something is confusing on screen share. I do not open a second hard follow up unless the core is green.
+
+[INTERVIEWER] How do you handle a bug found by the interviewer?
+
+[CANDIDATE] I thank them, restate the failing case, form a hypothesis, fix the smallest place, re-run the mental test, and continue. I do not rewrite from scratch unless the approach is wrong.
+
+[INTERVIEWER] How do you speak complexity without hand waving?
+
+[CANDIDATE] I name the dominant loops or data structure costs, say expected versus worst if hashing, and name extra memory. I connect big O to the actual code lines I wrote.
+
+[INTERVIEWER] How do you keep financial or product framing honest?
+
+[CANDIDATE] One or two sentences max linking the toy problem to a real system, then back to the algorithm. I do not bluff market microstructure I do not know.
+
+[INTERVIEWER] Final offline homework instruction to yourself.
+
+[CANDIDATE] After this audio, blank file, no AI, implement from memory, run tests, then compare to a reference only after green or after twenty five minutes of struggle with a written fork plan.
+
+[NARRATOR] Speed recap. Flood each unvisited land. Four directions. O of r c. Code AI off.

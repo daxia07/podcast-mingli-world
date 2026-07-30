@@ -1,0 +1,69 @@
+Alright. Week three gap closure. Pattern: monotonic stack. Interviewer says Daily Temperatures — LeetCode seven thirty-nine style. Given a list of daily temperatures, for each day return how many days you wait until a warmer temperature. If none, return zero for that day.
+
+I'm going to think out loud the way I would on a part one screen. No AI for the solve. No countdown quizzes. Mentor path: naive, branch, optimal, traps, then clean pseudocode and why I chose this. After this, open the tutor unit monotonic stack deep drill cold.
+
+Thinking open. Restate: for each index i, find the smallest j greater than i such that temperatures of j is strictly greater than temperatures of i. Answer at i is j minus i, or zero if no such j.
+
+Ritual lock. Restate. Clarify. Naive. Improve. Example by hand. Code narrating. Edges. Complexity.
+
+Clarifiers that fork design. Strictly greater or greater or equal? Usually strictly warmer. Can temperatures be equal for long runs? Yes — those wait for a later rise. Empty array? Return empty. Single day? Zero. Max n — if ten to the five, nested loops may be tight; we want linear.
+
+Naive. For each i, scan j from i plus one to the end until warmer. Time O of n squared. Space O of one extra. Correct. Say it. For n equals ten to the five worst case decreasing then one spike, this can be slow. Then improve.
+
+Decision branch. What am I really asking? Next greater element to the right, distances not values. Brute is fine small n. For linear, I need to remember candidates that are still waiting for a warmer day. That's a stack of unresolved indices. When today's temp is warmer than some waiting days, I resolve them in reverse order of waiting — last waiting first — classic LIFO. So stack of indices.
+
+Why decreasing stack? While the stack holds indices whose temps are decreasing from bottom to top, every unresolved day is colder than the ones below it and waiting for something warmer than itself. When a new temp is warmer than the top, that top has found its next greater. Pop, write distance, keep popping while warmer. Then push current index. If I allowed an increasing pair on the stack, the earlier colder day would already have been resolvable by the later colder-but-still-higher day — so increasing pairs shouldn't sit unresolved.
+
+Hand-walk. Temperatures: seventy-three, seventy-four, seventy-five, seventy-one, sixty-nine, seventy-two, seventy-six, seventy-three.
+
+Start empty stack, result all zeros.
+
+Index zero, seventy-three. Stack empty. Push zero. Stack: zero.
+
+Index one, seventy-four. Top is seventy-three, colder. Pop zero. Result zero equals one minus zero equals one. Push one. Stack: one.
+
+Index two, seventy-five. Top seventy-four colder. Pop one. Result one equals one. Push two. Stack: two.
+
+Index three, seventy-one. Top seventy-five is warmer than seventy-one — do not pop. Push three. Stack: two, three. Temps seventy-five then seventy-one, decreasing toward top. Good.
+
+Index four, sixty-nine. Cooler than top. Push four. Stack: two, three, four.
+
+Index five, seventy-two. Top four is sixty-nine — warmer now. Pop four. Result four equals five minus four equals one. Top three is seventy-one — seventy-two warmer. Pop three. Result three equals five minus three equals two. Top two is seventy-five — still hotter than seventy-two. Stop. Push five. Stack: two, five.
+
+Index six, seventy-six. Resolves five: seventy-two, distance one. Resolves two: seventy-five, distance four. Stack empty. Push six.
+
+Index seven, seventy-three. Cooler than seventy-six. Push seven. End of array. Indices still on stack never get warmer — leave zeros.
+
+Trap clinic.
+
+Trap one: store values not indices. Wrong instinct: stack of temps only. Failing case: need distances — without indices you cannot compute j minus i. Recovery: stack indices always.
+
+Trap two: wrong comparison — greater or equal when problem wants strictly greater. Recovery: re-read warmer means strictly greater.
+
+Trap three: forget residual stack. Wrong: leave garbage or think must fill with something non-zero. Recovery: zeros mean no warmer day; residual is correct.
+
+Trap four: nested loops after saying stack, or sort the array. Sorting destroys day order. Recovery: order of days is the structure — scan left to right once.
+
+Trap five: pop condition inverted — pop while cooler than top instead of while top is cooler than current. Recovery: current is the candidate warmer day for tops that are colder than current.
+
+Trap six: silent coding without naming monotonic. Recovery: say "monotonic decreasing stack of indices for next greater to the right."
+
+Edges. Empty. Single element zero. Strictly increasing — every answer one except last zero. Strictly decreasing — all zeros. All equal — all zeros. Spike at end resolves everyone. Spike at start resolves none behind it.
+
+Complexity. Each index pushed once and popped at most once. Time O of n. Space O of n worst case for stack and result array.
+
+Sibling mini-think. Next Greater Element One — for each number in nums one, find next greater in nums two. Same mono stack on nums two building a map from value to next greater, then look up each nums one. Structure is identical; payload is next value not distance.
+
+Pattern cue. When I hear next greater or next warmer or next higher to the right — monotonic stack of indices, scan one direction, pop while order breaks. Histogram largest rectangle is the heavy sibling — same family, more geometry.
+
+Pseudocode. Create result array of zeros length n. Create empty stack for indices. For each index i and temperature temp in the list: while stack is not empty and temperature at stack top is less than temp: let prev equal stack pop. Set result of prev equal to i minus prev. Then append i onto the stack. Return result. Load-bearing line: while top is colder than current, pop and assign distance — that is the next greater resolution.
+
+Why I chose this. Constraint: for every day, next strictly warmer day distance, n can be large, need better than nested scans in the final pitch. Alternative rejected as primary: for each i scan right — correct O of n squared, fine as naive only. Alternative rejected: sort by temperature — destroys index order needed for "next day." What the decreasing stack buys: each day waits in a LIFO of unresolved colder days; one forward pass resolves them when a warmer day arrives, amortized O of one work per index. Cost I accept: O of n extra space for stack and output. Close: under classic Daily Temperatures, monotonic decreasing stack of indices, O of n time and space — that's what I'd defend in the first three minutes.
+
+Speed recap. Daily Temperatures: next warmer day distance or zero. Naive nested scan O of n squared. Optimal mono decreasing stack of indices; while current warmer than top, pop and write i minus prev; push i. Walk seventy-three seventy-four gets distance one. Edges: all equal zeros, decreasing zeros, increasing ones. Time O of n. Next greater is the sibling. Part one: no AI.
+
+App: monotonic stack deep drill cold. Code Daily Temperatures once without AI. Optional Claude Code for all-equal zero edges. Optional Next Greater as five-minute transfer.
+
+Next: FX graph paths — why BFS fewest hops is not best rate, and Dijkstra with negative log of rate.
+
+This was Coding Prep. Monotonic stack. Go code it without AI, then a short deep dive on that file.

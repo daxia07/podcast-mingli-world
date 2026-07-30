@@ -1,0 +1,35 @@
+[NARRATOR] Stuck recovery pack. Short two voice drills. When you freeze, you need lines not panic. Replay daily.
+
+[INTERVIEWER] You have been quiet for a while. What are you thinking?
+
+[CANDIDATE] Let me take a step back and think systematically. I am between two approaches. A is nested loops, O of n squared. B uses a hash map for constant lookups. Given n can be large, I should take B. If I am missing a constraint, tell me.
+
+[INTERVIEWER] Good. Continue with B.
+
+[NARRATOR] Recovery one: name two options and the constraint that picks. Never only sorry.
+
+[INTERVIEWER] Your tests fail on the empty case.
+
+[CANDIDATE] I see a bug on the empty input. I will return early with the documented empty result before the main loop. Fixing that now, then re-running the same example.
+
+[NARRATOR] Recovery two: name the bug, the fix, then re-verify. Silence is worse than a small bug.
+
+[INTERVIEWER] We have eight minutes left and only a slow solution.
+
+[CANDIDATE] I will ship the correct O of n squared version that works, state its complexity, and spend remaining minutes on one clear optimise if it is safe. Working solution first beats unfinished optimal.
+
+[NARRATOR] Recovery three: prioritize working code under time pressure.
+
+[INTERVIEWER] That approach will not handle duplicates correctly.
+
+[CANDIDATE] Thanks. The invariant broke on duplicates. I will adjust the map update order: lookup complement before insert so I never pair an element with itself. Hand walk with three three target six, then recode that line.
+
+[NARRATOR] Recovery four: accept feedback, restate invariant, hand walk, fix.
+
+[INTERVIEWER] You look stuck on which data structure to pick.
+
+[CANDIDATE] The operation I need is have I seen this key before with a value. That is map membership and payload, not a list scan. I will commit to a hash map and implement the simple version first.
+
+[NARRATOR] Recovery five: name the operation, pick the structure, commit.
+
+[NARRATOR] Card for every freeze. Step back. Two options. Constraint decides. Hand walk. Code. If time dies, correct first.

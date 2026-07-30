@@ -168,6 +168,23 @@ export async function onRequest(context) {
     });
   }
 
+  const PUBLIC_PATHS = [
+    '/rss.xml',
+    '/episodes/',
+    '/api/rss',
+    '/manifest.json',
+    '/api/manifest',
+    '/artwork',
+    '/sw.js',
+    '/manifest.webmanifest',
+    '/solutions.json',
+    '/.well-known/',
+  ];
+  const isPublic = PUBLIC_PATHS.some(p => pathname === p || pathname.startsWith(p));
+  if (isPublic) {
+    return next();
+  }
+
   const cookieHeader = request.headers.get('Cookie') || '';
   const match = cookieHeader.match(new RegExp(`${COOKIE_NAME}=([^;]+)`));
   const token = match ? match[1] : null;

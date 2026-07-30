@@ -1,0 +1,57 @@
+Week three continues with Airwallex-shaped graph coding. Best-rate currency conversion. Not fewest hops — best product of exchange rates along a path. This upgrades the naive BFS FX story. Part one practice: no AI. Mentor path. Pair later with the graph paths FX deep drill in the app.
+
+Problem. You have directed exchange rates between currencies — or undirected if every rate has an inverse. Given amount, from currency, to currency, return the best converted amount, or define no-path error. Rates are positive.
+
+Thinking open. Restate: currencies are nodes. A rate from A to B is an edge with multiplicative weight. A path multiplies rates. I want the path that maximizes the product, then multiply by amount.
+
+Ritual. Restate. Clarify. Naive. Improve. Example. Code. Edges. Complexity.
+
+Clarifiers. Are rates bidirectional — if A to B is r, is B to A one over r? Often yes in toy problems; production may quote both. Same currency? Return amount unchanged. No path? Error type. Precision — round to two decimal places for fiat, eight for crypto; say the policy. Can rate be zero or negative? Real FX rates are positive. Zero breaks logs. Negative is nonsense for FX.
+
+Naive path search. Enumerate all simple paths, compute product, take max. Exponential. Correct for tiny graphs, not the pitch for production or a screen with many currencies.
+
+Wrong-but-common upgrade: BFS for fewest hops. BFS finds shortest hop path. Example why it fails best rate. Suppose USD to EUR rate zero point eight five, EUR to GBP zero point seven two, product about zero point six one two. And USD to SGD one point three five, SGD to GBP zero point four nine, product about zero point six six one five. Two hops both ways, but products differ — and a longer path could beat a short one. Fewest hops is not max product. Say that out loud: BFS answers a different question.
+
+Decision branch. I need max product of positive edge weights. Dijkstra minimizes sum of non-negative weights. I need a transform. Logarithm: log of product equals sum of logs. Maximizing product equals maximizing sum of log rate equals minimizing sum of negative log rate. Edge weight becomes negative log of rate. Since rate is positive and typically not crazy, weight is a real number. For normal FX, rates are positive so we stay in Dijkstra land as long as we treat weights as the -log values and we do not need negative-cycle detection here — that is next episode. For best path under positive rates, Dijkstra on -log works.
+
+Invariant. best cost to a currency means smallest accumulated -log so far, which is best rate product so far. Priority queue pops the current best cost currency. When we first pop the target, that cost is optimal under standard Dijkstra assumptions.
+
+Hand-walk tiny graph. Currencies USD, EUR, GBP. Rates: USD to EUR zero point nine, EUR to GBP zero point eight, product zero point seven two. USD to GBP direct zero point seven zero. Best is the two-hop product zero point seven two. In -log space: edge weights -log zero point nine and -log zero point eight sum to less than -log zero point seven zero if zero point seven two is better — yes, smaller -log sum means larger product. Dijkstra from USD: start cost zero at USD. Relax EUR and GBP. Eventually GBP via EUR wins over direct if the products say so.
+
+Implementation speech. Adjacency map currency to list of neighbor and rate. Dijkstra: best map currency to cost, init source zero. Min-heap of cost and currency. While heap: pop cost, ccy. If cost worse than best known, skip stale. If ccy is target, convert amount times e to the minus cost, or equivalently amount times product reconstructed. For each neighbor, edge weight equals negative log of rate. New cost equals cost plus edge weight. If better, update and push.
+
+Stale heap entries: we may push multiple times; on pop if cost greater than best for that node, continue.
+
+Trap clinic.
+
+Trap one: use BFS and call it best rate. Fail when longer path has better product. Recovery: "BFS is fewest hops; best rate needs Dijkstra on -log."
+
+Trap two: put raw rate as Dijkstra weight and minimize rate sum. Fail: sum of rates is meaningless. Recovery: maximize product via -log sum.
+
+Trap three: maximize product by putting log rate and running Dijkstra as minimize without flipping sign. Recovery: minimize -log, or use a max-heap on log product carefully — interview default is min-heap on -log.
+
+Trap four: float money with no rounding policy. Recovery: state round half even or two decimal fiat after computing.
+
+Trap five: forget same currency identity and no-path error types. Recovery: early return amount; custom CurrencyNotFound or NoPathError.
+
+Trap six: allow zero or negative rates into log. Recovery: validate rates positive at insert.
+
+Edges. Same currency. Disconnected target. Single edge. Multiple hops. Inverse rates if undirected model. Tiny and large graphs — V small in FX, algorithm still the speech.
+
+Complexity. O of (V plus E) log V with binary heap. Space O of V plus E.
+
+Choice table seed for tomorrow. BFS: fewest hops, unweighted. Dijkstra: best path with non-negative transformed weights, no negative-cycle need. Bellman-Ford: negative edges or detect negative cycles — arbitrage episode next.
+
+Sibling. Payment corridor cost as sum of fees — plain Dijkstra on additive fees without log if costs add. If costs multiply, same -log trick.
+
+Pseudocode. If from equals to, return amount. Build graph of rates. Set best of from equal zero. Min-heap push zero, from. While heap not empty: pop cost, ccy. If cost greater than best of ccy, continue. If ccy equals to currency, return amount times exp of negative cost, rounded per policy. For each neighbor next with rate: weight equals negative log of rate. New cost equals cost plus weight. If new cost better than best of next: set best, push heap. If heap empties, raise no path. Load-bearing line: edge weight is negative log of rate so minimizing sum maximizes product.
+
+Why I chose this. Constraint: maximize multiplicative FX path, rates positive, need efficient best path not all-paths. Rejected all-paths exponential as primary. Rejected BFS because hop count is the wrong objective. Rejected raw Dijkstra on rates without transform because sum of rates is not product. What -log Dijkstra buys: standard shortest-path machinery on a graph whose distances encode best products. Cost: O of (V plus E) log V time and need for positive rates. Close: for best-rate conversion under positive quotes, Dijkstra on negative log rates is the approach I'd defend — and I'd explicitly contrast BFS fewest hops in the first minutes.
+
+Speed recap. Best FX: graph of currencies, maximize product of rates. BFS wrong objective. Transform weight to negative log rate; Dijkstra minimize sum; amount times exp minus cost. Same currency identity, no path error, round fiat. O of (V plus E) log V. Tomorrow: arbitrage as negative cycle with Bellman-Ford. Part one: no AI.
+
+App: graph paths FX unit — Dijkstra section cold. Code a tiny converter without AI. Optional deep dive: no-path and same-currency tests.
+
+Next episode: arbitrage detection — when a cycle of rates multiplies to more than one, Bellman-Ford finds the negative cycle in -log space.
+
+This was Coding Prep. FX Dijkstra. Go code it without AI, then pilot tests with Claude Code.

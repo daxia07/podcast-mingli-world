@@ -1,0 +1,275 @@
+[NARRATOR] This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory.
+
+[INTERVIEWER] Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. Clarify requirements, explain approach, hand walk an example, give full word pseudocode, cover corners and complexity, then narrate implementation. Ready?
+
+[CANDIDATE] Yes. Please go ahead with the problem.
+
+[INTERVIEWER] Here is the problem. You are given an integer array coins representing coin denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount. You may assume you have an infinite number of each kind of coin. If that amount cannot be made, return negative one.
+
+[CANDIDATE] Restating. Unbounded knapsack minimum count to exact amount. Clarifying. Amount zero? Empty coins? Coins unsorted? Return count only not combination? Greedy allowed?
+
+[INTERVIEWER] Amount zero returns zero. Empty coins with positive amount is impossible. Coins positive unsorted. Count only. Greedy is not assumed correct for arbitrary denominations.
+
+[CANDIDATE] Naive recursion exponential. Greedy largest first fails on some systems. Correct: bottom up D P. best of a is min coins for exact a. best zero zero. best other init infinity. For value from one to amount: for each coin if coin less or equal value, best value min with best value minus coin plus one. End: if best amount infinite return negative one else best amount. B F S on remainders also finds minimum count as shortest path.
+
+[INTERVIEWER] Why is the improved approach worth the extra structure?
+
+[CANDIDATE] Because arbitrary denominations make greedy wrong, and D P is the standard linear in amount times coin types solution interviewers expect, with a clear greedy counterexample you can state.
+
+[INTERVIEWER] Greedy trap: coins one three four amount six.
+
+[CANDIDATE] Greedy takes four plus two ones total three. Optimal two threes total two. D P returns two. I always mention this if greedy comes up.
+
+[INTERVIEWER] Hand walk coins one two five amount eleven.
+
+[CANDIDATE] D P builds up; eleven becomes three, for example two fives and one one. Return three.
+
+[INTERVIEWER] Impossible: coins two amount three.
+
+[CANDIDATE] Odd amount with only even coin. best three stays infinity. Return negative one.
+
+[INTERVIEWER] Why sentinel amount plus one works?
+
+[CANDIDATE] With coin values at least one you never need more than amount coins. amount plus one is larger than any feasible answer.
+
+[INTERVIEWER] Describe the API you will implement, then full word pseudocode.
+
+[CANDIDATE] Function coin change coins amount. If amount zero return zero. inf equals amount plus one. best list of inf, best zero equals zero. For v in one to amount: for c in coins: if c less equal v: best v equals min best v and best v minus c plus one. Return best amount if less than inf else negative one. Load bearing: exact amount. Load bearing: not greedy.
+
+[INTERVIEWER] Walk corner cases one by one.
+
+[CANDIDATE] Amount zero. Empty coins. Single coin divides. Impossible. Greedy trap six. Large coin greater than amount skipped. Order of coins irrelevant.
+
+[INTERVIEWER] Name the unit tests you would write before claiming done.
+
+[CANDIDATE] test eleven equals three. test three with two equals negative one. test six with one three four equals two. test amount zero. test empty coins positive amount.
+
+[INTERVIEWER] Complexity, precise.
+
+[CANDIDATE] Time O of amount times number of coin types. Space O of amount. Reconstruct combination as follow up with parent pointers.
+
+[INTERVIEWER] Combination count sister problem?
+
+[CANDIDATE] Different D P and loop order story. Do not mix with min count.
+
+[INTERVIEWER] B F S approach?
+
+[CANDIDATE] Shortest path on remainders; valid alternative.
+
+[INTERVIEWER] When greedy works?
+
+[CANDIDATE] Canonical coin systems; not general. Need proof or stick to D P.
+
+[INTERVIEWER] Reconstruct coins?
+
+[CANDIDATE] Store chosen coin at each value when improving best; walk back from amount.
+
+[INTERVIEWER] You have a working happy path and a few minutes left. What do you do?
+
+[CANDIDATE] I do not start a harder follow up. I lock the tests we named, restate complexity, and keep the code readable. Working correct code beats unfinished cleverness.
+
+[INTERVIEWER] Simulate the implementation phase. Narrate what you type in order as if I watch your editor.
+
+[CANDIDATE] I allocate best array with inf and best zero zero.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I write double loop updates.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I return conditional negative one. Tests include greedy trap and impossible.
+
+[INTERVIEWER] Continue. What do you type next, and why?
+
+[CANDIDATE] I speak O of amount times coins and stop.
+
+[INTERVIEWER] Bug used slash slash floor thinking for something else; here wrong answer is greedy.
+
+[CANDIDATE] I delete greedy path, keep D P, re-run trap test.
+
+[INTERVIEWER] Amount huge memory?
+
+[CANDIDATE] Array size issue; mention B F S or special math. Interview amounts usually moderate.
+
+[INTERVIEWER] Before we close, summarize the whole solution in about one minute.
+
+[CANDIDATE] Fewest coins for amount with unbounded denominations uses bottom up D P min of best remainder plus one. Not greedy; trap six with four three one. Impossible returns negative one. Amount zero returns zero. Time O of amount times coin types. Tests pin trap and impossible cases.
+
+[INTERVIEWER] What would you do differently if this shipped tomorrow versus interview code?
+
+[CANDIDATE] I would add property tests or random differential checks against a slow oracle where feasible, metrics if it sits on a hot path, and clearer error types at A P I boundaries. The core algorithm stays the same.
+
+[INTERVIEWER] Any open questions you would ask before calling the design final?
+
+[CANDIDATE] Constraints on n, whether input is trusted, and which follow up variant product actually needs. Those change validation and A P I more than the core loop.
+
+[INTERVIEWER] Technique clinic: optimal substructure statement.
+
+[CANDIDATE] If an optimal solution for amount uses a coin c as one of the coins, then the rest of the coins form an optimal solution for amount minus c. Therefore the minimum count for amount is one plus the minimum over coins c of the minimum count for amount minus c when those subamounts are feasible. That recurrence is exactly the D P transition. Base amount zero needs zero coins. Unreachable amounts stay at infinity.
+
+[INTERVIEWER] Clinic: why order of coin loops matters for counting combinations but not for min count the same way.
+
+[CANDIDATE] When counting the number of combinations, treating sequences as the same combination requires careful loop order so you do not count permutations separately. For minimum number of coins, taking min of plus one is order agnostic in the standard complete knapsack style updates as long as you use the updated or prior layer correctly. I still implement the common amount outer coin inner for min coins and I do not claim combination count code without re deriving it.
+
+[INTERVIEWER] Clinic: draw the D P array growth for coins two three amount seven.
+
+[CANDIDATE] Index zero through seven. best zero is zero. one inf. two one. three one. four two via two plus two. five two via two plus three. six two via three plus three. seven three via two plus previous five or three plus four. Return three. Example seven equals two plus two plus three.
+
+[INTERVIEWER] Clinic: B F S layer meaning.
+
+[CANDIDATE] Layer zero is amount remaining amount at start. Each edge subtracts a coin. First time you reach remainder zero, the depth is the min coins. Visited remainders prevent reprocessing. This is shortest path in an unweighted graph of remainders. Equivalent answer to D P.
+
+[INTERVIEWER] Clinic: greedy works on some systems proof sketch awareness.
+
+[CANDIDATE] Canonical coin systems have structural properties that greedy choice is safe. U S coins are often cited. Arbitrary sets do not. Interview rule: unless told canonical, use D P and keep the counterexample ready.
+
+[INTERVIEWER] Clinic: reconstruct coins for amount eleven with one two five.
+
+[CANDIDATE] While updating best v from best v minus c plus one, set choice v equals c. Then from amount walk choice, subtract, collect coins until zero. One possible result five five one. Useful follow up after count is correct.
+
+[INTERVIEWER] Clinic: floating money mistake.
+
+[CANDIDATE] This problem is integer amounts. Real money should use integer minor units not floats. I mention if the interviewer frames coins as currency.
+
+[INTERVIEWER] Clinic: very large amount with few coins math.
+
+[CANDIDATE] If coins are huge and amount huge, D P memory hurts. Frobenius coin problem for two coprime coins has formulas but general many coins is hard. Interview stays on D P.
+
+[INTERVIEWER] Final pseudocode recitation.
+
+[CANDIDATE] best zero zero others inf. for v one to amount for each coin if coin less equal v best v min with best v minus coin plus one. return best amount or negative one if inf.
+
+[INTERVIEWER] Minute summary.
+
+[CANDIDATE] Coin change fewest coins is unbounded knapsack D P with min of remainder plus one. Not greedy on arbitrary denominations. Impossible to negative one. Time amount times coin types. Tests include the six with four three one trap and impossible odd amounts with even coins.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one.
+
+[INTERVIEWER] Greedy trap.
+
+[CANDIDATE] Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets.
+
+[INTERVIEWER] Recurrence.
+
+[CANDIDATE] best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf.
+
+[INTERVIEWER] Complexity.
+
+[CANDIDATE] Time amount times coin types. Space amount.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two.
+
+[INTERVIEWER] B F S alternative.
+
+[CANDIDATE] Shortest path on remainders, each coin an edge. Same min count.
+
+[INTERVIEWER] Reconstruct.
+
+[CANDIDATE] Store choice coin when improving best, walk back from amount.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Min coin D P not greedy, O of amount times coins, trap test green, code AI off.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one.
+
+[INTERVIEWER] Greedy trap.
+
+[CANDIDATE] Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets.
+
+[INTERVIEWER] Recurrence.
+
+[CANDIDATE] best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf.
+
+[INTERVIEWER] Complexity.
+
+[CANDIDATE] Time amount times coin types. Space amount.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two.
+
+[INTERVIEWER] B F S alternative.
+
+[CANDIDATE] Shortest path on remainders, each coin an edge. Same min count.
+
+[INTERVIEWER] Reconstruct.
+
+[CANDIDATE] Store choice coin when improving best, walk back from amount.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Min coin D P not greedy, O of amount times coins, trap test green, code AI off.
+
+[INTERVIEWER] Shadow arc. Restate.
+
+[CANDIDATE] Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one.
+
+[INTERVIEWER] Greedy trap.
+
+[CANDIDATE] Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets.
+
+[INTERVIEWER] Recurrence.
+
+[CANDIDATE] best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf.
+
+[INTERVIEWER] Complexity.
+
+[CANDIDATE] Time amount times coin types. Space amount.
+
+[INTERVIEWER] Full restate memory.
+
+[CANDIDATE] I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two.
+
+[INTERVIEWER] B F S alternative.
+
+[CANDIDATE] Shortest path on remainders, each coin an edge. Same min count.
+
+[INTERVIEWER] Reconstruct.
+
+[CANDIDATE] Store choice coin when improving best, walk back from amount.
+
+[INTERVIEWER] Closing pitch.
+
+[CANDIDATE] Min coin D P not greedy, O of amount times coins, trap test green, code AI off.
+
+[INTERVIEWER] We still have room for deliberate practice. Answer as in a real interview with complete sentences.
+
+[CANDIDATE] Understood. I will keep restating the contract, naming the naive approach, naming the improved approach, walking an example, giving pseudocode, listing tests, and stating complexity before I claim done.
+
+[INTERVIEWER] What does good clarifying sound like under time pressure?
+
+[CANDIDATE] Three to six questions that change the design: input guarantees, return types, edge policies like empty input, and whether mutation is allowed. I avoid twenty trivial questions. Then I commit and design.
+
+[INTERVIEWER] What does bad clarifying sound like?
+
+[CANDIDATE] Silence then coding, or only asking questions that do not affect the algorithm. Or arguing style guides for five minutes. I will not do that.
+
+[INTERVIEWER] Narrate how you use the last five minutes of a thirty minute block.
+
+[CANDIDATE] I freeze features. I write or re-run the highest value tests. I restate complexity. I clean names if something is confusing on screen share. I do not open a second hard follow up unless the core is green.
+
+[INTERVIEWER] How do you handle a bug found by the interviewer?
+
+[CANDIDATE] I thank them, restate the failing case, form a hypothesis, fix the smallest place, re-run the mental test, and continue. I do not rewrite from scratch unless the approach is wrong.
+
+[INTERVIEWER] How do you speak complexity without hand waving?
+
+[CANDIDATE] I name the dominant loops or data structure costs, say expected versus worst if hashing, and name extra memory. I connect big O to the actual code lines I wrote.
+
+[INTERVIEWER] How do you keep financial or product framing honest?
+
+[CANDIDATE] One or two sentences max linking the toy problem to a real system, then back to the algorithm. I do not bluff market microstructure I do not know.
+
+[INTERVIEWER] Final offline homework instruction to yourself.
+
+[CANDIDATE] After this audio, blank file, no AI, implement from memory, run tests, then compare to a reference only after green or after twenty five minutes of struggle with a written fork plan.
+
+[NARRATOR] Speed recap. Min coin D P. Not greedy. O of amount times coins. Code AI off.
