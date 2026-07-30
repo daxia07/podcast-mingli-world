@@ -1,0 +1,14 @@
+{
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": "site",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs22.x"
+    }
+  },
+  "rewrites": [
+    { "source": "/rss.xml", "destination": "/api/rss" },
+    { "source": "/episodes/:file", "destination": "/api/episodes/:file" }
+  ]
+}
