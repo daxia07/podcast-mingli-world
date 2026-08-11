@@ -26,7 +26,7 @@ import tempfile
 from pathlib import Path
 
 from .blueprint import Blueprint
-from .timeline import Timeline, build as build_timeline, flatten, gaps_for
+from .timeline import Timeline, build as build_timeline, calibrate, flatten, gaps_for
 
 # edge-tts emits 24 kHz mono. Silence must match, or the concat demuxer
 # produces a file whose duration doesn't match the sum of its parts.
@@ -173,15 +173,27 @@ def synthesize(
 
     timeline = build_timeline(bp, durations)
 
-    # Trust but verify: if the real file disagrees with the computed timeline,
-    # every chapter marker is wrong and it is better to fail than to publish.
+    # MP3 frames are fixed-size, so each segment is padded to a frame boundary
+    # and the joins accumulate a small drift — around 40ms per segment. The
+    # measured durations are right; the error is in the gaps, so calibrate
+    # against the real file rather than trusting the computed total.
     actual = probe_duration(out_path)
-    drift = abs(actual - timeline.total)
-    if drift > 1.0:
+    drift = actual - timeline.total
+
+    # Beyond a few percent this is not frame padding, it is a real fault —
+    # a dropped segment or a re-encode — and publishing would misplace chapters.
+    if abs(drift) > max(5.0, actual * 0.02):
         raise SynthError(
             f"timeline drift {drift:.2f}s (computed {timeline.total:.2f}s, "
-            f"actual {actual:.2f}s) — chapter offsets would be wrong"
+            f"actual {actual:.2f}s) — too large to be frame padding; "
+            "a segment is probably missing"
         )
-    progress(f"  total {actual:.1f}s (drift {drift * 1000:.0f} ms)")
+
+    timeline = calibrate(timeline, actual)
+    per_join = drift / max(len(timeline.lines) - 1, 1)
+    progress(
+        f"  total {actual:.1f}s (drift {drift * 1000:+.0f} ms over "
+        f"{len(timeline.lines)} segments, {per_join * 1000:+.0f} ms/join, calibrated)"
+    )
 
     return timeline

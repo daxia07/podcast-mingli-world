@@ -92,6 +92,62 @@ def gaps_for(bp: Blueprint) -> list[float]:
     return gaps
 
 
+def calibrate(timeline: Timeline, actual_total: float) -> Timeline:
+    """Absorb concatenation drift into the gaps so offsets match the real file.
+
+    MP3 frames are a fixed number of samples, so every segment is padded up to
+    a frame boundary. Over a few hundred segments that rounding accumulates —
+    measured at about 1.7s across a 7-minute, 40-segment episode.
+
+    The per-line durations came from ffprobe and are correct; the error lives in
+    the joins. So the residual is spread evenly across the gaps rather than
+    scaling the whole timeline, which would stretch spoken durations that were
+    measured accurately.
+
+    Returns a new Timeline whose total equals `actual_total`.
+    """
+    if not timeline.lines or actual_total <= 0:
+        return timeline
+
+    residual = actual_total - timeline.total
+    joins = max(len(timeline.lines) - 1, 1)
+    per_join = residual / joins
+
+    lines: list[TimedLine] = []
+    cursor = 0.0
+    for i, line in enumerate(timeline.lines):
+        duration = line.end - line.start
+        gap = line.gap_after + (per_join if i < len(timeline.lines) - 1 else 0.0)
+        gap = max(0.0, gap)
+        lines.append(
+            TimedLine(
+                section_id=line.section_id,
+                section_title=line.section_title,
+                voice=line.voice,
+                text=line.text,
+                start=cursor,
+                end=cursor + duration,
+                gap_after=gap,
+            )
+        )
+        cursor = cursor + duration + gap
+
+    sections: list[TimedSection] = []
+    for section in timeline.sections:
+        member = [ln for ln in lines if ln.section_id == section.id]
+        if member:
+            sections.append(
+                TimedSection(id=section.id, title=section.title,
+                             start=member[0].start, end=member[-1].end)
+            )
+    for i in range(len(sections) - 1):
+        sections[i].end = sections[i + 1].start
+    if sections:
+        sections[-1].end = cursor
+
+    return Timeline(lines=lines, sections=sections, total=cursor)
+
+
 def build(bp: Blueprint, line_seconds: list[float]) -> Timeline:
     """Compose a Timeline from measured per-line durations.
 

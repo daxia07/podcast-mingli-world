@@ -538,3 +538,46 @@ class TestBlueprintRequiredGate(unittest.TestCase):
             blueprint_root=self.root / "bp",
         )
         self.assertEqual(findings[0].level, gates_mod.WARN)
+
+
+class TestCalibration(unittest.TestCase):
+    """MP3 frame padding makes the real file longer than the computed sum."""
+
+    def test_calibrated_total_matches_the_measured_file(self):
+        bp = make_blueprint()
+        tl = timeline_mod.build(bp, [10.0, 20.0, 30.0])
+        actual = tl.total + 1.69          # observed drift on a real 40-segment build
+        cal = timeline_mod.calibrate(tl, actual)
+        self.assertAlmostEqual(cal.total, actual, places=6)
+
+    def test_calibration_preserves_spoken_durations(self):
+        # The ffprobe measurements are correct; only the joins are wrong.
+        bp = make_blueprint()
+        tl = timeline_mod.build(bp, [10.0, 20.0, 30.0])
+        cal = timeline_mod.calibrate(tl, tl.total + 2.0)
+        for original, adjusted in zip(tl.lines, cal.lines):
+            self.assertAlmostEqual(original.end - original.start,
+                                   adjusted.end - adjusted.start, places=6)
+
+    def test_drift_is_spread_evenly_across_joins(self):
+        bp = make_blueprint()
+        tl = timeline_mod.build(bp, [10.0, 20.0, 30.0])
+        cal = timeline_mod.calibrate(tl, tl.total + 2.0)
+        per_join = 2.0 / (len(tl.lines) - 1)
+        for original, adjusted in zip(tl.lines[:-1], cal.lines[:-1]):
+            self.assertAlmostEqual(adjusted.gap_after, original.gap_after + per_join, places=6)
+
+    def test_sections_still_tile_after_calibration(self):
+        bp = make_blueprint()
+        cal = timeline_mod.calibrate(timeline_mod.build(bp, [10.0, 20.0, 30.0]), 65.0)
+        for a, b in zip(cal.sections, cal.sections[1:]):
+            self.assertAlmostEqual(a.end, b.start, places=6)
+        self.assertAlmostEqual(cal.sections[-1].end, cal.total, places=6)
+
+    def test_negative_drift_never_produces_a_negative_gap(self):
+        bp = make_blueprint()
+        tl = timeline_mod.build(bp, [10.0, 20.0, 30.0])
+        cal = timeline_mod.calibrate(tl, tl.total - 100.0)
+        for line in cal.lines:
+            self.assertGreaterEqual(line.gap_after, 0.0)
+            self.assertGreaterEqual(line.end, line.start)
