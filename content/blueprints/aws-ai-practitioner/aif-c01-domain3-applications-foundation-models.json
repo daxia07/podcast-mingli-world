@@ -1,0 +1,202 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-domain3-applications-foundation-models",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 Domain 3 — Applications of Foundation Models",
+  "description": "The largest domain at twenty eight percent: prompt engineering, RAG, fine tuning, agents, and how to choose between them.",
+  "keywords": [
+    "aif-c01",
+    "rag",
+    "prompt engineering",
+    "fine tuning",
+    "agents",
+    "bedrock"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Domain three is twenty eight percent, the largest single domain, about fourteen scored questions. If you only have time to prepare one domain properly, prepare this one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Nearly every question reduces to one decision: given this requirement, do you use prompt engineering, retrieval augmented generation, fine tuning, or an agent? Get that decision tree solid and you have the domain."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Take the four options in order of cost, because that ordering is the answer to most questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Prompt engineering is cheapest. You change the words you send. Zero shot means asking with no examples. Few shot means including a handful of worked examples in the prompt so the model infers the pattern. Chain of thought means asking the model to reason step by step, which measurably helps on multi-step problems. Prompt engineering costs nothing but tokens and takes minutes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Retrieval augmented generation is next. You keep the model unchanged and change what you put in front of it. Documents are chunked, embedded and stored in a vector store. At query time the system embeds the question, retrieves the closest chunks, and puts them in the prompt as context. This is the answer whenever the requirement involves current information, private company data, or citations back to a source. It also reduces hallucination, because the model is answering from supplied text rather than memory."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fine tuning is next in cost. You continue training the model on your own labelled examples so it changes behaviour permanently. It is the right answer for consistent tone, a specific output format, or specialised domain language. It requires curated training data, takes time, and produces a model you must then host. It does not teach facts reliably, and facts that change will go stale again."
+        },
+        {
+          "voice": "narrator",
+          "text": "Continued pre-training goes further still, training on large volumes of unlabelled domain text. Rare on this exam except as the most expensive option."
+        },
+        {
+          "voice": "narrator",
+          "text": "Agents are a different axis rather than a step up in cost. An agent uses a model to decide which tools to call, in what order, to complete a task. The tell in a question is action rather than answer: booking something, updating a record, calling an API, orchestrating several steps."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "On AWS these map cleanly. Prompt engineering is just how you call the Bedrock API. Retrieval augmented generation is Amazon Bedrock Knowledge Bases, which handles chunking, embedding, storage and retrieval as a managed capability. Fine tuning and continued pre-training are Bedrock custom models, or SageMaker if you want full control. Agents are Amazon Bedrock Agents, with Amazon Bedrock AgentCore for running them in production."
+        },
+        {
+          "voice": "narrator",
+          "text": "For the vector store behind retrieval, the in-scope options include Amazon OpenSearch Service, Amazon Aurora and Amazon Neptune. OpenSearch is the common default for vector search."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock Guardrails apply content filters, denied topics, and sensitive information filtering to both the prompt and the response. When a question asks how to stop a model discussing a competitor or leaking personal data, Guardrails is the answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock Model Evaluation compares candidate models on your own data with automatic metrics or human review. When a question asks how to choose between models objectively, that is the service."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Augmented AI, A2I, is still the answer for routing low-confidence output to human reviewers."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, and it is the most common on the whole exam. Fine tuning offered as the fix for out-of-date or private information. It is wrong. Fine tuning changes behaviour, not knowledge. If the requirement mentions current data, internal documents, or anything that changes, the answer is retrieval augmented generation."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two, the reverse. Retrieval offered as the fix for tone or output format. Also wrong. If every response must follow a strict structure or a house voice, retrieval will not do it reliably. That is fine tuning."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three, reaching for the expensive option. When two answers both work, the qualifier decides, and this exam favours the cheapest thing that satisfies the requirement. Try prompt engineering first, then retrieval, then fine tuning. If a question mentions limited budget, limited data or a short timeline, move down that list, not up."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, agents against retrieval. Answering a question from documents is retrieval. Doing something in another system is an agent. If the requirement contains a verb that changes state, it is an agent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five, forgetting that these combine. A production assistant often uses retrieval for grounding, guardrails for safety, and an agent for actions. A multiple response question may well want all three."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. Question one. A company wants a support assistant answering from documentation that changes weekly, with citations. Which approach?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Retrieval augmented generation, using Bedrock Knowledge Bases. Weekly change and citations both rule out fine tuning."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. Responses must always follow the same clinical report structure. Which approach?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Fine tuning. That is consistent format and behaviour, which retrieval cannot guarantee."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. The assistant must check inventory and place an order. Which approach?"
+        },
+        {
+          "voice": "narrator",
+          "text": "An agent, because it takes actions in other systems rather than answering from text."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. Accuracy on a tricky multi-step reasoning task needs to improve, with no budget and no data. What do you try first?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Prompt engineering, specifically chain of thought and a few worked examples. It costs nothing."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question five. The model must never discuss a competitor and must never echo a customer's personal information. Which capability?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock Guardrails, with denied topics and sensitive information filtering, applied to prompt and response."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Carry this in, because it is most of the domain. Facts and freshness mean retrieval. Tone and format mean fine tuning. Actions mean agents. Safety means guardrails. And when two answers both work, the cheaper one is usually right."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: domain four, responsible AI, fourteen percent and some of the cheapest marks on the exam."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

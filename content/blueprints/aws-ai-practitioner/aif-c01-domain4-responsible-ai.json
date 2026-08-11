@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-domain4-responsible-ai",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 Domain 4 — Guidelines for Responsible AI",
+  "description": "Fourteen percent, and the cheapest marks on the paper: bias, fairness, transparency, and the AWS tooling for each.",
+  "keywords": [
+    "aif-c01",
+    "responsible ai",
+    "bias",
+    "fairness",
+    "explainability",
+    "guardrails"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Domain four is fourteen percent, about seven scored questions. Engineers routinely under-prepare it because it feels soft, and that is a mistake. It is mostly vocabulary and judgement, there is very little to memorise, and seven questions is the difference between passing and not."
+        },
+        {
+          "voice": "narrator",
+          "text": "The examiner wants to know that you can name the risk, name the mitigation, and name the AWS feature that implements it."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with bias, because the exam distinguishes several kinds. Data bias is training data that does not represent the population it will serve. Sampling bias is collecting from an unrepresentative slice. Historical bias is data faithfully recording past discrimination, so a model trained on it reproduces that discrimination while looking accurate. Measurement bias is a proxy variable that does not mean what you assumed. Algorithmic bias arises from the model or objective itself."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fairness is the goal, and the exam expects you to know it is contested. Demographic parity means outcomes are distributed equally across groups. Equal opportunity means the true positive rate is equal across groups. These definitions can conflict mathematically, so you cannot satisfy all of them at once, and choosing which one applies is a business and legal decision, not a technical one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Transparency and explainability are separate ideas. Transparency is being open about the fact that AI is in use, what data it used, and what its limits are. Explainability is being able to say why a particular decision came out the way it did. A model can be transparent and still not explainable."
+        },
+        {
+          "voice": "narrator",
+          "text": "Interpretability against performance is a genuine trade-off the exam tests. A decision tree is interpretable and often less accurate. A deep neural network is more accurate and effectively opaque. In regulated settings, an interpretable model that you can defend often beats a more accurate one you cannot."
+        },
+        {
+          "voice": "narrator",
+          "text": "The other terms worth knowing precisely. Robustness is behaving sensibly on unexpected or adversarial input. Toxicity is harmful generated content. Human in the loop means a person reviews before a decision takes effect. Human on the loop means a person monitors and can intervene. Veracity is truthfulness of output, which is where hallucination lands."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The tooling maps tightly, and this is where the marks are. SageMaker Clarify detects bias in data and models and produces feature importance explanations. When a question asks how to detect bias before training or explain a prediction after it, that is Clarify."
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Model Monitor watches deployed models for drift. Data drift is the input distribution changing. Concept drift is the relationship between input and outcome changing. Both degrade a model silently, which is why monitoring is the answer to any question about accuracy declining over time after deployment."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Bedrock Guardrails is the generative AI control point: content filters across categories like hate and violence, denied topics you define, word filters, and sensitive information filtering that can block or mask personal data. It applies to both the prompt and the response, which matters because a user can put personal data into a prompt just as a model can put it into a reply."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Augmented AI, A2I, is the human in the loop mechanism. Low-confidence predictions get routed to human reviewers."
+        },
+        {
+          "voice": "narrator",
+          "text": "AWS AI Service Cards are the documentation artifact. They describe intended use cases, limitations and responsible design choices for AWS AI services. When a question asks where to find documented limitations of a service, that is the answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Model Cards record a model's purpose, training data, evaluation and risk rating for governance. Model Cards document your model, Service Cards document the AWS service."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, Clarify against Model Monitor. Clarify is bias and explainability. Model Monitor is drift after deployment. The tell is whether the question is about fairness or about degradation over time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two, assuming removing a sensitive attribute removes bias. It does not. Proxy variables like postcode carry the same signal. A question offering that as a fix is offering a distractor."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three, Service Cards against Model Cards. Service Cards are AWS documentation about AWS services. Model Cards are your documentation about your model."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, treating guardrails as a fix for accuracy. Guardrails block harmful and off-topic content. They do not make the model truthful. Veracity is a grounding problem."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. Question one. A hiring model trained on ten years of past hiring decisions reproduces past under-hiring of a group. Which bias?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Historical bias. The data accurately records a biased past, so accuracy on that data is exactly the problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. A deployed model was accurate at launch and is drifting six months later. Which service?"
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Model Monitor. Drift after deployment."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. You need to stop a customer service model from discussing legal advice and from echoing card numbers. Which capability?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Bedrock Guardrails, using denied topics and sensitive information filtering, applied to prompt and response."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. A regulator asks why one specific loan application was declined. Which capability?"
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Clarify, for feature importance on an individual prediction. That is explainability rather than transparency."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question five. Transparency or explainability: telling users that an AI system is being used at all?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Transparency. Explainability is about why a specific decision came out that way."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Carry this in. Clarify for bias and explanations, Model Monitor for drift, Guardrails for generative AI safety, A2I for humans in the loop. And removing the sensitive column never removes the bias."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: domain five, security, compliance and governance, the last fourteen percent."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

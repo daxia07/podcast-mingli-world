@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-exam-map",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 — The Exam Map",
+  "description": "How the AI Practitioner exam is actually built: sixty-five questions, five domains, and where the marks really are.",
+  "keywords": [
+    "aif-c01",
+    "exam strategy",
+    "aws certification"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is episode one of the AWS Certified AI Practitioner series. Before any content, you need the shape of the exam, because how it is weighted should decide how you spend your study time."
+        },
+        {
+          "voice": "narrator",
+          "text": "This is a foundational exam. The target candidate has up to six months of exposure to AI on AWS and uses AI solutions rather than building them. That matters, because it tells you how deep any question can go. If a question seems to demand that you tune a hyperparameter or write training code, you have misread it. That work is explicitly out of scope."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the numbers. The exam has sixty-five questions. Fifty of them are scored. Fifteen are unscored trial questions that AWS is evaluating for future exams, and they are not marked or identified in any way. So roughly one question in four does not count, and you cannot tell which. The practical consequence: do not spiral on a question that feels bizarre or unfairly specific. There is a real chance it is not being scored at all."
+        },
+        {
+          "voice": "narrator",
+          "text": "Scoring runs from one hundred to one thousand, and you need seven hundred to pass. It is compensatory, which means you do not need to pass each domain individually. You only need to pass overall. So a weak domain can be carried by strong ones, and the right strategy is to maximise total marks rather than to even out your weaknesses."
+        },
+        {
+          "voice": "narrator",
+          "text": "There are four question types. Multiple choice, with one right answer and three distractors. Multiple response, where you pick two or more from five or more options and get credit only if you select every correct one and no incorrect ones. Ordering, where you place three to five steps in sequence. And matching, where you pair a list of responses against three to seven prompts. The last three types are all or nothing. Partial credit does not exist."
+        },
+        {
+          "voice": "narrator",
+          "text": "Unanswered questions score as incorrect and there is no penalty for guessing, so leave nothing blank. On a multiple response question where you are certain of two answers and unsure of a third, remember that adding a wrong one costs you the whole question, exactly as leaving a right one out does."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now the five domains and their weights, because this is your study budget. Domain one, Fundamentals of AI and ML, is twenty percent. Domain two, Fundamentals of GenAI, is twenty four percent. Domain three, Applications of Foundation Models, is twenty eight percent. Domain four, Guidelines for Responsible AI, is fourteen percent. Domain five, Security, Compliance, and Governance, is also fourteen percent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Turn those into questions. Of the fifty scored questions, domain three is about fourteen of them, domain two about twelve, domain one about ten, and domains four and five about seven each. Domains two and three together are more than half the exam. That is the generative AI half, and it is where your time should go."
+        },
+        {
+          "voice": "narrator",
+          "text": "One more thing that shapes your preparation. AWS publishes an in-scope service list, and it is more current than most study material. Amazon Nova, Amazon Bedrock AgentCore, Kiro, Strands Agents and AWS Transform are all in scope now. If your course was recorded a year ago, it will not mention several of these. Check the published list rather than trusting a video."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The first trap is depth. This exam rewards breadth. Candidates from an engineering background over-prepare on model internals and under-prepare on responsible AI and governance, which together are twenty eight percent, the same weight as the single largest domain. Those two domains are mostly vocabulary and judgement, and they are the cheapest marks on the paper."
+        },
+        {
+          "voice": "narrator",
+          "text": "The second trap is stale service knowledge. Questions are written against the current service catalogue. If you learned that Amazon Bedrock is only a model API, you will miss questions about agents, knowledge bases and guardrails."
+        },
+        {
+          "voice": "narrator",
+          "text": "The third trap is reading past the qualifier. Exam questions turn on one word: the cheapest option, the least operational overhead, the fastest to implement, the most secure. Four options can all technically work, and only one satisfies the qualifier. When you are stuck between two answers, go back and find the qualifier. It is always there, and it is usually the discriminator."
+        },
+        {
+          "voice": "narrator",
+          "text": "The fourth trap is the multiple response question where you know two answers and guess a third. If you genuinely cannot tell how many are correct, count the options: five options usually means two correct, and seven usually means three."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. I will ask, you answer out loud, then I will confirm. Question one. How many questions on the exam are scored, and how many are not?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Fifty scored, fifteen unscored, sixty five in total."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. What is the passing score, and do you need to pass every domain?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Seven hundred out of one thousand, and no. The scoring is compensatory, so only the overall total matters."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. Which two domains together make up more than half the exam?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Domain two, Fundamentals of GenAI at twenty four percent, and domain three, Applications of Foundation Models at twenty eight percent. Fifty two percent between them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. On a multiple response question, what happens if you select three correct answers out of four correct ones?"
+        },
+        {
+          "voice": "narrator",
+          "text": "You get nothing. Every one of these question types is all or nothing."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Three things to carry in. Seven hundred to pass, compensatory scoring, so play for total marks. Domains two and three are fifty two percent, so that is where the study time goes. And find the qualifier in every question, because it is the discriminator when several answers look right."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: domain one, the fundamentals of AI and machine learning, and the vocabulary the exam expects you to use precisely."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

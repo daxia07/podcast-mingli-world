@@ -34,7 +34,7 @@
       "mono": "MK",
       "icon": "🎭",
       "default_template": "mock-interview-2voice",
-      "order": 3,
+      "order": 4,
       "featured": false
     },
     "awx-10min-speeches": {
@@ -43,7 +43,7 @@
       "mono": "AW",
       "icon": "🎯",
       "default_template": "concept-explainer",
-      "order": 4,
+      "order": 5,
       "featured": false
     },
     "airwallex-domain": {
@@ -52,7 +52,7 @@
       "mono": "AX",
       "icon": "🏦",
       "default_template": "mock-interview-2voice",
-      "order": 5,
+      "order": 6,
       "featured": false
     },
     "sd-youtube": {
@@ -61,7 +61,7 @@
       "mono": "SY",
       "icon": "📺",
       "default_template": "youtube-derived",
-      "order": 6,
+      "order": 7,
       "featured": false
     },
     "interview-prep": {
@@ -70,7 +70,7 @@
       "mono": "EN",
       "icon": "",
       "default_template": "daily-english",
-      "order": 7,
+      "order": 8,
       "featured": false
     },
     "interview-support": {
@@ -79,7 +79,7 @@
       "mono": "QA",
       "icon": "",
       "default_template": "estimation-drill",
-      "order": 8,
+      "order": 9,
       "featured": false
     },
     "behavioral-youtube": {
@@ -88,7 +88,7 @@
       "mono": "BY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 9,
+      "order": 10,
       "featured": false
     },
     "behavioral-interview": {
@@ -97,7 +97,7 @@
       "mono": "BH",
       "icon": "🎯",
       "default_template": "mock-interview-2voice",
-      "order": 10,
+      "order": 11,
       "featured": false
     },
     "infosec-youtube": {
@@ -106,7 +106,7 @@
       "mono": "IY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 11,
+      "order": 12,
       "featured": false
     },
     "infosec-interview": {
@@ -115,8 +115,17 @@
       "mono": "IS",
       "icon": "🔒",
       "default_template": "concept-explainer",
-      "order": 12,
+      "order": 13,
       "featured": false
+    },
+    "aws-ai-practitioner": {
+      "title": "AWS AI Practitioner — AIF-C01",
+      "description": "Exam prep for the AWS Certified AI Practitioner, one content domain per episode.",
+      "mono": "AI",
+      "icon": "🧠",
+      "default_template": "cert-prep",
+      "order": 3,
+      "featured": true
     }
   }
 }

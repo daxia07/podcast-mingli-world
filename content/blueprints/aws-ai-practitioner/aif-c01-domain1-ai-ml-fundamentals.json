@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-domain1-ai-ml-fundamentals",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 Domain 1 — Fundamentals of AI and ML",
+  "description": "Twenty percent of the exam: the vocabulary, the learning types, and the AWS services that do the classic AI jobs.",
+  "keywords": [
+    "aif-c01",
+    "machine learning",
+    "supervised learning",
+    "sagemaker"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Domain one is twenty percent of the scored content, about ten questions. It is the vocabulary domain. The exam wants you to use terms precisely and to recognise which category a business problem falls into."
+        },
+        {
+          "voice": "narrator",
+          "text": "Almost every question here is really the same question in disguise: given this description, what kind of learning problem is it, and which AWS service already solves it?"
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the nesting, because the exam tests it directly. Artificial intelligence is the broad field of machines performing tasks that need human-like intelligence. Machine learning is a subset where the system learns patterns from data instead of following hand-written rules. Deep learning is a subset of machine learning that uses multi-layer neural networks. Generative AI is a subset of deep learning that produces new content. Each one sits inside the one before it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three learning types. Supervised learning trains on labelled data, where every example carries the right answer. It splits into classification, where the output is a category, and regression, where the output is a number. Fraud detection is classification. Predicting a house price is regression."
+        },
+        {
+          "voice": "narrator",
+          "text": "Unsupervised learning trains on unlabelled data and finds structure by itself. Clustering groups similar records, which is how customer segmentation works. Anomaly detection flags records unlike the rest. Dimensionality reduction compresses many features into fewer. The tell in a question is that nobody labelled anything."
+        },
+        {
+          "voice": "narrator",
+          "text": "Reinforcement learning has an agent taking actions in an environment and receiving rewards or penalties. There is no labelled dataset, only a reward signal. Robotics, game playing and real-time bidding are the usual examples."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the data vocabulary. A feature is an input variable. A label is the target you are predicting. Training data teaches the model, validation data tunes it, and test data measures it on examples it has never seen. Overfitting is a model that memorised the training data and fails on new data. Underfitting is a model too simple to capture the pattern at all. Bias is error from wrong assumptions, and variance is error from being too sensitive to the training sample."
+        },
+        {
+          "voice": "narrator",
+          "text": "Inference is using a trained model to make a prediction. Batch inference processes a large set at once and suits reporting. Real-time inference answers a single request in milliseconds and suits interactive applications. Choosing between them by latency requirement is a very common question shape."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now the service mapping, which is where the marks actually are. Amazon SageMaker AI is the full platform for building, training and deploying your own models. If a question describes a team that wants to train a custom model on their own data, the answer is SageMaker. If it describes a team that just wants a working capability with no model work, it is one of the pre-trained services below."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Comprehend does natural language processing on text. Sentiment, entities, key phrases, language detection, and detecting personally identifiable information in documents. When a question mentions extracting meaning from text, think Comprehend."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Textract extracts text and structure from scanned documents, including tables and form fields. The confusion to watch is Textract against Rekognition. Textract reads documents. Rekognition analyses images and video for objects, faces, moderation and scenes. A scanned invoice is Textract. A photo of a car park is Rekognition."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Transcribe converts speech to text. Amazon Polly converts text to speech. They are opposites and the exam does swap them. Transcribe listens, Polly talks."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Translate does machine translation between languages. Amazon Lex builds conversational chatbots with intents and slots, and it is the engine behind Alexa. Amazon Personalize produces real-time recommendations from user interaction data, which is the managed answer to the recommendation engine question."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Augmented AI, written A2I, adds human review to machine learning predictions when confidence is low. Whenever a question asks how to get a human in the loop on low-confidence predictions, that is A2I."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, classification against regression. The tell is the output type, not the subject matter. Predicting whether a customer will churn is classification. Predicting how many days until they churn is regression. Same business problem, different output, different answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two, supervised against unsupervised. Ask one question: did somebody label this data? If the description mentions historical outcomes, known fraud cases, or past results, it is supervised. If it mentions discovering groups or finding unusual records with no prior examples, it is unsupervised."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three, SageMaker against the pre-trained services. Both can technically solve most problems, so the qualifier decides. If the question says least operational overhead, fastest to implement, or no machine learning expertise, the answer is the managed pre-trained service. If it says custom model, proprietary data, or full control, it is SageMaker."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, Textract against Comprehend. Textract gets the words off the page. Comprehend understands what the words mean. A pipeline often uses both, in that order, and a question about processing scanned contracts end to end may well want both."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. Answer out loud before I do. Question one. A bank wants to group customers into segments it has not defined in advance. What learning type?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Unsupervised learning, specifically clustering. Nothing was labelled, and the groups are being discovered rather than predicted."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. Which service turns a scanned purchase order into structured fields, and which one would tell you the sentiment of a customer email?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Textract for the scanned document, Comprehend for the sentiment."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. A model scores ninety nine percent on training data and sixty percent on new data. What is happening, in one word?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Overfitting. It memorised the training set instead of learning the pattern."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. A team needs recommendations personalised per user, updated in real time, and they have no machine learning engineers. Which service?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Personalize. The no-expertise qualifier rules out building it on SageMaker."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question five. Predicting the number of support tickets next month. Classification or regression?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Regression. The output is a number, not a category."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Carry this in. Output type decides classification against regression. Labelled data decides supervised against unsupervised. And the qualifier decides SageMaker against a managed service, every single time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: domain two, the fundamentals of generative AI, and the twenty four percent that sits on top of everything here."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

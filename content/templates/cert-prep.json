@@ -1,0 +1,59 @@
+{
+  "name": "cert-prep",
+  "title": "Certification exam prep",
+  "description": "One exam domain per episode: concepts, the service mapping, the traps, and spoken recall drills.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    6,
+    15
+  ],
+  "authoring_brief": "Certification exams test discrimination, not recall of definitions — the candidate has to pick between four plausible services. So every concept must land as 'use X when Y, not Z because W'. State the domain weight up front so effort can be allocated. Never read a service list; always pair a service with the job it does and the service it is most often confused with. Say percentages and numbers in words. Never write AI slash ML — say 'AI and ML'. Keep episodes dense rather than long: six to twelve minutes of discrimination practice beats sixteen minutes padded with definitions.",
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Domain weight, roughly how many questions that is, and what the examiner is really testing."
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "required": true,
+      "target_minutes": 4,
+      "factual": true,
+      "brief": "The ideas, built up plainly. Requires sources[]."
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "required": true,
+      "target_minutes": 3.5,
+      "factual": true,
+      "brief": "Service paired with its job and its most confusable neighbour. Requires sources[]."
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "The distractors that catch people, and the tell that separates them."
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "Spoken questions with a real pause before each answer."
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "required": false,
+      "target_minutes": 1,
+      "brief": "The two or three things worth memorising verbatim."
+    }
+  ]
+}

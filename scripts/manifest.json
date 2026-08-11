@@ -2859,7 +2859,7 @@
       "description": "Two-voice system design mocks.",
       "icon": "🎭",
       "mono": "MK",
-      "order": 3,
+      "order": 4,
       "featured": false,
       "default_template": "mock-interview-2voice",
       "episode_ids": [
@@ -2902,7 +2902,7 @@
       "description": "Curated video-derived design episodes.",
       "icon": "📺",
       "mono": "SY",
-      "order": 6,
+      "order": 7,
       "featured": false,
       "default_template": "youtube-derived",
       "episode_ids": [
@@ -2918,7 +2918,7 @@
       "description": "Domain-specific mock interviews.",
       "icon": "🏦",
       "mono": "AX",
-      "order": 5,
+      "order": 6,
       "featured": false,
       "default_template": "mock-interview-2voice",
       "episode_ids": [
@@ -2947,7 +2947,7 @@
       "description": "Daily English patterns and frameworks.",
       "icon": "",
       "mono": "EN",
-      "order": 7,
+      "order": 8,
       "featured": false,
       "default_template": "daily-english",
       "episode_ids": [
@@ -2970,7 +2970,7 @@
       "description": "Self-intro, estimation and Q&A practice.",
       "icon": "",
       "mono": "QA",
-      "order": 8,
+      "order": 9,
       "featured": false,
       "default_template": "estimation-drill",
       "episode_ids": [
@@ -2983,7 +2983,7 @@
       "description": "Agenda monologues for Airwallex system design prep.",
       "icon": "🎯",
       "mono": "AW",
-      "order": 4,
+      "order": 5,
       "featured": false,
       "default_template": "concept-explainer",
       "episode_ids": [
@@ -3087,7 +3087,7 @@
       "description": "Behavioural interview practice with STAR answers.",
       "icon": "🎯",
       "mono": "BH",
-      "order": 10,
+      "order": 11,
       "featured": false,
       "default_template": "mock-interview-2voice",
       "episode_ids": []
@@ -3097,7 +3097,7 @@
       "description": "Security topics as interview answers.",
       "icon": "🔒",
       "mono": "IS",
-      "order": 12,
+      "order": 13,
       "featured": false,
       "default_template": "concept-explainer",
       "episode_ids": []
@@ -3107,7 +3107,7 @@
       "description": "Behavioural interview material from expert audio.",
       "icon": "🎬",
       "mono": "BY",
-      "order": 9,
+      "order": 10,
       "featured": false,
       "default_template": "youtube-derived",
       "episode_ids": [
@@ -3123,7 +3123,7 @@
       "description": "Information security explained by practitioners.",
       "icon": "🎬",
       "mono": "IY",
-      "order": 11,
+      "order": 12,
       "featured": false,
       "default_template": "youtube-derived",
       "episode_ids": [
@@ -3132,6 +3132,16 @@
         95,
         96
       ]
+    },
+    "aws-ai-practitioner": {
+      "title": "AWS AI Practitioner — AIF-C01",
+      "description": "Exam prep for the AWS Certified AI Practitioner, one content domain per episode.",
+      "icon": "🧠",
+      "mono": "AI",
+      "order": 3,
+      "featured": true,
+      "default_template": "cert-prep",
+      "episode_ids": []
     }
   }
 }

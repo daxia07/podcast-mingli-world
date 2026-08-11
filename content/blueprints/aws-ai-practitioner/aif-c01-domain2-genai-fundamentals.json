@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-domain2-genai-fundamentals",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 Domain 2 — Fundamentals of GenAI",
+  "description": "Twenty four percent of the exam: tokens, embeddings, foundation models, and what Amazon Bedrock actually is.",
+  "keywords": [
+    "aif-c01",
+    "generative ai",
+    "bedrock",
+    "foundation models",
+    "embeddings"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Domain two is twenty four percent, about twelve of your fifty scored questions. Together with domain three it is more than half the exam, so this is the centre of gravity."
+        },
+        {
+          "voice": "narrator",
+          "text": "The examiner is testing whether you understand what a foundation model is, what it costs, what it cannot do, and which AWS service you reach for. Not how transformers work internally."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "A foundation model is a large model pre-trained on a broad corpus that can be adapted to many tasks. The point is generality. One model does summarisation, classification, extraction and drafting, with no task-specific training. A large language model is a foundation model specialised to text."
+        },
+        {
+          "voice": "narrator",
+          "text": "Tokens are the unit of everything. Models do not see words, they see tokens, which are word fragments. A rough working number is that one token is about four characters of English, so a hundred tokens is roughly seventy five words. This matters because you are billed per token, both input and output, and because the context window is measured in tokens."
+        },
+        {
+          "voice": "narrator",
+          "text": "The context window is how much the model can consider at once, prompt plus response together. Everything the model knows about your specific situation has to fit in there. A model does not remember previous conversations unless you resend them, which is why chat applications resend the history every turn and why long conversations get expensive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Embeddings are the other core idea. An embedding turns text into a vector of numbers where semantic similarity becomes geometric closeness. Text meaning the same thing lands near itself even with no shared words. That is what makes semantic search work, and it is the foundation of retrieval augmented generation. A vector database stores embeddings and answers nearest neighbour queries."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the failure modes, which the exam does test. Hallucination is the model producing fluent, confident, false output. It is not a bug you can patch. It is a property of a system trained to produce plausible continuations, and you manage it with grounding, citation and human review rather than eliminating it. Knowledge cutoff means the model knows nothing after its training date. Non-determinism means the same prompt can give different answers, controlled by the temperature setting: low temperature is focused and repeatable, high temperature is varied and creative."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Amazon Bedrock is the answer to most questions in this domain. It is a fully managed service giving API access to foundation models from several providers, including Amazon Nova, plus Anthropic, Meta, Mistral and others, through one interface. It is serverless. There is no infrastructure to manage, and your prompts are not used to train the base models."
+        },
+        {
+          "voice": "narrator",
+          "text": "Understand what Bedrock includes, because it is no longer just a model endpoint. Knowledge Bases implement retrieval augmented generation as a managed capability. Agents let a model call tools and complete multi-step tasks. Guardrails filter harmful content and block denied topics. Amazon Bedrock AgentCore supports running agents in production. Model Evaluation compares models on your own data."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Nova is the Amazon family of foundation models available through Bedrock, spanning text and multimodal use."
+        },
+        {
+          "voice": "narrator",
+          "text": "The service you most need to separate from Bedrock is Amazon SageMaker JumpStart. JumpStart gives you pre-trained models you deploy to your own SageMaker endpoints, which means you control and pay for the infrastructure. Bedrock is serverless and pay per token. The discriminator is operational overhead and control: no infrastructure means Bedrock, full control over the deployment means JumpStart."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Q is the AI assistant layer. Amazon Q Developer helps with code and AWS tasks. Amazon Q Business answers questions over your enterprise content. When a question describes an out-of-the-box assistant rather than something being built, think Q."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, Bedrock against SageMaker. Both serve foundation models. Bedrock is managed and serverless and billed per token. SageMaker means you own endpoints, instances and scaling. The qualifier decides, and least operational overhead almost always means Bedrock."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two, thinking a bigger context window replaces retrieval. It does not. Retrieval augmented generation exists so you send only relevant passages, which is cheaper, faster and more accurate than stuffing everything in. A question offering both will usually want retrieval on cost grounds."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three, temperature confusion. Low temperature for factual extraction and consistency. High temperature for brainstorming and variety. Candidates reverse this under pressure."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, assuming fine tuning fixes hallucination. Fine tuning changes style, format and domain behaviour. It does not make a model truthful about facts it never saw. Grounding in retrieved sources is the answer to factual accuracy."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. Question one. Roughly how many words is a hundred tokens?"
+        },
+        {
+          "voice": "narrator",
+          "text": "About seventy five words of English. One token is roughly four characters."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. What does an embedding actually give you?"
+        },
+        {
+          "voice": "narrator",
+          "text": "A numeric vector where semantic similarity becomes distance, so text meaning the same thing sits close together even with no words in common."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. A team wants a chatbot over their internal documents with the least possible infrastructure work. Which Bedrock capability?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Knowledge Bases, which is managed retrieval augmented generation. Agents would be the answer if it needed to take actions rather than answer questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. Which setting do you lower to make extraction from invoices repeatable?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Temperature. Low temperature gives focused, consistent output."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question five. Bedrock or JumpStart for a team that needs full control over the deployment and instance type?"
+        },
+        {
+          "voice": "narrator",
+          "text": "JumpStart, on their own SageMaker endpoints. Bedrock is serverless and does not expose that control."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Carry this in. Bedrock is serverless and per token, SageMaker means you own the infrastructure. Retrieval is for accuracy and cost, fine tuning is for style and format. And hallucination is managed, never eliminated."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: domain three, applications of foundation models, the single largest domain at twenty eight percent."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

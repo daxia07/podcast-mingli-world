@@ -1,0 +1,202 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-domain5-security-governance",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 Domain 5 — Security, Compliance, and Governance",
+  "description": "The final fourteen percent: IAM, encryption, data protection, and who is responsible for what.",
+  "keywords": [
+    "aif-c01",
+    "security",
+    "iam",
+    "kms",
+    "governance",
+    "shared responsibility"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Domain five is fourteen percent, about seven scored questions. Much of it is ordinary AWS security applied to AI workloads, so if you already know IAM and KMS you are most of the way there."
+        },
+        {
+          "voice": "narrator",
+          "text": "What is specific to this exam is data governance for training data, and the question of who owns responsibility for what."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the shared responsibility model, because it frames everything. AWS is responsible for security of the cloud, meaning the infrastructure, the physical facilities and the managed service itself. You are responsible for security in the cloud, meaning your data, your access control, your encryption choices and your configuration. For a managed service like Bedrock, AWS runs the model infrastructure and you remain responsible for what you send it, who can call it, and what you do with the output."
+        },
+        {
+          "voice": "narrator",
+          "text": "Least privilege is the governing principle for access. Grant the minimum permissions needed, scoped to specific resources, and prefer roles over long-lived credentials."
+        },
+        {
+          "voice": "narrator",
+          "text": "Encryption comes in two states and the exam expects both. At rest means stored data, handled by KMS keys on S3, on SageMaker volumes and on model artifacts. In transit means data moving over the network, handled by TLS. A complete answer usually needs both."
+        },
+        {
+          "voice": "narrator",
+          "text": "For data governance, the vocabulary matters. Data lineage is where data came from and how it was transformed. Data cataloguing is inventorying and describing it. Data retention is how long you keep it and when it is deleted. Data residency is which geographic region it is stored and processed in, which is a common driver in regulated questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two ideas specific to generative AI. First, your prompts and completions in Bedrock are not used to train the base foundation models. Second, prompt injection is an attack where user input manipulates the model into ignoring its instructions, and the mitigations are input validation, guardrails, and never granting the model more authority than the user has."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "IAM controls who can call what. For AI workloads that means which principals can invoke a model, which can create training jobs, and which can read the training bucket. Roles for services, users and federation for people."
+        },
+        {
+          "voice": "narrator",
+          "text": "AWS Key Management Service manages encryption keys. Customer managed keys are the answer whenever a question demands control over key rotation, key policy, or the ability to revoke access by disabling a key."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Macie discovers and classifies sensitive data in S3, which is the answer to finding personal data sitting in a training dataset. Note the split against Bedrock Guardrails: Macie finds sensitive data at rest in storage, Guardrails filters it in prompts and responses at runtime."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Inspector scans workloads for vulnerabilities. AWS Secrets Manager stores and rotates credentials and API keys, and is the correct answer to any question where a key is hardcoded in application code."
+        },
+        {
+          "voice": "narrator",
+          "text": "For audit and compliance: AWS CloudTrail records who called which API and when, which is your audit trail for model invocations. Amazon CloudWatch handles metrics, logs and alarms, which is monitoring rather than audit. AWS Config tracks resource configuration changes and compliance against rules. AWS Artifact is where you download AWS compliance reports such as SOC and ISO, which is what an auditor asks for."
+        },
+        {
+          "voice": "narrator",
+          "text": "For network isolation, Amazon VPC with private connectivity keeps traffic off the public internet, which regulated questions often require."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, CloudTrail against CloudWatch. CloudTrail answers who did what. CloudWatch answers how it is performing. Audit means CloudTrail, every time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two, Macie against Guardrails. Both deal with sensitive data. Macie scans stored data in S3. Guardrails filters at inference time. The tell is at rest against in flight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three, AWS managed keys against customer managed keys. If the requirement mentions controlling rotation, defining a key policy, or revoking access, it is customer managed. Default encryption is not enough for those."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, misassigning shared responsibility. Anything about physical security, hypervisors or the managed service infrastructure is AWS. Anything about your data, your permissions and your configuration is you. Questions phrase this as who is responsible, and the answer is almost always the customer for anything involving data or access."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five, Artifact against Config. Artifact gives you AWS compliance documentation. Config checks your own resources against rules."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Recall drill. Question one. An auditor asks for evidence of every model invocation in the last ninety days. Which service?"
+        },
+        {
+          "voice": "narrator",
+          "text": "AWS CloudTrail. It is the API audit trail."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two. You must find personal data that may be sitting in a training bucket. Which service?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Macie, which discovers and classifies sensitive data in S3."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three. Under the shared responsibility model, who is responsible for encrypting the training data you upload?"
+        },
+        {
+          "voice": "narrator",
+          "text": "You are. Security in the cloud is the customer's, and that includes your data and your encryption choices."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four. An application has an API key hardcoded in source. What is the fix?"
+        },
+        {
+          "voice": "narrator",
+          "text": "AWS Secrets Manager, which stores and rotates it so the code retrieves it at runtime."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question five. A regulator requires that you be able to revoke access to encrypted model artifacts immediately. Which key type?"
+        },
+        {
+          "voice": "narrator",
+          "text": "A customer managed KMS key, because you can disable it and control its policy."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Carry this in. CloudTrail for who did it, CloudWatch for how it is doing, Config for configuration compliance, Artifact for AWS reports. Macie at rest, Guardrails in flight. And when a question asks who is responsible for data, it is you."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the five domains. The last episode in this series is a rapid service discriminator drill, which is the highest yield revision you can do the night before."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}

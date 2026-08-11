@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "aif-c01-service-discriminators",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 — Service Discriminators",
+  "description": "The night-before drill: every pair of AWS AI services the exam confuses, and the one line that separates them.",
+  "keywords": [
+    "aif-c01",
+    "aws services",
+    "revision",
+    "exam night"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "What this domain is worth",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is the revision episode. It cuts across all five domains and it is built for the night before, or the taxi on the way in."
+        },
+        {
+          "voice": "narrator",
+          "text": "Certification questions rarely ask what a service does. They give you four services that could all plausibly work and make you pick. So this episode is nothing but discriminators: pairs of services that get confused, and the single line that separates them. Play it at higher speed once you know it."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Text and documents first. Amazon Textract gets words and structure off a scanned page. Amazon Comprehend understands what text means. Scanned invoice, Textract. Sentiment of a review, Comprehend. A pipeline over scanned contracts usually needs both, Textract then Comprehend."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speech. Amazon Transcribe is speech to text. Amazon Polly is text to speech. Transcribe listens, Polly talks."
+        },
+        {
+          "voice": "narrator",
+          "text": "Vision. Amazon Rekognition analyses images and video, for objects, faces, moderation and scenes. If the input is a photo or a video, it is Rekognition. If the input is a document that happens to be an image, it is Textract."
+        },
+        {
+          "voice": "narrator",
+          "text": "Conversation. Amazon Lex builds a chatbot you design, with intents and slots. Amazon Q is a ready-made assistant over your content or your AWS environment. Building the bot means Lex, buying the assistant means Q."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recommendations. Amazon Personalize is the managed recommendation service. If the question says recommendations and no machine learning expertise, that is the answer, not SageMaker."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now the generative AI pairs, which carry the most marks. Amazon Bedrock is serverless foundation model access billed per token. Amazon SageMaker JumpStart deploys models to endpoints you own and pay for. Least operational overhead means Bedrock, full infrastructure control means JumpStart."
+        },
+        {
+          "voice": "narrator",
+          "text": "Within Bedrock. Knowledge Bases is managed retrieval augmented generation, for answering from your documents. Agents is for taking actions across systems. Guardrails is for blocking topics and filtering sensitive data. Model Evaluation is for choosing objectively between models. Answering means Knowledge Bases, doing means Agents."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation choices. Prompt engineering costs nothing, retrieval augmented generation handles facts and freshness, fine tuning handles tone and format, continued pre-training is the expensive last resort. Facts and freshness, retrieval. Tone and format, fine tuning. Say that one out loud twice."
+        },
+        {
+          "voice": "narrator",
+          "text": "Responsible AI. SageMaker Clarify is bias detection and explainability. SageMaker Model Monitor is drift after deployment. Amazon A2I is human review of low-confidence predictions. AWS AI Service Cards document AWS services, SageMaker Model Cards document your model."
+        },
+        {
+          "voice": "narrator",
+          "text": "Security and governance. CloudTrail is who called what, the audit trail. CloudWatch is metrics, logs and alarms, the monitoring. AWS Config is resource configuration compliance. AWS Artifact is where you download AWS compliance reports. Amazon Macie finds sensitive data at rest in S3. Guardrails filters sensitive data in flight at inference. Secrets Manager holds credentials. KMS holds encryption keys, and customer managed keys are the answer whenever control over rotation or revocation is required."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Three habits that convert knowledge into marks. First, find the qualifier before you choose. Cheapest, fastest, least operational overhead, most secure, no machine learning expertise. Four options can all work and only one satisfies the qualifier, so read for it deliberately."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second, prefer the managed service when the qualifier is about effort, and prefer the controllable service when the qualifier is about control. That single rule resolves a surprising share of the paper."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third, on multiple response questions, count the options. Five options usually means two correct answers, seven usually means three. And remember it is all or nothing, so a guessed extra answer costs you the whole question just as a missing one does."
+        },
+        {
+          "voice": "narrator",
+          "text": "One last thing on timing. Sixty five questions and fifteen of them do not count. If a question feels strangely specific or unlike anything you studied, flag it, answer something, and move on. It may well be one of the unscored fifteen, and it is never worth five minutes."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Rapid drill. Answer before I do. Textract or Comprehend for pulling line items out of a scanned receipt?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Textract."
+        },
+        {
+          "voice": "narrator",
+          "text": "Transcribe or Polly for reading a news article aloud in an app?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Polly. Text to speech."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock or JumpStart when the requirement says no infrastructure to manage?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock. Serverless, per token."
+        },
+        {
+          "voice": "narrator",
+          "text": "Retrieval or fine tuning for a policy document that is revised every quarter?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Retrieval. Facts and freshness."
+        },
+        {
+          "voice": "narrator",
+          "text": "Retrieval or fine tuning for making every response follow the same report template?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Fine tuning. Tone and format."
+        },
+        {
+          "voice": "narrator",
+          "text": "Clarify or Model Monitor when accuracy has fallen six months after launch?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Model Monitor. Drift."
+        },
+        {
+          "voice": "narrator",
+          "text": "Macie or Guardrails for personal data already sitting in a training bucket?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Macie. At rest in S3."
+        },
+        {
+          "voice": "narrator",
+          "text": "CloudTrail or CloudWatch when an auditor wants a record of every model invocation?"
+        },
+        {
+          "voice": "narrator",
+          "text": "CloudTrail. Who called what."
+        },
+        {
+          "voice": "narrator",
+          "text": "Lex or Q when the team wants an assistant over internal documents with nothing to build?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Q."
+        },
+        {
+          "voice": "narrator",
+          "text": "And last. A model must check stock levels and place a reorder. Retrieval or agent?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Agent. It takes an action rather than answering a question."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Four lines to carry into the room. Facts and freshness, retrieval. Tone and format, fine tuning. Actions, agents. Safety, guardrails."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the meta rule that beats any individual fact: find the qualifier, then pick the cheapest option that satisfies it. Good luck."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "exam format",
+        "scoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/aif-01-in-scope-services.html",
+      "title": "AIF-C01 In-Scope AWS Services",
+      "used_for": [
+        "service list"
+      ]
+    }
+  ]
+}
