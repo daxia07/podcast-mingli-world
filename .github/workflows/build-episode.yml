@@ -22,6 +22,9 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -72,12 +75,14 @@ jobs:
           mkdir -p data
           FLAGS=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then FLAGS="--dry-run"; fi
-          while read -r bp; do
+          # Read on fd 3, not stdin: ffmpeg inherits stdin and would eat the
+          # rest of the list. synth.py also passes stdin=DEVNULL now.
+          while read -r bp <&3; do
             [ -z "$bp" ] && continue
             echo "::group::$bp"
-            python3 scripts/build_episode.py "$bp" $FLAGS
+            python3 scripts/build_episode.py "$bp" $FLAGS < /dev/null
             echo "::endgroup::"
-          done < /tmp/list.txt
+          done 3< /tmp/list.txt
 
       - name: Commit manifest and blueprint updates
         if: ${{ inputs.dry_run != true }}
@@ -89,5 +94,6 @@ jobs:
             echo "nothing to commit"
           else
             git commit -m "chore: publish episodes [skip ci]"
+            git pull --rebase --autostash origin master
             git push
           fi

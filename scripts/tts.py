@@ -145,7 +145,7 @@ def _synthesize_long(text, output_path, voice_name, rate):
         subprocess.run([
             "ffmpeg", "-y", "-f", "concat", "-safe", "0",
             "-i", list_path, "-c", "copy", output_path
-        ], capture_output=True)
+        ], capture_output=True, stdin=subprocess.DEVNULL)
 
     import shutil as sh
     sh.rmtree(temp_dir, ignore_errors=True)
@@ -181,7 +181,7 @@ def _postprocess(mp3_path):
         "ffmpeg", "-y", "-i", temp_path,
         "-af", "loudnorm, silenceremove=stop_periods=-1:stop_duration=0.3:stop_threshold=-40dB",
         mp3_path
-    ], capture_output=True)
+    ], capture_output=True, stdin=subprocess.DEVNULL)
     if os.path.exists(temp_path):
         os.remove(temp_path)
 
@@ -192,7 +192,7 @@ def get_duration_minutes(mp3_path):
     result = subprocess.run([
         "ffprobe", "-v", "quiet", "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1", mp3_path
-    ], capture_output=True, text=True)
+    ], capture_output=True, text=True, stdin=subprocess.DEVNULL)
     try:
         seconds = float(result.stdout.strip())
         return int(seconds / 60)
@@ -206,7 +206,7 @@ def get_duration_str(mp3_path):
     result = subprocess.run([
         "ffprobe", "-v", "quiet", "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1", mp3_path
-    ], capture_output=True, text=True)
+    ], capture_output=True, text=True, stdin=subprocess.DEVNULL)
     try:
         seconds = float(result.stdout.strip())
         m = int(seconds // 60)
@@ -227,7 +227,7 @@ def concatenate_mp3(mp3_paths, output_path):
     subprocess.run([
         "ffmpeg", "-y", "-f", "concat", "-safe", "0",
         "-i", list_path, "-c", "copy", output_path
-    ], capture_output=True)
+    ], capture_output=True, stdin=subprocess.DEVNULL)
 
     import shutil as sh
     sh.rmtree(temp_dir, ignore_errors=True)
@@ -264,7 +264,7 @@ def crossfade_mp3(mp3_paths, output_path, fade_ms=300):
         filter_str = ";".join(filter_parts)
 
     cmd = ["ffmpeg", "-y"] + inputs + ["-filter_complex", filter_str, "-map", "[a]", output_path]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, stdin=subprocess.DEVNULL)
     if result.returncode != 0:
         concatenate_mp3(mp3_paths, output_path)
 

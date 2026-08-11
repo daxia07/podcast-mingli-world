@@ -16,6 +16,10 @@ every chapter marker:
 
 ffmpeg and edge-tts are imported lazily so the rest of the library stays
 importable (and testable) on a machine without them.
+
+Every subprocess call passes stdin=DEVNULL. ffmpeg reads stdin by default, so
+inside a shell loop like `while read bp; do build "$bp"; done < list.txt` it
+swallows the rest of the list and only the first item is ever processed.
 """
 
 from __future__ import annotations
@@ -60,6 +64,7 @@ def probe_duration(path: str | Path) -> float:
         ],
         capture_output=True,
         text=True,
+        stdin=subprocess.DEVNULL,
     )
     if result.returncode != 0:
         raise SynthError(f"ffprobe failed on {path}: {result.stderr.strip()[:200]}")
@@ -81,6 +86,7 @@ def make_silence(seconds: float, out_path: Path) -> Path:
             str(out_path),
         ],
         capture_output=True,
+        stdin=subprocess.DEVNULL,
     )
     if not out_path.exists():
         raise SynthError(f"could not generate {seconds}s of silence")
@@ -105,6 +111,7 @@ def concat(paths: list[Path], out_path: Path) -> Path:
         ],
         capture_output=True,
         text=True,
+        stdin=subprocess.DEVNULL,
     )
     Path(listing_path).unlink(missing_ok=True)
 
