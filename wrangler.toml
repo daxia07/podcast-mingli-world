@@ -2,6 +2,12 @@ name = "podcast-landing"
 pages_build_output_dir = "site"
 compatibility_date = "2026-07-05"
 
+# The API token can see two accounts, so wrangler cannot choose one in a
+# non-interactive shell and the deploy fails. This is the account that owns the
+# podcast-mingli-world R2 bucket — the same id already committed in api/r2.js,
+# so it is an identifier, not a secret.
+account_id = "0629de91516b2b363d1215708eaa5332"
+
 [[r2_buckets]]
 binding = "FEEDBACK_BUCKET"
 bucket_name = "podcast-mingli-world"
