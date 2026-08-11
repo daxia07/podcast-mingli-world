@@ -4,7 +4,7 @@
   "private": true,
   "description": "Daily Interview English — personal learning podcast",
   "scripts": {
-    "deploy": "wrangler pages deploy site --project-name podcast-landing --branch main",
+    "deploy": "CLOUDFLARE_ACCOUNT_ID=0629de91516b2b363d1215708eaa5332 wrangler pages deploy site --project-name podcast-landing --branch main",
     "dev": "wrangler pages dev site",
     "test": "node --test tests/*.mjs && python3 -m unittest discover -s tests -p 'test_*.py'",
     "gates": "python3 -m scripts.lib.gates --manifest",

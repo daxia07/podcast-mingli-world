@@ -42,6 +42,9 @@ jobs:
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # The token can see two accounts; without this wrangler aborts in a
+          # non-interactive shell. Identifier, not a secret (see api/r2.js).
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
         run: npx wrangler@4 pages deploy site --project-name podcast-landing --branch main
 
       - name: Verify the live site
