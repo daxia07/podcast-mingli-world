@@ -66,6 +66,9 @@ jobs:
           BASE_URL: https://podcast.mingli.world
         run: |
           set -e
+          # `data` is committed as a symlink to another machine (AGENTS.md
+          # gotcha #1), so it exists but is broken and mkdir -p fails on it.
+          [ -L data ] && rm -f data
           mkdir -p data
           FLAGS=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then FLAGS="--dry-run"; fi
