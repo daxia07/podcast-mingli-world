@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "id": 313,
+  "slug": "coding-prep-ep13-tree-dfs",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Tree Dfs",
+  "description": "Think-aloud walkthrough: Tree Dfs.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Tree DFS day. Complements week one BFS level order. Max depth, invert binary tree, same tree. No AI. Speak before solve. Pair with Trees and Graphs in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem one. Maximum depth of binary tree. Root to leaf longest path length in nodes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Six counts. One line recurrence. One through six."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: if null depth zero. Else one plus max of depth left and depth right. Recursive DFS. Iterative stack or level BFS also works — BFS depth is number of levels."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Skewed left chain of three — depth three. Balanced small — compute both sides."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty zero. Single node one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity O of n time O of height stack."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem two. Invert binary tree. Swap every left and right child recursively."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Six counts. One through six."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: if null return. Swap left and right, then invert both children — or invert then swap, be consistent. Return root."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: only swapping at root. Must visit all nodes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem three. Same tree. Are two trees structurally identical with same values?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Eight counts. One through eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: both null true. One null false. Values differ false. Else same left and same right recursively. BFS pairing queues also fine."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue. Hierarchy and subtrees — DFS recursion. Level batches — BFS queue. Path sums and LCA — DFS with state. Grid components — you already did flood."
+        },
+        {
+          "voice": "narrator",
+          "text": "Path sum bonus twenty seconds. Does any root to leaf sum to target? DFS remaining sum, at leaf check zero. Mention if they pivot."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Lowest common ancestor BST versus binary tree. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: BST use value ranges walk down. General binary tree DFS postorder find."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "Tree DFS: null base cases. Depth one plus max children. Invert swap and recurse. Same tree pairwise null and value. BFS still for levels. O of n. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: null base.\nTwo: depth formula.\nThree: invert all nodes.\nFour: same tree both sides.\nFive: BFS vs DFS when."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: tree questions. Code invert and max depth without AI. Re-speak ep06 level order speed recap after — link BFS and DFS in one day."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: week two mock — second dress rehearsal with DP and list flavor."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Tree DFS. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

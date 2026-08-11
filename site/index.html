@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f7f6f3">
 <title>Mingli — Interview Podcast</title>
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="/style.css?v=23">
+<link rel="stylesheet" href="/style.css?v=24">
 </head>
 <body>
 <div class="app" id="app">
@@ -73,6 +73,13 @@
         <p class="me-title">Solution boards</p>
         <p class="me-sub">Toggle boards in the player for clarify → naive → optimal → edges. Not a full transcript.</p>
       </div>
+      <div class="me-card me-row">
+        <div>
+          <p class="me-title">Appearance</p>
+          <p class="me-sub">Follows your device by default.</p>
+        </div>
+        <button type="button" class="chip" id="btnTheme">System</button>
+      </div>
       <button type="button" class="btn-secondary" id="btnLogout2">Sign out</button>
     </div>
   </section>
@@ -103,7 +110,8 @@
 
   <!-- FULL PLAYER -->
   <section class="player-full" id="playerFull" hidden>
-    <header class="topbar player-top">
+    <header class="topbar player-top" id="playerGrip">
+      <span class="grip-bar" aria-hidden="true"></span>
       <button type="button" class="icon-btn" id="playerClose" aria-label="Close">
         <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
@@ -116,9 +124,14 @@
       <h2 class="player-title" id="playerTitle">—</h2>
       <p class="player-sub" id="playerSub">—</p>
 
+      <p class="chapter-now" id="chapterNow" hidden></p>
+
       <div class="seek-row">
         <span class="t" id="tCur">0:00</span>
-        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek" />
+        <div class="seek-wrap">
+          <div class="chapter-rail" id="chapterRail" aria-hidden="true" hidden></div>
+          <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek" />
+        </div>
         <span class="t" id="tDur">0:00</span>
       </div>
 
@@ -136,11 +149,27 @@
         </button>
       </div>
 
+      <div class="chapter-nav">
+        <button type="button" class="chip ghost" id="btnChapterPrev" aria-label="Previous section">‹ Section</button>
+        <button type="button" class="chip ghost" id="btnChapterNext" aria-label="Next section">Section ›</button>
+      </div>
+
       <div class="player-tools">
         <button type="button" class="chip" id="btnSpeed">1×</button>
+        <button type="button" class="chip panel-tab" data-panel="chapters">Chapters</button>
+        <button type="button" class="chip panel-tab" data-panel="transcript">Transcript</button>
         <button type="button" class="chip solutions-toggle" id="btnSolutions">
           Solutions <span class="toggle-dot" id="solDot"></span>
         </button>
+        <button type="button" class="chip" id="btnSleep">Sleep</button>
+      </div>
+
+      <div class="sleep-sheet" id="sleepSheet" hidden>
+        <button type="button" class="sleep-opt" data-sleep="5">5 min</button>
+        <button type="button" class="sleep-opt" data-sleep="15">15 min</button>
+        <button type="button" class="sleep-opt" data-sleep="30">30 min</button>
+        <button type="button" class="sleep-opt" data-sleep="end">End of episode</button>
+        <button type="button" class="sleep-opt" data-sleep="0">Off</button>
       </div>
       <p class="hint" id="solHint" hidden>No solution board for this episode yet.</p>
     </div>
@@ -156,6 +185,30 @@
       <div class="sol-tabs" id="solTabs"></div>
       <div class="sol-body" id="solBody"></div>
       <a class="sol-tutor" id="solTutor" href="#" target="_blank" rel="noopener" hidden>Open tutor deep drill →</a>
+    </div>
+
+    <!-- CHAPTERS / TRANSCRIPT SHEET -->
+    <div class="panel-sheet" id="panelSheet" hidden>
+      <div class="panel-head">
+        <div class="panel-tabs">
+          <button type="button" class="panel-tab on" data-panel="chapters">Chapters</button>
+          <button type="button" class="panel-tab" data-panel="transcript">Transcript</button>
+        </div>
+        <button type="button" class="icon-btn" id="panelClose" aria-label="Close panel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="panel-pane" data-panel="chapters">
+        <div id="chapterList" class="chapter-list"></div>
+      </div>
+
+      <div class="panel-pane" data-panel="transcript" hidden>
+        <div class="transcript-search">
+          <input type="search" id="transcriptSearch" placeholder="Search this transcript…" autocomplete="off" />
+        </div>
+        <div id="transcriptBody" class="transcript-body"></div>
+      </div>
     </div>
 
     <div class="queue-block">
@@ -204,7 +257,10 @@
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="/app.js?v=23"></script>
+<script src="/js/vtt.js?v=24"></script>
+<script src="/js/chapters.js?v=24"></script>
+<script src="/app.js?v=24"></script>
+<script src="/js/player-ui.js?v=24"></script>
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(function () {});

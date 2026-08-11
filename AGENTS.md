@@ -2,6 +2,36 @@
 
 Coding-agent guide to this repo. Read this before making changes.
 
+> **Adding content? Use the skills, not the legacy scripts.** As of 2026-08-12
+> episodes are authored as **blueprint JSON** in `content/blueprints/` and built
+> with one command. The `generate_*.py` scripts are frozen legacy — do not add
+> to them or copy their pattern.
+>
+> | Task | Path |
+> |---|---|
+> | New episode | `.claude/skills/episode-new` — or `/new-episode` |
+> | Ingest a video as learning material | `.claude/skills/youtube-ingest` — or `/ingest` |
+> | New show / playlist | `.claude/skills/show-new` |
+> | Review a draft before building | `.claude/skills/content-review` |
+> | Publish | `.claude/skills/publish` — or `/publish-episode` |
+>
+> ```bash
+> npm test                                    # 94 tests, no deps, no network
+> python3 -m scripts.lib.gates --manifest     # manifest integrity
+> python3 scripts/build_episode.py <bp> --dry-run   # plan without TTS
+> ```
+>
+> **This is enforced, not just documented.** The 14 one-off `generate_*.py` /
+> `batch_publish*.py` scripts are frozen — running one prints a banner and exits
+> 2 (bypass: `--legacy-ok`). CI fails if any episode outside
+> `content/legacy-episodes.json` lacks a blueprint. The daily-cron scripts
+> (`generate.py`, `publish.py`, `arrange.py`, `curate.py`) are deliberately not
+> frozen.
+>
+> Full design: `docs/UPGRADE-SPEC.md`. Decisions: `DECISIONS.md`.
+> **Where things run:** build and test on this Mac; publish from the `agent`
+> host or CI — this Mac has no Cloudflare credentials (spec §0b).
+
 ## What this project is
 
 A **self-hosted, $0/month podcast platform** that generates interview-prep audio episodes for a single user (Mingli). Started as a daily "Interview English" podcast; it has grown into a full audio learning app with many show playlists:

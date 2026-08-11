@@ -8,10 +8,16 @@ Each: setup context → assumption reasoning → step-by-step with false starts 
 Style: flowing prose, no bullet points or structural markers
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import json, os, sys, subprocess, shutil, tempfile
 from datetime import datetime, timezone
 
 from tts import synthesize, get_duration_str
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")

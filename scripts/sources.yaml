@@ -1,0 +1,49 @@
+# Learning-material sources for curate.py.
+#
+# Two kinds. RSS feeds are read directly. YouTube channels and playlists are
+# read through YouTube's own RSS endpoints, which need no API key and no quota:
+#
+#   https://www.youtube.com/feeds/videos.xml?channel_id=UC...
+#   https://www.youtube.com/feeds/videos.xml?playlist_id=PL...
+#
+# Find a channel_id in the channel page source (search for "channelId").
+#
+# curate.py scores candidates against `keywords`, drops anything already in
+# sources/index.json on R2, and writes a ranked queue to data/candidates.json.
+# Nothing is downloaded or published automatically — ingestion is a separate,
+# explicit step (scripts/ingest_youtube.py, or the youtube-ingest skill).
+
+rss:
+  - url: https://changelog.com/podcast/feed
+    name: Changelog
+    show: interview-prep
+    keywords: [engineering, developer, software, leadership]
+
+  - url: https://feeds.simplecast.com/sdgDQa0T
+    name: Soft Skills Engineering
+    show: interview-prep
+    keywords: [communication, management, career, interview]
+
+  - url: https://hnrss.org/frontpage
+    name: Hacker News
+    show: interview-prep
+    keywords: [engineering, software, career, leadership, architecture]
+
+# Add channels here. `show` decides which playlist a derived episode joins and
+# therefore which template it is written against.
+youtube: []
+  # Example — uncomment and fill in a real channel_id:
+  #
+  # - channel_id: UCxxxxxxxxxxxxxxxxxxxxxx
+  #   name: ByteByteGo
+  #   show: system-design
+  #   max_per_run: 2
+  #   min_minutes: 6
+  #   max_minutes: 60
+  #   keywords: [system design, scalability, architecture, database]
+
+curation:
+  prefer_recent_hours: 168     # a week — daily was too tight for weekly channels
+  min_article_length_chars: 300
+  max_articles_per_feed: 3
+  min_score: 1

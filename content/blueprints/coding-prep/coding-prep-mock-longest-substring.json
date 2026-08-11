@@ -1,0 +1,540 @@
+{
+  "schema": 1,
+  "id": 348,
+  "slug": "coding-prep-mock-longest-substring",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Longest Substring",
+  "description": "Longest Substring — migrated from longest_substring.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. Clarify requirements, explain approach, hand walk an example, give full word pseudocode, cover corners and complexity, then narrate implementation. Ready?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Yes. Please go ahead with the problem."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Here is the problem. Given a string s, find the length of the longest substring without repeating characters. Substring means contiguous characters. Return the length only."
+        },
+        {
+          "voice": "candidate",
+          "text": "Restating. Maximum length of a contiguous window where all characters are unique. Clarifying. Empty string? Case sensitive? Unicode? Return length only or the string too? May I use O of alphabet extra space?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Empty returns zero. Case sensitive. Treat Python characters as units. Length only. O of alphabet or O of n space is fine."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive: check all O of n squared substrings with a set per window, or expand from each left until conflict. Improved: sliding window. Move right from zero to n minus one. Maintain left so s left through s right is unique. Use a map from character to last index. When s right was seen at an index greater or equal left, set left to that index plus one. Update last index of s right to right. Track max of right minus left plus one. Alternatively maintain a set and shrink left while conflict. Both are O of n."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why is the improved approach worth the extra structure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Because pure O of n is expected and the window invariant is a core interview pattern that transfers to stream windows and at most k distinct problems. It is still compact to implement."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk a b c a b c b b. Speak left, right, best."
+        },
+        {
+          "voice": "candidate",
+          "text": "Expand to a b c best three. Next a conflicts, left moves to one, window b c a length three. Continue as in the classic; best remains three. Final answer three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk a b b a carefully with the last index method."
+        },
+        {
+          "voice": "candidate",
+          "text": "a then b best two. Second b conflicts, left moves past previous b. Then a: previous a is before left so do not jump backward; window becomes b a length two. Answer two. The forward only left move is load bearing."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk p w w k e w which answers three."
+        },
+        {
+          "voice": "candidate",
+          "text": "p w best two. Second w shrinks to w. Then k e builds w k e length three. Final w conflicts and window becomes k e w length three. Best three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What is the window invariant in one sentence?"
+        },
+        {
+          "voice": "candidate",
+          "text": "After each step, every character in the closed range left to right appears once, and best stores the max length of any valid window seen so far."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Describe the API you will implement, then full word pseudocode."
+        },
+        {
+          "voice": "candidate",
+          "text": "Function length of longest substring s. last empty dict, left zero, best zero. For right, ch in enumerate s: if ch in last and last ch greater or equal left: left equals last ch plus one. last ch equals right. best equals max best and right minus left plus one. Return best. Load bearing: left never decreases. Load bearing: substring not subsequence."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Walk corner cases one by one."
+        },
+        {
+          "voice": "candidate",
+          "text": "Empty zero. Single one. All unique n. All same one. abba two. Classic three. pwwkew three. Spaces and punctuation count as characters."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Name the unit tests you would write before claiming done."
+        },
+        {
+          "voice": "candidate",
+          "text": "test empty, single, all same, abcabcbb, abba, pwwkew, dvdf equals three. Those pin left jump logic."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity, precise."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time O of n. Space O of min of n and alphabet for the map."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Variant at most k distinct characters."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sliding window with frequency map and distinct counter; shrink while distinct greater than k. Same skeleton."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Set based implementation tradeoff."
+        },
+        {
+          "voice": "candidate",
+          "text": "More incremental removals when left jumps far; still amortized O of n. Last index jumps in one assignment."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Binary search on length alternative."
+        },
+        {
+          "voice": "candidate",
+          "text": "Check whether any window of length L is unique, O of n log n. Correct but more code than linear window."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Common bug with last index?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Setting left to last plus one even when last is outside the window, which can move left backward. Guard with last greater or equal left, or left equals max left and last plus one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You have a working happy path and a few minutes left. What do you do?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I do not start a harder follow up. I lock the tests we named, restate complexity, and keep the code readable. Working correct code beats unfinished cleverness."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Simulate the implementation phase. Narrate what you type in order as if I watch your editor."
+        },
+        {
+          "voice": "candidate",
+          "text": "I define the function with last dict, left, best."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I write the for right loop with conflict update, last assign, best update."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I add tests empty, abba, classic three, pwwkew. I fix left jump if abba fails."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I speak O of n and stop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Someone confuses substring and subsequence. How do you correct course?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I redefine: contiguous required, so window algorithms apply. Longest unique subsequence would be a different count of distinct characters if order free, which is not this problem."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Time left: what do you skip?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I skip k distinct and minimum window substring follow ups until base tests are green."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Before we close, summarize the whole solution in about one minute."
+        },
+        {
+          "voice": "candidate",
+          "text": "Longest substring without repeating characters via sliding window and last seen indices. Expand right, advance left past prior occurrence, track max length. O of n time. Tests include classic three, abba, and pwwkew. Not a subsequence problem. Follow ups include at most k distinct."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What would you do differently if this shipped tomorrow versus interview code?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I would add property tests or random differential checks against a slow oracle where feasible, metrics if it sits on a hot path, and clearer error types at A P I boundaries. The core algorithm stays the same."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Any open questions you would ask before calling the design final?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Constraints on n, whether input is trusted, and which follow up variant product actually needs. Those change validation and A P I more than the core loop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Technique clinic: derive the sliding window from the definition of substring uniqueness."
+        },
+        {
+          "voice": "candidate",
+          "text": "A substring is defined by two ends left and right. Uniqueness means no character appears twice inside. If I only increase right, I may introduce a duplicate. Then I must increase left until the duplicate is gone. If I process right in increasing order and always repair left minimally, every right is processed once and left only moves forward, giving linear time. The max over all valid windows is the answer. That derivation prevents memorizing code without understanding."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: compare last index map versus frequency map versus set."
+        },
+        {
+          "voice": "candidate",
+          "text": "Set answers membership: is this char inside the window. Frequency map counts occurrences and supports at most k distinct generalizations. Last index map answers where did this char last appear so I can jump left in one step. For pure no repeats, set or last index both work. I pick last index for jump efficiency and clear code, or set if I want a simple mental model of adding and removing."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: prove left never needs to move backward."
+        },
+        {
+          "voice": "candidate",
+          "text": "Suppose left moved backward. The window would include characters already excluded for a previous right, and uniqueness for a larger right would not require re including them because any window ending at the new right that starts earlier than current left would include the conflict that forced left forward. Formally people use the argument that the minimal valid left is non decreasing in right. In practice I code left equals max of left and candidate which enforces non decrease."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic hand walk d v d f which answers three."
+        },
+        {
+          "voice": "candidate",
+          "text": "d best one. v window d v best two. second d: last d at zero, left becomes one, window v d length two. f extends v d f length three. Best three. This catches bugs that clear the entire window to empty on each conflict."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: subsequence confusion with an example."
+        },
+        {
+          "voice": "candidate",
+          "text": "In a b c a, longest unique substring length three a b c. Longest unique subsequence can also pick a b c. In a a a, substring length one, and unique subsequence length one. The algorithms differ more on problems like longest increasing subsequence which is not a window problem. I say contiguous out loud every time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: alphabet optimization."
+        },
+        {
+          "voice": "candidate",
+          "text": "If characters are lowercase English only, last index array of size twenty six initialized to negative one can replace a hash map. For general Unicode, dict is correct. I implement dict unless constraints scream lowercase."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: how you would explain a bug to the interviewer when abba fails."
+        },
+        {
+          "voice": "candidate",
+          "text": "I say I think left jumped backward because I assigned left to last plus one without checking last is inside the window. I fix with a guard, re-run abba, expect two, continue. Calm debug narration scores points."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: streaming version of the problem."
+        },
+        {
+          "voice": "candidate",
+          "text": "If characters arrive as a stream and I must output the best length so far online, the same window state works: update on each new char and emit best. If I must emit the best substring content, I also store argmax start length. Memory is the window map."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: related problem minimum window substring containing all of t."
+        },
+        {
+          "voice": "candidate",
+          "text": "Harder. Need need counts of required characters and a deficit counter. Expand right to satisfy, shrink left while satisfied, track min length. Same expand shrink skeleton, heavier state. I only open that door if asked."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final pseudocode recitation."
+        },
+        {
+          "voice": "candidate",
+          "text": "last map, left zero, best zero. for right char enumerate: if char seen inside window left equals last plus one. last equals right. best max with window length. return best."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Minute summary for muscle memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "Longest substring without repeating characters is a sliding window. Expand right, move left past previous occurrence, track max length. Linear time. Tests abba classic pwwkew. Contiguous not subsequence. Pattern transfers to other window problems."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow practice full arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Longest contiguous substring length with all unique characters. Empty is zero. Case sensitive. Sliding window with last seen index map."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Naive versus better."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive checks many substrings quadratic. Better expands right, moves left past previous occurrence of the new character, tracks max length, linear time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk abba."
+        },
+        {
+          "voice": "candidate",
+          "text": "Build ab length two. Second b moves left. Final a does not jump left backward because previous a is outside window. Answer two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Invariant."
+        },
+        {
+          "voice": "candidate",
+          "text": "Window left to right always unique after each repair. Best is max length seen. Left only moves forward."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Empty, all same, classic abcabcbb three, abba two, pwwkew three, dvdf three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate again for memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I am asked for the length of the longest substring without repeating characters. Substring is contiguous. I use a sliding window. As right advances over each character, if that character last appeared inside the window I move left to last index plus one. I update the last index and the best length. Time O of n space O of alphabet. I will not solve subsequence by mistake."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Set version in one breath."
+        },
+        {
+          "voice": "candidate",
+          "text": "While right char in set remove left char and advance left, then add right char, update best with set size."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Bug narration abba wrong answer three."
+        },
+        {
+          "voice": "candidate",
+          "text": "Left jumped backward reintroducing an earlier a. Fix max left with last plus one. Re-test abba equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sliding window unique chars, left forward only, linear, classic tests green, code offline AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow practice full arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Longest contiguous substring length with all unique characters. Empty is zero. Case sensitive. Sliding window with last seen index map."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Naive versus better."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive checks many substrings quadratic. Better expands right, moves left past previous occurrence of the new character, tracks max length, linear time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk abba."
+        },
+        {
+          "voice": "candidate",
+          "text": "Build ab length two. Second b moves left. Final a does not jump left backward because previous a is outside window. Answer two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Invariant."
+        },
+        {
+          "voice": "candidate",
+          "text": "Window left to right always unique after each repair. Best is max length seen. Left only moves forward."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Empty, all same, classic abcabcbb three, abba two, pwwkew three, dvdf three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate again for memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I am asked for the length of the longest substring without repeating characters. Substring is contiguous. I use a sliding window. As right advances over each character, if that character last appeared inside the window I move left to last index plus one. I update the last index and the best length. Time O of n space O of alphabet. I will not solve subsequence by mistake."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Set version in one breath."
+        },
+        {
+          "voice": "candidate",
+          "text": "While right char in set remove left char and advance left, then add right char, update best with set size."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Bug narration abba wrong answer three."
+        },
+        {
+          "voice": "candidate",
+          "text": "Left jumped backward reintroducing an earlier a. Fix max left with last plus one. Re-test abba equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sliding window unique chars, left forward only, linear, classic tests green, code offline AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow practice full arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Longest contiguous substring length with all unique characters. Empty is zero. Case sensitive. Sliding window with last seen index map."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Naive versus better."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive checks many substrings quadratic. Better expands right, moves left past previous occurrence of the new character, tracks max length, linear time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk abba."
+        },
+        {
+          "voice": "candidate",
+          "text": "Build ab length two. Second b moves left. Final a does not jump left backward because previous a is outside window. Answer two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Invariant."
+        },
+        {
+          "voice": "candidate",
+          "text": "Window left to right always unique after each repair. Best is max length seen. Left only moves forward."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Empty, all same, classic abcabcbb three, abba two, pwwkew three, dvdf three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate again for memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I am asked for the length of the longest substring without repeating characters. Substring is contiguous. I use a sliding window. As right advances over each character, if that character last appeared inside the window I move left to last index plus one. I update the last index and the best length. Time O of n space O of alphabet. I will not solve subsequence by mistake."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Set version in one breath."
+        },
+        {
+          "voice": "candidate",
+          "text": "While right char in set remove left char and advance left, then add right char, update best with set size."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Bug narration abba wrong answer three."
+        },
+        {
+          "voice": "candidate",
+          "text": "Left jumped backward reintroducing an earlier a. Fix max left with last plus one. Re-test abba equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sliding window unique chars, left forward only, linear, classic tests green, code offline AI off."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap. Sliding window unique chars. Left only forward. O of n. Code AI off after listen."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

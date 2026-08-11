@@ -1,0 +1,51 @@
+{
+  "name": "estimation-drill",
+  "title": "Back-of-envelope drill",
+  "description": "Guided numeric estimation with the listener doing the arithmetic first.",
+  "voices": {
+    "estimation": "estimation"
+  },
+  "target_minutes": [
+    8,
+    15
+  ],
+  "authoring_brief": "Round aggressively and say so. Every number spoken in words. Pause for the listener to compute before revealing. Always sanity-check the result against a second route.",
+  "sections": [
+    {
+      "id": "setup",
+      "title": "The question",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "State the estimation target and the assumptions you'll allow."
+    },
+    {
+      "id": "attempt",
+      "title": "Your turn",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Explicit pause for the listener to work it."
+    },
+    {
+      "id": "work",
+      "title": "Working it",
+      "required": true,
+      "target_minutes": 5,
+      "factual": true,
+      "brief": "Step by step, rounding out loud."
+    },
+    {
+      "id": "check",
+      "title": "Sanity check",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "A second derivation that should land in the same order of magnitude."
+    },
+    {
+      "id": "wrap",
+      "title": "What to remember",
+      "required": false,
+      "target_minutes": 1,
+      "brief": "The one ratio worth memorising."
+    }
+  ]
+}

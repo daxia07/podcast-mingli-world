@@ -6,6 +6,8 @@
   "scripts": {
     "deploy": "wrangler pages deploy site --project-name podcast-landing --branch main",
     "dev": "wrangler pages dev site",
+    "test": "node --test tests/*.mjs && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "gates": "python3 -m scripts.lib.gates --manifest",
     "test:arrange": "python3 scripts/arrange.py",
     "test:curate": "python3 scripts/curate.py",
     "test:generate": "python3 scripts/generate.py",

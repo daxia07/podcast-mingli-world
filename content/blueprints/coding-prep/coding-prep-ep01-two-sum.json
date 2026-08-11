@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "id": 301,
+  "slug": "coding-prep-ep01-two-sum",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Two Sum Think Aloud",
+  "description": "Think-aloud walkthrough: Two Sum Think Aloud.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Alright. Interviewer just said: Two Sum. Given an array of integers called nums, and an integer target, return the indices of the two numbers that add up to target."
+        },
+        {
+          "voice": "narrator",
+          "text": "I'm going to work this the way I would in a real screen. No AI. Out loud. Naive first, then better. And I'm going to make the mistakes people actually make, so you hear the recovery."
+        },
+        {
+          "voice": "narrator",
+          "text": "Important: you speak before I solve. After this episode, open the tutor app and run the Two Sum deep drill — eight multiple-choice angles on this exact problem. Audio first, options second. That's how we burn the pattern in."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Same problem again, slower. You need two different indices i and j such that nums of i plus nums of j equals target. Return those indices."
+        }
+      ]
+    },
+    {
+      "id": "attempt",
+      "title": "Your attempt",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Before I give you anything, attempt. I'll count to eight. Out loud only: one clarifying question, then your naive approach and its Big-O. One. Two. Three. Four. Five. Six. Seven. Eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you said something like: is there always a solution, and nested loops O of n squared — you're on the rails. If you jumped straight to hash map without a clarifier, slow down. Process is the product."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual lock, same eight steps every episode. Restate. Clarify. Naive. Improve. Example by hand. Code while narrating. Edges. Complexity. Mouth first, fingers second."
+        }
+      ]
+    },
+    {
+      "id": "clarify",
+      "title": "Clarify first",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here are the clarifiers I always ask."
+        },
+        {
+          "voice": "narrator",
+          "text": "Is there always exactly one solution? A lot of LeetCode statements guarantee that. If yes, I don't need a fancy not-found path. If not, I need a defined contract."
+        },
+        {
+          "voice": "narrator",
+          "text": "Can I use the same element twice? That is, is index i equal to j allowed? Almost never. So I must not pair a number with itself unless the problem says so."
+        },
+        {
+          "voice": "narrator",
+          "text": "Are negatives and zeros allowed? Yes usually. That means I shouldn't assume all positive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Duplicates? Like three threes. That matters for the map approach — I need different indices."
+        },
+        {
+          "voice": "narrator",
+          "text": "Can I mutate the array? If I sort, I lose original indices unless I track them. So if indices are required, hashing is cleaner than sorting."
+        },
+        {
+          "voice": "narrator",
+          "text": "Assumptions for this walkthrough: exactly one solution, distinct indices, integers can be negative, indices required."
+        }
+      ]
+    },
+    {
+      "id": "naive",
+      "title": "Naive approach",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Naive approach — say it first, even if you already know the optimal."
+        },
+        {
+          "voice": "narrator",
+          "text": "For i from zero to n minus one, for j from i plus one to n minus one, if nums i plus nums j equals target, return i and j."
+        },
+        {
+          "voice": "narrator",
+          "text": "Time O of n squared. Space O of one extra."
+        },
+        {
+          "voice": "narrator",
+          "text": "Is that acceptable? For n equals ten to the five, no. For n equals a hundred, maybe. In interviews I still state it, because it proves I can get a correct answer under pressure. Then I improve."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end I almost take under stress. Someone says: sort the array, then two pointers from both ends. That finds values that sum to target, but the problem asks for indices. If I sort in place, original indices are gone unless I wrap each value with its index first. On a real screen I say that trade-off out loud: sorting works if values only; for classic Two Sum with indices, I switch to a map."
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "title": "Better idea",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Better idea. I want, for each number x, to know whether I've already seen target minus x."
+        },
+        {
+          "voice": "narrator",
+          "text": "That's a hash map from value to index."
+        },
+        {
+          "voice": "narrator",
+          "text": "One pass. For each index i with value x, let complement equal target minus x. If complement is in the map, return the stored index and i. Otherwise store x mapped to i and continue."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why lookup before insert? Because if I insert first, a single element that is half the target could match itself. Example: nums equals three, three. Target six. If I insert three at index zero, then at index zero I look for three and find myself. Wrong. So: look for complement first, then insert. With two threes, first three stores at zero. Second three looks for three, finds zero, returns zero and one. Correct."
+        }
+      ]
+    },
+    {
+      "id": "walk",
+      "title": "Hand walk",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Concrete example. nums equals two, seven, eleven, fifteen. Target nine."
+        },
+        {
+          "voice": "narrator",
+          "text": "Start with empty map."
+        },
+        {
+          "voice": "narrator",
+          "text": "i equals zero, value two. Complement is seven. Not in map. Store two to zero. Map is two maps to zero."
+        },
+        {
+          "voice": "narrator",
+          "text": "i equals one, value seven. Complement is two. Two is in the map at index zero. Return zero and one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Done. I don't even need eleven and fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second example for edges. nums equals three, three. Target six."
+        },
+        {
+          "voice": "narrator",
+          "text": "i equals zero, value three. Complement three not in map. Store three to zero."
+        },
+        {
+          "voice": "narrator",
+          "text": "i equals one, value three. Complement three is in map at zero. Return zero and one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third case people mess up. Suppose target is six and I only have one three. No second three. Map never finds a pair. Under \"exactly one solution\" this shouldn't happen. In production code I'd return a defined empty result."
+        },
+        {
+          "voice": "narrator",
+          "text": "In my head, the code looks like this. Full words, no single-letter soup."
+        },
+        {
+          "voice": "narrator",
+          "text": "Create an empty map called value to index."
+        },
+        {
+          "voice": "narrator",
+          "text": "For index i, value in enumerate nums: complement equals target minus value. If complement is in value to index, return value to index of complement, and i. Then set value to index of value equal to i."
+        },
+        {
+          "voice": "narrator",
+          "text": "That's the whole algorithm. If your language needs an explicit not-found return, add it after the loop."
+        }
+      ]
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Time: O of n expected with a hash map. Space: O of n auxiliary."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trade-off again: if the interviewer only wants the values, not indices, and the array may be sorted, I can sort in O of n log n and use two pointers from both ends. That uses less extra space if I sort in place, but sorting destroys original indices unless I keep pairs of value and original index. For classic Two Sum with indices, map wins."
+        }
+      ]
+    },
+    {
+      "id": "edges",
+      "title": "Edges",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Edges checklist, speak it. Empty array. Single element. All zeros with target zero if same index forbidden. Negatives. Duplicates. Guaranteed solution removed."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake one: returning values instead of indices. Read the problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake two: pairing an element with itself."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake three: silent coding. Airwallex wants to hear naive then optimize. Say the O of n squared version out loud even if you never type it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake four: skipping empty and single-element cases when the guarantee is removed."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake five: using AI in a live round. Don't."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Pattern cue card. Say it with me."
+        },
+        {
+          "voice": "narrator",
+          "text": "When I hear pair sum, complement, two indices — hash map value to index, lookup before insert."
+        },
+        {
+          "voice": "narrator",
+          "text": "When I hear sorted array and two sum — two pointers from both ends."
+        },
+        {
+          "voice": "narrator",
+          "text": "When I hear have I seen this value — hash set."
+        },
+        {
+          "voice": "narrator",
+          "text": "Transfer. Sibling problem, twenty seconds. Given an array, return true if any value appears twice. Approach only, not code. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Eleven. Twelve. Thirteen. Fourteen. Fifteen. Sixteen. Seventeen. Eighteen. Nineteen. Twenty."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: scan left to right with a set of seen values. If the value is already in the set, return true. Else insert. O of n time, O of n space. Same family as Two Sum: memory of what I've seen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap. This is the three-minute interview voice. Re-play this daily."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two Sum: indices of two numbers that add to target. Clarify unique solution, distinct indices, negatives, mutability. Naive nested loops O of n squared. Optimal one-pass map from value to index: for each value, if target minus value is already mapped, return that index and current; else store value to index. Lookup before insert so I never match myself. Example two seven eleven fifteen target nine returns zero one. Time O of n, space O of n. Edges: empty, single, duplicates. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause the episode."
+        },
+        {
+          "voice": "narrator",
+          "text": "Out loud, no notes."
+        },
+        {
+          "voice": "narrator",
+          "text": "One: clarifiers — unique solution, distinct indices, negatives, duplicates."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two: naive nested loops O of n squared."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three: map from value to index, lookup complement before insert."
+        },
+        {
+          "voice": "narrator",
+          "text": "Four: walk two seven eleven fifteen target nine — indices zero and one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Five: time O of n, space O of n."
+        },
+        {
+          "voice": "narrator",
+          "text": "Six: transfer — contains duplicate uses a set of seen values."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you stumbled, rewind the speed recap once, not the whole episode."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then open the app: Two Sum deep drill. Eight options. Same problem. Cold."
+        },
+        {
+          "voice": "narrator",
+          "text": "Optional: play the Coding YouTube Two Sum clip as a second voice, then re-speak the speed recap without listening."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: the HashMap family — contains duplicate, group anagrams, top k. Same ritual, new shapes."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Two Sum. Go code it without AI before you sleep."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "id": 308,
+  "slug": "coding-prep-ep08-stack",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Valid Parentheses Stack",
+  "description": "Think-aloud walkthrough: Valid Parentheses Stack.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Week two opens with stack muscle. Valid Parentheses, then a quick Min Stack design note. No AI. You speak before I solve. Pair with Stack and Queue in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Given a string of brackets only — round, square, curly — return true if every opener has a matching closer in the right order."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Ten counts. Structure and end condition. One through ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: stack. On open, push. On close, stack must be non empty and top must match this closer — then pop. End: stack empty. Empty string is valid. Wrong closer or leftover opens is false."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual. Restate. Clarify character set. Naive wrong ideas. Improve. Example. Edges. Complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive people say: count opens and closes equal. That fails on close first or wrong nesting like open square close paren. Say the counter dead-end, then stack."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. String open paren, open square, close square, close paren.\nPush open paren. Push open square. See close square — top is open square — match pop. See close paren — top open paren — match pop. Stack empty — true."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second. Close paren first. Stack empty on close — false.\nThird. Open open close. End stack not empty — false.\nFourth. Open square close paren. Types mismatch — false."
+        },
+        {
+          "voice": "narrator",
+          "text": "Code in words. Map closer to opener, or push expected closer when you see open. Loop chars. At end return stack empty."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty true. Single char false. Only opens. Only closes. Long nested. Interleaved types."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity O of n time, O of n space worst case all opens."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end recovery line. If I used counters only, I'd miss order — switching to stack for nesting."
+        },
+        {
+          "voice": "narrator",
+          "text": "Min Stack side quest, sixty seconds. Design stack with push pop top and get min in O of one. Two stacks, or store pairs of value and current min. On push, new min is min of value and previous min. On pop, min history pops with the value."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue. Nesting, matching, undo last — stack. Level order — queue. Say it."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Next greater element to the right — structure name only. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: monotonic decreasing stack of indices or values while scanning. Same LIFO family."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "Valid parentheses: stack opens, match closes, empty at end. Counters are not enough. O of n. Min stack: store running min with each push. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: push opens.\nTwo: pop match on close.\nThree: empty end.\nFour: counter dead-end.\nFive: min stack pairs."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: Stack and Queue unit cold. Code valid parentheses without AI. Then one min stack if time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: merge intervals — sort and scan."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Stack. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

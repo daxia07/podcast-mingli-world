@@ -1,0 +1,59 @@
+name: Deploy
+
+# Deploys the site from CI rather than from whichever laptop happens to have a
+# token. The Cloudflare credential already exists here as a secret; it does not
+# exist on the dev Mac (see docs/UPGRADE-SPEC.md §0b), so a local
+# `npm run deploy` fails with "not authenticated".
+#
+# Gates run first — a deploy that ships a broken manifest is worse than no deploy.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'site/**'
+      - 'functions/**'
+      - 'wrangler.toml'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Tests
+        run: |
+          node --test tests/*.mjs
+          python3 -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Manifest gates
+        run: python3 -m scripts.lib.gates --manifest
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler@4 pages deploy site --project-name podcast-landing --branch main
+
+      - name: Verify the live site
+        run: |
+          set -e
+          sleep 20
+          echo "--- healthz ---"
+          curl -sS --fail https://podcast.mingli.world/healthz | tee /tmp/healthz.json
+          grep -q '"ok": true' /tmp/healthz.json
+
+          echo "--- range request must return 206 ---"
+          URL=$(python3 -c "import json;print(json.load(open('scripts/manifest.json'))['episodes'][0]['file_url'])")
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' -H 'Range: bytes=1000-1100' "$URL")
+          echo "range status: $CODE"
+          test "$CODE" = "206"

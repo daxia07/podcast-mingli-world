@@ -1,0 +1,636 @@
+{
+  "schema": 1,
+  "id": 350,
+  "slug": "coding-prep-mock-merge-intervals",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Merge Intervals",
+  "description": "Merge Intervals — migrated from merge_intervals.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. Clarify requirements, explain approach, hand walk an example, give full word pseudocode, cover corners and complexity, then narrate implementation. Ready?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Yes. Please go ahead with the problem."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Here is the problem. Given an array of intervals where intervals i equals start i comma end i, merge all overlapping intervals and return an array of the non overlapping intervals that cover all the intervals in the input. Treat intervals as closed on integers so touching endpoints merge."
+        },
+        {
+          "voice": "candidate",
+          "text": "Restating. Produce the minimal set of disjoint intervals covering the same range union. Clarifying. Inclusive ends? Touch merge? Sorted input? Empty? Start always less or equal end?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closed ints, touch merges, input may be unsorted, empty returns empty, start less or equal end guaranteed."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive: repeatedly find any overlapping pair and merge until stable. Messy complexity. Better: sort by start ascending. Initialize current as a copy of the first interval. For each next interval, if next start is less or equal current end, set current end to max of ends; else emit current and start a new current. Emit the last current. Linear after sort."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why is the improved approach worth the extra structure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Because sorting makes a single forward scan correct and O of n log n is the standard optimal offline merge. Calendar and ledger range problems reuse this subroutine constantly."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk one three, two six, eight ten, fifteen eighteen."
+        },
+        {
+          "voice": "candidate",
+          "text": "Current one three merges with two six to one six. Eight starts new. Fifteen starts new. Result one six, eight ten, fifteen eighteen."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk unsorted five ten, one three, two six."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort to one three, two six, five ten. Merge to one ten."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Contained two four inside one ten."
+        },
+        {
+          "voice": "candidate",
+          "text": "Start inside, end max stays ten. Contained absorbed."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Touch one two and two three."
+        },
+        {
+          "voice": "candidate",
+          "text": "Two less or equal two, merge to one three. Touch policy load bearing for closed intervals."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Describe the API you will implement, then full word pseudocode."
+        },
+        {
+          "voice": "candidate",
+          "text": "Function merge intervals. If empty return empty. Sort by start. merged list. current copy of first. For iv in rest: if iv start less or equal current end: current end equals max ends else append current and current equals copy iv. Append current. Return merged. Load bearing: sort first. Load bearing: max end. Load bearing: less or equal for touch."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Walk corner cases one by one."
+        },
+        {
+          "voice": "candidate",
+          "text": "Empty. Single. No overlaps. All merge to one. Contained. Touching. Unsorted. Negative times if allowed by product."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Name the unit tests you would write before claiming done."
+        },
+        {
+          "voice": "candidate",
+          "text": "test classic. test touching. test contained. test unsorted. test empty single. Optional property: union coverage equals via brute on small sets."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity, precise."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time O of n log n dominated by sort. Space O of n for output. Linear if input already sorted and you trust that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Insert interval follow up."
+        },
+        {
+          "voice": "candidate",
+          "text": "Walk before, merge through overlap, after. Same merge primitive."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Meeting rooms can attend all?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Different: detect any overlap count, not merge output. Related sort by start."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Half open intervals."
+        },
+        {
+          "voice": "candidate",
+          "text": "Touch may not merge. Policy must match domain."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why copy intervals?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Avoid mutating caller input when editing ends."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You have a working happy path and a few minutes left. What do you do?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I do not start a harder follow up. I lock the tests we named, restate complexity, and keep the code readable. Working correct code beats unfinished cleverness."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Simulate the implementation phase. Narrate what you type in order as if I watch your editor."
+        },
+        {
+          "voice": "candidate",
+          "text": "I sort a shallow copy by start."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I scan merging into current and merged list."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I test classic, touch, contained, unsorted."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I speak O of n log n and stop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate forgot sort and used example that was pre sorted. Risk?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Hidden bug on unsorted tests. Always sort unless guaranteed. I add an unsorted fixture."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Interval trees?"
+        },
+        {
+          "voice": "candidate",
+          "text": "For dynamic online queries. Offline full list merge is sort scan."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Before we close, summarize the whole solution in about one minute."
+        },
+        {
+          "voice": "candidate",
+          "text": "Merge intervals by sorting on start then scanning, merging when next start is less or equal current end using max end. Touch merges for closed integers. O of n log n. Tests cover classic, touch, contained, unsorted. Foundation for calendar and range union tasks."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What would you do differently if this shipped tomorrow versus interview code?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I would add property tests or random differential checks against a slow oracle where feasible, metrics if it sits on a hot path, and clearer error types at A P I boundaries. The core algorithm stays the same."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Any open questions you would ask before calling the design final?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Constraints on n, whether input is trusted, and which follow up variant product actually needs. Those change validation and A P I more than the core loop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Technique clinic: why sorting is essential."
+        },
+        {
+          "voice": "candidate",
+          "text": "Without order, any interval might overlap any other, suggesting quadratic checks. Sorting by start means when you process intervals left to right, the only interval you need to consider merging with is the current open merged segment. Past emitted segments end before the current start, so they cannot overlap future intervals with larger starts. That structural fact makes one pass enough."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: formalize non overlap of emitted segments."
+        },
+        {
+          "voice": "candidate",
+          "text": "When you emit current and start a new one, the new start is greater than the emitted end. Future intervals have starts at least the new start after sort, so greater than the emitted end. Hence no future merge can reach back into emitted segments. Safety of irrevocable emit is guaranteed by the sort."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: inclusive versus exclusive ends with numbers."
+        },
+        {
+          "voice": "candidate",
+          "text": "Closed one two and two three overlap at two and merge if less or equal. Half open one two and two three touch but do not share points, often kept separate. Product domain decides. Coding interviews usually use closed integers and merge on less or equal. I restate policy before coding."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: negative timestamps and zero length."
+        },
+        {
+          "voice": "candidate",
+          "text": "If start equals end, a point interval still merges when another covers that point under closed rules. Negative starts are fine if order is numeric sort. I do not assume positive."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: in place merge attempts."
+        },
+        {
+          "voice": "candidate",
+          "text": "You can write merged intervals into the front of a sorted list with a write pointer. Tricky under pressure. I prefer a new list for clarity unless memory is constrained. Clarity wins interviews."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: calendar free time outline."
+        },
+        {
+          "voice": "candidate",
+          "text": "Gather all busy intervals from all people, merge them, then gaps between merged busy ranges are free. Merge is the key subroutine. I mention this if the interviewer pivots to scheduling."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: insert interval phases."
+        },
+        {
+          "voice": "candidate",
+          "text": "Phase one push every interval ending before new starts. Phase two merge all that overlap the new interval into one new. Phase three push the rest. Works on already sorted disjoint lists in linear time without resorting everything."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: testing coverage equality idea."
+        },
+        {
+          "voice": "candidate",
+          "text": "For small integer universes, mark covered points by brute force from input and from output, compare bitsets. Heavy but strong. Simpler: hand fixtures for contained touch unsorted."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final pseudocode recitation."
+        },
+        {
+          "voice": "candidate",
+          "text": "sort by start. current first. for each next if overlaps merge max end else push current and reset current. push last. return."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Minute summary."
+        },
+        {
+          "voice": "candidate",
+          "text": "Merge intervals sorts by start then scans merging on overlap or touch with max end. Linear after sort. Policy on touching matters. Foundation for range unions in scheduling and ledgers. Tests must include unsorted and contained cases."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Merge overlapping closed intervals into minimal disjoint list. Sort by start, scan, merge on less or equal with max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why sort."
+        },
+        {
+          "voice": "candidate",
+          "text": "Makes one forward pass correct. Emitted segments cannot be reached by later larger starts."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Touch policy."
+        },
+        {
+          "voice": "candidate",
+          "text": "Closed integers merge when next start less or equal current end. Half open might differ. I restate."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk unsorted."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort first. Then merge chain. Contained intervals absorbed by max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "Given intervals start end, I return merged non overlapping coverage. I sort by start. I keep a current interval and either extend its end when the next overlaps or touches, or I push current and replace it. Time n log n from sort. This is the offline merge used in calendars and range unions."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Insert interval contrast."
+        },
+        {
+          "voice": "candidate",
+          "text": "Already sorted disjoint list plus one new: push before, merge middle, push after. Linear without full resort if input guaranteed sorted disjoint."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Classic, touching, contained, unsorted, empty, single."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort scan merge max end, touch merges, O of n log n, offline code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Merge overlapping closed intervals into minimal disjoint list. Sort by start, scan, merge on less or equal with max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why sort."
+        },
+        {
+          "voice": "candidate",
+          "text": "Makes one forward pass correct. Emitted segments cannot be reached by later larger starts."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Touch policy."
+        },
+        {
+          "voice": "candidate",
+          "text": "Closed integers merge when next start less or equal current end. Half open might differ. I restate."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk unsorted."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort first. Then merge chain. Contained intervals absorbed by max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "Given intervals start end, I return merged non overlapping coverage. I sort by start. I keep a current interval and either extend its end when the next overlaps or touches, or I push current and replace it. Time n log n from sort. This is the offline merge used in calendars and range unions."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Insert interval contrast."
+        },
+        {
+          "voice": "candidate",
+          "text": "Already sorted disjoint list plus one new: push before, merge middle, push after. Linear without full resort if input guaranteed sorted disjoint."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Classic, touching, contained, unsorted, empty, single."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort scan merge max end, touch merges, O of n log n, offline code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Merge overlapping closed intervals into minimal disjoint list. Sort by start, scan, merge on less or equal with max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why sort."
+        },
+        {
+          "voice": "candidate",
+          "text": "Makes one forward pass correct. Emitted segments cannot be reached by later larger starts."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Touch policy."
+        },
+        {
+          "voice": "candidate",
+          "text": "Closed integers merge when next start less or equal current end. Half open might differ. I restate."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk unsorted."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort first. Then merge chain. Contained intervals absorbed by max end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "Given intervals start end, I return merged non overlapping coverage. I sort by start. I keep a current interval and either extend its end when the next overlaps or touches, or I push current and replace it. Time n log n from sort. This is the offline merge used in calendars and range unions."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Insert interval contrast."
+        },
+        {
+          "voice": "candidate",
+          "text": "Already sorted disjoint list plus one new: push before, merge middle, push after. Linear without full resort if input guaranteed sorted disjoint."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tests."
+        },
+        {
+          "voice": "candidate",
+          "text": "Classic, touching, contained, unsorted, empty, single."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sort scan merge max end, touch merges, O of n log n, offline code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "We still have room for deliberate practice. Answer as in a real interview with complete sentences."
+        },
+        {
+          "voice": "candidate",
+          "text": "Understood. I will keep restating the contract, naming the naive approach, naming the improved approach, walking an example, giving pseudocode, listing tests, and stating complexity before I claim done."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does good clarifying sound like under time pressure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Three to six questions that change the design: input guarantees, return types, edge policies like empty input, and whether mutation is allowed. I avoid twenty trivial questions. Then I commit and design."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does bad clarifying sound like?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Silence then coding, or only asking questions that do not affect the algorithm. Or arguing style guides for five minutes. I will not do that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Narrate how you use the last five minutes of a thirty minute block."
+        },
+        {
+          "voice": "candidate",
+          "text": "I freeze features. I write or re-run the highest value tests. I restate complexity. I clean names if something is confusing on screen share. I do not open a second hard follow up unless the core is green."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you handle a bug found by the interviewer?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I thank them, restate the failing case, form a hypothesis, fix the smallest place, re-run the mental test, and continue. I do not rewrite from scratch unless the approach is wrong."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you speak complexity without hand waving?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I name the dominant loops or data structure costs, say expected versus worst if hashing, and name extra memory. I connect big O to the actual code lines I wrote."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you keep financial or product framing honest?"
+        },
+        {
+          "voice": "candidate",
+          "text": "One or two sentences max linking the toy problem to a real system, then back to the algorithm. I do not bluff market microstructure I do not know."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final offline homework instruction to yourself."
+        },
+        {
+          "voice": "candidate",
+          "text": "After this audio, blank file, no AI, implement from memory, run tests, then compare to a reference only after green or after twenty five minutes of struggle with a written fork plan."
+        },
+        {
+          "voice": "interviewer",
+          "text": "We still have room for deliberate practice. Answer as in a real interview with complete sentences."
+        },
+        {
+          "voice": "candidate",
+          "text": "Understood. I will keep restating the contract, naming the naive approach, naming the improved approach, walking an example, giving pseudocode, listing tests, and stating complexity before I claim done."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does good clarifying sound like under time pressure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Three to six questions that change the design: input guarantees, return types, edge policies like empty input, and whether mutation is allowed. I avoid twenty trivial questions. Then I commit and design."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does bad clarifying sound like?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Silence then coding, or only asking questions that do not affect the algorithm. Or arguing style guides for five minutes. I will not do that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Narrate how you use the last five minutes of a thirty minute block."
+        },
+        {
+          "voice": "candidate",
+          "text": "I freeze features. I write or re-run the highest value tests. I restate complexity. I clean names if something is confusing on screen share. I do not open a second hard follow up unless the core is green."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you handle a bug found by the interviewer?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I thank them, restate the failing case, form a hypothesis, fix the smallest place, re-run the mental test, and continue. I do not rewrite from scratch unless the approach is wrong."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you speak complexity without hand waving?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I name the dominant loops or data structure costs, say expected versus worst if hashing, and name extra memory. I connect big O to the actual code lines I wrote."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you keep financial or product framing honest?"
+        },
+        {
+          "voice": "candidate",
+          "text": "One or two sentences max linking the toy problem to a real system, then back to the algorithm. I do not bluff market microstructure I do not know."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final offline homework instruction to yourself."
+        },
+        {
+          "voice": "candidate",
+          "text": "After this audio, blank file, no AI, implement from memory, run tests, then compare to a reference only after green or after twenty five minutes of struggle with a written fork plan."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap. Sort by start. Merge overlap or touch. Max end. O of n log n. Code AI off."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "id": 318,
+  "slug": "coding-prep-ep18-design-in-code",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Design In Code",
+  "description": "Think-aloud walkthrough: Design In Code.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Design-in-code day. Not a pure LeetCode formula. Four production primitives Airwallex-shaped AI scenario screens love: token bucket rate limiter, circuit breaker, idempotency key store, and a one-minute outbox. Part one is no AI. Mentor path. Thinking, traps, pseudocode, why pitch per piece, then a combined close. Pair with the design-in-code tutor unit and episode twenty one scenario monologue."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why this episode exists. Vault Day six and the fill-in drills mark these as gap items. System design speeches name them; coding rounds may ask you to implement a thin version. Process is still: clarify, naive, improve, edges, complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Piece one. Token bucket rate limiter."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Allow about N requests per client per window, with burst. Classic: capacity C tokens, refill rate R tokens per second. Each request costs one token. If tokens remain, allow and decrement. Else reject with a clear rate limit error."
+        },
+        {
+          "voice": "narrator",
+          "text": "Thinking. Clarify: per client_id or global? Burst size equals capacity? Fairness? Clock: use monotonic time, not wall clock that jumps. Naive: log timestamps per client, prune older than sixty seconds, count — correct, O of requests in window memory. Improve: token bucket O of one state per client — tokens float, last refill timestamp."
+        },
+        {
+          "voice": "narrator",
+          "text": "Refill math. On each request, elapsed equals now minus last refill. Add elapsed times rate to tokens, cap at capacity. Set last refill to now. If tokens at least one, minus one, allow. Else reject."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap. Forgetting cap after refill — tokens grow forever. Using wall clock that steps backward. Silent drop without error type. Shared bucket across clients by mistake."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pseudocode. Class with capacity, rate, tokens, last refill. Method allow: now equals monotonic time. Tokens equals min of capacity and tokens plus elapsed times rate. Last equals now. If tokens greater than or equal to one: tokens minus one, return true. Else return false."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why. Constraint: bursty traffic, O of one check, per client. Rejected pure fixed window that allows double burst at boundaries if they want smoother control — mention sliding window as alternative. Token bucket buys burst up to capacity and sustained rate R. Cost: float tokens and clock dependency."
+        },
+        {
+          "voice": "narrator",
+          "text": "Piece two. Circuit breaker."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Protect calls to a downstream bank or KYC or FX provider. States: closed means healthy, calls pass; open means fail fast without calling; half open means allow a probe."
+        },
+        {
+          "voice": "narrator",
+          "text": "Thinking. Clarify failure threshold, open timeout, what counts as failure. Naive: always call downstream — cascades when partner is down. Improve: state machine with counts."
+        },
+        {
+          "voice": "narrator",
+          "text": "Transitions. Closed: on success reset failure count; on failure increment; if count hits threshold go open and stamp open time. Open: if now minus open time less than timeout, reject immediately; else go half open. Half open: one probe — success goes closed, failure goes open again."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap. Reversing open and closed meaning. No half open — flap forever or stay open. Counting successes wrong in half open. Not failing fast in open — still tying up threads."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pseudocode. Enum state closed open half open. Fields failure count, threshold, timeout, last failure time. Method call wrapper: if open and still in timeout, raise fail fast. If open and timeout expired, state half open. Try execute function. On success: state closed, failures zero. On failure: failures plus one, last failure time now; if half open or failures at threshold, state open. Rethrow."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why. Constraint: partner outage must not exhaust our workers. Rejected infinite retries without shed load. Circuit breaker buys fail fast and recovery probe. Cost: extra state and risk of false open if threshold too low."
+        },
+        {
+          "voice": "narrator",
+          "text": "Piece three. Idempotency key store."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Payment style API: client sends idempotency key. Same key plus same body returns the same result without double charging. Same key different body is a client error."
+        },
+        {
+          "voice": "narrator",
+          "text": "Thinking. Clarify key scope — usually merchant and key. TTL for stored records. In-flight concurrent same key — lock or mark processing. Naive: no store, every retry double applies. Improve: map key to record of request hash, response, status."
+        },
+        {
+          "voice": "narrator",
+          "text": "Flow. Lookup key. If missing, process, store hash and response, return. If present and hash matches, return stored response. If present and hash differs, return four twenty-two style unprocessable. If in progress, return conflict or wait per policy."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap. Key only without body hash — different amount same key silently wrong. No TTL — infinite growth. Not storing failure responses consistently. Race two concurrent first requests without locking."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pseudocode. Store map key to record. On request: existing equals store get key. If existing and body hash differs, error. If existing and complete, return cached response. Else process business logic, store record with hash and response, return."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why. Constraint: at-least-once client retries must not double-apply money. Rejected \"always process\" and rejected \"ignore key.\" Idempotency store buys safe retries. Cost: storage, TTL ops, concurrency control."
+        },
+        {
+          "voice": "narrator",
+          "text": "Piece four. Outbox one-liner."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Dual-write gap: write payment row then publish Kafka — one can succeed and the other fail. Outbox: in the same database transaction, write domain row and outbox event row. After commit, a publisher reads outbox and publishes, then marks sent. Naive dual write is the dead-end. Why outbox: atomic durable intent to publish; at-least-once publish with consumer idempotency."
+        },
+        {
+          "voice": "narrator",
+          "text": "You need not implement full outbox on a sixty minute LC screen; you need the speech and maybe a tiny interface. If they ask code, model outbox table insert beside the domain insert in one transaction commit."
+        },
+        {
+          "voice": "narrator",
+          "text": "Combined trap clinic. Mixing rate limit and circuit breaker — different layers; gateway rate limits clients, breaker protects dependencies. Using float for money in idempotent payment body hash examples — prefer minor units. Silent coding design problems — always narrate state transitions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges across designs. Capacity one bucket. Breaker threshold one. Empty idempotency key rejected. Outbox publish crash before mark — retry publish, consumer must be idempotent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pseudocode portfolio — the portable close."
+        },
+        {
+          "voice": "narrator",
+          "text": "Token bucket allow with refill cap and monotonic clock."
+        },
+        {
+          "voice": "narrator",
+          "text": "Circuit breaker: closed open half open with fail fast and probe."
+        },
+        {
+          "voice": "narrator",
+          "text": "Idempotency: key to hash and response, conflict on hash mismatch."
+        },
+        {
+          "voice": "narrator",
+          "text": "Outbox: same transaction domain plus outbox row; publish after commit."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why I chose these as a set. Constraint: coding that proves production judgment for payments platforms, not only array puzzles. Alternatives: pure LC only prep — necessary but incomplete for Airwallex take-home and design-in-code prompts. What this set buys: traffic shed, dependency isolation, safe retries, reliable events — the four lines that show up in system design answers and in implementable slices. Cost: more API surface to narrate; keep each piece under twenty lines in an interview. Close: if they ask implement rate limit or breaker or idempotency, I run clarify, state machine or formula, edges, complexity O of one per request, and custom errors."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Speed recap. Token bucket: refill by elapsed rate, cap, spend one. Circuit breaker: closed pass, open fail fast, half open probe. Idempotency: store key to response and body hash. Outbox: transactional outbox beats dual write. Part one: no AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: design-in-code unit cold. Implement token bucket or breaker in thirty minutes without AI. Then Claude Code deep dive: burst edges and typed errors. Skim outbox speech once."
+        },
+        {
+          "voice": "narrator",
+          "text": "Week three set complete: monotonic stack, FX Dijkstra, FX Bellman-Ford, design-in-code. Replay speed recaps the morning of the screen. Night before: ep00 ritual only."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Design-in-code. Go implement one primitive without AI, then deep dive that file with Claude Code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

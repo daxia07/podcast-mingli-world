@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "id": 302,
+  "slug": "coding-prep-ep02-hashmap-family",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Hashmap Family",
+  "description": "Think-aloud walkthrough: Hashmap Family.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Today is the HashMap family. Three shapes, one muscle: memory of what you have already seen. Contains Duplicate. Group Anagrams. Top K Frequent. No AI. You speak before I solve."
+        },
+        {
+          "voice": "narrator",
+          "text": "Airwallex wants process. Naive first. Then the structure. Map or set is not magic — it is O of one average lookup that buys you a linear scan."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Problem one: given an integer array, return true if any value appears at least twice, else false."
+        },
+        {
+          "voice": "narrator",
+          "text": "I'll count to eight. Out loud: clarifier, naive Big-O, structure you reach for. One. Two. Three. Four. Five. Six. Seven. Eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: empty is false. Naive nested compare O of n squared. Better: hash set of seen. If insert collides, true. O of n time, O of n space."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual lock. Restate. Clarify. Naive. Improve. Example by hand. Code while narrating. Edges. Complexity. Mouth first."
+        },
+        {
+          "voice": "narrator",
+          "text": "Contains Duplicate optimal. Scan left to right. For each value, if it is already in the set, return true. Else add it. After the loop return false."
+        },
+        {
+          "voice": "narrator",
+          "text": "Tiny walk. Array one, two, three, one. Empty set. See one — store. Two — store. Three — store. One again — already there — true."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: sort then check neighbors. That works in O of n log n and uses less memory if you sort in place, but you destroy order and pay the log factor. Under time pressure, say both. Prefer set unless they push space."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges: empty false. Single false. All unique false. All same true. Negatives fine in a set."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed line for this one. Seen set. Collision means duplicate. O of n time O of n space."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem two: Group Anagrams. Given a list of strings, group anagrams together. Anagrams use the same character multiset, different order."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold attempt, six seconds. Key idea only. One. Two. Three. Four. Five. Six."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: map from a canonical key to a list of strings. Key is sorted characters, or a count tuple of twenty-six letters for lowercase English."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Input eat, tea, tan, ate, nat, bat."
+        },
+        {
+          "voice": "narrator",
+          "text": "eat sorts to a e t. Map a e t maps to list eat.\ntea sorts to a e t — append tea.\ntan sorts to a n t — new list.\nate joins a e t.\nnat joins a n t.\nbat is a b t alone."
+        },
+        {
+          "voice": "narrator",
+          "text": "Result groups: eat tea ate. tan nat. bat."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: comparing every pair with counters — O of n squared times word length. Say it, then switch to hash map of keys."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity: let n be number of strings, k average length. Sorting keys: O of n k log k. Count keys: O of n k. Space O of n k for the groups."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem three: Top K Frequent Elements. Given nums and integer k, return the k most frequent values. Order of output usually free. Frequencies unique in many statements — clarify."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive: count with a map, sort pairs by frequency, take top k. Time O of n log n after the count."
+        },
+        {
+          "voice": "narrator",
+          "text": "Better interview story: frequency map, then bucket sort. Buckets index equals frequency, from zero to n. Place each value into bucket of its count. Scan buckets from high frequency down, collect until you have k."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. nums one, one, one, two, two, three. k equals two.\nCounts: one appears three, two appears two, three appears one.\nBuckets: index three holds one. Index two holds two. Index one holds three.\nScan from top: take one, take two. Done."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: heap of size k is fine too — O of n log k. Say both. Bucket is clean when values are integers and n is the bound."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Pattern cue card. Say with me.\nSeen before, membership — set.\nGroup by signature — map key to list.\nCount then select top — frequency map plus bucket or heap.\nPair sum indices — map value to index, lookup before insert. That was Two Sum yesterday."
+        },
+        {
+          "voice": "narrator",
+          "text": "Transfer. Twenty seconds. Valid Anagram: are two strings anagrams of each other? Approach only. One through fifteen… fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: if lengths differ, false. Count characters of first, decrement with second, all zero. Or sort both and compare. O of n with counts."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap — interview voice."
+        },
+        {
+          "voice": "narrator",
+          "text": "HashMap family. Duplicate: set of seen, true on collision. Anagrams: key is sorted string or letter counts, map key to group. Top K: count frequencies, bucket by count or heap of size k, pull top. Always state naive, then structure, then complexity. No AI live."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back, no notes.\nOne: duplicate set.\nTwo: anagram key map.\nThree: top k frequency then bucket.\nFour: when I hear seen before — hash."
+        },
+        {
+          "voice": "narrator",
+          "text": "Open the app: HashMap Patterns unit. Options cold. Then code Contains Duplicate and Group Anagrams without AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Optional: Coding YouTube day two clips, then re-speak this speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: sliding window — longest substring without repeating characters."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. HashMap family. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

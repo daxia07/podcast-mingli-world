@@ -8,10 +8,16 @@ Voice: en-US-BrianNeural (casual, approachable, sincere)
 Duration: 15-20 min per episode (target ~2500 words)
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import json, os, sys, subprocess, shutil, tempfile
 from datetime import datetime, timezone
 
 from tts import synthesize, get_duration_str
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONTENT_BANK_PATH = os.path.join(SCRIPT_DIR, "content_bank.json")

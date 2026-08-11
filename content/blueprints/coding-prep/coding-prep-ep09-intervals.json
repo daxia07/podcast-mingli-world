@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "id": 309,
+  "slug": "coding-prep-ep09-intervals",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Merge Intervals",
+  "description": "Think-aloud walkthrough: Merge Intervals.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Merge Intervals. Sort plus linear scan. Shows up in calendars, bookings, and range logic. No AI. Speak before solve. Pair with Intervals and Design in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Given a list of intervals, each a start and end, merge all overlapping ones. Return the merged list sorted by start."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Ten counts. First step and merge rule. One through ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: sort by start ascending. Keep a current interval. For each next: if next start is less or equal current end, merge — current end becomes max of ends. Else push current and start a new current. Push the last. Clarify whether touching endpoints merge — usually closed intervals, equal end and start do merge."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual. Restate. Clarify inclusive bounds. Mutate okay. Output order. Naive. Improve. Example. Edges. Complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive: repeatedly scan for any overlapping pair and merge until stable — messy and slow. Better after sort is one pass."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Intervals one three, two six, eight ten, fifteen eighteen.\nSort already ordered. Current one three. Next two six overlaps — end becomes six. Current one six. Next eight ten no overlap — emit one six, current eight ten. Next fifteen eighteen — emit eight ten, current fifteen eighteen. Emit last. Result three intervals."
+        },
+        {
+          "voice": "narrator",
+          "text": "Touching case. One two and two three. If inclusive, merge to one three. Say the rule out loud before coding."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: sort by end instead of start without care — merge logic gets awkward. Prefer sort by start. Another dead-end: forgetting to emit the last current."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty input. Single interval. All overlap into one. No overlaps. Contained interval fully inside another. Negative coords if allowed. Unsorted input — must sort."
+        }
+      ]
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Complexity. O of n log n from sort. Space O of n for output, or O of one extra if you overwrite carefully — say both."
+        },
+        {
+          "voice": "narrator",
+          "text": "Meeting rooms one-liner transfer. Can you attend all meetings? Sort by start, check each next start is greater or equal previous end — or sort starts and ends separately. Different question, same sort instinct."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue. Ranges on a line — sort by start, sweep. Overlap test: not completely left and not completely right. Say it."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Insert a new interval into a sorted non-overlapping list — approach. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: add new interval, then run the same merge pass. Or binary search position then merge neighbors."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "Merge intervals: sort by start, scan, merge when next start less or equal current end using max end, emit when gap. O of n log n. State inclusive touch rule. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: sort by start.\nTwo: merge rule max end.\nThree: emit on gap and at end.\nFour: touching clarify.\nFive: O of n log n."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: Intervals unit. Code merge intervals once without AI. Optional: meeting rooms as a five minute follow-up."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: linked list — reverse and cycle."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Intervals. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

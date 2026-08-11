@@ -1,0 +1,59 @@
+{
+  "name": "coding-mock-drill",
+  "title": "Coding mock drill",
+  "description": "Short interviewer/candidate coding block with a narrator framing how to use it.",
+  "voices": {
+    "narrator": "narrator",
+    "interviewer": "interviewer",
+    "candidate": "candidate"
+  },
+  "target_minutes": [
+    15,
+    25
+  ],
+  "authoring_brief": "Open with narrator instructions for the second and third listen (pause and answer, then shadow). Keep the problem block realistic: clarify, approach, hand walk, pseudocode, edges, complexity.",
+  "sections": [
+    {
+      "id": "how-to-listen",
+      "title": "How to listen",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Narrator explains the three-pass method for this episode."
+    },
+    {
+      "id": "problem",
+      "title": "The problem",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Interviewer states it; candidate restates and clarifies."
+    },
+    {
+      "id": "approach",
+      "title": "Approach",
+      "required": true,
+      "target_minutes": 5,
+      "brief": "Naive, then optimal, with the interviewer probing the why."
+    },
+    {
+      "id": "walk",
+      "title": "Hand walk",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "Concrete trace, spoken state after each step."
+    },
+    {
+      "id": "code",
+      "title": "Narrated code",
+      "required": true,
+      "target_minutes": 5,
+      "brief": "Full-word pseudocode — no symbols, no punctuation names."
+    },
+    {
+      "id": "edges",
+      "title": "Edges and complexity",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "Corner cases and final complexity."
+    }
+  ]
+}

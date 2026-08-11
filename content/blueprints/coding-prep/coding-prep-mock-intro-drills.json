@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "id": 338,
+  "slug": "coding-prep-mock-intro-drills",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Intro Drills",
+  "description": "Intro Drills — migrated from intro_drills.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Intro drills. Official budget about two minutes. Aim sixty to ninety seconds. Substance, not flattery."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Please introduce yourself briefly."
+        },
+        {
+          "voice": "candidate",
+          "text": "I am Mingxia. I build AI tooling and automation in fintech contexts, including multi agent workflows and production safety checks. I care about clean interfaces, tests, and systems that stay correct under retries. I am excited about Airwallex because you combine global financial infrastructure with an AI native engineering culture. Happy to jump into the coding problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "Variant two, slightly more systems."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tell me about yourself."
+        },
+        {
+          "voice": "candidate",
+          "text": "I am a software engineer focused on AI platforms and backend automation. Recently I have worked on orchestrating agents, hardening pipelines, and making sure tools fail safely. I like problems where algorithms meet production constraints like rate limits and idempotency. Ready for the exercise when you are."
+        },
+        {
+          "voice": "narrator",
+          "text": "Variant three, shorter."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Quick intro."
+        },
+        {
+          "voice": "candidate",
+          "text": "Mingxia, AI tooling and fintech engineering. I ship practical systems with clear tests and operational judgment. Excited to work a problem with you."
+        },
+        {
+          "voice": "narrator",
+          "text": "Anti patterns: ten minute life story, resume monologue, flattering the interviewer's Twitter, apologizing for nerves for thirty seconds. Stop talking and let them give the problem."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

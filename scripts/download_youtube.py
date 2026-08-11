@@ -5,8 +5,14 @@ Uses yt-dlp to download, ffmpeg to extract audio and post-process.
 Downloads are saved to data/youtube/ directory.
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import os, sys, subprocess, shutil
 from datetime import datetime, timezone
+
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 YOUTUBE_DIR = os.path.join(DATA_DIR, "youtube")

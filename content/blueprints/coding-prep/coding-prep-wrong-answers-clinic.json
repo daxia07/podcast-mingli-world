@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "coding-prep-wrong-answers-clinic",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Wrong Answers Clinic",
+  "description": "Wrong Answers Clinic — migrated from wrong_answers_clinic.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Wrong answers clinic. Hear the failure, then the fix line. Replay until the fix is automatic."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: I will just start coding the optimal solution now."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: I will restate, ask two clarifiers, state a naive approach, then improve."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: I opened Copilot because the first thirty minutes are hard."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: AI stays off until the deep dive segment. Violation risk is extreme."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: BFS should find the best currency conversion."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: BFS optimizes hops. Best rate needs product maximisation, usually negative log and Dijkstra."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: I will sleep inside allow until a token exists."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Allow must be non blocking. Return false or retry after guidance instead."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: Silent coding for five minutes is fine if I am fast."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Narrate loop purpose. Silence loses process signal."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: I will mutate the refunded amount then run the rules."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Run all rules first. Mutate only on full pass."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: Float dollars are ok for refunds."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Use integer minor units for money."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: If stuck I should apologize until time ends."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Step back, two options, constraint decides, ask if needed."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: First AI prompt: rewrite my entire file optimally."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Directed prompt for tests or one edge. Verify every diff."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Candidate said: I need ten minutes of background chat."
+        },
+        {
+          "voice": "candidate",
+          "text": "Better: Sixty to ninety seconds intro, then the problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "End clinic. Prefer the better line every time."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

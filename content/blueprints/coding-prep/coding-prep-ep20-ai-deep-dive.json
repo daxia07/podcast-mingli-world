@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "id": 320,
+  "slug": "coding-prep-ep20-ai-deep-dive",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Ai Deep Dive Pilot",
+  "description": "Think-aloud walkthrough: Ai Deep Dive Pilot.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Hey. This monologue is only about the second half of the Airwallex coding interview. Twenty five to thirty minutes. Technical deep dive. AI is allowed. They want to see how you use it. Not whether a model can replace you."
+        },
+        {
+          "voice": "narrator",
+          "text": "Replay this until the prompt templates come out of your mouth without thinking."
+        },
+        {
+          "voice": "narrator",
+          "text": "Context. You already spent thirty minutes without AI. You should have a working solution, some edges, complexity spoken, and a short list of known gaps. The interviewer will review your code with you. Now you may open Claude Code, Cursor, or Copilot. You use Claude Code. Same project. Same files. Screen still shared. You are still talking to a human."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mindset. You are the pilot. The model is a powerful intern that hallucinates with confidence. Your job is direction, verification, and taste. Their evaluation list literally includes AI tool use proficiency. It does not include token thrift. Do not optimise for cheapest tokens. Optimise for clear asks, correct code, and explanations you can defend."
+        },
+        {
+          "voice": "narrator",
+          "text": "Opening the segment. When they signal deep dive, say what you have in thirty seconds. Here is the approach. Here is what works. Here are two gaps I would attack first, tests and this edge. Then open the tool. Narrate that you are enabling AI only now because policy allows it in this segment."
+        },
+        {
+          "voice": "narrator",
+          "text": "The verify loop. Every single change uses the same five beats."
+        },
+        {
+          "voice": "narrator",
+          "text": "One. Tell the interviewer the goal of the next change.  \nTwo. Issue a directed prompt with scope and non goals.  \nThree. Read the diff out loud enough that they hear you are not blind accepting.  \nFour. Run tests or hand walk an example.  \nFive. Accept, edit by hand, or reject with a reason spoken to the interviewer, not to the model drama."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you skip read and run, you are not piloting. You are gambling."
+        },
+        {
+          "voice": "narrator",
+          "text": "Prompt templates. Memorise these. Swap in your real names."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template tests. Add unit tests for empty input, single element, and this domain edge. Do not change production logic unless a test forces a fix. Show me the test file only first if the tool allows that style of scoping."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template edges list. List edge cases I likely missed for this API. Do not write code yet. I will pick two."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template complexity. Is my claim O of n time and O of n space accurate? Point to the lines that dominate. Challenge me if I am wrong."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template one optimise. Suggest one optimisation with trade offs, readability versus speed versus memory. Do not apply it until I say yes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template readability. Rename for clarity only. Keep behavior identical. No new dependencies."
+        },
+        {
+          "voice": "narrator",
+          "text": "Template explain. Explain this function back to me in three sentences as if to a senior reviewer. I will check for mistakes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Notice what none of these say. None say rewrite the entire solution. None say make it better with no target. None say solve a different LeetCode problem in the background."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bad first moves. Delete your part one code and regenerate from the prompt. That throws away the signal they already saw and risks code you cannot explain. Accept a multi file rewrite without reading. Argue with the model for five silent minutes. Use AI to hide that you never understood the algorithm. Those fail the craft bar even if the output looks fancy."
+        },
+        {
+          "voice": "narrator",
+          "text": "Good deep dive arc for twenty five minutes. Minutes zero to three, recap and pick goals with the interviewer. Minutes three to twelve, tests and edges with the verify loop. Minutes twelve to twenty, one optimisation or structure cleanup if happy path is solid. Minutes twenty to twenty five, complexity, remaining risks, how you would productionise. Leave a clean ending. Do not thrash."
+        },
+        {
+          "voice": "narrator",
+          "text": "When AI is wrong. It will be. Example. It claims linear time while a nested loop remains. You point at the loop. You either fix the claim or fix the code. Example. It introduces a dependency you are not allowed to use. You reject and ask for standard library only. Example. It changes business meaning of an error. You reject and restore the contract. Saying no is seniority."
+        },
+        {
+          "voice": "narrator",
+          "text": "Talk to the interviewer more than to the tool. The tool is on your screen. The grade is human. Phrase like: I am going to ask it for tests around capacity one. Then after the diff: this test looks right, this one assumes sorted input which we did not, I will drop that. That audio is the product."
+        },
+        {
+          "voice": "narrator",
+          "text": "How this pairs with practice. After every no AI timed problem this week, spend fifteen to twenty minutes in Claude Code on that same code. Force yourself to use the templates. If you only use AI for greenfield generation at home, you will thrash in the interview. The interview AI segment is improvement under review, not vibes coding a new app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Culture fit line if they ask how you work with AI day to day. I use agents for boilerplate, tests, exploration, and refactors. I keep design ownership. I run tests. I reject changes I cannot explain. AI generated code meets the same bar as mine. Short. True. Matches what they publish about AI pilots. Especially natural with an ML EM who lives continuous learning with tools. Still verify everything."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap clinic."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap one. Waiting for the perfect prompt instead of a small verifiable ask. Fix. Smallest prompt that produces a checkable diff."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two. Letting the model drive the conversation. Fix. You propose the next goal to the interviewer first."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three. Polishing names while the happy path is still broken. Fix. Correctness, then tests, then optimise."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four. Shame when you reject AI output. Fix. Rejection with a reason is the skill."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five. Practicing deep dive only in your head. Fix. Real tool, real project, real run."
+        },
+        {
+          "voice": "narrator",
+          "text": "Closing card. Pilot not passenger. Directed prompt. Read. Run. Decide. Improve your solution. Keep ownership. That is part two."
+        },
+        {
+          "voice": "narrator",
+          "text": "When you finish this episode, open a recent practice file and run three templates for real. Then listen again tomorrow on a walk. The words should feel as automatic as the eight step ritual."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next, an AI scenario think aloud so part one product stories feel as natural as Two Sum."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

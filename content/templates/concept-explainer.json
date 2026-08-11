@@ -1,0 +1,51 @@
+{
+  "name": "concept-explainer",
+  "title": "Concept explainer",
+  "description": "Solo explanation of one system-design concept with real incidents and trade-offs.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    10,
+    20
+  ],
+  "authoring_brief": "One concept per episode. Lead with the failure it prevents, not the definition. Every claim about a real company or incident belongs in a factual section with a source.",
+  "sections": [
+    {
+      "id": "hook",
+      "title": "Why this matters",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "The failure mode this concept exists to prevent."
+    },
+    {
+      "id": "mechanics",
+      "title": "How it works",
+      "required": true,
+      "target_minutes": 6,
+      "brief": "The mechanism, built up from the simplest version."
+    },
+    {
+      "id": "real-world",
+      "title": "In the wild",
+      "required": true,
+      "target_minutes": 4,
+      "factual": true,
+      "brief": "Named systems and incidents. Requires sources[]."
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "Costs, and the conditions under which you would not use it."
+    },
+    {
+      "id": "interview",
+      "title": "In an interview",
+      "required": false,
+      "target_minutes": 2,
+      "brief": "How to raise it without sounding rehearsed."
+    }
+  ]
+}

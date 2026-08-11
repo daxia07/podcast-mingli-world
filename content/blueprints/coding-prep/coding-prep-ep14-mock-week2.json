@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "id": 314,
+  "slug": "coding-prep-ep14-mock-week2",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Mock Screen Week2",
+  "description": "Think-aloud walkthrough: Mock Screen Week2.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Week two dress rehearsal. Different problems than episode seven. You will narrate stack or intervals leftovers, then a list or DP medium shape, under the same sixty minute script. No AI. Mouth first."
+        },
+        {
+          "voice": "narrator",
+          "text": "Hour shape again. Zero to five settle and read. Five to twelve clarify naive optimize agree. Twelve to thirty five code narrating. Thirty five to forty five edges and fix. Second problem if any — smaller ritual. Last five complexity and your questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Stuck line. Two options I see, constraint that decides, ask if allowed. Never silent five minutes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem A. Cold open twelve counts. Design: implement a stack that supports push pop top and getMin in constant time. One through twelve."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model speech. Clarify capacity unbounded for interview. Use two stacks or pairs: value and min so far. Push: if empty min is value else min of value and last min. Pop both tracks. Top and getMin peek. Complexity O of one each. Edges empty getMin — define error. Walk push two push one getMin one pop getMin two."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you blanked, rewind until min history is automatic."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem B. Cold open fifteen counts. Linked list: reverse nodes in between left and right positions inclusive — or if that is heavy, reverse whole list then explain how you would bound it. Prefer: detect cycle true false with O of one space. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model. Floyd slow fast. No cycle if fast null. Meet implies cycle. Complexity O of n O of one. Edges self loop single node."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem C lightning. Ten counts. Climbing stairs n equals four — answer and recurrence. One through ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model. dp i equals dp i minus one plus dp i minus two. Base one and two. Ways one two three five for n one to four. Answer five for four."
+        },
+        {
+          "voice": "narrator",
+          "text": "Week one plus week two pattern deck — re-speak as a single checklist every morning from here."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual eight steps. Map complement two sum. Seen set and anagram keys and top k. Window unique. Water move shorter. Three sum sort pair. LRU map list. Islands flood. Level order queue. Stack parentheses. Merge intervals sort scan. List reverse and floyd. Binary search and rotated half. DP define cell stairs robber coins. Tree depth invert same."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fintech flavor thirty seconds for Airwallex chat. Idempotency key same request same result. Money use integer minor units not float. FX multi hop can be graph of rates. Rate limit sliding window or token bucket. You may not get these as LC — they help conversation and take-home."
+        },
+        {
+          "voice": "narrator",
+          "text": "Success criteria for test week.\nOne: ritual under twenty seconds.\nTwo: any week one speed recap under ninety seconds.\nThree: any week two speed recap under ninety seconds.\nFour: one timed medium with voice memo over thirty five minutes.\nFive: no AI in the dry run."
+        },
+        {
+          "voice": "narrator",
+          "text": "If a pattern still freezes you, do not add more passive listening. Loop that one episode's speed recap plus two coded variants the same day."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back for this episode.\nOne: hour timeline.\nTwo: min stack design.\nThree: floyd cycle.\nFour: stairs fib.\nFive: full checklist exists — use it."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: mix Process Complexity with one weak unit from week two. Timer forty minutes. Narrate to voice memo. Compare to these model speeches."
+        },
+        {
+          "voice": "narrator",
+          "text": "You now have fourteen coding prep think-alouds plus the YouTube audio pack. Enough material. The scarce resource is deliberate practice under the clock."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Week two mock. Go train."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

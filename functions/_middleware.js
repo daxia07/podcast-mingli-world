@@ -179,6 +179,11 @@ export async function onRequest(context) {
     '/manifest.webmanifest',
     '/solutions.json',
     '/.well-known/',
+    // Podcasting 2.0 side artifacts — referenced from public RSS items, so
+    // they must be fetchable by podcast clients that have no auth cookie.
+    '/transcripts/',
+    '/chapters/',
+    '/healthz',
   ];
   const isPublic = PUBLIC_PATHS.some(p => pathname === p || pathname.startsWith(p));
   if (isPublic) {

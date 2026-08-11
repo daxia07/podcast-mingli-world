@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "shows": {
+    "coding-prep": {
+      "title": "Coding Prep — Airwallex Muscle Memory",
+      "description": "Think-aloud coding for Airwallex screens. Pair with tutor deep drills.",
+      "mono": "CP",
+      "icon": "💻",
+      "default_template": "think-aloud-coding",
+      "order": 0,
+      "featured": true
+    },
+    "coding-youtube": {
+      "title": "Coding YouTube — Audio-First",
+      "description": "Audio-first walkthroughs derived from expert videos.",
+      "mono": "YT",
+      "icon": "🎧",
+      "default_template": "youtube-derived",
+      "order": 1,
+      "featured": true
+    },
+    "system-design": {
+      "title": "System Design",
+      "description": "Architecture think-alouds, concepts, and design walkthroughs.",
+      "mono": "SD",
+      "icon": "📐",
+      "default_template": "concept-explainer",
+      "order": 2,
+      "featured": true
+    },
+    "sd-mock-interviews": {
+      "title": "Mock System Design Interviews",
+      "description": "Two-voice system design mocks.",
+      "mono": "MK",
+      "icon": "🎭",
+      "default_template": "mock-interview-2voice",
+      "order": 3,
+      "featured": false
+    },
+    "awx-10min-speeches": {
+      "title": "Airwallex SD — 10-Min Agenda Speeches",
+      "description": "Agenda monologues for Airwallex system design prep.",
+      "mono": "AW",
+      "icon": "🎯",
+      "default_template": "concept-explainer",
+      "order": 4,
+      "featured": false
+    },
+    "airwallex-domain": {
+      "title": "Airwallex Domain — System Design",
+      "description": "Domain-specific mock interviews.",
+      "mono": "AX",
+      "icon": "🏦",
+      "default_template": "mock-interview-2voice",
+      "order": 5,
+      "featured": false
+    },
+    "sd-youtube": {
+      "title": "YouTube Expert Interviews",
+      "description": "Curated video-derived design episodes.",
+      "mono": "SY",
+      "icon": "📺",
+      "default_template": "youtube-derived",
+      "order": 6,
+      "featured": false
+    },
+    "interview-prep": {
+      "title": "Airwallex Interview Prep — Complete",
+      "description": "Daily English patterns and frameworks.",
+      "mono": "EN",
+      "icon": "",
+      "default_template": "daily-english",
+      "order": 7,
+      "featured": false
+    },
+    "interview-support": {
+      "title": "Interview Support — Estimation & Q&A",
+      "description": "Self-intro, estimation and Q&A practice.",
+      "mono": "QA",
+      "icon": "",
+      "default_template": "estimation-drill",
+      "order": 8,
+      "featured": false
+    },
+    "behavioral-youtube": {
+      "title": "Behavioral Interview — Expert Audio",
+      "description": "Behavioural interview material from expert audio.",
+      "mono": "BY",
+      "icon": "🎬",
+      "default_template": "youtube-derived",
+      "order": 9,
+      "featured": false
+    },
+    "behavioral-interview": {
+      "title": "Behavioral Interview Practice",
+      "description": "Behavioural interview practice with STAR answers.",
+      "mono": "BH",
+      "icon": "🎯",
+      "default_template": "mock-interview-2voice",
+      "order": 10,
+      "featured": false
+    },
+    "infosec-youtube": {
+      "title": "InfoSec — Expert Audio",
+      "description": "Information security explained by practitioners.",
+      "mono": "IY",
+      "icon": "🎬",
+      "default_template": "youtube-derived",
+      "order": 11,
+      "featured": false
+    },
+    "infosec-interview": {
+      "title": "Info Security Interview Prep",
+      "description": "Security topics as interview answers.",
+      "mono": "IS",
+      "icon": "🔒",
+      "default_template": "concept-explainer",
+      "order": 12,
+      "featured": false
+    }
+  }
+}

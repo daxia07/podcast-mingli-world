@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "id": 336,
+  "slug": "coding-prep-mock-stuck-recovery",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Stuck Recovery",
+  "description": "Stuck Recovery — migrated from stuck_recovery.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Stuck recovery pack. Short two voice drills. When you freeze, you need lines not panic. Replay daily."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You have been quiet for a while. What are you thinking?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Let me take a step back and think systematically. I am between two approaches. A is nested loops, O of n squared. B uses a hash map for constant lookups. Given n can be large, I should take B. If I am missing a constraint, tell me."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Good. Continue with B."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recovery one: name two options and the constraint that picks. Never only sorry."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Your tests fail on the empty case."
+        },
+        {
+          "voice": "candidate",
+          "text": "I see a bug on the empty input. I will return early with the documented empty result before the main loop. Fixing that now, then re-running the same example."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recovery two: name the bug, the fix, then re-verify. Silence is worse than a small bug."
+        },
+        {
+          "voice": "interviewer",
+          "text": "We have eight minutes left and only a slow solution."
+        },
+        {
+          "voice": "candidate",
+          "text": "I will ship the correct O of n squared version that works, state its complexity, and spend remaining minutes on one clear optimise if it is safe. Working solution first beats unfinished optimal."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recovery three: prioritize working code under time pressure."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That approach will not handle duplicates correctly."
+        },
+        {
+          "voice": "candidate",
+          "text": "Thanks. The invariant broke on duplicates. I will adjust the map update order: lookup complement before insert so I never pair an element with itself. Hand walk with three three target six, then recode that line."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recovery four: accept feedback, restate invariant, hand walk, fix."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You look stuck on which data structure to pick."
+        },
+        {
+          "voice": "candidate",
+          "text": "The operation I need is have I seen this key before with a value. That is map membership and payload, not a list scan. I will commit to a hash map and implement the simple version first."
+        },
+        {
+          "voice": "narrator",
+          "text": "Recovery five: name the operation, pick the structure, commit."
+        },
+        {
+          "voice": "narrator",
+          "text": "Card for every freeze. Step back. Two options. Constraint decides. Hand walk. Code. If time dies, correct first."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

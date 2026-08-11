@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "id": 306,
+  "slug": "coding-prep-ep06-islands-bfs",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Islands Bfs",
+  "description": "Think-aloud walkthrough: Islands Bfs.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Graphs and trees day. Number of Islands, then Binary Tree Level Order. BFS and DFS flood muscle. No AI. Speak before solve. Pair with Trees and Graphs in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem one. Grid of water zero and land one. Island is four-connected land. Count islands. Diagonal usually does not connect — clarify."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open, eight counts. Approach and complexity. One through eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: scan every cell. When you find land, increment count, then flood fill mark all connected land as water or visited. Flood is DFS recursive or BFS queue. Time O of rows times cols. Space O of the grid for the queue worst case or recursion depth."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual. Restate. Clarify. Naive — maybe union find overkill for first pass. Improve with DFS BFS. Example. Edges. Complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Grid:\none one zero zero\none one zero zero\nzero zero one zero\nzero zero zero one"
+        },
+        {
+          "voice": "narrator",
+          "text": "First one at zero zero. Count one. Flood the two by two block of ones. Mark visited.\nNext unvisited one at two two. Count two. Flood single cell.\nNext at three three. Count three. Answer three."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: counting land cells instead of components. Or eight-direction when problem says four. Or mutating without permission — ask if you may modify the grid. If not, use a visited matrix."
+        },
+        {
+          "voice": "narrator",
+          "text": "BFS flood. Queue start cell, mark visited. While queue: pop, for each of four neighbors in bounds and land and not visited, mark and push."
+        },
+        {
+          "voice": "narrator",
+          "text": "DFS same neighbors recursively."
+        },
+        {
+          "voice": "narrator",
+          "text": "I prefer BFS in interviews if recursion depth on large grid worries me. Say that trade-off."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty grid. All water. All land one island. Single cell. Skinny snake shape."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem two. Binary Tree Level Order Traversal. Given root, return values level by level as a list of lists."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open, six counts. Structure. One through six."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: BFS with a queue. While queue not empty: take current level size, pop that many nodes, collect values, push children. Each batch is one level."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Tree one, left two, right three, then three has children four five… classic level order one then two three then next level."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: DFS with depth parameter building lists also works — say it as alternative. BFS is the default speech for level order."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty tree. Single node. Skewed left chain — each level one node. Complete tree."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity O of n time, O of n queue space for wide level."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue. Connected components on grid — flood. Level by level — queue BFS with size batches. Shortest path unweighted — BFS. Say with me."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Clone a graph. Approach. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: map old node to new node, BFS or DFS copy neighbors. Same visited idea as islands."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "Islands: scan, on land count plus plus and flood DFS or BFS mark visited, O of r c. Level order: queue, process level size, push children. Always clarify four vs eight connect. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: islands are components.\nTwo: flood from each unvisited land.\nThree: level order queue batches.\nFour: O of n for tree, O of cells for grid."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: Trees and Graphs unit. Code number of islands. Optional level order. YouTube islands is medium audio-fit — restate flood in words after."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: full mock screen narration dry run — sixty minutes compressed."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Islands and BFS. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

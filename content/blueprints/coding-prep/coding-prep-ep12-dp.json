@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "id": 312,
+  "slug": "coding-prep-ep12-dp",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Dp Fundamentals",
+  "description": "Think-aloud walkthrough: Dp Fundamentals.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Dynamic programming fundamentals. Climbing stairs, house robber, coin change fewest coins. The speech pattern matters more than memorizing ten problems. No AI. Speak before solve. Pair with DP Search List in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "What DP is in interview words. Optimal substructure — big answer builds from smaller. Overlapping subproblems — same sub-answers reused. You define dp meaning in one sentence, base cases, recurrence, then iterate bottom up or memo top down. Always state that sentence before code."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem one. Climbing stairs. n steps. Each move one or two steps. Ways to reach the top."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Eight counts. Recurrence and base. One through eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: dp of i equals ways to reach step i. dp one equals one. dp two equals two. dp i equals dp i minus one plus dp i minus two. Fibonacci. O of n time O of one space with two rolling variables."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. n five. Sequence one two three five eight. Answer eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: recursion without memo exponential. Say it, then add memo or bottom up."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem two. House robber. Array of money per house. Cannot rob adjacent houses. Max money."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Eight counts. State meaning. One through eight."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: dp i equals max money using houses up to index i. dp i equals max of dp i minus one — skip this house — versus dp i minus two plus nums i — take this house. Base dp zero equals nums zero. dp one equals max of first two."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Two one one two. Compute carefully: take two and two equals four, or other paths. Answer four."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Empty. One house. Two houses. All zeros."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem three. Coin change. Coins of given denominations, unbounded use. Fewest coins to make amount. Or negative one if impossible."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Ten counts. What dp of x means. One through ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: dp x equals minimum coins to make sum x. Init dp zero equals zero, others infinity. For each coin, for x from coin to amount: dp x equals min of dp x and dp x minus coin plus one. Answer dp amount or negative one if still infinity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk. Coins one two five. Amount eleven. Classic path five five one — three coins."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: greedy largest coin first — fails some coin systems. DP is the safe interview default unless they prove canonical coin system."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity O of amount times number of coins. Space O of amount."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue speech you must own. I will define dp of i as… Base cases… Transition… Order of iteration… Complexity…"
+        },
+        {
+          "voice": "narrator",
+          "text": "If you cannot say the meaning of the cell, do not code yet."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Climbing stairs three steps allowed one two or three — how recurrence changes. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: dp i equals sum of dp i minus one two and three with care at bases."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "DP speech: define cell, base, transition, iterate. Stairs fibonacci. Robber max skip or take plus i minus two. Coin change min coins unbounded knapsack on amount. Greedy not always safe. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: define dp meaning first.\nTwo: stairs fib.\nThree: robber skip or take.\nFour: coin min coins.\nFive: no greedy assume."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: DP questions cold. Code stairs and robber. Coin change if forty minutes allow."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: tree DFS — depth invert same tree — complement to BFS week one."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. DP fundamentals. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

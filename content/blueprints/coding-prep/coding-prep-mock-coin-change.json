@@ -1,0 +1,572 @@
+{
+  "schema": 1,
+  "id": 352,
+  "slug": "coding-prep-mock-coin-change",
+  "show": "coding-prep",
+  "template": "coding-mock-drill",
+  "title": "Coin Change",
+  "description": "Coin Change — migrated from coin_change.py.",
+  "keywords": [],
+  "voices": {},
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is a coding mock interview focused only on the problem block. Expect about twenty minutes of interviewer and candidate dialogue. There is no system design detour and no AI tools in this segment. Listen with your ears. On a second play, pause after each interviewer question and answer yourself before the candidate speaks. On a third play, shadow the candidate line by line to build muscle memory."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hi, thanks for coming in. We will spend this block on a single coding problem, roughly the way the first half of our coding interview works. You may use Python. Please do not use AI code completion or chat tools during this segment. Clarify requirements, explain approach, hand walk an example, give full word pseudocode, cover corners and complexity, then narrate implementation. Ready?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Yes. Please go ahead with the problem."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Here is the problem. You are given an integer array coins representing coin denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount. You may assume you have an infinite number of each kind of coin. If that amount cannot be made, return negative one."
+        },
+        {
+          "voice": "candidate",
+          "text": "Restating. Unbounded knapsack minimum count to exact amount. Clarifying. Amount zero? Empty coins? Coins unsorted? Return count only not combination? Greedy allowed?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Amount zero returns zero. Empty coins with positive amount is impossible. Coins positive unsorted. Count only. Greedy is not assumed correct for arbitrary denominations."
+        },
+        {
+          "voice": "candidate",
+          "text": "Naive recursion exponential. Greedy largest first fails on some systems. Correct: bottom up D P. best of a is min coins for exact a. best zero zero. best other init infinity. For value from one to amount: for each coin if coin less or equal value, best value min with best value minus coin plus one. End: if best amount infinite return negative one else best amount. B F S on remainders also finds minimum count as shortest path."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why is the improved approach worth the extra structure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Because arbitrary denominations make greedy wrong, and D P is the standard linear in amount times coin types solution interviewers expect, with a clear greedy counterexample you can state."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Greedy trap: coins one three four amount six."
+        },
+        {
+          "voice": "candidate",
+          "text": "Greedy takes four plus two ones total three. Optimal two threes total two. D P returns two. I always mention this if greedy comes up."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Hand walk coins one two five amount eleven."
+        },
+        {
+          "voice": "candidate",
+          "text": "D P builds up; eleven becomes three, for example two fives and one one. Return three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Impossible: coins two amount three."
+        },
+        {
+          "voice": "candidate",
+          "text": "Odd amount with only even coin. best three stays infinity. Return negative one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why sentinel amount plus one works?"
+        },
+        {
+          "voice": "candidate",
+          "text": "With coin values at least one you never need more than amount coins. amount plus one is larger than any feasible answer."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Describe the API you will implement, then full word pseudocode."
+        },
+        {
+          "voice": "candidate",
+          "text": "Function coin change coins amount. If amount zero return zero. inf equals amount plus one. best list of inf, best zero equals zero. For v in one to amount: for c in coins: if c less equal v: best v equals min best v and best v minus c plus one. Return best amount if less than inf else negative one. Load bearing: exact amount. Load bearing: not greedy."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Walk corner cases one by one."
+        },
+        {
+          "voice": "candidate",
+          "text": "Amount zero. Empty coins. Single coin divides. Impossible. Greedy trap six. Large coin greater than amount skipped. Order of coins irrelevant."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Name the unit tests you would write before claiming done."
+        },
+        {
+          "voice": "candidate",
+          "text": "test eleven equals three. test three with two equals negative one. test six with one three four equals two. test amount zero. test empty coins positive amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity, precise."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time O of amount times number of coin types. Space O of amount. Reconstruct combination as follow up with parent pointers."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Combination count sister problem?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Different D P and loop order story. Do not mix with min count."
+        },
+        {
+          "voice": "interviewer",
+          "text": "B F S approach?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Shortest path on remainders; valid alternative."
+        },
+        {
+          "voice": "interviewer",
+          "text": "When greedy works?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Canonical coin systems; not general. Need proof or stick to D P."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Reconstruct coins?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Store chosen coin at each value when improving best; walk back from amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You have a working happy path and a few minutes left. What do you do?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I do not start a harder follow up. I lock the tests we named, restate complexity, and keep the code readable. Working correct code beats unfinished cleverness."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Simulate the implementation phase. Narrate what you type in order as if I watch your editor."
+        },
+        {
+          "voice": "candidate",
+          "text": "I allocate best array with inf and best zero zero."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I write double loop updates."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I return conditional negative one. Tests include greedy trap and impossible."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Continue. What do you type next, and why?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I speak O of amount times coins and stop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Bug used slash slash floor thinking for something else; here wrong answer is greedy."
+        },
+        {
+          "voice": "candidate",
+          "text": "I delete greedy path, keep D P, re-run trap test."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Amount huge memory?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Array size issue; mention B F S or special math. Interview amounts usually moderate."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Before we close, summarize the whole solution in about one minute."
+        },
+        {
+          "voice": "candidate",
+          "text": "Fewest coins for amount with unbounded denominations uses bottom up D P min of best remainder plus one. Not greedy; trap six with four three one. Impossible returns negative one. Amount zero returns zero. Time O of amount times coin types. Tests pin trap and impossible cases."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What would you do differently if this shipped tomorrow versus interview code?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I would add property tests or random differential checks against a slow oracle where feasible, metrics if it sits on a hot path, and clearer error types at A P I boundaries. The core algorithm stays the same."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Any open questions you would ask before calling the design final?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Constraints on n, whether input is trusted, and which follow up variant product actually needs. Those change validation and A P I more than the core loop."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Technique clinic: optimal substructure statement."
+        },
+        {
+          "voice": "candidate",
+          "text": "If an optimal solution for amount uses a coin c as one of the coins, then the rest of the coins form an optimal solution for amount minus c. Therefore the minimum count for amount is one plus the minimum over coins c of the minimum count for amount minus c when those subamounts are feasible. That recurrence is exactly the D P transition. Base amount zero needs zero coins. Unreachable amounts stay at infinity."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: why order of coin loops matters for counting combinations but not for min count the same way."
+        },
+        {
+          "voice": "candidate",
+          "text": "When counting the number of combinations, treating sequences as the same combination requires careful loop order so you do not count permutations separately. For minimum number of coins, taking min of plus one is order agnostic in the standard complete knapsack style updates as long as you use the updated or prior layer correctly. I still implement the common amount outer coin inner for min coins and I do not claim combination count code without re deriving it."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: draw the D P array growth for coins two three amount seven."
+        },
+        {
+          "voice": "candidate",
+          "text": "Index zero through seven. best zero is zero. one inf. two one. three one. four two via two plus two. five two via two plus three. six two via three plus three. seven three via two plus previous five or three plus four. Return three. Example seven equals two plus two plus three."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: B F S layer meaning."
+        },
+        {
+          "voice": "candidate",
+          "text": "Layer zero is amount remaining amount at start. Each edge subtracts a coin. First time you reach remainder zero, the depth is the min coins. Visited remainders prevent reprocessing. This is shortest path in an unweighted graph of remainders. Equivalent answer to D P."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: greedy works on some systems proof sketch awareness."
+        },
+        {
+          "voice": "candidate",
+          "text": "Canonical coin systems have structural properties that greedy choice is safe. U S coins are often cited. Arbitrary sets do not. Interview rule: unless told canonical, use D P and keep the counterexample ready."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: reconstruct coins for amount eleven with one two five."
+        },
+        {
+          "voice": "candidate",
+          "text": "While updating best v from best v minus c plus one, set choice v equals c. Then from amount walk choice, subtract, collect coins until zero. One possible result five five one. Useful follow up after count is correct."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: floating money mistake."
+        },
+        {
+          "voice": "candidate",
+          "text": "This problem is integer amounts. Real money should use integer minor units not floats. I mention if the interviewer frames coins as currency."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Clinic: very large amount with few coins math."
+        },
+        {
+          "voice": "candidate",
+          "text": "If coins are huge and amount huge, D P memory hurts. Frobenius coin problem for two coprime coins has formulas but general many coins is hard. Interview stays on D P."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final pseudocode recitation."
+        },
+        {
+          "voice": "candidate",
+          "text": "best zero zero others inf. for v one to amount for each coin if coin less equal v best v min with best v minus coin plus one. return best amount or negative one if inf."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Minute summary."
+        },
+        {
+          "voice": "candidate",
+          "text": "Coin change fewest coins is unbounded knapsack D P with min of remainder plus one. Not greedy on arbitrary denominations. Impossible to negative one. Time amount times coin types. Tests include the six with four three one trap and impossible odd amounts with even coins."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Greedy trap."
+        },
+        {
+          "voice": "candidate",
+          "text": "Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Recurrence."
+        },
+        {
+          "voice": "candidate",
+          "text": "best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time amount times coin types. Space amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "B F S alternative."
+        },
+        {
+          "voice": "candidate",
+          "text": "Shortest path on remainders, each coin an edge. Same min count."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Reconstruct."
+        },
+        {
+          "voice": "candidate",
+          "text": "Store choice coin when improving best, walk back from amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Min coin D P not greedy, O of amount times coins, trap test green, code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Greedy trap."
+        },
+        {
+          "voice": "candidate",
+          "text": "Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Recurrence."
+        },
+        {
+          "voice": "candidate",
+          "text": "best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time amount times coin types. Space amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "B F S alternative."
+        },
+        {
+          "voice": "candidate",
+          "text": "Shortest path on remainders, each coin an edge. Same min count."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Reconstruct."
+        },
+        {
+          "voice": "candidate",
+          "text": "Store choice coin when improving best, walk back from amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Min coin D P not greedy, O of amount times coins, trap test green, code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Shadow arc. Restate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Fewest coins to make amount with unlimited each denomination. D P min of remainder plus one. Impossible negative one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Greedy trap."
+        },
+        {
+          "voice": "candidate",
+          "text": "Coins one three four amount six: greedy three coins, optimal two. Always D P for general sets."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Recurrence."
+        },
+        {
+          "voice": "candidate",
+          "text": "best amount equals min over coins of best amount minus coin plus one, with best zero zero and unreachable inf."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Complexity."
+        },
+        {
+          "voice": "candidate",
+          "text": "Time amount times coin types. Space amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Full restate memory."
+        },
+        {
+          "voice": "candidate",
+          "text": "I need the minimum number of coins to reach an exact amount with infinite supply of each coin type. I build an array best where best of value is that minimum for that value. I initialize best zero to zero and others to a large sentinel. I try every coin at every value. If I cannot make the amount I return negative one. I refuse pure greedy unless the coin system is proven canonical. My first tests are eleven with one two five equals three, three with only two equals negative one, and six with one three four equals two."
+        },
+        {
+          "voice": "interviewer",
+          "text": "B F S alternative."
+        },
+        {
+          "voice": "candidate",
+          "text": "Shortest path on remainders, each coin an edge. Same min count."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Reconstruct."
+        },
+        {
+          "voice": "candidate",
+          "text": "Store choice coin when improving best, walk back from amount."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Closing pitch."
+        },
+        {
+          "voice": "candidate",
+          "text": "Min coin D P not greedy, O of amount times coins, trap test green, code AI off."
+        },
+        {
+          "voice": "interviewer",
+          "text": "We still have room for deliberate practice. Answer as in a real interview with complete sentences."
+        },
+        {
+          "voice": "candidate",
+          "text": "Understood. I will keep restating the contract, naming the naive approach, naming the improved approach, walking an example, giving pseudocode, listing tests, and stating complexity before I claim done."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does good clarifying sound like under time pressure?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Three to six questions that change the design: input guarantees, return types, edge policies like empty input, and whether mutation is allowed. I avoid twenty trivial questions. Then I commit and design."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does bad clarifying sound like?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Silence then coding, or only asking questions that do not affect the algorithm. Or arguing style guides for five minutes. I will not do that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Narrate how you use the last five minutes of a thirty minute block."
+        },
+        {
+          "voice": "candidate",
+          "text": "I freeze features. I write or re-run the highest value tests. I restate complexity. I clean names if something is confusing on screen share. I do not open a second hard follow up unless the core is green."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you handle a bug found by the interviewer?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I thank them, restate the failing case, form a hypothesis, fix the smallest place, re-run the mental test, and continue. I do not rewrite from scratch unless the approach is wrong."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you speak complexity without hand waving?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I name the dominant loops or data structure costs, say expected versus worst if hashing, and name extra memory. I connect big O to the actual code lines I wrote."
+        },
+        {
+          "voice": "interviewer",
+          "text": "How do you keep financial or product framing honest?"
+        },
+        {
+          "voice": "candidate",
+          "text": "One or two sentences max linking the toy problem to a real system, then back to the algorithm. I do not bluff market microstructure I do not know."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Final offline homework instruction to yourself."
+        },
+        {
+          "voice": "candidate",
+          "text": "After this audio, blank file, no AI, implement from memory, run tests, then compare to a reference only after green or after twenty five minutes of struggle with a written fork plan."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap. Min coin D P. Not greedy. O of amount times coins. Code AI off."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

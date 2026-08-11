@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "id": 303,
+  "slug": "coding-prep-ep03-longest-substring",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Longest Substring Excerpt",
+  "description": "Think-aloud walkthrough: Longest Substring Excerpt.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Problem: longest substring without repeating characters. Return the length."
+        },
+        {
+          "voice": "narrator",
+          "text": "Clarify first. Empty string? Character set? Case sensitive?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive: for every start, expand end while unique. O of n squared."
+        },
+        {
+          "voice": "narrator",
+          "text": "Optimal: sliding window. Left and right. Right moves from zero to n minus one. Keep a set of characters in the window. When the character at right is already in the set, advance left, removing characters as you go, until the duplicate is gone. Then add the new character. Update the answer with right minus left plus one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Example: a b c a b c b b."
+        },
+        {
+          "voice": "narrator",
+          "text": "Window a b c. Length three. Next a is a duplicate. Move left past the first a. Window becomes b c a. Still length three. Keep going. Best stays three."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why is this O of n, not O of n squared? Because left and right only move forward. Each index enters and leaves the window at most once."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say it back: expand right, shrink left on duplicate, track max length."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then open the app deep drill and hit the walkthrough options cold."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

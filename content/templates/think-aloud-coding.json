@@ -1,0 +1,78 @@
+{
+  "name": "think-aloud-coding",
+  "title": "Think-aloud coding walkthrough",
+  "description": "Solo narration of one problem, worked the way a real screen goes: naive first, then better, mistakes included.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    12,
+    18
+  ],
+  "authoring_brief": "Speak as the candidate thinking out loud, not as a teacher lecturing. State the naive solution before the optimal one every time — process is the product. Include at least one dead end you talk yourself out of. Say complexity in words ('O of n squared'), never symbols. Give the listener an explicit attempt window before revealing anything.",
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Restate the problem twice, second time slower. No solution yet."
+    },
+    {
+      "id": "attempt",
+      "title": "Your attempt",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Count the listener down and make them answer out loud before you continue."
+    },
+    {
+      "id": "clarify",
+      "title": "Clarify first",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "The clarifying questions you would actually ask, with why each one changes the answer."
+    },
+    {
+      "id": "naive",
+      "title": "Naive approach",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "A correct brute force, stated plainly, with its complexity."
+    },
+    {
+      "id": "improve",
+      "title": "Better idea",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "The insight that removes the waste. Narrate arriving at it, not knowing it."
+    },
+    {
+      "id": "walk",
+      "title": "Hand walk",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Trace a concrete small input step by step, speaking the state after each step."
+    },
+    {
+      "id": "edges",
+      "title": "Edges",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Empty, single element, duplicates, overflow, the contract when no answer exists."
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Time and space in words, plus what changes them."
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "required": false,
+      "target_minutes": 1,
+      "brief": "One sentence on the transferable pattern, and the drill to run next."
+    }
+  ]
+}

@@ -7,10 +7,16 @@ Duration: 25-30 min per episode
 Structure: 5 min requirements → 10 min high-level → 10 min deep dive → 3 min debrief
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import json, os, sys, subprocess, shutil, tempfile
 from datetime import datetime, timezone
 
 from tts import synthesize, get_duration_str, concatenate_mp3, crossfade_mp3
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONTENT_BANK_PATH = os.path.join(SCRIPT_DIR, "content_bank.json")

@@ -4,6 +4,11 @@
 Uploads both TTS-generated episodes and YouTube-extracted audio.
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import argparse, json, os, sys
 from datetime import datetime, timezone
 from xml.dom import minidom
@@ -11,6 +16,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 
 from r2_utils import get_json, upload, upload_bytes, upload_json
 from tts import get_duration_str
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)

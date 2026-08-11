@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "id": 305,
+  "slug": "coding-prep-ep05-lru",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Lru Cache",
+  "description": "Think-aloud walkthrough: Lru Cache.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "LRU Cache. Design problem. Airwallex and many screens love this because it is structure plus clear operations, not a one-shot formula. No AI. You speak the design before code. Pair with the LRU deep drill in the app."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Implement LRUCache with capacity. Methods: get key returns value or negative one if missing. Put key value inserts or updates. When over capacity, evict the least recently used key. Both get and put must be average O of one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Ten counts. Name the two structures and what each gives you. One through ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: HashMap from key to node for O of one lookup. Doubly linked list for recency order. Most recent at one end, least recent at the other. Dummy head and tail nodes keep edge code clean."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual. Restate. Clarify capacity at least one. Value domain. Thread safety usually not required unless asked. Then naive, improve, operations, edges, complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive design people say first: array of pairs plus scan for LRU — get is O of n. Or timestamp heap — log n. Say them. Then: we need O of one, so map plus doubly linked list."
+        },
+        {
+          "voice": "narrator",
+          "text": "Operations in words."
+        },
+        {
+          "voice": "narrator",
+          "text": "Get key. If key not in map, return negative one. If present, move that node to the most recent end, return its value. Moving is: unlink from current neighbors, insert after head or before tail depending on your convention. Pick one convention and stick. I use head is most recent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Put key value. If key exists, update value, move node to most recent. If key is new, create node, insert most recent, add to map. If size exceeds capacity, remove the least recent node — the one before tail — delete from map and list."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why doubly linked? Unlink a middle node in O of one when you have the node pointer from the map. Singly list cannot unlink middle without predecessor search."
+        },
+        {
+          "voice": "narrator",
+          "text": "Walk capacity two.\nPut one a. List: one. Map has one.\nPut two b. List: two then one, if head is newest… actually if head is most recent: two at head side, one toward tail.\nGet one. One becomes most recent. Order one then two toward tail as older.\nPut three c. Capacity full. Evict least recent — two. Insert three. Map has one and three."
+        },
+        {
+          "voice": "narrator",
+          "text": "Dead-end: use only a queue and map without ability to remove middle — then get cannot refresh mid elements in O of one. Or Python OrderedDict without knowing the idea — interviewers want the list plus map speech even if language has a helper."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Capacity one: every new put may evict. Get missing. Put update same key should not grow size. Repeated get same key stays most recent. Negative keys if allowed — map still fine."
+        }
+      ]
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Complexity. Get and put O of one average. Space O of capacity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pattern cue. When I hear O of one get put with eviction policy — map to node, list for order. LFU is frequency buckets — different. Don't mix."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Transfer. Fifteen seconds. Design a rate limiter allowing n requests per window — structures only. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model: timestamps queue per key, or token bucket counters. Not LRU, but same design speech: clarify, structure, complexity."
+        },
+        {
+          "voice": "narrator",
+          "text": "Speed recap."
+        },
+        {
+          "voice": "narrator",
+          "text": "LRU. Capacity fixed. Map key to doubly linked node. List order is recency. Get: map lookup, move front, return value or miss. Put: update or insert front, if over capacity pop tail and map delete. O of one. Naive array scan stated first. No AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back.\nOne: map plus doubly list.\nTwo: get moves to recent.\nThree: put may evict least recent.\nFour: dummy head tail.\nFive: O of one."
+        },
+        {
+          "voice": "narrator",
+          "text": "App: LRU deep drill cold. Implement once without AI. YouTube LRU clip is medium for pure audio — use eyes if the list confuses, then re-speak this recap blind."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: graphs and trees — islands and level order BFS."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. LRU. Go code."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

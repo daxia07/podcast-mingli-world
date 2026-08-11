@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """batch_publish.py — Upload all new episodes to R2, update manifest with playlists, regenerate RSS."""
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import json, os, sys
 from datetime import datetime, timezone
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
 
 from r2_utils import upload, get_json, upload_json, upload_bytes
+
 
 BASE_URL = "https://podcast.mingli.world"
 BUCKET = "podcast-mingli-world"

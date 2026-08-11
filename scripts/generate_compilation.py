@@ -5,8 +5,14 @@ Each compilation covers 3-4 patterns with their related tips, creating a focused
 10-15 minute episode that replaces the repetitive individual episodes #1-16.
 """
 
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
+
+
 import json, os, sys, subprocess, shutil
 from datetime import datetime, timezone
+
 
 VOICE = "en-US-ChristopherNeural"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

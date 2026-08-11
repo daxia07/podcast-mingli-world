@@ -600,6 +600,12 @@
     updatePlayerChrome();
     updateMini();
     updateQueueUI();
+
+    // player-ui.js picks this up to load chapters, the transcript and
+    // lock-screen metadata. Kept as an event so app.js has no dependency on it.
+    try {
+      window.dispatchEvent(new CustomEvent("episode:change", { detail: ep }));
+    } catch (e) {}
     if (solutionsOn) {
       if (hasBoard(ep)) renderSolutions(ep);
       else {

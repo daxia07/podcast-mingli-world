@@ -1,0 +1,55 @@
+{
+  "name": "daily-english",
+  "title": "Daily interview English",
+  "description": "The original daily format: patterns, frameworks, practice prompts.",
+  "voices": {
+    "legacy": "legacy"
+  },
+  "target_minutes": [
+    22,
+    32
+  ],
+  "authoring_brief": "Vary the connective phrasing every episode — the old template's fixed wording is exactly what this format is escaping. Examples must be real engineering situations, not generic business talk.",
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Intro",
+      "required": true,
+      "target_minutes": 1
+    },
+    {
+      "id": "article",
+      "title": "Today's article",
+      "required": false,
+      "target_minutes": 4,
+      "factual": true
+    },
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "required": true,
+      "target_minutes": 12,
+      "brief": "Each pattern: the phrase, when it lands, two engineering examples, one misuse."
+    },
+    {
+      "id": "framework",
+      "title": "Framework",
+      "required": true,
+      "target_minutes": 6,
+      "brief": "One interview framework, walked through with a worked answer."
+    },
+    {
+      "id": "prompts",
+      "title": "Practice prompts",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "Prompts the listener answers aloud, with a pause after each."
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap up",
+      "required": true,
+      "target_minutes": 1
+    }
+  ]
+}

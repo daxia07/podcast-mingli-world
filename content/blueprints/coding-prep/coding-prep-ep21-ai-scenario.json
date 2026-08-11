@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "id": 321,
+  "slug": "coding-prep-ep21-ai-scenario",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Ai Scenario Think Aloud",
+  "description": "Think-aloud walkthrough: Ai Scenario Think Aloud.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Hey. This is a full think aloud for an Airwallex style part one problem. Real world scenario focused on AI. Thirty minutes. No AI tools. You will hear the ritual on a product shaped prompt, not a bare LeetCode title. Replay until you can steal the pacing and the words."
+        },
+        {
+          "voice": "narrator",
+          "text": "The problem statement, as if the interviewer said it."
+        },
+        {
+          "voice": "narrator",
+          "text": "We are building a small service that calls a foundation model. Each tenant has a rate limit so one customer cannot burn the whole budget. Design and implement a rate limiter used like this: allow tenant id returns true if the call may proceed, false if it should be rejected. Support burst traffic but sustain a long run average rate. Keep it simple enough to code in this session. Clean structure. Talk through complexity and edges."
+        },
+        {
+          "voice": "narrator",
+          "text": "I do not type yet."
+        },
+        {
+          "voice": "narrator",
+          "text": "Restate. I need a per tenant rate limiter with burst and sustained rate. API is allow on tenant id, boolean. Probably also need a clear reason or error type in production, I will ask."
+        },
+        {
+          "voice": "narrator",
+          "text": "Clarify. Is state in memory only for this exercise? I will assume yes unless told otherwise. Is burst capacity C tokens and refill R tokens per second? I will propose C and R as constructor parameters. Per tenant maps, not global? I assume per tenant. What happens on reject, just false or exception? I will return false and mention a RateLimitError type if they want stricter API. Clock, monotonic time so wall clock jumps do not break refill. Concurrent calls? I will note a lock would be needed in multi thread, implement single threaded clear logic first unless they want thread safety."
+        },
+        {
+          "voice": "narrator",
+          "text": "They nod. In memory, per tenant, constructor capacity and refill rate, return boolean, single threaded fine for now."
+        }
+      ]
+    },
+    {
+      "id": "naive",
+      "title": "Naive approach",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Naive approach. Store a list of timestamps per tenant. On allow, drop timestamps older than one second window, if count less than limit accept and append now. Complexity O of events in window per call, memory O of events. Correct for fixed window, but fixed window can double burst at boundaries and memory grows with traffic in the window."
+        },
+        {
+          "voice": "narrator",
+          "text": "Improve. Token bucket. Each tenant has tokens float and last refill timestamp. Capacity C, refill rate R per second. On allow, refill based on elapsed time, cap at C, if tokens at least one, spend one and return true, else false. O of one per allow with a hash map from tenant to state. That matches burst up to C and sustained R."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why not pure leaky bucket or sliding log? Sliding log is accurate and heavier. Leaky bucket smooths differently. For an interview thin slice, token bucket is standard and fast to implement. One line for an ML EM: this is how I would protect model serving or agent API capacity per tenant under burst."
+        }
+      ]
+    },
+    {
+      "id": "walk",
+      "title": "Hand walk",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Hand walk. Capacity two, rate one token per second. Tenant A starts full, tokens two. First allow, tokens one, true. Second allow, tokens zero, true. Third allow immediately, false. Wait one second, refill one, allow true. Good."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now I code while narrating. Class TokenBucketLimiter. Init with capacity and refill rate. Dict tenant id to a small state object or tuple, tokens and last time. Method allow self, tenant id. Get or create state with tokens equal capacity and last equal now. Now equals monotonic time. Elapsed equals now minus last. Tokens equals min of capacity and tokens plus elapsed times rate. Last equals now. If tokens greater than or equal to one, tokens minus one, store, return true. Else store refilled tokens, return false. Use full names. capacity, refill_rate, tenant_id. No single letter mess except maybe in a tiny loop I do not need."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges I speak while writing tests or comments. Unknown tenant, first call should create full bucket. Capacity zero, always false. Very large elapsed, cap at capacity, no infinite tokens. Rate zero, no refill, only initial burst. Empty tenant id, either reject or treat as key, I will ask or treat as normal key. Multi tenant isolation, B must not spend A's tokens."
+        }
+      ]
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Complexity. Time O of one expected per allow with hash map. Space O of number of tenants seen. If tenants are unbounded in a real system I would mention TTL eviction of idle tenants as a follow up, not implement unless asked."
+        },
+        {
+          "voice": "narrator",
+          "text": "I run a quick mental test or real pytest. Burst of two works. Third fails. After one second succeeds. Second tenant independent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Time check. If I still have five minutes, I add a tiny RateLimitError optional path or a docstring, and I state what I would do in deep dive: thread safety with a lock per tenant or a concurrent map, metrics, and redis for multi instance. I do not start redis now."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the part one close. Working solution. Clear structure. Edges. Complexity. Known upgrades for the human discussion and for AI later."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second mini scenario, shorter, so you hear pattern transfer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem. Cache model responses. Key is hash of prompt and model name. Capacity N entries. Evict least recently used. Get and put in average O of one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Restate. LRU cache for response strings or objects."
+        },
+        {
+          "voice": "narrator",
+          "text": "Clarify. Capacity at least one? Null values? Thread safety? Assume capacity positive, single threaded, values opaque."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naive. List of pairs, scan for key each time, O of n."
+        },
+        {
+          "voice": "narrator",
+          "text": "Improve. Hash map key to node, doubly linked list for recency. Get moves to front. Put updates or inserts front, if over capacity evict tail."
+        },
+        {
+          "voice": "narrator",
+          "text": "Hand walk. Capacity two. Put a, put b, get a, put c, b is gone."
+        },
+        {
+          "voice": "narrator",
+          "text": "Code sketch narrated. Map, head, tail dummy nodes. Helpers add front, remove node. Get and put call them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Edges. Capacity one. Get missing returns none. Put existing key updates value and recency."
+        },
+        {
+          "voice": "narrator",
+          "text": "Complexity. O of one per op. Space O of capacity."
+        },
+        {
+          "voice": "narrator",
+          "text": "You should feel it. Same ritual. Scenario skin. Core algorithm you already drilled in LRU and design in code episodes."
+        },
+        {
+          "voice": "narrator",
+          "text": "How to practice with this audio. First listen without coding. Second listen pause and speak your own restate and clarifiers before I do. Third day, implement the limiter in thirty minutes without AI, then use the deep dive episode templates on your code. Do not memorise my variable names. Memorise the order of thoughts."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap clinic for scenarios."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap one. Designing a full multi region platform. Fix. Thin vertical slice that runs."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two. Skipping complexity because it felt like product work. Fix. Always say Big O."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three. Silent failures. Fix. Boolean or typed error, never mystery."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four. Wall clock for refill. Fix. Monotonic."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five. Shared bucket across tenants by bug. Fix. Map keyed by tenant."
+        },
+        {
+          "voice": "narrator",
+          "text": "Closing card. Scenario is costume. Ritual is skeleton. Working code is the score in part one. AI improves it later, not now."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pair this with the design in code episode for breaker and idempotency, and with the clock episode so you never open the agent early."
+        },
+        {
+          "voice": "narrator",
+          "text": "You have the shape. Go implement a limiter from blank, voice out loud, timer thirty. Then listen again."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

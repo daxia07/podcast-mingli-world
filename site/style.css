@@ -1119,3 +1119,262 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   Chapters, transcript, and native-feel additions (v24)
+   ========================================================================== */
+
+/* --- dark mode -----------------------------------------------------------
+   Tokens only. Every colour below is already defined on :root, so the dark
+   block redefines rather than introduces — a value defined only here would
+   disappear in light mode. Guarded so an explicit light choice always wins. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1115;
+    --bg-elevated: #171a21;
+    --bg-muted: #1e222b;
+    --ink: #edeef2;
+    --ink-2: #a9aebc;
+    --ink-3: #7b8192;
+    --line: #262b35;
+    --line-strong: #333a47;
+    --accent: #7ea2e8;
+    --accent-soft: #1c2740;
+    --accent-ink: #cddcf7;
+    --success: #5fbf92;
+    --success-soft: #16281f;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --bg-elevated: #171a21;
+  --bg-muted: #1e222b;
+  --ink: #edeef2;
+  --ink-2: #a9aebc;
+  --ink-3: #7b8192;
+  --line: #262b35;
+  --line-strong: #333a47;
+  --accent: #7ea2e8;
+  --accent-soft: #1c2740;
+  --accent-ink: #cddcf7;
+  --success: #5fbf92;
+  --success-soft: #16281f;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+/* --- chapter rail on the seek bar --- */
+
+.seek-wrap { position: relative; flex: 1; display: flex; align-items: center; }
+.seek-wrap #seek { width: 100%; position: relative; z-index: 2; background: transparent; }
+
+.chapter-rail {
+  position: absolute;
+  inset: 0 0 auto 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  z-index: 1;
+  pointer-events: none;
+}
+.chapter-rail .rail-seg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--line-strong);
+  border-radius: 3px;
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  /* A hair of inset so adjacent segments read as separate blocks. */
+  box-shadow: inset -1.5px 0 0 var(--bg);
+  transition: height 140ms var(--ease), transform 140ms var(--ease);
+}
+.chapter-rail .rail-seg.active { height: 10px; top: -2px; }
+.chapter-rail .rail-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 3px;
+}
+.chapter-rail .rail-seg.done .rail-fill { width: 100%; }
+
+.chapter-now {
+  text-align: center;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 2px 0 8px;
+  letter-spacing: 0.01em;
+}
+
+.chapter-nav {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.chip.ghost { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
+.chip.disabled, .chip:disabled { opacity: 0.35; pointer-events: none; }
+
+/* --- the chapters / transcript sheet --- */
+
+.panel-sheet {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  max-height: 52vh;
+  overflow: hidden;
+  animation: sheet-up 240ms var(--ease);
+}
+@keyframes sheet-up { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+.panel-tabs { display: flex; gap: 6px; }
+.panel-head .panel-tab {
+  border: 0;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.panel-head .panel-tab.on { background: var(--accent-soft); color: var(--accent-ink); }
+
+.panel-pane { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.sheet-empty { padding: 20px 16px; color: var(--ink-3); font-size: 14px; text-align: center; }
+
+/* --- chapter list --- */
+
+.chapter-list { padding: 6px 0 12px; }
+.chapter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 16px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.chapter-row:active { background: var(--bg-muted); }
+.chapter-row.on { background: var(--accent-soft); }
+.chapter-row.on .chapter-title { color: var(--accent-ink); font-weight: 650; }
+.chapter-no {
+  flex: none;
+  width: 22px;
+  font-size: 12px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.chapter-title { flex: 1; font-size: 15px; }
+.chapter-time { flex: none; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* --- transcript --- */
+
+.transcript-search { padding: 10px 14px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg-elevated); z-index: 1; }
+.transcript-search input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-muted);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+.transcript-body { padding: 8px 16px 20px; }
+.cue {
+  padding: 7px 10px;
+  margin: 2px -10px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 120ms var(--ease), color 120ms var(--ease);
+}
+.cue.on { background: var(--accent-soft); color: var(--ink); font-weight: 500; }
+.cue.hit { box-shadow: inset 0 0 0 1px var(--accent); }
+.cue-who {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+.cue-who-interviewer { color: var(--accent); }
+.cue-who-candidate { color: var(--success); }
+
+/* --- sleep timer --- */
+
+.sleep-sheet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 14px 4px;
+}
+.sleep-opt {
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.sleep-opt:active { background: var(--bg-muted); }
+
+/* --- drag-to-dismiss --- */
+
+.player-full { transition: transform 280ms var(--ease); touch-action: pan-y; }
+.player-full.dragging { transition: none; }
+.player-top { position: relative; }
+.grip-bar {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+/* --- account row --- */
+
+.me-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+
+/* Respect the system setting — the sheet and rail animations are decorative. */
+@media (prefers-reduced-motion: reduce) {
+  .panel-sheet, .player-full, .chapter-rail .rail-seg, .cue { animation: none; transition: none; }
+}

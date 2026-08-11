@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "id": 322,
+  "slug": "coding-prep-ep22-interviewer-tianxiao",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Interviewer Tianxiao",
+  "description": "Think-aloud walkthrough: Interviewer Tianxiao.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Hey. This monologue is about who is on the other side of the screen and how that changes your mouth, not your algorithms. Replay until the adaptation lines are automatic. Pair with the tutor sheet Interviewer Fit Tianxiao Huang. Clock and dual AI policy still live in episode nineteen. Ritual still lives in episode zero. This episode is the human layer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your coding interviewer is Tianxiao Huang. Engineering Manager at Airwallex in Shanghai. Chinese name Huang Tianxiao. Public profile: Quantcast modeling scientist in ad targeting, then Georgia Tech online masters while taking a ridiculous number of MOOCs, then manager of ML engineering at Twitter in San Francisco, then team manager at Tencent in Shenzhen, then Airwallex. LinkedIn summary says machine learning, product engineering, backend infrastructure, a little web. Twitter bio mentions Airwallex Shanghai, ex Tencent, ex Twitter SF, amateur philosopher and writer, Nietzsche and Stoic notes."
+        },
+        {
+          "voice": "narrator",
+          "text": "What that means in one sentence. He is an ML first engineering leader who values clear thinking, self directed learning, and calm rigor. Not a random leetcode proctor."
+        },
+        {
+          "voice": "narrator",
+          "text": "How to use this without being weird. You do not open with a book report on his resume. Stoics and serious EMs dislike flattery. You adapt behavior. Substance over praise."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation one. Pace. SF and China product cultures both reward directness. Official intro budget is two minutes. Give sixty to ninety seconds of who you are, AI tooling angle, why this work, then stop. Ready for the problem. Do not burn ten minutes of warm chat. He is not running a fireside."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation two. Framing. Same token bucket as every fintech screen, but when you pitch why, add one infrastructure sentence. This is how I would protect model serving or agent API capacity per tenant under burst. Same sliding window, pitch telemetry or FX stream if the problem is stream shaped. Same LRU, pitch response or feature cache. One sentence. Then code. Do not turn part one into a system design monologue."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation three. Voice under pressure. Stoic signal means method over panic. When stuck, do not apologize loop. Say: let me take a step back and think about this systematically. I see approach A and approach B. Constraint C decides. That line is pure interview skill and pure fit."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation four. Communication. Amateur writer in the bio means he hears structure. Use short blocks. Restate. Clarify. Naive. Improve. Example. Code. Edges. Complexity. Full names. No ramble. If you must digress, label it as a follow up for the deep dive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Adaptation five. AI in part two. He took over a hundred MOOCs. He lives learning with tools. When deep dive starts, open Claude Code only then. Show pilot skill he will respect. Directed prompts. Read diffs. Run tests. Reject bad suggestions out loud with a reason. Never first prompt rewrite everything. Your line if asked how you work with AI day to day: I use agents for tests, exploration, and refactors. I keep design ownership. I verify. AI code meets the same bar as mine."
+        },
+        {
+          "voice": "narrator",
+          "text": "What he is likely to weight, inferred not guaranteed. ML and AI infrastructure understanding. Rate limiting, streaming, real time systems from Quantcast and Twitter eras. System maturity for thin slices, not only puzzle speed. Communication clarity. AI tool comfort with judgment. Calm when the problem gets ambiguous."
+        },
+        {
+          "voice": "narrator",
+          "text": "What to practice this week with his profile in mind."
+        },
+        {
+          "voice": "narrator",
+          "text": "Drill A. Ninety second intro, three times, stop on time.\nDrill B. Rate limiter solve in thirty minutes, AI off, end with the model serving pitch in one sentence.\nDrill C. Stuck recovery out loud, forty five seconds, no apology.\nDrill D. Claude Code deep dive on your limiter: tests and edges, verify loop, talk to the human not the model.\nDrill E. Optional light fit line only if natural in intro or wrap: interest in real time data intensive platforms. No biography recitation."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap clinic for interviewer fit."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap one. Over researching into sycophancy. Fix. Zero flattery. Full craft.\nTrap two. Ignoring the human and solving as pure LC title. Fix. One domain sentence.\nTrap three. Flailing when stuck because you fear judgment. Fix. Systematic fork script.\nTrap four. Hiding AI skill in part two because part one banned it. Fix. Hard switch, then pilot proudly and carefully.\nTrap five. Philosophy debate. Fix. Code. He is there to hire engineers."
+        },
+        {
+          "voice": "narrator",
+          "text": "Morning card. Direct intro. Ritual. Thin working slice. Infra one liner. Calm fork when stuck. AI off then AI on. Substance over flattery. That is how you meet this EM."
+        },
+        {
+          "voice": "narrator",
+          "text": "Close. Algorithms do not change because of who interviews you. Emphasis does. Loop this episode once, then implement a rate limiter from blank with the model serving pitch at the end. Then episode twenty templates on that file."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Interviewer fit for Tianxiao. Go train the mouth and the hands."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

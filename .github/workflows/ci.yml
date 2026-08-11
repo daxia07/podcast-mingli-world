@@ -1,0 +1,46 @@
+name: CI
+
+# Catches the mistakes this repo actually makes: hand-edited manifests with
+# colliding ids or malformed URLs, the two manifest copies drifting apart, and
+# blueprints that would only fail after a 28-minute TTS run.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # No third-party test deps on purpose — unittest and node:test only, so
+      # CI needs no install step and can't break on a transitive dependency.
+      - name: Python unit tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Pages Function tests
+        run: node --test tests/*.mjs
+
+      - name: Manifest gates
+        run: python3 -m scripts.lib.gates --manifest
+
+      - name: Blueprint gates
+        run: |
+          shopt -s nullglob globstar
+          files=(content/blueprints/**/*.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "no blueprints yet — skipping"
+          else
+            python3 -m scripts.lib.gates "${files[@]}"
+          fi

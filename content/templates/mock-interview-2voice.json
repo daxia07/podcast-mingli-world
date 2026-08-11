@@ -1,0 +1,59 @@
+{
+  "name": "mock-interview-2voice",
+  "title": "Two-voice mock interview",
+  "description": "Full-length interviewer/candidate dialogue following the standard system-design arc.",
+  "voices": {
+    "interviewer": "interviewer",
+    "candidate": "candidate"
+  },
+  "target_minutes": [
+    25,
+    45
+  ],
+  "authoring_brief": "Alternate turns; never let one side monologue for more than about 200 words. The interviewer pushes back at least three times and asks for numbers. The candidate states assumptions out loud and revises when challenged. Numbers must be self-consistent — if you claim 10K TPS, later storage maths has to match it.",
+  "sections": [
+    {
+      "id": "requirements",
+      "title": "Requirements",
+      "required": true,
+      "target_minutes": 5,
+      "brief": "Functional and non-functional scope, clarified by question and answer."
+    },
+    {
+      "id": "estimation",
+      "title": "Estimation",
+      "required": true,
+      "target_minutes": 5,
+      "factual": true,
+      "brief": "Back-of-envelope traffic, storage, bandwidth. Sanity-check each figure aloud."
+    },
+    {
+      "id": "high-level",
+      "title": "High-level design",
+      "required": true,
+      "target_minutes": 6,
+      "brief": "Components and data flow. State the obvious approach and why it fails first."
+    },
+    {
+      "id": "deep-dive",
+      "title": "Deep dive",
+      "required": true,
+      "target_minutes": 10,
+      "brief": "One or two components in detail, driven by interviewer pressure."
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "What was given up and under what conditions the choice flips."
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap up",
+      "required": false,
+      "target_minutes": 2,
+      "brief": "Interviewer summarises; candidate names the one thing they'd revisit."
+    }
+  ]
+}

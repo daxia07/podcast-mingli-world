@@ -1,0 +1,50 @@
+{
+  "name": "youtube-derived",
+  "title": "Derived from a source video",
+  "description": "An original episode written from an ingested transcript — our words, their material.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    10,
+    20
+  ],
+  "authoring_brief": "Write in this show's voice, not the source's. Never reuse phrasing beyond a short quoted definition. Every factual claim carries a sources[] reference back to the source timestamp. The value added is the interview angle the source did not cover.",
+  "sections": [
+    {
+      "id": "framing",
+      "title": "What this is",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Name the source and what it is good for. Credit it explicitly."
+    },
+    {
+      "id": "core",
+      "title": "The core idea",
+      "required": true,
+      "target_minutes": 5,
+      "factual": true,
+      "brief": "The material's central argument, restated in our own words. Requires sources[]."
+    },
+    {
+      "id": "gaps",
+      "title": "What it skips",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "Where the source hand-waves, and what an interviewer would push on."
+    },
+    {
+      "id": "questions",
+      "title": "Questions to expect",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "The interview questions this material prepares you for, with answer shapes."
+    },
+    {
+      "id": "wrap",
+      "title": "What to take away",
+      "required": false,
+      "target_minutes": 1.5
+    }
+  ]
+}

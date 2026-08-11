@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "id": 307,
+  "slug": "coding-prep-ep07-mock-screen",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Mock Screen",
+  "description": "Think-aloud walkthrough: Mock Screen.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is the dress rehearsal. Not a new algorithm. A sixty minute Airwallex style coding screen compressed into a narration you can run cold. No AI. Mouth first. After this, open Process and Complexity drills, then do one timed medium offline."
+        },
+        {
+          "voice": "narrator",
+          "text": "Setup. You have about sixty minutes. Easy to medium problems. They want clarify, naive, optimize, working code, edges, complexity. Background chat may eat a few minutes. Medium should feel comfortable in thirty to forty minutes with practice."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your only job in this audio is to rehearse the script under imaginary pressure. I will throw two problems. You attempt on the counts. Then I model the full speech."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ritual, fast. Restate. Clarify. Naive. Improve. Example by hand. Code narrating. Edges. Complexity. If stuck: two options I'm between, which constraint decides."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem A. Opens on the shared editor. Given a string of brackets, determine if it is valid. Openers and matching closers, correct order. Types paren square curly."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Twelve counts. Full approach out loud. One through twelve."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model speech you should have said. Restate: validate bracket string. Clarify empty is valid. Only those six characters. Naive wrong stack ideas… Optimal: stack. Scan left to right. On open, push. On close, stack must be non empty and top matches. Pop. End stack empty. Example open paren open square close square close paren — valid. Close first — invalid. Complexity O of n time O of n space. Edges empty, single open, mismatch types, wrong order."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you froze on the count, that is data. Rewind and re-speak until the stack story is automatic."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem B. Harder medium. Given an array of intervals, merge all overlapping intervals. Return merged list sorted by start."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cold open. Fifteen counts. Approach. One through fifteen."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model. Clarify: inclusive ends? Integer coords. Mutate okay? Naive: for each pair check overlap — messy. Better: sort by start ascending. Init current as first. For each next: if next start less or equal current end, merge end equals max ends. Else push current, current equals next. Push last. Example one three and two six merge to one six. Then eight ten stays. Complexity O of n log n sort. Edges empty, single, all overlap, touch endpoints if inclusive merge."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the hour structure. Minutes zero to five: greet, past work if asked, then problem read. Minutes five to twelve: clarify and naive and optimal agreed. Minutes twelve to thirty-five: code the first problem with narration. Minutes thirty-five to forty-five: test cases edges. If second problem appears, same ritual smaller. Last five: complexity recap, questions for them."
+        },
+        {
+          "voice": "narrator",
+          "text": "What to say when stuck. I see two approaches: A brute O of n squared, B with this structure. Given n up to ten to the five I should take B. If still stuck, ask a leading question they allow: can I assume sorted, is mutating okay."
+        },
+        {
+          "voice": "narrator",
+          "text": "What never to do. Silent coding for five minutes. Jump to optimal without naive. Invent API without clarifying. Use AI or paste from notes. Apologize more than you think."
+        },
+        {
+          "voice": "narrator",
+          "text": "Mistake recovery line. Practice saying: I see a bug on the empty case — fixing by returning early. That sounds strong. Silence sounds weak."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Wrap",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Speed recap of the whole prep week."
+        },
+        {
+          "voice": "narrator",
+          "text": "Day ritual: eight steps no AI. Two sum map complement lookup before insert. Hash family set anagram key top k buckets. Window unique substring expand shrink. Two pointers water move shorter, three sum sort and pair. LRU map plus doubly list. Islands flood, tree level BFS. Today: brackets stack, merge intervals sort scan."
+        },
+        {
+          "voice": "narrator",
+          "text": "Daily micro loop for the remaining days until the test.\nMorning: re-speak one speed recap from any episode, two minutes.\nCommute: one Coding Prep or Coding YouTube clip, say-back at the end.\nEvening: one deep drill options set cold, then code fifteen to twenty-five minutes without AI.\nNight before: ep00 ritual only, sleep. Do not cram new patterns."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say-back challenge for this episode.\nOne: hour timeline.\nTwo: stuck script.\nThree: brackets stack.\nFour: merge intervals sort.\nFive: no AI no silence."
+        },
+        {
+          "voice": "narrator",
+          "text": "Open the app Process and Complexity unit. Then put a timer for forty minutes and solve one medium you have not done this week, narrating out loud to your phone voice memo. Play it back. That is the real mock."
+        },
+        {
+          "voice": "narrator",
+          "text": "You have the Coding Prep series and the Coding YouTube audio-first playlist. Use them as reps, not as comfort food. The test rewards a mouth that already knows the order."
+        },
+        {
+          "voice": "narrator",
+          "text": "This was Coding Prep. Mock screen dry run. You are ready to practice under the clock. Go."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

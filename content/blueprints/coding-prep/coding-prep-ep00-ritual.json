@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "id": 300,
+  "slug": "coding-prep-ep00-ritual",
+  "show": "coding-prep",
+  "template": "think-aloud-coding",
+  "title": "Airwallex Coding Ritual",
+  "description": "Think-aloud walkthrough: Airwallex Coding Ritual.",
+  "keywords": [],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Hey. This is a short one. Think of it as the pre-flight checklist for coding interviews — specifically the Airwallex style tech screen."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you already know the format, you can jump ahead mentally to the ritual. If you don't, stay with me for a few minutes so you don't waste a sixty-minute interview on the wrong game."
+        },
+        {
+          "voice": "narrator",
+          "text": "Airwallex's engineering blog is unusually clear. The tech screen is like LeetCode easy and medium. They care that you understand basic algorithms and can apply them. They say practice medium and hard so that medium feels comfortable in about thirty to forty minutes."
+        },
+        {
+          "voice": "narrator",
+          "text": "They also say: clarify the problem before you solve it. Start with a naive solution, then improve. Tell them what you're thinking."
+        },
+        {
+          "voice": "narrator",
+          "text": "And from their job application AI policy: do not use AI tools in live, real-time interviews unless they explicitly say you can. Prep with AI is fine. Live coding is you and a whiteboard or editor."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the product is not \"did you memorize the optimal solution.\" The product is: can you think out loud, under time pressure, without a copilot, and still land something correct and clean."
+        },
+        {
+          "voice": "narrator",
+          "text": "When the problem appears, you run a fixed script. Muscle memory. Same order every time."
+        },
+        {
+          "voice": "narrator",
+          "text": "First: restate the problem in your own words, out loud, in one or two sentences."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second: ask two or three clarifying questions. Input size. Sorted or not. Duplicates. Empty input. Can I use the same index twice. What if there is no solution. Output order. Character set if it's a string problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third: state a naive approach and its complexity. Nested loops. Brute force. O of n squared. Do not skip this. They want to see progression."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fourth: improve. Name the data structure. Hash map. Two pointers. Sliding window. Stack. Say why it wins on time or space."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fifth: walk a tiny example by hand. Not the whole code. Three or four steps. If you can't walk the example, you don't understand it yet."
+        },
+        {
+          "voice": "narrator",
+          "text": "Sixth: code. Keep narrating. Name variables with full words."
+        },
+        {
+          "voice": "narrator",
+          "text": "Seventh: edges. Empty. Single element. All equal. Negatives. Capacity one for design problems."
+        },
+        {
+          "voice": "narrator",
+          "text": "Eighth: complexity. Time and space. Auxiliary space separate from input."
+        },
+        {
+          "voice": "narrator",
+          "text": "That's the whole ritual. Eight steps. If you get stuck, say the two approaches you're torn between and ask which direction is more productive. Their blog literally says you can ask for help when stuck."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now a cold open. I'm going to name a fake problem. You do not get the answer. You run the ritual mouth only."
+        },
+        {
+          "voice": "narrator",
+          "text": "Problem: given an array of integers, return true if any value appears at least twice."
+        },
+        {
+          "voice": "narrator",
+          "text": "I'll count to ten. In that time, out loud: restate, one clarifier, naive idea with Big-O, and the structure you'd reach for next. One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model answer, short. Restate: detect any duplicate value. Clarifier: empty array false, all unique false. Naive: nested compare every pair, O of n squared. Better: hash set of seen values, O of n time, O of n space. If you said something in that ballpark, good. If you froze, rewind this block until your mouth moves first."
+        },
+        {
+          "voice": "narrator",
+          "text": "Morning drill card — re-speak this every day until it is boring."
+        },
+        {
+          "voice": "narrator",
+          "text": "Clarify. Naive. Structure. Example. Code. Edges. Complexity. No AI. Thirty to forty minutes for a medium."
+        },
+        {
+          "voice": "narrator",
+          "text": "Each deep episode in this playlist pairs with a lesson on the tutor app. Options-only questions on the same problem. After you listen, open the app and answer cold. The audio builds the script. The app builds the pattern recognition."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is also a Coding YouTube playlist — short NeetCode walkthroughs that fit pure audio. Use them as a second voice of the same pattern, not as a substitute for saying it yourself."
+        },
+        {
+          "voice": "narrator",
+          "text": "Tomorrow's episode is Two Sum, end to end. Same problem you'll drill in the app. You will attempt before you hear the solution."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause me for a second and say out loud: clarify, naive, optimize, example, code, edges, complexity. No AI. Thirty to forty minutes for a medium."
+        },
+        {
+          "voice": "narrator",
+          "text": "That's the ritual. See you in Two Sum."
+        }
+      ]
+    }
+  ],
+  "audio": "existing"
+}

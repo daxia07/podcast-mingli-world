@@ -8,7 +8,12 @@ Usage:
   python3 generate_airwallex_speeches.py --all --publish
 """
 
+
 from __future__ import annotations
+
+# Frozen — see scripts/_legacy_guard.py. New episodes: build_episode.py
+from _legacy_guard import warn_legacy
+warn_legacy(__file__)
 
 import argparse
 import json
@@ -21,6 +26,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 
 from r2_utils import get_json, upload, upload_bytes, upload_json
 from tts import get_duration_str, synthesize
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
