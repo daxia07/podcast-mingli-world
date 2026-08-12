@@ -179,6 +179,9 @@
     var ordered = [];
 
     playlists.forEach(function (p) {
+      // Archived shows stay in the manifest (and in the RSS feed) but are
+      // hidden everywhere in the app.
+      if (p.archived) return;
       var existing = SHOW_META[p.id] || {};
       SHOW_META[p.id] = {
         title: p.title || existing.title || p.id,
@@ -333,7 +336,7 @@
           return !ep.archived && epShowId(ep) === "system-design";
         });
       }
-      if (!eps.length && !SHOW_META[id]) return;
+      if (!eps.length) return;
       var m = showMeta(id);
       var pl = playlists.filter(function (p) {
         return p.id === id;
@@ -363,7 +366,7 @@
     order.forEach(function (id) {
       if (id === "coding-prep" || id === "coding-youtube" || id === "system-design") return;
       var eps = episodesForShow(id);
-      if (!eps.length && !SHOW_META[id]) return;
+      if (!eps.length) return;
       var m = showMeta(id);
       var title = (playlists.filter(function (p) {
         return p.id === id;
@@ -480,7 +483,7 @@
     var el = document.getElementById("libraryList");
     if (mode === "finished") {
       var list = episodes.filter(function (e) {
-        return finished[String(e.id)];
+        return finished[String(e.id)] && !e.archived;
       });
       renderEpList(el, list);
       return;
@@ -564,6 +567,7 @@
       return;
     }
     var hits = episodes.filter(function (ep) {
+      if (ep.archived) return false;
       var blob = (
         ep.title +
         " " +

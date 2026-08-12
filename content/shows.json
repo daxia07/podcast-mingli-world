@@ -43,8 +43,9 @@
       "mono": "AW",
       "icon": "🎯",
       "default_template": "concept-explainer",
-      "order": 5,
-      "featured": false
+      "order": 900,
+      "featured": false,
+      "archived": true
     },
     "airwallex-domain": {
       "title": "Airwallex Domain — System Design",
@@ -52,8 +53,9 @@
       "mono": "AX",
       "icon": "🏦",
       "default_template": "mock-interview-2voice",
-      "order": 6,
-      "featured": false
+      "order": 900,
+      "featured": false,
+      "archived": true
     },
     "sd-youtube": {
       "title": "YouTube Expert Interviews",
@@ -61,7 +63,7 @@
       "mono": "SY",
       "icon": "📺",
       "default_template": "youtube-derived",
-      "order": 7,
+      "order": 5,
       "featured": false
     },
     "interview-prep": {
@@ -70,8 +72,9 @@
       "mono": "EN",
       "icon": "",
       "default_template": "daily-english",
-      "order": 8,
-      "featured": false
+      "order": 900,
+      "featured": false,
+      "archived": true
     },
     "interview-support": {
       "title": "Interview Support — Estimation & Q&A",
@@ -79,7 +82,7 @@
       "mono": "QA",
       "icon": "",
       "default_template": "estimation-drill",
-      "order": 9,
+      "order": 6,
       "featured": false
     },
     "behavioral-youtube": {
@@ -88,16 +91,7 @@
       "mono": "BY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 10,
-      "featured": false
-    },
-    "behavioral-interview": {
-      "title": "Behavioral Interview Practice",
-      "description": "Behavioural interview practice with STAR answers.",
-      "mono": "BH",
-      "icon": "🎯",
-      "default_template": "mock-interview-2voice",
-      "order": 11,
+      "order": 7,
       "featured": false
     },
     "infosec-youtube": {
@@ -106,16 +100,7 @@
       "mono": "IY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 12,
-      "featured": false
-    },
-    "infosec-interview": {
-      "title": "Info Security Interview Prep",
-      "description": "Security topics as interview answers.",
-      "mono": "IS",
-      "icon": "🔒",
-      "default_template": "concept-explainer",
-      "order": 13,
+      "order": 8,
       "featured": false
     },
     "aws-ai-practitioner": {

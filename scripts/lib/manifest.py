@@ -120,8 +120,30 @@ def apply_shows(manifest: dict, shows: dict) -> dict:
             "order": show.get("order", 999),
             "featured": bool(show.get("featured")),
             "default_template": show.get("default_template", ""),
+            "archived": bool(show.get("archived")),
             "episode_ids": existing.get("episode_ids", []),
         }
+
+    # A show removed from shows.json should disappear from the manifest too,
+    # otherwise deleted shows linger as empty tiles in the app.
+    known = set(shows.get("shows", {}))
+    for stale in [pid for pid in playlists if pid not in known]:
+        del playlists[stale]
+
+    # Episodes of an archived show are archived with it — the app filters on the
+    # episode flag in search and library, not just on the show.
+    archived_ids = {
+        eid
+        for pid, pl in playlists.items()
+        if pl.get("archived")
+        for eid in pl.get("episode_ids", [])
+    }
+    for ep in manifest.get("episodes", []):
+        if ep.get("id") in archived_ids:
+            ep["archived"] = True
+        elif ep.get("archived"):
+            del ep["archived"]
+
     return manifest
 
 

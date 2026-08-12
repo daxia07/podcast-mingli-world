@@ -10,8 +10,4 @@ node_modules/
 .deveco/
 feedback/
 episodes/
-.wrangler
-data/
-feedback/
-.vercel
 .env*

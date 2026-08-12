@@ -489,7 +489,8 @@
       "tip": "Cross-Border Payments",
       "file_size_bytes": 15868460,
       "source": "legacy",
-      "slug": "mock-v2-mock-cross-border-payments"
+      "slug": "mock-v2-mock-cross-border-payments",
+      "archived": true
     },
     {
       "id": 50,
@@ -554,7 +555,8 @@
       "tip": "FX & Multi-Currency Ledger",
       "file_size_bytes": 13143212,
       "source": "legacy",
-      "slug": "mock-v2-mock-fx-ledger"
+      "slug": "mock-v2-mock-fx-ledger",
+      "archived": true
     },
     {
       "id": 55,
@@ -736,7 +738,8 @@
       "pattern": "mock-interview",
       "tip": "Distributed Wallet (Auticuro)",
       "source": "legacy",
-      "slug": "mock-v2-mock-distributed-wallet"
+      "slug": "mock-v2-mock-distributed-wallet",
+      "archived": true
     },
     {
       "id": 69,
@@ -749,7 +752,8 @@
       "pattern": "mock-interview",
       "tip": "AI Agent Platform (AgentOS)",
       "source": "legacy",
-      "slug": "mock-v2-mock-ai-agent-platform"
+      "slug": "mock-v2-mock-ai-agent-platform",
+      "archived": true
     },
     {
       "id": 70,
@@ -762,7 +766,8 @@
       "pattern": "mock-interview",
       "tip": "Security Automation Platform",
       "source": "legacy",
-      "slug": "mock-v2-mock-security-automation"
+      "slug": "mock-v2-mock-security-automation",
+      "archived": true
     },
     {
       "id": 71,
@@ -801,7 +806,8 @@
       "pattern": "mock-interview",
       "tip": "Global Treasury Network",
       "source": "legacy",
-      "slug": "mock-v2-mock-global-treasury"
+      "slug": "mock-v2-mock-global-treasury",
+      "archived": true
     },
     {
       "id": 74,
@@ -814,7 +820,8 @@
       "pattern": "mock-interview",
       "tip": "Feature Store / ML Infrastructure",
       "source": "legacy",
-      "slug": "mock-v2-mock-feature-store"
+      "slug": "mock-v2-mock-feature-store",
+      "archived": true
     },
     {
       "id": 75,
@@ -827,7 +834,8 @@
       "pattern": "mock-interview",
       "tip": "Fraud Detection System",
       "source": "legacy",
-      "slug": "mock-v2-mock-fraud-detection"
+      "slug": "mock-v2-mock-fraud-detection",
+      "archived": true
     },
     {
       "id": 76,
@@ -860,7 +868,8 @@
       "file_url": "https://podcast.mingli.world/episodes/sd-multi-region.mp3",
       "file_size_bytes": 12685100,
       "source": "legacy",
-      "slug": "sd-multi-region"
+      "slug": "sd-multi-region",
+      "archived": true
     },
     {
       "id": 79,
@@ -871,7 +880,8 @@
       "file_url": "https://podcast.mingli.world/episodes/sd-fx-pricing.mp3",
       "file_size_bytes": 11498156,
       "source": "legacy",
-      "slug": "sd-fx-pricing"
+      "slug": "sd-fx-pricing",
+      "archived": true
     },
     {
       "id": 80,
@@ -882,7 +892,8 @@
       "file_url": "https://podcast.mingli.world/episodes/sd-idempotent-api.mp3",
       "file_size_bytes": 9560492,
       "source": "legacy",
-      "slug": "sd-idempotent-api"
+      "slug": "sd-idempotent-api",
+      "archived": true
     },
     {
       "id": 81,
@@ -893,7 +904,8 @@
       "file_url": "https://podcast.mingli.world/episodes/sd-kyc-onboarding.mp3",
       "file_size_bytes": 9623276,
       "source": "legacy",
-      "slug": "sd-kyc-onboarding"
+      "slug": "sd-kyc-onboarding",
+      "archived": true
     },
     {
       "id": 82,
@@ -906,7 +918,8 @@
       "pattern": "mock-interview",
       "tip": "Multi-Currency Wallet & Double-Entry Ledger",
       "source": "legacy",
-      "slug": "mock-v2-mock-wallet-ledger"
+      "slug": "mock-v2-mock-wallet-ledger",
+      "archived": true
     },
     {
       "id": 83,
@@ -919,7 +932,8 @@
       "pattern": "mock-interview",
       "tip": "Card Authorization & Issuing Platform",
       "source": "legacy",
-      "slug": "mock-v2-mock-card-issuing"
+      "slug": "mock-v2-mock-card-issuing",
+      "archived": true
     },
     {
       "id": 84,
@@ -932,7 +946,8 @@
       "pattern": "mock-interview",
       "tip": "Bank & Partner Reconciliation",
       "source": "legacy",
-      "slug": "mock-v2-mock-reconciliation"
+      "slug": "mock-v2-mock-reconciliation",
+      "archived": true
     },
     {
       "id": 85,
@@ -945,7 +960,8 @@
       "pattern": "mock-interview",
       "tip": "Bulk Payouts & Batch Payments",
       "source": "legacy",
-      "slug": "mock-v2-mock-bulk-payouts"
+      "slug": "mock-v2-mock-bulk-payouts",
+      "archived": true
     },
     {
       "id": 86,
@@ -958,7 +974,8 @@
       "pattern": "mock-interview",
       "tip": "Webhook & Event Delivery Platform",
       "source": "legacy",
-      "slug": "mock-v2-mock-webhook-delivery"
+      "slug": "mock-v2-mock-webhook-delivery",
+      "archived": true
     },
     {
       "id": 87,
@@ -971,7 +988,8 @@
       "pattern": "mock-interview",
       "tip": "Financial AI Assistant / AgentOS",
       "source": "legacy",
-      "slug": "mock-v2-mock-financial-ai-assistant"
+      "slug": "mock-v2-mock-financial-ai-assistant",
+      "archived": true
     },
     {
       "id": 88,
@@ -1134,7 +1152,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q4w.mp3",
       "source": "tts",
-      "slug": "awx-speech-q4w"
+      "slug": "awx-speech-q4w",
+      "archived": true
     },
     {
       "id": 201,
@@ -1153,7 +1172,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q4l.mp3",
       "source": "tts",
-      "slug": "awx-speech-q4l"
+      "slug": "awx-speech-q4l",
+      "archived": true
     },
     {
       "id": 202,
@@ -1172,7 +1192,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q1.mp3",
       "source": "tts",
-      "slug": "awx-speech-q1"
+      "slug": "awx-speech-q1",
+      "archived": true
     },
     {
       "id": 203,
@@ -1191,7 +1212,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q2.mp3",
       "source": "tts",
-      "slug": "awx-speech-q2"
+      "slug": "awx-speech-q2",
+      "archived": true
     },
     {
       "id": 204,
@@ -1210,7 +1232,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q9.mp3",
       "source": "tts",
-      "slug": "awx-speech-q9"
+      "slug": "awx-speech-q9",
+      "archived": true
     },
     {
       "id": 205,
@@ -1229,7 +1252,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q10.mp3",
       "source": "tts",
-      "slug": "awx-speech-q10"
+      "slug": "awx-speech-q10",
+      "archived": true
     },
     {
       "id": 206,
@@ -1248,7 +1272,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q7.mp3",
       "source": "tts",
-      "slug": "awx-speech-q7"
+      "slug": "awx-speech-q7",
+      "archived": true
     },
     {
       "id": 207,
@@ -1267,7 +1292,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q5.mp3",
       "source": "tts",
-      "slug": "awx-speech-q5"
+      "slug": "awx-speech-q5",
+      "archived": true
     },
     {
       "id": 208,
@@ -1286,7 +1312,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q3.mp3",
       "source": "tts",
-      "slug": "awx-speech-q3"
+      "slug": "awx-speech-q3",
+      "archived": true
     },
     {
       "id": 209,
@@ -1305,7 +1332,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q12.mp3",
       "source": "tts",
-      "slug": "awx-speech-q12"
+      "slug": "awx-speech-q12",
+      "archived": true
     },
     {
       "id": 210,
@@ -1324,7 +1352,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q11.mp3",
       "source": "tts",
-      "slug": "awx-speech-q11"
+      "slug": "awx-speech-q11",
+      "archived": true
     },
     {
       "id": 211,
@@ -1343,7 +1372,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q8.mp3",
       "source": "tts",
-      "slug": "awx-speech-q8"
+      "slug": "awx-speech-q8",
+      "archived": true
     },
     {
       "id": 212,
@@ -1362,7 +1392,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-q6.mp3",
       "source": "tts",
-      "slug": "awx-speech-q6"
+      "slug": "awx-speech-q6",
+      "archived": true
     },
     {
       "id": 213,
@@ -1381,7 +1412,8 @@
       "words": 0,
       "file_url": "https://podcast.mingli.world/episodes/awx-speech-job_scheduler.mp3",
       "source": "tts",
-      "slug": "awx-speech-job_scheduler"
+      "slug": "awx-speech-job_scheduler",
+      "archived": true
     },
     {
       "id": 300,
@@ -3129,6 +3161,7 @@
       "order": 2,
       "featured": true,
       "default_template": "concept-explainer",
+      "archived": false,
       "episode_ids": [
         87,
         86,
@@ -3162,6 +3195,7 @@
       "order": 4,
       "featured": false,
       "default_template": "mock-interview-2voice",
+      "archived": false,
       "episode_ids": [
         49,
         50,
@@ -3202,9 +3236,10 @@
       "description": "Curated video-derived design episodes.",
       "icon": "📺",
       "mono": "SY",
-      "order": 7,
+      "order": 5,
       "featured": false,
       "default_template": "youtube-derived",
+      "archived": false,
       "episode_ids": [
         58,
         59,
@@ -3218,9 +3253,10 @@
       "description": "Domain-specific mock interviews.",
       "icon": "🏦",
       "mono": "AX",
-      "order": 6,
+      "order": 900,
       "featured": false,
       "default_template": "mock-interview-2voice",
+      "archived": true,
       "episode_ids": [
         49,
         54,
@@ -3247,9 +3283,10 @@
       "description": "Daily English patterns and frameworks.",
       "icon": "",
       "mono": "EN",
-      "order": 8,
+      "order": 900,
       "featured": false,
       "default_template": "daily-english",
+      "archived": true,
       "episode_ids": [
         49,
         82,
@@ -3270,9 +3307,10 @@
       "description": "Self-intro, estimation and Q&A practice.",
       "icon": "",
       "mono": "QA",
-      "order": 9,
+      "order": 6,
       "featured": false,
       "default_template": "estimation-drill",
+      "archived": false,
       "episode_ids": [
         76,
         77
@@ -3283,9 +3321,10 @@
       "description": "Agenda monologues for Airwallex system design prep.",
       "icon": "🎯",
       "mono": "AW",
-      "order": 5,
+      "order": 900,
       "featured": false,
       "default_template": "concept-explainer",
+      "archived": true,
       "episode_ids": [
         200,
         201,
@@ -3311,6 +3350,7 @@
       "order": 0,
       "featured": true,
       "default_template": "think-aloud-coding",
+      "archived": false,
       "episode_ids": [
         300,
         301,
@@ -3368,6 +3408,7 @@
       "order": 1,
       "featured": true,
       "default_template": "youtube-derived",
+      "archived": false,
       "episode_ids": [
         401,
         402,
@@ -3382,34 +3423,15 @@
         411
       ]
     },
-    "behavioral-interview": {
-      "title": "Behavioral Interview Practice",
-      "description": "Behavioural interview practice with STAR answers.",
-      "icon": "🎯",
-      "mono": "BH",
-      "order": 11,
-      "featured": false,
-      "default_template": "mock-interview-2voice",
-      "episode_ids": []
-    },
-    "infosec-interview": {
-      "title": "Info Security Interview Prep",
-      "description": "Security topics as interview answers.",
-      "icon": "🔒",
-      "mono": "IS",
-      "order": 13,
-      "featured": false,
-      "default_template": "concept-explainer",
-      "episode_ids": []
-    },
     "behavioral-youtube": {
       "title": "Behavioral Interview — Expert Audio",
       "description": "Behavioural interview material from expert audio.",
       "icon": "🎬",
       "mono": "BY",
-      "order": 10,
+      "order": 7,
       "featured": false,
       "default_template": "youtube-derived",
+      "archived": false,
       "episode_ids": [
         88,
         89,
@@ -3423,9 +3445,10 @@
       "description": "Information security explained by practitioners.",
       "icon": "🎬",
       "mono": "IY",
-      "order": 12,
+      "order": 8,
       "featured": false,
       "default_template": "youtube-derived",
+      "archived": false,
       "episode_ids": [
         93,
         94,
@@ -3441,6 +3464,7 @@
       "order": 3,
       "featured": true,
       "default_template": "cert-prep",
+      "archived": false,
       "episode_ids": [
         323,
         324,
