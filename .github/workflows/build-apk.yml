@@ -1,0 +1,113 @@
+name: Build APK
+
+# Wraps the PWA as a Trusted Web Activity and produces a signed, sideloadable
+# APK. Runs in CI because the runners already ship a JDK and the Android SDK —
+# installing that toolchain locally is roughly half a gigabyte of download.
+#
+# No Play Store and no developer account are involved. The APK installs directly
+# on a phone; see docs/ANDROID-APP.md.
+#
+#   gh workflow run build-apk.yml
+#
+# The APK lands as a build artifact on the run, and is also published to
+# /app/mingli.apk on the site so a phone can download it directly.
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Also upload the APK to R2 so the phone can download it'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Restore the signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "::error::ANDROID_KEYSTORE_B64 secret is not set."
+            echo "Generate one and store it — see docs/ANDROID-APP.md."
+            exit 1
+          fi
+          mkdir -p .keys
+          echo "$KEYSTORE_B64" | base64 -d > .keys/mingli.keystore
+          keytool -list -v -keystore .keys/mingli.keystore -alias mingli \
+            -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" | grep "SHA256:"
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      # Bubblewrap prompts for these on first run; pre-seeding the config keeps
+      # the whole build non-interactive.
+      - name: Point Bubblewrap at the preinstalled toolchain
+        run: |
+          mkdir -p ~/.bubblewrap
+          printf '{"jdkPath":"%s","androidSdkPath":"%s"}\n' "$JAVA_HOME" "$ANDROID_HOME" \
+            > ~/.bubblewrap/config.json
+          cat ~/.bubblewrap/config.json
+
+      - name: Build the APK
+        working-directory: android
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: bubblewrap build --skipPwaValidation
+
+      - name: Verify the APK
+        working-directory: android
+        run: |
+          set -e
+          APK=app-release-signed.apk
+          test -f "$APK" || { echo "::error::no APK produced"; exit 1; }
+          ls -la "$APK"
+
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          echo "using build-tools: $BT"
+
+          echo "--- signature ---"
+          "$BT/apksigner" verify --print-certs "$APK"
+
+          echo "--- manifest ---"
+          "$BT/aapt2" dump badging "$APK" | grep -E "^package|application-label|sdkVersion|targetSdkVersion"
+
+          echo "--- the fingerprint below must match /.well-known/assetlinks.json ---"
+          "$BT/apksigner" verify --print-certs "$APK" | grep -i "SHA-256 digest" || true
+          curl -s https://podcast.mingli.world/.well-known/assetlinks.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mingli-podcast-apk
+          path: android/app-release-signed.apk
+          retention-days: 30
+
+      - name: Publish the APK to R2
+        if: ${{ inputs.publish }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
+        run: |
+          npx wrangler@4 r2 object put \
+            podcast-mingli-world/app/mingli.apk \
+            --file android/app-release-signed.apk \
+            --content-type application/vnd.android.package-archive \
+            --remote
+          echo "Download on the phone: https://podcast.mingli.world/app/mingli.apk"

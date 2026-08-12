@@ -192,6 +192,9 @@ export async function onRequest(context) {
     '/transcripts/',
     '/chapters/',
     '/healthz',
+    // The phone downloads the APK with no session, and Android's package
+    // installer re-fetches it without cookies.
+    '/app/',
   ];
   const isPublic = PUBLIC_PATHS.some(p => pathname === p || pathname.startsWith(p));
   if (isPublic) {

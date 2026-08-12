@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "world.mingli.podcast",
+      "sha256_cert_fingerprints": [
+        "99:F0:78:DF:47:8D:D3:13:5B:9F:36:D7:0C:27:3D:84:46:F1:AD:A1:FE:81:F8:AA:98:1C:3E:C5:F6:93:78:32"
+      ]
+    }
+  }
+]
