@@ -2728,6 +2728,159 @@
       "slug": "coding-prep-mock-coin-change"
     },
     {
+      "id": 353,
+      "slug": "agentic-01-the-map",
+      "title": "Following the Money 1 — The Map",
+      "description": "What the agentic AI market actually is in numbers, and the single gap that explains most of the disagreement about it.",
+      "duration": "5:12",
+      "file_size_bytes": 2498541,
+      "file_url": "https://podcast.mingli.world/episodes/agentic-01-the-map.mp3?v=296652af",
+      "filename": "agentic-01-the-map.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "agentic ai",
+        "market size",
+        "enterprise adoption"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "agentic-stats-2026",
+          "url": "https://www.digitalapplied.com/blog/state-of-ai-agents-2026-200-data-points",
+          "title": "State of AI Agents 2026",
+          "used_for": [
+            "adoption",
+            "production gap",
+            "vendor revenue"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "agentmarketcap-2026",
+          "url": "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+          "title": "The Agentic Funding Shift — AgentMarketCap, April 2026",
+          "used_for": [
+            "venture funding"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "hyperscaler-capex-2026",
+          "url": "https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html",
+          "title": "AI Capex Cycle 2026 — hyperscaler buildout analysis",
+          "used_for": [
+            "capex figures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 354,
+      "slug": "agentic-02-the-bear-case",
+      "title": "Following the Money 2 — The Bear Case",
+      "description": "Depreciation schedules, off-balance-sheet leases, and circular financing: the three arguments the skeptics actually make.",
+      "duration": "6:04",
+      "file_size_bytes": 2917101,
+      "file_url": "https://podcast.mingli.world/episodes/agentic-02-the-bear-case.mp3?v=4ce952fe",
+      "filename": "agentic-02-the-bear-case.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "ai bubble",
+        "capex",
+        "depreciation",
+        "circular financing"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "hyperscaler-capex-2026",
+          "url": "https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html",
+          "title": "AI Capex Cycle 2026 — hyperscaler buildout analysis",
+          "used_for": [
+            "capex figures"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "depreciation-wall",
+          "url": "https://siliconanalysts.com/analysis/hyperscaler-ai-capex-depreciation-wall-2026",
+          "title": "Hyperscaler AI Capex, D&A Lag, Debt Wave — Silicon Analysts",
+          "used_for": [
+            "depreciation",
+            "lease commitments"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "agentic-stats-2026",
+          "url": "https://www.digitalapplied.com/blog/state-of-ai-agents-2026-200-data-points",
+          "title": "State of AI Agents 2026",
+          "used_for": [
+            "adoption",
+            "production gap",
+            "vendor revenue"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 355,
+      "slug": "agentic-03-where-value-accrues",
+      "title": "Following the Money 3 — Where Value Accrues",
+      "description": "Model, infrastructure, or application: which layer keeps the margin, and what a real moat looks like when everyone can call the same API.",
+      "duration": "5:35",
+      "file_size_bytes": 2681709,
+      "file_url": "https://podcast.mingli.world/episodes/agentic-03-where-value-accrues.mp3?v=0cb7eadd",
+      "filename": "agentic-03-where-value-accrues.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "moats",
+        "infrastructure",
+        "vertical saas",
+        "defensibility"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "ai-moats-2026",
+          "url": "https://www.valtorian.com/blog/ai-moats-2026",
+          "title": "AI Moats in 2026: What Still Defends Your Product",
+          "used_for": [
+            "defensibility"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "agent-infra-2026",
+          "url": "https://www.tgvp.vc/releases/tgvp-report-ai-agent-infrastructure-in-2026",
+          "title": "AI Agent Infrastructure in 2026 — TGVP",
+          "used_for": [
+            "infrastructure layer"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "agentic-stats-2026",
+          "url": "https://www.digitalapplied.com/blog/state-of-ai-agents-2026-200-data-points",
+          "title": "State of AI Agents 2026",
+          "used_for": [
+            "adoption",
+            "production gap",
+            "vendor revenue"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -3484,7 +3637,11 @@
       "featured": true,
       "default_template": "market-briefing",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        353,
+        354,
+        355
+      ]
     }
   }
 }
