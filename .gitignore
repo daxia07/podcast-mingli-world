@@ -8,7 +8,7 @@ node_modules/
 .wrangler/
 .vercel/
 .deveco/
-feedback/
-episodes/
+/feedback/
+/episodes/
 .env*
 .keys/
