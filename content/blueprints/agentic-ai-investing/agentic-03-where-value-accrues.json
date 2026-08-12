@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "agentic-03-where-value-accrues",
+  "show": "agentic-ai-investing",
+  "template": "market-briefing",
+  "title": "Following the Money 3 — Where Value Accrues",
+  "description": "Model, infrastructure, or application: which layer keeps the margin, and what a real moat looks like when everyone can call the same API.",
+  "keywords": [
+    "moats",
+    "infrastructure",
+    "vertical saas",
+    "defensibility"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "frame",
+      "title": "The question",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "If agents are the next application layer, the money question is which layer keeps the margin. There are three candidates: the models, the infrastructure agents run on, and the applications people actually buy."
+        },
+        {
+          "voice": "narrator",
+          "text": "The intuitive answer is the models, and I think the intuitive answer is probably wrong."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "What the numbers say",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Two data points frame it. Anthropic reported annual recurring revenue of roughly fourteen billion dollars in early twenty twenty six, up from about one billion in late twenty twenty four, and raised at a three hundred and eighty billion dollar valuation. So the model layer is not small and is not slowing."
+        },
+        {
+          "voice": "narrator",
+          "text": "But look at the application layer too. Salesforce disclosed Agentforce at roughly eight hundred million dollars of annual recurring revenue, up about one hundred and sixty nine percent year on year. That is a product sold into existing enterprise relationships, running on models it does not own."
+        },
+        {
+          "voice": "narrator",
+          "text": "Meanwhile every major cloud has moved into the layer between the two. Amazon shipped Bedrock AgentCore with managed memory, gateway, identity, runtime, observability and policy enforcement. Microsoft added long-term memory to its Foundry agent service. Google rolled Model Context Protocol support across Vertex. None of that is model research. All of it is the plumbing that makes an agent deployable."
+        }
+      ]
+    },
+    {
+      "id": "mechanism",
+      "title": "Why it works this way",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here is the structural argument, and it is the reusable part of this episode."
+        },
+        {
+          "voice": "narrator",
+          "text": "Model access is not a moat, because your competitor can call the same endpoint the same afternoon. Anything available to everyone at the same price is a cost of doing business, not an advantage. That is not a criticism of the labs — they are extraordinary businesses — it is a statement about what their customers can defend."
+        },
+        {
+          "voice": "narrator",
+          "text": "So what does defend? Three things keep showing up. Proprietary data that improves with use, which a competitor cannot buy. Deep workflow fit, where the product encodes how a specific industry actually operates, in its integrations and its edge cases and its compliance behaviour. And switching cost, where replacing the thing means re-training people and re-wiring systems."
+        },
+        {
+          "voice": "narrator",
+          "text": "Notice that all three are old-fashioned. None of them are about AI. AI amplifies an existing moat far more reliably than it creates a new one, which is why incumbent vertical software has done better through this than most people predicted."
+        },
+        {
+          "voice": "narrator",
+          "text": "The infrastructure layer earns its position differently. It wins by being where the agent runs — memory, identity, permissions, observability. Whoever controls the environment an agent operates in has a durable position, because moving an agent's runtime is much harder than switching its model."
+        },
+        {
+          "voice": "narrator",
+          "text": "Make that concrete. Picture two companies selling an agent that handles insurance claims. One wraps a foundation model in a clean interface. The other has fifteen years of claims data, integrations into the six systems every insurer actually runs, and knows which edge cases trigger a regulator."
+        },
+        {
+          "voice": "narrator",
+          "text": "Both demo about equally well. The first can be replicated in a quarter by anyone with the same API key. The second cannot be replicated at all without the data and the integrations, and its agent gets measurably better every month because every resolved claim is training signal its competitor never sees. Same underlying model. Completely different business."
+        }
+      ]
+    },
+    {
+      "id": "bear",
+      "title": "The other side",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The counter-argument is that this is a snapshot, and every layer is trying to eat the others."
+        },
+        {
+          "voice": "narrator",
+          "text": "The labs are moving up the stack into applications, which is exactly what you would do if you believed the application layer captures the value. The clouds are moving into the agent runtime. The application vendors are building their own orchestration to avoid depending on either."
+        },
+        {
+          "voice": "narrator",
+          "text": "And there is a genuine unresolved question about the orchestration frameworks specifically. The popular agent frameworks are widely used and mostly open source, and it is not settled whether that position converts into revenue or stays a commodity that the clouds absorb. Being essential and being profitable are different things."
+        },
+        {
+          "voice": "narrator",
+          "text": "So treat the three-layer model as a lens rather than a map. The layers are real; the boundaries are moving."
+        }
+      ]
+    },
+    {
+      "id": "signals",
+      "title": "What to watch",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Three signals."
+        },
+        {
+          "voice": "narrator",
+          "text": "One. Whether application companies disclose gross margin separately for AI features. Thin margins mean they are passing inference costs through and have no pricing power. Healthy margins mean they are selling an outcome, not a model."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two. Whether the labs' revenue mix shifts from API to first-party products. That tells you where they think the value is, and they have better information than you do."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three. Whether agent runtime becomes a stated procurement decision. The moment enterprises evaluate agent infrastructure the way they evaluate a database, that layer has become durable."
+        },
+        {
+          "voice": "narrator",
+          "text": "And one question worth asking about any agentic product, which cuts through most pitches: what does this company have that a well-funded team with the same model access could not rebuild in six months? If the honest answer is nothing, you are looking at a feature, not a company."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The one idea: everyone can rent the same intelligence, so intelligence is not the moat. Data you uniquely have, workflows you uniquely fit, and switching costs you have earned are the moat — same as they were before any of this."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the series. Three episodes, and the point of all three is the same: get the mechanism, and you can price the next headline yourself."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "web",
+      "id": "ai-moats-2026",
+      "url": "https://www.valtorian.com/blog/ai-moats-2026",
+      "title": "AI Moats in 2026: What Still Defends Your Product",
+      "used_for": [
+        "defensibility"
+      ]
+    },
+    {
+      "type": "web",
+      "id": "agent-infra-2026",
+      "url": "https://www.tgvp.vc/releases/tgvp-report-ai-agent-infrastructure-in-2026",
+      "title": "AI Agent Infrastructure in 2026 — TGVP",
+      "used_for": [
+        "infrastructure layer"
+      ]
+    },
+    {
+      "type": "web",
+      "id": "agentic-stats-2026",
+      "url": "https://www.digitalapplied.com/blog/state-of-ai-agents-2026-200-data-points",
+      "title": "State of AI Agents 2026",
+      "used_for": [
+        "adoption",
+        "production gap",
+        "vendor revenue"
+      ]
+    }
+  ]
+}

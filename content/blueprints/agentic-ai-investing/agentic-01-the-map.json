@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "agentic-01-the-map",
+  "show": "agentic-ai-investing",
+  "template": "market-briefing",
+  "title": "Following the Money 1 — The Map",
+  "description": "What the agentic AI market actually is in numbers, and the single gap that explains most of the disagreement about it.",
+  "keywords": [
+    "agentic ai",
+    "market size",
+    "enterprise adoption"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "frame",
+      "title": "The question",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This series is about understanding a market while it is still being built. Not about what to buy. I am not qualified to tell you that and I am not going to try. What I want, by the end, is that you can read any headline about agentic AI and judge it yourself."
+        },
+        {
+          "voice": "narrator",
+          "text": "Start with the honest position. Almost every number in this space is contested. Different analysts put the twenty twenty six agentic AI market anywhere from about seven billion to about eleven billion dollars, because they draw the boundary in different places. When someone quotes you a market size with no definition attached, that is a marketing number, not a measurement."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "What the numbers say",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here is what is reasonably solid. Venture funding into agentic AI companies was about six point four billion dollars across twenty twenty five, the largest year on record for the category. Through April twenty twenty six it had already reached about two point seven billion, against roughly one point one billion in the same window a year earlier."
+        },
+        {
+          "voice": "narrator",
+          "text": "But the shape changed more than the total. Average round size for agentic startups closing in late twenty twenty five and early twenty twenty six was about one hundred and fifty five million dollars, roughly double the eighty two million average of the first half of twenty twenty five. Fewer companies, much bigger cheques. That is a market consolidating, not a market opening up."
+        },
+        {
+          "voice": "narrator",
+          "text": "On adoption, Gartner projects that forty percent of enterprise applications will include task-specific agents by the end of twenty twenty six, up from under five percent in twenty twenty five. That is the number you see in every vendor deck."
+        },
+        {
+          "voice": "narrator",
+          "text": "And here is the number you rarely see next to it. Roughly four in five enterprises have adopted AI agents in some form, but only about one in nine is running them in production. Hold those two together. Enormous adoption, tiny production deployment."
+        },
+        {
+          "voice": "narrator",
+          "text": "For scale against the infrastructure spend: Morgan Stanley estimates the five largest hyperscalers will spend around eight hundred billion dollars on capital expenditure in twenty twenty six, up from about two hundred and sixty billion in twenty twenty four. The entire agentic software market is roughly one percent of what is being spent on the infrastructure beneath it."
+        }
+      ]
+    },
+    {
+      "id": "mechanism",
+      "title": "Why it works this way",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "That gap between four in five and one in nine is the most useful thing in this episode, so let me explain what causes it rather than just quoting it."
+        },
+        {
+          "voice": "narrator",
+          "text": "A demo agent and a production agent are different products. A demo needs to work once, in front of a friendly audience, on a happy path. A production agent needs to work on the tenth thousand attempt, on inputs nobody anticipated, with an audit trail, inside a permission model, with a defined behaviour when it is unsure. Most of the engineering is in that second list, and none of it is in the demo."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the pilot succeeds and the rollout stalls. Not because the model got worse, but because the parts that were never built become load-bearing the moment real volume arrives. This is why enterprise AI has such a strange texture right now: genuine enthusiasm, genuine spending, and remarkably little in production."
+        },
+        {
+          "voice": "narrator",
+          "text": "Which gives you a lens for the whole sector. When you read that a company has some number of enterprise customers, the question is not how many. It is how many are in production, and what happens when the agent is wrong."
+        }
+      ]
+    },
+    {
+      "id": "bear",
+      "title": "The other side",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The strongest bear case on this specific point is not that agents do not work. It is that the production gap never closes at the speed the spending assumes."
+        },
+        {
+          "voice": "narrator",
+          "text": "The argument runs like this. The infrastructure is being built on a forecast of agent workloads that currently do not exist at scale. If the one in nine becomes one in three over several years rather than one in two within one year, then a large amount of capacity was built early against revenue that arrives late, or somewhere else, or to someone else."
+        },
+        {
+          "voice": "narrator",
+          "text": "The honest counter is that this is how most infrastructure build-outs have gone, including ones that turned out to be correct. Capacity ahead of demand is not automatically a mistake. It is only a mistake if the demand does not arrive before the assets have to be paid for. That timing question is the whole argument, and we spend a full episode on it later in this series."
+        }
+      ]
+    },
+    {
+      "id": "signals",
+      "title": "What to watch",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Four things worth tracking, all public."
+        },
+        {
+          "voice": "narrator",
+          "text": "One. The production ratio. Whether that one in nine figure moves. It is the single cleanest measure of whether this is becoming real."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two. Round sizes against round counts. Rising money into falling company counts means consolidation, and consolidation late in a cycle usually means the winners are already visible."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three. Whether vendors start reporting agent revenue separately. Companies break out a line when it is good. Continued silence is information."
+        },
+        {
+          "voice": "narrator",
+          "text": "Four. The language shift from number of agents to number of tasks completed. The first is a vanity metric. The second is a business."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The one idea to carry: adoption and production are different numbers, and almost every disagreement about this market comes from quoting one while meaning the other."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: where the eight hundred billion dollars is actually going, and who is paying whom."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "web",
+      "id": "agentic-stats-2026",
+      "url": "https://www.digitalapplied.com/blog/state-of-ai-agents-2026-200-data-points",
+      "title": "State of AI Agents 2026",
+      "used_for": [
+        "adoption",
+        "production gap",
+        "vendor revenue"
+      ]
+    },
+    {
+      "type": "web",
+      "id": "agentmarketcap-2026",
+      "url": "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "title": "The Agentic Funding Shift — AgentMarketCap, April 2026",
+      "used_for": [
+        "venture funding"
+      ]
+    },
+    {
+      "type": "web",
+      "id": "hyperscaler-capex-2026",
+      "url": "https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html",
+      "title": "AI Capex Cycle 2026 — hyperscaler buildout analysis",
+      "used_for": [
+        "capex figures"
+      ]
+    }
+  ]
+}

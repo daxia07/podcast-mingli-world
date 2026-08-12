@@ -3192,7 +3192,7 @@
       "description": "Two-voice system design mocks.",
       "icon": "🎭",
       "mono": "MK",
-      "order": 4,
+      "order": 5,
       "featured": false,
       "default_template": "mock-interview-2voice",
       "archived": false,
@@ -3236,7 +3236,7 @@
       "description": "Curated video-derived design episodes.",
       "icon": "📺",
       "mono": "SY",
-      "order": 5,
+      "order": 6,
       "featured": false,
       "default_template": "youtube-derived",
       "archived": false,
@@ -3307,7 +3307,7 @@
       "description": "Self-intro, estimation and Q&A practice.",
       "icon": "",
       "mono": "QA",
-      "order": 6,
+      "order": 7,
       "featured": false,
       "default_template": "estimation-drill",
       "archived": false,
@@ -3428,7 +3428,7 @@
       "description": "Behavioural interview material from expert audio.",
       "icon": "🎬",
       "mono": "BY",
-      "order": 7,
+      "order": 8,
       "featured": false,
       "default_template": "youtube-derived",
       "archived": false,
@@ -3445,7 +3445,7 @@
       "description": "Information security explained by practitioners.",
       "icon": "🎬",
       "mono": "IY",
-      "order": 8,
+      "order": 9,
       "featured": false,
       "default_template": "youtube-derived",
       "archived": false,
@@ -3474,6 +3474,17 @@
         328,
         329
       ]
+    },
+    "agentic-ai-investing": {
+      "title": "Agentic AI — Following the Money",
+      "description": "Understanding the agentic AI build-out: the numbers, the mechanisms, the bear case, and how to read the next headline. Education, not investment advice.",
+      "icon": "📈",
+      "mono": "AG",
+      "order": 4,
+      "featured": true,
+      "default_template": "market-briefing",
+      "archived": false,
+      "episode_ids": []
     }
   }
 }

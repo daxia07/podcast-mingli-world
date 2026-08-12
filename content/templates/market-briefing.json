@@ -1,0 +1,58 @@
+{
+  "name": "market-briefing",
+  "title": "Market briefing",
+  "description": "Understanding a fast-moving market: what is happening, what the numbers say, what the bears say, and how to read the next headline yourself.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    6,
+    15
+  ],
+  "authoring_brief": "This is education, not advice. Never name a security to buy or sell, never predict a price, never tell the listener what to do with money. The goal is that they can read the next headline and judge it themselves.\n\nEvery number is sourced and dated, because figures in this space are stale within months and wildly inconsistent between analysts — say who published it and when, and say when two credible sources disagree. Always give the strongest version of the opposing case, not a strawman. Prefer a mechanism the listener can reuse over a fact they must memorise. Spell numbers out in words, and never write a slash between words.",
+  "sections": [
+    {
+      "id": "frame",
+      "title": "The question",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "What this episode answers, and the honest limits of the answer."
+    },
+    {
+      "id": "numbers",
+      "title": "What the numbers say",
+      "required": true,
+      "target_minutes": 4,
+      "factual": true,
+      "brief": "Sourced, dated figures. Flag disagreement between sources. Requires sources[]."
+    },
+    {
+      "id": "mechanism",
+      "title": "Why it works this way",
+      "required": true,
+      "target_minutes": 3.5,
+      "brief": "The structural reason behind the numbers — the reusable part."
+    },
+    {
+      "id": "bear",
+      "title": "The other side",
+      "required": true,
+      "target_minutes": 3,
+      "factual": true,
+      "brief": "The strongest opposing case, stated as its proponents would. Requires sources[]."
+    },
+    {
+      "id": "signals",
+      "title": "What to watch",
+      "required": true,
+      "target_minutes": 2.5,
+      "brief": "Concrete indicators that would confirm or break the thesis."
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "required": false,
+      "target_minutes": 1
+    }
+  ]
+}
