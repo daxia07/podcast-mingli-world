@@ -31,6 +31,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
       - name: Tests
         run: |
           node --test tests/*.mjs
@@ -46,6 +49,18 @@ jobs:
           # non-interactive shell. Identifier, not a secret (see api/r2.js).
           CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
         run: npx wrangler@4 pages deploy site --project-name podcast-landing --branch main
+
+      # R2 is what the app reads. Editing the committed manifest without a
+      # publish (archiving a show, renaming one) would otherwise never reach it.
+      - name: Sync the manifest to R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
+          BASE_URL: https://podcast.mingli.world
+        run: |
+          [ -L data ] && rm -f data
+          mkdir -p data
+          python3 scripts/sync_manifest.py
 
       - name: Verify the live site
         run: |
