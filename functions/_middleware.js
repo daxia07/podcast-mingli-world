@@ -22,6 +22,14 @@ const LOGIN_HTML = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,maximum-scale=1">
 <meta name="theme-color" content="#f7f6f3">
 <title>Mingli — Sign in</title>
+<!-- The site is password-gated, so an uninstalled visitor lands here first.
+     Without the manifest on this page Chrome offers no "Install app" option and
+     the only route to installing is to log in first, which is a confusing dead
+     end. Icons are public paths, so they load pre-auth. -->
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/artwork-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mingli">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{
