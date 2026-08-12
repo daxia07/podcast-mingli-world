@@ -60,10 +60,29 @@ jobs:
       # the whole build non-interactive.
       - name: Point Bubblewrap at the preinstalled toolchain
         run: |
+          SDK="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+          echo "SDK root: $SDK"
+          ls "$SDK"
+          echo "--- what bubblewrap looks for ---"
+          ls "$SDK/cmdline-tools" 2>/dev/null || echo "  no cmdline-tools"
+          ls "$SDK/tools/bin" 2>/dev/null || echo "  no tools/bin"
+          ls "$SDK/build-tools" 2>/dev/null || echo "  no build-tools"
+
+          # Bubblewrap expects the legacy layout with tools/bin/sdkmanager.
+          # The runners ship cmdline-tools/latest instead, so bridge the two.
+          if [ ! -f "$SDK/tools/bin/sdkmanager" ] && [ -f "$SDK/cmdline-tools/latest/bin/sdkmanager" ]; then
+            mkdir -p "$SDK/tools"
+            ln -sfn "$SDK/cmdline-tools/latest/bin" "$SDK/tools/bin"
+            ln -sfn "$SDK/cmdline-tools/latest/lib" "$SDK/tools/lib"
+            echo "  bridged cmdline-tools/latest -> tools/"
+          fi
+
           mkdir -p ~/.bubblewrap
-          printf '{"jdkPath":"%s","androidSdkPath":"%s"}\n' "$JAVA_HOME" "$ANDROID_HOME" \
+          printf '{"jdkPath":"%s","androidSdkPath":"%s"}\n' "$JAVA_HOME" "$SDK" \
             > ~/.bubblewrap/config.json
           cat ~/.bubblewrap/config.json
+
+          yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
 
       - name: Build the APK
         working-directory: android
