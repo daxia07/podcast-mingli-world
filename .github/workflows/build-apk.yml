@@ -129,8 +129,10 @@ jobs:
           PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           set -e
-          printf '%s\n%s\n' "$PW" "$PW" | bubblewrap update --skipVersionUpgrade || true
-          printf '%s\n%s\n' "$PW" "$PW" | bubblewrap build --skipPwaValidation
+          # `yes` rather than a fixed number of lines: the prompt count varies
+          # by version, and running out of stdin aborts inquirer with exit 130.
+          yes "$PW" | bubblewrap update --skipVersionUpgrade || true
+          yes "$PW" | bubblewrap build --skipPwaValidation
           ls -la *.apk
 
       - name: Verify the APK
