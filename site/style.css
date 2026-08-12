@@ -1124,50 +1124,15 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
    Chapters, transcript, and native-feel additions (v24)
    ========================================================================== */
 
-/* --- dark mode -----------------------------------------------------------
-   Tokens only. Every colour below is already defined on :root, so the dark
-   block redefines rather than introduces — a value defined only here would
-   disappear in light mode. Guarded so an explicit light choice always wins. */
+/* --- dark mode: removed 2026-08-12 ----------------------------------------
+   Reverted. The dark palette flipped --ink to near-white, but 41 colours
+   elsewhere in this stylesheet are hardcoded light values (#fff backgrounds,
+   rgba(255,255,255,...) hovers, #fbfaf8 card fills). Those do not flip, so on a
+   phone set to dark the app rendered white text on white surfaces.
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1115;
-    --bg-elevated: #171a21;
-    --bg-muted: #1e222b;
-    --ink: #edeef2;
-    --ink-2: #a9aebc;
-    --ink-3: #7b8192;
-    --line: #262b35;
-    --line-strong: #333a47;
-    --accent: #7ea2e8;
-    --accent-soft: #1c2740;
-    --accent-ink: #cddcf7;
-    --success: #5fbf92;
-    --success-soft: #16281f;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #0f1115;
-  --bg-elevated: #171a21;
-  --bg-muted: #1e222b;
-  --ink: #edeef2;
-  --ink-2: #a9aebc;
-  --ink-3: #7b8192;
-  --line: #262b35;
-  --line-strong: #333a47;
-  --accent: #7ea2e8;
-  --accent-soft: #1c2740;
-  --accent-ink: #cddcf7;
-  --success: #5fbf92;
-  --success-soft: #16281f;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
-}
+   Re-adding this needs those 41 sites converted to tokens first, and the result
+   checked in a real browser in both modes — not shipped blind.
+   -------------------------------------------------------------------------- */
 
 /* --- chapter rail on the seek bar --- */
 

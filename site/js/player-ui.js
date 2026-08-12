@@ -333,23 +333,6 @@
     window.addEventListener('pointercancel', release);
   }
 
-  // ——— theme ———
-
-  function applyTheme(mode) {
-    var root = document.documentElement;
-    if (mode === 'dark' || mode === 'light') root.setAttribute('data-theme', mode);
-    else root.removeAttribute('data-theme');
-    try { localStorage.setItem('pod_theme', mode); } catch (e) {}
-    var btn = $('btnTheme');
-    if (btn) btn.textContent = mode === 'dark' ? 'Dark' : mode === 'light' ? 'Light' : 'System';
-  }
-
-  function initTheme() {
-    var saved = 'system';
-    try { saved = localStorage.getItem('pod_theme') || 'system'; } catch (e) {}
-    applyTheme(saved);
-  }
-
   // ——— events ———
 
   audio.addEventListener('timeupdate', function () {
@@ -431,13 +414,6 @@
     }
     if (e.target.closest('#btnSleep')) { $('sleepSheet').hidden = !$('sleepSheet').hidden; return; }
 
-    if (e.target.closest('#btnTheme')) {
-      var order = ['system', 'light', 'dark'];
-      var cur = 'system';
-      try { cur = localStorage.getItem('pod_theme') || 'system'; } catch (err) {}
-      applyTheme(order[(order.indexOf(cur) + 1) % order.length]);
-      return;
-    }
   });
 
   // Manual scrolling suspends follow-along, so reading ahead isn't yanked back.
@@ -483,7 +459,6 @@
   }
   function escapeAttr(s) { return escapeHtml(s).replace(/\n/g, ' '); }
 
-  initTheme();
   wireDrag();
 
   window.PlayerUI = { showPanel: showPanel, state: state, setSleep: setSleep };
