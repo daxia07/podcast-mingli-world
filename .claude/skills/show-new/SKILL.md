@@ -6,8 +6,10 @@ description: Register a new show (playlist) end to end. Use when asked to add a 
 # Add a new show
 
 A show is a playlist in the manifest plus its presentation metadata. Both come
-from one file now — `content/shows.json`. There is no longer a `SHOW_META`
-constant in `app.js` to keep in sync; the frontend reads the manifest.
+from one file — `content/shows.json`. `app.js` reads title, mono, description,
+order and featured from the manifest at load time, so adding a show needs no
+frontend edit. The `SHOW_META` and `SHOW_ORDER` constants still exist in
+`app.js` but are only fallbacks for shows the manifest doesn't describe.
 
 ## 1. Register it
 

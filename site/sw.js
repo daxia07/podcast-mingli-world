@@ -1,11 +1,11 @@
-var CACHE_V = "podcast-app-v24-chapters";
+var CACHE_V = "podcast-app-v25-chapters";
 var SHELL = [
   "/",
-  "/style.css?v=24",
-  "/app.js?v=24",
-  "/js/vtt.js?v=24",
-  "/js/chapters.js?v=24",
-  "/js/player-ui.js?v=24",
+  "/style.css?v=25",
+  "/app.js?v=25",
+  "/js/vtt.js?v=25",
+  "/js/chapters.js?v=25",
+  "/js/player-ui.js?v=25",
   "/solutions.json",
   "/manifest.webmanifest"
 ];

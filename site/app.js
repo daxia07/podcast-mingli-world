@@ -70,6 +70,8 @@
   var ICON_PAUSE =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>';
 
+  var FEATURED_SHOWS = ["coding-prep", "coding-youtube", "system-design"];
+
   var SHOW_ORDER = [
     "coding-prep",
     "coding-youtube",
@@ -167,6 +169,49 @@
     if (theme.indexOf("mock") >= 0) return "sd-mock-interviews";
     if (theme.indexOf("awx") >= 0) return "awx-10min-speeches";
     return "interview-prep";
+  }
+
+  // The manifest is the show registry (content/shows.json -> playlists). The
+  // SHOW_META and SHOW_ORDER constants below are now only fallbacks for shows
+  // the manifest doesn't describe — a new show must not require an app.js edit,
+  // which is exactly why the AWS AI Practitioner show rendered nowhere.
+  function adoptShowsFromManifest() {
+    var ordered = [];
+
+    playlists.forEach(function (p) {
+      var existing = SHOW_META[p.id] || {};
+      SHOW_META[p.id] = {
+        title: p.title || existing.title || p.id,
+        mono: p.mono || existing.mono ||
+          (String(p.id).replace(/[^A-Za-z0-9]/g, "").slice(0, 2) || "??").toUpperCase(),
+        desc: p.description || existing.desc || "",
+        icon: p.icon || existing.icon || "",
+        featured: p.featured != null ? !!p.featured : !!existing.featured,
+      };
+      ordered.push({
+        id: p.id,
+        // Shows without an explicit order keep their old hardcoded position.
+        order: p.order != null ? p.order : 100 + Math.max(SHOW_ORDER.indexOf(p.id), 0),
+      });
+    });
+
+    if (!ordered.length) return;
+
+    ordered.sort(function (a, b) {
+      return a.order - b.order;
+    });
+    SHOW_ORDER = ordered.map(function (o) {
+      return o.id;
+    });
+
+    var pinned = ordered
+      .filter(function (o) {
+        return SHOW_META[o.id] && SHOW_META[o.id].featured;
+      })
+      .map(function (o) {
+        return o.id;
+      });
+    if (pinned.length) FEATURED_SHOWS = pinned;
   }
 
   function showMeta(id) {
@@ -278,8 +323,9 @@
 
     var row = document.getElementById("showRow");
     var html = "";
-    // Pin Coding Prep + Coding YouTube + System Design as large featured cards first
-    ["coding-prep", "coding-youtube", "system-design"].forEach(function (id) {
+    // Featured shows come from the manifest (shows.json "featured": true),
+    // falling back to the original three.
+    FEATURED_SHOWS.forEach(function (id) {
       var eps = episodesForShow(id);
       if (!eps.length && id === "system-design") {
         // Unshelve: still show SD if any episode maps via tip/theme
@@ -938,6 +984,7 @@
             p.title = p.title || p.name || k;
             return p;
           });
+      adoptShowsFromManifest();
       renderHome();
     })
     .catch(function () {

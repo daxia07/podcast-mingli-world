@@ -79,12 +79,20 @@
   function renderRail() {
     var rail = $('chapterRail');
     if (!rail) return;
+    var wrap = rail.parentNode;
     var duration = audio.duration || 0;
     var segs = window.Chapters.segments(state.chapters, duration);
 
-    if (!segs.length) { rail.innerHTML = ''; rail.hidden = true; return; }
+    if (!segs.length) {
+      rail.innerHTML = '';
+      rail.hidden = true;
+      // Restores the plain seek track for episodes with no chapters.
+      if (wrap) wrap.classList.remove('has-rail');
+      return;
+    }
 
     rail.hidden = false;
+    if (wrap) wrap.classList.add('has-rail');
     rail.innerHTML = segs.map(function (s) {
       return '<button type="button" class="rail-seg" data-idx="' + s.index +
         '" style="left:' + s.left.toFixed(3) + '%;width:' + s.width.toFixed(3) + '%"' +

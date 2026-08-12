@@ -581,3 +581,24 @@ class TestCalibration(unittest.TestCase):
         for line in cal.lines:
             self.assertGreaterEqual(line.gap_after, 0.0)
             self.assertGreaterEqual(line.end, line.start)
+
+
+class TestShowRegistryGate(unittest.TestCase):
+    """A show must arrive complete or the frontend cannot place it."""
+
+    def test_complete_playlist_passes(self):
+        manifest = {"playlists": {"x": {"title": "X", "mono": "XX", "order": 1}}}
+        self.assertEqual(gates_mod.gate_show_registry(manifest), [])
+
+    def test_missing_mono_or_order_is_an_error(self):
+        manifest = {"playlists": {"x": {"title": "X"}}}
+        findings = gates_mod.gate_show_registry(manifest)
+        fields = " ".join(f.message for f in findings)
+        self.assertIn("mono", fields)
+        self.assertIn("order", fields)
+        self.assertTrue(all(f.level == gates_mod.ERROR for f in findings))
+
+    def test_order_zero_is_valid(self):
+        # Falsy but meaningful — the first show in the list.
+        manifest = {"playlists": {"x": {"title": "X", "mono": "XX", "order": 0}}}
+        self.assertEqual(gates_mod.gate_show_registry(manifest), [])

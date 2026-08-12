@@ -1172,7 +1172,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* --- chapter rail on the seek bar --- */
 
 .seek-wrap { position: relative; flex: 1; display: flex; align-items: center; }
-.seek-wrap #seek { width: 100%; position: relative; z-index: 2; background: transparent; }
+.seek-wrap #seek { width: 100%; position: relative; z-index: 2; }
+/* Only hide the plain track when a chapter rail is actually behind it —
+   otherwise every episode without chapters loses its seek bar entirely. */
+.seek-wrap.has-rail #seek { background: transparent; }
 
 .chapter-rail {
   position: absolute;

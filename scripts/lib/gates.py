@@ -364,6 +364,29 @@ def report(findings: list[Finding], label: str) -> int:
     return 1 if errors else 0
 
 
+def gate_show_registry(manifest: dict) -> list[Finding]:
+    """Playlists must carry everything the frontend needs to render them.
+
+    The AWS AI Practitioner show shipped with episodes but rendered nowhere,
+    because app.js took its ordering from a hardcoded list. app.js now reads
+    these fields from the manifest, so a show missing them silently falls back
+    to a generic tile at the end of the list.
+    """
+    out = []
+    for pid, playlist in (manifest.get("playlists") or {}).items():
+        for field in ("title", "mono", "order"):
+            if playlist.get(field) in (None, ""):
+                out.append(
+                    Finding(
+                        "show_registry",
+                        ERROR,
+                        f"playlist {pid!r} is missing {field!r} — add it to "
+                        "content/shows.json and re-sync",
+                    )
+                )
+    return out
+
+
 def gate_new_episodes_have_blueprints(
     manifest: dict,
     *,
@@ -466,7 +489,7 @@ def main(argv: list[str]) -> int:
                 print(f"{path}: invalid JSON — {exc}")
                 rc = 1
                 continue
-            rc |= report(run_manifest(manifest), path)
+            rc |= report(run_manifest(manifest) + gate_show_registry(manifest), path)
 
         manifest = json.loads(Path("scripts/manifest.json").read_text(encoding="utf-8"))
         rc |= report(gate_new_episodes_have_blueprints(manifest), "blueprint coverage")
