@@ -84,20 +84,57 @@ jobs:
 
           yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
 
-      - name: Build the APK
-        working-directory: android
+      # `build` needs a Gradle project, which only `init` scaffolds — a
+      # hand-written twa-manifest.json alone gets "./gradlew: not found".
+      # init is interactive, so every prompt is answered with its default and
+      # the generated manifest is then overwritten with ours (package id and
+      # signing key must match /.well-known/assetlinks.json).
+      - name: Scaffold the TWA project
         env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
-          # Exit 130 means inquirer aborted on closed stdin: this version prompts
-          # for the keystore and key passwords regardless of the env vars, so
-          # feed them both in.
-          printf '%s\n%s\n' "$BUBBLEWRAP_KEYSTORE_PASSWORD" "$BUBBLEWRAP_KEY_PASSWORD" \
-            | bubblewrap build --skipPwaValidation
+          set -e
+          rm -rf twa-build && mkdir -p twa-build
+          yes "" | timeout 300 bubblewrap init \
+            --manifest https://podcast.mingli.world/manifest.webmanifest \
+            --directory twa-build \
+            --skipPwaValidation || true
+          echo "--- scaffolded ---"
+          ls twa-build | head -20
+          test -f twa-build/gradlew || { echo "::error::init did not scaffold a Gradle project"; exit 1; }
+
+      - name: Apply our package id and signing key
+        run: |
+          set -e
+          python3 - <<'PY'
+          import json, pathlib
+          ours = json.loads(pathlib.Path("android/twa-manifest.json").read_text())
+          target = pathlib.Path("twa-build/twa-manifest.json")
+          generated = json.loads(target.read_text())
+          generated.update({
+              k: ours[k] for k in
+              ("packageId", "name", "launcherName", "themeColor", "backgroundColor",
+               "startUrl", "iconUrl", "maskableIconUrl", "appVersionName", "appVersionCode",
+               "orientation", "display")
+          })
+          generated["signingKey"] = {"path": "../.keys/mingli.keystore", "alias": "mingli"}
+          target.write_text(json.dumps(generated, indent=2))
+          print("packageId:", generated["packageId"])
+          print("signingKey:", generated["signingKey"])
+          PY
+
+      - name: Build the APK
+        working-directory: twa-build
+        env:
+          PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          set -e
+          printf '%s\n%s\n' "$PW" "$PW" | bubblewrap update --skipVersionUpgrade || true
+          printf '%s\n%s\n' "$PW" "$PW" | bubblewrap build --skipPwaValidation
+          ls -la *.apk
 
       - name: Verify the APK
-        working-directory: android
+        working-directory: twa-build
         run: |
           set -e
           APK=app-release-signed.apk
@@ -120,7 +157,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: mingli-podcast-apk
-          path: android/app-release-signed.apk
+          path: twa-build/app-release-signed.apk
           retention-days: 30
 
       - name: Publish the APK to R2
@@ -131,7 +168,7 @@ jobs:
         run: |
           npx wrangler@4 r2 object put \
             podcast-mingli-world/app/mingli.apk \
-            --file android/app-release-signed.apk \
+            --file twa-build/app-release-signed.apk \
             --content-type application/vnd.android.package-archive \
             --remote
           echo "Download on the phone: https://podcast.mingli.world/app/mingli.apk"
