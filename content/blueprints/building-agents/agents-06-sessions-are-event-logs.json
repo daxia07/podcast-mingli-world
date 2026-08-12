@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "id": null,
+  "id": 361,
   "slug": "agents-06-sessions-are-event-logs",
   "show": "building-agents",
   "template": "code-teardown",
