@@ -92,12 +92,12 @@ function call(bucket, { method = 'GET', range = null, file = 'ep01.mp3' } = {}) 
   });
 }
 
-test('GET without Range returns 200 and caches immutably', async () => {
+test('GET without Range returns 200 and revalidates', async () => {
   const bucket = fakeBucket();
   const res = await call(bucket);
   assert.equal(res.status, 200);
   assert.equal(res.headers.get('Accept-Ranges'), 'bytes');
-  assert.equal(res.headers.get('Cache-Control'), 'public, max-age=31536000, immutable');
+  assert.equal(res.headers.get('Cache-Control'), 'public, max-age=3600, must-revalidate');
   assert.equal(res.headers.get('ETag'), '"abc123"');
   // No wasted head() call on the common path.
   assert.deepEqual(bucket.calls, [['get', 'episodes/ep01.mp3', null]]);

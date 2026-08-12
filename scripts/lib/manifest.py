@@ -207,7 +207,9 @@ def generate_rss(manifest: dict) -> str:
         enclosure.set("type", "audio/mpeg")
 
         guid = SubElement(item, "guid")
-        guid.text = ep.get("file_url", "")
+        # Strip any ?v= cache-buster: the guid identifies the episode, and
+        # changing it would make every client re-download as a new item.
+        guid.text = ep.get("file_url", "").split("?")[0]
         guid.set("isPermaLink", "true")
 
         SubElement(item, "pubDate").text = _pub_date(ep.get("date", ""))

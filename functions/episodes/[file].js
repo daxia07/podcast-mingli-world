@@ -3,7 +3,11 @@
 // Range support matters here: episodes run to 100 MB / 60 min, and the player
 // seeks by chapter. Without it every seek refetches from byte 0.
 
-const IMMUTABLE = 'public, max-age=31536000, immutable';
+// NOT immutable: episodes get rebuilt in place when a bug is fixed, and
+// `immutable` tells browsers never to revalidate — a broken build then plays
+// from cache for a year no matter what the server has. must-revalidate still
+// costs nothing on a hit, because the ETag turns it into a 304.
+const EPISODE_CACHE = 'public, max-age=3600, must-revalidate';
 
 /** Classify a `Range` header against a known object size.
  *
@@ -108,8 +112,7 @@ function baseHeaders(obj) {
     'Accept-Ranges': 'bytes',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Expose-Headers': 'Content-Range, Content-Length, Accept-Ranges',
-    // Episodes are immutable once published; a new episode is a new key.
-    'Cache-Control': IMMUTABLE,
+    'Cache-Control': EPISODE_CACHE,
   };
   if (obj?.size != null) headers['Content-Length'] = String(obj.size);
   if (obj?.httpEtag) headers['ETag'] = obj.httpEtag;

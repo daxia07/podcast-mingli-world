@@ -669,3 +669,33 @@ class TestAudioUniformity(unittest.TestCase):
             p.write_bytes(b"ID3\x04\x00\x00\x00\x00\x00\x14" + b"\x00" * 20 + body)
             self.assertTrue(self.audio.is_uniform(p))
             self.assertEqual(self.audio.scan(p)[0].fmt.sample_rate, 48000)
+
+
+class TestEpisodeUrlVersioning(unittest.TestCase):
+    """Rebuilt episodes must bust caches without changing their identity."""
+
+    def test_guid_drops_the_cache_buster(self):
+        rss = manifest_mod.generate_rss({
+            "episodes": [{
+                "id": 1, "date": "2026-07-06",
+                "file_url": "https://x/episodes/a.mp3?v=deadbeef",
+            }]
+        })
+        self.assertIn("<guid isPermaLink=\"true\">https://x/episodes/a.mp3</guid>", rss)
+
+    def test_enclosure_keeps_the_cache_buster(self):
+        rss = manifest_mod.generate_rss({
+            "episodes": [{
+                "id": 1, "date": "2026-07-06",
+                "file_url": "https://x/episodes/a.mp3?v=deadbeef",
+            }]
+        })
+        self.assertIn('url="https://x/episodes/a.mp3?v=deadbeef"', rss)
+
+    def test_url_convention_gate_accepts_a_version_query(self):
+        manifest = {"episodes": [{
+            "id": 1, "title": "A", "source": "tts",
+            "file_url": "https://x/episodes/a.mp3?v=deadbeef",
+        }]}
+        errors = [f for f in gates_mod.run_manifest(manifest) if f.level == gates_mod.ERROR]
+        self.assertEqual(errors, [], msg=str([str(e) for e in errors]))

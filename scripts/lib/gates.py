@@ -286,7 +286,9 @@ def gate_id_unique(bp: Blueprint, manifest: dict) -> list[Finding]:
 # Manifest-wide gates
 # ---------------------------------------------------------------------------
 
-FILE_URL_RE = re.compile(r"^https?://[^/]+/episodes/[A-Za-z0-9._-]+\.mp3$")
+# An optional ?v=<hash> cache-buster is expected: episodes are rebuilt in place,
+# and without a URL change a client that cached a broken build keeps playing it.
+FILE_URL_RE = re.compile(r"^https?://[^/]+/episodes/[A-Za-z0-9._-]+\.mp3(\?v=[a-f0-9]{6,32})?$")
 # Historic bug (AGENTS.md gotcha #8): series files once carried a date prefix.
 DATE_PREFIXED = re.compile(r"/episodes/\d{4}-\d{2}-\d{2}-[a-z]")
 

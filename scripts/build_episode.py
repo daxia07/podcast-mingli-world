@@ -138,6 +138,16 @@ def build(args: argparse.Namespace) -> int:
     return publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters)
 
 
+def _content_hash(path, length: int = 8) -> str:
+    import hashlib
+
+    digest = hashlib.md5()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()[:length]
+
+
 def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters) -> int:
     from scripts.lib import r2  # wrangler-backed; needs CLOUDFLARE_API_TOKEN
 
@@ -156,7 +166,10 @@ def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, 
         "description": bp.description,
         "duration": duration,
         "file_size_bytes": size,
-        "file_url": f"{manifest_mod.BASE_URL}/episodes/{bp.slug}.mp3",
+        # Content hash in the URL: episodes are rebuilt in place when a bug is
+        # fixed, and without this a client that cached the broken build would
+        # keep playing it. The Worker ignores the query when resolving the key.
+        "file_url": f"{manifest_mod.BASE_URL}/episodes/{bp.slug}.mp3?v={_content_hash(mp3_path)}",
         "filename": f"{bp.slug}.mp3",
         "playlist": bp.show,
         "source": "tts",
