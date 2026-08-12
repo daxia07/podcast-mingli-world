@@ -1,21 +1,45 @@
 {
   "id": "/",
-  "name": "Mingli — Interview Podcast",
+  "name": "Mingli \u2014 Interview Podcast",
   "short_name": "Mingli",
   "description": "Interview prep audio: coding, system design, behavioural, and AWS certification.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
   "background_color": "#f7f6f3",
   "theme_color": "#f7f6f3",
-  "categories": ["education", "productivity"],
+  "categories": [
+    "education",
+    "productivity"
+  ],
   "icons": [
     {
-      "src": "/artwork.jpg",
+      "src": "/artwork-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/artwork-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/artwork-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/artwork.png",
       "sizes": "1400x1400",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

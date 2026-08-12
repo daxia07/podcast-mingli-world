@@ -166,7 +166,8 @@ def generate_rss(manifest: dict) -> str:
     author = manifest.get("author", "Daily Interview English")
     SubElement(channel, "itunes:author").text = author
     SubElement(channel, "itunes:explicit").text = "false"
-    SubElement(channel, "itunes:image").set("href", f"{BASE_URL}/artwork.jpg")
+    artwork = manifest.get("artwork_url") or f"{BASE_URL}/artwork.png"
+    SubElement(channel, "itunes:image").set("href", artwork)
     SubElement(channel, "itunes:category").set("text", "Education")
 
     owner = SubElement(channel, "itunes:owner")

@@ -225,7 +225,10 @@
         title: ep.title || 'Episode',
         artist: (ep.playlist || 'Mingli').replace(/-/g, ' '),
         album: 'podcast.mingli.world',
-        artwork: [{ src: '/artwork.jpg', sizes: '1400x1400', type: 'image/jpeg' }]
+        artwork: [
+          { src: '/artwork-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/artwork-512.png', sizes: '512x512', type: 'image/png' }
+        ]
       });
       navigator.mediaSession.setActionHandler('play', function () { audio.play(); });
       navigator.mediaSession.setActionHandler('pause', function () { audio.pause(); });
