@@ -89,7 +89,12 @@ jobs:
         env:
           BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        run: bubblewrap build --skipPwaValidation
+        run: |
+          # Exit 130 means inquirer aborted on closed stdin: this version prompts
+          # for the keystore and key passwords regardless of the env vars, so
+          # feed them both in.
+          printf '%s\n%s\n' "$BUBBLEWRAP_KEYSTORE_PASSWORD" "$BUBBLEWRAP_KEY_PASSWORD" \
+            | bubblewrap build --skipPwaValidation
 
       - name: Verify the APK
         working-directory: android
