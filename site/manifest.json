@@ -2881,6 +2881,138 @@
       ]
     },
     {
+      "id": 356,
+      "slug": "agents-01-the-shape",
+      "title": "Reading Codex 1 — The Shape of an Agent",
+      "description": "What a production agent loop actually contains, and why the while-loop-plus-tools mental model falls apart immediately.",
+      "duration": "5:28",
+      "file_size_bytes": 2631789,
+      "file_url": "https://podcast.mingli.world/episodes/agents-01-the-shape.mp3?v=06f6f44c",
+      "filename": "agents-01-the-shape.mp3",
+      "playlist": "building-agents",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "agentic systems",
+        "architecture",
+        "agent loop"
+      ],
+      "sources": [
+        {
+          "type": "repo",
+          "id": "openai-codex",
+          "url": "https://github.com/openai/codex",
+          "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+          "used_for": [
+            "architecture",
+            "module names",
+            "design decisions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 357,
+      "slug": "agents-02-tools-are-interfaces",
+      "title": "Reading Codex 2 — Tools Are an Interface",
+      "description": "Why Codex keeps every tool's schema in a separate file from its implementation, and what that separation buys.",
+      "duration": "5:15",
+      "file_size_bytes": 2523117,
+      "file_url": "https://podcast.mingli.world/episodes/agents-02-tools-are-interfaces.mp3?v=2c6b6287",
+      "filename": "agents-02-tools-are-interfaces.mp3",
+      "playlist": "building-agents",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "tool calling",
+        "json schema",
+        "agent tools",
+        "mcp"
+      ],
+      "sources": [
+        {
+          "type": "repo",
+          "id": "openai-codex",
+          "url": "https://github.com/openai/codex",
+          "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+          "used_for": [
+            "architecture",
+            "module names",
+            "design decisions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 358,
+      "slug": "agents-03-permission-is-the-product",
+      "title": "Reading Codex 3 — Permission Is the Product",
+      "description": "Approval as a three-valued decision, defence in depth, and the hardlink case that explains why policy alone is never enough.",
+      "duration": "5:16",
+      "file_size_bytes": 2535213,
+      "file_url": "https://podcast.mingli.world/episodes/agents-03-permission-is-the-product.mp3?v=a00096bf",
+      "filename": "agents-03-permission-is-the-product.mp3",
+      "playlist": "building-agents",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "sandboxing",
+        "permissions",
+        "agent safety",
+        "landlock",
+        "seccomp"
+      ],
+      "sources": [
+        {
+          "type": "repo",
+          "id": "openai-codex",
+          "url": "https://github.com/openai/codex",
+          "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+          "used_for": [
+            "architecture",
+            "module names",
+            "design decisions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 359,
+      "slug": "agents-04-context-is-a-budget",
+      "title": "Reading Codex 4 — Context Is a Budget",
+      "description": "Compaction as a first-class lifecycle with hooks and triggers, and why history should never be a plain list.",
+      "duration": "5:26",
+      "file_size_bytes": 2612205,
+      "file_url": "https://podcast.mingli.world/episodes/agents-04-context-is-a-budget.mp3?v=dfb0be06",
+      "filename": "agents-04-context-is-a-budget.mp3",
+      "playlist": "building-agents",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "context window",
+        "compaction",
+        "memory",
+        "agent design"
+      ],
+      "sources": [
+        {
+          "type": "repo",
+          "id": "openai-codex",
+          "url": "https://github.com/openai/codex",
+          "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+          "used_for": [
+            "architecture",
+            "module names",
+            "design decisions"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -3652,7 +3784,12 @@
       "featured": true,
       "default_template": "code-teardown",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        356,
+        357,
+        358,
+        359
+      ]
     }
   }
 }
