@@ -29,14 +29,17 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from . import audio
 from .blueprint import Blueprint
 from .timeline import Timeline, build as build_timeline, calibrate, flatten, gaps_for
 
-# edge-tts emits 24 kHz mono. Silence must match, or the concat demuxer
-# produces a file whose duration doesn't match the sum of its parts.
-SILENCE_RATE = 24000
+# Silence must match the speech segments exactly. These mirror tts.OUTPUT_* and
+# are asserted against the real output by `audio.is_uniform` after concat — an
+# earlier version assumed 24 kHz, which produced files that stopped playing
+# eleven seconds in.
+SILENCE_RATE = 48000
 SILENCE_CHANNELS = 1
-SILENCE_BITRATE = "48k"
+SILENCE_BITRATE = "64k"
 
 
 class SynthError(RuntimeError):
@@ -177,6 +180,14 @@ def synthesize(
             segments.append(silence)
 
     concat(segments, out_path)
+
+    # A file whose frame parameters change mid-stream decodes fine in ffmpeg and
+    # stops dead in a browser, so ffprobe's duration is not enough evidence.
+    if not audio.is_uniform(out_path):
+        raise SynthError(
+            "concatenated audio is not uniform, so players will stop at the "
+            f"first change:\n{audio.describe(out_path)}"
+        )
 
     timeline = build_timeline(bp, durations)
 

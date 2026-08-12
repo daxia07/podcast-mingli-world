@@ -173,13 +173,23 @@ def _split_text(text, max_chars):
     return chunks
 
 
+# Every segment must come out identical, because segments get concatenated with
+# `-c copy` and a browser stops decoding at the first parameter change. ffmpeg's
+# `loudnorm` resamples to 192 kHz internally and was landing on 48 kHz output,
+# which silently disagreed with the 24 kHz silence synth.py generated.
+OUTPUT_RATE = 48000
+OUTPUT_CHANNELS = 1
+OUTPUT_BITRATE = "64k"
+
+
 def _postprocess(mp3_path):
-    """Apply loudnorm + silence removal via ffmpeg."""
+    """Apply loudnorm + silence removal, pinning the output format."""
     temp_path = mp3_path + ".temp.mp3"
     os.rename(mp3_path, temp_path)
     subprocess.run([
         "ffmpeg", "-y", "-i", temp_path,
         "-af", "loudnorm, silenceremove=stop_periods=-1:stop_duration=0.3:stop_threshold=-40dB",
+        "-ar", str(OUTPUT_RATE), "-ac", str(OUTPUT_CHANNELS), "-b:a", OUTPUT_BITRATE,
         mp3_path
     ], capture_output=True, stdin=subprocess.DEVNULL)
     if os.path.exists(temp_path):

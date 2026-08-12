@@ -602,3 +602,70 @@ class TestShowRegistryGate(unittest.TestCase):
         # Falsy but meaningful — the first show in the list.
         manifest = {"playlists": {"x": {"title": "X", "mono": "XX", "order": 0}}}
         self.assertEqual(gates_mod.gate_show_registry(manifest), [])
+
+
+class TestAudioUniformity(unittest.TestCase):
+    """The guard for the bug where episodes stopped playing at 11 seconds."""
+
+    def setUp(self):
+        from scripts.lib import audio
+        self.audio = audio
+
+    def _frame(self, version_bits, rate_idx, bitrate_idx, channel=3):
+        # 4-byte MPEG audio frame header, Layer III, no CRC.
+        b1 = 0xFF
+        b2 = 0xE0 | (version_bits << 3) | (1 << 1)          # layer III
+        b3 = (bitrate_idx << 4) | (rate_idx << 2)
+        b4 = (channel << 6)
+        return bytes([b1, b2, b3, b4])
+
+    def _write(self, tmp, frames):
+        import pathlib
+        # Each header is followed by enough padding to reach its frame length.
+        out = bytearray()
+        for version_bits, rate_idx, bitrate_idx, size in frames:
+            out += self._frame(version_bits, rate_idx, bitrate_idx)
+            out += b"\x00" * (size - 4)
+        p = pathlib.Path(tmp) / "t.mp3"
+        p.write_bytes(bytes(out))
+        return p
+
+    def test_uniform_file_is_one_run(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            # MPEG1 (3) @ 48000 (idx 1), 64 kbps (idx 5) -> 192-byte frames
+            p = self._write(tmp, [(3, 1, 5, 192)] * 8)
+            runs = self.audio.scan(p)
+            self.assertEqual(len(runs), 1)
+            self.assertEqual(runs[0].fmt.sample_rate, 48000)
+            self.assertEqual(runs[0].fmt.bitrate, 64)
+            self.assertTrue(self.audio.is_uniform(p))
+
+    def test_sample_rate_change_is_detected(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            # The exact shape of the shipped bug: 48k speech, 24k silence, back.
+            p = self._write(tmp, [(3, 1, 5, 192)] * 4 + [(2, 1, 6, 144)] * 2 + [(3, 1, 5, 192)] * 4)
+            runs = self.audio.scan(p)
+            self.assertEqual(len(runs), 3)
+            self.assertEqual(runs[0].fmt.sample_rate, 48000)
+            self.assertEqual(runs[1].fmt.sample_rate, 24000)
+            self.assertFalse(self.audio.is_uniform(p))
+
+    def test_describe_names_the_first_change_time(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._write(tmp, [(3, 1, 5, 192)] * 4 + [(2, 1, 6, 144)] * 2)
+            text = self.audio.describe(p)
+            self.assertIn("format changes", text)
+            self.assertIn("24000", text)
+
+    def test_id3_header_is_skipped(self):
+        import tempfile, pathlib
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._write(tmp, [(3, 1, 5, 192)] * 4)
+            body = p.read_bytes()
+            # ID3v2 with a 20-byte syncsafe payload.
+            p.write_bytes(b"ID3\x04\x00\x00\x00\x00\x00\x14" + b"\x00" * 20 + body)
+            self.assertTrue(self.audio.is_uniform(p))
+            self.assertEqual(self.audio.scan(p)[0].fmt.sample_rate, 48000)
