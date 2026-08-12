@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "agents-07-code-mode",
+  "show": "building-agents",
+  "template": "code-teardown",
+  "title": "Reading Codex 7 — When Tool Calls Become a Program",
+  "description": "Code mode: the model writes JavaScript that calls tools, executed in an embedded V8 — and why that changes the economics of an agent.",
+  "keywords": [
+    "code mode",
+    "tool calling",
+    "v8",
+    "agent architecture"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orient",
+      "title": "What we are reading",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Everything so far has assumed the same unit of work: the model emits one tool call, the system runs it, the result goes back, repeat. That is the standard loop and it is what almost every agent does."
+        },
+        {
+          "voice": "narrator",
+          "text": "Codex has an alternative, spread across four crates totalling about twenty eight thousand lines. It is called code mode, and the unit of work is a program."
+        }
+      ]
+    },
+    {
+      "id": "code",
+      "title": "What the code does",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Instead of emitting a tool call, the model writes code, and that code calls tools. The runtime crate embeds V8, so the language is JavaScript."
+        },
+        {
+          "voice": "narrator",
+          "text": "The tool surface reflects this. There is an execute tool and a wait tool, rather than one tool per capability. Work is organised into cells, addressed by a cell identifier, which will feel familiar if you have used a notebook. There is an explicit concept of a nested tool call — a tool invoked from inside running code rather than from the model directly."
+        },
+        {
+          "voice": "narrator",
+          "text": "Sessions can be provided in several ways: a process-owned session, a session over a WebSocket, one over gRPC, and a disabled provider for when the feature is off. So the runtime does not have to live inside the agent process."
+        },
+        {
+          "voice": "narrator",
+          "text": "And there is a specific security control worth naming: the V8 initialisation module has an explicit setting for whether the engine may generate executable code at runtime — that is, whether just-in-time compilation is allowed. Turning the JIT off costs speed and removes a large class of engine exploits."
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "title": "Why it is built that way",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The motivation is economics. Consider a task that reads twenty files and summarises the three that mention a symbol."
+        },
+        {
+          "voice": "narrator",
+          "text": "In the standard loop that is at least twenty one round trips. Each one sends the entire conversation to the model, waits, and appends a result. The content of all twenty files ends up in the context window, whether or not it was relevant, and you pay for all of it on every subsequent call."
+        },
+        {
+          "voice": "narrator",
+          "text": "In code mode it is one round trip. The model writes a loop that reads the files, filters them, and returns three summaries. Seventeen irrelevant files never enter the context at all. The model is not the thing doing the iterating — code is, and code is much better at iterating."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a general principle here worth extracting. Language models are excellent at deciding what to do and poor at doing repetitive things reliably. Every time you make the model the loop, you pay latency and tokens for something a for-loop does better and for free. Code mode moves the loop to where loops belong."
+        },
+        {
+          "voice": "narrator",
+          "text": "The costs are real though. You have just added arbitrary code execution to a system whose entire third episode was about not doing that carelessly — hence the JIT switch and the ability to run the runtime out of process. Debugging is harder, because a failure is now inside generated code rather than in a tool call you can read. And the model has to be good at writing correct code in the runtime's language, which narrows which models you can use."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a second-order effect on how the model reasons, and it is easy to miss. In the standard loop the model must hold the whole plan in its head across many turns, re-deriving where it is from a growing transcript. When it writes a program, the plan is externalised into the code — the structure of the loop is the plan, and it stays correct without being re-read every turn."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is why code mode tends to help most on exactly the tasks agents are worst at: long mechanical sequences where the failure mode is losing track partway through rather than not knowing what to do."
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "title": "Building your own",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Do not build this early. It is the most advanced thing in the series and it presupposes that everything from episodes one through six already works."
+        },
+        {
+          "voice": "narrator",
+          "text": "But there is a cheap version of the same insight, and it is available to any agent today. Look for the places your agent loops, and give it a tool that does the loop instead. If it reads files one at a time, add a tool that takes a list of paths. If it greps then reads then greps again, add a tool that searches and returns matches with context. Each such tool removes a whole class of round trips."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is ninety percent of the benefit for one percent of the machinery, and it is the thing to do this week rather than this year."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you do eventually go further: run the runtime out of process from the start, so the isolation boundary is a real one rather than something you promise to add later. Disable the JIT unless you have measured that you need it. And keep the standard tool-call path working alongside, because the moment code mode fails you want a way to fall back rather than a dead agent."
+        },
+        {
+          "voice": "narrator",
+          "text": "A useful way to decide which batching tools to add: look at your session logs — which you have, from the last episode — and count consecutive tool calls of the same kind. Every run of three or more is a tool you have not written yet. That turns a design question into a measurement."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The one idea: making the model the loop is a tax you pay in latency, tokens and reliability. Give it tools that loop for it, and eventually let it write the loop."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the series — seven episodes, from the turn state machine to code mode. The through-line is the same everywhere: the model call is the easy part."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "repo",
+      "id": "openai-codex",
+      "url": "https://github.com/openai/codex",
+      "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+      "used_for": [
+        "architecture",
+        "module names",
+        "policy text",
+        "design decisions"
+      ]
+    }
+  ]
+}
