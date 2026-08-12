@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "id": null,
+  "slug": "agents-04-context-is-a-budget",
+  "show": "building-agents",
+  "template": "code-teardown",
+  "title": "Reading Codex 4 — Context Is a Budget",
+  "description": "Compaction as a first-class lifecycle with hooks and triggers, and why history should never be a plain list.",
+  "keywords": [
+    "context window",
+    "compaction",
+    "memory",
+    "agent design"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orient",
+      "title": "What we are reading",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Every agent that does real work runs out of context. Not as a rare failure — routinely, in the middle of a task, on the tenth tool call. How a system handles that is most of the difference between an agent that finishes work and one that forgets what it was doing."
+        },
+        {
+          "voice": "narrator",
+          "text": "So this episode is about what Codex does when the window fills."
+        }
+      ]
+    },
+    {
+      "id": "code",
+      "title": "What the code does",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The first signal is the file listing. In the core crate there are roughly ten modules whose names begin with compact: local compaction, remote compaction, a second version of remote compaction, token-budget compaction, model fallback for compaction, and their tests. There is a separate context manager directory containing history, normalisation and updates. Context handling is not a helper function; it is a subsystem with more code than the turn loop."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second, compaction is modelled as part of the turn lifecycle, not as an exception. The turn runs pre-sampling compaction before it ever calls the model. There are named triggers — manual, automatic, token-budget — and the analytics distinguish them, because how often each fires tells you something different about your system."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third, there are pre-compact and post-compact hooks. External code can observe or participate when history is about to be rewritten."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fourth, and this is the subtle one: token-budget compaction deliberately skips model summarisation and installs a fresh context window instead. The comment says it is still modelled as compaction so that hooks and turn items see the same lifecycle. Different strategy, same shape."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is also a tool the model can call to ask how many tokens remain. The agent can reason about its own budget."
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "title": "Why it is built that way",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The naive approach is to summarise the conversation when it gets long. That fails in three ways this design addresses."
+        },
+        {
+          "voice": "narrator",
+          "text": "It fails on timing. If you compact only when a request is rejected for length, you compact under pressure, after wasting a call, and possibly mid-tool-sequence. Running compaction before sampling means the decision happens when the state is clean."
+        },
+        {
+          "voice": "narrator",
+          "text": "It fails on strategy. Sometimes the right move is a model-written summary. Sometimes — when a task is genuinely finished and a new one begins — the right move is to throw the window away and start fresh, which is much cheaper and loses nothing. Treating these as one operation with different strategies, rather than as unrelated code paths, is why both get the same hooks and the same audit trail."
+        },
+        {
+          "voice": "narrator",
+          "text": "It fails on observability. Compaction is lossy by definition. If it happens invisibly, you cannot debug the resulting amnesia — the agent forgets a constraint and you have no record of when it was dropped. Emitting compaction as an item in the turn history makes the loss inspectable."
+        },
+        {
+          "voice": "narrator",
+          "text": "And exposing remaining tokens to the model is a small idea with a large effect: an agent that knows it is running low can choose to summarise its own findings before they are taken from it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Worth naming the failure mode this prevents, because it is the one people actually hit. An agent is halfway through a refactor. Context fills. Something summarises the history, and the summary keeps the plan but drops the constraint the user gave in message three — do not touch the public API. The agent continues confidently and breaks the thing it was told not to break."
+        },
+        {
+          "voice": "narrator",
+          "text": "No amount of model quality fixes that, because the information is gone before the model sees it. It is an architecture problem, and it is solved at the point where you decide what compaction is allowed to discard."
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "title": "Building your own",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The smallest version that is still correct has four properties."
+        },
+        {
+          "voice": "narrator",
+          "text": "History is an object, not a list. It knows its own token count, and it is the only thing allowed to mutate itself. The moment several call sites append directly to an array, you have lost the ability to reason about the budget."
+        },
+        {
+          "voice": "narrator",
+          "text": "Compaction is checked before every model call, not after a failure. One conditional at the top of the turn."
+        },
+        {
+          "voice": "narrator",
+          "text": "Compaction emits an event into the history it just rewrote, so the record shows what happened."
+        },
+        {
+          "voice": "narrator",
+          "text": "And you have at least two strategies: summarise when the work continues, reset when it does not. You do not need remote compaction, versioned variants, or hooks until other people's code depends on yours."
+        },
+        {
+          "voice": "narrator",
+          "text": "One more thing worth stealing cheaply: give the model a way to ask how much room is left. It is a handful of lines and it changes how the model paces itself."
+        },
+        {
+          "voice": "narrator",
+          "text": "A practical note on ordering, since it catches people. Compact before you add the new user message, not after. If you compact after, the thing most likely to be summarised away is the instruction you just received — which is the single worst thing to lose and, awkwardly, the most recent."
+        },
+        {
+          "voice": "narrator",
+          "text": "And keep the first system message and the current task statement out of whatever gets compacted. Pin them. Almost every agent amnesia story ends with one of those two having been quietly summarised into nothing."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The one idea: context exhaustion is a normal event on the happy path. Design for it in the turn lifecycle, with history as an owned object that knows its own size — not as an error handler bolted on when you first see a length exception."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the series. Four episodes, one underlying message: in a production agent, the model call is the easy part. The loop, the interface, the permission model and the budget are the system."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "repo",
+      "id": "openai-codex",
+      "url": "https://github.com/openai/codex",
+      "title": "OpenAI Codex CLI source (Apache-2.0), read at commit 9ca0337, August 2026",
+      "used_for": [
+        "architecture",
+        "module names",
+        "design decisions"
+      ]
+    }
+  ]
+}

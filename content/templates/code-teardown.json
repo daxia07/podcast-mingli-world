@@ -1,0 +1,50 @@
+{
+  "name": "code-teardown",
+  "title": "Code teardown",
+  "description": "Learn a system by reading a real production codebase: what it does, why it is built that way, and what to copy.",
+  "voices": {
+    "narrator": "narrator"
+  },
+  "target_minutes": [
+    6,
+    15
+  ],
+  "authoring_brief": "Teach from what the code actually does, never from what a blog post says it probably does. Every claim should be checkable against a named module.\n\nAudio rules that matter here: never speak a file path with slashes — say 'the turn module in the session directory', not the path. Never spell out code. Describe the shape of a type or the name of a variant instead of reading syntax.\n\nThe valuable part is always the *why*: the design decision and the failure it prevents. A listener should finish able to make the same decision in their own system, not able to recite this one. Where the codebase does something surprising or ugly, say so and work out whether it is a mistake or a constraint you cannot see.",
+  "sections": [
+    {
+      "id": "orient",
+      "title": "What we are reading",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "The system, its scale, and the specific question this episode answers."
+    },
+    {
+      "id": "code",
+      "title": "What the code does",
+      "required": true,
+      "target_minutes": 4.5,
+      "factual": true,
+      "brief": "The actual mechanism, by module name. Requires sources[]."
+    },
+    {
+      "id": "why",
+      "title": "Why it is built that way",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "The failure each decision prevents — the reusable part."
+    },
+    {
+      "id": "build",
+      "title": "Building your own",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "What to copy, what to skip, and the smallest version that works."
+    },
+    {
+      "id": "wrap",
+      "title": "The one idea",
+      "required": false,
+      "target_minutes": 1
+    }
+  ]
+}

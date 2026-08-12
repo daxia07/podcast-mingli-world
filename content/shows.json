@@ -34,7 +34,7 @@
       "mono": "MK",
       "icon": "🎭",
       "default_template": "mock-interview-2voice",
-      "order": 5,
+      "order": 6,
       "featured": false
     },
     "awx-10min-speeches": {
@@ -63,7 +63,7 @@
       "mono": "SY",
       "icon": "📺",
       "default_template": "youtube-derived",
-      "order": 6,
+      "order": 7,
       "featured": false
     },
     "interview-prep": {
@@ -82,7 +82,7 @@
       "mono": "QA",
       "icon": "",
       "default_template": "estimation-drill",
-      "order": 7,
+      "order": 8,
       "featured": false
     },
     "behavioral-youtube": {
@@ -91,7 +91,7 @@
       "mono": "BY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 8,
+      "order": 9,
       "featured": false
     },
     "infosec-youtube": {
@@ -100,7 +100,7 @@
       "mono": "IY",
       "icon": "🎬",
       "default_template": "youtube-derived",
-      "order": 9,
+      "order": 10,
       "featured": false
     },
     "aws-ai-practitioner": {
@@ -115,9 +115,18 @@
     "agentic-ai-investing": {
       "title": "Agentic AI — Following the Money",
       "description": "Understanding the agentic AI build-out: the numbers, the mechanisms, the bear case, and how to read the next headline. Education, not investment advice.",
-      "mono": "AG",
+      "mono": "$$",
       "icon": "📈",
       "default_template": "market-briefing",
+      "order": 5,
+      "featured": true
+    },
+    "building-agents": {
+      "title": "Building Agentic Systems — Reading Codex",
+      "description": "How a production coding agent is actually built, read from the OpenAI Codex source: the turn loop, tool interfaces, permissions, and context budgets.",
+      "mono": "AG",
+      "icon": "🔧",
+      "default_template": "code-teardown",
       "order": 4,
       "featured": true
     }
