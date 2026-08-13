@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 366,
   "slug": "saa-c03-exam-map",
   "show": "aws-solutions-architect",
   "template": "cert-prep-2voice",
@@ -48,8 +49,7 @@
     },
     {
       "id": "question",
-      "title": "Where do forty hours go?"
-    ,
+      "title": "Where do forty hours go?",
       "lines": [
         {
           "voice": "coach",

@@ -3174,6 +3174,207 @@
       ]
     },
     {
+      "id": 364,
+      "slug": "saa-c03-domain1-identity",
+      "title": "SAA-C03 Domain 1 — When Policies Disagree",
+      "description": "Identity, roles and cross-account access. What happens when an identity policy and a resource policy say different things, and why the answer changes across an account boundary.",
+      "duration": "12:25",
+      "file_size_bytes": 5961645,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-domain1-identity.mp3?v=b91de4ec",
+      "filename": "saa-c03-domain1-identity.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "iam",
+        "policy evaluation",
+        "cross-account",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-domain1",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain1.html",
+          "title": "SAA-C03 Content Domain 1: Design Secure Architectures",
+          "used_for": [
+            "task 1.1 scope",
+            "federated access services",
+            "role-based access control",
+            "service control policies",
+            "resource policies",
+            "domain weight"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "iam-policy-evaluation",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+          "title": "Policy evaluation logic — AWS IAM User Guide",
+          "used_for": [
+            "explicit deny precedence",
+            "implicit denial by default",
+            "same-account and cross-account allow requirements",
+            "service control policy ceiling"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "iam-roles-terms",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html",
+          "title": "IAM roles terms and concepts",
+          "used_for": [
+            "trust policy versus permissions policy",
+            "temporary credentials from AWS STS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 365,
+      "slug": "saa-c03-domain1-network-data",
+      "title": "SAA-C03 Domain 1 — Blast Radius",
+      "description": "The second half of the security domain: public and private subnets, the two firewall objects everyone confuses, endpoints, and encryption at rest and in transit.",
+      "duration": "11:22",
+      "file_size_bytes": 5460333,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-domain1-network-data.mp3?v=bfc88c36",
+      "filename": "saa-c03-domain1-network-data.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "vpc",
+        "security groups",
+        "kms",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-domain1",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain1.html",
+          "title": "SAA-C03 Content Domain 1: Design Secure Architectures",
+          "used_for": [
+            "task 1.2 and 1.3 scope",
+            "VPC security components",
+            "network segmentation",
+            "encryption at rest and in transit",
+            "secrets and certificate management"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "vpc-security-comparison",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
+          "title": "Infrastructure security in Amazon VPC",
+          "used_for": [
+            "security group and network ACL comparison",
+            "stateful versus stateless behaviour"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "vpc-endpoints",
+          "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html",
+          "title": "AWS PrivateLink concepts — gateway and interface endpoints",
+          "used_for": [
+            "gateway endpoints for S3 and DynamoDB",
+            "interface endpoint charging model"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-concepts",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
+          "title": "AWS KMS concepts",
+          "used_for": [
+            "customer managed keys",
+            "key policies",
+            "key rotation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 366,
+      "slug": "saa-c03-exam-map",
+      "title": "SAA-C03 — The Exam Map",
+      "description": "Sixty five questions, fifty of them scored, and four domains that are nothing like equal. Where forty hours of study should actually go.",
+      "duration": "12:02",
+      "file_size_bytes": 5780973,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-exam-map.mp3?v=0cafb0a0",
+      "filename": "saa-c03-exam-map.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "exam strategy",
+        "aws certification",
+        "solutions architect"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+          "used_for": [
+            "question count",
+            "scored and unscored split",
+            "passing score and scaled scoring",
+            "compensatory scoring",
+            "question types",
+            "domain weights"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "saa-c03-cert-page",
+          "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+          "title": "AWS Certified Solutions Architect – Associate",
+          "used_for": [
+            "exam duration",
+            "current exam version",
+            "three year validity"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "aws-cert-coming-soon",
+          "url": "https://aws.amazon.com/certification/coming-soon/",
+          "title": "Coming Soon to AWS Certification",
+          "used_for": [
+            "no announced successor to SAA-C03"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "aif-c01-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+          "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+          "used_for": [
+            "ordering and matching question types on other exams",
+            "AWS stating the no-partial-credit rule explicitly"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "saa-c03-in-scope",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-03-in-scope-services.html",
+          "title": "SAA-C03 In-Scope AWS Services",
+          "used_for": [
+            "in scope and out of scope service lists"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -3964,7 +4165,11 @@
       "featured": false,
       "default_template": "cert-prep-2voice",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        364,
+        365,
+        366
+      ]
     },
     "aws-security-specialty": {
       "title": "AWS Security Specialty — SCS-C03",
