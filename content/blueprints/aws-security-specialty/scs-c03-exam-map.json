@@ -1,0 +1,425 @@
+{
+  "schema": 1,
+  "slug": "scs-c03-exam-map",
+  "show": "aws-security-specialty",
+  "template": "cert-prep-2voice",
+  "title": "SCS-C03 — What Changed, and What It Is Worth",
+  "description": "The Security Specialty exam was rewritten in December twenty twenty five. Six domains, seven hundred and fifty to pass, and a list of topics AWS deleted that you may still be studying.",
+  "keywords": [
+    "scs-c03",
+    "aws security specialty",
+    "exam strategy",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "One version out of date",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "There is a good chance the Security Specialty course you were planning to buy teaches an exam that was retired in December."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Retired how? The certification still exists."
+        },
+        {
+          "voice": "coach",
+          "text": "The certification exists. The paper changed. The last day anyone could sit the old version, C zero two, was the first of December twenty twenty five. The new one, C zero three, opened the next day."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And how different can it really be? Security is security."
+        },
+        {
+          "voice": "coach",
+          "text": "Two domains were dismantled and rebuilt as different domains. The largest domain changed. Seven topics were added, and at least nine were deleted outright."
+        },
+        {
+          "voice": "coach",
+          "text": "So the risk here is not that you study too little. It is that you spend a fortnight on material AWS removed. Today we fix the map before you spend the time."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "The hardest of the three"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "This is the AWS Security Specialty series. Episode one, the exam map."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the honest question first. Is this exam actually harder, or does it just cost more?"
+        },
+        {
+          "voice": "coach",
+          "text": "Harder, and the numbers say so before any content does. The pass mark is seven hundred and fifty. The Solutions Architect associate is seven hundred and twenty. The AI Practitioner is seven hundred."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a higher bar on a scale that is already scaled."
+        },
+        {
+          "voice": "coach",
+          "text": "A higher bar, three hundred dollars a sitting, and a target candidate AWS describes as having three to five years of experience securing cloud. Passing the architect exam does not make you ready for this one. It makes you eligible to start."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The shape of the paper",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "The shape first. Sixty five questions, of which fifty are scored and fifteen are unscored trial questions you cannot identify. One hundred and seventy minutes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One hundred and seventy for sixty five. That is more generous than the architect exam."
+        },
+        {
+          "voice": "coach",
+          "text": "Two minutes forty each, against two minutes flat. You will use it. The scenarios are longer, and four question types appear here instead of two."
+        },
+        {
+          "voice": "coach",
+          "text": "Multiple choice and multiple response, as everywhere. Then ordering, where you place three to five steps in the right sequence. And matching, where you pair responses against three to seven prompts."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Ordering is going to be incident response, isn't it. Containment before eradication, that sort of thing."
+        },
+        {
+          "voice": "coach",
+          "text": "That is exactly the sort of thing an ordering question is for, and it rewards a different kind of preparation. Knowing the five steps is not enough. You have to know their sequence, and there is no partial credit on any of these formats."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the six domains, in weight order, because this is your study budget. Identity and access management, twenty percent. That is the largest."
+        },
+        {
+          "voice": "coach",
+          "text": "Then infrastructure security at eighteen, and data protection also at eighteen. Then detection at sixteen. Then incident response at fourteen, and security foundations and governance at fourteen."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nothing is dominant. The largest is twenty percent and the smallest is fourteen."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the character of this exam and it is worth naming. On the architect paper you can allocate. Here the weights are almost flat, so there is no domain you can safely be weak in."
+        },
+        {
+          "voice": "coach",
+          "text": "Turn it into questions. Twenty percent of fifty is ten questions on identity. Nine each on infrastructure and data. Eight on detection. Seven each on incident response and governance."
+        },
+        {
+          "voice": "coach",
+          "text": "And the scoring is compensatory, so only the overall total matters. But with a bar at seven hundred and fifty and no large domain to lean on, compensating is thinner comfort than it sounds."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The fortnight you would have wasted",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Now the part that only matters this year. What actually changed in the rewrite."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Before you list it, let me say what I would do. I have years of experience securing AWS. I would skip all this and go straight to practice questions."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the most dangerous plan available to an experienced candidate, and I want to show you why rather than just assert it."
+        },
+        {
+          "voice": "coach",
+          "text": "Start with the deletions, because they are the good news. AWS removed the fundamentals of the transmission control protocol and the layered network model. Removed host based security and host based firewalls."
+        },
+        {
+          "voice": "coach",
+          "text": "Removed reachability analysis for network paths. Removed the concepts of transport layer security as a topic. Removed the standard finding format for security findings. Even removed the components of a policy statement, the principal, action, resource and condition."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those are the exact things the older courses drill you on."
+        },
+        {
+          "voice": "coach",
+          "text": "They are. So an experienced candidate revising from last year's material spends a fortnight on deleted content and never notices, because none of it feels wrong. It just is not on the paper."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the additions. Protections and guardrails for generative AI applications, including the well known top ten risks for large language model applications."
+        },
+        {
+          "voice": "sceptic",
+          "text": "There it is. That is a gimmick. Nobody is failing a security specialty exam over prompt injection."
+        },
+        {
+          "voice": "coach",
+          "text": "Give me your reasoning, because it is not a stupid position."
+        },
+        {
+          "voice": "sceptic",
+          "text": "It is one task statement out of dozens. It is probably one question. And it is the fashionable thing to add to an exam, which usually means it is shallow."
+        },
+        {
+          "voice": "coach",
+          "text": "Two of those three are right. It probably is one or two questions, and it probably is shallow. Here is why you learn it anyway. Shallow means cheap. An hour of reading covers a topic where almost every other candidate has done nothing."
+        },
+        {
+          "voice": "coach",
+          "text": "And your own argument works against you. On a flat exam with a seven hundred and fifty bar, one or two questions is precisely the margin you were relying on compensatory scoring to give you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Cheapest marks on the paper, then. Same argument as cost optimisation on the architect exam."
+        },
+        {
+          "voice": "coach",
+          "text": "Same argument exactly. And the rest of the additions are not fashionable at all. Encryption between the nodes of a cluster, on the managed data and machine learning services. Imported key material against key material AWS generates for you."
+        },
+        {
+          "voice": "coach",
+          "text": "Masking sensitive data inside log streams and inside notification messages. Managing keys and certificates across several regions. And ingesting findings in the open cybersecurity schema format from third party tools."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That last group is just modern security operations."
+        },
+        {
+          "voice": "coach",
+          "text": "It is. Which tells you what the rewrite was for. Less networking theory, more running a security programme across accounts, regions and vendors."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The exam in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass through all of it. Nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Sixty five questions, fifty scored, one hundred and seventy minutes, three hundred dollars, and seven hundred and fifty to pass on a scale from one hundred to one thousand."
+        },
+        {
+          "voice": "coach",
+          "text": "Four question types. Multiple choice, multiple response, ordering and matching. None of them give partial credit."
+        },
+        {
+          "voice": "coach",
+          "text": "Six domains, nearly flat. Identity and access management is largest at twenty percent. Infrastructure security and data protection at eighteen each. Detection at sixteen. Incident response and governance at fourteen each."
+        },
+        {
+          "voice": "coach",
+          "text": "The old version's threat detection and logging domains were rebuilt into two separate domains, detection and incident response. Identity grew. Governance was renamed."
+        },
+        {
+          "voice": "coach",
+          "text": "Gone are the network protocol fundamentals, host based firewalls, reachability analysis, transport security as a topic, the finding format, and the anatomy of a policy statement."
+        },
+        {
+          "voice": "coach",
+          "text": "Added are generative AI guardrails, inter-node encryption, imported key material, data masking in logs and notifications, multi-region keys and certificates, and third party findings in an open schema."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the message underneath all of it."
+        },
+        {
+          "voice": "coach",
+          "text": "Check the publication date on everything you buy. That is the whole message."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. What is the pass mark, and how does it compare with the architect associate exam?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Seven hundred and fifty, against seven hundred and twenty. A higher bar on the same scale."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Name the largest domain and its weight, and say why that number is less useful here than on the architect exam.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Identity and access management, twenty percent. Less useful because the weights are nearly flat, so there is no domain you can safely neglect."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Two question formats appear here that are not on the architect exam. Name them, and say what they punish.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Ordering and matching. They punish knowing the pieces without knowing the sequence or the pairing."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. Name three topics that were on the old version and are not on this one.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Network protocol fundamentals. Host based firewalls and hardening. Reachability analysis. And the components of a policy statement."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, before you spend any money."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the version label. Practice question sets carry a version code, and a set updated for the new exam is not the same as a set rewritten for it. Some vendors relabel first and revise gradually."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So how do I tell the difference?"
+        },
+        {
+          "voice": "coach",
+          "text": "Search the set for the new material. If nothing in it mentions guardrails for generative AI, or the open schema for findings, or masking data in log streams, then it is the old set with a new label."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the domain split. Detection and incident response are now separate domains, and questions are written to sit clearly in one or the other."
+        },
+        {
+          "voice": "coach",
+          "text": "Detection is design and configuration before anything happens. Monitoring, logging, alerting. Incident response starts once something has happened. Containment, investigation, recovery. The tense of the question tells you which."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is your own experience. This is a specialty exam, so the distractors are written for people who know the services well."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Meaning every option looks like something I have actually built."
+        },
+        {
+          "voice": "coach",
+          "text": "Every option is something somebody has actually built. So the discriminator is almost never whether it works. It is the qualifier in the question. Least privilege, least operational overhead, fastest containment, or meets the audit requirement."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself before you buy anything."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you name the six domains, and would you notice that none of them is worth more than a fifth of the paper?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Can you name three topics that were deleted, so you stop revising them?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Does the material you are about to pay for mention any of the new content at all?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if it does not."
+        },
+        {
+          "voice": "coach",
+          "text": "Then it is last year's exam with this year's number on the cover."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour on this episode: the highest of the series, and the only one whose value expires. In a year this will be ordinary background."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the largest domain. Identity and access management, twenty percent, and the question this exam returns to more than any other."
+        },
+        {
+          "voice": "coach",
+          "text": "Not what a policy allows. What happens when four different policies all have an opinion about the same request, and they disagree."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "scs-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+      "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+      "used_for": [
+        "question count and unscored split",
+        "question types including ordering and matching",
+        "passing score of 750",
+        "compensatory scoring",
+        "six domain weights",
+        "target candidate experience"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "scs-c03-appendix-b",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03-appendix-b.html",
+      "title": "Appendix: Comparison of SCS-C02 and SCS-C03",
+      "used_for": [
+        "domain restructure into Detection and Incident Response",
+        "added task statements",
+        "deleted content",
+        "dates the old and new versions were in use"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "scs-c03-cert-page",
+      "url": "https://aws.amazon.com/certification/certified-security-specialty/",
+      "title": "AWS Certified Security – Specialty",
+      "used_for": [
+        "exam duration",
+        "price",
+        "recommended experience"
+      ]
+    }
+  ]
+}

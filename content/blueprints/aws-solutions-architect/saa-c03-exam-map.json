@@ -1,0 +1,469 @@
+{
+  "schema": 1,
+  "slug": "saa-c03-exam-map",
+  "show": "aws-solutions-architect",
+  "template": "cert-prep-2voice",
+  "title": "SAA-C03 — The Exam Map",
+  "description": "Sixty five questions, fifty of them scored, and four domains that are nothing like equal. Where forty hours of study should actually go.",
+  "keywords": [
+    "saa-c03",
+    "exam strategy",
+    "aws certification",
+    "solutions architect"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "An exam that does not exist",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "There are study guides on the internet right now for an AWS exam that does not exist."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is a strong claim. Which exam?"
+        },
+        {
+          "voice": "coach",
+          "text": "Solutions Architect Associate, version C zero four. There are blog posts with full domain breakdowns. There is a retirement date for the current version. There is a whole twenty twenty six study guide."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And there is no such exam."
+        },
+        {
+          "voice": "coach",
+          "text": "AWS publishes its own exam guide. It names exactly one current version, and that version is S A A C zero three. The page where AWS announces upcoming exam changes lists no replacement at all."
+        },
+        {
+          "voice": "coach",
+          "text": "The wasted money there is small. The real cost is that you now cannot tell which of your sources checks anything before publishing. So today we build the map from what AWS publishes, and nothing else."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Where do forty hours go?"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "This is the AWS Solutions Architect Associate series. Episode one. The exam map."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Before any services. Before any architecture."
+        },
+        {
+          "voice": "coach",
+          "text": "Before all of it. Here is the question this episode answers. You have forty hours to study. How do you split them across four domains?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Evenly. Ten hours each. Four domains, four blocks. Next question."
+        },
+        {
+          "voice": "coach",
+          "text": "That is what most people do, and it is wrong by about a third. The domains are not equal, and AWS tells you exactly how unequal they are."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The shape of the paper",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Start with the shape of the paper. Sixty five questions. One hundred and thirty minutes. That is two minutes a question, exactly."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Two minutes is not much for a scenario question with four long answers."
+        },
+        {
+          "voice": "coach",
+          "text": "It is enough, and here is the relief. Only fifty of those sixty five questions are scored."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So what are the other fifteen doing there?"
+        },
+        {
+          "voice": "coach",
+          "text": "They are auditions. AWS is trialling them for use on future exams. They are not marked, and they are not labelled in any way. So roughly one question in four does not count, and you cannot tell which ones."
+        },
+        {
+          "voice": "coach",
+          "text": "That has a practical consequence. When a question feels bizarre, or unfairly specific, do not spiral on it. There is a real chance it is not being scored at all."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the scoring. The scale runs from one hundred to one thousand. You need seven hundred and twenty to pass."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Seven hundred and twenty out of one thousand. That is seventy two percent. So thirty six questions right out of fifty."
+        },
+        {
+          "voice": "coach",
+          "text": "No. And that is the most common piece of wrong arithmetic in the entire certification world."
+        },
+        {
+          "voice": "coach",
+          "text": "It is a scaled score. AWS equates scores across different versions of the paper, because some versions are slightly harder than others. The scale absorbs that difference so that everyone is held to the same standard."
+        },
+        {
+          "voice": "coach",
+          "text": "Which means the number of raw questions you need is not fixed, and AWS does not publish it. Anyone who tells you the exact number is guessing."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So I never actually know how much margin I have."
+        },
+        {
+          "voice": "coach",
+          "text": "You never know. Hold that thought, because it matters in a minute. One thing you do know is that the scoring is compensatory. You do not have to pass each domain separately. Only the overall total."
+        },
+        {
+          "voice": "coach",
+          "text": "Think of it as one scorecard, not four rounds you have to win individually. A weak domain gets carried by a strong one."
+        },
+        {
+          "voice": "coach",
+          "text": "One last mercy, and it is a real one. This exam has two question types only. Multiple choice, with one right answer and three distractors. And multiple response, where two or more answers are correct out of five or more options."
+        },
+        {
+          "voice": "sceptic",
+          "text": "No ordering questions? No matching?"
+        },
+        {
+          "voice": "coach",
+          "text": "Not on this one. The AI Practitioner exam has them. The Security Specialty exam has them. Solutions Architect Associate does not."
+        },
+        {
+          "voice": "coach",
+          "text": "On multiple response, assume there is no partial credit. AWS states that rule outright in the AI Practitioner guide, and no exam guide anywhere promises partial credit. So a wrong extra option costs you exactly what a missing right one costs."
+        },
+        {
+          "voice": "coach",
+          "text": "And when you pass, the certification is valid for three years."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The domain you were going to skip",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Back to your forty hours, split evenly. Let me show you what that plan costs."
+        },
+        {
+          "voice": "coach",
+          "text": "Here are the four domains and their weights. Domain one, design secure architectures, thirty percent. Domain two, design resilient architectures, twenty six percent. Domain three, design high performing architectures, twenty four percent. Domain four, design cost optimised architectures, twenty percent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Fine. Security is the biggest, that is no surprise. But cost optimisation is only twenty percent. That is the one I would drop."
+        },
+        {
+          "voice": "coach",
+          "text": "Say more. Why that one?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "It is the smallest domain and the dullest. Pricing models, storage classes, reserved instances. I would rather put those ten hours into architecture, which is the actual job."
+        },
+        {
+          "voice": "coach",
+          "text": "Run the number first. Twenty percent of fifty scored questions is ten questions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Ten questions. Out of fifty."
+        },
+        {
+          "voice": "coach",
+          "text": "One fifth of your entire result. And you cannot tell me what margin you have, because you do not know the raw pass mark. Nobody outside AWS does."
+        },
+        {
+          "voice": "coach",
+          "text": "So the plan is to give away a fifth of the paper, while blind to how much room you had to give away."
+        },
+        {
+          "voice": "sceptic",
+          "text": "When you put it like that, it sounds worse."
+        },
+        {
+          "voice": "coach",
+          "text": "There is a second half to this, and it is the part that actually changes how you study. Cost optimisation is the cheapest domain per hour on the whole exam."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Cheapest how? Cheap to learn, you mean."
+        },
+        {
+          "voice": "coach",
+          "text": "Cheap because it is finite. There is a fixed number of storage classes. A fixed number of purchase options. A fixed, and quite short, list of pricing traps."
+        },
+        {
+          "voice": "coach",
+          "text": "Cross region data transfer. Charges on a NAT gateway you forgot was there. Provisioned capacity nobody ever turned off. You can learn that list to the end."
+        },
+        {
+          "voice": "coach",
+          "text": "Resilience is not finite. Questions about failure and recovery can go arbitrarily deep, and there is always another failure mode. You can spend ten hours there and still not have covered it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So I should invert the plan. Take the finite domain to completion, then spend the leftover hours on the ones with no bottom."
+        },
+        {
+          "voice": "coach",
+          "text": "That is exactly it. And now look at security. Thirty percent is about fifteen scored questions. Fifteen and ten is half the paper, from the two domains most people treat as chores."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The whole exam in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Let me put the whole exam back together in one pass. Nothing new in here. Just the shape, end to end."
+        },
+        {
+          "voice": "coach",
+          "text": "You sit down for one hundred and thirty minutes and you answer sixty five questions. Two minutes each. Multiple choice and multiple response only, so nothing to order and nothing to match."
+        },
+        {
+          "voice": "coach",
+          "text": "Fifty of those questions are scored. Fifteen are silent auditions that you will never identify, so an odd question is not worth panicking over."
+        },
+        {
+          "voice": "coach",
+          "text": "The questions come from four domains. Secure architectures, thirty percent, about fifteen scored questions. Resilient architectures, twenty six percent, about thirteen. High performing architectures, twenty four percent, about twelve. Cost optimised architectures, twenty percent, about ten."
+        },
+        {
+          "voice": "coach",
+          "text": "Your result comes back on a scale from one hundred to one thousand, and seven hundred and twenty passes. That number is scaled, not a percentage of questions answered."
+        },
+        {
+          "voice": "coach",
+          "text": "The scoring is compensatory, so a weak domain is carried by a strong one. And the certification you get is valid for three years."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is the entire exam."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the entire exam. Everything after this episode is one question repeated: which service, and when."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Recall drill. I ask, you answer out loud, then we confirm. Question one. How many of the sixty five questions are scored, and what are the rest?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Fifty are scored. The other fifteen are unscored trial questions, and they are not identified on the paper."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. You need seven hundred and twenty to pass. What does that number not mean?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "It does not mean seventy two percent of the questions. It is a scaled score, equated across different versions of the exam."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Name the largest domain, and turn its weight into a number of scored questions.",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Design secure architectures. Thirty percent, so about fifteen of the fifty."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. On a multiple response question you are sure of two answers and guessing at a third. What does adding a wrong one cost you?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Assume it costs you the whole question. Nobody promises partial credit, so a wrong extra costs exactly what a missing right one costs."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and the mechanism behind each one. Not just that they exist. How they are built."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the qualifier. Four options can all technically work. The question contains one word that eliminates three of them. Cheapest. Most highly available. Least operational overhead. Most secure."
+        },
+        {
+          "voice": "coach",
+          "text": "So when you are stuck between two answers, stop comparing the answers. Go back and find the qualifier. It is always in there, and it is almost always the discriminator."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if both remaining answers satisfy the qualifier?"
+        },
+        {
+          "voice": "coach",
+          "text": "Then one of them does not actually work, and you have skipped a constraint. Reread the question for the detail you glossed over. A region requirement. An existing on premises connection. A compliance rule."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is two qualifiers that pull in opposite directions. Least operational overhead and lowest cost are not the same answer. The managed service usually costs more and takes less work."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the trap is that both answers are defensible in real life."
+        },
+        {
+          "voice": "coach",
+          "text": "Both are defensible. Only one matches the word in the question. Whichever qualifier is written down wins, and your own engineering taste does not get a vote."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is a service that is not on the exam at all. AWS publishes an in scope service list and an out of scope service list for this exam."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nobody reads the out of scope one."
+        },
+        {
+          "voice": "coach",
+          "text": "Almost nobody, and it is the more useful document. If a service is on the out of scope list and it appears in an answer option, you have just eliminated that option without knowing anything about it."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three things to carry in, and each one is a question to ask yourself, not a fact to reread."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you say what seven hundred and twenty is, without using the word percent?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Can you name the four domains in weight order, and turn each weight into a number of scored questions?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. When two answers both look right, what is the first thing you go back and look for?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The qualifier."
+        },
+        {
+          "voice": "coach",
+          "text": "The qualifier. Every single time."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour on this episode: the highest of the whole series. You have just allocated forty hours of study in about fifteen minutes, and you have not learned a single service yet."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain one. Design secure architectures. Thirty percent, the largest domain on the paper."
+        },
+        {
+          "voice": "coach",
+          "text": "And we start with the thing that catches more candidates than anything else in it. What happens when an identity policy and a resource policy disagree about the same request."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "saa-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+      "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+      "used_for": [
+        "question count",
+        "scored and unscored split",
+        "passing score and scaled scoring",
+        "compensatory scoring",
+        "question types",
+        "domain weights"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "saa-c03-cert-page",
+      "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      "title": "AWS Certified Solutions Architect – Associate",
+      "used_for": [
+        "exam duration",
+        "current exam version",
+        "three year validity"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aws-cert-coming-soon",
+      "url": "https://aws.amazon.com/certification/coming-soon/",
+      "title": "Coming Soon to AWS Certification",
+      "used_for": [
+        "no announced successor to SAA-C03"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "ordering and matching question types on other exams",
+        "AWS stating the no-partial-credit rule explicitly"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "saa-c03-in-scope",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-03-in-scope-services.html",
+      "title": "SAA-C03 In-Scope AWS Services",
+      "used_for": [
+        "in scope and out of scope service lists"
+      ]
+    }
+  ]
+}

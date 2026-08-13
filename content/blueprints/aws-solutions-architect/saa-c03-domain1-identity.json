@@ -1,0 +1,445 @@
+{
+  "schema": 1,
+  "slug": "saa-c03-domain1-identity",
+  "show": "aws-solutions-architect",
+  "template": "cert-prep-2voice",
+  "title": "SAA-C03 Domain 1 — When Policies Disagree",
+  "description": "Identity, roles and cross-account access. What happens when an identity policy and a resource policy say different things, and why the answer changes across an account boundary.",
+  "keywords": [
+    "saa-c03",
+    "iam",
+    "policy evaluation",
+    "cross-account",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The same policy, two answers",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Here is a question with two correct answers, depending on one detail nobody reads carefully enough."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Go on."
+        },
+        {
+          "voice": "coach",
+          "text": "A role has an identity policy that allows reading objects from a bucket. The bucket policy says nothing at all about that role. Can the role read the object?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Yes. The identity policy allows it, and nothing denies it."
+        },
+        {
+          "voice": "coach",
+          "text": "Right, if the role and the bucket are in the same account. Wrong if they are in different accounts. Same two policies, opposite outcome, and the only thing that changed was an account boundary."
+        },
+        {
+          "voice": "coach",
+          "text": "That single distinction is worth more marks on this exam than any service you could name. So today we build the evaluation rule properly."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Thirty percent starts here"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain one. Design secure architectures. Thirty percent of the scored questions, which is about fifteen of the fifty. The largest domain on the paper."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And we are spending a whole episode on identity alone?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two episodes. This one is identity and access. The next one is network and data. AWS splits domain one into three tasks, and the first is designing secure access to AWS resources."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Fine. But surely the exam just wants me to say least privilege and move on."
+        },
+        {
+          "voice": "coach",
+          "text": "Least privilege is the principle. The questions are about mechanism. Which of these four ways of granting access is the one that works here, and cheaply."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "How a request is decided",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Every request to AWS is decided by the same evaluation. Learn it once and a whole class of questions collapses."
+        },
+        {
+          "voice": "coach",
+          "text": "Rule one. An explicit deny always wins. Anywhere. In any policy. Nothing overrides it, and there is no ordering argument to have."
+        },
+        {
+          "voice": "coach",
+          "text": "Rule two. There is no implicit allow. If nothing grants the action, the answer is no. Denial is the default, and silence is denial."
+        },
+        {
+          "voice": "coach",
+          "text": "Rule three is the one from the cold open. Inside a single account, an allow in either the identity policy or the resource policy is enough. Across accounts, you need an allow in both."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Both sides have to agree, because both accounts have to agree."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the intuition. An account is a trust boundary. Neither side can reach across it alone. So a cross-account question with only one policy shown to you is usually incomplete on purpose."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the two policy types, and the words matter. An identity policy attaches to a user, a group or a role. It says what that principal may do."
+        },
+        {
+          "voice": "coach",
+          "text": "A resource policy attaches to the thing itself. A bucket policy, a queue policy, a key policy. It says who may touch this resource. It also names the principal, which is the part identity policies cannot do."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a resource policy can grant access to a principal in another account without that account doing anything?"
+        },
+        {
+          "voice": "coach",
+          "text": "It can offer it. The other account still has to allow its own principal to accept. That is rule three again, from the other side."
+        },
+        {
+          "voice": "coach",
+          "text": "Then there is a third kind, and it is the one people misread. A service control policy, which applies to an account inside AWS Organizations."
+        },
+        {
+          "voice": "coach",
+          "text": "A service control policy never grants anything. It only sets a ceiling. If the ceiling forbids an action, no policy inside that account can permit it, including an administrator policy."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So an account administrator can be locked out of a service by a policy they cannot see."
+        },
+        {
+          "voice": "coach",
+          "text": "Cannot see and cannot edit. That is the entire point of it, and it is the answer to any question that says a permission must hold even if someone has administrator rights."
+        },
+        {
+          "voice": "coach",
+          "text": "One more idea sits underneath all of this, and the exam names it directly. The shared responsibility model."
+        },
+        {
+          "voice": "sceptic",
+          "text": "AWS secures the cloud, the customer secures what is in it. Everyone can recite that line."
+        },
+        {
+          "voice": "coach",
+          "text": "Reciting it is not the skill. Placing a specific task on the right side of it is. Patching the hypervisor is theirs. Patching the operating system on your instance is yours."
+        },
+        {
+          "voice": "coach",
+          "text": "Physical access to the data centre is theirs. Who may call the API is yours, always. And the line moves with the service. On a managed database, patching the engine becomes theirs, while the credentials and the network rules stay yours."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the more managed the service, the more of the work sits on their side."
+        },
+        {
+          "voice": "coach",
+          "text": "And two things never move. Your data, and who you granted access to. Those are yours on every service AWS sells."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Two accounts, one bucket",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A scenario, the shape the exam actually uses. A data team in one account needs to read a bucket that lives in another account. Design the access."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Easy. Create an IAM user in the bucket account, give it read access, and hand the access key to the data team."
+        },
+        {
+          "voice": "coach",
+          "text": "It works. Tell me why the exam will still mark it wrong."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because it is a long lived credential, I assume. But somebody has to hold a credential eventually."
+        },
+        {
+          "voice": "coach",
+          "text": "No. That is the assumption to drop. An access key never expires until a human rotates it. It gets committed to a repository, pasted into a config file, and left behind when the person leaves."
+        },
+        {
+          "voice": "coach",
+          "text": "The alternative is a role. A role has no credentials of its own. Someone assumes it, and the Security Token Service issues credentials that expire on their own, in an hour or a few hours."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the design is a role in the bucket account, and the data team assumes it."
+        },
+        {
+          "voice": "coach",
+          "text": "Now say what is attached to that role, because this is the part that separates a pass from a fail."
+        },
+        {
+          "voice": "sceptic",
+          "text": "A policy that allows reading the bucket."
+        },
+        {
+          "voice": "coach",
+          "text": "That is one of two, and it is the permissions policy. The other is the trust policy, and it answers a different question entirely. Not what may this role do. Who is allowed to become this role."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the trust policy names the other account."
+        },
+        {
+          "voice": "coach",
+          "text": "The trust policy names the other account as principal. The permissions policy names the bucket and the read action. Two policies, two questions, and every cross-account question in the exam is testing whether you know they are different."
+        },
+        {
+          "voice": "coach",
+          "text": "Notice what we have not needed. No access key. No bucket policy edit, because the role now lives in the same account as the bucket. And nothing to rotate, because nothing persists."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if I did want the bucket policy involved instead of a role?"
+        },
+        {
+          "voice": "coach",
+          "text": "Then you are back to rule three. Allow in the bucket policy naming the other account, and allow in the other account's identity policy. Both, or it fails. That design is legitimate, and the exam usually prefers the role because it is auditable in one place."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Change the scenario. The data team is not another AWS account. They are five hundred employees in a corporate directory that already exists."
+        },
+        {
+          "voice": "coach",
+          "text": "Then the answer is federation, and the shape is the same. You do not create five hundred IAM users. You trust the directory, and each person assumes a role when they sign in."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the directory decides who they are, and the role decides what they can do."
+        },
+        {
+          "voice": "coach",
+          "text": "Authentication over there, authorisation over here. That sentence answers most federation questions on the exam. And the joiner and leaver problem solves itself, because removing someone from the directory removes their access everywhere."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Identity in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass through the whole thing. Nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "A request arrives. An explicit deny anywhere kills it. Nothing grants it by default. Inside one account, an allow in the identity policy or the resource policy is enough. Across two accounts, you need both."
+        },
+        {
+          "voice": "coach",
+          "text": "Identity policies attach to users, groups and roles, and say what a principal may do. Resource policies attach to the resource, and can name a principal from another account. Service control policies grant nothing and only lower the ceiling for an entire account."
+        },
+        {
+          "voice": "coach",
+          "text": "Prefer roles to users, because a role has no standing credential. The Security Token Service issues one that expires. A role carries two policies: a trust policy for who may assume it, and a permissions policy for what it may then do."
+        },
+        {
+          "voice": "coach",
+          "text": "The root user gets multi-factor authentication, no access keys, and nothing routine. And across many accounts, Control Tower sets the landing zone up and service control policies hold the ceiling."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is task one point one."
+        },
+        {
+          "voice": "coach",
+          "text": "That is task one point one, and it is the densest scoring on the paper."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. An identity policy allows an action. A service control policy on the account does not permit it. What happens?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "It is denied. A service control policy sets a ceiling, and nothing inside the account can rise above it."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Name the two policies attached to a role, and the question each one answers.",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "The trust policy, which says who may assume the role. And the permissions policy, which says what the role may do once assumed."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Same account, identity policy allows, resource policy is silent. Allowed or denied? And now change it to two accounts.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Same account, allowed. Two accounts, denied, because a cross-account request needs an allow on both sides."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. A question says the permission must not be usable even by an account administrator. Which mechanism is being described?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "A service control policy. It is the only one an account administrator cannot override or edit."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and the mechanism of each."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one. Two options that both use a role, where one attaches the permissions to the trust policy. It reads fine at speed. Slow down and ask which question each policy is answering."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the workforce and customer split. IAM Identity Center is for your own people, connected to a corporate directory. Cognito is for the users of your application, signing in to your app."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And both answers will be sitting there together."
+        },
+        {
+          "voice": "coach",
+          "text": "Always together. The tell is in the noun. Employees, staff, engineers, a directory, single sign-on to the console means Identity Center. Customers, mobile app, sign up, sign in means Cognito."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three. An option that says to grant permissions using a service control policy. It cannot. It only restricts. If an answer uses one to give access, that answer is wrong however sensible the rest of it sounds."
+        },
+        {
+          "voice": "coach",
+          "text": "And one honourable mention. Any answer that creates an IAM user with an access key for a workload running on AWS is wrong. Compute gets a role. That rule almost never breaks on this exam."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions to ask yourself before you sit down."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you state the evaluation rule in three sentences, including what changes across an account boundary?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Trust policy or permissions policy. Which one names the principal that may assume the role?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Employees or customers. Which one sends you to Cognito?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Customers."
+        },
+        {
+          "voice": "coach",
+          "text": "Customers. And remember the exam map episode. Fifteen scored questions live in this domain."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour on this one: very high. The evaluation rule is four sentences long and it decides a large slice of the largest domain."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the second half of domain one. Network and data. Public subnets, private subnets, and the two firewall objects that are constantly confused with each other."
+        },
+        {
+          "voice": "coach",
+          "text": "We open on a company that did everything right, moved all its workloads into private subnets, and got a bill that went up."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "saa-c03-domain1",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03-domain1.html",
+      "title": "SAA-C03 Content Domain 1: Design Secure Architectures",
+      "used_for": [
+        "task 1.1 scope",
+        "federated access services",
+        "role-based access control",
+        "service control policies",
+        "resource policies",
+        "domain weight"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "iam-policy-evaluation",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+      "title": "Policy evaluation logic — AWS IAM User Guide",
+      "used_for": [
+        "explicit deny precedence",
+        "implicit denial by default",
+        "same-account and cross-account allow requirements",
+        "service control policy ceiling"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "iam-roles-terms",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html",
+      "title": "IAM roles terms and concepts",
+      "used_for": [
+        "trust policy versus permissions policy",
+        "temporary credentials from AWS STS"
+      ]
+    }
+  ]
+}

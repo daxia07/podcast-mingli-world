@@ -129,6 +129,24 @@
       "default_template": "code-teardown",
       "order": 4,
       "featured": true
+    },
+    "aws-solutions-architect": {
+      "title": "AWS Solutions Architect — SAA-C03",
+      "description": "One exam domain per episode, argued out loud. Where the marks are, and the wrong answer that looks right.",
+      "mono": "SA",
+      "icon": "🏗️",
+      "default_template": "cert-prep-2voice",
+      "order": 11,
+      "featured": false
+    },
+    "aws-security-specialty": {
+      "title": "AWS Security Specialty — SCS-C03",
+      "description": "The specialty exam as it stands after the C03 rewrite, including the GenAI security content nobody has covered yet.",
+      "mono": "SC",
+      "icon": "🛡️",
+      "default_template": "cert-prep-2voice",
+      "order": 12,
+      "featured": false
     }
   }
 }

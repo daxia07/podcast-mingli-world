@@ -1,0 +1,82 @@
+{
+  "name": "cert-prep-2voice",
+  "title": "Certification exam prep — two voices",
+  "description": "One exam domain per episode, argued between a coach and a sceptic. Cold open, a real disagreement, a scored case study, and a recall drill with genuine silence.",
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "target_minutes": [
+    12,
+    20
+  ],
+  "authoring_brief": "Certification exams test discrimination, not recall of definitions — the candidate has to pick between four plausible services. So every concept must land as 'use X when Y, not Z because W'. Never read a service list; always pair a service with the job it does and the service it is most often confused with. Say percentages and numbers in words. Never write AI slash ML — say 'AI and ML'.\n\nThis template exists because a single narrator reading a spec sheet is the format's failure mode. Two rules carry the whole thing. First: open cold. The first thing in the episode is a consequence — a cost, an outage, a failed exam — stated before the show is named, before the domain is named, before anything administrative. Second: the sceptic must be wrong on purpose. The sceptic is a competent engineer with a defensible but exam-wrong instinct, and says it out loud with confidence; the coach then shows why the exam disagrees. A sceptic who only asks leading questions ('So what is a VPC endpoint?') destroys the format — that is the single most common failure. Never resolve a disagreement instantly with agreement; make the sceptic concede for a stated reason.\n\nWrite for the ear and for a synthetic voice. Twelve to eighteen words a sentence. One idea per sentence. No stacked subordinate clauses. Never rely on tone to carry sarcasm or irony — the voice will read it flat, and in exam material a mis-landed joke reads as a wrong claim. No scripted filler, no 'um', no fake stammers. Repeat every acronym expansion and every instance name in each new section; there is no glancing back in audio. Introduce at most three new named concepts without attaching a concrete analogy to each.\n\nThe drill is the most valuable section, so protect it. Give the listener enough information to actually attempt the answer before the reveal, set pause_after to at least three seconds on the question line, and never use it as a gotcha. Close with a repeatable device and a tease that names a real unresolved question.",
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "required": true,
+      "target_minutes": 0.75,
+      "brief": "A consequence, before any branding. A cost, an outage, a failed exam, or a genuinely surprising fact. The topic is not named yet. Ends on a promise of what will be resolved."
+    },
+    {
+      "id": "question",
+      "title": "The question",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Now name the show and the domain. State the objective as a contestable question, not a syllabus item, and give the domain weight so effort can be allocated."
+    },
+    {
+      "id": "concepts",
+      "title": "The concepts",
+      "required": true,
+      "target_minutes": 2.5,
+      "factual": true,
+      "brief": "The ideas, built plainly, each with a concrete analogy attached. Maximum three new named concepts. Requires sources[]."
+    },
+    {
+      "id": "case",
+      "title": "The case",
+      "required": true,
+      "target_minutes": 4,
+      "factual": true,
+      "brief": "One scenario run as a story: it worked every day, then one day it did not, and here is what that cost. The sceptic proposes the tempting wrong answer here and defends it. Requires sources[]."
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "required": true,
+      "target_minutes": 3,
+      "factual": true,
+      "brief": "Having taken the thing apart, narrate it once as a single continuous pass, introducing no new information. This is the section a listener replays. Requires sources[]."
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Exam-shaped questions with a real pause before each answer. Set pause_after to three seconds or more on every question line. The listener must have been given enough to attempt it."
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Name the mechanism of the distractor, not the fact that traps exist. Which two options look identical, and what one word in the stem separates them."
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Three things, phrased as self-test prompts rather than a restated list. Call back to an earlier episode where one exists."
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "required": false,
+      "target_minutes": 0.75,
+      "brief": "The recurring closing device, then a tease naming a genuinely unresolved question from the next episode. Never oversell it."
+    }
+  ]
+}
