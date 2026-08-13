@@ -42,6 +42,14 @@ jobs:
       - name: Manifest gates
         run: python3 -m scripts.lib.gates --manifest
 
+      # Rebuilt from the live transcripts so the deployed index is never older
+      # than the episodes. --no-shrink means a flaky fetch keeps the committed
+      # one rather than shipping a thinner index.
+      - name: Refresh the search index
+        env:
+          BASE_URL: https://podcast.mingli.world
+        run: python3 scripts/build_search_index.py --no-shrink
+
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -75,3 +83,7 @@ jobs:
           CODE=$(curl -s -o /dev/null -w '%{http_code}' -H 'Range: bytes=1000-1100' "$URL")
           echo "range status: $CODE"
           test "$CODE" = "206"
+
+          echo "--- search index must be served and non-empty ---"
+          curl -sS --fail https://podcast.mingli.world/search-index.json -o /tmp/idx.json
+          python3 -c "import json,sys; n=len(json.load(open('/tmp/idx.json'))['episodes']); print('indexed episodes:', n); sys.exit(0 if n else 1)"

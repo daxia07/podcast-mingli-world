@@ -632,40 +632,144 @@
   };
 
   // ——— search ———
-  document.getElementById("searchInput").addEventListener("input", function () {
-    var q = this.value.trim().toLowerCase();
+  //
+  // Two corpora: episode metadata (all 174) and the moment index — every spoken
+  // line and chapter of the episodes built from blueprints, each with the second
+  // it starts at. The index is ~100 KB, so it loads on the first keystroke here
+  // rather than on boot; until it arrives the query still runs against metadata,
+  // and re-runs once it lands. window.Search (js/search.js) does the ranking.
+  var searchIndex = null;
+  var searchIndexPromise = null;
+
+  function ensureSearchIndex() {
+    if (searchIndex) return Promise.resolve(searchIndex);
+    if (!searchIndexPromise) {
+      searchIndexPromise = fetch("/search-index.json")
+        .then(function (r) {
+          return r.ok ? r.json() : { episodes: {} };
+        })
+        .catch(function () {
+          return { episodes: {} };
+        })
+        .then(function (d) {
+          searchIndex = d;
+          return d;
+        });
+    }
+    return searchIndexPromise;
+  }
+
+  function runSearch(q) {
     var el = document.getElementById("searchResults");
     if (!q) {
-      el.innerHTML = '<div class="empty">Search episodes and solution boards</div>';
+      el.innerHTML =
+        '<div class="empty">Search titles, solution boards — and every word spoken in an episode</div>';
       return;
     }
-    var hits = visibleEpisodes(episodes).filter(function (ep) {
-      var blob = (
-        ep.title +
-        " " +
-        (ep.description || "") +
-        " " +
-        (ep.subtitle || "") +
-        " " +
-        epShowId(ep)
-      ).toLowerCase();
-      var board = solutions[String(ep.id)];
-      if (board) {
-        blob +=
-          " " +
-          board.title +
-          " " +
-          board.problem +
-          " " +
-          board.sections
-            .map(function (s) {
-              return s.title + " " + s.body.join(" ");
-            })
-            .join(" ");
+    if (!window.Search) return;
+
+    var results = window.Search.run(q, {
+      episodes: visibleEpisodes(episodes),
+      solutions: solutions,
+      index: searchIndex,
+      showTitle: function (id) {
+        return showMeta(id).title;
       }
-      return blob.indexOf(q) !== -1;
     });
-    renderEpList(el, hits.slice(0, 30));
+    renderSearchResults(el, results, window.Search.terms(q));
+  }
+
+  function renderSearchResults(el, results, termList) {
+    if (!results.length) {
+      el.innerHTML = '<div class="empty">No matches</div>';
+      return;
+    }
+
+    function marked(text) {
+      return window.Search.highlight(text, termList)
+        .map(function (c) {
+          return c.hit ? "<mark>" + esc(c.t) + "</mark>" : esc(c.t);
+        })
+        .join("");
+    }
+
+    el.innerHTML = results
+      .slice(0, 30)
+      .map(function (r) {
+        var ep = r.ep;
+        var done = !!finished[String(ep.id)];
+        var moments = r.moments
+          .map(function (m) {
+            return (
+              '<button type="button" class="moment' +
+              (m.kind === "chapter" ? " chapter" : "") +
+              '" data-id="' + ep.id + '" data-t="' + m.t + '">' +
+              '<span class="moment-t">' + fmt(m.t) + "</span>" +
+              '<span class="moment-text">' +
+              marked(window.Search.snippet(m.text, termList)) +
+              "</span></button>"
+            );
+          })
+          .join("");
+        var hidden = r.momentCount - r.moments.length;
+
+        return (
+          '<div class="sr' + (moments ? " has-moments" : "") + '">' +
+          '<div class="sr-head" data-id="' + ep.id + '">' +
+          '<div class="ep-num">' + (done ? "✓" : ep.id) + "</div>" +
+          '<div class="ep-body"><div class="ep-title">' + marked(ep.title) + "</div>" +
+          '<div class="ep-meta">' + esc(showMeta(epShowId(ep)).title) + " · " +
+          (ep.duration || "—") +
+          "</div></div>" +
+          '<button type="button" class="ep-play" data-play="' + ep.id +
+          '" aria-label="Play">' + ICON_PLAY + "</button></div>" +
+          (moments ? '<div class="sr-moments">' + moments : "") +
+          (hidden > 0
+            ? '<div class="moment-more">+' + hidden + " more in this episode</div>"
+            : "") +
+          (moments ? "</div>" : "") +
+          "</div>"
+        );
+      })
+      .join("");
+
+    el.querySelectorAll(".sr-head").forEach(function (head) {
+      head.addEventListener("click", function (e) {
+        if (e.target.closest(".ep-play")) return;
+        var ep = byId(+head.dataset.id);
+        if (ep) playEpisode(ep);
+      });
+    });
+    el.querySelectorAll(".ep-play").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var ep = byId(+btn.dataset.play);
+        if (ep) playEpisode(ep);
+      });
+    });
+    el.querySelectorAll(".moment").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var ep = byId(+btn.dataset.id);
+        // Start a beat early: landing exactly on the word feels like a cut.
+        if (ep) playEpisode(ep, Math.max(0, parseFloat(btn.dataset.t) - 1.2));
+      });
+    });
+  }
+
+  var searchDebounce = 0;
+  document.getElementById("searchInput").addEventListener("input", function () {
+    var q = this.value.trim();
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(function () {
+      runSearch(q);
+      if (q && !searchIndex) {
+        ensureSearchIndex().then(function () {
+          // Only redraw if the box still says what we searched for.
+          var live = document.getElementById("searchInput").value.trim();
+          if (live === q) runSearch(q);
+        });
+      }
+    }, 110);
   });
 
   // ——— playback ———
@@ -696,7 +800,9 @@
     audio.src = src;
     audio.load();
     var resume = startAt != null ? startAt : progress[String(ep.id)] || 0;
-    if (resume > 5) {
+    // An explicit start always seeks — a search moment ten seconds in is a
+    // deliberate destination, not a resume point worth second-guessing.
+    if (startAt != null || resume > 5) {
       audio.addEventListener(
         "loadedmetadata",
         function onMeta() {

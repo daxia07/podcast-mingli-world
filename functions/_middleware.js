@@ -186,6 +186,10 @@ export async function onRequest(context) {
     '/sw.js',
     '/manifest.webmanifest',
     '/solutions.json',
+    // Derived entirely from /transcripts/, which is already public for podcast
+    // clients, so gating it would protect nothing while breaking the deploy
+    // check that proves search still works.
+    '/search-index.json',
     '/.well-known/',
     // Podcasting 2.0 side artifacts — referenced from public RSS items, so
     // they must be fetchable by podcast clients that have no auth cookie.
