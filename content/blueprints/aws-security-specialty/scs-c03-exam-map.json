@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 363,
   "slug": "scs-c03-exam-map",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -48,8 +49,7 @@
     },
     {
       "id": "question",
-      "title": "The hardest of the three"
-    ,
+      "title": "The hardest of the three",
       "lines": [
         {
           "voice": "coach",

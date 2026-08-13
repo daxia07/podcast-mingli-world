@@ -3115,6 +3115,65 @@
       ]
     },
     {
+      "id": 363,
+      "slug": "scs-c03-exam-map",
+      "title": "SCS-C03 — What Changed, and What It Is Worth",
+      "description": "The Security Specialty exam was rewritten in December twenty twenty five. Six domains, seven hundred and fifty to pass, and a list of topics AWS deleted that you may still be studying.",
+      "duration": "11:49",
+      "file_size_bytes": 5679213,
+      "file_url": "https://podcast.mingli.world/episodes/scs-c03-exam-map.mp3?v=9d038382",
+      "filename": "scs-c03-exam-map.mp3",
+      "playlist": "aws-security-specialty",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "scs-c03",
+        "aws security specialty",
+        "exam strategy",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "scs-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+          "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+          "used_for": [
+            "question count and unscored split",
+            "question types including ordering and matching",
+            "passing score of 750",
+            "compensatory scoring",
+            "six domain weights",
+            "target candidate experience"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "scs-c03-appendix-b",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03-appendix-b.html",
+          "title": "Appendix: Comparison of SCS-C02 and SCS-C03",
+          "used_for": [
+            "domain restructure into Detection and Incident Response",
+            "added task statements",
+            "deleted content",
+            "dates the old and new versions were in use"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "scs-c03-cert-page",
+          "url": "https://aws.amazon.com/certification/certified-security-specialty/",
+          "title": "AWS Certified Security – Specialty",
+          "used_for": [
+            "exam duration",
+            "price",
+            "recommended experience"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -3916,7 +3975,9 @@
       "featured": false,
       "default_template": "cert-prep-2voice",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        363
+      ]
     }
   }
 }
