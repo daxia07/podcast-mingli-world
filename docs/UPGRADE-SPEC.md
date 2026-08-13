@@ -5,19 +5,30 @@ Status: **Phases 0–3 shipped and live; Phase 4 partial**  ·  Written: 2026-08
 | Phase | State |
 |---|---|
 | §3.1b Range + cache headers | **live** — verified `206` in production; cache headers later corrected off `immutable` |
-| Phase 0 foundations | **live** — lib package, gates, 126 tests, CI, deploy, `/healthz`, feedback-list |
+| Phase 0 foundations | **live** — lib package, gates, 165 tests, CI, deploy, `/healthz`, feedback-list |
 | Phase 1 content system | **live** — 9 templates, show registry, `build_episode.py`, 5 skills, 81 blueprints migrated |
 | Phase 2 ingestion | **built, unrun** — needs `yt-dlp`; `curate.py` and `ingest_youtube.py` never executed against a real channel |
-| Phase 3 player | **live** — chapters, synced transcript, swipe-to-shelve; dark mode shipped then reverted |
+| Phase 3 player | **live** — chapters, synced transcript, swipe-to-shelve, moment search, dark mode (restored 2026-08-13 behind a palette test) |
 | Phase 4 backfill/prune | **partial** — cover art, symlinks and manifest sync done; whisper backfill and `prune.py` not started |
 
 Shipped beyond the original spec: an Android APK build (`docs/ANDROID-APP.md`),
 cover art generation, an MP3 frame scanner guarding audio uniformity, manifest
-sync to R2 on deploy, and four new shows (AWS AI Practitioner, Agentic AI
-investing, Building Agentic Systems, plus the archived Airwallex set).
+sync to R2 on deploy, four new shows (AWS AI Practitioner, Agentic AI investing,
+Building Agentic Systems, plus the archived Airwallex set), and search across
+what episodes actually say (`scripts/build_search_index.py` → `site/js/search.js`).
 
 Remaining: run the ingestion pipeline once end to end, backfill transcripts for
 the ~90 legacy episodes, storage pruning, and a real-device pass over the player.
+
+**Search moments (added 2026-08-13).** Every episode with an exact transcript
+contributes its lines and chapters, each with a start time, to a single static
+`site/search-index.json` (~100 KB for 17 episodes). The app fetches it lazily on
+the first keystroke in Search and ranks metadata and moments together, so a hit
+can be "1:25 in Domain 2" rather than an episode title. It is rebuilt from the
+public `/transcripts/` and `/chapters/` endpoints — no credentials — after every
+publish and again on every deploy, with `--no-shrink` so a flaky fetch cannot
+silently reduce coverage. Coverage grows only as blueprint-built episodes do:
+the ~90 legacy episodes have no transcript and so remain title-searchable only.
 
 ---
 

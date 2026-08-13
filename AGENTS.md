@@ -16,7 +16,7 @@ Coding-agent guide to this repo. Read this before making changes.
 > | Publish | `.claude/skills/publish` — or `/publish-episode` |
 >
 > ```bash
-> npm test                                    # 126 tests, no deps, no network
+> npm test                                    # 165 tests, no deps, no network
 > npm run gates                               # manifest, show registry, blueprint coverage
 > python3 scripts/build_episode.py <bp> --dry-run   # plan without TTS
 > gh workflow run build-episode.yml -f show=<id>    # build + publish from CI
@@ -34,7 +34,10 @@ Coding-agent guide to this repo. Read this before making changes.
 > mid-file — `scripts/lib/audio.py`); episode URLs carry a `?v=` content hash
 > because rebuilds happen in place; the manifest the app reads lives on R2 and
 > only reaches it via the deploy sync; a new show needs `mono` and `order` or it
-> renders nowhere; and CSS additions must not redefine shared tokens.
+> renders nowhere; CSS additions must not redefine shared tokens, and must use
+> tokens rather than raw colours or dark mode breaks (`tests/test_theme.mjs`);
+> and `site/search-index.json` is a build artifact — rebuild it with
+> `scripts/build_search_index.py` after publishing, never hand-edit it.
 >
 > Full design: `docs/UPGRADE-SPEC.md`. Decisions: `DECISIONS.md`.
 > Android: `docs/ANDROID-APP.md`.

@@ -6,11 +6,20 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#f7f6f3">
+<script>
+/* Applied before the stylesheet loads so a phone set to dark never flashes the
+   light background. Mirrors Theme.attribute() in js/theme.js; keep them in step. */
+(function(){try{var p=localStorage.getItem("pod_theme");
+if(p==="dark"||p==="light"){document.documentElement.setAttribute("data-theme",p);}
+var dark=p==="dark"||(p!=="light"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);
+if(dark){var m=document.querySelector('meta[name="theme-color"]');if(m)m.content="#0f1116";}
+}catch(e){}})();
+</script>
 <title>Mingli — Interview Podcast</title>
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/artwork-192.png">
 <meta name="apple-mobile-web-app-title" content="Mingli">
-<link rel="stylesheet" href="/style.css?v=27">
+<link rel="stylesheet" href="/style.css?v=28">
 </head>
 <body>
 <div class="app" id="app">
@@ -75,6 +84,15 @@
       <div class="me-card">
         <p class="me-title">Solution boards</p>
         <p class="me-sub">Toggle boards in the player for clarify → naive → optimal → edges. Not a full transcript.</p>
+      </div>
+      <div class="me-card">
+        <p class="me-title">Appearance</p>
+        <p class="me-sub">System follows your phone. Pick one to pin it.</p>
+        <div class="seg theme-seg" id="themeSeg">
+          <button type="button" class="seg-btn" data-theme-choice="system">System</button>
+          <button type="button" class="seg-btn" data-theme-choice="light">Light</button>
+          <button type="button" class="seg-btn" data-theme-choice="dark">Dark</button>
+        </div>
       </div>
       <button type="button" class="btn-secondary" id="btnLogout2">Sign out</button>
     </div>
@@ -254,12 +272,14 @@
 
 <div class="toast" id="toast"></div>
 <div class="shelf-toast" id="shelfToast"></div>
-<script src="/js/shelf.js?v=27"></script>
-<script src="/js/vtt.js?v=27"></script>
-<script src="/js/chapters.js?v=27"></script>
-<script src="/app.js?v=27"></script>
-<script src="/js/player-ui.js?v=27"></script>
-<script src="/js/shelf-ui.js?v=27"></script>
+<script src="/js/theme.js?v=28"></script>
+<script src="/js/search.js?v=28"></script>
+<script src="/js/shelf.js?v=28"></script>
+<script src="/js/vtt.js?v=28"></script>
+<script src="/js/chapters.js?v=28"></script>
+<script src="/app.js?v=28"></script>
+<script src="/js/player-ui.js?v=28"></script>
+<script src="/js/shelf-ui.js?v=28"></script>
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(function () {});

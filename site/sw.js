@@ -1,13 +1,15 @@
-var CACHE_V = "podcast-app-v27-shelf";
+var CACHE_V = "podcast-app-v28-search";
 var SHELL = [
   "/",
-  "/style.css?v=27",
-  "/app.js?v=27",
-  "/js/shelf.js?v=27",
-  "/js/vtt.js?v=27",
-  "/js/chapters.js?v=27",
-  "/js/player-ui.js?v=27",
-  "/js/shelf-ui.js?v=27",
+  "/style.css?v=28",
+  "/app.js?v=28",
+  "/js/theme.js?v=28",
+  "/js/search.js?v=28",
+  "/js/shelf.js?v=28",
+  "/js/vtt.js?v=28",
+  "/js/chapters.js?v=28",
+  "/js/player-ui.js?v=28",
+  "/js/shelf-ui.js?v=28",
   "/solutions.json",
   "/manifest.webmanifest"
 ];

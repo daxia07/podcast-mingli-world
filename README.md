@@ -22,7 +22,7 @@ CI fails if any episode outside `content/legacy-episodes.json` lacks a blueprint
 so the format can't quietly decay. Full guide: **[AGENTS.md](AGENTS.md)**.
 
 ```bash
-npm test                                   # 126 tests, no deps, no network
+npm test                                   # 165 tests, no deps, no network
 npm run gates                              # manifest + show registry + blueprint coverage
 python3 scripts/build_episode.py <bp> --dry-run    # plan without spending a TTS run
 ```
@@ -43,8 +43,10 @@ No backend server, no database.
 ```
 content/          blueprints, templates, show registry, source notes
 scripts/lib/      the pipeline: blueprint, timeline, chapters, transcript, gates, synth
-scripts/          build_episode, ingest_youtube, curate, migrate, sync_manifest
-site/             vanilla-JS app; js/ holds chapters, transcript, shelf, player UI
+scripts/          build_episode, ingest_youtube, curate, migrate, sync_manifest,
+                  build_search_index
+site/             vanilla-JS app; js/ holds chapters, transcript, search, shelf,
+                  theme, player UI
 functions/        Pages Functions: episodes, chapters, transcripts, artwork, healthz
 tests/            126 tests — node:test for JS, unittest for Python
 docs/             UPGRADE-SPEC (design), ANDROID-APP (install), design-notes
@@ -57,7 +59,10 @@ Four tabs — Home, Library, Search, Account — plus a full player with:
 
 - **chapter rail** on the seek bar, tap a segment to jump
 - **synced transcript**, tap a line to seek, searchable
+- **search inside episodes** — every spoken line is indexed with its timestamp,
+  so a result is "4:12 in Domain 2", not just an episode title
 - **swipe-to-shelve** on any episode row, with an Undo toast and a Shelved tab
+- **light / dark / system** appearance, set in Account
 - solution boards, queue, sleep timer, lock-screen controls, offline caching
 
 Chapters and transcripts are exact rather than transcribed: each line is
@@ -87,8 +92,8 @@ can be restored per-device from the app's Shelved tab.
 
 ## Known gaps
 
-- ~90 legacy episodes have no blueprint, so they never gain chapters. Deliberate.
-- Dark mode was removed: 41 hardcoded light colours in `style.css` need
-  converting to tokens first. See DECISIONS.md.
+- ~90 legacy episodes have no blueprint, so they have neither chapters nor a
+  transcript, and therefore cannot be searched by what they say. Deliberate.
 - `boto3` R2 rewrite dropped; listing goes through the Pages R2 binding instead.
-- The player UI has unit-tested logic but limited real-device testing.
+- The player UI has unit-tested logic and headless-Chrome screenshots, but no
+  pass on a real phone.
