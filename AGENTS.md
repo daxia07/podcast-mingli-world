@@ -16,9 +16,10 @@ Coding-agent guide to this repo. Read this before making changes.
 > | Publish | `.claude/skills/publish` — or `/publish-episode` |
 >
 > ```bash
-> npm test                                    # 94 tests, no deps, no network
-> python3 -m scripts.lib.gates --manifest     # manifest integrity
+> npm test                                    # 126 tests, no deps, no network
+> npm run gates                               # manifest, show registry, blueprint coverage
 > python3 scripts/build_episode.py <bp> --dry-run   # plan without TTS
+> gh workflow run build-episode.yml -f show=<id>    # build + publish from CI
 > ```
 >
 > **This is enforced, not just documented.** The 14 one-off `generate_*.py` /
@@ -28,7 +29,15 @@ Coding-agent guide to this repo. Read this before making changes.
 > (`generate.py`, `publish.py`, `arrange.py`, `curate.py`) are deliberately not
 > frozen.
 >
+> **Traps that have already bitten, all now guarded by tests or gates:**
+> episodes must be uniform 48 kHz mono (mixed sample rates make browsers stop
+> mid-file — `scripts/lib/audio.py`); episode URLs carry a `?v=` content hash
+> because rebuilds happen in place; the manifest the app reads lives on R2 and
+> only reaches it via the deploy sync; a new show needs `mono` and `order` or it
+> renders nowhere; and CSS additions must not redefine shared tokens.
+>
 > Full design: `docs/UPGRADE-SPEC.md`. Decisions: `DECISIONS.md`.
+> Android: `docs/ANDROID-APP.md`.
 > **Where things run:** build and test on this Mac; publish from the `agent`
 > host or CI — this Mac has no Cloudflare credentials (spec §0b).
 

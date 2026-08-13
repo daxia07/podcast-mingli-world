@@ -1,19 +1,25 @@
 # UPGRADE-SPEC — Content System, Learning Feeds, and Native Player
 
-Status: **Phases 0–3 built (2026-08-12), not yet deployed**  ·  Written: 2026-08-11  ·  Owner: Ming
+Status: **Phases 0–3 shipped and live; Phase 4 partial**  ·  Written: 2026-08-11  ·  Last updated: 2026-08-13
 
 | Phase | State |
 |---|---|
-| §3.1b Range + cache headers | **done**, 16 tests — *not deployed* |
-| Phase 0 foundations | **done** — lib package, gates, 90 tests, CI, `/healthz`, feedback-list |
-| Phase 1 content system | **done** — 7 templates, show registry, `build_episode.py`, 5 skills, 81 blueprints migrated |
-| Phase 2 ingestion | **built, unrun** — needs `yt-dlp`, absent on this Mac |
-| Phase 3 player | **built, browser-unverified** — logic tested, UI never rendered |
-| Phase 4 backfill/prune | **not started** |
+| §3.1b Range + cache headers | **live** — verified `206` in production; cache headers later corrected off `immutable` |
+| Phase 0 foundations | **live** — lib package, gates, 126 tests, CI, deploy, `/healthz`, feedback-list |
+| Phase 1 content system | **live** — 9 templates, show registry, `build_episode.py`, 5 skills, 81 blueprints migrated |
+| Phase 2 ingestion | **built, unrun** — needs `yt-dlp`; `curate.py` and `ingest_youtube.py` never executed against a real channel |
+| Phase 3 player | **live** — chapters, synced transcript, swipe-to-shelve; dark mode shipped then reverted |
+| Phase 4 backfill/prune | **partial** — cover art, symlinks and manifest sync done; whisper backfill and `prune.py` not started |
 
-Remaining before this is finished: deploy, render the UI in a browser, run one
-real end-to-end build on a machine with ffmpeg, and backfill transcripts for
-the 76 legacy episodes with no blueprint.
+Shipped beyond the original spec: an Android APK build (`docs/ANDROID-APP.md`),
+cover art generation, an MP3 frame scanner guarding audio uniformity, manifest
+sync to R2 on deploy, and four new shows (AWS AI Practitioner, Agentic AI
+investing, Building Agentic Systems, plus the archived Airwallex set).
+
+Remaining: run the ingestion pipeline once end to end, backfill transcripts for
+the ~90 legacy episodes, storage pruning, and a real-device pass over the player.
+
+---
 
 Companion docs: `ENHANCEMENTS.md`, `docs/design-notes/01..03`. This spec supersedes the
 "open questions" in those notes where they conflict — the decisions are recorded in §0.
