@@ -22,6 +22,19 @@ on:
         type: boolean
         default: false
 
+# Episode ids are allocated by reading the manifest and taking the next free
+# number, then written back in a commit at the end of the run. Two runs at once
+# therefore read the same manifest, allocate the same id, and the second one to
+# finish loses its commit to a rebase conflict — which is exactly what happened
+# on 2026-08-13 when aws-solutions-architect and aws-security-specialty were
+# built a few seconds apart. Both claimed id 363.
+#
+# Queue instead of cancelling: a cancelled run would be killed mid-publish, with
+# audio already in R2 and nothing recording it.
+concurrency:
+  group: build-episode
+  cancel-in-progress: false
+
 permissions:
   contents: write
   # The publish commit carries [skip ci], so nothing would redeploy the site and
