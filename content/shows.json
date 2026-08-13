@@ -147,6 +147,24 @@
       "default_template": "cert-prep-2voice",
       "order": 12,
       "featured": false
+    },
+    "aws-mlops": {
+      "title": "MLOps on AWS — MLA-C01",
+      "description": "The machine learning engineer exam, one domain per episode. Pipelines, endpoints, drift, and the clock running on this version.",
+      "mono": "MO",
+      "icon": "🔁",
+      "default_template": "cert-prep-2voice",
+      "order": 13,
+      "featured": false
+    },
+    "ai-infrastructure": {
+      "title": "AI Infrastructure — Chips, Clusters and Cost",
+      "description": "What actually runs a model. Accelerators, memory, network fabric, training at scale, and where the bill comes from.",
+      "mono": "IX",
+      "icon": "⚡",
+      "default_template": "deep-dive-2voice",
+      "order": 14,
+      "featured": false
     }
   }
 }

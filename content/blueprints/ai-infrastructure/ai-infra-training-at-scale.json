@@ -1,0 +1,458 @@
+{
+  "schema": 1,
+  "slug": "ai-infra-training-at-scale",
+  "show": "ai-infrastructure",
+  "template": "deep-dive-2voice",
+  "title": "Everything Fails, Constantly",
+  "description": "At cluster scale, hardware failure stops being an incident and becomes a rate. The arithmetic of checkpointing, why more often is not obviously better, and what managed resilience actually changes.",
+  "keywords": [
+    "hyperpod",
+    "checkpointing",
+    "fault tolerance",
+    "distributed training",
+    "mtbf"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "A rate, not an incident",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Take a machine that fails, on average, once every three years. That is a perfectly respectable machine."
+        },
+        {
+          "voice": "sceptic",
+          "text": "I would be happy with that. I have laptops that do worse."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now buy a thousand of them and run a job that needs all of them at once. The failures do not stay rare. They combine."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One thousandth of three years."
+        },
+        {
+          "voice": "engineer",
+          "text": "About a day. So on that cluster you should expect something to fail roughly every twenty six hours, and your job stops every time it does."
+        },
+        {
+          "voice": "engineer",
+          "text": "Nothing is wrong with the hardware. The reliability did not change. You simply bought enough of it that failure stopped being an event and became a rate, and that changes how you have to build."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "How long can it stay up?"
+    ,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AI Infrastructure, episode five. Training at scale, and failure."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The question being how to stop things failing."
+        },
+        {
+          "voice": "engineer",
+          "text": "The question is how to make progress while they fail, because you cannot stop them. Specifically: how much of a run do you lose to failure, and what is the cheapest way to lose less?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Checkpoint more often. That is the whole answer and it takes one line of configuration."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is the right instinct and it has a cost that is not obvious. There is an optimum, it is calculable, and both sides of it are expensive."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The two costs of a checkpoint",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "A checkpoint is a snapshot of everything you would need to resume. Not just the weights."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The optimiser state as well, from the memory episode."
+        },
+        {
+          "voice": "engineer",
+          "text": "The optimiser state, which is the large part, plus the position in the data and the state of the random number generation. Resume without those and you are not continuing the same run, you are starting a similar one."
+        },
+        {
+          "voice": "engineer",
+          "text": "So a checkpoint for a seventy billion parameter model is on the order of a terabyte, because it is that sixteen bytes per parameter we calculated, not the two."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And writing a terabyte takes real time."
+        },
+        {
+          "voice": "engineer",
+          "text": "It takes real time, and traditionally the run pauses while it happens, on every machine at once. That is the first cost, and it is paid every single time whether or not anything fails."
+        },
+        {
+          "voice": "engineer",
+          "text": "The second cost is the one people think about: on a failure, you lose everything computed since the last checkpoint. On average, half an interval."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the two costs pull in opposite directions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Checkpoint every ten minutes and you lose five minutes per failure but spend a large fraction of your run writing. Checkpoint every six hours and writing is negligible while each failure costs three hours."
+        },
+        {
+          "voice": "engineer",
+          "text": "The optimum sits between, and it moves with the size of the cluster, because the failure rate moves with the size of the cluster. Double the machines and you should checkpoint roughly one and a half times as often."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which nobody recalculates when they scale up."
+        },
+        {
+          "voice": "engineer",
+          "text": "Almost nobody. The interval gets set once on a small cluster and inherited by a large one, where it is now badly wrong in the expensive direction."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Can you not just write the checkpoint in the background and stop pausing at all?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Largely, yes, and this is where the practical engineering is. Copy the state out of accelerator memory quickly, then write it to storage in the background while training continues."
+        },
+        {
+          "voice": "engineer",
+          "text": "The copy is fast, the write is slow, and only the copy has to block. That turns a four minute pause into something closer to a few seconds."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then where does it go? Writing a terabyte to object storage from every machine at once sounds unpleasant."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is why the instances carry local solid state storage. A Trainium two instance has up to eight terabytes of it, and an UltraServer up to thirty two."
+        },
+        {
+          "voice": "engineer",
+          "text": "So checkpoints land locally first, at local speed, and drain to durable storage afterwards. The local copy is what you restore from ninety nine times out of a hundred, and the durable copy is for the case where the machine itself is gone."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "What managed resilience changes",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now the scenario. You are running a long training job on a large cluster. Build the fault handling yourself, or use a managed service?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Build it. It is a health check, a replacement instance, and a restart from the last checkpoint. That is a week of work and then I own it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tell me what your health check tests."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Whether the machine is responding."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the twelve percent slow machine from the last episode answers every probe perfectly. That is the class of fault that costs the most and looks the healthiest."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the detection is the hard part, not the replacement."
+        },
+        {
+          "voice": "engineer",
+          "text": "Detection and diagnosis. Knowing something is degraded, knowing which component, and deciding whether to replace it or wait, on a cluster where taking a machine out stops everybody."
+        },
+        {
+          "voice": "engineer",
+          "text": "SageMaker HyperPod is AWS's answer. It detects, diagnoses and recovers from infrastructure faults automatically, and AWS describes recovery in minutes even across thousands of accelerators."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Minutes rather than what?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Rather than however long it takes a human to notice, which at three in the morning is the length of a night. That gap is where most of the loss on a long run actually accumulates."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is a second capability worth understanding because it changes the arithmetic we just did. AWS offers what it calls checkpointless training, which maintains forward progress through a failure without restarting from a checkpoint."
+        },
+        {
+          "voice": "sceptic",
+          "text": "If that works, the whole optimisation I was arguing about disappears."
+        },
+        {
+          "voice": "engineer",
+          "text": "The trade changes shape entirely. You stop balancing write cost against lost work, because the lost work is no longer proportional to your interval."
+        },
+        {
+          "voice": "engineer",
+          "text": "AWS puts the combined effect at up to forty percent savings in training time and up to forty percent lower model development cost through better utilisation."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is a vendor number on a favourable case."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is, and treat it as an upper bound. But note where a claim like that has to come from. Not faster chips. Recovered time that a self-built system would have lost, which is a real and usually unmeasured quantity."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Working it through",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Let us put numbers on the cold open, because the conclusion is genuinely surprising."
+        },
+        {
+          "voice": "engineer",
+          "text": "One thousand machines, each failing on average once every three years. Combined, expect a failure about every twenty six hours."
+        },
+        {
+          "voice": "engineer",
+          "text": "Say a checkpoint takes four minutes of paused training, and you write one every hour. Over a thirty day run that is seven hundred and twenty checkpoints, which is about forty eight hours spent writing."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Two days out of thirty. Nearly seven percent of the run, and no failure has happened yet."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now the failures. Thirty days at one every twenty six hours is roughly twenty seven failures. Each loses half an hour of work on average, plus recovery time."
+        },
+        {
+          "voice": "engineer",
+          "text": "If recovery is automatic and takes five minutes, that is about sixteen hours total. If a human has to notice, and the average delay is two hours, it is closer to sixty eight hours."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So automation saves more than fifty hours, and the checkpoint interval saves far less than that."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the point of the arithmetic. Most teams spend their attention tuning the interval, where a few hours are available, and ignore detection time, where days are."
+        },
+        {
+          "voice": "engineer",
+          "text": "And every one of those hours is billed at the price of a thousand accelerators, whether they are computing or waiting."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about the queue between jobs? That is dead time too."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is, and it is why task governance exists as a feature. Priority based queueing fills the gaps with smaller jobs, so the cluster is not idle between the big ones. Same hardware, more work through it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the summary of where the thirty days actually went, because I have lost track."
+        },
+        {
+          "voice": "engineer",
+          "text": "Roughly forty eight hours writing checkpoints. Between sixteen and sixty eight hours lost to failures, depending entirely on how fast you notice. And an unknown amount idle between jobs."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So somewhere between three and five days of a thirty day run, doing nothing useful."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ten to fifteen percent, on the most expensive hardware you rent, and almost none of it appears on any dashboard as a problem. That is the honest reason a managed service can claim numbers like forty percent."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Scale and failure in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "Failure rate scales with cluster size. A thousand machines that each fail once in three years produce a failure about every twenty six hours, and any job needing all of them stops."
+        },
+        {
+          "voice": "engineer",
+          "text": "A checkpoint is weights plus optimiser state plus data position, so about sixteen bytes per parameter, on the order of a terabyte for a large model."
+        },
+        {
+          "voice": "engineer",
+          "text": "It costs you twice. Pause time on every write, and lost work on every failure, averaging half an interval. The optimum interval sits between and tightens as the cluster grows."
+        },
+        {
+          "voice": "engineer",
+          "text": "But detection time usually dominates both. Automatic detection and recovery in minutes saves more than any interval tuning, and degraded machines are harder to detect than dead ones because they answer every probe."
+        },
+        {
+          "voice": "engineer",
+          "text": "HyperPod packages that: automatic fault detection, diagnosis and recovery, checkpointless training that keeps progress through a failure, and priority queueing so the cluster is not idle between jobs."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three ways the recovery itself fails, which is worse than the original fault."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, the checkpoint that cannot be restored. It was written, the job continued, and nobody ever loaded one back. Then at the worst moment it turns out to be incomplete or subtly incompatible."
+        },
+        {
+          "voice": "sceptic",
+          "text": "An untested backup."
+        },
+        {
+          "voice": "engineer",
+          "text": "Precisely that, and the fix is the same as for backups. Restore one deliberately, early in the run, while it costs you nothing to find out."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, the restart loop. A machine fails, is replaced, the new one hits the same underlying problem, and the job cycles. The signal is a rising restart count with no forward progress in the step counter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Watch progress, not health. A cluster can be entirely healthy and completing zero steps, and only one of those two numbers tells you."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, the silent divergence. Training resumes from a checkpoint that lacked the data position or the random state, so the run continues on data it has already seen."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nothing errors. The loss curve just gets slightly strange."
+        },
+        {
+          "voice": "engineer",
+          "text": "A small step in the loss at exactly the moment of a restart is the signal, and it is easy to dismiss as noise. Line up your loss curve against your restart times once, and you will know immediately whether this is happening to you."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions for your own system."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. What is your expected time between failures at your current cluster size, and when did you last recalculate it after scaling up?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. How long does it take you to notice a failed run, honestly, at three in the morning? That number is usually larger than the one you would quote."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. Have you ever restored a checkpoint on purpose, when you did not have to?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the answer to the third is no."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then you do not have checkpoints. You have files, and a belief about them."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is going to stay with me longer than the arithmetic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good, because it is the cheapest fix in the episode. Restoring a checkpoint deliberately costs you twenty minutes on day one, and it is the only way to find out whether the other twenty nine days are insured."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The line, and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The line for this episode: at scale, failure is a rate rather than an event, and the time you lose to noticing usually dwarfs the time you lose to the fault."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time, the last episode. Serving, and where the bill actually comes from. Why the cheapest thing you can do to an inference fleet has nothing to do with the model."
+        },
+        {
+          "voice": "engineer",
+          "text": "And it opens on a fleet running at eight percent utilisation, which nobody had noticed for a year."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "hyperpod",
+      "url": "https://aws.amazon.com/sagemaker-ai/hyperpod/",
+      "title": "Amazon SageMaker HyperPod",
+      "used_for": [
+        "automatic fault detection, diagnosis and recovery",
+        "recovery in minutes across thousands of accelerators",
+        "checkpointless training",
+        "task governance and priority-based queueing",
+        "up to 40% training time and cost claims"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "hyperpod-resilience-docs",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-resiliency.html",
+      "title": "SageMaker HyperPod cluster resiliency",
+      "used_for": [
+        "health checks and automatic node replacement",
+        "auto-resume from checkpoint behaviour"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "trn2-instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+      "title": "Amazon EC2 Trn2 Instances",
+      "used_for": [
+        "local NVMe capacity available for checkpoint writes"
+      ]
+    }
+  ]
+}

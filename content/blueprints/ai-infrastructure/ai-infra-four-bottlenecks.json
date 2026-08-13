@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "slug": "ai-infra-four-bottlenecks",
+  "show": "ai-infrastructure",
+  "template": "deep-dive-2voice",
+  "title": "The Four Bottlenecks",
+  "description": "Compute, memory, network, storage. Why the headline petaflops number is almost never what limits you, and the one ratio that explains the whole machine.",
+  "keywords": [
+    "ai infrastructure",
+    "trainium",
+    "memory bandwidth",
+    "roofline",
+    "gpu"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Eleven days, ninety four percent",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "A training run has been going for eleven days. It is at about ninety four percent. One machine, out of several hundred, develops a fault."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One machine out of hundreds. So you lose a fraction of a percent of the capacity."
+        },
+        {
+          "voice": "engineer",
+          "text": "You lose the run. Every machine is computing part of the same step, and they synchronise at the end of it. One stops, they all stop."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And you restart from the last checkpoint."
+        },
+        {
+          "voice": "engineer",
+          "text": "If there is one, and if it is recent. Meanwhile every other machine in that cluster sat idle waiting, and you paid for all of them, at the price of an accelerator, for the whole time."
+        },
+        {
+          "voice": "engineer",
+          "text": "Nothing in that story is about how fast the chips are. That is the theme of this whole series, and today is the map of it."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What is actually limiting you?"
+    ,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is AI Infrastructure. Episode one. The four bottlenecks."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the question for the episode?"
+        },
+        {
+          "voice": "engineer",
+          "text": "You have a workload that is too slow or too expensive. Before you buy anything, which of the four resources is actually limiting you? Compute, memory, network, or storage."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Compute. It is always compute. That is what the entire industry is short of."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the received wisdom, and for most real workloads it is wrong. By the end of this episode I want you to be able to say why, with a number rather than an opinion."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The ratio that explains it",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Take a modern accelerator and look at two numbers side by side, rather than one at a time. That is where the whole thing becomes obvious."
+        },
+        {
+          "voice": "engineer",
+          "text": "An AWS Trainium three chip does about two and a half petaflops of eight bit floating point arithmetic. Two and a half thousand trillion operations every second."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is the number on the slide."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is. Now the second number. That same chip has one hundred and forty four gigabytes of high bandwidth memory, and it can move data in and out of it at about four point nine terabytes per second."
+        },
+        {
+          "voice": "engineer",
+          "text": "So divide one by the other. Two and a half thousand trillion operations, against four point nine trillion bytes. That is roughly five hundred arithmetic operations for every single byte you fetch."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Five hundred operations per byte. And if my workload does fewer than that?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then the arithmetic units are idle, waiting for memory, and the petaflops figure is fiction. You are paying for compute you cannot reach."
+        },
+        {
+          "voice": "engineer",
+          "text": "That ratio has a name. Arithmetic intensity, meaning operations performed per byte moved. And the picture of it is called a roofline: performance rises with intensity until it flattens against the compute ceiling."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Presumably that five hundred is peculiar to that one chip."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the striking part. Take the previous generation. A Trainium two instance does about twenty point eight petaflops with forty six terabytes per second of memory bandwidth. Divide those and you get about four hundred and fifty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Take a full Trainium two UltraServer instead. Eighty three petaflops, one hundred and eighty five terabytes per second. Divide those, and it is four hundred and fifty again."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The same ratio at three different scales."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which tells you something real. The designers assume you will reuse each byte roughly five hundred times. Build a workload that does not, and the machine is wildly out of balance for you, at any size you rent it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then why not simply attach more memory bandwidth? If that is the constraint, fix the constraint."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because of where that memory physically is. High bandwidth memory is stacked in layers and sits on the same package as the processor, millimetres away, connected by an extremely wide bus."
+        },
+        {
+          "voice": "engineer",
+          "text": "That proximity is what buys the bandwidth. It also caps the capacity, because there is only so much room on the package, and it makes the whole assembly expensive and hot."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So capacity and bandwidth are bought together, whether you need both or not."
+        },
+        {
+          "voice": "engineer",
+          "text": "They come as a pair, and that has a consequence people find counter-intuitive. Sometimes you rent more accelerators purely to get more memory, and the extra arithmetic that comes with them is a side effect you are paying for regardless."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Which workloads clear the bar",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "sceptic",
+          "text": "Then let me defend compute properly. Training a large model is enormous dense matrix multiplication. Surely that reuses every byte hundreds of times."
+        },
+        {
+          "voice": "engineer",
+          "text": "In training, largely yes, and this is where you are right. A big matrix multiply with a large batch reuses each weight across every example in the batch. Intensity is high and you genuinely can approach the compute ceiling."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So compute is the bottleneck."
+        },
+        {
+          "voice": "engineer",
+          "text": "For that phase of that workload, with a big enough batch. Now change one thing. Serve the same model, one user at a time, generating one token after another."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The maths is the same maths."
+        },
+        {
+          "voice": "engineer",
+          "text": "The maths is the same and the intensity collapses. To produce one token you read every weight in the model, and you use each one for a single multiply against a single input."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One operation per byte instead of five hundred."
+        },
+        {
+          "voice": "engineer",
+          "text": "Roughly, yes. Which is why token generation is memory bandwidth bound, almost universally, and why the fix is batching. Serve thirty two users at once and each weight you fetch does thirty two multiplies instead of one."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So batching is not a throughput trick. It is the thing that makes the hardware make sense at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is the difference between using a few percent of what you rented and using a useful fraction of it. And it explains a bill that looks absurd: an idle accelerator and a barely used accelerator cost exactly the same."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is a second phase worth separating. Before generating anything, the model has to read the prompt, and it can process all of those tokens at once."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So reading the prompt is compute bound and writing the answer is memory bound."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two phases of one request with opposite characters. Which is why serving systems now schedule them separately, and why a benchmark that reports one number for both is telling you very little."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then batching is free performance and everyone should turn it up."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not free, and the reason is a second consumer of memory that grows with the batch. As the model generates, it keeps intermediate state for every token it has already seen, for every request in flight."
+        },
+        {
+          "voice": "engineer",
+          "text": "That state is usually called the key value cache, and it scales with batch size and with how long each conversation is. So a bigger batch is not just more arithmetic. It is more memory held for longer."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the batch size is bounded by capacity, not by throughput."
+        },
+        {
+          "voice": "engineer",
+          "text": "Almost always by capacity. And it is why long conversations are disproportionately expensive to serve: the weights are fixed, but the cache grows with every exchange, and it is competing with the model for the same package."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The four, with quantities",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now all four bottlenecks, with real quantities attached, so you can compare them fairly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Compute. A Trainium two instance, sixteen chips, gives about twenty point eight petaflops of eight bit floating point. Four of those instances joined into an UltraServer give about eighty three."
+        },
+        {
+          "voice": "engineer",
+          "text": "Memory capacity. That same instance has one and a half terabytes of high bandwidth memory. The UltraServer has six terabytes. Capacity decides what fits; bandwidth decides how fast you can touch it, at forty six and one hundred and eighty five terabytes per second respectively."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the network, which is the one people forget entirely."
+        },
+        {
+          "voice": "engineer",
+          "text": "A Trainium two instance has three point two terabits per second of Elastic Fabric Adapter networking. The UltraServer has twelve point eight terabits."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hold those two units apart, because they are easy to confuse. Memory is measured in terabytes per second. Network is measured in terabits per second, and there are eight bits in a byte."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So twelve point eight terabits is about one point six terabytes per second."
+        },
+        {
+          "voice": "engineer",
+          "text": "Against one hundred and eighty five terabytes per second of memory bandwidth inside the same box. The network is over a hundred times slower than local memory."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is a much bigger gap than I would have guessed."
+        },
+        {
+          "voice": "engineer",
+          "text": "And it is the single most important number in distributed training. Every time your design forces data across the network instead of keeping it in local memory, you pay a factor of about a hundred."
+        },
+        {
+          "voice": "engineer",
+          "text": "Storage is fourth, and mostly it is a checkpointing problem rather than a data loading one. A Trainium two instance carries up to eight terabytes of local solid state storage, thirty two terabytes on the UltraServer, and that is where checkpoints land before they go anywhere else."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The machine in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass from the top. Nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "An accelerator is a very fast arithmetic unit attached to memory that is slower than it is. Roughly five hundred operations per byte fetched, and that ratio holds across chip, instance and UltraServer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your workload has its own ratio. Above the line, you are compute bound and the headline figure means something. Below it, you are memory bandwidth bound and most of the silicon is waiting."
+        },
+        {
+          "voice": "engineer",
+          "text": "Training with large batches usually sits above the line. Generating tokens one at a time sits far below it, which is why batching matters so much, and why reading a prompt and writing an answer behave like different workloads."
+        },
+        {
+          "voice": "engineer",
+          "text": "Outside the chip, the network is roughly a hundred times slower than local memory: about one and a half terabytes per second against one hundred and eighty five. So a design is largely a set of decisions about what never has to cross it."
+        },
+        {
+          "voice": "engineer",
+          "text": "And storage matters mostly when you checkpoint, which is the insurance policy against the cold open."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three failure modes, and the first signal for each."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, the silent underuse. Everything works, nothing errors, and you are using perhaps five percent of the arithmetic you are paying for. The signal is accelerator utilisation that looks busy while throughput per chip is poor."
+        },
+        {
+          "voice": "sceptic",
+          "text": "How would I tell that apart from a workload that is simply large?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Increase the batch size. If throughput rises roughly in proportion and latency barely moves, you were memory bound and had headroom. If latency rises immediately, you were genuinely compute bound."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, the straggler. In synchronous training every machine waits for the slowest one at each step, so a single degraded link or a hot chip sets the pace for hundreds of peers."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is a step time that has drifted up by ten or fifteen percent with no code change. Average utilisation looks fine, because everyone is busy waiting."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, the checkpoint stall. Writing a checkpoint pauses the run, and on a large model the write is large. Do it too rarely and a failure is expensive. Do it too often and you spend a visible fraction of the run saving state."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the signal for that one is just a sawtooth in throughput."
+        },
+        {
+          "voice": "engineer",
+          "text": "A regular sawtooth, at exactly your checkpoint interval. If you can see it clearly on a graph, it is costing you more than you think."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions to ask of your own system."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. How many operations does your workload do per byte it fetches? If you cannot estimate it, you do not know which resource you are short of."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. Where does your design force data across the network, and does it have to?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. What is your batch size in serving, and when did anyone last change it deliberately?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "That last one is uncomfortably specific."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is the cheapest change on this list, and it is usually still set to whatever the example in the tutorial used."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The line, and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The line for this episode: the petaflops number is a ceiling, not a promise, and most workloads never get near it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time, the chips themselves. Graphics processors, Trainium, Inferentia, what actually differs between them, and the honest case for paying more for the familiar one."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "trn3-ultraservers",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+      "title": "Amazon EC2 Trn3 UltraServers",
+      "used_for": [
+        "Trainium3 FP8 compute per chip",
+        "HBM3e capacity and bandwidth per chip",
+        "UltraCluster and UltraServer scale"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "trn2-instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+      "title": "Amazon EC2 Trn2 Instances",
+      "used_for": [
+        "chips per instance",
+        "HBM capacity and bandwidth",
+        "FP8 petaflops",
+        "EFA networking bandwidth",
+        "local NVMe capacity",
+        "UltraServer configuration"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "efa-docs",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html",
+      "title": "Elastic Fabric Adapter — Amazon EC2 User Guide",
+      "used_for": [
+        "EFA as the network fabric for distributed training"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "schema": 1,
+  "slug": "ai-infra-memory",
+  "show": "ai-infrastructure",
+  "template": "deep-dive-2voice",
+  "title": "Memory Is the Whole Game",
+  "description": "A model that serves on one machine can need dozens to train. The arithmetic behind that, why the optimiser costs more than the weights, and what quantisation actually buys.",
+  "keywords": [
+    "hbm",
+    "model parallel",
+    "quantisation",
+    "kv cache",
+    "distributed training"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "One machine, or forty",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Here is a fact that sounds like a mistake. A model can serve comfortably on a single machine and still need dozens of them to train."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because training is more work. That is not surprising."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not about work. It is about what has to be resident in memory at the same instant, and training needs roughly eight times what serving needs for the identical model."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Eight times. For the same weights."
+        },
+        {
+          "voice": "engineer",
+          "text": "For the same weights, because the weights turn out to be the smallest part of the bill. And nobody ever mentions the largest part in the announcement."
+        },
+        {
+          "voice": "engineer",
+          "text": "By the end of this episode you will be able to work out how many accelerators a model needs on the back of an envelope, before anyone talks about speed at all."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Does it fit?"
+    ,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AI Infrastructure, episode three. Memory."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Before performance, before cost, before anything: does this model fit, and if not, how many chips do I need to hold it? That question gets answered with multiplication, not benchmarking."
+        },
+        {
+          "voice": "sceptic",
+          "text": "My instinct is that this is a solved problem. The framework shards the model and I do not have to care."
+        },
+        {
+          "voice": "engineer",
+          "text": "The framework will shard it. What it cannot do is tell you that you chose a configuration needing two hundred percent of the memory you rented, until it fails an hour into the run."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Four things competing for the same package",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Four things want space in high bandwidth memory, and only the first is obvious."
+        },
+        {
+          "voice": "engineer",
+          "text": "One, the weights. That is parameters multiplied by bytes per parameter, and it is the number people quote."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two, the gradients. During training, every parameter accumulates a gradient, so that is a second copy the same size as the first."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So training is at least twice serving. Still not eight times."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three is where it goes. The optimiser keeps its own state per parameter. The common optimiser keeps two running averages for every single weight, and it typically keeps them at full precision even when the weights themselves are held at half."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the bookkeeping is larger than the model."
+        },
+        {
+          "voice": "engineer",
+          "text": "Substantially larger, and it is invisible in every description of the model. Add a full precision master copy of the weights, which mixed precision training also keeps, and you are at roughly sixteen bytes per parameter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Against two bytes per parameter for serving at half precision. That is the factor of eight from the cold open, and none of it is arithmetic. It is all storage."
+        },
+        {
+          "voice": "engineer",
+          "text": "Four is activations. During the forward pass the intermediate results have to be kept, because the backward pass needs them. That scales with batch size and with sequence length rather than with parameters."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And that one you can trade."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the one real lever in training memory. You can discard activations and recompute them during the backward pass, spending arithmetic to buy memory. Given how much idle arithmetic we found in episode one, that trade is often free in practice."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Doing the arithmetic out loud",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Let us do it properly. Seventy billion parameters. Serving first, at half precision, two bytes each."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Seventy times two. One hundred and forty gigabytes."
+        },
+        {
+          "voice": "engineer",
+          "text": "One hundred and forty gigabytes of weights. Now compare that with a single Trainium three chip, which has one hundred and forty four gigabytes of high bandwidth memory."
+        },
+        {
+          "voice": "sceptic",
+          "text": "It fits. Just about, with four gigabytes to spare."
+        },
+        {
+          "voice": "engineer",
+          "text": "And that four gigabytes has to hold everything else, including the key value cache for every conversation in flight. So in practice it does not fit, and the honest answer is two chips or a lower precision."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is why everyone quantises."
+        },
+        {
+          "voice": "engineer",
+          "text": "Take it to eight bit and the weights halve to seventy gigabytes. Now you have seventy four gigabytes of headroom on one chip, and the same fetch costs half the bandwidth, so it is faster as well as smaller."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now train the same model. Sixteen bytes per parameter instead of two. Seventy times sixteen is one thousand one hundred and twenty gigabytes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Over a terabyte, before a single activation."
+        },
+        {
+          "voice": "engineer",
+          "text": "A Trainium two UltraServer has six terabytes of high bandwidth memory in total. So the fixed state alone consumes about a fifth of a very large machine, and activations then compete for what is left."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then why does anyone talk about petaflops first? This is clearly the binding constraint."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because memory decides whether you can run at all, and arithmetic decides how fast. Feasibility is boring and speed is exciting, so the exciting number goes on the slide."
+        },
+        {
+          "voice": "engineer",
+          "text": "And it explains a pattern that otherwise looks wasteful. Teams rent far more accelerators than their arithmetic requires, purely to assemble enough memory, and then run them at low utilisation."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Paying for compute to get capacity."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is exactly what we said in episode one. Capacity and bandwidth come welded together, so you buy the whole package to get the part you needed."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Splitting it up, and what each split costs",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Before splitting, one more quantity, because it is the one that catches serving teams. The key value cache."
+        },
+        {
+          "voice": "engineer",
+          "text": "As the model generates, it keeps two vectors per token, per layer. So the cache grows with the number of layers, the width of the model, the length of the conversation, and the number of conversations at once."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the shape of it rather than the formula."
+        },
+        {
+          "voice": "engineer",
+          "text": "For a large model it is commonly a few hundred kilobytes per token. Take two hundred kilobytes as a working figure. A four thousand token conversation is then about eight hundred megabytes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "For one conversation."
+        },
+        {
+          "voice": "engineer",
+          "text": "For one. Sixty four of them at once is around fifty gigabytes, which on a one hundred and forty four gigabyte chip is a third of your memory gone to conversations rather than to the model."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So doubling the context length is not a small feature request."
+        },
+        {
+          "voice": "engineer",
+          "text": "It halves how many users you can serve on the same hardware. That is why long context is priced the way it is, and it is a capacity decision dressed up as a product decision."
+        },
+        {
+          "voice": "engineer",
+          "text": "One more lever on the training side, and it is the most effective one. The optimiser state does not have to be duplicated on every machine."
+        },
+        {
+          "voice": "engineer",
+          "text": "Shard it, so each machine keeps only the slice it is responsible for and fetches the rest when needed. That removes most of the sixteen bytes per parameter, at the cost of more communication, which is the trade the next episode is about."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it still does not fit on one chip, you split the model itself, and there are three ways. Each has a different memory effect and a different network cost."
+        },
+        {
+          "voice": "engineer",
+          "text": "Data parallel. Every machine holds a complete copy of the model and processes a different slice of the batch. Memory per machine is unchanged, so this does not help you fit anything."
+        },
+        {
+          "voice": "sceptic",
+          "text": "It is a throughput technique, not a capacity one."
+        },
+        {
+          "voice": "engineer",
+          "text": "And it has a network cost. At the end of every step, all the machines have to combine their gradients, which means moving a full model's worth of numbers across the fabric, repeatedly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tensor parallel. A single layer is cut across several chips, each doing part of the same matrix multiply. This genuinely reduces memory per chip, and it is the most communication heavy option, because the pieces must be recombined within every layer."
+        },
+        {
+          "voice": "engineer",
+          "text": "So tensor parallel belongs inside the fastest interconnect you have. On AWS that is the link between chips inside an UltraServer, not the network between servers."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the third."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pipeline parallel. Different machines hold different layers, and the batch flows through them in stages. Memory per machine drops in proportion to the number of stages, and communication is light, because only the boundary between stages crosses the wire."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That sounds strictly better than tensor parallel."
+        },
+        {
+          "voice": "engineer",
+          "text": "It has its own tax, called the bubble. While stage one works on the first chunk, stages two and three have nothing to do yet, so early and late in each batch some machines are idle by construction."
+        },
+        {
+          "voice": "engineer",
+          "text": "You shrink the bubble by cutting the batch into more, smaller chunks. Which costs memory again, because more chunks are in flight at once. Everything in this episode trades against everything else."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Memory in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "Four things want the same package. Weights, gradients, optimiser state, and activations. Serving needs about two bytes per parameter at half precision. Training needs about sixteen, because of the optimiser and the master copy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Seventy billion parameters is therefore about one hundred and forty gigabytes to serve, and over a terabyte to train, before activations. One Trainium three chip holds one hundred and forty four gigabytes; a Trainium two UltraServer holds six terabytes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Quantisation is the strongest lever. Halving the bits halves both the footprint and the bytes fetched, so it buys capacity and speed together."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it still does not fit, split it. Data parallel does not reduce memory and costs a gradient exchange every step. Tensor parallel reduces memory the most and demands the fastest interconnect. Pipeline parallel reduces memory cheaply on the network but leaves idle bubbles."
+        },
+        {
+          "voice": "engineer",
+          "text": "And activation recomputation trades arithmetic for memory, which is usually a good trade because the arithmetic was idle anyway."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three failures, and the first signal for each."
+        },
+        {
+          "voice": "engineer",
+          "text": "First and most common, the run that dies an hour in rather than immediately. Memory grows with sequence length and batch composition, so a configuration that starts fine meets a longer example later and runs out."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is maddening, because it passed the smoke test."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is memory usage creeping up across the first minutes rather than sitting flat. Test with your longest sequences first, not your average ones."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, serving that is fine until it is suddenly not. The key value cache grows with every concurrent conversation and with their length, so a busy hour with long sessions crosses a line that a busy hour with short ones does not."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is rejected or queued requests while accelerator utilisation looks unremarkable. You ran out of room, not out of speed, and those look different on a graph."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, tensor parallelism accidentally spanning servers. It works, and throughput quietly collapses, because a communication pattern designed for a link inside the box is now crossing a network that is far slower."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And there is no error at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "None. Just a step time several times worse than the same configuration on a single server. If throughput falls off a cliff when you add machines, check where the tensor parallel boundary landed."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions for your own system."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. Can you state your model's memory footprint for serving and for training, in gigabytes, without looking anything up?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. Which parallelism are you using, and does its communication pattern match the interconnect it is actually running on?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. In serving, how much of your memory is weights and how much is cache at your busiest hour? If nobody knows, that is the number that will surprise you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the sixteen bytes per parameter figure. Is that a rule or a rough guide?"
+        },
+        {
+          "voice": "engineer",
+          "text": "A rough guide that depends on your optimiser and precision. Use it for planning, then measure. It is close enough to tell you whether you need two machines or forty, which is the decision it exists for."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One last thing. If quantisation is this good, why is anything still served at half precision?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because it is not free in quality, and the loss is uneven. Average accuracy usually barely moves, while the rare, hard cases degrade first, and those are often the ones you care about most."
+        },
+        {
+          "voice": "engineer",
+          "text": "So evaluate a quantised model on your difficult examples rather than your representative ones. An average that holds up is exactly what a bad quantisation looks like."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The line, and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The line for this episode: memory decides whether you can run at all, and everything else decides how well."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time, the wire between all these machines. Why every one of them waits for the slowest, and why a single degraded link can cost you a fifth of a cluster you are paying for in full."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "trn3-ultraservers",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+      "title": "Amazon EC2 Trn3 UltraServers",
+      "used_for": [
+        "144 GB of HBM3e per Trainium3 chip"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "trn2-instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+      "title": "Amazon EC2 Trn2 Instances",
+      "used_for": [
+        "1.5 TB HBM per instance and 6 TB per UltraServer",
+        "NeuronLink interconnect within an UltraServer"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "smp-parallelism",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-v2.html",
+      "title": "SageMaker model parallelism library",
+      "used_for": [
+        "data, tensor and pipeline parallelism",
+        "activation checkpointing and recomputation",
+        "sharded optimiser state"
+      ]
+    }
+  ]
+}

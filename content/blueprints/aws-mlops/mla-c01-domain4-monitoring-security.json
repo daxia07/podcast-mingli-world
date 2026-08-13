@@ -1,0 +1,409 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-domain4-monitoring-security",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 Domain 4 — Nothing Broke, It Just Got Worse",
+  "description": "Drift you cannot see without labels, the four things Model Monitor actually watches, rightsizing an inference fleet, and the security questions that decide a quarter of the exam.",
+  "keywords": [
+    "mla-c01",
+    "model monitor",
+    "drift",
+    "cost optimisation",
+    "iam"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Four months of quiet",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A recommendation model runs for four months without a single alarm. No errors. No latency spike. Availability at four nines."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a good quarter."
+        },
+        {
+          "voice": "coach",
+          "text": "Revenue per session fell about eleven percent over the same period, and three teams spent that quarter looking for the cause in the front end."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And it was the model."
+        },
+        {
+          "voice": "coach",
+          "text": "It was the world. The catalogue changed, a marketing campaign brought in a different kind of customer, and the data arriving no longer looked like the data the model was trained on."
+        },
+        {
+          "voice": "coach",
+          "text": "That is drift, and the reason it took four months is the hard part. Every dashboard a normal engineering team watches was green, and correctly so."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty four percent, three tasks"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain four. Monitoring, maintenance and security. Twenty four percent, about twelve of the fifty scored questions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Second largest, and it is three quite different subjects bolted together."
+        },
+        {
+          "voice": "coach",
+          "text": "Three tasks and they really are different. Monitor model inference. Monitor and optimise infrastructure and cost. Secure AWS resources."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The last one being ordinary cloud security, which I already know."
+        },
+        {
+          "voice": "coach",
+          "text": "Mostly, yes, and that is good news. But the first one has a genuine problem in it that ordinary monitoring cannot solve, and that is where we start."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Drift, and the missing labels",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "First, two words that get used interchangeably and should not be. Data drift and concept drift."
+        },
+        {
+          "voice": "coach",
+          "text": "Data drift means the inputs changed. The customers are younger, the prices are higher, a sensor was recalibrated. The relationship you learned may still hold, but you are now seeing values you were not trained on."
+        },
+        {
+          "voice": "coach",
+          "text": "Concept drift means the relationship itself changed. The same input should now produce a different answer. What counted as suspicious behaviour last year is normal behaviour this year."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the fix for both is retraining."
+        },
+        {
+          "voice": "coach",
+          "text": "Often, but not always the same retraining. Data drift can sometimes be handled by widening the training distribution. Concept drift usually needs recent labels, because the old ones now teach the wrong thing."
+        },
+        {
+          "voice": "coach",
+          "text": "Which brings us to the problem in the cold open. To measure whether a model is still accurate you need to know the right answer. In production, you usually do not, and often you never will."
+        },
+        {
+          "voice": "sceptic",
+          "text": "You find out whether a loan defaults in two years, not two seconds."
+        },
+        {
+          "voice": "coach",
+          "text": "So model quality monitoring is delayed by however long the truth takes to arrive. That is why the exam cares about the thing you can measure immediately, which is the data itself."
+        },
+        {
+          "voice": "coach",
+          "text": "SageMaker Model Monitor watches four things, and the exam expects you to know them apart. Data quality, meaning the incoming features against a baseline. Model quality, meaning predictions against actual outcomes when they arrive."
+        },
+        {
+          "voice": "coach",
+          "text": "Bias drift, meaning the fairness metrics moving over time. And feature attribution drift, meaning the model is now leaning on different features than it used to."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That last one is subtle. Why would I care which features it uses if the answers are still right?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because it is the early warning. Attribution shifts before accuracy visibly falls, and unlike model quality it needs no labels at all. It is the signal that would have caught the cold open in week two."
+        },
+        {
+          "voice": "coach",
+          "text": "And every one of these needs a baseline captured from the training data. No baseline, no drift detection. That is the step people forget, and the exam knows it."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The fleet that was twice the size it needed",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Second task. Infrastructure and cost. Here is the scenario. An inference fleet is running on large graphics processor instances and the bill is uncomfortable. Where do you start?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Reserved capacity or a savings plan. Commit for a year and take the discount."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the instinct of someone who has optimised cloud bills before, and it is exactly the wrong first move. Tell me why."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because I would be committing to the fleet I have rather than the fleet I need."
+        },
+        {
+          "voice": "coach",
+          "text": "You would be locking in the mistake for a year. Rightsize first, commit second. That order is worth remembering because the exam tests it and because it is genuinely expensive to get backwards."
+        },
+        {
+          "voice": "coach",
+          "text": "So rightsize with the tools built for it. The Inference Recommender runs your actual model on a range of instance types and reports latency, throughput and cost for each. Compute Optimizer looks at utilisation across your account more broadly."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And frequently the answer is a smaller instance, or no graphics processor at all."
+        },
+        {
+          "voice": "coach",
+          "text": "Frequently. A model small enough to run on a compute optimised instance does not need an accelerator, and inference optimised instances exist precisely for the middle case."
+        },
+        {
+          "voice": "coach",
+          "text": "Then the purchasing decision, and it splits cleanly by workload. Training is interruptible, so Spot capacity fits, especially with checkpointing so a lost instance costs minutes rather than the run."
+        },
+        {
+          "voice": "coach",
+          "text": "Serving is not interruptible, so Spot is the wrong answer for a production endpoint. Steady serving is what savings plans are for. Interruptible means Spot, always on means a commitment. That single sentence answers several questions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And tagging, which every cost question seems to mention."
+        },
+        {
+          "voice": "coach",
+          "text": "Because you cannot optimise a bill you cannot attribute. Tagging is what turns one large number into per team, per model, per environment numbers. Cost Explorer and Budgets then work on those, and Budgets is the one that alerts before the month ends."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Domain four in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Data drift is the inputs changing. Concept drift is the relationship changing. Both usually end in retraining, but concept drift needs fresh labels."
+        },
+        {
+          "voice": "coach",
+          "text": "Model Monitor watches four things against a baseline captured from training data. Data quality, model quality, bias drift, and feature attribution drift. Model quality needs ground truth and therefore waits. The other three do not."
+        },
+        {
+          "voice": "coach",
+          "text": "For infrastructure, rightsize before you commit. Inference Recommender for the model itself, Compute Optimizer across the account. Spot for interruptible training with checkpointing, savings plans for steady serving."
+        },
+        {
+          "voice": "coach",
+          "text": "Tag everything so cost can be attributed, then use Cost Explorer to analyse and Budgets to be told before the money is spent rather than after."
+        },
+        {
+          "voice": "coach",
+          "text": "And for security: least privilege roles for every component, endpoints inside the network with private connectivity, encryption on artefacts at rest, and CloudTrail recording who did what to which model."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. Name the four things Model Monitor watches, and say which one cannot run without ground truth.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Data quality, model quality, bias drift, and feature attribution drift. Model quality is the one that needs actual outcomes."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. A model's accuracy will not be measurable for eighteen months. What do you monitor in the meantime?",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "The inputs. Data quality against the training baseline, and feature attribution drift, because neither needs labels."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Rightsize or commit. Which comes first, and what goes wrong if you reverse it?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Rightsize first. Commit first and you lock in an oversized fleet for a year."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. Spot instances for a production inference endpoint. What is wrong with that?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Serving is not interruptible. Spot capacity can be reclaimed, and the endpoint has to answer. Spot belongs on training, with checkpointing."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is answering a drift question with infrastructure monitoring. CloudWatch alarms on latency and error rate are correct answers to a different question, and they will be offered here."
+        },
+        {
+          "voice": "coach",
+          "text": "The cold open is the reason. Every infrastructure signal was green while the model decayed. If the question is about predictions getting worse, the answer names Model Monitor or Clarify, not an alarm on processor usage."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the observability tool line-up. CloudWatch is metrics, logs and alarms. Logs Insights queries those logs. X-Ray traces a request across services to find where the time went."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And CloudTrail, which sounds like CloudWatch and is nothing like it."
+        },
+        {
+          "voice": "coach",
+          "text": "CloudTrail records interface calls. Who did what, to which resource, when. It is the audit answer and the trigger answer, not the performance answer. If the question says who deleted this or what started that retraining, it is CloudTrail."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is over-permissioning a pipeline because it is convenient. An answer that gives a training job broad access to a data lake will look pragmatic and will be wrong."
+        },
+        {
+          "voice": "coach",
+          "text": "The exam wants a role per component, scoped to the specific buckets and keys it needs. And on a machine learning exam that rule extends to artefacts: model files, feature data and training data all get the same treatment as any other sensitive asset."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Is there anything machine learning specific in the security task, or is it ordinary cloud security with different nouns?"
+        },
+        {
+          "voice": "coach",
+          "text": "Mostly the same discipline, with three additions worth naming. Role Manager builds SageMaker roles from personas rather than from blank policies, which is the answer when a question complains about hand written policies drifting."
+        },
+        {
+          "voice": "coach",
+          "text": "Network isolation is the second. A training job or an endpoint can run with no route to the internet at all, reaching S3 and other services through private endpoints inside your own network."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which matters because a training container runs code you may not have written."
+        },
+        {
+          "voice": "coach",
+          "text": "Third party libraries, pre-built containers, models pulled from a hub. Network isolation is what stops that code phoning home with your training data, and it is the expected answer whenever a question mentions sensitive data in a training job."
+        },
+        {
+          "voice": "coach",
+          "text": "And third, the pipeline itself is an attack surface. A deployment pipeline that can push any model to production needs the same scrutiny as the model, because it is the thing with permission to change what customers see."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Which drift signals work without labels, and why does that matter more than it sounds?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What is the order of rightsizing and committing, and what does reversing it cost?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. CloudWatch or CloudTrail. Which one answers who, and which one answers how fast?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "CloudTrail answers who. CloudWatch answers how fast."
+        },
+        {
+          "voice": "coach",
+          "text": "And that pair alone shows up across three of the four domains, so it is worth more than the one mark it looks like."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: high, and unusually transferable. Most of this domain is real operational practice that happens to be examinable."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the last episode of the series, and the one to replay the night before. Every pair of services on this exam that look alike, and the single word that separates each pair."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-domain4",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain4.html",
+      "title": "MLA-C01 Content Domain 4: ML Solution Monitoring, Maintenance, and Security",
+      "used_for": [
+        "domain weight",
+        "task statements 4.1 to 4.3",
+        "drift and Model Monitor",
+        "observability tools named",
+        "Inference Recommender and Compute Optimizer",
+        "purchasing options named",
+        "tagging and cost tools",
+        "IAM and network isolation requirements"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-model-monitor",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+      "title": "Monitor models for data and model quality — Amazon SageMaker AI",
+      "used_for": [
+        "the four monitoring types",
+        "baseline requirement",
+        "ground truth requirement for model quality monitoring"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-inference-recommender",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html",
+      "title": "Amazon SageMaker Inference Recommender",
+      "used_for": [
+        "instance type recommendation from load testing a real model"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-domain2-model-development",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 Domain 2 — Ninety Nine Percent Accurate and Useless",
+  "description": "Choosing an approach, training it, and judging whether it worked. When not to train at all, why accuracy is the most dangerous metric on the exam, and the tuning strategy that is almost always the right answer.",
+  "keywords": [
+    "mla-c01",
+    "sagemaker",
+    "hyperparameter tuning",
+    "model evaluation",
+    "bedrock"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The useless model",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A fraud model comes back ninety nine point three percent accurate. The team is delighted. The model is worthless."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Let me guess. Fraud is rare."
+        },
+        {
+          "voice": "coach",
+          "text": "About one transaction in a hundred and fifty. So a model that says not fraud to absolutely everything scores over ninety nine percent, and catches nothing at all."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which everyone knows in the abstract and nobody catches in a review meeting."
+        },
+        {
+          "voice": "coach",
+          "text": "Because the number is genuinely high and genuinely correct. The metric is not lying. It is answering a question nobody meant to ask."
+        },
+        {
+          "voice": "coach",
+          "text": "Metric choice is not a footnote in this domain. It is one of the three tasks in it, and it is where the exam sets its cleanest traps."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty six percent, three tasks"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain two. Model development. Twenty six percent of the scored content, about thirteen of the fifty questions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And this is the domain I actually know."
+        },
+        {
+          "voice": "coach",
+          "text": "It is, and I want to spend the episode on the parts where the exam disagrees with a practitioner's instinct. Three tasks. Choose a modelling approach. Train and refine. Analyse performance."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Task one sounds like the easy one."
+        },
+        {
+          "voice": "coach",
+          "text": "Task one is where most engineers lose marks, because the right answer is frequently not to build a model at all, and that feels like giving up."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Four ways to get a model",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "There are four ways to get a model on AWS, and the exam wants you to reach for them in a specific order."
+        },
+        {
+          "voice": "coach",
+          "text": "First, a managed AI service. Rekognition for images. Transcribe for speech to text. Translate for language. Comprehend for text analysis. You send data, you get a result, and you train nothing."
+        },
+        {
+          "voice": "coach",
+          "text": "Second, a foundation model through Bedrock, or a pre-built model from JumpStart. Somebody else trained it. You call it, or you fine tune it on your own data."
+        },
+        {
+          "voice": "coach",
+          "text": "Third, a SageMaker built in algorithm. AWS wrote and optimised the implementation. You supply data and hyperparameters."
+        },
+        {
+          "voice": "coach",
+          "text": "Fourth, script mode. Your own training code in PyTorch or TensorFlow, running on SageMaker managed infrastructure. Maximum control, maximum work."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the exam wants the earliest one that satisfies the requirement."
+        },
+        {
+          "voice": "coach",
+          "text": "Almost always, and the qualifier tells you where to stop. Least operational overhead or fastest to production pushes you up the list toward the managed service. Custom objective, unusual data, or full control pushes you down toward script mode."
+        },
+        {
+          "voice": "coach",
+          "text": "Now training itself. Three words appear constantly and get confused. An epoch is one full pass over the training data. A batch is the group of examples processed before the weights update. A step is one such update."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So more epochs is more learning."
+        },
+        {
+          "voice": "coach",
+          "text": "More epochs is more fitting, which is not the same thing. Past a point the model is memorising the training set and getting worse on everything else. That is overfitting, and the exam tests the response to it."
+        },
+        {
+          "voice": "coach",
+          "text": "The responses are a short list. Early stopping, which halts when validation stops improving. Regularisation, meaning dropout, weight decay, and the L one and L two penalties. More data or augmentation. And fewer features."
+        },
+        {
+          "voice": "coach",
+          "text": "Underfitting is the mirror image and the list inverts. A bigger model, more features, longer training, less regularisation. If you can say which side of that line a scenario sits on, you can answer the question without knowing the algorithm."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about making training finish faster? That is a real constraint and it never appears in textbooks."
+        },
+        {
+          "voice": "coach",
+          "text": "It appears in this exam, and there are two named answers. Early stopping, which simply stops sooner. And distributed training, which splits the work across machines."
+        },
+        {
+          "voice": "coach",
+          "text": "Distributed training splits two ways and the words matter. Data parallel gives every machine a copy of the model and a different slice of the data. Model parallel splits the model itself, because it will not fit on one accelerator."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the tell is whether the bottleneck is the dataset or the model."
+        },
+        {
+          "voice": "coach",
+          "text": "Too much data, data parallel. Too large a model, model parallel. And there are two more levers for size at the end: reducing precision of the numbers, and pruning. Though note that quantisation analysis itself is out of scope for this exam."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Tuning, and the metric that lied",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Back to the fraud model. You have to fix it. Where do you start?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Hyperparameter tuning. Run a big search, find a better configuration."
+        },
+        {
+          "voice": "coach",
+          "text": "Tune against what? You are about to spend real money optimising a number that already says ninety nine percent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Fair. Change the metric first."
+        },
+        {
+          "voice": "coach",
+          "text": "Change the metric first, and this is the exam's favourite discrimination. Precision is, of the things I flagged, how many were really fraud. Recall is, of the fraud that existed, how much did I catch."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And they pull against each other."
+        },
+        {
+          "voice": "coach",
+          "text": "Always. Flag everything and recall is perfect while precision collapses. Flag nothing and precision is undefined while recall is zero. The F one score is the harmonic mean, used when you need a single number balancing both."
+        },
+        {
+          "voice": "coach",
+          "text": "The question tells you which one it wants, in business language. Missing a fraudulent transaction is expensive means recall. Every false alarm costs an agent twenty minutes means precision."
+        },
+        {
+          "voice": "coach",
+          "text": "And the area under the receiver operating characteristic curve measures how well the model separates the classes across every threshold at once. It is the answer when the question is about ranking quality rather than one decision point."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about regression? None of those apply."
+        },
+        {
+          "voice": "coach",
+          "text": "Root mean square error, and it punishes large errors much harder than small ones because the errors are squared. If a question stresses that occasional big misses are unacceptable, that is the tell."
+        },
+        {
+          "voice": "coach",
+          "text": "Now, finally, tuning. Automatic model tuning offers you search strategies, and the exam has a favourite. Random search samples the space blindly. Bayesian optimisation uses the results so far to choose where to look next."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So Bayesian is simply better."
+        },
+        {
+          "voice": "coach",
+          "text": "Better per training job, which is what matters when each job is expensive. That is the usual answer. Random search wins on one axis only, and it is worth knowing why. It parallelises perfectly, because no sample depends on any other."
+        },
+        {
+          "voice": "coach",
+          "text": "So the discrimination is cost against wall clock. Fewest training jobs means Bayesian. Fastest result with capacity to burn means random. That is a real trade-off, not a preference."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Domain two in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Four ways to get a model, in order of increasing effort. A managed AI service. A foundation model through Bedrock or JumpStart. A SageMaker built in algorithm. Your own code in script mode. Stop at the first one that meets the requirement."
+        },
+        {
+          "voice": "coach",
+          "text": "An epoch is a full pass, a batch is the group before an update, a step is the update. Too much fitting is overfitting, answered with early stopping, regularisation, more data, or fewer features. Underfitting inverts that list."
+        },
+        {
+          "voice": "coach",
+          "text": "Judge the model on a metric that matches the business cost. Precision when false alarms are expensive. Recall when misses are expensive. F one when you need one balanced number. Area under the curve for ranking quality. Root mean square error for regression, because it punishes large misses."
+        },
+        {
+          "voice": "coach",
+          "text": "Then tune with automatic model tuning. Bayesian optimisation when training jobs are expensive, random search when you can run many at once."
+        },
+        {
+          "voice": "coach",
+          "text": "And version everything in the Model Registry, so a model in production can be traced back to the run that produced it."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. A question says missing a positive case is far more costly than a false alarm. Which metric are you optimising?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Recall. You accept false alarms in order to catch as many real cases as possible."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Training accuracy keeps rising while validation accuracy has started falling. Name the condition and two fixes.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Overfitting. Early stopping, and regularisation such as dropout or weight decay. More data would also work."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Each training job costs a lot and you can only afford a few. Which tuning strategy, and why?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Bayesian optimisation, because it uses earlier results to choose the next configuration instead of sampling blindly."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. A business wants text transcribed from customer calls. What is wrong with answering that you would train a speech model?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "A managed service already does it. Transcribe solves it with no training at all, and the exam rewards stopping at the first option that works."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is accuracy on imbalanced data, which is the cold open. If a question mentions rare events, fraud, defects, or disease, and one answer is to optimise accuracy, that answer is there to catch you."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the three debugging and explaining tools, which sound alike and do different jobs. Clarify handles bias and feature importance, before and after training. It answers why the model decided that."
+        },
+        {
+          "voice": "coach",
+          "text": "The Debugger watches the training run itself for problems like vanishing gradients or a loss that will not converge. It answers why the training is not working."
+        },
+        {
+          "voice": "coach",
+          "text": "And the Model Registry is neither. It is versioning and approval, so a deployed model can be traced to its run. Explain, debug, catalogue. Three different verbs."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the third trap?"
+        },
+        {
+          "voice": "coach",
+          "text": "Comparing a new model against production. A shadow variant receives a copy of live traffic and its predictions are recorded but never returned to the customer. It is a safety test with no user impact."
+        },
+        {
+          "voice": "coach",
+          "text": "A B testing sends a real slice of traffic to the new model and users see those answers. It measures real outcomes and carries real risk."
+        },
+        {
+          "voice": "coach",
+          "text": "So the tell is exposure. Validate safely with no customer impact means shadow. Measure genuine business effect means A B testing. Offering one where the question demanded the other is a common wrong answer."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you name the four ways to get a model, in order, and the qualifier that moves you along that list?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Given a business sentence about costs, can you name the metric it implies without hesitating?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Clarify, Debugger, Registry. What is the verb for each?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Explain, debug, catalogue."
+        },
+        {
+          "voice": "coach",
+          "text": "Explain, debug, catalogue. That trio comes back in domain four, pointed at production rather than training."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: good, but be honest about where yours are. If you already train models, the marks here are in the vocabulary, not the mathematics."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain three. Deployment and orchestration. We open on a model that cost more to keep switched on than it cost to train, for the sake of two hundred predictions a day."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-domain2",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain2.html",
+      "title": "MLA-C01 Content Domain 2: ML Model Development",
+      "used_for": [
+        "domain weight",
+        "task statements 2.1 to 2.3",
+        "AI services and built-in algorithms named",
+        "training elements: epoch, step, batch size",
+        "regularisation and tuning techniques named",
+        "evaluation metrics named",
+        "Clarify, Debugger, Model Registry, shadow variants"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-amt",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html",
+      "title": "How SageMaker automatic model tuning works",
+      "used_for": [
+        "Bayesian optimisation versus random search",
+        "parallelism trade-off between strategies"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-shadow-tests",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+      "title": "Shadow tests — Amazon SageMaker AI",
+      "used_for": [
+        "shadow variant receives copied traffic without returning responses to users"
+      ]
+    }
+  ]
+}

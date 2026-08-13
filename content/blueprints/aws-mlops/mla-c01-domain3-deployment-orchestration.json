@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-domain3-deployment-orchestration",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 Domain 3 — Four Endpoints and a Bill",
+  "description": "The four ways SageMaker serves a model and how to tell them apart in one sentence, the orchestrators that overlap, and the deployment strategies the exam expects by name.",
+  "keywords": [
+    "mla-c01",
+    "sagemaker endpoints",
+    "pipelines",
+    "cloudformation",
+    "deployment"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "More to keep on than to build",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A team trains a model over a weekend. The training bill is a few hundred dollars. Everyone is pleased."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And then the monthly bill arrives."
+        },
+        {
+          "voice": "coach",
+          "text": "And the serving line is larger than the training line. Every month. For a model that is called about two hundred times a day, mostly between nine and five on weekdays."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because the endpoint is a running instance. It bills whether anyone calls it or not."
+        },
+        {
+          "voice": "coach",
+          "text": "Twenty four hours a day, seven days a week, and it was idle for the overwhelming majority of them. Nothing failed. Nobody made a mistake. Someone just picked the default."
+        },
+        {
+          "voice": "coach",
+          "text": "SageMaker offers four ways to serve a model. Picking between them is most of this domain, and it is one of the few exam topics that is worth money the day you learn it."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty two percent, and the smallest domain"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain three. Deployment and orchestration of machine learning workflows. Twenty two percent, about eleven of the fifty scored questions. The smallest of the four domains."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Smallest. So this is the one to deprioritise."
+        },
+        {
+          "voice": "coach",
+          "text": "Eleven questions, on a flat exam, with a pass mark of seven hundred and twenty. And I would argue it is the cheapest domain to learn per mark, for the same reason cost optimisation was on the architect exam."
+        },
+        {
+          "voice": "sceptic",
+          "text": "It is finite."
+        },
+        {
+          "voice": "coach",
+          "text": "Four endpoint types. A handful of orchestrators. Three deployment strategies. Two infrastructure as code tools. You can genuinely reach the end of those lists in an evening, and almost nothing here requires judgement once you know them."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The four endpoints",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Four ways to serve. Learn them as a decision, not a list."
+        },
+        {
+          "voice": "coach",
+          "text": "A real time endpoint is a persistent instance behind an interface, answering in milliseconds. It bills while it exists. Choose it for steady, latency sensitive traffic."
+        },
+        {
+          "voice": "coach",
+          "text": "A serverless endpoint has no instance to keep warm. It scales to nothing when idle and you pay for what you use. Choose it for intermittent or unpredictable traffic that can tolerate a cold start."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which fixes the cold open."
+        },
+        {
+          "voice": "coach",
+          "text": "It fixes the cold open exactly. Two hundred calls a day, clustered in office hours, is the textbook case for serverless. Unless the cold start is unacceptable, in which case you keep the real time endpoint and scale it down."
+        },
+        {
+          "voice": "coach",
+          "text": "Third, an asynchronous endpoint. The request goes on a queue and the result lands in S3 when it is ready. Choose it for large payloads or long inference times, and it can scale to zero between requests."
+        },
+        {
+          "voice": "coach",
+          "text": "Fourth, batch transform. No endpoint at all. You point a job at a dataset, it processes everything, writes the output, and the infrastructure disappears. Choose it when there is no live request in the picture."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the one sentence that separates asynchronous from batch, because those two blur."
+        },
+        {
+          "voice": "coach",
+          "text": "Asynchronous still serves a request. Someone asked, and someone is waiting for that specific answer. Batch has no requester. You are scoring a file because it is Tuesday."
+        },
+        {
+          "voice": "coach",
+          "text": "Then two variations that appear as distractors. A multi-model endpoint hosts many models on shared infrastructure, loading each on demand. That is the answer to hosting hundreds of small models cheaply, one per customer."
+        },
+        {
+          "voice": "coach",
+          "text": "A multi-container endpoint runs different containers behind one endpoint, for a pipeline of steps or different frameworks. Many models, same kind, is multi-model. Different things in sequence is multi-container."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The pipeline argument",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Now orchestration, and here is a genuine argument. You need to retrain a model weekly, and whenever data drift is detected. What runs that?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Step Functions. It is the general workflow service, the team already uses it, and it handles retries and branching properly."
+        },
+        {
+          "voice": "coach",
+          "text": "That is a defensible answer and in a real company it might be the right one. Tell me what SageMaker Pipelines gives you that Step Functions does not."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nothing obvious. It runs the same steps."
+        },
+        {
+          "voice": "coach",
+          "text": "It runs the same steps and records what they produced. Every run is tied to the dataset version, the container image, the hyperparameters and the resulting model, in a lineage graph you can query later."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the difference is not orchestration. It is provenance."
+        },
+        {
+          "voice": "coach",
+          "text": "Provenance and integration with the Model Registry. When an auditor asks which data produced the model that made this decision, Pipelines answers it and a generic workflow engine does not, unless you built that yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "So the exam tell is machine learning specific lineage and registry integration for Pipelines. Coordinating many AWS services beyond machine learning, with complex branching, for Step Functions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And Managed Workflows for Apache Airflow, which will also be in the answers."
+        },
+        {
+          "voice": "coach",
+          "text": "Managed Airflow is the answer when the team already runs Airflow, or when the pipeline spans a data platform that is orchestrated there. Existing investment is the tell, not capability."
+        },
+        {
+          "voice": "coach",
+          "text": "And EventBridge is not an orchestrator at all. It is the thing that notices something happened and starts the pipeline. Drift detected, new data landed, a schedule elapsed. It is the trigger, not the workflow."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then the pipeline has to actually build something. Where does the container come from?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three options, and again the exam wants the earliest one that works. A pre-built SageMaker container for a supported framework. The same container with your own training script, which is script mode. Or bring your own container, built by you and stored in the Elastic Container Registry."
+        },
+        {
+          "voice": "coach",
+          "text": "Bring your own container is the answer only when you need an unusual dependency or a framework AWS does not provide. Reaching for it by default is a wrong answer dressed as thoroughness."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the infrastructure around it. CloudFormation or the Cloud Development Kit?"
+        },
+        {
+          "voice": "coach",
+          "text": "Both produce the same result, and that is the point. CloudFormation is declarative templates. The Cloud Development Kit lets you write that same infrastructure in a real programming language, with loops and conditionals, and it compiles down to CloudFormation."
+        },
+        {
+          "voice": "coach",
+          "text": "So the tell is who maintains it. A team that wants configuration reviewed as configuration takes templates. A team that wants to reuse logic across twenty near identical environments takes the development kit."
+        },
+        {
+          "voice": "coach",
+          "text": "One more that hides in this domain. Neo compiles a trained model for a specific target device, so it runs faster and smaller at the edge. If a question mentions a camera, a gateway, or a device with no reliable connection, that is the tell."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Domain three in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Real time for steady low latency traffic. Serverless for intermittent traffic that tolerates a cold start. Asynchronous for large payloads or long inference where someone is still waiting. Batch transform when nobody is waiting at all."
+        },
+        {
+          "voice": "coach",
+          "text": "Many similar models on shared infrastructure is a multi-model endpoint. Different containers in sequence is a multi-container endpoint."
+        },
+        {
+          "voice": "coach",
+          "text": "Orchestrate with SageMaker Pipelines when you want lineage and registry integration. Step Functions when the workflow spans well beyond machine learning. Managed Airflow when the team already lives there. EventBridge starts things; it does not run them."
+        },
+        {
+          "voice": "coach",
+          "text": "Deploy with a named strategy. Blue green swaps all traffic between two full environments and rolls back by swapping back. Canary sends a small slice first and watches. Linear shifts traffic in equal increments on a timer."
+        },
+        {
+          "voice": "coach",
+          "text": "Describe the infrastructure as code, with CloudFormation for declarative templates or the Cloud Development Kit when you would rather write it in a programming language. And scale endpoints on invocations per instance or model latency, not on a guess."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. A model is called a few hundred times a day, in bursts, and a second of cold start is acceptable. Which endpoint type?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Serverless. It scales to nothing when idle, so you stop paying for the twenty two hours nobody calls it."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Separate asynchronous inference from batch transform in one sentence.",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Asynchronous is still a request with someone waiting for that answer. Batch has no requester at all."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. An auditor asks which dataset and container produced a deployed model. Which orchestrator gives you that for free?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "SageMaker Pipelines, because it records lineage and integrates with the Model Registry."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. You must expose a new model to two percent of live traffic and watch the error rate before going further. Name the strategy.",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Canary. Blue green would move everyone at once, and linear would step up on a timer regardless."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the cheapest sounding answer that does not meet the latency requirement. Serverless is cheaper right up until the question says single digit millisecond response, or mentions a cold start being unacceptable."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So read for the latency sentence before choosing on price."
+        },
+        {
+          "voice": "coach",
+          "text": "Always in that order. Requirements eliminate options. Cost then chooses between the survivors. Doing it the other way round is how a correct instinct produces a wrong answer."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is auto scaling on the wrong metric. Processor utilisation is a distractor for an inference endpoint, because a model can saturate on memory or on request queueing while the processor looks calm."
+        },
+        {
+          "voice": "coach",
+          "text": "The metrics the exam wants are invocations per instance, and model latency. Those describe the work arriving and the experience of the caller, which is what you actually care about."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is the deployment target list. SageMaker endpoints, Kubernetes, Elastic Container Service, and Lambda will all appear together."
+        },
+        {
+          "voice": "coach",
+          "text": "Lambda is the trap. It suits small, fast models with modest package sizes. If a question mentions a large deep learning model, or a graphics processor, Lambda is out, and Kubernetes usually only wins when the question says the organisation already standardises on it."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you name the four endpoint types and the single condition that selects each?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Requirements or cost. Which one do you apply first, and why does the order matter?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Which two metrics should scale an inference endpoint, and which tempting one should not?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Invocations per instance and model latency. Not processor utilisation."
+        },
+        {
+          "voice": "coach",
+          "text": "Not processor utilisation. And that answer is worth money in production, not only on the paper."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: the highest in this series. Eleven questions, four lists, and no judgement required once you know them."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain four. Monitoring, maintenance and security. And we open on a model that nobody touched, nothing broke, and it quietly got worse for four months."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-domain3",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain3.html",
+      "title": "MLA-C01 Content Domain 3: Deployment and Orchestration of ML Workflows",
+      "used_for": [
+        "domain weight",
+        "task statements 3.1 to 3.3",
+        "endpoint types named",
+        "multi-model and multi-container deployments",
+        "orchestrators and deployment targets named",
+        "deployment strategies: blue/green, canary, linear",
+        "auto scaling metrics named"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-deploy-options",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html",
+      "title": "Deploy models for inference — Amazon SageMaker AI",
+      "used_for": [
+        "real-time, serverless, asynchronous and batch transform characteristics",
+        "scale-to-zero behaviour"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-pipelines",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+      "title": "Amazon SageMaker Pipelines",
+      "used_for": [
+        "lineage tracking",
+        "Model Registry integration"
+      ]
+    }
+  ]
+}

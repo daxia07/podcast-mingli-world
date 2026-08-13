@@ -1,0 +1,405 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-domain1-data-preparation",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 Domain 1 — The Skew You Cannot See",
+  "description": "Data preparation is the largest domain on the exam. File formats that decide your bill, the four transform tools that overlap, and why the same feature computed twice is the classic production failure.",
+  "keywords": [
+    "mla-c01",
+    "feature store",
+    "glue",
+    "parquet",
+    "data preparation"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Fine in training, wrong in production",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A model passes every test. Good accuracy, clean validation curve, sensible errors. It goes to production and the predictions are quietly wrong."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Wrong how? Wrong enough to notice?"
+        },
+        {
+          "voice": "coach",
+          "text": "Not at first. That is the problem. Nothing crashes, no alarm fires, and the numbers look plausible for weeks."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the model degraded after deployment."
+        },
+        {
+          "voice": "coach",
+          "text": "The model never changed. One feature was computed one way in the training job and a slightly different way in the serving code. An average over thirty days in one place, thirty one in the other."
+        },
+        {
+          "voice": "coach",
+          "text": "That is training and serving skew, and it is the reason a whole AWS service exists. It is also the heart of the largest domain on this exam."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty eight percent, before any model"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain one. Data preparation for machine learning. Twenty eight percent of the scored content, which is about fourteen of the fifty questions."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The largest domain, and not one question in it is about a model."
+        },
+        {
+          "voice": "coach",
+          "text": "Not one. Three tasks. Ingest and store data. Transform data and engineer features. Ensure data integrity and prepare it for modelling."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then here is my honest position. This is the boring part. I would spend an hour on it and move to modelling."
+        },
+        {
+          "voice": "coach",
+          "text": "One hour on fourteen questions. Hold that thought, because by the end of this episode I want you to have changed your mind for a reason, not because I told you to."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Format, store, transform",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Start with file formats, because the exam asks about them and engineers rarely think about them."
+        },
+        {
+          "voice": "coach",
+          "text": "Comma separated values and JSON are row formats. To read one column you still read every row. Parquet and the optimised row columnar format are columnar. They store each column together."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the practical difference for a training job?"
+        },
+        {
+          "voice": "coach",
+          "text": "You are training on twelve features out of two hundred columns. With a columnar format you read twelve columns. With a row format you read all two hundred and throw away the rest."
+        },
+        {
+          "voice": "coach",
+          "text": "So the tell in a question is column selection on a wide dataset. That is Parquet. Avro is the other one worth knowing. It is row based, it carries its schema with it, and it handles schema evolution well, so it suits streaming and message pipelines."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And RecordIO, which only ever appears on AWS exams."
+        },
+        {
+          "voice": "coach",
+          "text": "RecordIO protobuf is the format several SageMaker built in algorithms prefer, because it streams efficiently in pipe mode. If a question mentions a built in algorithm and asks about input format, that is the one."
+        },
+        {
+          "voice": "coach",
+          "text": "Now storage. S3 is the default for training data and you need a strong reason to choose otherwise. The reason, when it appears, is usually throughput to many machines at once."
+        },
+        {
+          "voice": "coach",
+          "text": "Elastic File System gives you a shared file system across instances. FSx for Lustre gives you a high throughput parallel file system, and it links to an S3 bucket so the data lands without a copy step. Distributed training over many instances is the tell for Lustre."
+        },
+        {
+          "voice": "coach",
+          "text": "Streaming sits in this task too, and the exam names three things. Kinesis for managed streams on AWS. Managed Streaming for Apache Kafka when the team already speaks Kafka. And Apache Flink for processing the stream as it arrives rather than after it lands."
+        },
+        {
+          "voice": "sceptic",
+          "text": "How does a streaming question even reach a machine learning exam?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because features go stale. If a model scores a transaction for fraud, a feature computed from a batch job last night is worse than useless. It is confidently out of date."
+        },
+        {
+          "voice": "coach",
+          "text": "So the tell is freshness. Near real time features means a stream, and a batch job on a schedule is the wrong answer no matter how neatly it is described."
+        },
+        {
+          "voice": "coach",
+          "text": "Then the transform tools, and here is where four services overlap on purpose."
+        },
+        {
+          "voice": "coach",
+          "text": "Glue is serverless extract, transform and load, running Spark under the hood, for pipelines you schedule and rerun. DataBrew is the visual, no code cleaning tool for people who are not writing Spark."
+        },
+        {
+          "voice": "coach",
+          "text": "Data Wrangler is the SageMaker surface for exploring and transforming a dataset while you are developing a model, and it exports the steps into a pipeline. And Elastic MapReduce is Spark when you want the cluster and the control yourself."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those descriptions all sound like the same job."
+        },
+        {
+          "voice": "coach",
+          "text": "They are the same job at four levels of control. The exam picks between them on two words. Serverless and scheduled means Glue. No code and visual means DataBrew. Inside a notebook, during development, means Data Wrangler. Cluster, control, or an existing Spark investment means Elastic MapReduce."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The service the cold open needed",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Back to the cold open. One feature, computed twice, slightly differently. How would you stop that?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Share the code. Put the feature logic in a library and import it in both the training job and the serving path."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the instinct of a good engineer and it is genuinely better than nothing. Tell me where it still fails."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Version drift, I suppose. The serving service pins an older version of the library than the training job used."
+        },
+        {
+          "voice": "coach",
+          "text": "That, and something worse. Shared code guarantees the same computation. It does not guarantee the same input. Training reads a warehouse table as of last month. Serving reads a live database row as of this second."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the function is identical and the answer is still different."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the failure the SageMaker Feature Store is built for. You compute a feature once and write it to the store. The store keeps an online view for low latency serving and an offline view for training."
+        },
+        {
+          "voice": "coach",
+          "text": "The offline view is time aware, so you can ask what this feature was on the day of each training example, rather than what it is now. That is the part shared code cannot give you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Point to me. So the tell in a question is what, exactly?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three tells. Consistency between training and inference. Reuse of the same features across several models or teams. And point in time correctness, which is the phrase that means the store and nothing else."
+        },
+        {
+          "voice": "coach",
+          "text": "One more thing lives in this domain and it catches people. Labelling. Ground Truth is the managed labelling service, with workflows, human review and active learning. Mechanical Turk is the raw marketplace of workers underneath."
+        },
+        {
+          "voice": "coach",
+          "text": "So a question about a managed labelling job with quality controls is Ground Truth. A question that only wants cheap crowd labour with no workflow is Mechanical Turk. And confidential data means a private workforce, never a public one."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Domain one in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Choose the format for the access pattern. Columnar formats like Parquet when you read a few columns from many. Row formats like Avro when the schema evolves and records stream. RecordIO protobuf when a built in algorithm asks for it."
+        },
+        {
+          "voice": "coach",
+          "text": "Store in S3 by default. Move to Elastic File System when instances need a shared file system, and to FSx for Lustre when distributed training needs high throughput with an S3 link."
+        },
+        {
+          "voice": "coach",
+          "text": "Transform with Glue when it is serverless and scheduled, DataBrew when it is visual and no code, Data Wrangler when it is inside model development, and Elastic MapReduce when you want the Spark cluster yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "Compute features once into the Feature Store when training and serving must agree, when features are reused, or when point in time correctness is required."
+        },
+        {
+          "voice": "coach",
+          "text": "Then validate. Glue Data Quality and DataBrew for data quality rules. Clarify for bias before training, including class imbalance and difference in proportions of labels. And split, shuffle and augment before the model ever sees it."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. A training job reads twelve columns out of two hundred, from a very large dataset. Which format, and why?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Parquet, or another columnar format. A row format reads all two hundred columns to get the twelve."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Name the three phrases in a question that point at the Feature Store.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Consistency between training and inference. Reuse of features across models or teams. And point in time correctness."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Serverless and scheduled, or visual and no code. Which tool is each?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Serverless and scheduled is Glue. Visual and no code is DataBrew."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. Distributed training across many instances needs very high read throughput, and the data is already in S3. What do you reach for?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "FSx for Lustre, linked to the bucket, so there is no separate copy step."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is bias language. Class imbalance and difference in proportions of labels are pre-training bias metrics. They describe the dataset, before any model exists."
+        },
+        {
+          "voice": "coach",
+          "text": "Post-training bias is a different question about model outputs. If the question is about the data as collected, you want the pre-training metrics, and Clarify is the tool for both."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the fix for class imbalance?"
+        },
+        {
+          "voice": "coach",
+          "text": "Resampling or synthetic data generation. Not more training. That distinction is worth a mark, because the tempting answer is always to tune the model instead of fixing the data."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the transform tool overlap. Two or three of the four will be offered together and all of them would work. The discriminator is the operating model, not the capability, so read for the words serverless, visual, notebook or cluster."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is compliance leaking into a data question. Personally identifiable information, protected health information, and data residency all appear in this domain."
+        },
+        {
+          "voice": "coach",
+          "text": "The moment a question names one of them, encryption, masking or anonymisation belongs in the answer, and a public labelling workforce is ruled out. That single rule decides several questions on its own."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Given an access pattern, can you name the format and say why in one sentence?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What can a feature store give you that shared code cannot?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Which four services all transform data, and what single word separates each from the others?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And to answer your earlier question. I am not giving this domain one hour."
+        },
+        {
+          "voice": "coach",
+          "text": "Fourteen questions. It is the largest thing on the paper, and none of it requires you to be clever about models."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: very high, because this domain is almost entirely finite lists. Formats, stores, tools, bias metrics. You can get to the end of them."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain two. Model development, twenty six percent. And we open on a model that was ninety nine percent accurate and completely useless."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-domain1",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain1.html",
+      "title": "MLA-C01 Content Domain 1: Data Preparation for Machine Learning",
+      "used_for": [
+        "domain weight",
+        "task statements 1.1 to 1.3",
+        "data formats named",
+        "storage and streaming services named",
+        "transform and labelling tools named",
+        "pre-training bias metrics",
+        "compliance topics"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-feature-store",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+      "title": "Amazon SageMaker Feature Store",
+      "used_for": [
+        "online and offline store",
+        "point in time correctness",
+        "training and serving consistency"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "fsx-lustre-ml",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html",
+      "title": "Access training data — Amazon SageMaker AI",
+      "used_for": [
+        "S3, EFS and FSx for Lustre as training data sources",
+        "throughput characteristics for distributed training"
+      ]
+    }
+  ]
+}

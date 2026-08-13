@@ -1,0 +1,447 @@
+{
+  "schema": 1,
+  "slug": "ai-infra-serving-and-cost",
+  "show": "ai-infrastructure",
+  "template": "deep-dive-2voice",
+  "title": "Where the Bill Actually Comes From",
+  "description": "Serving economics from first principles. Why utilisation beats every other optimisation, what latency really costs you in throughput, and the honest comparison between renting a model and running one.",
+  "keywords": [
+    "inference",
+    "batching",
+    "utilisation",
+    "cost optimisation",
+    "inferentia"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Eight percent, for a year",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "A serving fleet runs for about a year at roughly eight percent utilisation. Nobody notices, because nothing is wrong."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Eight percent. So they are paying for twelve machines to get the work of one."
+        },
+        {
+          "voice": "engineer",
+          "text": "Roughly, and every dashboard is green. Latency is excellent, error rate is zero, availability is perfect. Utilisation is the one graph nobody put on the wall."
+        },
+        {
+          "voice": "sceptic",
+          "text": "In fairness, low utilisation is what excellent latency looks like."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is exactly the trap, and it is why this is the hardest cost problem in the series. Underuse and good service look identical from the outside."
+        },
+        {
+          "voice": "engineer",
+          "text": "Nothing in the fix involves a faster model or a better chip. It is all scheduling, and it is the last episode of this series for that reason."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What are you paying for?"
+    ,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AI Infrastructure, episode six. Serving, and cost."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your inference bill is too high. Rank the things you could do about it, cheapest and most effective first. Most teams get that ranking exactly backwards."
+        },
+        {
+          "voice": "sceptic",
+          "text": "My ranking would be a smaller model, then a cheaper chip, then negotiate the rate."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the standard ranking and it starts at number three. The first two are free, and they are batching and utilisation."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "You rent time, not answers",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One idea underpins everything here. When you run your own accelerators, you are renting time, not answers."
+        },
+        {
+          "voice": "engineer",
+          "text": "The machine costs the same per hour whether it produces a million tokens or none. So your cost per answer is entirely determined by how many answers you extract per hour."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which sounds obvious said aloud."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is obvious and it is routinely ignored, because engineering attention goes to the numerator. Making the model faster is interesting. Keeping the machine busy is scheduling, and nobody gets promoted for scheduling."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now recall episode one. Generating tokens is memory bandwidth bound, so a single request uses a tiny fraction of the arithmetic available."
+        },
+        {
+          "voice": "engineer",
+          "text": "Batching fixes that. Serve thirty two requests together and each weight you fetch does thirty two multiplies instead of one. Throughput rises roughly with batch size, until memory runs out."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And latency gets worse, which is the objection every product team will raise."
+        },
+        {
+          "voice": "engineer",
+          "text": "Latency per request gets slightly worse, and this is where the argument usually goes wrong on both sides. The right question is not whether latency rises. It is by how much, against how much throughput you gain."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because the workload is memory bound, going from one request to thirty two adds relatively little time per request while multiplying throughput. That is an extremely good trade, and it is available today in a configuration file."
+        },
+        {
+          "voice": "engineer",
+          "text": "One refinement matters. Naive batching waits for a full batch, so early requests wait for late ones. Continuous batching instead lets a finished request leave and a new one join mid-flight."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the batch is a moving population rather than a fixed group."
+        },
+        {
+          "voice": "engineer",
+          "text": "And that removes most of the latency penalty while keeping the throughput. If your serving stack does not do this, it is the single highest value change available to you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "You keep saying latency as if it were one number. It is not, is it."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is two, and conflating them causes most of the bad arguments between engineering and product. Time to the first token, and the rate of tokens after that."
+        },
+        {
+          "voice": "engineer",
+          "text": "Time to first token is how long the user stares at nothing. That is the one that feels slow, and it is set by processing the prompt, which is compute bound."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the second is how fast the text appears once it starts."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which only has to beat reading speed. Somewhere above twenty or thirty tokens a second, a human cannot tell the difference, and every improvement beyond that is throughput you gave away for nothing."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So there is a ceiling on how fast is useful."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is a ceiling, and it is why a streaming interface changes the economics as much as it changes the experience. Show the first token quickly, then generate at a comfortable rate, and spend everything you saved on a larger batch."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Rent the model, or run it",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now the decision that sits above all of this. Call a managed model and pay per request, or run your own accelerators?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Run our own, at our volume. Per request pricing has a margin in it, and we are large enough that the margin is real money."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is true and it is not sufficient, because it compares the wrong two numbers. You are comparing their price against your hardware cost, when you should compare their price against your hardware cost divided by your utilisation."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And at eight percent utilisation that division is brutal."
+        },
+        {
+          "voice": "engineer",
+          "text": "It multiplies your effective cost by twelve. A managed service that looked expensive at full utilisation is now dramatically cheaper, and the comparison flips entirely."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the real question is not price. It is whether we can keep the hardware busy."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the whole decision. Per request pricing is somebody else amortising hardware across many customers, which is a service they are genuinely providing. You only beat it by achieving the utilisation they achieve."
+        },
+        {
+          "voice": "engineer",
+          "text": "And your traffic makes that hard in a specific way. A consumer application peaks in the evening and is quiet at four in the morning, so sizing for the peak guarantees waste for most of the day."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then we autoscale."
+        },
+        {
+          "voice": "engineer",
+          "text": "You can, and it is less responsive than autoscaling ordinary web servers, because loading a large model onto an accelerator takes time. A minute of cold start against a spike lasting five is not a solution."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is why the mature pattern is a hybrid. Own enough capacity for your reliable baseline load, and send the overflow to a managed service that charges only for what you use."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Baseline on owned hardware, peaks rented."
+        },
+        {
+          "voice": "engineer",
+          "text": "The owned part runs near full utilisation because it is sized to the trough rather than the peak. That is the arrangement where both numbers are good, and it requires having built both paths before you need them."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The levers, ranked",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The ranked list, with the size of each effect."
+        },
+        {
+          "voice": "engineer",
+          "text": "One, batching. Going from serving requests one at a time to a healthy batch can improve throughput by an order of magnitude on a memory bound workload, because you were using a few percent of the arithmetic before."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two, utilisation. Raising a fleet from eight percent to fifty is a six fold reduction in cost per answer, and it requires no change to the model at all."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Both free, and both bigger than anything on my list."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three, precision. Halving the bits per weight halves the bytes fetched, which on a bandwidth bound workload is close to halving the time, and it frees memory for a larger batch as well."
+        },
+        {
+          "voice": "engineer",
+          "text": "So quantisation compounds with batching, which is why they are usually done together rather than as alternatives."
+        },
+        {
+          "voice": "engineer",
+          "text": "Four, the chip. Inferentia two claims up to four times the throughput and ten times lower latency than the first generation, with four times the memory per chip. Real, but a smaller multiplier than the first three, and it costs engineering time."
+        },
+        {
+          "voice": "engineer",
+          "text": "Five, the model. A smaller or distilled model is the largest change in quality terms and the one everyone reaches for first, which is the wrong end of the list."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the commercial levers. Committed spend, reserved capacity."
+        },
+        {
+          "voice": "engineer",
+          "text": "Last, deliberately, and only after the first two. Committing to a fleet you have not rightsized locks in the waste, which is the same mistake we found on the machine learning engineering exam and it is the same mistake here."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rightsize, then batch, then commit. Reversing those steps is how a team ends up with a one year commitment to twelve times the hardware they needed."
+        },
+        {
+          "voice": "sceptic",
+          "text": "There is one more lever you have not mentioned, and it is the one my product team would reach for. Caching."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two kinds, and both are worth more than they sound. The plain one is caching whole answers to repeated questions, which in some applications is a startling fraction of traffic."
+        },
+        {
+          "voice": "engineer",
+          "text": "The second is caching the processed prompt. If every request shares a long set of instructions, that prefix is being processed again for every user, and the work is identical every time."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So keep the intermediate state for the shared part and start from there."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which attacks time to first token directly, and that was the half of latency users actually feel. On a system with long shared instructions it can be a larger win than changing the model."
+        },
+        {
+          "voice": "engineer",
+          "text": "It also has an unusual property for an optimisation. It makes the experience better and the bill smaller at the same time, with no trade against quality at all."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Serving in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "You rent time, not answers. Cost per answer is the hourly rate divided by the answers you extract in that hour, so utilisation is the denominator of everything."
+        },
+        {
+          "voice": "engineer",
+          "text": "Generation is memory bandwidth bound, so single request serving wastes most of the machine. Batching multiplies throughput for a small latency cost, and continuous batching removes most of even that cost."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rent or run turns on utilisation, not on price. Per request pricing is somebody else amortising hardware efficiently, and you only beat it by matching their efficiency."
+        },
+        {
+          "voice": "engineer",
+          "text": "Since traffic peaks and troughs, the mature answer is usually hybrid: own the baseline, rent the peak, and keep the owned part genuinely busy."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the ranked levers: batching, utilisation, precision, then the chip, then the model, and only then a spending commitment."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three failures, and the signal for each."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, the cold open. Excellent latency, low utilisation, and no alarm, because no monitoring system treats being fast as a problem."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So what do you actually watch?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost per thousand answers, as a first class metric next to latency. It is the only number where waste shows up as a rising line rather than as an absence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, the batch that grew until memory ran out. Throughput improves, someone raises the batch again, and one day a burst of long conversations exhausts the key value cache."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is rejected or queued requests while utilisation still looks moderate. You hit a capacity ceiling, not a speed one, and the fix is a cap on concurrent sequence length rather than a larger machine."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, the tail. Averages look fine while the slowest few percent of requests are terrible, usually the ones with the longest inputs, and they are frequently your most valuable users."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Aggressive batching would make that worse."
+        },
+        {
+          "voice": "engineer",
+          "text": "It can, which is the one honest argument against turning batching all the way up. Watch the ninety ninth percentile, not the mean, and let that number set your ceiling."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions for your own system, and they are the last three of the series."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. What is your accelerator utilisation right now? If nobody can answer within a minute, that is the finding."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. Does your serving stack do continuous batching, or does it wait for a full batch?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. Is your fleet sized for your peak or your trough, and what happens to the difference for the other twenty hours of the day?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if I only do one thing?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Put utilisation on the same dashboard as latency. Everything else in this episode follows from being able to see it, and nothing in this episode is possible while you cannot."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The line, and the series",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The line for this episode: the cheapest optimisation available to almost every team is not a faster model or a better chip. It is keeping the machine they already rent busy."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the line for the whole series. Six episodes, one argument: the headline number on the chip is a ceiling, and everything that decides your bill happens somewhere between that ceiling and the work you actually do."
+        },
+        {
+          "voice": "engineer",
+          "text": "Memory decides whether you can run. The network decides whether you can scale. Failure decides what a long run really costs. And utilisation decides what an answer costs."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "inferentia",
+      "url": "https://aws.amazon.com/ai/machine-learning/inferentia/",
+      "title": "AWS Inferentia",
+      "used_for": [
+        "Inferentia2 throughput and latency improvements over the first generation",
+        "memory per chip and supported precisions"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-deploy-options",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html",
+      "title": "Deploy models for inference — Amazon SageMaker AI",
+      "used_for": [
+        "endpoint options and scale-to-zero behaviour",
+        "the rent-versus-run framing for managed inference"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "trn2-instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+      "title": "Amazon EC2 Trn2 Instances",
+      "used_for": [
+        "memory capacity constraining batch size and cache"
+      ]
+    }
+  ]
+}

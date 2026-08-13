@@ -1,0 +1,446 @@
+{
+  "schema": 1,
+  "slug": "ai-infra-accelerators",
+  "show": "ai-infrastructure",
+  "template": "deep-dive-2voice",
+  "title": "Chips — What You Are Actually Renting",
+  "description": "Graphics processors, Trainium and Inferentia. What genuinely differs, what the price-performance claim means, and the honest case for paying more to stay on the familiar one.",
+  "keywords": [
+    "trainium",
+    "inferentia",
+    "gpu",
+    "neuron",
+    "accelerators"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Thirty percent, and nobody moves",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AWS publishes a claim about its own training chips. Thirty to forty percent better price performance than the comparable graphics processor instances."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is either marketing or an enormous amount of money, depending on how you read it."
+        },
+        {
+          "voice": "engineer",
+          "text": "On a bill of a million dollars a year it is three or four hundred thousand. Nobody in finance would call that marketing."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And yet most teams stay on graphics processors."
+        },
+        {
+          "voice": "engineer",
+          "text": "Most teams stay, and they are not being stupid. There is a real cost on the other side of that trade, it is just not on the invoice."
+        },
+        {
+          "voice": "engineer",
+          "text": "So today: what actually differs between these chips, and what the thirty percent is really buying and really costing."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Which silicon, and why"
+    ,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AI Infrastructure, episode two. The chips themselves."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Set the question, because I already know my answer."
+        },
+        {
+          "voice": "engineer",
+          "text": "You are standing up a new training or serving workload on AWS. Graphics processors, Trainium, or Inferentia? And what would have to be true for you to change your mind?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Graphics processors. Everything supports them, every example runs, every library assumes them, and every engineer I hire has already used one."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the strongest argument in this episode and I am not going to talk you out of all of it. I want to make it precise, because parts of it were true three years ago and are not any more."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Two families, three jobs",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "AWS builds two accelerator families and they are named for what they do. Trainium is for training. Inferentia is for inference."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which sounds like a marketing split rather than a silicon one."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is a real split, and it follows from the last episode. Training is dominated by large batched matrix multiplication with high arithmetic intensity, and it needs enormous memory to hold gradients and optimiser state."
+        },
+        {
+          "voice": "engineer",
+          "text": "Inference, particularly generating one token at a time, is memory bandwidth bound with far less state. So the sensible chip for each job has a different balance of arithmetic, memory, and interconnect."
+        },
+        {
+          "voice": "engineer",
+          "text": "Take the numbers. A Trainium two chip is part of an instance with sixteen of them, one and a half terabytes of high bandwidth memory, and about twenty point eight petaflops of eight bit floating point."
+        },
+        {
+          "voice": "engineer",
+          "text": "An Inferentia two chip has two compute cores, about one hundred and ninety teraflops at sixteen bit precision, and thirty two gigabytes of high bandwidth memory. An instance holds up to twelve of them."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the inference chip is dramatically smaller."
+        },
+        {
+          "voice": "engineer",
+          "text": "Smaller per chip, and that is the point. You are buying units of serving capacity, sized to a model that has to fit and respond, not units of training throughput."
+        },
+        {
+          "voice": "engineer",
+          "text": "The other thing worth knowing is the precision list. Inferentia two handles thirty two, sixteen, and eight bit formats, including a configurable eight bit floating point, and it can cast automatically."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why does the format list matter more than the speed?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because precision is the cheapest lever you have. Halving the bits per weight halves the bytes you fetch, and we established last time that fetching bytes is usually the constraint. A chip that cannot run your chosen format cannot give you that saving."
+        },
+        {
+          "voice": "sceptic",
+          "text": "You have given me two options. There is obviously a third, which is renting no chip at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "Managed inference, where you call a model through an interface and somebody else owns the hardware. And it belongs in this comparison, because for a large number of teams it is the correct answer."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then why would anyone operate their own accelerators?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three reasons, and they are narrower than people assume. A model that is not offered as a managed service. A utilisation profile high enough that per request pricing costs more than owning capacity. And a requirement that the weights or the data never leave infrastructure you control."
+        },
+        {
+          "voice": "engineer",
+          "text": "Notice what is not on that list. Being large. Plenty of substantial companies never operate an accelerator, and that is a sound engineering decision rather than a lack of ambition."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the crossover point between paying per request and owning the machine?"
+        },
+        {
+          "voice": "engineer",
+          "text": "It moves constantly, so treat it as a calculation and not a belief. But the shape is stable: per request pricing wins at low and spiky volume, and owned capacity wins when you can keep it genuinely busy."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The honest cost of switching",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now your argument, properly. You said everything supports graphics processors. Where is that still true?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Any new model. A paper comes out, there is reference code, it assumes the dominant toolkit, and it runs today. On anything else I am waiting for support."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is real and it is the strongest form of the objection. Being first is worth something, and on unusual or brand new architectures the gap is genuine."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And custom kernels. If someone on my team has hand written one, it does not move."
+        },
+        {
+          "voice": "engineer",
+          "text": "It does not move without work. Concede that too. Now let me narrow where the argument actually applies, because it is a smaller area than it was."
+        },
+        {
+          "voice": "engineer",
+          "text": "The AWS software layer is called Neuron, and it plugs in underneath the frameworks people already use. The common serving stacks, the standard training libraries, the usual model hubs."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So for a mainstream model, taking a well trodden path."
+        },
+        {
+          "voice": "engineer",
+          "text": "For a mainstream transformer being fine tuned or served through a standard stack, the switching cost is a configuration change and a test run, not a rewrite. That is the case where thirty percent is close to free money."
+        },
+        {
+          "voice": "engineer",
+          "text": "Where it is not free is exactly where you said. Novel architectures, hand written kernels, and any team where nobody has an afternoon to spend validating that the numbers still match."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the split is not training against inference. It is mainstream against unusual."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is a better framing than the one I started with. And there is a second axis: how long the workload lives."
+        },
+        {
+          "voice": "engineer",
+          "text": "A one week experiment does not justify a migration, whatever the percentage. A serving fleet that will run for two years at scale is a different calculation, because the saving compounds and the port is paid once."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Experiment on the familiar chip, serve on the cheaper one."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is what a lot of mature teams actually do, and it is a defensible default rather than a compromise."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The numbers, side by side",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The quantities, so the comparison is fair rather than rhetorical."
+        },
+        {
+          "voice": "engineer",
+          "text": "Trainium two, per instance: sixteen chips, one and a half terabytes of memory at forty six terabytes per second, twenty point eight petaflops of eight bit floating point, three point two terabits per second of network."
+        },
+        {
+          "voice": "engineer",
+          "text": "Four of those instances form an UltraServer: sixty four chips, six terabytes of memory at one hundred and eighty five terabytes per second, eighty three petaflops, and twelve point eight terabits of network."
+        },
+        {
+          "voice": "engineer",
+          "text": "Trainium three is a three nanometre part. Two and a half petaflops of eight bit floating point per chip, one hundred and forty four gigabytes of memory, four point nine terabytes per second of bandwidth."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Generation on generation, what does that actually buy?"
+        },
+        {
+          "voice": "engineer",
+          "text": "AWS states one and a half times the memory capacity and one point seven times the bandwidth over the previous chip. At UltraServer level they claim up to four point four times the performance and four times better performance per watt."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Performance per watt reads like an environmental line rather than an engineering one."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is the most practical number on the page. Power and cooling are what limit how many accelerators fit in a building, so performance per watt decides how much capacity exists to rent at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "On the inference side, Inferentia two claims up to four times the throughput and ten times lower latency than the first generation, with four times the memory per chip and roughly ten times the memory bandwidth."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the headline comparison: AWS puts Trainium two at thirty to forty percent better price performance than the comparable graphics processor instances. Treat that as a vendor figure on a favourable workload, and measure your own."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The choice in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two families. Trainium for training, sized around huge batched arithmetic and enormous memory. Inferentia for serving, sized around fitting a model and answering quickly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Trainium two: sixteen chips and one and a half terabytes per instance, sixty four chips and six terabytes per UltraServer. Trainium three: two and a half petaflops and one hundred and forty four gigabytes per chip, with one and a half times the capacity and one point seven times the bandwidth of the previous generation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Inferentia two: two cores and thirty two gigabytes per chip, up to twelve per instance, with a wide precision list including configurable eight bit floating point."
+        },
+        {
+          "voice": "engineer",
+          "text": "The stated saving is thirty to forty percent price performance against comparable graphics processor instances. The unstated cost is ecosystem risk, and it is concentrated in novel architectures and hand written kernels."
+        },
+        {
+          "voice": "engineer",
+          "text": "So the decision is not training against inference. It is mainstream against unusual, and short lived against long lived. Experiment where the ecosystem is thickest, serve where the economics are best."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three ways this decision goes wrong."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, the benchmark that measures the wrong phase. A number that only covers reading the prompt flatters compute heavy chips; a number that only covers generation flatters memory bandwidth. Compare on your traffic shape or do not compare."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the signal that you have done this?"
+        },
+        {
+          "voice": "engineer",
+          "text": "A migration that tested beautifully and disappointed in production. That gap is almost always a benchmark that did not look like real traffic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, numerical drift after a port. Different hardware and different precision produce slightly different results, and the model may be fine while a downstream threshold is not."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is not an error. It is a small shift in the distribution of outputs, which is why you compare distributions across the port rather than spot checking a few examples."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, capacity. The chip you standardised on may simply not be available in the region and quantity you need when you need it, and that is a supply constraint no architecture diagram shows."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is an argument for being able to run on more than one."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is the best argument for portability that exists, and it has nothing to do with price. Being able to move is worth something even in the months when you do not."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the fourth one, because you have been circling it. What breaks that nobody plans for?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The idle fleet. You reserve capacity for a training programme, the programme slips by a month, and you pay accelerator prices for machines running nothing at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "The signal is easy to see and easy to ignore: a utilisation graph that is flat and low, on the most expensive line of your bill. It is not a technical failure, which is exactly why no alarm exists for it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the fix is scheduling rather than hardware."
+        },
+        {
+          "voice": "engineer",
+          "text": "Queue the smaller jobs behind the big one so the gaps get filled. Idle accelerators are the most expensive thing in this entire series, and they never appear in an architecture diagram."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions for your own system."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. Is your workload mainstream or unusual? That single answer decides most of this, and it is not the same question as training or serving."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. How long will this workload live? A migration that pays back over two years is irrelevant to an experiment that ends in three weeks."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. If your preferred accelerator were unavailable next quarter, in the region you need, what would you actually do?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nothing good."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is the honest answer for most teams, and worth knowing before it is tested."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The line, and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The line for this episode: the cheaper chip is cheaper on the invoice and more expensive in the calendar, and which of those hurts more depends entirely on how long the workload lives."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time, the constraint that decides how many of these you need before performance is even discussed. Memory, and the arithmetic that tells you whether a model fits at all."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "trn2-instances",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+      "title": "Amazon EC2 Trn2 Instances",
+      "used_for": [
+        "chips, memory, bandwidth, petaflops and networking per instance and UltraServer",
+        "30-40% better price performance claim versus P5e and P5en"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "trn3-ultraservers",
+      "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+      "title": "Amazon EC2 Trn3 UltraServers",
+      "used_for": [
+        "Trainium3 process node, compute, memory and bandwidth",
+        "generation-on-generation multipliers including performance per watt"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "inferentia",
+      "url": "https://aws.amazon.com/ai/machine-learning/inferentia/",
+      "title": "AWS Inferentia",
+      "used_for": [
+        "Inferentia2 cores, teraflops, memory per chip and chips per instance",
+        "supported precisions including configurable FP8",
+        "throughput and latency improvements over the first generation"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "neuron-sdk",
+      "url": "https://aws.amazon.com/ai/machine-learning/trainium/getting-started/",
+      "title": "AWS Trainium — Getting started with the Neuron SDK",
+      "used_for": [
+        "Neuron integration with common ML frameworks and serving stacks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-exam-map",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 — The Exam Map, and the Clock",
+  "description": "The machine learning engineer exam has a deadline on it. Where the marks are, why the biggest domain is not modelling, and whether to sit the beta instead.",
+  "keywords": [
+    "mla-c01",
+    "mlops",
+    "sagemaker",
+    "exam strategy",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "This one has a deadline",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Most certification advice has no expiry date. This episode does, and it is worth knowing the date before anything else."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Meaning the exam is being retired."
+        },
+        {
+          "voice": "coach",
+          "text": "Replaced. The last day you can sit the current machine learning engineer exam in English is the twenty eighth of September, twenty twenty six."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And after that there is simply nothing?"
+        },
+        {
+          "voice": "coach",
+          "text": "After that there is a beta. It opens the next day, the twenty ninth. Eighty five questions instead of sixty five, one hundred and seventy minutes instead of one hundred and thirty, and seventy five dollars instead of one hundred and fifty."
+        },
+        {
+          "voice": "coach",
+          "text": "The full replacement does not arrive until early twenty twenty seven. So there is a real decision to make today, and it is not the one most people think they are making."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Which exam are you sitting?"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "This is the MLOps on AWS series. Episode one. The exam map, and the clock."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then start with the decision. Current exam, or wait for the new one?"
+        },
+        {
+          "voice": "coach",
+          "text": "It turns on one question. Can you be ready before the twenty eighth of September? If yes, sit the current exam. It is stable, the material exists, and you get your result immediately."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if I cannot?"
+        },
+        {
+          "voice": "coach",
+          "text": "Then the beta is genuinely attractive, and I will make the case for it later in the episode. It is half price, and it covers content the current exam does not touch at all."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The shape of the paper",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "The current exam first. Sixty five questions, of which fifty are scored and fifteen are unscored trial questions you cannot identify. One hundred and thirty minutes. One hundred and fifty dollars."
+        },
+        {
+          "voice": "coach",
+          "text": "The pass mark is seven hundred and twenty on a scale from one hundred to one thousand. Same bar as the Solutions Architect associate exam, and scoring is compensatory, so only the overall total matters."
+        },
+        {
+          "voice": "coach",
+          "text": "Four question types, which is more than the architect exam has. Multiple choice. Multiple response, where you must select every correct option to get credit. Ordering, where you sequence three to five steps. And matching, where you pair items against three to seven prompts."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Ordering on a machine learning exam. What would that even be?"
+        },
+        {
+          "voice": "coach",
+          "text": "A pipeline. Ingest, transform, validate, train, evaluate, register, deploy, monitor. This exam is about the order things happen in, so a question type built on sequence is a natural fit."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the four domains, and this is where the exam surprises people. Domain one, data preparation, twenty eight percent. Domain two, model development, twenty six percent."
+        },
+        {
+          "voice": "coach",
+          "text": "Domain four, monitoring, maintenance and security, twenty four percent. Domain three, deployment and orchestration, twenty two percent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Wait. Data preparation is the largest? Larger than model development?"
+        },
+        {
+          "voice": "coach",
+          "text": "Larger than model development, and it is not close in what it demands. Twenty eight percent of fifty scored questions is fourteen questions about ingesting, transforming and validating data before a model exists."
+        },
+        {
+          "voice": "coach",
+          "text": "And notice the spread. Twenty eight, twenty six, twenty four, twenty two. Six points between the largest and the smallest. There is no domain you can trade away here."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Compare that with the architect exam, where security was thirty percent and you could genuinely allocate."
+        },
+        {
+          "voice": "coach",
+          "text": "Exactly the contrast. On a flat exam the strategy changes. You are not looking for the domain worth most. You are looking for your own weakest one, because that is where the marks are leaking."
+        },
+        {
+          "voice": "coach",
+          "text": "One more resource that people skip. AWS publishes an in scope service list and an out of scope service list for this exam, and the out of scope one is the more useful document."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because a service on that list can be eliminated from an answer without knowing anything about it."
+        },
+        {
+          "voice": "coach",
+          "text": "Without knowing anything about it. On an exam where four services all plausibly transform data, being able to strike one out on sight is worth real time."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "It is not a modelling exam",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "sceptic",
+          "text": "Let me push back on the whole framing. I do machine learning for a living. I train models. Surely I walk into this one."
+        },
+        {
+          "voice": "coach",
+          "text": "You might. And the fastest way to find out is to read what AWS says is out of scope, because that list is the most useful paragraph in the exam guide and almost nobody reads it."
+        },
+        {
+          "voice": "coach",
+          "text": "Out of scope: designing and architecting full end to end machine learning solutions. Out of scope: setting best practice and guiding strategy. Out of scope: working deeply in two or more domains such as natural language processing or computer vision."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those are the things I am best at."
+        },
+        {
+          "voice": "coach",
+          "text": "And one more. Quantizing models and analysing the effect on accuracy is explicitly out of scope. So the depth you have is not what is being measured."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then what is being measured?"
+        },
+        {
+          "voice": "coach",
+          "text": "Read the target candidate description. One year using SageMaker. And one year in a related role: backend developer, DevOps developer, data engineer, or data scientist."
+        },
+        {
+          "voice": "coach",
+          "text": "Note the order of that list. A data scientist is the fourth option, not the first. The recommended knowledge includes pipelines for continuous integration and delivery, infrastructure as code, and version control."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So this is a software engineering exam that happens to be about models."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the sentence to carry. It asks whether you can operate a model in production, not whether you can invent one. And that reframes where your study time goes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Go on, because I would have spent it all on domain two."
+        },
+        {
+          "voice": "coach",
+          "text": "Most people do. Look at it as an engineer instead. Domains one, three and four are data plumbing, deployment and operations. That is seventy four percent of the paper."
+        },
+        {
+          "voice": "coach",
+          "text": "Model development, the part you already know, is twenty six percent. So your existing depth covers about a quarter of the exam, and the other three quarters is work you may never have had to do yourself."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is an uncomfortable amount of the paper."
+        },
+        {
+          "voice": "coach",
+          "text": "It is also good news, because plumbing is learnable in a way that intuition is not. There is a finite list of endpoint types. A finite list of orchestrators. A finite list of monitor types. You can finish those lists."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The exam in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass through the whole thing. Nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Sixty five questions, fifty scored, one hundred and thirty minutes, one hundred and fifty dollars, seven hundred and twenty to pass on a scale of one hundred to one thousand, and the certification lasts three years."
+        },
+        {
+          "voice": "coach",
+          "text": "Four question types, including ordering and matching, and none of them give partial credit."
+        },
+        {
+          "voice": "coach",
+          "text": "Four domains, tightly bunched. Data preparation twenty eight percent, about fourteen scored questions. Model development twenty six, about thirteen. Monitoring, maintenance and security twenty four, about twelve. Deployment and orchestration twenty two, about eleven."
+        },
+        {
+          "voice": "coach",
+          "text": "The target candidate is an engineer with a year of SageMaker, not a research scientist. Architecture, strategy, deep specialisation and quantisation are all out of scope."
+        },
+        {
+          "voice": "coach",
+          "text": "And the clock. The twenty eighth of September twenty twenty six is the last day for this version in English. The beta follows immediately, and the full replacement arrives in early twenty twenty seven."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Drill. Question one. Name the largest domain and its weight, and say why that ordering is surprising.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Data preparation, twenty eight percent. Surprising because it is larger than model development, on an exam with machine learning in the title."
+        },
+        {
+          "voice": "coach",
+          "text": "Question two. Name three job tasks that AWS says are out of scope for this exam.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Architecting full end to end solutions. Setting strategy and best practice. Deep work in two or more machine learning domains. And quantising models."
+        },
+        {
+          "voice": "coach",
+          "text": "Question three. Two question types appear here that are not on the Solutions Architect associate exam. Name them, and say why one of them suits this subject.",
+          "pause_after": 5.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Ordering and matching. Ordering suits it because a machine learning pipeline is a sequence, and the exam cares about the order of the steps."
+        },
+        {
+          "voice": "coach",
+          "text": "Question four. What is the last day to sit this version of the exam in English?",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "The twenty eighth of September, twenty twenty six."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps. Two on the paper, one in your planning."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the option that trains a model when the question does not need one. Several answers will offer a managed service that already solves the problem, and one will offer a custom training job."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And an engineer instinctively picks the one they would enjoy building."
+        },
+        {
+          "voice": "coach",
+          "text": "Every time. The qualifier is usually least operational overhead or fastest to production, and those words rule out training anything from scratch."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is orchestration overlap. Several AWS services can run a pipeline, and the exam will offer you three of them in one question. That is a whole episode later in this series, because the distinctions are real and they are not obvious."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is the planning one. If you decide to wait for the new version, understand what you are waiting for. The beta is a beta. Results are not immediate, and the study material is thin because it is brand new."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So why take it at all?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because it is half price, and because of what it adds. The new version brings in generative AI, retrieval augmented generation, fine tuning foundation models, agentic workflows and Bedrock."
+        },
+        {
+          "voice": "coach",
+          "text": "The domain structure does not change. The content inside it does. So if your actual job now involves foundation models rather than gradient boosting, the newer exam is closer to your work, and it costs less to attempt."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Can you be ready before the twenty eighth of September? Your answer to that decides which exam you are studying for."
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Which is larger, data preparation or model development? And does your study plan reflect that?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. If a question can be answered by a managed service, why would you ever pick the answer that trains a model?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "You would not. Unless the question asks for control or a custom objective."
+        },
+        {
+          "voice": "coach",
+          "text": "Unless the question asks for it. That caveat matters, and it is where a careless rule becomes a wrong answer."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: the highest of this series, and the only episode with an expiry date on it."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the largest domain. Data preparation, twenty eight percent, and the failure that makes a perfectly good model produce nonsense in production while every metric in training looked fine."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+      "title": "AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide",
+      "used_for": [
+        "question count and unscored split",
+        "passing score and compensatory scoring",
+        "four question types",
+        "domain weights",
+        "target candidate description",
+        "out of scope job tasks"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "mla-c01-cert-page",
+      "url": "https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/",
+      "title": "AWS Certified Machine Learning Engineer – Associate",
+      "used_for": [
+        "exam duration",
+        "price",
+        "three year validity"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "mla-c02-announcement",
+      "url": "https://aws.amazon.com/blogs/training-and-certification/updates-to-aws-certified-machine-learning-engineer-associate-mla-c02/",
+      "title": "Updates to AWS Certified Machine Learning Engineer – Associate (MLA-C02)",
+      "used_for": [
+        "last day for MLA-C01 in English",
+        "beta dates, price, question count and duration",
+        "general availability in early 2027",
+        "generative AI and agentic content added"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "schema": 1,
+  "slug": "mla-c01-service-discriminators",
+  "show": "aws-mlops",
+  "template": "cert-prep-2voice",
+  "title": "MLA-C01 — Every Pair That Looks Alike",
+  "description": "The night-before episode. Nine pairs of AWS services that will appear in the same question, and the single word that separates each one.",
+  "keywords": [
+    "mla-c01",
+    "service comparison",
+    "sagemaker",
+    "exam strategy"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Both answers work",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Here is the shape of nearly every question you will get wrong on this exam. Two options. Both of them work. Both of them are things you have personally built."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And so it comes down to a coin toss."
+        },
+        {
+          "voice": "coach",
+          "text": "It comes down to one word in the question that you read past. Serverless. Existing. Managed. Point in time. Interruptible."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the skill is not knowing the services. It is knowing what separates them."
+        },
+        {
+          "voice": "coach",
+          "text": "The exam is a discrimination test wearing a knowledge test's clothes. This episode is the discriminations, and nothing else."
+        },
+        {
+          "voice": "coach",
+          "text": "Play it the night before. It is deliberately dense, and it assumes you have heard the other five episodes."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Nine pairs"
+    ,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "The last episode of the MLOps series. No new services, no new concepts. Nine pairs, and the word that decides each."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why pairs rather than a list of services?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because a service on its own is never the question. Nobody asks what Glue is. They ask whether it is Glue or DataBrew, and those are different skills."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then let us go. Do not soften them."
+        },
+        {
+          "voice": "coach",
+          "text": "No softening. Each one gets the pair, the discriminator, and the sentence in the question that gives it away."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Data and features",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Pair one. Glue against Data Wrangler. Both transform data."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is where it lives in the lifecycle. Glue is a scheduled, serverless, production pipeline. Data Wrangler is exploration and transformation during model development, inside SageMaker."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair two. DataBrew against Elastic MapReduce. Both clean and transform at scale."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is who is doing it. DataBrew is visual and needs no code, for analysts. Elastic MapReduce is a Spark cluster you configure, for engineers with an existing Spark investment."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the question mentions an existing Spark job, that is decided before I read the options."
+        },
+        {
+          "voice": "coach",
+          "text": "Existing anything is one of the strongest tells on the paper. Pair three. Feature Store against a database."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is point in time correctness. A database tells you what a value is now. The Feature Store tells you what it was on the date of each training example, and serves the same value online for inference."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair four. Ground Truth against Mechanical Turk. Both get data labelled by humans."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is workflow. Ground Truth is the managed labelling service with review, consensus and active learning. Mechanical Turk is the raw workforce underneath. Confidential data means a private workforce, and rules out the open marketplace entirely."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Do the format one. I never remember which is which under pressure."
+        },
+        {
+          "voice": "coach",
+          "text": "Parquet against Avro against RecordIO protobuf. The discriminator is the access pattern, and each has exactly one tell."
+        },
+        {
+          "voice": "coach",
+          "text": "Parquet is columnar, so it wins when you read a few columns out of many. Avro is row based and carries its schema, so it wins when records stream and the schema changes over time."
+        },
+        {
+          "voice": "coach",
+          "text": "RecordIO protobuf appears when a SageMaker built in algorithm is named. It is not a general purpose choice. It is the answer to a question about feeding a built in algorithm efficiently."
+        },
+        {
+          "voice": "coach",
+          "text": "Then storage. S3 against Elastic File System against FSx for Lustre. The discriminator is how many machines read it and how fast."
+        },
+        {
+          "voice": "coach",
+          "text": "S3 is the default and needs no justification. Elastic File System when instances need a shared file system with ordinary file semantics. FSx for Lustre when distributed training needs very high throughput, and it links to a bucket so there is no copy step."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And streaming, which felt out of place on a machine learning exam until you explained why."
+        },
+        {
+          "voice": "coach",
+          "text": "Kinesis against Managed Streaming for Apache Kafka against Flink. The first two are the pipe. The discriminator between them is existing investment: a team already speaking Kafka takes the managed Kafka service, everyone else takes Kinesis."
+        },
+        {
+          "voice": "coach",
+          "text": "Flink is not a pipe at all. It is processing the stream in flight, which is what you need when a feature must be computed before the data lands. Pipe, pipe, processor."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Models, endpoints, orchestration",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Pair five, and this one is really a set of four. Real time against serverless against asynchronous against batch transform."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me it as one chain rather than four definitions."
+        },
+        {
+          "voice": "coach",
+          "text": "Is anyone waiting for this specific answer? If no, batch transform. If yes, is the payload large or the inference slow? If yes, asynchronous."
+        },
+        {
+          "voice": "coach",
+          "text": "If no, is traffic steady and latency critical? If yes, real time. If traffic is intermittent and a cold start is survivable, serverless."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair six. SageMaker Pipelines against Step Functions. Both orchestrate."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is lineage. Pipelines records which data, which container and which parameters produced which model, and hands it to the Model Registry. Step Functions coordinates anything on AWS but knows nothing about models."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And Managed Airflow, which is always the third option."
+        },
+        {
+          "voice": "coach",
+          "text": "Managed Airflow wins on existing investment, not on capability. If the question does not say the team already runs Airflow, it is rarely the answer."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair seven. Clarify against Model Monitor. Both concern a model behaving badly."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is when. Clarify explains and measures bias, at any point, including before training exists. Model Monitor watches a deployed endpoint against a baseline over time. Explain versus watch."
+        },
+        {
+          "voice": "coach",
+          "text": "And the Debugger is neither. It watches the training run for convergence problems. Three tools, three moments: before, during, after."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair eight. JumpStart against Bedrock. Both give you a model somebody else trained."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And both will be sitting in the same question, which is unfair."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is where the model runs and who operates it. Bedrock is a managed interface. You call a foundation model, you never see an instance, and there is nothing to scale."
+        },
+        {
+          "voice": "coach",
+          "text": "JumpStart deploys a model into your own SageMaker account, on your instances, which you then own and pay for by the hour. So no infrastructure means Bedrock, and full control of the deployment means JumpStart."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair nine. Model Registry against a code repository. Both do versioning, and people assume one replaces the other."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is what is being versioned. Git versions the code that trains a model. The Model Registry versions the trained artefact itself, with its metrics, its lineage and an approval state that a pipeline can gate on."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a deployment pipeline waits on approval in the registry, not on a merge."
+        },
+        {
+          "voice": "coach",
+          "text": "That approval gate is the whole reason the registry exists, and it is the tell whenever a question mentions a human sign-off before a model reaches production."
+        },
+        {
+          "voice": "coach",
+          "text": "And one bonus pair, because it is pure vocabulary. Multi-model against multi-container endpoints. Many models of the same kind sharing infrastructure is multi-model. Different containers chained behind one endpoint is multi-container."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "All nine in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass. Pair, then the word."
+        },
+        {
+          "voice": "coach",
+          "text": "Glue or Data Wrangler: production pipeline, or model development. DataBrew or Elastic MapReduce: no code, or your own Spark cluster."
+        },
+        {
+          "voice": "coach",
+          "text": "Feature Store or a database: point in time correctness. Ground Truth or Mechanical Turk: managed workflow, and private workforce for anything confidential."
+        },
+        {
+          "voice": "coach",
+          "text": "The four endpoints: nobody waiting is batch, large or slow is asynchronous, steady and latency critical is real time, intermittent is serverless."
+        },
+        {
+          "voice": "coach",
+          "text": "Pipelines or Step Functions: lineage and the registry. Airflow only on existing investment. Clarify, Debugger, Model Monitor: before, during, after."
+        },
+        {
+          "voice": "coach",
+          "text": "Pair eight. Inference Recommender or Compute Optimizer: one load tests your actual model across instance types, the other looks at account-wide utilisation."
+        },
+        {
+          "voice": "coach",
+          "text": "And pair nine. Spot or a savings plan: interruptible training, or steady serving. Never Spot behind a production endpoint."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Rapid drill. One word each. Feature Store against a database.",
+          "pause_after": 3.5
+        },
+        {
+          "voice": "sceptic",
+          "text": "Point in time."
+        },
+        {
+          "voice": "coach",
+          "text": "Pipelines against Step Functions.",
+          "pause_after": 3.5
+        },
+        {
+          "voice": "sceptic",
+          "text": "Lineage."
+        },
+        {
+          "voice": "coach",
+          "text": "Clarify against Model Monitor.",
+          "pause_after": 3.5
+        },
+        {
+          "voice": "sceptic",
+          "text": "Explain, against watch over time."
+        },
+        {
+          "voice": "coach",
+          "text": "DataBrew against Elastic MapReduce.",
+          "pause_after": 3.5
+        },
+        {
+          "voice": "sceptic",
+          "text": "No code, against your own cluster."
+        },
+        {
+          "voice": "coach",
+          "text": "And the hard one. Asynchronous inference against batch transform.",
+          "pause_after": 4.0
+        },
+        {
+          "voice": "sceptic",
+          "text": "Whether anyone is waiting for that specific answer."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three habits, rather than three traps, because you have heard the traps already."
+        },
+        {
+          "voice": "coach",
+          "text": "Habit one. Read the last sentence of the question first. The qualifier lives there, and it eliminates options before you have read them, which saves the time you will want at the end."
+        },
+        {
+          "voice": "coach",
+          "text": "Habit two. When two answers survive, do not compare them again. Go back to the question and look for the constraint you skipped. There is one, and rereading the options will not find it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is the discipline that is hardest under time pressure."
+        },
+        {
+          "voice": "coach",
+          "text": "It is, and it is why the ordering and matching questions are worth doing last. They are all or nothing, they take longer, and a rushed one scores the same as a blank one."
+        },
+        {
+          "voice": "coach",
+          "text": "Habit three. On anything you flag, guess before you move on. Unanswered scores as incorrect, there is no penalty for guessing, and people run out of time and leave marks on the table for no reason."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One last pair, because it spans three domains and I still hesitate on it."
+        },
+        {
+          "voice": "coach",
+          "text": "CloudWatch against CloudTrail against X-Ray. CloudWatch is metrics, logs and alarms: how is it performing. CloudTrail is interface calls: who did what, to which resource, when."
+        },
+        {
+          "voice": "coach",
+          "text": "X-Ray traces one request across several services to show where the time actually went. Performance, audit, trace. If the question says who or when, it is CloudTrail, and it is never the performance answer."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three things, and then you should stop revising."
+        },
+        {
+          "voice": "coach",
+          "text": "One. The exam tests discrimination, not recall. If you can say what separates two services, you do not need to remember much else about either."
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Requirements eliminate, cost decides. In that order, every time."
+        },
+        {
+          "voice": "coach",
+          "text": "Three. The largest domain is data preparation, not modelling. If that still feels wrong, listen to episode two again rather than episode three."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the date."
+        },
+        {
+          "voice": "coach",
+          "text": "The twenty eighth of September twenty twenty six is the last day for this version in English. If you are close, book it now rather than revising toward a deadline you have not secured."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "The last word",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour on this episode: only meaningful if you have heard the rest. On its own it is a list. After the others, it is the index."
+        },
+        {
+          "voice": "coach",
+          "text": "That closes the MLOps series. If you want the layer underneath all of this, the chips and clusters that actually run these models, that is a different show, and it starts with a training run that died at ninety four percent."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "mla-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+      "title": "AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide",
+      "used_for": [
+        "domain weights",
+        "question types and no partial credit",
+        "unanswered questions scored as incorrect"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "mla-c01-domains-all",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain1.html",
+      "title": "MLA-C01 Content Domains 1 to 4",
+      "used_for": [
+        "every service named in this episode is drawn from the four domain task statements"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "mla-c02-announcement",
+      "url": "https://aws.amazon.com/blogs/training-and-certification/updates-to-aws-certified-machine-learning-engineer-associate-mla-c02/",
+      "title": "Updates to AWS Certified Machine Learning Engineer – Associate (MLA-C02)",
+      "used_for": [
+        "last day to take MLA-C01 in English"
+      ]
+    }
+  ]
+}

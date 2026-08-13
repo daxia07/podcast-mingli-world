@@ -1,0 +1,83 @@
+{
+  "name": "deep-dive-2voice",
+  "title": "Technical deep dive — two voices",
+  "description": "One system or layer per episode, argued between an engineer and a sceptic. High level down to the numbers, then how it breaks in production.",
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "target_minutes": [
+    14,
+    22
+  ],
+  "authoring_brief": "This is the practitioner format, not the exam format. There are no domain weights, no distractor patterns and no marks to allocate. The listener is not sitting a test; they are trying to make a real decision, so the episode has to end with them able to argue for one design over another.\n\nThe spine is altitude. Start at the level of the problem, descend to mechanism, then descend again to the actual quantities, and only then come back up. An episode that stays high is a press release, and an episode that starts low is unlistenable. Every abstract claim gets a number attached to it before the episode ends: bytes, bandwidth, watts, dollars, milliseconds. If a claim cannot be given a number, say so out loud rather than hiding it behind an adjective.\n\nThe sceptic is a senior engineer with a defensible wrong instinct, usually the instinct that worked at a smaller scale. They must state it with confidence and be argued out of it for a stated reason. Never a leading question, never instant agreement. The engineer is allowed to lose an exchange where the sceptic is right, and should, at least occasionally.\n\nWrite for the ear and for a synthetic voice. Twelve to eighteen words a sentence. One idea per sentence. Never rely on tone to carry irony. Repeat every acronym expansion and every unit in each new section, because there is no glancing back in audio. Round every number to something a person can hold in their head, and say what it is comparable to.\n\nThe failure section is not optional padding. A system nobody has seen break is a system nobody understands, and this is the section that separates the episode from documentation.",
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "required": true,
+      "target_minutes": 0.75,
+      "brief": "A consequence before any branding. A bill, an outage, a training run lost at ninety percent, or a number that should not be true. The topic is not named yet."
+    },
+    {
+      "id": "question",
+      "title": "The question",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Name the show and the subject. State the real decision the listener is facing as a contestable question, not a topic heading."
+    },
+    {
+      "id": "concepts",
+      "title": "The mechanism",
+      "required": true,
+      "target_minutes": 3,
+      "factual": true,
+      "brief": "How the thing actually works, one layer down from the marketing. Maximum three new named concepts, each with a concrete analogy. Requires sources[]."
+    },
+    {
+      "id": "case",
+      "title": "The case",
+      "required": true,
+      "target_minutes": 4,
+      "factual": true,
+      "brief": "A real scenario worked through end to end, with the sceptic proposing the design that works at small scale and defending it. Requires sources[]."
+    },
+    {
+      "id": "numbers",
+      "title": "The numbers",
+      "required": true,
+      "target_minutes": 2.5,
+      "factual": true,
+      "brief": "The quantities that actually decide the design. Bandwidth, capacity, latency, price. Every number rounded and given a comparison. Requires sources[]."
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "required": true,
+      "target_minutes": 2.5,
+      "factual": true,
+      "brief": "One continuous pass from the top, introducing nothing new. This is the section a listener replays on the way to work. Requires sources[]."
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "required": true,
+      "target_minutes": 2.5,
+      "brief": "The failure modes in production, and the early signal for each. Not a warning list — a mechanism, and what you would see on a dashboard first."
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "required": true,
+      "target_minutes": 1.5,
+      "brief": "Three things, phrased as questions to ask of your own system rather than facts to reread."
+    },
+    {
+      "id": "close",
+      "title": "The line, and next",
+      "required": false,
+      "target_minutes": 0.75,
+      "brief": "The recurring closing device, then a tease naming a genuinely unresolved question from the next episode."
+    }
+  ]
+}
