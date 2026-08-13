@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 377,
   "slug": "ai-infra-serving-and-cost",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "What are you paying for?"
-    ,
+      "title": "What are you paying for?",
       "lines": [
         {
           "voice": "engineer",

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 376,
   "slug": "ai-infra-network",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "What crosses the wire?"
-    ,
+      "title": "What crosses the wire?",
       "lines": [
         {
           "voice": "engineer",

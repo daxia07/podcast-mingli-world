@@ -47,7 +47,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      # `ref` matters more than it looks. Without it, checkout pins to the SHA
+      # that existed when the run was *dispatched*. A run that waits in the
+      # concurrency queue therefore starts from a stale tree, reads a stale
+      # manifest, and allocates episode ids the run ahead of it has already
+      # taken — which is exactly what happened on 2026-08-13: aws-mlops and
+      # ai-infrastructure both published to 367-372, and the second one's
+      # manifest upload overwrote the first one's episodes in R2.
+      #
+      # Resolving the branch at checkout time means a queued run starts from
+      # whatever the run ahead of it just pushed.
       - uses: actions/checkout@v4
+        with:
+          ref: master
 
       - uses: actions/setup-python@v5
         with:

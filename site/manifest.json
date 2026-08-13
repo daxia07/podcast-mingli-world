@@ -3719,6 +3719,341 @@
       ]
     },
     {
+      "id": 373,
+      "slug": "ai-infra-accelerators",
+      "title": "Chips — What You Are Actually Renting",
+      "description": "Graphics processors, Trainium and Inferentia. What genuinely differs, what the price-performance claim means, and the honest case for paying more to stay on the familiar one.",
+      "duration": "12:16",
+      "file_size_bytes": 5889837,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-accelerators.mp3?v=a21e38e9",
+      "filename": "ai-infra-accelerators.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "trainium",
+        "inferentia",
+        "gpu",
+        "neuron",
+        "accelerators"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "chips, memory, bandwidth, petaflops and networking per instance and UltraServer",
+            "30-40% better price performance claim versus P5e and P5en"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn3-ultraservers",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+          "title": "Amazon EC2 Trn3 UltraServers",
+          "used_for": [
+            "Trainium3 process node, compute, memory and bandwidth",
+            "generation-on-generation multipliers including performance per watt"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "inferentia",
+          "url": "https://aws.amazon.com/ai/machine-learning/inferentia/",
+          "title": "AWS Inferentia",
+          "used_for": [
+            "Inferentia2 cores, teraflops, memory per chip and chips per instance",
+            "supported precisions including configurable FP8",
+            "throughput and latency improvements over the first generation"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "neuron-sdk",
+          "url": "https://aws.amazon.com/ai/machine-learning/trainium/getting-started/",
+          "title": "AWS Trainium — Getting started with the Neuron SDK",
+          "used_for": [
+            "Neuron integration with common ML frameworks and serving stacks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 374,
+      "slug": "ai-infra-four-bottlenecks",
+      "title": "The Four Bottlenecks",
+      "description": "Compute, memory, network, storage. Why the headline petaflops number is almost never what limits you, and the one ratio that explains the whole machine.",
+      "duration": "11:59",
+      "file_size_bytes": 5752941,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-four-bottlenecks.mp3?v=16c8b28d",
+      "filename": "ai-infra-four-bottlenecks.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "ai infrastructure",
+        "trainium",
+        "memory bandwidth",
+        "roofline",
+        "gpu"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "trn3-ultraservers",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+          "title": "Amazon EC2 Trn3 UltraServers",
+          "used_for": [
+            "Trainium3 FP8 compute per chip",
+            "HBM3e capacity and bandwidth per chip",
+            "UltraCluster and UltraServer scale"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "chips per instance",
+            "HBM capacity and bandwidth",
+            "FP8 petaflops",
+            "EFA networking bandwidth",
+            "local NVMe capacity",
+            "UltraServer configuration"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "efa-docs",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html",
+          "title": "Elastic Fabric Adapter — Amazon EC2 User Guide",
+          "used_for": [
+            "EFA as the network fabric for distributed training"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 375,
+      "slug": "ai-infra-memory",
+      "title": "Memory Is the Whole Game",
+      "description": "A model that serves on one machine can need dozens to train. The arithmetic behind that, why the optimiser costs more than the weights, and what quantisation actually buys.",
+      "duration": "12:22",
+      "file_size_bytes": 5940525,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-memory.mp3?v=875ff6f2",
+      "filename": "ai-infra-memory.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "hbm",
+        "model parallel",
+        "quantisation",
+        "kv cache",
+        "distributed training"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "trn3-ultraservers",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+          "title": "Amazon EC2 Trn3 UltraServers",
+          "used_for": [
+            "144 GB of HBM3e per Trainium3 chip"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "1.5 TB HBM per instance and 6 TB per UltraServer",
+            "NeuronLink interconnect within an UltraServer"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "smp-parallelism",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-v2.html",
+          "title": "SageMaker model parallelism library",
+          "used_for": [
+            "data, tensor and pipeline parallelism",
+            "activation checkpointing and recomputation",
+            "sharded optimiser state"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 376,
+      "slug": "ai-infra-network",
+      "title": "The Slowest Node Sets the Pace",
+      "description": "Why a cluster runs at the speed of its worst machine, what an all-reduce actually costs, and the hundredfold gap between the wire and local memory.",
+      "duration": "12:32",
+      "file_size_bytes": 6023853,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-network.mp3?v=04aa0365",
+      "filename": "ai-infra-network.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "efa",
+        "ultracluster",
+        "all-reduce",
+        "collective communication",
+        "stragglers"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "efa-docs",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html",
+          "title": "Elastic Fabric Adapter — Amazon EC2 User Guide",
+          "used_for": [
+            "operating system bypass",
+            "latency and jitter characteristics for tightly coupled workloads"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "3.2 Tbps per instance and 12.8 Tbps per UltraServer",
+            "185 TBps memory bandwidth per UltraServer",
+            "NeuronLink interconnect inside an UltraServer"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn3-ultraservers",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn3/",
+          "title": "Amazon EC2 Trn3 UltraServers",
+          "used_for": [
+            "up to 144 chips per UltraServer",
+            "NeuronSwitch fabric doubling interchip bandwidth",
+            "UltraCluster scale and non-blocking petabit network"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 377,
+      "slug": "ai-infra-serving-and-cost",
+      "title": "Where the Bill Actually Comes From",
+      "description": "Serving economics from first principles. Why utilisation beats every other optimisation, what latency really costs you in throughput, and the honest comparison between renting a model and running one.",
+      "duration": "12:12",
+      "file_size_bytes": 5859117,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-serving-and-cost.mp3?v=047d2ec3",
+      "filename": "ai-infra-serving-and-cost.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "inference",
+        "batching",
+        "utilisation",
+        "cost optimisation",
+        "inferentia"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "inferentia",
+          "url": "https://aws.amazon.com/ai/machine-learning/inferentia/",
+          "title": "AWS Inferentia",
+          "used_for": [
+            "Inferentia2 throughput and latency improvements over the first generation",
+            "memory per chip and supported precisions"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-deploy-options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html",
+          "title": "Deploy models for inference — Amazon SageMaker AI",
+          "used_for": [
+            "endpoint options and scale-to-zero behaviour",
+            "the rent-versus-run framing for managed inference"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "memory capacity constraining batch size and cache"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 378,
+      "slug": "ai-infra-training-at-scale",
+      "title": "Everything Fails, Constantly",
+      "description": "At cluster scale, hardware failure stops being an incident and becomes a rate. The arithmetic of checkpointing, why more often is not obviously better, and what managed resilience actually changes.",
+      "duration": "11:55",
+      "file_size_bytes": 5728173,
+      "file_url": "https://podcast.mingli.world/episodes/ai-infra-training-at-scale.mp3?v=8f2f5f17",
+      "filename": "ai-infra-training-at-scale.mp3",
+      "playlist": "ai-infrastructure",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "hyperpod",
+        "checkpointing",
+        "fault tolerance",
+        "distributed training",
+        "mtbf"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "hyperpod",
+          "url": "https://aws.amazon.com/sagemaker-ai/hyperpod/",
+          "title": "Amazon SageMaker HyperPod",
+          "used_for": [
+            "automatic fault detection, diagnosis and recovery",
+            "recovery in minutes across thousands of accelerators",
+            "checkpointless training",
+            "task governance and priority-based queueing",
+            "up to 40% training time and cost claims"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "hyperpod-resilience-docs",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-resiliency.html",
+          "title": "SageMaker HyperPod cluster resiliency",
+          "used_for": [
+            "health checks and automatic node replacement",
+            "auto-resume from checkpoint behaviour"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "trn2-instances",
+          "url": "https://aws.amazon.com/ec2/instance-types/trn2/",
+          "title": "Amazon EC2 Trn2 Instances",
+          "used_for": [
+            "local NVMe capacity available for checkpoint writes"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -4555,7 +4890,14 @@
       "featured": false,
       "default_template": "deep-dive-2voice",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        373,
+        374,
+        375,
+        376,
+        377,
+        378
+      ]
     }
   }
 }

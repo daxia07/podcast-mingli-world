@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 373,
   "slug": "ai-infra-accelerators",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Which silicon, and why"
-    ,
+      "title": "Which silicon, and why",
       "lines": [
         {
           "voice": "engineer",

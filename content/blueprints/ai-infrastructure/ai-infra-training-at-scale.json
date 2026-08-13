@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 378,
   "slug": "ai-infra-training-at-scale",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "How long can it stay up?"
-    ,
+      "title": "How long can it stay up?",
       "lines": [
         {
           "voice": "engineer",

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 375,
   "slug": "ai-infra-memory",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Does it fit?"
-    ,
+      "title": "Does it fit?",
       "lines": [
         {
           "voice": "engineer",

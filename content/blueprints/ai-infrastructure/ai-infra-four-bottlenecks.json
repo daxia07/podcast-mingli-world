@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 374,
   "slug": "ai-infra-four-bottlenecks",
   "show": "ai-infrastructure",
   "template": "deep-dive-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "What is actually limiting you?"
-    ,
+      "title": "What is actually limiting you?",
       "lines": [
         {
           "voice": "engineer",
