@@ -217,6 +217,26 @@
     if (pinned.length) FEATURED_SHOWS = pinned;
   }
 
+  window.addEventListener("shelf:change", function () {
+    var active = document.querySelector("#libSeg .seg-btn.on");
+    renderLibrary(active ? active.dataset.lib : "shows");
+    renderHome();
+  });
+
+  function playlistsById() {
+    var map = {};
+    for (var i = 0; i < playlists.length; i++) map[playlists[i].id] = playlists[i];
+    return map;
+  }
+
+  /** Browsing lists exclude shelved episodes and archived shows. The Shelved
+   *  tab deliberately bypasses this — it is the one place they should appear. */
+  function visibleEpisodes(list) {
+    if (!window.Shelf) return list.filter(function (e) { return !e.archived; });
+    var byId = playlistsById();
+    return list.filter(function (e) { return window.Shelf.episodeVisible(e, byId); });
+  }
+
   function showMeta(id) {
     return (
       SHOW_META[id] || {
@@ -389,10 +409,7 @@
       });
     });
 
-    var featured = episodes
-      .filter(function (e) {
-        return !e.archived;
-      })
+    var featured = visibleEpisodes(episodes)
       .slice()
       .sort(function (a, b) {
         return (b.id || 0) - (a.id || 0);
@@ -423,7 +440,13 @@
       .map(function (ep) {
         var board = hasBoard(ep);
         var done = !!finished[String(ep.id)];
+        var shelved = !!(window.Shelf && window.Shelf.isShelved(ep.id));
         return (
+          '<div class="ep-swipe" data-id="' + ep.id +
+          '" data-shelved="' + (shelved ? "1" : "0") + '">' +
+          '<button type="button" class="ep-action' + (shelved ? " restore" : "") +
+          '" aria-label="' + (shelved ? "Unshelve" : "Shelve") + '">' +
+          (shelved ? "Unshelve" : "Shelve") + "</button>" +
           '<div class="ep-card' +
           (board ? " has-sheet" : "") +
           (done ? " done" : "") +
@@ -448,7 +471,7 @@
           ep.id +
           '" aria-label="Play">' +
           ICON_PLAY +
-          "</button></div>"
+          "</button></div></div>"
         );
       })
       .join("");
@@ -476,14 +499,64 @@
   }
 
   // ——— library ———
+  /** The one view that deliberately shows what everything else hides. */
+  function renderShelved(el) {
+    var shelvedEps = episodes.filter(function (e) {
+      return window.Shelf && window.Shelf.isShelved(e.id);
+    });
+
+    var archivedShows = playlists.filter(function (p) {
+      return p.archived && !window.Shelf.isShowRestored(p.id);
+    });
+
+    if (!shelvedEps.length && !archivedShows.length) {
+      el.innerHTML =
+        '<div class="empty">Nothing shelved.<br><span class="empty-sub">' +
+        'Swipe an episode left to put it here.</span></div>';
+      return;
+    }
+
+    var html = "";
+
+    if (archivedShows.length) {
+      html += '<h2 class="section-label">Archived shows</h2>';
+      archivedShows.forEach(function (p) {
+        var count = episodes.filter(function (e) {
+          return e.playlist === p.id;
+        }).length;
+        html +=
+          '<div class="ep-swipe" data-show="' + escAttr(p.id) + '">' +
+          '<button type="button" class="ep-action restore" aria-label="Restore show">Restore</button>' +
+          '<div class="ep-card"><div class="ep-num">' + esc(p.mono || "??") + "</div>" +
+          '<div class="ep-body"><div class="ep-title">' + esc(p.title) + "</div>" +
+          '<div class="ep-meta">' + count + " episodes · archived</div></div></div></div>";
+      });
+    }
+
+    if (shelvedEps.length) {
+      html += '<h2 class="section-label">Shelved episodes</h2><div id="shelvedEps" class="ep-list"></div>';
+    }
+
+    el.innerHTML = html;
+    if (shelvedEps.length) {
+      renderEpList(document.getElementById("shelvedEps"), shelvedEps);
+    }
+  }
+
   function renderLibrary(mode) {
     document.querySelectorAll("#libSeg .seg-btn").forEach(function (b) {
       b.classList.toggle("on", b.dataset.lib === mode);
     });
     var el = document.getElementById("libraryList");
+
+    if (mode === "shelved") {
+      renderShelved(el);
+      return;
+    }
+
     if (mode === "finished") {
-      var list = episodes.filter(function (e) {
-        return finished[String(e.id)] && !e.archived;
+      var list = visibleEpisodes(episodes).filter(function (e) {
+        return finished[String(e.id)];
       });
       renderEpList(el, list);
       return;
@@ -566,8 +639,7 @@
       el.innerHTML = '<div class="empty">Search episodes and solution boards</div>';
       return;
     }
-    var hits = episodes.filter(function (ep) {
-      if (ep.archived) return false;
+    var hits = visibleEpisodes(episodes).filter(function (ep) {
       var blob = (
         ep.title +
         " " +

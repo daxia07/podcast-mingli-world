@@ -53,4 +53,8 @@ test('scripts load in dependency order', () => {
   assert.ok(order.indexOf('vtt') < order.indexOf('player-ui'), 'vtt.js must precede player-ui.js');
   assert.ok(order.indexOf('chapters') < order.indexOf('player-ui'), 'chapters.js must precede player-ui.js');
   assert.ok(order.indexOf('app') < order.indexOf('player-ui'), 'app.js must precede player-ui.js');
+  // shelf.js defines window.Shelf, which shelf-ui.js reads at parse time and
+  // app.js reads while rendering.
+  assert.ok(order.indexOf('shelf') < order.indexOf('shelf-ui'), 'shelf.js must precede shelf-ui.js');
+  assert.ok(order.indexOf('shelf') < order.indexOf('app'), 'shelf.js must precede app.js');
 });

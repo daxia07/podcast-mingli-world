@@ -10,7 +10,7 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/artwork-192.png">
 <meta name="apple-mobile-web-app-title" content="Mingli">
-<link rel="stylesheet" href="/style.css?v=26">
+<link rel="stylesheet" href="/style.css?v=27">
 </head>
 <body>
 <div class="app" id="app">
@@ -42,6 +42,7 @@
       <div class="seg" id="libSeg">
         <button type="button" class="seg-btn on" data-lib="shows">Shows</button>
         <button type="button" class="seg-btn" data-lib="finished">Finished</button>
+        <button type="button" class="seg-btn" data-lib="shelved">Shelved</button>
       </div>
       <div id="libraryList" class="lib-list"></div>
     </div>
@@ -252,10 +253,13 @@
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="/js/vtt.js?v=26"></script>
-<script src="/js/chapters.js?v=26"></script>
-<script src="/app.js?v=26"></script>
-<script src="/js/player-ui.js?v=26"></script>
+<div class="shelf-toast" id="shelfToast"></div>
+<script src="/js/shelf.js?v=27"></script>
+<script src="/js/vtt.js?v=27"></script>
+<script src="/js/chapters.js?v=27"></script>
+<script src="/app.js?v=27"></script>
+<script src="/js/player-ui.js?v=27"></script>
+<script src="/js/shelf-ui.js?v=27"></script>
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(function () {});

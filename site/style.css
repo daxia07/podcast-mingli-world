@@ -1346,3 +1346,95 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   .panel-sheet, .player-full, .chapter-rail .rail-seg, .cue { animation: none; transition: none; }
 }
+
+/* ==========================================================================
+   Swipe-to-shelve (v27)
+   Additive only — no existing selector is redefined. The card keeps all its
+   own styling; the wrapper just gives the action something to sit behind.
+   ========================================================================== */
+
+.ep-swipe {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  isolation: isolate;
+}
+
+/* The action sits underneath, revealed as the card slides off it. */
+.ep-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 104px;
+  border: 0;
+  padding: 0 12px 0 20px;
+  background: var(--ink-2);
+  color: var(--bg-elevated);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  text-align: right;
+  cursor: pointer;
+  z-index: 0;
+}
+.ep-action.restore { background: var(--success); }
+.ep-action:active { filter: brightness(0.92); }
+
+.ep-swipe > .ep-card {
+  position: relative;
+  z-index: 1;
+  /* The drag sets transform directly; this is the spring back. */
+  transition: transform 260ms var(--ease);
+  touch-action: pan-y;
+}
+.ep-swipe.dragging > .ep-card { transition: none; }
+
+/* A hint that the row is swipeable, without adding chrome: the leading edge
+   picks up a subtle rail once the row is open. */
+.ep-swipe.open > .ep-card { box-shadow: var(--shadow); }
+
+/* Undo toast — separate from the existing #toast so the two can coexist. */
+.shelf-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--nav-h) + var(--safe-b) + 16px);
+  transform: translate(-50%, 12px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 11px 12px 11px 18px;
+  border-radius: 999px;
+  background: var(--bg-deep);
+  color: #f2f1ec;
+  font-size: 14px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease), transform 220ms var(--ease);
+  z-index: 60;
+  max-width: calc(100% - 32px);
+}
+.shelf-toast.on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+.shelf-toast button {
+  border: 0;
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  font: inherit;
+  font-weight: 650;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.shelf-toast button:active { background: rgba(255, 255, 255, 0.24); }
+
+.empty-sub { color: var(--ink-3); font-size: 13px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-swipe > .ep-card, .shelf-toast { transition: none; }
+}

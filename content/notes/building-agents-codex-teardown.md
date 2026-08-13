@@ -5,11 +5,12 @@ from the [OpenAI Codex CLI source](https://github.com/openai/codex) (Apache-2.0)
 at commit `9ca0337`, August 2026. Paths are given here rather than spoken in the
 episodes, because file paths make terrible audio.
 
-To follow along:
+A checkout lives at `~/git-resources/codex` on this machine. To follow along:
 
 ```bash
+cd ~/git-resources/codex/codex-rs
+# or, elsewhere:
 git clone --depth 1 https://github.com/openai/codex.git
-cd codex/codex-rs
 ```
 
 ## Scale, for calibration
