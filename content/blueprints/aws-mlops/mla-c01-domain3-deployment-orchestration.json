@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 369,
   "slug": "mla-c01-domain3-deployment-orchestration",
   "show": "aws-mlops",
   "template": "cert-prep-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Twenty two percent, and the smallest domain"
-    ,
+      "title": "Twenty two percent, and the smallest domain",
       "lines": [
         {
           "voice": "coach",

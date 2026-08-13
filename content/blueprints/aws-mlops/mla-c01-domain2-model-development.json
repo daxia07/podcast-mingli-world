@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 368,
   "slug": "mla-c01-domain2-model-development",
   "show": "aws-mlops",
   "template": "cert-prep-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Twenty six percent, three tasks"
-    ,
+      "title": "Twenty six percent, three tasks",
       "lines": [
         {
           "voice": "coach",

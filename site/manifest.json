@@ -3375,6 +3375,350 @@
       ]
     },
     {
+      "id": 367,
+      "slug": "mla-c01-domain1-data-preparation",
+      "title": "MLA-C01 Domain 1 — The Skew You Cannot See",
+      "description": "Data preparation is the largest domain on the exam. File formats that decide your bill, the four transform tools that overlap, and why the same feature computed twice is the classic production failure.",
+      "duration": "11:17",
+      "file_size_bytes": 5419821,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-domain1-data-preparation.mp3?v=d0864267",
+      "filename": "mla-c01-domain1-data-preparation.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "feature store",
+        "glue",
+        "parquet",
+        "data preparation"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-domain1",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain1.html",
+          "title": "MLA-C01 Content Domain 1: Data Preparation for Machine Learning",
+          "used_for": [
+            "domain weight",
+            "task statements 1.1 to 1.3",
+            "data formats named",
+            "storage and streaming services named",
+            "transform and labelling tools named",
+            "pre-training bias metrics",
+            "compliance topics"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-feature-store",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+          "title": "Amazon SageMaker Feature Store",
+          "used_for": [
+            "online and offline store",
+            "point in time correctness",
+            "training and serving consistency"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "fsx-lustre-ml",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html",
+          "title": "Access training data — Amazon SageMaker AI",
+          "used_for": [
+            "S3, EFS and FSx for Lustre as training data sources",
+            "throughput characteristics for distributed training"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 368,
+      "slug": "mla-c01-domain2-model-development",
+      "title": "MLA-C01 Domain 2 — Ninety Nine Percent Accurate and Useless",
+      "description": "Choosing an approach, training it, and judging whether it worked. When not to train at all, why accuracy is the most dangerous metric on the exam, and the tuning strategy that is almost always the right answer.",
+      "duration": "11:46",
+      "file_size_bytes": 5651949,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-domain2-model-development.mp3?v=c579d71b",
+      "filename": "mla-c01-domain2-model-development.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "sagemaker",
+        "hyperparameter tuning",
+        "model evaluation",
+        "bedrock"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-domain2",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain2.html",
+          "title": "MLA-C01 Content Domain 2: ML Model Development",
+          "used_for": [
+            "domain weight",
+            "task statements 2.1 to 2.3",
+            "AI services and built-in algorithms named",
+            "training elements: epoch, step, batch size",
+            "regularisation and tuning techniques named",
+            "evaluation metrics named",
+            "Clarify, Debugger, Model Registry, shadow variants"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-amt",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html",
+          "title": "How SageMaker automatic model tuning works",
+          "used_for": [
+            "Bayesian optimisation versus random search",
+            "parallelism trade-off between strategies"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-shadow-tests",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+          "title": "Shadow tests — Amazon SageMaker AI",
+          "used_for": [
+            "shadow variant receives copied traffic without returning responses to users"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 369,
+      "slug": "mla-c01-domain3-deployment-orchestration",
+      "title": "MLA-C01 Domain 3 — Four Endpoints and a Bill",
+      "description": "The four ways SageMaker serves a model and how to tell them apart in one sentence, the orchestrators that overlap, and the deployment strategies the exam expects by name.",
+      "duration": "11:32",
+      "file_size_bytes": 5539245,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-domain3-deployment-orchestration.mp3?v=ec3cdaa1",
+      "filename": "mla-c01-domain3-deployment-orchestration.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "sagemaker endpoints",
+        "pipelines",
+        "cloudformation",
+        "deployment"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-domain3",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain3.html",
+          "title": "MLA-C01 Content Domain 3: Deployment and Orchestration of ML Workflows",
+          "used_for": [
+            "domain weight",
+            "task statements 3.1 to 3.3",
+            "endpoint types named",
+            "multi-model and multi-container deployments",
+            "orchestrators and deployment targets named",
+            "deployment strategies: blue/green, canary, linear",
+            "auto scaling metrics named"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-deploy-options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html",
+          "title": "Deploy models for inference — Amazon SageMaker AI",
+          "used_for": [
+            "real-time, serverless, asynchronous and batch transform characteristics",
+            "scale-to-zero behaviour"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-pipelines",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+          "title": "Amazon SageMaker Pipelines",
+          "used_for": [
+            "lineage tracking",
+            "Model Registry integration"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 370,
+      "slug": "mla-c01-domain4-monitoring-security",
+      "title": "MLA-C01 Domain 4 — Nothing Broke, It Just Got Worse",
+      "description": "Drift you cannot see without labels, the four things Model Monitor actually watches, rightsizing an inference fleet, and the security questions that decide a quarter of the exam.",
+      "duration": "11:27",
+      "file_size_bytes": 5501037,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-domain4-monitoring-security.mp3?v=296b88dd",
+      "filename": "mla-c01-domain4-monitoring-security.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "model monitor",
+        "drift",
+        "cost optimisation",
+        "iam"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-domain4",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain4.html",
+          "title": "MLA-C01 Content Domain 4: ML Solution Monitoring, Maintenance, and Security",
+          "used_for": [
+            "domain weight",
+            "task statements 4.1 to 4.3",
+            "drift and Model Monitor",
+            "observability tools named",
+            "Inference Recommender and Compute Optimizer",
+            "purchasing options named",
+            "tagging and cost tools",
+            "IAM and network isolation requirements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-model-monitor",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+          "title": "Monitor models for data and model quality — Amazon SageMaker AI",
+          "used_for": [
+            "the four monitoring types",
+            "baseline requirement",
+            "ground truth requirement for model quality monitoring"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-inference-recommender",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html",
+          "title": "Amazon SageMaker Inference Recommender",
+          "used_for": [
+            "instance type recommendation from load testing a real model"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 371,
+      "slug": "mla-c01-exam-map",
+      "title": "MLA-C01 — The Exam Map, and the Clock",
+      "description": "The machine learning engineer exam has a deadline on it. Where the marks are, why the biggest domain is not modelling, and whether to sit the beta instead.",
+      "duration": "11:10",
+      "file_size_bytes": 5362989,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-exam-map.mp3?v=9d47d683",
+      "filename": "mla-c01-exam-map.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "mlops",
+        "sagemaker",
+        "exam strategy",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+          "title": "AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide",
+          "used_for": [
+            "question count and unscored split",
+            "passing score and compensatory scoring",
+            "four question types",
+            "domain weights",
+            "target candidate description",
+            "out of scope job tasks"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "mla-c01-cert-page",
+          "url": "https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/",
+          "title": "AWS Certified Machine Learning Engineer – Associate",
+          "used_for": [
+            "exam duration",
+            "price",
+            "three year validity"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "mla-c02-announcement",
+          "url": "https://aws.amazon.com/blogs/training-and-certification/updates-to-aws-certified-machine-learning-engineer-associate-mla-c02/",
+          "title": "Updates to AWS Certified Machine Learning Engineer – Associate (MLA-C02)",
+          "used_for": [
+            "last day for MLA-C01 in English",
+            "beta dates, price, question count and duration",
+            "general availability in early 2027",
+            "generative AI and agentic content added"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 372,
+      "slug": "mla-c01-service-discriminators",
+      "title": "MLA-C01 — Every Pair That Looks Alike",
+      "description": "The night-before episode. Nine pairs of AWS services that will appear in the same question, and the single word that separates each one.",
+      "duration": "11:58",
+      "file_size_bytes": 5750637,
+      "file_url": "https://podcast.mingli.world/episodes/mla-c01-service-discriminators.mp3?v=6eb4709f",
+      "filename": "mla-c01-service-discriminators.mp3",
+      "playlist": "aws-mlops",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "mla-c01",
+        "service comparison",
+        "sagemaker",
+        "exam strategy"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "mla-c01-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+          "title": "AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide",
+          "used_for": [
+            "domain weights",
+            "question types and no partial credit",
+            "unanswered questions scored as incorrect"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "mla-c01-domains-all",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01-domain1.html",
+          "title": "MLA-C01 Content Domains 1 to 4",
+          "used_for": [
+            "every service named in this episode is drawn from the four domain task statements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "mla-c02-announcement",
+          "url": "https://aws.amazon.com/blogs/training-and-certification/updates-to-aws-certified-machine-learning-engineer-associate-mla-c02/",
+          "title": "Updates to AWS Certified Machine Learning Engineer – Associate (MLA-C02)",
+          "used_for": [
+            "last day to take MLA-C01 in English"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -4193,7 +4537,14 @@
       "featured": false,
       "default_template": "cert-prep-2voice",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        367,
+        368,
+        369,
+        370,
+        371,
+        372
+      ]
     },
     "ai-infrastructure": {
       "title": "AI Infrastructure — Chips, Clusters and Cost",

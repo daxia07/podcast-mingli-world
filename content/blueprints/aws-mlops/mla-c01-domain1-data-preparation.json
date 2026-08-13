@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 367,
   "slug": "mla-c01-domain1-data-preparation",
   "show": "aws-mlops",
   "template": "cert-prep-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Twenty eight percent, before any model"
-    ,
+      "title": "Twenty eight percent, before any model",
       "lines": [
         {
           "voice": "coach",

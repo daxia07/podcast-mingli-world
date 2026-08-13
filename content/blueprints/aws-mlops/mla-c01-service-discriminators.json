@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 372,
   "slug": "mla-c01-service-discriminators",
   "show": "aws-mlops",
   "template": "cert-prep-2voice",
@@ -48,8 +49,7 @@
     },
     {
       "id": "question",
-      "title": "Nine pairs"
-    ,
+      "title": "Nine pairs",
       "lines": [
         {
           "voice": "coach",

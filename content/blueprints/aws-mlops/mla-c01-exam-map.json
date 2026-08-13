@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 371,
   "slug": "mla-c01-exam-map",
   "show": "aws-mlops",
   "template": "cert-prep-2voice",
@@ -49,8 +50,7 @@
     },
     {
       "id": "question",
-      "title": "Which exam are you sitting?"
-    ,
+      "title": "Which exam are you sitting?",
       "lines": [
         {
           "voice": "coach",
