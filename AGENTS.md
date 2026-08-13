@@ -39,6 +39,10 @@ Coding-agent guide to this repo. Read this before making changes.
 > and `site/search-index.json` is a build artifact — rebuild it with
 > `scripts/build_search_index.py` after publishing, never hand-edit it.
 >
+> **Where things stand right now: `docs/STATUS.md`** — inventory, what is live,
+> what is built but unrun, and the bug each guardrail remembers. Read it before
+> planning work; it is the fastest way to avoid redoing something.
+>
 > Full design: `docs/UPGRADE-SPEC.md`. Decisions: `DECISIONS.md`.
 > Android: `docs/ANDROID-APP.md`.
 > **Where things run:** build and test on this Mac; publish from the `agent`

@@ -49,7 +49,8 @@ site/             vanilla-JS app; js/ holds chapters, transcript, search, shelf,
                   theme, player UI
 functions/        Pages Functions: episodes, chapters, transcripts, artwork, healthz
 tests/            126 tests — node:test for JS, unittest for Python
-docs/             UPGRADE-SPEC (design), ANDROID-APP (install), design-notes
+docs/             STATUS (where things stand), UPGRADE-SPEC (design),
+                  ANDROID-APP (install), design-notes
 .claude/skills/   the supported ways to add content
 ```
 
@@ -91,6 +92,9 @@ Archived shows stay in the manifest and the RSS feed — nothing is deleted — 
 can be restored per-device from the app's Shelved tab.
 
 ## Known gaps
+
+Full picture — inventory, guardrails and what is owed — in
+**[docs/STATUS.md](docs/STATUS.md)**.
 
 - ~90 legacy episodes have no blueprint, so they have neither chapters nor a
   transcript, and therefore cannot be searched by what they say. Deliberate.
