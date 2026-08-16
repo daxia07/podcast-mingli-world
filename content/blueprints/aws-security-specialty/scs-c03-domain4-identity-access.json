@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 379,
   "slug": "scs-c03-domain4-identity-access",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -276,8 +277,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. Name the three policy types that can never grant a permission."
+          "text": "Drill. Question one. Name the three policy types that can never grant a permission.",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -285,8 +286,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. A bucket in account B allows a role in account A. The role has no matching identity policy. Does the read succeed?"
+          "text": "Question two. A bucket in account B allows a role in account A. The role has no matching identity policy. Does the read succeed?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -294,8 +295,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. You are letting a partner team create their own roles, but nothing they create may touch production data. Which mechanism?"
+          "text": "Question three. You are letting a partner team create their own roles, but nothing they create may touch production data. Which mechanism?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -303,8 +304,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. A vendor assumes a role in your account. What must the trust policy require, and what problem does it solve?"
+          "text": "Question four. A vendor assumes a role in your account. What must the trust policy require, and what problem does it solve?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
