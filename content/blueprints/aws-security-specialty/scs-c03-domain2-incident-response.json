@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 382,
   "slug": "scs-c03-domain2-incident-response",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -284,8 +285,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. A compromised instance sits in a scaling group. What are the first two actions, in order, and why that order?"
+          "text": "Drill. Question one. A compromised instance sits in a scaling group. What are the first two actions, in order, and why that order?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -293,8 +294,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. You deactivated the leaked key ten minutes ago and the attacker is still making calls. Why, and what do you do?"
+          "text": "Question two. You deactivated the leaked key ten minutes ago and the attacker is still making calls. Why, and what do you do?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -302,8 +303,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. How do you contain a compromised function without losing the code?"
+          "text": "Question three. How do you contain a compromised function without losing the code?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -311,8 +312,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. You share an encrypted volume snapshot with the forensics account and they cannot read it. What is missing?"
+          "text": "Question four. You share an encrypted volume snapshot with the forensics account and they cannot read it. What is missing?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",

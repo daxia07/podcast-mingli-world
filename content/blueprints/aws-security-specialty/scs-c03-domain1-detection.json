@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 381,
   "slug": "scs-c03-domain1-detection",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -276,8 +277,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. An investigation needs to know which user downloaded one specific object, and the trail shows nothing. What is wrong, and what is the fix?"
+          "text": "Drill. Question one. An investigation needs to know which user downloaded one specific object, and the trail shows nothing. What is wrong, and what is the fix?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -285,8 +286,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. You must prove a bucket was publicly readable for six hours last Tuesday. Which service, and why not the other one?"
+          "text": "Question two. You must prove a bucket was publicly readable for six hours last Tuesday. Which service, and why not the other one?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -294,8 +295,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. Behaviour, software, content. Match GuardDuty, Inspector and Macie."
+          "text": "Question three. Behaviour, software, content. Match GuardDuty, Inspector and Macie.",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -303,8 +304,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. Sixty accounts, and security wants one queue of findings with least operational overhead. What do you set up?"
+          "text": "Question four. Sixty accounts, and security wants one queue of findings with least operational overhead. What do you set up?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",

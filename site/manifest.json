@@ -4221,6 +4221,308 @@
       ]
     },
     {
+      "id": 381,
+      "slug": "scs-c03-domain1-detection",
+      "title": "SCS-C03 Domain 1 — Which One Would Have Seen It",
+      "description": "Sixteen percent. Seven services all claim to detect something, and the exam never asks which is best. It asks which one would have seen this particular event, and every wrong answer detects something real.",
+      "duration": "11:32",
+      "file_size_bytes": 5537517,
+      "file_url": "https://podcast.mingli.world/episodes/scs-c03-domain1-detection.mp3?v=94c0d9f0",
+      "filename": "scs-c03-domain1-detection.mp3",
+      "playlist": "aws-security-specialty",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "scs-c03",
+        "guardduty",
+        "cloudtrail",
+        "security hub",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "scs-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+          "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+          "used_for": [
+            "domain one weight of sixteen percent",
+            "detection task statements",
+            "split of detection from incident response"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "cloudtrail-events",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html",
+          "title": "CloudTrail events and record contents",
+          "used_for": [
+            "management events logged by default",
+            "data events not logged by default and charged separately"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "vpc-flow-logs",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html",
+          "title": "Logging IP traffic using VPC Flow Logs",
+          "used_for": [
+            "flow log capture at interface, subnet and VPC level",
+            "metadata only, no packet contents"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "guardduty-findings",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html",
+          "title": "GuardDuty finding types",
+          "used_for": [
+            "cryptocurrency mining findings",
+            "instance credential exfiltration findings",
+            "log sources analysed"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "config-concepts",
+          "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+          "title": "What is AWS Config",
+          "used_for": [
+            "configuration state history",
+            "rule evaluation and compliance"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "securityhub-orgs",
+          "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/designate-orgs-admin-account.html",
+          "title": "Designating a Security Hub delegated administrator",
+          "used_for": [
+            "organization-wide enablement",
+            "delegated administrator pattern"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "security-lake-ocsf",
+          "url": "https://docs.aws.amazon.com/security-lake/latest/userguide/open-cybersecurity-schema-framework.html",
+          "title": "Open Cybersecurity Schema Framework in Amazon Security Lake",
+          "used_for": [
+            "normalisation of logs into an open schema",
+            "third-party source ingestion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 382,
+      "slug": "scs-c03-domain2-incident-response",
+      "title": "SCS-C03 Domain 2 — Contain It Without Destroying It",
+      "description": "Fourteen percent. The alarm has already gone off. Isolation before termination, why deactivating a key does not stop the attacker, and the sessions you cannot revoke by revoking anything.",
+      "duration": "11:12",
+      "file_size_bytes": 5383149,
+      "file_url": "https://podcast.mingli.world/episodes/scs-c03-domain2-incident-response.mp3?v=94742f7e",
+      "filename": "scs-c03-domain2-incident-response.mp3",
+      "playlist": "aws-security-specialty",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "scs-c03",
+        "incident response",
+        "forensics",
+        "credential compromise",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "scs-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+          "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+          "used_for": [
+            "domain two weight of fourteen percent",
+            "incident response task statements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "iam-revoke-sessions",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html",
+          "title": "Revoking IAM role temporary security credentials",
+          "used_for": [
+            "temporary credentials outlive the access key that created them",
+            "inline deny policy conditioned on token issue time"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "compromised-credentials",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_remediate.html",
+          "title": "Remediating GuardDuty findings",
+          "used_for": [
+            "remediation steps for compromised instances and credentials",
+            "isolation before termination"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "ebs-share-encrypted-snapshot",
+          "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html",
+          "title": "Share an Amazon EBS snapshot",
+          "used_for": [
+            "encrypted snapshots require sharing the customer managed key",
+            "cross-account snapshot sharing"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "lambda-reserved-concurrency",
+          "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
+          "title": "Configuring reserved concurrency for Lambda functions",
+          "used_for": [
+            "setting reserved concurrency to zero to stop invocations"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "cloudtrail-log-file-validation",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html",
+          "title": "Validating CloudTrail log file integrity",
+          "used_for": [
+            "signed digest files proving logs were not altered or deleted",
+            "delivery to a separate account for tamper resistance"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "s3-object-lock",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+          "title": "Locking objects with Object Lock",
+          "used_for": [
+            "write once read many retention on log archives"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "asg-detach-instances",
+          "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html",
+          "title": "Detach an instance from an Auto Scaling group",
+          "used_for": [
+            "removing an instance so the group does not replace or terminate it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 383,
+      "slug": "scs-c03-domain5-data-protection",
+      "title": "SCS-C03 Domain 5 — The Key Policy Is Not Optional",
+      "description": "Eighteen percent, and most of it is one service. Why an administrator with full permissions still cannot decrypt, what a grant is really for, imported key material, and the rotation everybody misunderstands.",
+      "duration": "11:48",
+      "file_size_bytes": 5667885,
+      "file_url": "https://podcast.mingli.world/episodes/scs-c03-domain5-data-protection.mp3?v=725b5e57",
+      "filename": "scs-c03-domain5-data-protection.mp3",
+      "playlist": "aws-security-specialty",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "scs-c03",
+        "kms",
+        "key policy",
+        "envelope encryption",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "scs-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+          "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+          "used_for": [
+            "domain five weight of eighteen percent",
+            "data protection task statements",
+            "data masking and imported key material as added topics"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-key-policies",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+          "title": "Key policies in AWS KMS",
+          "used_for": [
+            "key policy is required for every KMS key",
+            "identity policies only apply when the key policy enables them"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-grants",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/grants.html",
+          "title": "Grants in AWS KMS",
+          "used_for": [
+            "temporary, granular permission for services",
+            "retiring a grant"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-envelope",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
+          "title": "AWS KMS concepts — data keys and envelope encryption",
+          "used_for": [
+            "data key generation",
+            "size limit on direct encryption",
+            "encrypted data key stored with the data"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-rotation",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html",
+          "title": "Rotating AWS KMS keys",
+          "used_for": [
+            "automatic rotation of AWS-generated key material",
+            "old backing keys retained so existing ciphertext still decrypts",
+            "imported key material must be rotated by the customer"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "kms-imported-key-material",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html",
+          "title": "Importing key material into AWS KMS keys",
+          "used_for": [
+            "customer-generated key material",
+            "deleting imported material makes ciphertext unusable immediately",
+            "AWS does not retain a copy"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "s3-bucket-keys",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html",
+          "title": "Reducing the cost of SSE-KMS with Amazon S3 Bucket Keys",
+          "used_for": [
+            "reuse of a data key across objects",
+            "reduction in KMS request charges"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "cwl-data-protection",
+          "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html",
+          "title": "Help protect sensitive log data with masking",
+          "used_for": [
+            "data protection policies on log groups",
+            "masking as data arrives"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -5029,7 +5331,10 @@
       "archived": false,
       "episode_ids": [
         363,
-        379
+        379,
+        381,
+        382,
+        383
       ]
     },
     "aws-mlops": {

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 383,
   "slug": "scs-c03-domain5-data-protection",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -276,8 +277,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. An identity policy grants full permission on a key and the call still fails. Why?"
+          "text": "Drill. Question one. An identity policy grants full permission on a key and the call still fails. Why?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -285,8 +286,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. A customer must be able to make all their data unreadable within minutes of terminating the contract. What do you use?"
+          "text": "Question two. A customer must be able to make all their data unreadable within minutes of terminating the contract. What do you use?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -294,8 +295,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. Why does automatic rotation not remediate data that was already encrypted and exposed?"
+          "text": "Question three. Why does automatic rotation not remediate data that was already encrypted and exposed?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -303,8 +304,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. Millions of small objects, correct encryption, and a key management bill nobody expected. What is the fix?"
+          "text": "Question four. Millions of small objects, correct encryption, and a key management bill nobody expected. What is the fix?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
