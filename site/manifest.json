@@ -4139,6 +4139,88 @@
       ]
     },
     {
+      "id": 380,
+      "slug": "aif-c01-evaluation-and-model-choice",
+      "title": "AIF-C01 — Choosing a Model, and Proving It Works",
+      "description": "The selection criteria the exam expects you to weigh, the metrics with strange names and what each one is for, and why accuracy is the most misleading number in machine learning.",
+      "duration": "10:03",
+      "file_size_bytes": 4825005,
+      "file_url": "https://podcast.mingli.world/episodes/aif-c01-evaluation-and-model-choice.mp3?v=579cbc8c",
+      "filename": "aif-c01-evaluation-and-model-choice.mp3",
+      "playlist": "aws-ai-practitioner",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "aif-c01",
+        "model evaluation",
+        "rouge",
+        "precision and recall",
+        "bedrock"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "aif-c01-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+          "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+          "used_for": [
+            "model selection criteria named in the task statements",
+            "evaluation metrics in scope",
+            "business metric expectations"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-model-evaluation",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html",
+          "title": "Evaluate the performance of Amazon Bedrock resources",
+          "used_for": [
+            "automatic and human evaluation jobs",
+            "evaluating candidate models on your own dataset"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-inference-options",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+          "title": "Increase model invocation capacity with Provisioned Throughput",
+          "used_for": [
+            "on-demand versus provisioned throughput",
+            "requirement for provisioned capacity with custom models"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-clarify",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+          "title": "Fairness, model explainability and bias detection with SageMaker Clarify",
+          "used_for": [
+            "bias detection in data and predictions",
+            "feature attribution for explainability"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sagemaker-model-monitor",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+          "title": "Monitor models for data and model quality drift",
+          "used_for": [
+            "detecting drift after deployment"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "a2i",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-use-augmented-ai-a2i-human-review-loops.html",
+          "title": "Amazon Augmented AI human review workflows",
+          "used_for": [
+            "routing low-confidence predictions to human reviewers in production"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -4883,7 +4965,8 @@
         326,
         327,
         328,
-        329
+        329,
+        380
       ]
     },
     "agentic-ai-investing": {

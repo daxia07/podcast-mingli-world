@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 380,
   "slug": "aif-c01-evaluation-and-model-choice",
   "show": "aws-ai-practitioner",
   "template": "cert-prep",
@@ -168,8 +169,8 @@
       "lines": [
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Recall drill. Question one. A model detects a disease that occurs in one patient in two hundred. Which metric do you optimise, and which one do you distrust?"
+          "text": "Recall drill. Question one. A model detects a disease that occurs in one patient in two hundred. Which metric do you optimise, and which one do you distrust?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -177,8 +178,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question two. You are evaluating generated summaries of legal documents against reference summaries. Which metric?"
+          "text": "Question two. You are evaluating generated summaries of legal documents against reference summaries. Which metric?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -186,8 +187,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question three. Two answers say the same thing in different words. Which metric recognises that, and which one penalises it?"
+          "text": "Question three. Two answers say the same thing in different words. Which metric recognises that, and which one penalises it?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -195,8 +196,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question four. Leadership wants proof that the assistant was worth building. What do you report?"
+          "text": "Question four. Leadership wants proof that the assistant was worth building. What do you report?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -204,8 +205,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question five. A model that performed well six months ago is now getting worse, though nothing was changed. What is this, and which service?"
+          "text": "Question five. A model that performed well six months ago is now getting worse, though nothing was changed. What is this, and which service?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
