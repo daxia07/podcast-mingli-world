@@ -4838,6 +4838,172 @@
       ]
     },
     {
+      "id": 387,
+      "slug": "saa-c03-domain4-cost-optimized",
+      "title": "SAA-C03 Domain 4 — The Line Nobody Was Watching",
+      "description": "Twenty percent, and the only domain where the correct answer is allowed to be worse. Purchase models, storage classes and their minimum durations, and the transfer charge that dwarfs the compute.",
+      "duration": "11:31",
+      "file_size_bytes": 5534253,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-domain4-cost-optimized.mp3?v=d04dab09",
+      "filename": "saa-c03-domain4-cost-optimized.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "cost optimisation",
+        "spot instances",
+        "storage classes",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+          "used_for": [
+            "domain four weight of twenty percent",
+            "task statements for cost-optimized architectures"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "savings-plans",
+          "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+          "title": "What are Savings Plans",
+          "used_for": [
+            "hourly spend commitment for one or three years",
+            "compute plans covering EC2, Fargate and Lambda"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "spot-instances",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
+          "title": "Amazon EC2 Spot Instances",
+          "used_for": [
+            "discount versus on-demand pricing",
+            "two-minute interruption notice",
+            "suitability for fault-tolerant workloads"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "s3-storage-classes",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+          "title": "Using Amazon S3 storage classes",
+          "used_for": [
+            "minimum storage duration charges",
+            "retrieval characteristics of each class",
+            "intelligent tiering for unknown access patterns"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "s3-lifecycle",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+          "title": "Managing the lifecycle of objects",
+          "used_for": [
+            "transitioning objects between classes automatically"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "cloudfront-pricing-origin",
+          "url": "https://aws.amazon.com/cloudfront/pricing/",
+          "title": "Amazon CloudFront pricing",
+          "used_for": [
+            "no charge for data transferred from AWS origins to CloudFront",
+            "lower per-gigabyte rate than direct internet egress"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "ec2-scheduled-scaling",
+          "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html",
+          "title": "Scheduled scaling for Amazon EC2 Auto Scaling",
+          "used_for": [
+            "scaling on a predictable timetable to stop idle capacity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 388,
+      "slug": "aif-c01-prompting-and-inference",
+      "title": "AIF-C01 — Prompting, Parameters, and the Attacks on Both",
+      "description": "The depth episode under the largest domain. What each inference parameter actually changes, the prompt techniques by name, and the three prompt attacks the exam expects you to tell apart.",
+      "duration": "10:08",
+      "file_size_bytes": 4869933,
+      "file_url": "https://podcast.mingli.world/episodes/aif-c01-prompting-and-inference.mp3?v=de298566",
+      "filename": "aif-c01-prompting-and-inference.mp3",
+      "playlist": "aws-ai-practitioner",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "aif-c01",
+        "prompt engineering",
+        "inference parameters",
+        "prompt injection",
+        "bedrock"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "aif-c01-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+          "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+          "used_for": [
+            "domain three and domain five weights",
+            "prompt engineering techniques named in the task statements",
+            "prompt attack terminology"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-inference-params",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html",
+          "title": "Influence response generation with inference parameters",
+          "used_for": [
+            "temperature, top p and top k behaviour",
+            "maximum length and stop sequences"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-prompt-engineering",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html",
+          "title": "Prompt engineering guidelines for Amazon Bedrock",
+          "used_for": [
+            "prompt structure",
+            "zero-shot, few-shot and chain-of-thought techniques"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-prompt-management",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html",
+          "title": "Amazon Bedrock Prompt management",
+          "used_for": [
+            "reusable, versioned prompt templates"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-guardrails",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+          "title": "Amazon Bedrock Guardrails",
+          "used_for": [
+            "content filters, denied topics and sensitive information filtering",
+            "applied to both prompts and responses"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -5583,7 +5749,8 @@
         327,
         328,
         329,
-        380
+        380,
+        388
       ]
     },
     "agentic-ai-investing": {
@@ -5634,7 +5801,8 @@
         365,
         366,
         385,
-        386
+        386,
+        387
       ]
     },
     "aws-security-specialty": {

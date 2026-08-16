@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 388,
   "slug": "aif-c01-prompting-and-inference",
   "show": "aws-ai-practitioner",
   "template": "cert-prep",
@@ -160,8 +161,8 @@
       "lines": [
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Recall drill. Question one. A support summary must come out the same way every time for the same input. Which setting do you change, and in which direction?"
+          "text": "Recall drill. Question one. A support summary must come out the same way every time for the same input. Which setting do you change, and in which direction?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -169,8 +170,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question two. A chat assistant stops referring to things the user said earlier in a long conversation. What is happening?"
+          "text": "Question two. A chat assistant stops referring to things the user said earlier in a long conversation. What is happening?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -178,8 +179,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question three. A customer pastes text into a form and the assistant follows it as an instruction. Name the attack, and name the two controls."
+          "text": "Question three. A customer pastes text into a form and the assistant follows it as an instruction. Name the attack, and name the two controls.",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -187,8 +188,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question four. Accuracy on a multi step reasoning task is poor, there is no budget and no training data. What do you try?"
+          "text": "Question four. Accuracy on a multi step reasoning task is poor, there is no budget and no training data. What do you try?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",
@@ -196,8 +197,8 @@
         },
         {
           "voice": "narrator",
-          "pause_after": 4.0,
-          "text": "Question five. Someone corrupted the fine tuning dataset. Is that injection, jailbreaking, or poisoning?"
+          "text": "Question five. Someone corrupted the fine tuning dataset. Is that injection, jailbreaking, or poisoning?",
+          "pause_after": 4.0
         },
         {
           "voice": "narrator",

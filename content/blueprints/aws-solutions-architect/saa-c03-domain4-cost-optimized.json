@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 387,
   "slug": "saa-c03-domain4-cost-optimized",
   "show": "aws-solutions-architect",
   "template": "cert-prep-2voice",
@@ -260,8 +261,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. A nightly batch job of four hours restarts cleanly if it fails. Which purchase model, and what word in the stem told you?"
+          "text": "Drill. Question one. A nightly batch job of four hours restarts cleanly if it fails. Which purchase model, and what word in the stem told you?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -269,8 +270,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. Logs must be kept seven years for an audit and will almost certainly never be read. Which class, and what is the risk?"
+          "text": "Question two. Logs must be kept seven years for an audit and will almost certainly never be read. Which class, and what is the risk?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -278,8 +279,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. Access patterns are unknown and change month to month. Which class, and why not infrequent access?"
+          "text": "Question three. Access patterns are unknown and change month to month. Which class, and why not infrequent access?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -287,8 +288,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. A development environment is used forty hours a week. What is the first thing you change?"
+          "text": "Question four. A development environment is used forty hours a week. What is the first thing you change?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
