@@ -6,13 +6,17 @@ name: Build episode
 #
 #   gh workflow run build-episode.yml -f show=aws-ai-practitioner
 #   gh workflow run build-episode.yml -f blueprint=content/blueprints/x/y.json
+#   gh workflow run build-episode.yml -f blueprint="a.json b.json c.json"
 #   gh workflow run build-episode.yml -f show=... -f dry_run=true
+#
+# Build a batch in ONE run. Dispatching one run per blueprint does not work:
+# see the note on the concurrency group below.
 
 on:
   workflow_dispatch:
     inputs:
       blueprint:
-        description: 'Path to a single blueprint JSON'
+        description: 'Blueprint JSON path, or several separated by spaces'
         required: false
       show:
         description: 'Build every blueprint for this show'
@@ -31,6 +35,15 @@ on:
 #
 # Queue instead of cancelling: a cancelled run would be killed mid-publish, with
 # audio already in R2 and nothing recording it.
+#
+# But note what `cancel-in-progress: false` does and does not buy. It protects
+# the run that is *executing*. It does not give you a queue of depth two: a
+# concurrency group holds exactly one pending run, and a third dispatch cancels
+# whichever run was waiting. Dispatching ten builds in a row on 2026-08-16
+# therefore left one running, one pending, and eight cancelled.
+#
+# So batch a multi-episode build into a single run by passing several paths in
+# `blueprint`, rather than dispatching one run per episode.
 concurrency:
   group: build-episode
   cancel-in-progress: false
@@ -82,7 +95,8 @@ jobs:
         run: |
           set -e
           if [ -n "${{ inputs.blueprint }}" ]; then
-            echo "${{ inputs.blueprint }}" > /tmp/list.txt
+            # One path or several, separated by spaces or newlines.
+            echo "${{ inputs.blueprint }}" | tr ' ' '\n' | sed '/^[[:space:]]*$/d' > /tmp/list.txt
           elif [ -n "${{ inputs.show }}" ]; then
             find "content/blueprints/${{ inputs.show }}" -name '*.json' | sort > /tmp/list.txt
           else
