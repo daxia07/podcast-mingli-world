@@ -109,41 +109,53 @@ freeCodeCamp's ~16-hour SAA-C03 course on YouTube is a legitimate free alternati
 
 ## 5. Podcast roadmap
 
-### What already exists
-- Show `aws-ai-practitioner` — "AWS AI Practitioner — AIF-C01", 7 episodes published (5 domain episodes + Exam Map + Service Discriminators), built on the `cert-prep` template.
-- The `cert-prep` template already encodes the right instinct: *"Certification exams test discrimination, not recall… every concept must land as 'use X when Y, not Z because W'."*
+As of 16 Aug 2026 every one of the three exams has **at least an hour** of published
+audio. The target was an hour each, not full domain coverage — so the lists below mark
+what is built and what is still open.
 
-### Proposed: two new shows, same shape
+| Show | Episodes | Runtime | Coverage |
+|---|---|---|---|
+| `aws-ai-practitioner` — AIF-C01 | 9 | 66:38 | all 5 domains, plus prompting/parameters and evaluation |
+| `aws-solutions-architect` — SAA-C03 | 6 | 69:41 | all 4 domains have an episode |
+| `aws-security-specialty` — SCS-C03 | 6 | 70:04 | 5 of 6 domains, ~86% of the paper |
 
-**Show `aws-solutions-architect` — "AWS Solutions Architect — SAA-C03"** (~11 episodes)
+The `cert-prep` template encodes the instinct all of these run on: *"Certification exams
+test discrimination, not recall… every concept must land as 'use X when Y, not Z because
+W'."* AIF-C01 stays single-narrator on `cert-prep`; the two newer shows use
+`cert-prep-2voice`, where a competent sceptic argues for the exam-wrong answer.
 
-1. The Exam Map — 65 questions, 50 scored, 720 to pass, where the marks live
-2. Domain 1a: Secure Architectures — IAM, identity federation, least privilege *(30% domain, split in two)*
-3. Domain 1b: Secure Architectures — VPC design, endpoints, encryption at rest and in transit
-4. Domain 2a: Resilient Architectures — multi-AZ vs multi-Region, RTO/RPO decisions
-5. Domain 2b: Resilient Architectures — decoupling (SQS, SNS, EventBridge, Step Functions)
-6. Domain 3a: High-Performing — compute and caching choices
-7. Domain 3b: High-Performing — storage and database selection
-8. Domain 4: Cost-Optimized — pricing models, storage classes, the cost traps
-9. Service Discriminators I — storage and database look-alikes (EBS vs EFS vs FSx vs S3; RDS vs Aurora vs DynamoDB)
-10. Service Discriminators II — networking and integration look-alikes (ALB vs NLB vs API Gateway; SQS vs Kinesis vs MSK)
-11. The Well-Architected Framework as an answer-picking tool
+**Show `aws-solutions-architect` — "AWS Solutions Architect — SAA-C03"**
 
-**Show `aws-security-specialty` — "AWS Security Specialty — SCS-C03"** (~10 episodes)
+1. ✅ The Exam Map — 65 questions, 50 scored, 720 to pass, where the marks live
+2. ✅ Domain 1a: Secure Architectures — IAM, identity federation, least privilege *(30% domain, split in two)*
+3. ✅ Domain 1b: Secure Architectures — VPC design, endpoints, encryption at rest and in transit
+4. ✅ Domain 2: Resilient Architectures — RPO/RTO, the four DR strategies, Multi-AZ vs read replicas, and decoupling *(built as one episode, not the two originally planned)*
+5. ✅ Domain 3: High-Performing — compute, storage and database selection, and the four places a cache can live
+6. ✅ Domain 4: Cost-Optimized — purchase models, storage classes, the transfer charges
+7. ⬜ Service Discriminators I — storage and database look-alikes (EBS vs EFS vs FSx vs S3; RDS vs Aurora vs DynamoDB)
+8. ⬜ Service Discriminators II — networking and integration look-alikes (ALB vs NLB vs API Gateway; SQS vs Kinesis vs MSK)
+9. ⬜ The Well-Architected Framework as an answer-picking tool
 
-1. The Exam Map — 750 to pass, ordering and matching questions, and what C03 changed
-2. Domain 4: IAM (20%, biggest) — policy evaluation logic, end to end
-3. Domain 1: Detection — GuardDuty, Security Hub, Config, Inspector, Macie: which one answers which question
-4. Domain 2: Incident Response — containment playbooks, credential compromise, forensic isolation
-5. Domain 3a: Infrastructure Security — edge (WAF, Shield, CloudFront, Route 53)
-6. Domain 3b: Infrastructure Security — compute and network controls
-7. Domain 5a: Data Protection — KMS deeply (key policies, grants, imported vs generated key material, multi-Region keys)
-8. Domain 5b: Data Protection — secrets, certificates, masking (CloudWatch Logs data protection, SNS message data protection)
-9. Domain 6: Foundations & Governance — Organizations, SCPs, Control Tower, audit response
-10. **What's new in C03** — GenAI guardrails and OWASP Top 10 for LLMs, OCSF, inter-node encryption. *(This is the episode nobody else has made yet.)*
+**Show `aws-security-specialty` — "AWS Security Specialty — SCS-C03"**
+
+1. ✅ The Exam Map — 750 to pass, ordering and matching questions, and what C03 changed
+2. ✅ Domain 4: IAM (20%, biggest) — policy evaluation across all five policy types, plus RCPs
+3. ✅ Domain 1: Detection — record/analyse/aggregate, and which service would have seen *this*
+4. ✅ Domain 2: Incident Response — isolate before terminate, and revoking sessions a dead key already issued
+5. ✅ Domain 5: Data Protection — KMS key policies, grants, envelope encryption, imported key material
+6. ✅ Domain 3: Infrastructure Security — the edge inward, inter-node encryption, **and the GenAI guardrail content nobody else has made**
+7. ⬜ Domain 6: Foundations & Governance — Organizations, SCPs, Control Tower, audit response *(the remaining 14%)*
+8. ⬜ Domain 3b / 5b split — deeper network controls, and secrets, certificates and masking on their own
+
+**Show `aws-ai-practitioner` — "AWS AI Practitioner — AIF-C01"** — 5 domain episodes, Exam
+Map and Service Discriminators, plus two added on 16 Aug: prompting and inference
+parameters with the three prompt attacks, and evaluation metrics with model selection.
 
 ### Sequencing suggestion
-Build the SAA show first — you'll be studying it first, and 30% of it is security, so it doubles as a run-up to SCS. Ship one episode per study session so the podcast tracks the studying rather than lagging it.
+Study order is AIF → SAA → SCS, and the audio now supports all three. The one gap worth
+closing before sitting SCS is Domain 6, governance — everything else is covered.
+Ship remaining episodes one per study session so the podcast tracks the studying rather
+than lagging it.
 
 ---
 
