@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "slug": "scs-c03-domain1-detection",
+  "show": "aws-security-specialty",
+  "template": "cert-prep-2voice",
+  "title": "SCS-C03 Domain 1 — Which One Would Have Seen It",
+  "description": "Sixteen percent. Seven services all claim to detect something, and the exam never asks which is best. It asks which one would have seen this particular event, and every wrong answer detects something real.",
+  "keywords": [
+    "scs-c03",
+    "guardduty",
+    "cloudtrail",
+    "security hub",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The key that went to another country",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "An access key belonging to an application server ends up in a public code repository. Eleven minutes later it is being used from an address on another continent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And nobody noticed for how long?"
+        },
+        {
+          "voice": "coach",
+          "text": "Nineteen days. Here is the uncomfortable part. Every single call that attacker made was recorded, in full, from the first minute."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Recorded where? If it was recorded, somebody should have seen it."
+        },
+        {
+          "voice": "coach",
+          "text": "Recording is not detection. The record was a log file with several million entries a day and no one reading it. The service that would have raised its hand in minutes was not switched on."
+        },
+        {
+          "voice": "coach",
+          "text": "This domain is one question wearing seven costumes. Given this event, which service would have seen it? Today we make that question boring."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Sixteen percent, and seven candidates",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain one, detection. Sixteen percent of the Security Specialty exam."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And in the last version this was mixed in with incident response. They have been split."
+        },
+        {
+          "voice": "coach",
+          "text": "Split deliberately, and it changes how you read a question. Detection is everything before the event. Design the logging, choose the service, set the alert."
+        },
+        {
+          "voice": "coach",
+          "text": "Incident response is everything after. Contain it, investigate it, recover. The tense of the stem tells you which domain you are in."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So what is the question underneath domain one?"
+        },
+        {
+          "voice": "coach",
+          "text": "Not which service is best. Never that. It is: which service would have seen this specific thing. And every wrong option detects something genuinely real, just not this."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Record, analyse, aggregate",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Sort the seven into three jobs and the domain collapses. Some record. Some analyse. Some aggregate."
+        },
+        {
+          "voice": "coach",
+          "text": "Recording first. CloudTrail records API calls. Who called what, from which address, at what time, and whether it succeeded. If the question is who did this, the answer is CloudTrail and nothing else."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Everything, though? All the calls?"
+        },
+        {
+          "voice": "coach",
+          "text": "This is the detail the exam loves. Management events, meaning the control plane, are on by default. Data events are not."
+        },
+        {
+          "voice": "coach",
+          "text": "Data events are the ones inside a resource. Reading a single object out of a bucket. Invoking a function. Off by default, charged separately, and the reason so many investigations come up empty."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a question that says we cannot see who read the file is not asking me to enable CloudTrail. It is already on."
+        },
+        {
+          "voice": "coach",
+          "text": "It is asking you to enable data events for that bucket. Different answer, same service, and both options will be on the screen."
+        },
+        {
+          "voice": "coach",
+          "text": "Second recorder. Flow logs. They record network metadata at the interface, subnet or network level. Source, destination, port, bytes, accepted or rejected. No payload, ever."
+        },
+        {
+          "voice": "coach",
+          "text": "So if a question asks what was in the traffic, flow logs cannot answer it. If it asks who connected to whom and whether it was blocked, that is exactly what they are for."
+        },
+        {
+          "voice": "coach",
+          "text": "Third recorder. Config. It records the state of a resource over time, and evaluates rules against it. Not who called the API. What the thing looked like, and whether it was compliant."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The difference between Config and CloudTrail is the one people blur."
+        },
+        {
+          "voice": "coach",
+          "text": "Then hold this. CloudTrail tells you the bucket was made public and who did it. Config tells you it was public, for how long, and that this breaks the rule."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the analysers. GuardDuty reads the logs you already have, continuously, and produces findings about behaviour. Credentials used from an unusual address. A machine talking to a mining pool. Reconnaissance patterns."
+        },
+        {
+          "voice": "coach",
+          "text": "It needs no agent and no log plumbing from you. It is the switch that was off in the cold open."
+        },
+        {
+          "voice": "coach",
+          "text": "Inspector is the other analyser, and it looks at software rather than behaviour. Vulnerabilities in running instances, container images and functions, scanned continuously against known issues."
+        },
+        {
+          "voice": "coach",
+          "text": "Macie is the third, and it looks at content. It finds sensitive data sitting in object storage. Personal data, card numbers, credentials in a file nobody read."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Behaviour, software, content. That is a clean split."
+        },
+        {
+          "voice": "coach",
+          "text": "Keep it. Then aggregation. Security Hub takes findings from all of those, plus third party tools, and gives you one list across accounts and regions, scored against standards."
+        },
+        {
+          "voice": "coach",
+          "text": "And Security Lake is the other aggregation answer. It centralises the logs themselves, normalised into one open schema, so you can query years of them without writing a parser for each source."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Someone is mining on your bill",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A scenario. Compute costs in one account jump forty percent in a week. Nothing was deployed. The instances are healthy and busy."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Something is mining. I would start with flow logs and look for the traffic to the pool."
+        },
+        {
+          "voice": "coach",
+          "text": "You would find it, eventually. Tell me what that costs you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Time. I have to know which addresses matter, and I have to be looking."
+        },
+        {
+          "voice": "coach",
+          "text": "And you have to already suspect mining. That is the flaw. A raw log answers a question you have already formed. The exam wants the option that forms the question for you."
+        },
+        {
+          "voice": "sceptic",
+          "text": "GuardDuty."
+        },
+        {
+          "voice": "coach",
+          "text": "GuardDuty, which reads those same flow logs plus the domain name lookups and the API record, and emits a finding that names the behaviour. It is not more data. It is a conclusion."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then what stops me drowning in findings once it is on across sixty accounts?"
+        },
+        {
+          "voice": "coach",
+          "text": "That is the second half of the question, and it is why these two services appear together so often. Security Hub aggregates the findings across every account and region into one place."
+        },
+        {
+          "voice": "coach",
+          "text": "And you do the aggregation through the organization, with a delegated administrator account, rather than wiring accounts together one at a time."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Delegated administrator. That phrase turns up a lot."
+        },
+        {
+          "voice": "coach",
+          "text": "It is the standing answer for any security service across an organization. You do not run it from the management account, and you do not run it per account by hand. You delegate one security account and enable it for the whole tree."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the part the new version added. Security Hub can take in findings from tools that are not AWS at all, in an open schema."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Meaning the third party scanner the platform team already pays for."
+        },
+        {
+          "voice": "coach",
+          "text": "Exactly that. If a question describes findings from an outside tool that must land in the same queue as the AWS ones, do not build a translation layer. Ingest them in the open schema."
+        },
+        {
+          "voice": "coach",
+          "text": "And if the requirement is years of raw logs from many sources, queryable together, that is the security lake rather than the findings service."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Seven services in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass. Nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Who called the API, CloudTrail. Management events on by default, data events off and charged, and that gap is the reason an investigation fails."
+        },
+        {
+          "voice": "coach",
+          "text": "Who connected to whom, flow logs. Metadata only, never payload."
+        },
+        {
+          "voice": "coach",
+          "text": "What did this resource look like and was it allowed to, Config. State over time and compliance rules."
+        },
+        {
+          "voice": "coach",
+          "text": "Is this behaviour hostile, GuardDuty. Is this software vulnerable, Inspector. Is this data sensitive, Macie. Behaviour, software, content."
+        },
+        {
+          "voice": "coach",
+          "text": "One list of findings across every account, Security Hub, through a delegated administrator. One store of normalised logs to query, the security lake."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the stolen key from the cold open."
+        },
+        {
+          "voice": "coach",
+          "text": "CloudTrail had every call. GuardDuty would have named it in minutes, because credentials belonging to an instance being used from outside that instance is one of the findings it is built to raise."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. An investigation needs to know which user downloaded one specific object, and the trail shows nothing. What is wrong, and what is the fix?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Data events were never enabled for that bucket. Management events alone do not record object level reads."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. You must prove a bucket was publicly readable for six hours last Tuesday. Which service, and why not the other one?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Config, because it records the state over time. CloudTrail would only show the call that changed it, not the duration of the state."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. Behaviour, software, content. Match GuardDuty, Inspector and Macie."
+        },
+        {
+          "voice": "sceptic",
+          "text": "GuardDuty is behaviour. Inspector is software vulnerabilities. Macie is sensitive content in storage."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. Sixty accounts, and security wants one queue of findings with least operational overhead. What do you set up?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Security Hub with a delegated administrator account, enabled across the organization, not account by account."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps and the mechanism behind each."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one. An answer that says enable CloudTrail. It is almost always already on, and the real gap is narrower. Data events for one bucket. A trail covering all regions. A second copy in a locked account."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the word enable is a warning sign."
+        },
+        {
+          "voice": "coach",
+          "text": "The word enable applied to something foundational is a warning sign. Read for what specifically is missing, not the service name."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two. Log analysis offered where a managed detector belongs. Writing a query over flow logs and writing an alarm on a metric filter both work, and both lose to the option that already knows what the behaviour means."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is the qualifier. Least operational overhead means the managed detector. A specific, unusual, business rule means you write the query yourself, because no managed service knows your rule."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three, and it is the newest. Findings from a tool that is not AWS. The tempting option builds a function to reformat them."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the exam wants the ingestion path that already exists."
+        },
+        {
+          "voice": "coach",
+          "text": "The open schema, ingested directly. Any option that invents a bespoke translation layer for something the platform now does natively is written to be wrong."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Which two CloudTrail event types are off by default, and what investigation fails without them?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Behaviour, software, content. Can you name the service for each without hesitating?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. What is the standing answer for turning any security service on across sixty accounts?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "A delegated administrator, at the organization level."
+        },
+        {
+          "voice": "coach",
+          "text": "Every time it appears."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: high, and it pays out twice. Half of the incident response domain assumes you already know which service produced the finding."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is next. Domain two, incident response, fourteen percent. The alarm has gone off and the credentials are already compromised."
+        },
+        {
+          "voice": "coach",
+          "text": "And the question that separates people who have done it from people who have read about it. What do you do first, when doing the obvious thing destroys the evidence?"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "scs-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+      "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+      "used_for": [
+        "domain one weight of sixteen percent",
+        "detection task statements",
+        "split of detection from incident response"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "cloudtrail-events",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html",
+      "title": "CloudTrail events and record contents",
+      "used_for": [
+        "management events logged by default",
+        "data events not logged by default and charged separately"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "vpc-flow-logs",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html",
+      "title": "Logging IP traffic using VPC Flow Logs",
+      "used_for": [
+        "flow log capture at interface, subnet and VPC level",
+        "metadata only, no packet contents"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "guardduty-findings",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html",
+      "title": "GuardDuty finding types",
+      "used_for": [
+        "cryptocurrency mining findings",
+        "instance credential exfiltration findings",
+        "log sources analysed"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "config-concepts",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+      "title": "What is AWS Config",
+      "used_for": [
+        "configuration state history",
+        "rule evaluation and compliance"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "securityhub-orgs",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/designate-orgs-admin-account.html",
+      "title": "Designating a Security Hub delegated administrator",
+      "used_for": [
+        "organization-wide enablement",
+        "delegated administrator pattern"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "security-lake-ocsf",
+      "url": "https://docs.aws.amazon.com/security-lake/latest/userguide/open-cybersecurity-schema-framework.html",
+      "title": "Open Cybersecurity Schema Framework in Amazon Security Lake",
+      "used_for": [
+        "normalisation of logs into an open schema",
+        "third-party source ingestion"
+      ]
+    }
+  ]
+}

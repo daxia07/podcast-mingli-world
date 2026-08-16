@@ -1,0 +1,462 @@
+{
+  "schema": 1,
+  "slug": "saa-c03-domain4-cost-optimized",
+  "show": "aws-solutions-architect",
+  "template": "cert-prep-2voice",
+  "title": "SAA-C03 Domain 4 — The Line Nobody Was Watching",
+  "description": "Twenty percent, and the only domain where the correct answer is allowed to be worse. Purchase models, storage classes and their minimum durations, and the transfer charge that dwarfs the compute.",
+  "keywords": [
+    "saa-c03",
+    "cost optimisation",
+    "spot instances",
+    "storage classes",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Storage was never the expensive part",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A media company stores about a petabyte of video and serves roughly eight terabytes of it a day, straight out of object storage to viewers."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And storage at that scale is the big line on the bill."
+        },
+        {
+          "voice": "coach",
+          "text": "Storage is not close. The largest line is data transfer out to the internet, and it is several times the storage cost and larger than all their compute put together."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because they are paying by the gigabyte, every time, for the same files."
+        },
+        {
+          "voice": "coach",
+          "text": "The same files. Popular ones sent thousands of times, charged at full rate on every send."
+        },
+        {
+          "voice": "coach",
+          "text": "The fix is one service in front, and it is cheaper per gigabyte, it caches so most requests never reach the bucket at all, and the traffic from the bucket to it is not charged. That is the shape of this whole domain."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty percent, and permission to be worse",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain four, design cost optimised architectures. Twenty percent, and the smallest domain on the paper."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which sounds like the one to skip."
+        },
+        {
+          "voice": "coach",
+          "text": "It is the one people skip and then lose marks in the other three domains, because cost is the qualifier that separates two correct answers everywhere else."
+        },
+        {
+          "voice": "coach",
+          "text": "And this is the only domain where the right answer is allowed to be worse. Slower retrieval, an interruptible machine, one availability zone instead of three."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the question is what am I allowed to give up."
+        },
+        {
+          "voice": "coach",
+          "text": "What am I allowed to give up, and the stem always tells you. Three levers. What you commit to, where the data sits, and how much of it moves."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Commit, tier, and move",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Lever one, commitment. Four ways to buy compute, and the exam expects you to layer them rather than choose one."
+        },
+        {
+          "voice": "coach",
+          "text": "On demand is the default. No commitment, highest rate, and it is the right answer for genuinely unpredictable work and for short lived spikes."
+        },
+        {
+          "voice": "coach",
+          "text": "A savings plan is a commitment to spend a certain amount per hour for one or three years, in exchange for a large discount. The flexible variety applies across instance families, regions, and to containers and functions as well."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And reserved instances, which is the older idea?"
+        },
+        {
+          "voice": "coach",
+          "text": "A commitment to a particular configuration rather than to an amount of spend. Still on the exam, and still the answer when the question stresses a specific instance type in a specific zone, or a capacity reservation."
+        },
+        {
+          "voice": "coach",
+          "text": "For everything steady, the modern answer is the savings plan, because it survives changing your mind about instance types."
+        },
+        {
+          "voice": "coach",
+          "text": "Then the interesting one. Spare capacity, sold at a very large discount, up to about ninety percent, and reclaimed with about two minutes of warning when it is needed elsewhere."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which sounds unusable for anything real."
+        },
+        {
+          "voice": "coach",
+          "text": "It is unusable for anything that cannot be interrupted, and perfect for anything that can. Batch rendering, data processing, test suites, stateless workers behind a queue. If the stem says fault tolerant, or can be restarted, that word is there on purpose."
+        },
+        {
+          "voice": "coach",
+          "text": "Lever two, tiering. Object storage classes, and the exam tests the conditions rather than the names."
+        },
+        {
+          "voice": "coach",
+          "text": "Standard for frequent access. Infrequent access for data you still need immediately but rarely, cheaper to store and charged when you retrieve it, with a thirty day minimum."
+        },
+        {
+          "voice": "coach",
+          "text": "The single zone version is cheaper again, and it is only ever correct when losing the data would be an inconvenience rather than a disaster. Copies of something reproducible."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the archive tiers, where retrieval takes time."
+        },
+        {
+          "voice": "coach",
+          "text": "Three of them. One retrieves in milliseconds but has a ninety day minimum. One retrieves in minutes to hours. And the deepest is the cheapest storage available with a retrieval measured in hours and a one hundred and eighty day minimum."
+        },
+        {
+          "voice": "coach",
+          "text": "That minimum duration is the trap. Deleting early still charges you for the full minimum, so archiving something you will delete next month costs more, not less."
+        },
+        {
+          "voice": "coach",
+          "text": "And when the access pattern is genuinely unknown or changing, the tier that moves objects automatically is the answer. It charges a small monitoring fee per object and no retrieval fee, and it is the correct answer to the phrase unpredictable access."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Three workloads, three purchase models",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Now a scenario. One platform, three workloads. A steady set of web servers running all year. A nightly analytics job that takes four hours. And a development environment used nine to five, weekdays."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Reserved capacity for all three. Commit to everything and take the discount."
+        },
+        {
+          "voice": "coach",
+          "text": "It is defensible and it is what a lot of teams do. Walk me through the analytics job on that plan."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Four hours a night, so I am committed twenty four hours a day and using four. I am paying for twenty hours of nothing to get a discount on four."
+        },
+        {
+          "voice": "coach",
+          "text": "And the job restarts safely if it dies, which is the word that unlocks the discount you actually want. Interruptible capacity, up to ninety percent off, and the four hours cost less than the commitment would have."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Fine. And the development environment?"
+        },
+        {
+          "voice": "coach",
+          "text": "Nine to five on weekdays is forty hours out of a hundred and sixty eight. So the lever is not the purchase model at all. It is a schedule that stops the instances at night and starts them in the morning."
+        },
+        {
+          "voice": "coach",
+          "text": "Scheduled scaling is a cost answer, not a performance one, and it appears in this domain regularly. Roughly three quarters of the bill for that environment is hours nobody was working."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So only the web servers deserve a commitment."
+        },
+        {
+          "voice": "coach",
+          "text": "Only the steady baseline. And even there, commit to the baseline rather than the peak, and let the peak run on demand. Over committing is a real trap because the commitment does not shrink when your traffic does."
+        },
+        {
+          "voice": "coach",
+          "text": "Now lever three, and this is where the cold open lives. Movement. Data coming in is free. Data going out to the internet is charged by the gigabyte."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about inside the region? Between zones."
+        },
+        {
+          "voice": "coach",
+          "text": "Charged, in both directions, and this one surprises people. A chatty set of services spread across three zones for resilience is paying for that resilience on every internal call."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is not an argument against multiple zones. It is an argument for noticing. And two specific fixes come up constantly. A delivery network in front of anything served repeatedly to the internet."
+        },
+        {
+          "voice": "coach",
+          "text": "And an endpoint for object storage so private machines stop pulling their data through a gateway that charges by the gigabyte. That one appeared in the security domain as well, which is unusual and worth remembering."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Cost in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Commit for the steady baseline with a savings plan. Reserved capacity when the question insists on a specific configuration or a reservation. Interruptible capacity for anything the stem calls fault tolerant. On demand for the spike on top."
+        },
+        {
+          "voice": "coach",
+          "text": "Before buying anything, turn it off when nobody is using it. A schedule is the cheapest saving available and it needs no commitment."
+        },
+        {
+          "voice": "coach",
+          "text": "Tier storage by how soon you need it and how bad losing it would be. Watch the minimum durations, because early deletion is charged as if you had kept it."
+        },
+        {
+          "voice": "coach",
+          "text": "Unknown or changing access is the automatic tiering class. Reproducible copies are the single zone class. Everything else follows the retrieval time you can live with."
+        },
+        {
+          "voice": "coach",
+          "text": "And watch what moves. Out to the internet is charged. Between zones is charged in both directions. A delivery network and a storage endpoint remove two of the biggest transfer lines that exist."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the media company."
+        },
+        {
+          "voice": "coach",
+          "text": "Same files, sent again and again, at full price. The service in front cached most of them and the traffic from the bucket to that service was not charged at all."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. A nightly batch job of four hours restarts cleanly if it fails. Which purchase model, and what word in the stem told you?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Interruptible spare capacity. The word is restarts, or fault tolerant. It is the phrase that unlocks the deepest discount."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. Logs must be kept seven years for an audit and will almost certainly never be read. Which class, and what is the risk?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The deepest archive tier. The risk is retrieval time in hours, and a minimum storage duration of a hundred and eighty days if anything is deleted early."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. Access patterns are unknown and change month to month. Which class, and why not infrequent access?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The automatic tiering class. Infrequent access charges a retrieval fee, which punishes you when the data turns out to be popular after all."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. A development environment is used forty hours a week. What is the first thing you change?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Stop it outside those hours on a schedule. No commitment beats paying a discounted rate for a hundred and twenty idle hours."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the commitment offered for variable work. It is on the screen because commitments genuinely save money, and it is wrong whenever the workload is spiky, temporary, or about to be re-architected."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The tell being any mention of change."
+        },
+        {
+          "voice": "coach",
+          "text": "Migrating, piloting, seasonal, or being retired next year. All of those rule out a one or three year commitment, no matter how attractive the discount is."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the cheap storage tier applied to data that cannot be lost or is needed quickly. The single zone class and the deep archive class are both correct answers to narrow questions and expensive mistakes everywhere else."
+        },
+        {
+          "voice": "coach",
+          "text": "Read for two things. Can this data be regenerated, and how fast must it come back. Those decide the class before price does."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is optimising the wrong line. The instance is visible, so people size it. The transfer charge is invisible, so nobody looks at it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And on a content heavy platform it is the biggest number on the bill."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is why a question that describes a surprising bill on a read heavy public workload is almost never asking about instance size. It is asking what is moving, and how often."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. What am I allowed to give up here, and which word in the stem gave me permission?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What is the minimum duration charge, and would deleting early cost me more than keeping it?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. What is actually moving, and is anyone paying for it twice?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the cheapest optimisation of all."
+        },
+        {
+          "voice": "coach",
+          "text": "Turning it off. Before any purchase model, before any tier, ask whether it needed to be running at all."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: the highest per page of study on the exam. The domain is small, the rules are short, and the same rules break ties in the other three domains."
+        },
+        {
+          "voice": "coach",
+          "text": "That is all four domains covered. Secure, resilient, high performing, cost optimised, and the two service discriminator episodes still to come."
+        },
+        {
+          "voice": "coach",
+          "text": "Before those, do the thing that actually moves the score. Sit an official practice exam, and only book the real one once you are consistently over eighty percent on it."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "saa-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+      "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+      "used_for": [
+        "domain four weight of twenty percent",
+        "task statements for cost-optimized architectures"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "savings-plans",
+      "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+      "title": "What are Savings Plans",
+      "used_for": [
+        "hourly spend commitment for one or three years",
+        "compute plans covering EC2, Fargate and Lambda"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "spot-instances",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
+      "title": "Amazon EC2 Spot Instances",
+      "used_for": [
+        "discount versus on-demand pricing",
+        "two-minute interruption notice",
+        "suitability for fault-tolerant workloads"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "s3-storage-classes",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+      "title": "Using Amazon S3 storage classes",
+      "used_for": [
+        "minimum storage duration charges",
+        "retrieval characteristics of each class",
+        "intelligent tiering for unknown access patterns"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "s3-lifecycle",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+      "title": "Managing the lifecycle of objects",
+      "used_for": [
+        "transitioning objects between classes automatically"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "cloudfront-pricing-origin",
+      "url": "https://aws.amazon.com/cloudfront/pricing/",
+      "title": "Amazon CloudFront pricing",
+      "used_for": [
+        "no charge for data transferred from AWS origins to CloudFront",
+        "lower per-gigabyte rate than direct internet egress"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "ec2-scheduled-scaling",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html",
+      "title": "Scheduled scaling for Amazon EC2 Auto Scaling",
+      "used_for": [
+        "scaling on a predictable timetable to stop idle capacity"
+      ]
+    }
+  ]
+}

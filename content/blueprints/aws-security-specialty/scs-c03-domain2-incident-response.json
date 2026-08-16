@@ -1,0 +1,493 @@
+{
+  "schema": 1,
+  "slug": "scs-c03-domain2-incident-response",
+  "show": "aws-security-specialty",
+  "template": "cert-prep-2voice",
+  "title": "SCS-C03 Domain 2 — Contain It Without Destroying It",
+  "description": "Fourteen percent. The alarm has already gone off. Isolation before termination, why deactivating a key does not stop the attacker, and the sessions you cannot revoke by revoking anything.",
+  "keywords": [
+    "scs-c03",
+    "incident response",
+    "forensics",
+    "credential compromise",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Terminated, and back in four minutes",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Two in the morning. An on call engineer gets a finding: one instance is mining cryptocurrency. He does the decisive thing and terminates it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which is what most people would do. The threat is gone."
+        },
+        {
+          "voice": "coach",
+          "text": "Four minutes later the scaling group launches a replacement, from the same image, with the same start up script, and the finding comes back."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So he killed the symptom and the cause rebuilt it."
+        },
+        {
+          "voice": "coach",
+          "text": "And he did something worse than that. Everything in memory went with the machine. The keys the attacker was using, the processes, the open connections. All of it, unrecoverable."
+        },
+        {
+          "voice": "coach",
+          "text": "There is an order to this, and the exam tests the order more than it tests the tools. That is the whole episode."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Fourteen percent, and the ordering questions",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain two, incident response. Fourteen percent, and it is now its own domain rather than half of a bigger one."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And this is where those ordering questions live, I assume."
+        },
+        {
+          "voice": "coach",
+          "text": "Disproportionately. This exam can ask you to put four steps in sequence, and there is no partial credit. Three right and one misplaced scores the same as nothing."
+        },
+        {
+          "voice": "coach",
+          "text": "So the question for this domain is not what do you do. It is what do you do first, when the obvious first move destroys the thing you will need later."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the shape of the answer before the detail."
+        },
+        {
+          "voice": "coach",
+          "text": "Contain, preserve, investigate, eradicate, recover. Containment first, but containment that keeps the patient alive."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Isolate, do not terminate",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Take the compromised machine first, because it is the most tested single scenario in the domain."
+        },
+        {
+          "voice": "coach",
+          "text": "Step one is not stop and it is not terminate. It is isolate. Replace the security group with one that allows nothing, so the machine keeps running but can no longer talk to anything."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nothing at all? Then how do I get to it?"
+        },
+        {
+          "voice": "coach",
+          "text": "Through the management agent over a private endpoint, if you planned for it. That is the answer to how you reach an instance with no network path. Not a bastion, not a public address."
+        },
+        {
+          "voice": "coach",
+          "text": "Step two, and this is the cold open. Take it out of the scaling group first, or the scaling group will replace it and the replacement will be compromised too."
+        },
+        {
+          "voice": "coach",
+          "text": "Detach it, or the scaling group counts it as unhealthy and terminates it for you. Either way, decide before you touch anything else."
+        },
+        {
+          "voice": "coach",
+          "text": "Step three, preserve. Snapshot the volumes. Capture memory if you can, because memory dies when the machine does and it holds the keys."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And tag everything, presumably, so nobody cleans it up."
+        },
+        {
+          "voice": "coach",
+          "text": "Tag it, and enable termination protection. More than one investigation has been ended by a tidy up script."
+        },
+        {
+          "voice": "coach",
+          "text": "Step four, investigate somewhere else. Copy the snapshot to a separate forensics account and attach it there."
+        },
+        {
+          "voice": "coach",
+          "text": "One detail the exam likes. If the volume was encrypted with a customer managed key, sharing the snapshot is not enough. You must share the key as well, or the other account gets an object it cannot open."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Snapshot and key. Both, or nothing."
+        },
+        {
+          "voice": "coach",
+          "text": "Both, or nothing. Now change the resource. Suppose it is a function rather than a machine. You cannot isolate a function with a security group."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then delete it."
+        },
+        {
+          "voice": "coach",
+          "text": "And lose the code and the configuration. Set its reserved concurrency to zero instead. It exists, it is intact, and it cannot run. That is the containment answer for a function, and it is a favourite."
+        },
+        {
+          "voice": "coach",
+          "text": "One more shape. Automated response. A finding raises an event, the event triggers a runbook, and the runbook does the isolation while everyone is asleep."
+        },
+        {
+          "voice": "coach",
+          "text": "When a question says fastest containment or minimal human involvement, that is the pattern. A rule on the event bus, and an automation document that performs the steps."
+        },
+        {
+          "voice": "sceptic",
+          "text": "All of this assumes I still have a record to investigate afterwards. What if the attacker got to the logs?"
+        },
+        {
+          "voice": "coach",
+          "text": "Then you find out whether you prepared, because you cannot fix this after the fact. Three things, and they are all decided in advance."
+        },
+        {
+          "voice": "coach",
+          "text": "The trail is delivered into a different account, one that the compromised account has no permission to write to or delete from. That alone defeats most tampering."
+        },
+        {
+          "voice": "coach",
+          "text": "The bucket holding it uses object lock, so entries cannot be deleted or overwritten even by someone who owns the bucket. And the trail has log file validation enabled."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which does what, exactly? It sounds like a checkbox."
+        },
+        {
+          "voice": "coach",
+          "text": "It produces a signed digest of the delivered files, so you can prove a file was not altered or removed. That is the difference between believing your evidence and being able to demonstrate it to an auditor."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The key you already turned off",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Second scenario, and it is the one that separates the specialty exam from the associate. An access key belonging to a developer turns up in a public repository."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Straightforward. Deactivate the key, then delete it, then rotate. Minutes of work."
+        },
+        {
+          "voice": "coach",
+          "text": "Do all of that. Now tell me what happens to the attacker who used that key twenty minutes ago to assume a role."
+        },
+        {
+          "voice": "sceptic",
+          "text": "They lose access. The key is dead."
+        },
+        {
+          "voice": "coach",
+          "text": "They do not. When they assumed the role, the token service issued temporary credentials with their own lifetime. Those credentials are not the key. Killing the key does not kill them."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So there is a live session, with a role's permissions, that survives me deleting the credential that created it."
+        },
+        {
+          "voice": "coach",
+          "text": "Until it expires, which can be hours. This is the fact that catches experienced people, because it is invisible. Nothing in the console shows you that session."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then how do I revoke it?"
+        },
+        {
+          "voice": "coach",
+          "text": "You do not revoke it. You out vote it. Attach a policy to the role that denies everything, with a condition that applies only to sessions issued before this moment."
+        },
+        {
+          "voice": "coach",
+          "text": "Old sessions match the condition and are denied. New sessions do not match, so legitimate use continues the moment you have rotated properly."
+        },
+        {
+          "voice": "sceptic",
+          "text": "An explicit deny, which beats every allow, scoped by the time the token was issued."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the whole trick, and it is why domain four earns its twenty percent. This answer is just the evaluation rule applied under pressure."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the last move, and people skip it. Read the record of what that key actually did before you deactivated it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because containment is not the same as knowing the blast radius."
+        },
+        {
+          "voice": "coach",
+          "text": "Right. Did it create another user? Attach a policy? Make a bucket public? An attacker who has been in for a day has usually left a second way in, and closing the first one is not the end."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The whole response in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass. Nothing new in here."
+        },
+        {
+          "voice": "coach",
+          "text": "Compromised machine. Take it out of the scaling group. Swap the security group for one that allows nothing. Leave it running. Snapshot the volumes, capture memory, tag it, protect it from termination."
+        },
+        {
+          "voice": "coach",
+          "text": "Then investigate in a separate forensics account, and share the key along with the snapshot if the volume was encrypted with your own key."
+        },
+        {
+          "voice": "coach",
+          "text": "Compromised function. Reserved concurrency to zero. It cannot run and you have not lost it."
+        },
+        {
+          "voice": "coach",
+          "text": "Compromised credential. Deactivate the key, then deny the sessions it already issued, with a policy on the role conditioned on the time the token was issued. Then read the record of what it did."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the engineer at two in the morning."
+        },
+        {
+          "voice": "coach",
+          "text": "He had the right instinct and the wrong order. Isolation would have stopped the mining just as fast, kept the evidence, and stopped the scaling group from rebuilding the problem."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. A compromised instance sits in a scaling group. What are the first two actions, in order, and why that order?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Detach it from the scaling group, then isolate it with a security group that allows nothing. Isolating first risks the group replacing it while you work."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. You deactivated the leaked key ten minutes ago and the attacker is still making calls. Why, and what do you do?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "They hold temporary credentials from assuming a role, which outlive the key. Deny sessions issued before now with a policy on the role."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. How do you contain a compromised function without losing the code?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Set reserved concurrency to zero. It cannot execute and nothing is deleted."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. You share an encrypted volume snapshot with the forensics account and they cannot read it. What is missing?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Access to the key. Sharing the snapshot is not sharing the customer managed key that encrypted it."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps, and what makes each one look right."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the decisive answer. Terminate the instance. Delete the user. Delete the function. Every one of them stops the attack and every one of them destroys evidence."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And they read as competent, which is why people pick them."
+        },
+        {
+          "voice": "coach",
+          "text": "Read the stem for the word investigate, or root cause, or forensic. The moment any of those appear, every destructive option is eliminated regardless of how well it contains."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the incomplete containment. Rotating a credential, or removing a policy, without addressing the sessions and the persistence the attacker already established."
+        },
+        {
+          "voice": "coach",
+          "text": "The tell is a question that says the activity continued after remediation. That phrase means sessions, or a second identity the attacker created."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is manual response where automation is required. A runbook a human follows is a correct answer to a different question."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the qualifier that rules it out?"
+        },
+        {
+          "voice": "coach",
+          "text": "Minimise time to contain, or without human intervention, or at any hour. Those force an event rule and an automation document, not a page in a wiki."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. What do you do to a compromised instance before you do anything to the instance itself?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What survives the deletion of an access key, and how long does it survive?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. What must travel with an encrypted snapshot for another account to be able to open it?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The key. And it is the step everybody forgets under pressure."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is exactly why it is on the exam."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: very high for the effort, because the domain is small and the scenarios repeat. Learn three sequences and you have most of fourteen percent."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain five. Data protection, eighteen percent, and the service this exam cares about more than any other."
+        },
+        {
+          "voice": "coach",
+          "text": "The key management service. Where a key policy and an identity policy disagree, what a grant is for, and why an organisation would ever bring its own key material and accept that losing it means losing the data."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "scs-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+      "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+      "used_for": [
+        "domain two weight of fourteen percent",
+        "incident response task statements"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "iam-revoke-sessions",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html",
+      "title": "Revoking IAM role temporary security credentials",
+      "used_for": [
+        "temporary credentials outlive the access key that created them",
+        "inline deny policy conditioned on token issue time"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "compromised-credentials",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_remediate.html",
+      "title": "Remediating GuardDuty findings",
+      "used_for": [
+        "remediation steps for compromised instances and credentials",
+        "isolation before termination"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "ebs-share-encrypted-snapshot",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html",
+      "title": "Share an Amazon EBS snapshot",
+      "used_for": [
+        "encrypted snapshots require sharing the customer managed key",
+        "cross-account snapshot sharing"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "lambda-reserved-concurrency",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
+      "title": "Configuring reserved concurrency for Lambda functions",
+      "used_for": [
+        "setting reserved concurrency to zero to stop invocations"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "cloudtrail-log-file-validation",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html",
+      "title": "Validating CloudTrail log file integrity",
+      "used_for": [
+        "signed digest files proving logs were not altered or deleted",
+        "delivery to a separate account for tamper resistance"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "s3-object-lock",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+      "title": "Locking objects with Object Lock",
+      "used_for": [
+        "write once read many retention on log archives"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "asg-detach-instances",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html",
+      "title": "Detach an instance from an Auto Scaling group",
+      "used_for": [
+        "removing an instance so the group does not replace or terminate it"
+      ]
+    }
+  ]
+}

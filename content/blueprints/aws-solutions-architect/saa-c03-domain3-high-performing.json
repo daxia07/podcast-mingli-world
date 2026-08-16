@@ -1,0 +1,464 @@
+{
+  "schema": 1,
+  "slug": "saa-c03-domain3-high-performing",
+  "show": "aws-solutions-architect",
+  "template": "cert-prep-2voice",
+  "title": "SAA-C03 Domain 3 — Match The Access Pattern",
+  "description": "Twenty four percent. The exam never asks which service is fastest. It hands you an access pattern in two sentences and expects the family that fits it: compute, storage, database, and the four places a cache can live.",
+  "keywords": [
+    "saa-c03",
+    "performance",
+    "caching",
+    "storage selection",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The same eight queries",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A team has a slow application. They move the database to a larger instance. It helps for six weeks. They move it to a larger one again."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Expensive, but it is the move everyone makes."
+        },
+        {
+          "voice": "coach",
+          "text": "The bill roughly triples over four months. Then someone finally looks at what the database is being asked."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And?"
+        },
+        {
+          "voice": "coach",
+          "text": "Ninety percent of the queries are the same eight queries. The same category list, the same home page panel, over and over, computed from scratch every time."
+        },
+        {
+          "voice": "coach",
+          "text": "They had a repetition problem and they kept buying capacity for it. This domain is one question in four different costumes, and that is the first costume."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty four percent, four families",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain three, design high performing architectures. Twenty four percent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And I expect a lot of service names."
+        },
+        {
+          "voice": "coach",
+          "text": "A lot of them, which is why people revise this domain as a list and then fail it. The exam does not ask which service is fastest. It never asks that."
+        },
+        {
+          "voice": "coach",
+          "text": "It gives you an access pattern in the first two sentences and expects you to pick the family that matches. Compute, storage, database, caching."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the question is which pattern, not which product."
+        },
+        {
+          "voice": "coach",
+          "text": "And the pattern is always described in the same handful of ways. Shared or not shared. Sequential or random. Predictable or spiky. Read heavy or write heavy."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Compute, then storage",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Compute first, and there are only three real answers with one question separating them."
+        },
+        {
+          "voice": "coach",
+          "text": "How long does one unit of work run, and how spiky is the arrival. Short, event driven, unpredictable, means functions. You pay per invocation and there is nothing running between them."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the limit that rules functions out?"
+        },
+        {
+          "voice": "coach",
+          "text": "A hard ceiling on how long one execution may run, currently fifteen minutes. Any job described as long running, or as a batch that takes hours, cannot be a function, and that is often the whole discriminator."
+        },
+        {
+          "voice": "coach",
+          "text": "Steady, containerised work with no interest in managing servers is the serverless container runtime. Work that needs a specific operating system, a licence, a graphics processor, or fine control, is instances."
+        },
+        {
+          "voice": "coach",
+          "text": "Now storage, which produces more wrong answers than compute because four options are all genuinely storage."
+        },
+        {
+          "voice": "coach",
+          "text": "Block storage attached to one machine is the default disk. General purpose is the sensible baseline. The provisioned tier exists for sustained high transaction rates, and there is a throughput tier for big sequential reads that is cheap and terrible at random access."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the local disk on the instance itself?"
+        },
+        {
+          "voice": "coach",
+          "text": "The fastest thing available and it disappears when the instance stops. So it is correct only for caches, scratch space and temporary data, and it is a wrong answer the moment the stem says the data must survive."
+        },
+        {
+          "voice": "coach",
+          "text": "Then shared file systems, and this is the decision people get wrong. If many machines must read and write the same files at once, block storage on one machine cannot do it."
+        },
+        {
+          "voice": "coach",
+          "text": "The elastic file system is the general purpose shared answer for Linux workloads across zones. The Windows file system speaks the Windows sharing protocol and integrates with the directory service."
+        },
+        {
+          "voice": "coach",
+          "text": "And the high performance one is for heavy parallel workloads, training and simulation, and it can present an object storage bucket as a file system with very high throughput."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Shared and ordinary, shared and Windows, shared and extreme. That is manageable."
+        },
+        {
+          "voice": "coach",
+          "text": "Then databases, by access pattern rather than by preference. Relational with joins and transactions is the relational service. Simple lookups by key at enormous scale with single digit millisecond latency is the key value store."
+        },
+        {
+          "voice": "coach",
+          "text": "Analytical queries scanning huge tables is the warehouse. Occasional queries directly over files already sitting in object storage is the serverless query service, where you pay per amount of data scanned."
+        },
+        {
+          "voice": "coach",
+          "text": "Full text search and log analytics is the search service. Any question where the word search or relevance appears is pointing at it, not at a relational index."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Four places to put a cache",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Back to the retailer with the same eight queries. You have been asked to fix it without moving to a bigger machine."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then a cache in front of the database. Put the results in memory and stop recomputing them."
+        },
+        {
+          "voice": "coach",
+          "text": "Correct, and worth naming precisely, because there are two flavours and the exam separates them. One is a simple in memory cache, multi threaded, no persistence, no replication."
+        },
+        {
+          "voice": "coach",
+          "text": "The other supports replication, failover across zones, persistence and richer data structures. If the stem says the cache itself must be highly available, only one of the two qualifies."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So availability of the cache is the discriminator, not speed."
+        },
+        {
+          "voice": "coach",
+          "text": "It usually is. Now, that is one of four places a cache can sit, and picking the wrong layer is a classic wrong answer that still improves performance."
+        },
+        {
+          "voice": "coach",
+          "text": "The layer furthest out is the content delivery network. It caches at edge locations near the user, and it serves static files and cacheable responses without the request reaching your region at all."
+        },
+        {
+          "voice": "coach",
+          "text": "If the complaint in the question is that users on another continent see slow page loads and images, the answer is at the edge. No database change helps with distance."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the traffic is not web traffic? A game protocol, or something over the transport layer directly?"
+        },
+        {
+          "voice": "coach",
+          "text": "Then it is the global network accelerator, which is the service people confuse with the delivery network. It gives you fixed addresses and routes traffic over the AWS backbone, and it caches nothing."
+        },
+        {
+          "voice": "coach",
+          "text": "Cacheable web content, delivery network. Non web protocols, static addresses, or fast regional failover, accelerator. That pair appears constantly."
+        },
+        {
+          "voice": "coach",
+          "text": "The third place is the interface layer, which can cache responses for a period so repeated calls never reach the backend at all."
+        },
+        {
+          "voice": "coach",
+          "text": "And the fourth is specific to the key value store. There is a caching layer written for it that takes latency from single digit milliseconds to microseconds and requires no application change."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So if a question says the key value store is already fast enough for everyone except this one workload, that is the answer."
+        },
+        {
+          "voice": "coach",
+          "text": "And a general purpose in memory cache in front of it is the distractor, because it works and it means rewriting the data access code for no gain."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Performance in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Compute is decided by duration and spikiness. Short and event driven means functions, with the fifteen minute ceiling as the eliminator. Steady containers mean the managed container runtime. Special requirements mean instances."
+        },
+        {
+          "voice": "coach",
+          "text": "Storage is decided by sharing and durability. One machine means block storage. Temporary and fastest means the local disk, and it dies with the instance. Many machines on the same files means a file system, general purpose, Windows, or high performance."
+        },
+        {
+          "voice": "coach",
+          "text": "Databases are decided by access pattern. Joins and transactions, key lookups at scale, analytical scans, queries over files in place, or search and relevance."
+        },
+        {
+          "voice": "coach",
+          "text": "And caching by distance from the user. The edge for content and geography. The in memory cache for repeated database work, with the replicated flavour when the cache itself must survive. The interface layer for repeated calls. The dedicated accelerator for the key value store."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the team who kept buying bigger machines."
+        },
+        {
+          "voice": "coach",
+          "text": "They needed a cache and bought capacity. Scaling up is the answer to not enough work being possible. It is never the answer to the same work being done repeatedly."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. A nightly job takes about forty minutes. Can it be a function, and why?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "No. One execution is capped at fifteen minutes. That single limit eliminates the option regardless of how well the rest fits."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. Twenty machines must read and write the same directory of files at once, on Linux. Which storage, and why not block storage?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The elastic file system. A block volume attaches to one instance, so it cannot serve a shared directory across twenty."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. Users in another continent complain about slow images. Where does the fix go?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "At the edge, in the content delivery network. The problem is distance, and nothing in the region can shorten it."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. The cache layer itself must survive the loss of a zone. Which of the two in memory engines, and why?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The one with replication and failover. The simpler multi threaded engine has no replication, so it cannot meet an availability requirement."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the option that is genuinely faster and solves a different bottleneck. A bigger instance really is faster. A provisioned disk really is faster. Neither touches repetition or distance."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So I should name the bottleneck before reading the options."
+        },
+        {
+          "voice": "coach",
+          "text": "Name it in one word. Repetition, distance, contention, or capacity. Each has one family that answers it and three families that do not."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is the local disk. It is offered whenever the question says highest possible throughput, and it is correct only when the data is disposable. Look for the word persist or survive in the stem."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is the edge pair. The delivery network and the accelerator both make things faster for distant users and they are not interchangeable."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the word that separates them?"
+        },
+        {
+          "voice": "coach",
+          "text": "Cacheable. If the content can be cached and it is web traffic, it is the delivery network. If the stem mentions a non web protocol, fixed addresses, or moving users between regions quickly, it is the accelerator."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Repetition, distance, contention or capacity. Can you name the bottleneck before you name a service?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What one limit eliminates functions from a long job, and what is the number?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Which storage option is fastest and wrong the moment the data must survive a stop?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The instance's own disk."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is on the screen precisely because it is fastest."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: good, though this domain rewards breadth more than the others. You cannot shortcut knowing the families."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the last domain. Cost optimised architectures, twenty percent, and the only domain where the right answer is allowed to be worse."
+        },
+        {
+          "voice": "coach",
+          "text": "Storage classes, purchase models, and the charge that has ended more cloud migrations than any other. The one you pay for moving data out."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "saa-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+      "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+      "used_for": [
+        "domain three weight of twenty four percent",
+        "task statements for high-performing architectures"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "lambda-limits",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
+      "title": "Lambda quotas",
+      "used_for": [
+        "maximum function timeout of fifteen minutes"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "ebs-volume-types",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
+      "title": "Amazon EBS volume types",
+      "used_for": [
+        "general purpose, provisioned IOPS and throughput optimised characteristics",
+        "random versus sequential access suitability"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "instance-store",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html",
+      "title": "Amazon EC2 instance store",
+      "used_for": [
+        "ephemeral storage lost when the instance stops",
+        "suitability for caches and scratch data"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "fsx-lustre",
+      "url": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html",
+      "title": "What is Amazon FSx for Lustre",
+      "used_for": [
+        "high throughput parallel file system",
+        "linking a file system to an S3 bucket"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "elasticache-engines",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html",
+      "title": "Comparing node-based Valkey, Memcached, and Redis OSS clusters",
+      "used_for": [
+        "replication, failover and persistence differences between engines",
+        "multi-threaded simple caching"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "dax",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+      "title": "In-memory acceleration with DynamoDB Accelerator",
+      "used_for": [
+        "microsecond read latency",
+        "no application rewrite required"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "global-accelerator",
+      "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
+      "title": "What is AWS Global Accelerator",
+      "used_for": [
+        "static anycast addresses",
+        "non-HTTP protocols and regional failover",
+        "distinction from a content delivery network"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "slug": "aif-c01-evaluation-and-model-choice",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 — Choosing a Model, and Proving It Works",
+  "description": "The selection criteria the exam expects you to weigh, the metrics with strange names and what each one is for, and why accuracy is the most misleading number in machine learning.",
+  "keywords": [
+    "aif-c01",
+    "model evaluation",
+    "rouge",
+    "precision and recall",
+    "bedrock"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "The question that spans three domains",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This episode covers one question that appears in three different domains. Which model, and how do you know it is working. Domain one names the classic evaluation metrics. Domain two names model selection criteria. Domain three names the evaluation of foundation models and their outputs."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the marks here are scattered rather than concentrated, which is why people miss them. There is no chapter in most courses called evaluation, and there are questions about it in most sittings."
+        },
+        {
+          "voice": "narrator",
+          "text": "What the examiner is testing is whether you can match a metric to a situation. Not calculate anything. This is a foundational exam and no arithmetic is required. You need to know what each number is for, and which one lies to you when the data is uneven."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with selecting a model, because that comes first in real life and in the questions. There are six criteria the exam expects you to weigh, and cost is only one of them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cost per token. Latency, meaning how fast a response comes back. Modality, meaning text, image, audio or several at once. Context window size, meaning how much you can put in front of it. Whether it supports customisation such as fine tuning. And licensing terms, including whether the model may be used commercially."
+        },
+        {
+          "voice": "narrator",
+          "text": "The exam's instinct is that bigger is not better. A smaller, cheaper, faster model that meets the requirement wins, and questions are written so that the largest model is on the screen and is not the answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the classic metrics, the ones for predictive models rather than generative ones. Accuracy is the share of predictions that were correct, and it is the one that misleads."
+        },
+        {
+          "voice": "narrator",
+          "text": "Imagine fraud in one transaction out of a thousand. A model that says no fraud every single time is correct ninety nine point nine percent of the time and is completely useless. That is why the exam prefers the other two."
+        },
+        {
+          "voice": "narrator",
+          "text": "Precision asks: of the things I flagged, how many were really positive. High precision means few false alarms. Recall asks: of the things that really were positive, how many did I catch. High recall means few misses."
+        },
+        {
+          "voice": "narrator",
+          "text": "They trade against each other, and which one matters is decided by the cost of being wrong. Missing a disease or a fraud is expensive, so those want recall. Wrongly blocking a good customer or wrongly accusing someone is expensive, so those want precision."
+        },
+        {
+          "voice": "narrator",
+          "text": "The F one score combines the two into a single number when you care about both. And the area under the curve summarises how well the model separates the two classes across every threshold. Those four cover the classic side."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the generative metrics, which have unfamiliar names and simple jobs. Rouge is for summarisation. It compares the overlap between a generated summary and a reference summary."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bleu is for translation. It compares a machine translation against a human reference translation. Both are overlap measures, so both reward using the same words as the reference."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bert score is the one that does not count word overlap. It compares meaning using embeddings, so a good paraphrase scores well even with different words. Perplexity measures how surprised the model is by the text, and lower is better, and it says nothing about whether the output is useful."
+        },
+        {
+          "voice": "narrator",
+          "text": "And then the two that outrank all of them. Human evaluation, where people judge the output, which is the answer whenever the requirement mentions tone, helpfulness, brand voice or nuance. And business metrics, which is what the organisation actually cares about."
+        },
+        {
+          "voice": "narrator",
+          "text": "Business metrics means customer satisfaction, conversion rate, cost per interaction, task completion time, or how many conversations no longer need a human. If a question asks how you demonstrate value to the business, no technical metric is the answer."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Amazon Bedrock model evaluation is the service for choosing between foundation models. It runs candidates against your own dataset and reports automatic metrics, and it also supports a human review workflow for the judgements a metric cannot make."
+        },
+        {
+          "voice": "narrator",
+          "text": "That pairing is the point. When a question asks how to choose objectively between models on your own data, that is the service, and the fact that it offers both automatic and human evaluation is often the discriminator."
+        },
+        {
+          "voice": "narrator",
+          "text": "Amazon Augmented AI, written as A2I, is a different thing and gets confused with it. It routes low confidence predictions to human reviewers as part of a running production workflow. Evaluation is choosing. Augmented AI is operating."
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Clarify covers bias and explainability. It detects bias in data and in model predictions, and it explains which features drove a prediction. If the question mentions fairness across groups, or explaining a decision to a regulator, that is Clarify."
+        },
+        {
+          "voice": "narrator",
+          "text": "SageMaker Model Monitor watches a deployed model over time and detects drift, meaning the live data has moved away from the data the model was trained on. Evaluation before deployment is Clarify and model evaluation. Degradation after deployment is Model Monitor."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the cost levers, because a model choice question is often really a cost question. On demand inference charges per token with no commitment. Provisioned throughput reserves capacity for a fee, and it is required for some custom models and for guaranteed throughput."
+        },
+        {
+          "voice": "narrator",
+          "text": "Batch inference processes a large set of inputs at a lower rate per token when nothing needs to happen in real time. And distillation trains a smaller model to imitate a larger one, so you keep most of the quality at much lower cost and latency."
+        },
+        {
+          "voice": "narrator",
+          "text": "Those four are the answers to different phrasings of the same question. Unpredictable and spiky means on demand. Steady and guaranteed means provisioned. Overnight and enormous means batch. Too expensive at scale but quality matters means a smaller or distilled model."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one, and it is the most common metric trap on any exam. Accuracy offered for an imbalanced problem. Fraud, disease, defects, anything rare. Accuracy will look excellent and mean nothing. Read for the word rare, or a very small percentage, and switch to precision and recall."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two. Precision and recall swapped. Anchor them with one example each and never re derive them. Cancer screening wants recall, because a miss is fatal. A spam filter wants precision, because a wrongly blocked message is worse than a spam that gets through."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three. Rouge and bleu offered for each other. Summarisation is rouge. Translation is bleu. If you need a mnemonic, translation and bleu both have the international feel, and the summary metric is the other one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four. A technical metric offered where a human judgement is required. If the requirement mentions tone, brand voice, helpfulness, or whether an answer is appropriate, no overlap score can measure it. The answer is human evaluation."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five. The largest and most capable model offered as the default answer. This exam consistently prefers the smallest thing that meets the stated requirement. If latency or cost appears anywhere in the stem, the biggest model is usually the distractor."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap six. Evaluation confused with monitoring. Choosing between candidates before you ship is evaluation. Noticing that a shipped model has degraded because the world changed is drift, and it needs monitoring rather than another evaluation run."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Recall drill. Question one. A model detects a disease that occurs in one patient in two hundred. Which metric do you optimise, and which one do you distrust?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Optimise recall, because a missed case is the expensive error. Distrust accuracy, because always predicting healthy scores over ninety nine percent."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question two. You are evaluating generated summaries of legal documents against reference summaries. Which metric?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Rouge. It is the summarisation metric. Bleu is for translation."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question three. Two answers say the same thing in different words. Which metric recognises that, and which one penalises it?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Bert score recognises it, because it compares meaning through embeddings. The overlap metrics penalise it, because they count matching words."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question four. Leadership wants proof that the assistant was worth building. What do you report?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Business metrics. Deflection rate, cost per interaction, customer satisfaction, resolution time. No model metric answers that question."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question five. A model that performed well six months ago is now getting worse, though nothing was changed. What is this, and which service?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Drift. The live data has moved away from the training data. SageMaker Model Monitor is the service that detects it."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Three things to carry in. Accuracy lies when the classes are uneven. Recall when a miss is the expensive error, precision when a false alarm is."
+        },
+        {
+          "voice": "narrator",
+          "text": "Rouge summarises, bleu translates, bert score understands meaning, perplexity measures surprise and not usefulness. And above all of them sit human evaluation and business metrics."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the selection instinct worth memorising verbatim. The smallest model that meets the requirement wins, and the largest one is on the screen to be rejected."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "model selection criteria named in the task statements",
+        "evaluation metrics in scope",
+        "business metric expectations"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-model-evaluation",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html",
+      "title": "Evaluate the performance of Amazon Bedrock resources",
+      "used_for": [
+        "automatic and human evaluation jobs",
+        "evaluating candidate models on your own dataset"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-inference-options",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+      "title": "Increase model invocation capacity with Provisioned Throughput",
+      "used_for": [
+        "on-demand versus provisioned throughput",
+        "requirement for provisioned capacity with custom models"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-clarify",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+      "title": "Fairness, model explainability and bias detection with SageMaker Clarify",
+      "used_for": [
+        "bias detection in data and predictions",
+        "feature attribution for explainability"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sagemaker-model-monitor",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+      "title": "Monitor models for data and model quality drift",
+      "used_for": [
+        "detecting drift after deployment"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "a2i",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-use-augmented-ai-a2i-human-review-loops.html",
+      "title": "Amazon Augmented AI human review workflows",
+      "used_for": [
+        "routing low-confidence predictions to human reviewers in production"
+      ]
+    }
+  ]
+}

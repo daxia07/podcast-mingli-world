@@ -1,0 +1,283 @@
+{
+  "schema": 1,
+  "slug": "aif-c01-prompting-and-inference",
+  "show": "aws-ai-practitioner",
+  "template": "cert-prep",
+  "title": "AIF-C01 — Prompting, Parameters, and the Attacks on Both",
+  "description": "The depth episode under the largest domain. What each inference parameter actually changes, the prompt techniques by name, and the three prompt attacks the exam expects you to tell apart.",
+  "keywords": [
+    "aif-c01",
+    "prompt engineering",
+    "inference parameters",
+    "prompt injection",
+    "bedrock"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "orientation",
+      "title": "Why this sits across two domains",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "This is not a domain episode. It is a depth episode, and it sits across two of them. Domain three, applications of foundation models, is twenty eight percent and names prompt engineering techniques and inference parameters directly. Domain five, security and governance, is fourteen percent and names prompt attacks."
+        },
+        {
+          "voice": "narrator",
+          "text": "Together that is a large slice of the paper, and it is a slice where the questions are unusually concrete. Not which approach do you choose, but what does this specific setting do, and what is this specific attack called."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the standard the examiner holds you to here is naming. You need the names of four prompt techniques, four inference settings, and three attacks, and you need to know what each one changes. That is the episode."
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "The concepts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the anatomy of a prompt, because the exam uses these words as if you know them. A well formed prompt has an instruction, some context, the input itself, and an indication of the output you expect. Missing the last one is why models answer in a shape you did not want."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the techniques, by name. Zero shot is asking with no examples. Few shot is including a handful of worked examples so the model infers the pattern from them. That difference is simply whether examples are present, and questions do test it that plainly."
+        },
+        {
+          "voice": "narrator",
+          "text": "Chain of thought is asking the model to reason step by step before answering. It helps measurably on multi step problems, arithmetic and logic, and it costs more tokens and more time. When a question describes a model getting the right pieces but the wrong final answer, chain of thought is the technique being pointed at."
+        },
+        {
+          "voice": "narrator",
+          "text": "A prompt template is the fourth term. It is a reusable prompt with placeholders, so the same structure serves many inputs. When a question describes inconsistent results across a team all writing their own prompts, the answer is a shared template, not a different model."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the inference settings, and this is where marks are won because most people learn only one of them. Temperature controls randomness. Low temperature makes the model pick the likely words, so output is more deterministic and more repeatable. High temperature makes it more varied and more creative."
+        },
+        {
+          "voice": "narrator",
+          "text": "So a requirement for consistent, reproducible, factual output means lower the temperature. A requirement for varied marketing copy or brainstorming means raise it. That mapping alone answers several questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "Top p and top k are the other two, and they do something related but different. They limit which words the model may choose from at all. Top k keeps the k most likely candidates. Top p keeps the smallest set of candidates whose probabilities add up to p."
+        },
+        {
+          "voice": "narrator",
+          "text": "The useful way to hold it: temperature reshapes the odds, top p and top k cut the shortlist. All three reduce or increase variety, and the exam will not ask you to tune them precisely. It will ask which direction to move for a stated outcome."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two more settings. Maximum length, or maximum tokens, caps how long a response may be. It controls cost and truncation, and it does nothing whatsoever for quality. Stop sequences tell the model to stop when it produces a particular string, which is how you keep it from rambling past the answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "And one limit that ties the whole thing together. The context window is the total amount of text the model can consider at once, prompt and response together. Few shot examples, retrieved documents and conversation history all consume it. When a question describes a chat assistant that forgets earlier turns, that is the context window, not a fault."
+        },
+        {
+          "voice": "narrator",
+          "text": "Cost and latency both follow tokens. More input tokens and more output tokens mean more money and more waiting. That is why a long few shot prompt sent millions of times is a real design decision and not a free improvement."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Which service, and when",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "On AWS, all of this lives in Amazon Bedrock. The inference settings are parameters on the Bedrock inference call, and the same settings appear in the playground where you experiment before writing code."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock prompt management is where reusable prompt templates are stored and versioned, so the same prompt is not pasted into six applications. If a question asks how to standardise prompts across teams, that is the capability being described."
+        },
+        {
+          "voice": "narrator",
+          "text": "Bedrock Guardrails is the control layer, and this is the one to know cold. It applies content filters, denied topics, word filters and sensitive information filtering, and it applies them to the prompt going in and to the response coming out, independently of any model."
+        },
+        {
+          "voice": "narrator",
+          "text": "That independence is the point. A guardrail is configuration outside the model. An instruction in the prompt is text inside the model's input, competing with whatever else arrived in that input."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the three attacks, because they are named in the exam guide and they are easy marks once separated. Prompt injection is content that arrives as data and is treated as instructions. A document, a support ticket, a web page. The model cannot tell the difference between your instructions and the attacker's."
+        },
+        {
+          "voice": "narrator",
+          "text": "Jailbreaking is the user themselves working around the safety rules, usually by roleplay or by pretending the rules do not apply. The difference from injection is who is doing it and where the text comes from. Injection arrives inside content. Jailbreaking comes from the person typing."
+        },
+        {
+          "voice": "narrator",
+          "text": "Poisoning is different again and happens earlier. It is corrupting the training or the fine tuning data so the model itself behaves badly afterwards. If the question describes bad data going into training, it is poisoning. If it describes bad text going into a prompt, it is injection."
+        },
+        {
+          "voice": "narrator",
+          "text": "The defence for the first two is Guardrails plus least privilege on whatever the model is allowed to do. The defence for poisoning is data provenance and validation before training, which is a data governance answer, not a prompting one."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The traps",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Trap one. Temperature offered as a fix for accuracy. Lowering temperature makes output more consistent and more predictable. It does not make the model know more. If a question is about wrong facts, the answer is retrieval or grounding, not a parameter."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap two. Maximum tokens offered as a quality control. Raising the limit lets an answer be longer. It never makes an answer better, and lowering it truncates rather than summarises. Any option that treats the length cap as a quality dial is a distractor."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap three. Few shot examples confused with fine tuning. Few shot means examples in the prompt, right now, for this one request, at token cost every time. Fine tuning means training the model on examples once, permanently. If the stem says the examples must be provided with every request, it is few shot by definition."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap four, and it is the one people lose. A prompt instruction offered as a security control. An option that says instruct the model to refuse harmful requests looks responsible and is not the security answer, because the attacker's text arrives through the same channel."
+        },
+        {
+          "voice": "narrator",
+          "text": "The security answers sit outside the model. A configured guardrail, and narrow permissions on whatever the model can call. Remember the shape: guardrails reduce the chance, permissions reduce the damage."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trap five. Injection and jailbreaking used interchangeably. They are separate terms in the exam guide. Ask where the malicious text came from. From content the system ingested, injection. From the user in the conversation, jailbreaking."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Recall drill. Question one. A support summary must come out the same way every time for the same input. Which setting do you change, and in which direction?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Temperature, lowered. Low temperature favours likely words and makes output more deterministic and repeatable."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question two. A chat assistant stops referring to things the user said earlier in a long conversation. What is happening?"
+        },
+        {
+          "voice": "narrator",
+          "text": "The context window is full. Prompt, history and response share one budget, and the earliest turns fall out of it."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question three. A customer pastes text into a form and the assistant follows it as an instruction. Name the attack, and name the two controls."
+        },
+        {
+          "voice": "narrator",
+          "text": "Prompt injection. Guardrails filtering input and output, and least privilege on what the application is permitted to do."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question four. Accuracy on a multi step reasoning task is poor, there is no budget and no training data. What do you try?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Chain of thought prompting, and a few worked examples. Both cost tokens only, and both are the cheapest step on the ladder."
+        },
+        {
+          "voice": "narrator",
+          "pause_after": 4.0,
+          "text": "Question five. Someone corrupted the fine tuning dataset. Is that injection, jailbreaking, or poisoning?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Poisoning. It happens to the data before training. Injection and jailbreaking both happen at inference time."
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Three things to carry in. Temperature reshapes the odds, top p and top k cut the shortlist, and maximum length only truncates. None of the three makes a model more correct."
+        },
+        {
+          "voice": "narrator",
+          "text": "Injection arrives in content, jailbreaking comes from the user, poisoning happens to the training data. Where did the bad text come from is the whole question."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the sentence worth memorising verbatim. Guardrails reduce the chance, permissions reduce the damage, and an instruction in the prompt is not a control."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next: choosing between models in the first place, and proving the one you chose is working. Which is where the metrics with strange names live."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "aif-c01-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html",
+      "title": "AWS Certified AI Practitioner (AIF-C01) Exam Guide",
+      "used_for": [
+        "domain three and domain five weights",
+        "prompt engineering techniques named in the task statements",
+        "prompt attack terminology"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-inference-params",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html",
+      "title": "Influence response generation with inference parameters",
+      "used_for": [
+        "temperature, top p and top k behaviour",
+        "maximum length and stop sequences"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-prompt-engineering",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html",
+      "title": "Prompt engineering guidelines for Amazon Bedrock",
+      "used_for": [
+        "prompt structure",
+        "zero-shot, few-shot and chain-of-thought techniques"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-prompt-management",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html",
+      "title": "Amazon Bedrock Prompt management",
+      "used_for": [
+        "reusable, versioned prompt templates"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "bedrock-guardrails",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+      "title": "Amazon Bedrock Guardrails",
+      "used_for": [
+        "content filters, denied topics and sensitive information filtering",
+        "applied to both prompts and responses"
+      ]
+    }
+  ]
+}

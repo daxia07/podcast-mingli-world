@@ -1,0 +1,466 @@
+{
+  "schema": 1,
+  "slug": "saa-c03-domain2-resilient",
+  "show": "aws-solutions-architect",
+  "template": "cert-prep-2voice",
+  "title": "SAA-C03 Domain 2 — How Much Are You Willing To Lose",
+  "description": "Twenty six percent. Two numbers decide every answer in this domain, the standby that serves nobody, and why a queue is a resilience control rather than a performance one.",
+  "keywords": [
+    "saa-c03",
+    "high availability",
+    "disaster recovery",
+    "multi-az",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The standby that served nobody",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A retailer prepares for their biggest trading day. Someone checks the database and reports that it is deployed across two availability zones."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Good. Two machines, so twice the capacity going into the peak."
+        },
+        {
+          "voice": "coach",
+          "text": "That is what they assumed too, and they sized the rest of the platform around it. At half past nine in the morning the database saturates."
+        },
+        {
+          "voice": "sceptic",
+          "text": "With a whole second instance sitting there?"
+        },
+        {
+          "voice": "coach",
+          "text": "Sitting there and taking no traffic at all. The standby in that configuration answers no queries. It exists to take over, not to help."
+        },
+        {
+          "voice": "coach",
+          "text": "They had bought availability and spent it as if it were capacity. Those are different products, and telling them apart is worth several marks."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Twenty six percent, and two numbers",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain two, design resilient architectures. Twenty six percent, the second largest domain on the architect associate exam."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And after the security domain, which was thirty."
+        },
+        {
+          "voice": "coach",
+          "text": "Together they are more than half the paper. Here is the question underneath every resilience item, and it is genuinely only two numbers."
+        },
+        {
+          "voice": "coach",
+          "text": "How much data are you willing to lose, and how long are you willing to be down. Those are the recovery point objective and the recovery time objective."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the exam gives me those numbers in the stem."
+        },
+        {
+          "voice": "coach",
+          "text": "Almost always, in words rather than as labels. Read for them first. They eliminate two of the four options before you have thought about a single service."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Four strategies, in order of price",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Take the recovery strategies in order of cost, because that ordering is the answer to most questions."
+        },
+        {
+          "voice": "coach",
+          "text": "Cheapest is backup and restore. You keep backups elsewhere and rebuild when you need to. Recovery takes hours. You pay almost nothing while nothing is wrong."
+        },
+        {
+          "voice": "coach",
+          "text": "Next, pilot light. The data is continuously replicated to the second region, and the servers exist but are switched off. You pay for storage, not for compute."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the recovery point is good and the recovery time is still poor."
+        },
+        {
+          "voice": "coach",
+          "text": "That is exactly the shape of it, and it is the discriminator between the middle two. Pilot light protects the data and still needs you to start things up."
+        },
+        {
+          "voice": "coach",
+          "text": "Third, warm standby. A scaled down but fully working copy is already running. Recovery is scaling it up and sending traffic, so tens of minutes becomes minutes."
+        },
+        {
+          "voice": "coach",
+          "text": "Fourth, active in both places at once. Recovery time near zero, recovery point near zero, and you are paying for two production environments plus the complexity of writing in two places."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the exam picks the cheapest one that meets the stated numbers."
+        },
+        {
+          "voice": "coach",
+          "text": "Every time. If the requirement says four hours, the answer is not active in both regions. Over delivering is wrong here, because the alternative option is cheaper and still meets it."
+        },
+        {
+          "voice": "coach",
+          "text": "Now the database pair from the cold open, because it is the most confused thing in the domain. A synchronous standby in a second zone is for availability. It takes no reads and it fails over automatically."
+        },
+        {
+          "voice": "coach",
+          "text": "A read replica is asynchronous, it does take reads, and it exists for capacity. It can live in another region, and you can promote it, but promotion is a deliberate action rather than an automatic one."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So if I want both, I need both."
+        },
+        {
+          "voice": "coach",
+          "text": "You need both, and the exam does ask that. Availability across zones, capacity through replicas, and they are separate purchases."
+        },
+        {
+          "voice": "coach",
+          "text": "One more layer, because it changes the answer when the numbers get aggressive. The cloud native database engine keeps six copies of your data across three zones and can extend to a second region with replication lag typically under a second."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a very small recovery point across regions without running an active second site."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is why it is the answer whenever the stem pairs a cross region requirement with a recovery point measured in seconds. And for the key value store, the equivalent is tables that are writable in several regions at once."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The orders that never arrived",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Now the application tier. A checkout calls a payment service directly. The payment service has a bad twenty minutes. Orders are lost, and customers who were charged have no order."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Add retries with backoff, and scale the payment service out so it does not fall over."
+        },
+        {
+          "voice": "coach",
+          "text": "Both are sensible engineering. Tell me what happens on the day the payment service is down for forty minutes rather than twenty."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The retries exhaust, and I lose the orders anyway. I have made the window bigger, not removed it."
+        },
+        {
+          "voice": "coach",
+          "text": "You have bought time and not resilience. The structural answer is to stop calling it directly. The checkout writes the order to a queue and returns. The payment service reads the queue at whatever rate it can manage."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And while it is down, the queue just grows."
+        },
+        {
+          "voice": "coach",
+          "text": "The queue grows, nothing is lost, and the system drains when the service returns. That is why a queue is a resilience control on this exam and not a performance trick."
+        },
+        {
+          "voice": "coach",
+          "text": "Three details the questions turn on. First, a message that cannot be processed must not block the queue forever, so it goes to a dead letter queue after a set number of attempts."
+        },
+        {
+          "voice": "coach",
+          "text": "Second, ordering. The standard queue is effectively unlimited in throughput and does not guarantee order. If the requirement says strictly in order and exactly once, that is the first in first out variant, and it is slower."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And because standard can deliver a message more than once, the consumer has to be safe to run twice."
+        },
+        {
+          "voice": "coach",
+          "text": "Idempotent. That word appears in correct answers constantly. Third detail, if several different systems need the same event, a queue is the wrong shape."
+        },
+        {
+          "voice": "coach",
+          "text": "One producer to many independent consumers is a topic that fans out, or the event bus when you also want routing rules and filtering."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And when the work is a sequence of steps that has to survive a failure halfway through?"
+        },
+        {
+          "voice": "coach",
+          "text": "That is the workflow service. It holds the state of each step, retries, and handles the failure path. A chain of functions calling each other is the tempting wrong answer, because nothing remembers where it got to."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Resilience in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass. Nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "Read for the two numbers. How much data may be lost is the recovery point. How long you may be down is the recovery time."
+        },
+        {
+          "voice": "coach",
+          "text": "Then pick the cheapest strategy that meets both. Backup and restore for hours. Pilot light when the data must be current but starting up is acceptable. Warm standby for minutes. Active in two regions only when near zero is stated."
+        },
+        {
+          "voice": "coach",
+          "text": "Across zones for availability, with automatic failover and a standby that serves nobody. Read replicas for capacity, asynchronous, promotable by hand."
+        },
+        {
+          "voice": "coach",
+          "text": "Cross region with a recovery point in seconds points at the global database, or at multi region tables for the key value store."
+        },
+        {
+          "voice": "coach",
+          "text": "And in the application, remove the direct call. A queue absorbs the outage, a dead letter queue catches the poison, ordering costs throughput, consumers are idempotent, and a workflow holds the state of a multi step job."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the retailer at half past nine."
+        },
+        {
+          "voice": "coach",
+          "text": "They needed read replicas and had bought a standby. Two zones is an answer to the question what happens when a zone fails. It is not an answer to the question what happens when everybody arrives at once."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. The business will accept fifteen minutes of downtime and no more than one minute of lost data, across regions. Which strategy, and which one do you rule out?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Warm standby. Rule out backup and restore on the time, and rule out active in both regions as over delivery when fifteen minutes is acceptable."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. Reads are saturating the database. Does adding a second availability zone help, and why?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "No. The standby answers no queries. Reads need replicas, which is a separate thing bought for a different reason."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. A downstream service is unreliable and no request may be lost. What changes in the architecture?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The caller writes to a queue instead of calling directly, and the consumer drains it. Retries alone only widen the window."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. Messages must be processed strictly in order and exactly once. What do you give up?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Throughput. The ordered queue type is much slower than the standard one, and the exam expects you to know that is the trade."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one is the availability and capacity swap, which the cold open lived through. Two options describe a second database instance and only one of them takes traffic."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the tell in the stem?"
+        },
+        {
+          "voice": "coach",
+          "text": "The verb. Survive, fail over, tolerate the loss of a zone, all point at the standby. Slow queries, report load, read heavy, all point at replicas."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two is over delivery. The most resilient option is on the screen and it is not the answer unless the numbers demand it. This exam scores the cheapest option that satisfies the requirement."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three is health checks. A scaling group left on the default check only knows whether the machine is running. An application that has hung, or is returning errors, still passes it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the instance is alive, useless, and never replaced."
+        },
+        {
+          "voice": "coach",
+          "text": "Point the group at the load balancer's health check instead, and it replaces the machine the balancer has already stopped trusting. A question describing healthy instances serving errors is asking for exactly that."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. Which of the two numbers is about data, and which is about time?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. Which second database instance serves traffic, and which one serves nobody until the day it matters?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. What does a queue buy you that a retry never can?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Durability across an outage longer than my patience."
+        },
+        {
+          "voice": "coach",
+          "text": "That is the sentence. And it is why decoupling sits in the resilience domain rather than the performance one."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: high, because the two numbers alone resolve a large share of the domain before you consider a service."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, domain three. Design high performing architectures, twenty four percent."
+        },
+        {
+          "voice": "coach",
+          "text": "Compute, storage, database and caching, and the question the exam actually asks. Not which one is fastest. Which one matches the access pattern you have been handed in the first two sentences."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "saa-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+      "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+      "used_for": [
+        "domain two weight of twenty six percent",
+        "task statements for resilient architectures"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "dr-options",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
+      "title": "Disaster recovery options in the cloud",
+      "used_for": [
+        "backup and restore, pilot light, warm standby and multi-site",
+        "recovery point and recovery time objectives"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "rds-multi-az",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+      "title": "Multi-AZ deployments for high availability",
+      "used_for": [
+        "synchronous standby",
+        "automatic failover",
+        "standby does not serve read traffic"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "rds-read-replicas",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+      "title": "Working with DB instance read replicas",
+      "used_for": [
+        "asynchronous replication for read scaling",
+        "cross-Region replicas and manual promotion"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "aurora-global",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+      "title": "Amazon Aurora global databases",
+      "used_for": [
+        "storage replicated across three Availability Zones",
+        "cross-Region replication lag",
+        "recovery objectives for global deployments"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sqs-dlq",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+      "title": "Amazon SQS dead-letter queues",
+      "used_for": [
+        "messages moved after a maximum receive count",
+        "isolating poison messages"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "sqs-fifo",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+      "title": "Amazon SQS FIFO queues",
+      "used_for": [
+        "ordering and exactly-once processing",
+        "throughput trade-off against standard queues"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "asg-health-checks",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html",
+      "title": "Health checks for instances in an Auto Scaling group",
+      "used_for": [
+        "default instance status checks versus load balancer health checks",
+        "replacement of instances failing the load balancer check"
+      ]
+    }
+  ]
+}

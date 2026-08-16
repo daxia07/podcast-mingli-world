@@ -1,0 +1,492 @@
+{
+  "schema": 1,
+  "slug": "scs-c03-domain5-data-protection",
+  "show": "aws-security-specialty",
+  "template": "cert-prep-2voice",
+  "title": "SCS-C03 Domain 5 — The Key Policy Is Not Optional",
+  "description": "Eighteen percent, and most of it is one service. Why an administrator with full permissions still cannot decrypt, what a grant is really for, imported key material, and the rotation everybody misunderstands.",
+  "keywords": [
+    "scs-c03",
+    "kms",
+    "key policy",
+    "envelope encryption",
+    "aws certification"
+  ],
+  "voices": {
+    "coach": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The key nobody can touch",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A platform team tidies up a key policy. It looked untidy. It had a broad statement at the top that nobody could explain, so they removed it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Tightening a policy. That is the job."
+        },
+        {
+          "voice": "coach",
+          "text": "Within an hour, four applications stop being able to decrypt. That is bad but survivable. Then they go to put the statement back."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And they cannot, because the statement they deleted was the one that let them edit the policy."
+        },
+        {
+          "voice": "coach",
+          "text": "Nobody in that account can administer that key. Not the security team, not the person who created it. The only route left is a support case."
+        },
+        {
+          "voice": "coach",
+          "text": "This service does not behave like the rest of the platform, and that difference is worth about a fifth of your exam."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Eighteen percent, mostly one service",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Domain five, data protection. Eighteen percent, tied for second largest."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And I am told most of it is the key management service."
+        },
+        {
+          "voice": "coach",
+          "text": "Most of it is. Some of it is secrets and certificates, and the new version added masking, which we will get to. But keys carry the domain."
+        },
+        {
+          "voice": "coach",
+          "text": "Here is the question. Everywhere else on this platform, an identity policy can grant access to a resource. For keys it cannot."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Cannot, or does not by default?"
+        },
+        {
+          "voice": "coach",
+          "text": "Cannot, unless the key policy has already said it may. That single inversion generates more exam questions than anything else in the domain."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Key policy, grant, data key",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three ideas. The key policy, the grant, and the data key. Get those and the domain is mostly done."
+        },
+        {
+          "voice": "coach",
+          "text": "The key policy is the resource policy on the key, and every key has exactly one. It is the root of authority. If it does not permit something, nothing else can."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then how does an identity policy ever work for a key?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because the default key policy contains a statement that delegates to identity policies in the same account. That is the untidy statement in the cold open."
+        },
+        {
+          "voice": "coach",
+          "text": "Remove it, and every identity policy that mentions the key becomes decorative. The key policy is not one input among several. It is the gate before the others."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So an administrator with full access is not automatically allowed to decrypt."
+        },
+        {
+          "voice": "coach",
+          "text": "Not automatically. And that is deliberate, because it is how you separate the people who run the account from the people who can read the data. Any question about separation of duties for data lands here."
+        },
+        {
+          "voice": "coach",
+          "text": "Second idea, the grant. A grant is temporary, programmatic permission to use a key, for specific operations, usually issued to a service acting on your behalf."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why would I not just edit the key policy?"
+        },
+        {
+          "voice": "coach",
+          "text": "Because a key policy is one document that everybody shares and every edit is a change to the gate itself. A grant is narrow, it can be retired when the job is done, and it does not require rewriting the policy for a short lived need."
+        },
+        {
+          "voice": "coach",
+          "text": "The tell in a question is temporary, or on behalf of, or a service that needs to use the key for the duration of an operation. That is a grant, not a policy edit."
+        },
+        {
+          "voice": "coach",
+          "text": "Third idea, envelope encryption, and it explains a limit that confuses people. This service will only directly encrypt a very small payload. A few kilobytes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then it is useless for a database or a large file."
+        },
+        {
+          "voice": "coach",
+          "text": "It is never used that way. It generates a data key, hands you the data key in the clear and an encrypted copy of it, and you encrypt your data locally with the plaintext version."
+        },
+        {
+          "voice": "coach",
+          "text": "You throw away the plaintext key and store the encrypted copy beside the data. To read it later, you ask the service to decrypt the small key, then you decrypt the large object yourself."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the service never sees the data at all."
+        },
+        {
+          "voice": "coach",
+          "text": "Never. That is the point. And it explains a cost trap. Every one of those calls is charged and rate limited, so a workload writing millions of small objects can generate a startling key management bill."
+        },
+        {
+          "voice": "coach",
+          "text": "For object storage there is a setting that reuses one data key across many objects and cuts those calls dramatically. When a question pairs correct encryption with an unexpected bill, that setting is the answer."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Bring your own key material",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "A regulated customer arrives with two requirements. Their own hardware must generate the key material. And on the day the contract ends, the data must become unreadable within minutes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Dedicated hardware then. A cluster of hardware security modules, single tenant, ours alone."
+        },
+        {
+          "voice": "coach",
+          "text": "That is a defensible reading and it is a real product. Tell me what you have signed up to operate."
+        },
+        {
+          "voice": "sceptic",
+          "text": "A cluster. Availability of it. Backups of it. Users on it. And every service integration has to be able to reach it."
+        },
+        {
+          "voice": "coach",
+          "text": "All of that, and you should only accept it when the requirement is genuinely about dedicated single tenant hardware or a specific validation level. Read the two requirements again. Neither one says dedicated hardware."
+        },
+        {
+          "voice": "sceptic",
+          "text": "They say we generate the material, and we can destroy access quickly."
+        },
+        {
+          "voice": "coach",
+          "text": "Which is imported key material. You generate it, you wrap it, you import it into a key in the managed service. The platform does not keep a copy."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the destruction requirement?"
+        },
+        {
+          "voice": "coach",
+          "text": "Delete the imported material. The key stays but becomes unusable immediately, and everything encrypted under it is unreadable. No waiting period."
+        },
+        {
+          "voice": "coach",
+          "text": "Compare that with deleting a normal key, which schedules deletion with a waiting period of at least seven days, precisely so an accident can be undone."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the price of importing my own material?"
+        },
+        {
+          "voice": "coach",
+          "text": "You own the consequence. If you lose your copy and the material is gone from the service, the data is gone. Permanently. There is no recovery path and no support case that fixes it."
+        },
+        {
+          "voice": "coach",
+          "text": "Now rotation, which almost everybody misunderstands. For a key whose material the service generated, rotation is automatic on a schedule and it changes the backing material."
+        },
+        {
+          "voice": "coach",
+          "text": "It does not re-encrypt anything you already wrote. Old material is retained so old data still opens, and the key identifier never changes, so nothing in your application breaks."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So rotating a key does not remediate a compromise of the data encrypted before it."
+        },
+        {
+          "voice": "coach",
+          "text": "It does not, and an option that offers rotation as incident remediation is a distractor. And with imported material, rotation is your job, because only you can produce the new material."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Data protection in one pass",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "One pass, nothing new."
+        },
+        {
+          "voice": "coach",
+          "text": "The key policy is the gate. Identity policies only reach a key because the key policy delegates to them. Delete that delegation and administrators lose the key, including the ability to fix it."
+        },
+        {
+          "voice": "coach",
+          "text": "A grant is narrow, temporary permission for a service or a process, retired when the work is done, instead of editing the shared policy."
+        },
+        {
+          "voice": "coach",
+          "text": "Large data is never encrypted by the service directly. A data key does the work locally, the encrypted copy sits with the data, and the object storage setting that reuses data keys is the fix when the call charges surprise you."
+        },
+        {
+          "voice": "coach",
+          "text": "Imported material when the customer must generate it or must be able to revoke access instantly. Dedicated hardware only when the requirement is genuinely about the hardware."
+        },
+        {
+          "voice": "coach",
+          "text": "One key per region unless you make it multi region, which is what you need when the same encrypted data has to open in another region, for disaster recovery or a global table."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the secrets and certificates half."
+        },
+        {
+          "voice": "coach",
+          "text": "Rotation on a schedule means the secrets service. Cheap configuration storage means parameter store. Public certificates that renew themselves mean the certificate manager. Internal certificates for your own trust chain mean a private authority."
+        },
+        {
+          "voice": "coach",
+          "text": "And when personal data must never appear in a log or a notification in the first place, the new version wants the built in masking policies on the log group and on the topic, not a function that scrubs after the fact."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Recall drill",
+      "lines": [
+        {
+          "voice": "coach",
+          "pause_after": 5.0,
+          "text": "Drill. Question one. An identity policy grants full permission on a key and the call still fails. Why?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "The key policy does not delegate to identity policies. Without that, an identity policy on a key means nothing."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question two. A customer must be able to make all their data unreadable within minutes of terminating the contract. What do you use?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "A key with imported material, and delete the material. Scheduling key deletion would take at least seven days."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question three. Why does automatic rotation not remediate data that was already encrypted and exposed?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Because rotation changes the backing material going forward and keeps the old material so old data still decrypts. Nothing is re-encrypted."
+        },
+        {
+          "voice": "coach",
+          "pause_after": 4.0,
+          "text": "Question four. Millions of small objects, correct encryption, and a key management bill nobody expected. What is the fix?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Turn on the bucket setting that reuses a data key across objects, so you stop making one call per object."
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "The trap",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three traps and their mechanisms."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap one. Two encryption options that are both genuinely encrypted, separated only by who holds authority over the key."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the question is never whether the data is encrypted."
+        },
+        {
+          "voice": "coach",
+          "text": "Never. It is who can be denied. Service managed keys are real encryption with no key policy you can write, so you cannot exclude a specific team. The words audit, control, rotate or separate duties force a customer managed key."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap two. Dedicated hardware offered for a requirement that only mentions control of key material. Hardware modules are correct for single tenancy and specific validation levels, and expensive everywhere else."
+        },
+        {
+          "voice": "coach",
+          "text": "The discriminator is the noun in the requirement. Hardware, tenancy or a validation level points at the cluster. Control, generation or destruction of material points at imported material."
+        },
+        {
+          "voice": "coach",
+          "text": "Trap three, and it is the newest. Sensitive data in logs and in notifications. The tempting option filters it downstream, in a function or a query."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which means it was already written down somewhere."
+        },
+        {
+          "voice": "coach",
+          "text": "And the requirement usually says it must never be stored. That forces the masking policy at the log group or the topic, applied as the data arrives, not a cleanup afterwards."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Three questions for yourself."
+        },
+        {
+          "voice": "coach",
+          "text": "One. What does an identity policy on a key achieve if the key policy is silent?"
+        },
+        {
+          "voice": "coach",
+          "text": "Two. What does automatic rotation actually change, and what does it leave alone?"
+        },
+        {
+          "voice": "coach",
+          "text": "Three. Which two words in a requirement push you from a service managed key to your own, and which two push you off the managed service entirely?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Control and audit for your own key. Hardware and tenancy for the cluster."
+        },
+        {
+          "voice": "coach",
+          "text": "Those four words decide a lot of marks."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Marks per hour, and next time",
+      "lines": [
+        {
+          "voice": "coach",
+          "text": "Marks per hour: excellent, because the key service also shows up inside detection, incident response and governance questions. You are buying more than eighteen percent."
+        },
+        {
+          "voice": "coach",
+          "text": "Next time, the last of the big domains. Infrastructure security, eighteen percent, from the edge inward."
+        },
+        {
+          "voice": "coach",
+          "text": "And the content the new version added that nobody else is teaching yet. What it means to put guardrails around a generative model, and why the exam now expects you to know the ways a language model gets attacked."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "scs-c03-exam-guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+      "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+      "used_for": [
+        "domain five weight of eighteen percent",
+        "data protection task statements",
+        "data masking and imported key material as added topics"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kms-key-policies",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+      "title": "Key policies in AWS KMS",
+      "used_for": [
+        "key policy is required for every KMS key",
+        "identity policies only apply when the key policy enables them"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kms-grants",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/grants.html",
+      "title": "Grants in AWS KMS",
+      "used_for": [
+        "temporary, granular permission for services",
+        "retiring a grant"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kms-envelope",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
+      "title": "AWS KMS concepts — data keys and envelope encryption",
+      "used_for": [
+        "data key generation",
+        "size limit on direct encryption",
+        "encrypted data key stored with the data"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kms-rotation",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html",
+      "title": "Rotating AWS KMS keys",
+      "used_for": [
+        "automatic rotation of AWS-generated key material",
+        "old backing keys retained so existing ciphertext still decrypts",
+        "imported key material must be rotated by the customer"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kms-imported-key-material",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html",
+      "title": "Importing key material into AWS KMS keys",
+      "used_for": [
+        "customer-generated key material",
+        "deleting imported material makes ciphertext unusable immediately",
+        "AWS does not retain a copy"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "s3-bucket-keys",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html",
+      "title": "Reducing the cost of SSE-KMS with Amazon S3 Bucket Keys",
+      "used_for": [
+        "reuse of a data key across objects",
+        "reduction in KMS request charges"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "cwl-data-protection",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html",
+      "title": "Help protect sensitive log data with masking",
+      "used_for": [
+        "data protection policies on log groups",
+        "masking as data arrives"
+      ]
+    }
+  ]
+}
