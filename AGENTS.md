@@ -1,229 +1,177 @@
 # AGENTS.md — podcast.mingli.world
 
 Coding-agent guide to this repo. Read this before making changes.
+For what is currently true — inventory, what works, what is broken — read
+**`docs/STATUS.md`** first. This file is how to work here; that one is where
+things stand.
 
-> **Adding content? Use the skills, not the legacy scripts.** As of 2026-08-12
-> episodes are authored as **blueprint JSON** in `content/blueprints/` and built
-> with one command. The `generate_*.py` scripts are frozen legacy — do not add
-> to them or copy their pattern.
->
-> | Task | Path |
-> |---|---|
-> | New episode | `.claude/skills/episode-new` — or `/new-episode` |
-> | Ingest a video as learning material | `.claude/skills/youtube-ingest` — or `/ingest` |
-> | New show / playlist | `.claude/skills/show-new` |
-> | Review a draft before building | `.claude/skills/content-review` |
-> | Publish | `.claude/skills/publish` — or `/publish-episode` |
->
-> ```bash
-> npm test                                    # 165 tests, no deps, no network
-> npm run gates                               # manifest, show registry, blueprint coverage
-> python3 scripts/build_episode.py <bp> --dry-run   # plan without TTS
-> gh workflow run build-episode.yml -f show=<id>    # build + publish from CI
-> ```
->
-> **This is enforced, not just documented.** The 14 one-off `generate_*.py` /
-> `batch_publish*.py` scripts are frozen — running one prints a banner and exits
-> 2 (bypass: `--legacy-ok`). CI fails if any episode outside
-> `content/legacy-episodes.json` lacks a blueprint. The daily-cron scripts
-> (`generate.py`, `publish.py`, `arrange.py`, `curate.py`) are deliberately not
-> frozen.
->
-> **Traps that have already bitten, all now guarded by tests or gates:**
-> episodes must be uniform 48 kHz mono (mixed sample rates make browsers stop
-> mid-file — `scripts/lib/audio.py`); episode URLs carry a `?v=` content hash
-> because rebuilds happen in place; the manifest the app reads lives on R2 and
-> only reaches it via the deploy sync; a new show needs `mono` and `order` or it
-> renders nowhere; CSS additions must not redefine shared tokens, and must use
-> tokens rather than raw colours or dark mode breaks (`tests/test_theme.mjs`);
-> and `site/search-index.json` is a build artifact — rebuild it with
-> `scripts/build_search_index.py` after publishing, never hand-edit it.
->
-> **Where things stand right now: `docs/STATUS.md`** — inventory, what is live,
-> what is built but unrun, and the bug each guardrail remembers. Read it before
-> planning work; it is the fastest way to avoid redoing something.
->
-> Full design: `docs/UPGRADE-SPEC.md`. Decisions: `DECISIONS.md`.
-> Android: `docs/ANDROID-APP.md`.
-> **Where things run:** build and test on this Mac; publish from the `agent`
-> host or CI — this Mac has no Cloudflare credentials (spec §0b).
+## Adding content? Use the skills, not the legacy scripts
+
+Episodes are authored as **blueprint JSON** in `content/blueprints/` and built
+with one command. The `generate_*.py` scripts are frozen legacy — do not add to
+them or copy their pattern.
+
+| Task | Path |
+|---|---|
+| New episode | `.claude/skills/episode-new` — or `/new-episode` |
+| Ingest a video as learning material | `.claude/skills/youtube-ingest` — or `/ingest` |
+| New show / playlist | `.claude/skills/show-new` |
+| Review a draft before building | `.claude/skills/content-review` |
+| Publish | `.claude/skills/publish` — or `/publish-episode` |
+
+```bash
+npm test                                          # 165 tests, no deps, no network
+npm run gates                                     # manifest, show registry, blueprint coverage
+python3 -m scripts.lib.gates <blueprint>          # gate one blueprint
+python3 scripts/build_episode.py <bp> --dry-run   # plan without TTS
+gh workflow run build-episode.yml -f blueprint="a.json b.json"   # build + publish from CI
+gh workflow run build-episode.yml -f show=<id>                   # rebuilds the whole show
+```
+
+**This is enforced, not just documented.** The 14 one-off generator and
+batch-publish scripts that import `scripts/_legacy_guard.py` are frozen —
+running one prints a banner and exits 2 (bypass: `--legacy-ok`, or
+`PODCAST_ALLOW_LEGACY=1`). The guard is import-safe, so
+`ingest_youtube.py --backfill` can still read from them. CI fails if any episode
+outside `content/legacy-episodes.json` lacks a blueprint. The daily-cron scripts
+(`generate.py`, `publish.py`, `arrange.py`, `curate.py`) are deliberately not
+frozen.
+
+**Traps that have already bitten, all now guarded by tests or gates:** episodes
+must be uniform 48 kHz mono (mixed sample rates make browsers stop mid-file —
+`scripts/lib/audio.py`); episode URLs carry a `?v=` content hash because rebuilds
+happen in place; the manifest the app reads lives on R2 and only reaches it via
+the deploy sync; a new show needs `mono` and `order` or it renders nowhere; CSS
+additions must not redefine shared tokens, and must use tokens rather than raw
+colours or dark mode breaks (`tests/test_theme.mjs`); and
+`site/search-index.json` is a build artifact — rebuild it with
+`scripts/build_search_index.py` after publishing, never hand-edit it.
+
+**Batch CI builds into one run.** `cancel-in-progress: false` protects the
+*executing* run; a concurrency group still holds only one *pending* run, so
+dispatching N builds in a row cancels N−2 of them. Pass several paths to
+`blueprint` instead. Roughly 12 min of wall clock per episode, so keep a batch
+to three or it risks the 60-minute job timeout.
+
+**Where things run:** build and test on this Mac; publish from CI or the `agent`
+host — this Mac has no ffmpeg, no edge-tts and no Cloudflare credentials, by
+design (`docs/UPGRADE-SPEC.md` §0b).
 
 ## What this project is
 
-A **self-hosted, $0/month podcast platform** that generates interview-prep audio episodes for a single user (Mingli). Started as a daily "Interview English" podcast; it has grown into a full audio learning app with many show playlists:
+A self-hosted, $0/month audio learning platform for one listener. Cloudflare
+Pages serves a vanilla-JS app and a handful of Functions; R2 holds the MP3s and
+the JSON that stands in for a database. No server, no build step.
 
-- **Daily Interview English** — auto-generated daily episodes (English patterns + interview frameworks)
-- **System Design** — think-alouds, concept episodes, back-of-envelope estimation
-- **SD Mock Interviews** — 2-voice dialogues (interviewer/candidate), incl. Airwallex-domain mocks
-- **Coding Prep** — think-aloud coding episodes for Airwallex screens (hand-written scripts in `scripts/drafts/coding-prep/`)
-- **Coding / SD / Behavioral / Infosec YouTube** — audio-first walkthroughs of YouTube videos
-- **Behavioral / Infosec Interview** — TTS practice episodes
-
-There is **no backend server and no database**. Cloudflare R2 is the database — JSON files + MP3s. Everything is generated by Python scripts (GitHub Actions cron for daily episodes, manual runs for series).
+Shows are data — `content/shows.json` is the registry. Do not hardcode a show
+list anywhere.
 
 ## Architecture at a glance
 
 | Layer | Technology | Notes |
-|-------|-----------|-------|
-| Hosting | Cloudflare Pages (`podcast-landing` project) | static `site/` + Pages Functions |
-| Storage | Cloudflare R2 bucket `podcast-mingli-world` | JSON files ARE the DB |
-| Functions | Cloudflare Pages Functions (JS) | manifest, RSS, episodes MP3, feedback POST, auth middleware |
-| Auth | `functions/_middleware.js` | hardcoded user `ming` / pass `ping` + SHA-256 cookie |
-| Pipeline | Python scripts + GitHub Actions cron | arrange → curate → generate → publish |
-| TTS | edge-tts (free, no key) | `scripts/tts.py` wrapper, multi-voice |
-| R2 CLI | wrangler (`npx wrangler r2 ... --remote`) | wrapped by `scripts/r2_utils.py` |
-| Vercel mirror | `vercel.json` + `api/` | alternative deploy config (Cloudflare is the live one) |
+|---|---|---|
+| Hosting | Cloudflare Pages (`podcast-landing`) | static `site/` + Pages Functions |
+| Storage | Cloudflare R2 `podcast-mingli-world` | JSON files ARE the DB |
+| Functions | Pages Functions (JS) | manifest, RSS, episode MP3s, feedback POST, auth middleware |
+| Auth | `functions/_middleware.js` | hardcoded `ming` / `ping` + SHA-256 cookie |
+| Content pipeline | `scripts/build_episode.py` + blueprints | gates → synth → timeline → upload |
+| Daily cron | `arrange → curate → generate → publish` | `daily.yml`, unchanged by the upgrade |
+| TTS | edge-tts (free, no key) | `scripts/tts.py`; unofficial endpoint, the biggest availability risk |
+| R2 CLI | `npx wrangler r2 ... --remote` | wrapped by `scripts/r2_utils.py` |
+| Vercel mirror | `vercel.json` + `api/` | alternative config; Cloudflare is live |
 
-Live site: `https://podcast.mingli.world` — RSS: `https://podcast.mingli.world/rss.xml`
+Live: `https://podcast.mingli.world` · RSS: `/rss.xml`
+
+### The daily cron (`daily.yml`, not frozen)
+
+```
+18:00 UTC  arrange.py   feedback from R2 → plan.json to R2
+                        (≥80% good → the pattern appears more; <40% → dropped)
+19:00 UTC  curate.py    3 RSS feeds → keyword-scored → data/today.json
+19:00 UTC  generate.py  plan + content_bank + article → data/episode.mp3
+19:00 UTC  publish.py   upload MP3, append to manifest.json, regenerate rss.xml
+```
+
+`scripts/content_bank.json` is the source data for these: `patterns`,
+`tips`, `prompts`, plus `system_design`, `coding_interview` and `info_security`
+sections. Blueprint episodes do not use it.
 
 ## Repo layout
 
 ```
-├── site/                      # Static frontend (mobile-first SPA)
-│   ├── index.html             # 4 tabs: Home, Library, Search, Me + player UI
-│   ├── app.js                 # All client logic (vanilla JS, no framework) ~940 lines
-│   ├── style.css
-│   ├── sw.js                  # Service worker (cache version suffix = v23 etc.)
-│   ├── manifest.json          # LOCAL copy of manifest (also committed at scripts/manifest.json)
-│   ├── manifest.webmanifest   # PWA manifest
-│   ├── solutions.json         # Solution boards shown in player (coding episodes)
-│   └── _headers               # Cache-control headers
-├── functions/                 # Cloudflare Pages Functions
-│   ├── _middleware.js         # AUTH — login/logout + cookie gate (see below)
-│   ├── manifest.json.js       # GET /manifest.json from R2
-│   ├── rss.xml.js             # GET /rss.xml from R2
-│   ├── api/feedback.js        # POST /api/feedback → writes feedback/{date}_ep{id}.json to R2
-│   └── episodes/[file].js     # GET /episodes/:file → MP3 stream from R2
-├── api/                       # Vercel handlers (mirror of functions/): manifest.js, rss.js, r2.js
-├── scripts/                   # ALL pipeline code (Python)
-├── .github/workflows/daily.yml# Cron pipeline
-├── wrangler.toml              # Pages + R2 binding (FEEDBACK_BUCKET)
-├── vercel.json                # Vercel alt config
-├── data/ -> /Users/ding/...   # BROKEN symlink (see gotchas)
-└── feedback/ -> /Users/ding/...  # BROKEN symlink
+site/          static SPA — index.html, app.js, style.css, sw.js, search-index.json
+functions/     Pages Functions — _middleware.js (auth), manifest, rss, episodes/[file]
+api/           Vercel mirror of functions/
+content/       blueprints/, templates/, shows.json, legacy-episodes.json, sources/, notes/
+scripts/       pipeline; scripts/lib/ is the current code, generate_*.py is frozen legacy
+tests/         node:test (*.mjs) + unittest (test_*.py)
+docs/          STATUS.md, UPGRADE-SPEC.md, podcast-craft.md, ANDROID-APP.md, aws-cert-track.md
+data/ feedback/  BROKEN symlinks to another machine — gitignored, recreate with mkdir
 ```
-
-## The pipeline (daily episodes)
-
-```
-18:00 UTC (4 AM AEST)  arrange.py   → reads feedback from R2 → writes plan.json to R2
-19:00 UTC (5 AM AEST)  curate.py    → fetches RSS feeds → data/today.json
-19:00 UTC              generate.py  → plan.json + today.json + content_bank → data/episode.mp3 (edge-tts)
-19:00 UTC              publish.py   → uploads MP3 → updates manifest.json + rss.xml on R2
-                     also: commits manifest.json + data/today.json back to git (bot commit)
-```
-
-The daily workflow (`daily.yml`) has two jobs: `arrange` (18:00) and `publish` (needs: arrange, 19:00). Both install python3.11 + node22 + `npm install`.
-
-### Script roles
-
-| Script | Purpose |
-|--------|---------|
-| `arrange.py` | Collect 7 days of feedback per episode, compute good/bad ratios, pick pattern/tip/prompt, write `plan.json` to R2. Promotion: ≥80% good → appears more; <40% → dropped. |
-| `curate.py` | Fetch 3 RSS feeds (Changelog, Soft Skills Eng, HN), keyword-score articles, write `data/today.json`. |
-| `generate.py` | Build ~3000-word script from plan + content bank + article, run edge-tts (en-US-ChristopherNeural, -15% rate), ffmpeg post-process → `data/episode.mp3`. |
-| `publish.py` | Upload MP3 as `episodes/{date}.mp3`, append episode entry to `manifest.json`, regenerate `rss.xml`, upload all three, save manifest locally. |
-| `r2_utils.py` | wrangler CLI wrapper: `upload`, `upload_bytes`, `upload_json`, `download`, `get_json`, `get_text`. Needs `CLOUDFLARE_API_TOKEN` env. |
-| `tts.py` | Shared TTS library (NEWER, preferred): `synthesize()`, `preprocess_text()` (strips markers, adds pauses), multi-voice `VOICE_MAP`, chunking >5000 chars, `concatenate_mp3()`, `crossfade_mp3()`, `get_duration_str()`. Uses edge-tts **package**, not CLI. |
-| `selector.py` | Alternative plan generator: queries spaced-repetition DB at `~/projects/generic-tutor/data/tutor.db` (sqlite3), picks due concepts, reads concept markdown from `~/projects/generic-tutor/knowledge`, writes `data/plan.json` + `data/script.txt`. Topics: system-design, coding-interview, interview-english. |
-
-### One-off series generators (manual, not in cron)
-
-These follow a pattern: define episode list → build script text → `tts.synthesize` per segment (often multi-voice) → concat/crossfade → then a publish script updates `manifest.json` + `rss.xml` on R2.
-
-- `generate_sd.py` (1512 lines) — system design concept/think-aloud episodes from `content_bank.json` `system_design` sections
-- `generate_mock_interview.py` (671 lines) + `generate_mock_interviews_v2.py` — 2-voice mock interviews (interviewer AvaNeural / candidate BrianNeural)
-- `generate_estimation.py` — back-of-envelope episodes (EmmaNeural)
-- `generate_coding_prep.py` — builds Coding Prep playlist from `scripts/drafts/coding-prep/*.txt` scripts (--all/--id/--publish flags)
-- `generate_coding_mocks.py` — coding mock drills from `scripts/coding_mocks/*.py` modules
-- `generate_behavioral_infosec.py`, `generate_airwallex_speeches.py` — speech/behavioral series
-- `generate_compilation.py` — compiles pattern-compilation episodes
-- `download_youtube.py` + `publish_coding_youtube.py` + `coding_youtube_playlist.json` — audio-first YouTube playlist episodes
-- `batch_publish.py` / `batch_publish_v2.py` — bulk-upload MP3s and register new playlists (v2 is the newer one)
-- `mock_dialogues/*.py` — reusable dialogue builders (30+ topics: distributed_wallet, rate_limiter, fraud_detection, ...)
-- `coding_mocks/*.py` — reusable coding drill builders (two_sum, lru_cache, mono_stack_temperatures, ...)
-
-## Content bank — `scripts/content_bank.json` (225 KB)
-
-The source of all English/content data:
-
-- `patterns` (41) — each: `id`, `phrase`, `category`, `explanation`, `when_to_use`, `examples[]`. Categories: self-description, opinion-stating, transitional, emphasis, refining, bridging, impact, elaboration
-- `tips` (13) — interview frameworks (STAR-LA etc.): `id`, `name`, `category`, `explanation`, `segments[]`
-- `prompts` (60) — practice prompts
-- `system_design` — `core_concepts`, `case_studies`, `architecture_patterns`
-- `coding_interview` — `patterns`, `study_phases`
-- `info_security` — topics
 
 ## R2 object layout (the database)
 
 ```
-manifest.json                     # THE source of truth: title/author/artwork + episodes[] + playlists{}
-rss.xml                           # generated RSS 2.0
-plan.json                         # today's plan (arrange.py output)
-artwork.jpg                       # 1400×1400 podcast artwork
-episodes/{date}.mp3               # daily episodes (2026-07-06.mp3)
-episodes/{theme}.mp3              # series episodes (infosec-zero-trust-api.mp3, ep01-two-sum-think-aloud.mp3, ...)
-feedback/{date}_ep{id}.json       # one file per vote: {"episode": id, "rating": "good"|"bad", "date": "YYYY-MM-DD"}
+manifest.json                # source of truth: metadata + episodes[] + playlists{}
+rss.xml  plan.json  artwork.jpg
+episodes/{slug}.mp3          # series;  episodes/{date}.mp3 for daily
+chapters/  transcripts/  boards/
+feedback/{date}_ep{id}.json  # one file per vote
 ```
 
-Manifest episode entry fields: `id`, `date`, `title`, `description`, `duration`, `file_size_bytes`, `file_url`, `audio_url`, `filename` (series only), `theme` (series only), `pub_date`, `playlist` (show id), `source` (`legacy` | `tts` | `youtube`), plus legacy `pattern`/`tip`/`pattern_id`/`tip_id`. `playlists` maps show id → `{title, description, episode_ids[], icon}`. Currently ~157 episodes across ~12 playlists (see `scripts/manifest.json`).
+Manifest episode fields: `id`, `slug`, `title`, `description`, `duration`,
+`file_size_bytes`, `file_url` (carries `?v=`), `playlist`, `source`
+(`legacy` | `tts` | `youtube`), `has_transcript`, `has_chapters`, `keywords`,
+`sources[]`. `playlists` maps show id → `{title, description, mono, icon, order,
+featured, episode_ids[]}` and is synced from `content/shows.json`.
 
-## Frontend (site/) — vanilla JS SPA
+## Frontend notes
 
-- 4 tabs: **Home** (greeting, continue-card, shows row, featured), **Library** (shows / finished segmented), **Search** (client-side over manifest), **Me** (links to learn.mingli.world, sign out)
-- **Shows** = manifest `playlists`. `SHOW_META` in `app.js` holds title/mono/desc per show id (add new shows there too).
-- Full player: prev/play/next, ±15s, seek, 0.75–1.5× speed, queue, **solution board** toggle (loaded from `solutions.json`, only for coding episodes — `solHint` when missing), mini-player persists across tabs.
-- `solutions.json` — keyed by episode theme/filename → `{tabs: [{title, content}], tutorUrl}`.
-- localStorage: playback progress, queue, library "finished" state.
-- `sw.js` — app-shell cache `podcast-app-v23-studio` (bump version when shipping new assets; note `?v=23` query strings in HTML must match).
-- `_headers`: `/app.js`, `/style.css`, `/sw.js`, `/index.html` are no-cache; everything else cached.
-- Data comes from `GET /manifest.json` (R2-backed, network-first in SW).
+- 4 tabs: Home, Library, Search, Me. Data comes from `GET /manifest.json`.
+- Shows come from the manifest's `playlists`. `SHOW_META` in `app.js` is only a
+  **fallback** for shows the manifest does not describe — register shows in
+  `content/shows.json`, never by editing `app.js`.
+- `sw.js` app-shell cache is `CACHE_V`; bump it and the `?v=` query strings in
+  `index.html` together, or a new shell is served with stale JS
+  (`tests/test_assets.mjs` catches this).
+- `_headers`: `app.js`, `style.css`, `sw.js`, `index.html` are no-cache.
 
-## Auth (functions/_middleware.js)
+## Auth
 
-The entire site is password-gated except public paths. Login is `POST /api/login` with **hardcoded** credentials `ming` / `ping`, which returns a cookie (`mingli_auth`) = SHA-256 of `user:pass:env.AUTH_SECRET`. `env.AUTH_SECRET` defaults to `tutor-local-dev`.
-
-- Public (no auth): `/rss.xml`, `/episodes/`, `/api/rss`, `/manifest.json`, `/api/manifest`, `/artwork`, `/sw.js`, `/manifest.webmanifest`, `/solutions.json`, `/.well-known/`, `/login`
-- `/login` redirects to `/` if already authed; `/api/logout` clears cookie.
-- `env.COOKIE_DOMAIN` optional for cross-subdomain cookie.
-
-## How to run things locally
-
-```bash
-npm install
-pip install -r scripts/requirements.txt   # boto3, feedparser, pyyaml, edge-tts
-npm run dev                               # wrangler pages dev site (R2 binding local; needs CLOUDFLARE_API_TOKEN)
-npm run deploy                            # wrangler pages deploy site --project-name podcast-landing --branch main
-python3 scripts/arrange.py                # pipeline step (needs CLOUDFLARE_API_TOKEN)
-python3 scripts/generate.py               # needs edge-tts + ffmpeg installed
-python3 scripts/publish.py
-python3 scripts/selector.py --topic system-design --dry-run   # tutor-DB based plan (offline, needs ~/projects/generic-tutor)
-python3 scripts/generate_coding_prep.py --all --publish       # series example
-```
-
-There are **no automated tests** — `npm run test:*` just executes pipeline scripts. Verify changes manually (e.g., run generate on a dry script, check manifest validity with `python3 -m json.tool`).
+The whole site is password-gated except public paths. `POST /api/login` with
+hardcoded `ming` / `ping` returns cookie `mingli_auth` = SHA-256 of
+`user:pass:env.AUTH_SECRET`. Public: `/rss.xml`, `/episodes/`, `/manifest.json`,
+`/api/manifest`, `/api/rss`, `/artwork`, `/sw.js`, `/manifest.webmanifest`,
+`/solutions.json`, `/.well-known/`, `/login`. Hardcoding is intentional for a
+single-user site — keep the pattern if you change it.
 
 ## Env / secrets
 
 | Var | Where | Used by |
-|-----|-------|---------|
-| `CLOUDFLARE_API_TOKEN` | GH secrets, local env | all R2 ops via wrangler; Vercel `api/r2.js` |
-| `BASE_URL` | GH vars | publish.py RSS generation (defaults to https://podcast.mingli.world) |
-| `AUTH_SECRET` | Pages env var | middleware token (default `tutor-local-dev`) |
-| `COOKIE_DOMAIN` | Pages env var | optional |
-| `TUTOR_DB_PATH` / `KNOWLEDGE_DIR_PATH` | local | selector.py (defaults to `~/projects/generic-tutor`) |
+|---|---|---|
+| `CLOUDFLARE_API_TOKEN` | GH secrets, `agent` host | all R2 ops via wrangler |
+| `BASE_URL` | GH vars | RSS generation (defaults to the live domain) |
+| `AUTH_SECRET` | Pages env | middleware token (default `tutor-local-dev`) |
+| `COOKIE_DOMAIN` | Pages env | optional, cross-subdomain cookie |
+| `TUTOR_DB_PATH` / `KNOWLEDGE_DIR_PATH` | local | `selector.py` |
 
-## Gotchas & conventions
+## Gotchas
 
-1. **`data/` and `feedback/` are broken symlinks** on this machine (→ `/Users/ding/workspace/podcast/...`, a different machine). They're gitignored. Pipeline scripts write working files to `data/` (episode.mp3, script.txt, plan.json, today.json) — they must be recreated (`mkdir data`) if missing on a fresh checkout.
-2. **Two manifest copies**: `scripts/manifest.json` (committed, refreshed by publish.py + bot commit) and `site/manifest.json` (also committed, used by frontend). `functions/manifest.json.js` serves the R2 copy which is authoritative at runtime.
-3. **Two TTS paths**: `generate.py` shells out to the `edge-tts` CLI with its own logic; `tts.py` is the newer library (edge-tts package + preprocessing + chunking). Prefer `tts.py` for new code.
-4. **Hardcoded credentials** (`ming`/`ping`) in `functions/_middleware.js` — intentional for personal use; keep pattern if changing.
-5. **Two deploy configs**: Cloudflare (`wrangler.toml`, live) and Vercel (`vercel.json` + `api/`, mirror). Cloudflare is the source of truth — update both if changing endpoints.
-6. **CSS/app cache busting**: bump `?v=` query on `style.css`/`app.js` links AND the `CACHE_V` in `sw.js` together.
-7. **Episode IDs**: daily pipeline auto-increments from manifest; series scripts hardcode IDs (300+, 46+, etc.) and must not collide with existing ones.
-8. **MP3 naming**: daily = `episodes/{date}.mp3`; series = `episodes/{theme}.mp3`. Older episodes once had a date prefix bug (removed) — check `file_url` consistency if touching audio URLs.
-9. **Bot commits**: the daily workflow pushes `manifest.json` + `data/today.json` back to the repo after publishing.
-10. **RSS pubDate** is hardcoded to `{date}T06:00:00+10:00` in publish.py.
-11. R2 listing via wrangler is avoided — scripts iterate known keys by convention (e.g., feedback scanned as `feedback/{date}_ep{id}.json` for last 7 days).
-12. Keep MP3s small: R2 free tier is 10 GB; there's a noted (unimplemented) idea to prune episodes older than 90 days.
+1. **Two manifest copies in git** — `scripts/manifest.json` and
+   `site/manifest.json`. The R2 copy is authoritative at runtime; `npm run
+   gates` checks parity. Never hand-edit either.
+2. **Episode ids are allocated at build time** from the manifest and written
+   back into the blueprint. Never pick one yourself.
+3. **`npm run test:*` are not tests** — they execute pipeline scripts. The test
+   suite is `npm test`.
+4. **Two deploy configs** — Cloudflare (live) and Vercel (mirror). Update both
+   if you change endpoints.
+5. **Two TTS paths** — `generate.py` shells out to the edge-tts CLI; `scripts/
+   tts.py` is the library used by everything new. Prefer `tts.py`.
+6. **R2 listing is avoided** — scripts iterate known keys by convention.
+7. **R2 free tier is 10 GB** and nothing prunes yet.
+
+---
+
+Design: `docs/UPGRADE-SPEC.md` · Decisions and tradeoffs: `DECISIONS.md` ·
+Writing craft: `docs/podcast-craft.md` · Android: `docs/ANDROID-APP.md`
