@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 386,
   "slug": "saa-c03-domain3-high-performing",
   "show": "aws-solutions-architect",
   "template": "cert-prep-2voice",
@@ -256,8 +257,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. A nightly job takes about forty minutes. Can it be a function, and why?"
+          "text": "Drill. Question one. A nightly job takes about forty minutes. Can it be a function, and why?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -265,8 +266,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. Twenty machines must read and write the same directory of files at once, on Linux. Which storage, and why not block storage?"
+          "text": "Question two. Twenty machines must read and write the same directory of files at once, on Linux. Which storage, and why not block storage?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -274,8 +275,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. Users in another continent complain about slow images. Where does the fix go?"
+          "text": "Question three. Users in another continent complain about slow images. Where does the fix go?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -283,8 +284,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. The cache layer itself must survive the loss of a zone. Which of the two in memory engines, and why?"
+          "text": "Question four. The cache layer itself must survive the loss of a zone. Which of the two in memory engines, and why?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",

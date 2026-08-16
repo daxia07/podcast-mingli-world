@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 385,
   "slug": "saa-c03-domain2-resilient",
   "show": "aws-solutions-architect",
   "template": "cert-prep-2voice",
@@ -256,8 +257,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. The business will accept fifteen minutes of downtime and no more than one minute of lost data, across regions. Which strategy, and which one do you rule out?"
+          "text": "Drill. Question one. The business will accept fifteen minutes of downtime and no more than one minute of lost data, across regions. Which strategy, and which one do you rule out?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -265,8 +266,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. Reads are saturating the database. Does adding a second availability zone help, and why?"
+          "text": "Question two. Reads are saturating the database. Does adding a second availability zone help, and why?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -274,8 +275,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. A downstream service is unreliable and no request may be lost. What changes in the architecture?"
+          "text": "Question three. A downstream service is unreliable and no request may be lost. What changes in the architecture?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -283,8 +284,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. Messages must be processed strictly in order and exactly once. What do you give up?"
+          "text": "Question four. Messages must be processed strictly in order and exactly once. What do you give up?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",

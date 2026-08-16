@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 384,
   "slug": "scs-c03-domain3-infrastructure-security",
   "show": "aws-security-specialty",
   "template": "cert-prep-2voice",
@@ -269,8 +270,8 @@
       "lines": [
         {
           "voice": "coach",
-          "pause_after": 5.0,
-          "text": "Drill. Question one. One address is sending thousands of requests a minute to a login page. Which control, and why not the other one?"
+          "text": "Drill. Question one. One address is sending thousands of requests a minute to a login page. Which control, and why not the other one?",
+          "pause_after": 5.0
         },
         {
           "voice": "sceptic",
@@ -278,8 +279,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question two. Finance wants to be protected against the bill caused by scaling during an attack. What does that phrase buy?"
+          "text": "Question two. Finance wants to be protected against the bill caused by scaling during an attack. What does that phrase buy?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -287,8 +288,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question three. An assistant with a database role is manipulated by text in a document it reads. Name the two controls, and which one limits the damage."
+          "text": "Question three. An assistant with a database role is manipulated by text in a document it reads. Name the two controls, and which one limits the damage.",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",
@@ -296,8 +297,8 @@
         },
         {
           "voice": "coach",
-          "pause_after": 4.0,
-          "text": "Question four. Data is leaving the network encoded inside name lookups. Which control sees it?"
+          "text": "Question four. Data is leaving the network encoded inside name lookups. Which control sees it?",
+          "pause_after": 4.0
         },
         {
           "voice": "sceptic",

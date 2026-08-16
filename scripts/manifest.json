@@ -4523,6 +4523,321 @@
       ]
     },
     {
+      "id": 384,
+      "slug": "scs-c03-domain3-infrastructure-security",
+      "title": "SCS-C03 Domain 3 — The Edge, and the Model Behind It",
+      "description": "Eighteen percent, from the edge inward. Which layer sees which attack, encryption between nodes, and the content the new exam version added that nobody else is teaching: guardrails for a generative model, and the ways one gets attacked.",
+      "duration": "11:53",
+      "file_size_bytes": 5706861,
+      "file_url": "https://podcast.mingli.world/episodes/scs-c03-domain3-infrastructure-security.mp3?v=90f9a649",
+      "filename": "scs-c03-domain3-infrastructure-security.mp3",
+      "playlist": "aws-security-specialty",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "scs-c03",
+        "waf",
+        "shield",
+        "bedrock guardrails",
+        "prompt injection",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "scs-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03.html",
+          "title": "AWS Certified Security - Specialty (SCS-C03) Exam Guide",
+          "used_for": [
+            "domain three weight of eighteen percent",
+            "infrastructure security task statements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "scs-c03-appendix-b",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/security-specialty-03/security-specialty-03-appendix-b.html",
+          "title": "Appendix: Comparison of SCS-C02 and SCS-C03",
+          "used_for": [
+            "removal of network protocol fundamentals, host-based firewalls and reachability analysis",
+            "addition of generative AI guardrails and inter-node encryption in transit"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "shield-tiers",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html",
+          "title": "AWS Shield Advanced overview",
+          "used_for": [
+            "response team access",
+            "cost protection for scaling during an attack",
+            "difference from the standard tier"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "waf-rate-based",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html",
+          "title": "Rate-based rule statement in AWS WAF",
+          "used_for": [
+            "limiting requests from a single source",
+            "request-level inspection"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "cloudfront-oac",
+          "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+          "title": "Restricting access to an Amazon S3 origin",
+          "used_for": [
+            "origin access control keeps the bucket private",
+            "signed URLs and signed cookies for per-user access"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "route53-dns-firewall",
+          "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html",
+          "title": "Route 53 Resolver DNS Firewall",
+          "used_for": [
+            "blocking domain lookups",
+            "detecting exfiltration through DNS"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "bedrock-guardrails",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+          "title": "Amazon Bedrock Guardrails",
+          "used_for": [
+            "denied topics and content filters",
+            "sensitive information filtering",
+            "contextual grounding checks",
+            "applied to both input and output"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "owasp-llm-top-10",
+          "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+          "title": "OWASP Top 10 for Large Language Model Applications",
+          "used_for": [
+            "prompt injection as the leading risk",
+            "excessive agency"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 385,
+      "slug": "saa-c03-domain2-resilient",
+      "title": "SAA-C03 Domain 2 — How Much Are You Willing To Lose",
+      "description": "Twenty six percent. Two numbers decide every answer in this domain, the standby that serves nobody, and why a queue is a resilience control rather than a performance one.",
+      "duration": "11:00",
+      "file_size_bytes": 5280429,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-domain2-resilient.mp3?v=661789c3",
+      "filename": "saa-c03-domain2-resilient.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "high availability",
+        "disaster recovery",
+        "multi-az",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+          "used_for": [
+            "domain two weight of twenty six percent",
+            "task statements for resilient architectures"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "dr-options",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
+          "title": "Disaster recovery options in the cloud",
+          "used_for": [
+            "backup and restore, pilot light, warm standby and multi-site",
+            "recovery point and recovery time objectives"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "rds-multi-az",
+          "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+          "title": "Multi-AZ deployments for high availability",
+          "used_for": [
+            "synchronous standby",
+            "automatic failover",
+            "standby does not serve read traffic"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "rds-read-replicas",
+          "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+          "title": "Working with DB instance read replicas",
+          "used_for": [
+            "asynchronous replication for read scaling",
+            "cross-Region replicas and manual promotion"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "aurora-global",
+          "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+          "title": "Amazon Aurora global databases",
+          "used_for": [
+            "storage replicated across three Availability Zones",
+            "cross-Region replication lag",
+            "recovery objectives for global deployments"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sqs-dlq",
+          "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+          "title": "Amazon SQS dead-letter queues",
+          "used_for": [
+            "messages moved after a maximum receive count",
+            "isolating poison messages"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "sqs-fifo",
+          "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+          "title": "Amazon SQS FIFO queues",
+          "used_for": [
+            "ordering and exactly-once processing",
+            "throughput trade-off against standard queues"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "asg-health-checks",
+          "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html",
+          "title": "Health checks for instances in an Auto Scaling group",
+          "used_for": [
+            "default instance status checks versus load balancer health checks",
+            "replacement of instances failing the load balancer check"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 386,
+      "slug": "saa-c03-domain3-high-performing",
+      "title": "SAA-C03 Domain 3 — Match The Access Pattern",
+      "description": "Twenty four percent. The exam never asks which service is fastest. It hands you an access pattern in two sentences and expects the family that fits it: compute, storage, database, and the four places a cache can live.",
+      "duration": "11:21",
+      "file_size_bytes": 5450157,
+      "file_url": "https://podcast.mingli.world/episodes/saa-c03-domain3-high-performing.mp3?v=3b488946",
+      "filename": "saa-c03-domain3-high-performing.mp3",
+      "playlist": "aws-solutions-architect",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "saa-c03",
+        "performance",
+        "caching",
+        "storage selection",
+        "aws certification"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "saa-c03-exam-guide",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+          "used_for": [
+            "domain three weight of twenty four percent",
+            "task statements for high-performing architectures"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "lambda-limits",
+          "url": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
+          "title": "Lambda quotas",
+          "used_for": [
+            "maximum function timeout of fifteen minutes"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "ebs-volume-types",
+          "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
+          "title": "Amazon EBS volume types",
+          "used_for": [
+            "general purpose, provisioned IOPS and throughput optimised characteristics",
+            "random versus sequential access suitability"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "instance-store",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html",
+          "title": "Amazon EC2 instance store",
+          "used_for": [
+            "ephemeral storage lost when the instance stops",
+            "suitability for caches and scratch data"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "fsx-lustre",
+          "url": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html",
+          "title": "What is Amazon FSx for Lustre",
+          "used_for": [
+            "high throughput parallel file system",
+            "linking a file system to an S3 bucket"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "elasticache-engines",
+          "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html",
+          "title": "Comparing node-based Valkey, Memcached, and Redis OSS clusters",
+          "used_for": [
+            "replication, failover and persistence differences between engines",
+            "multi-threaded simple caching"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "dax",
+          "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+          "title": "In-memory acceleration with DynamoDB Accelerator",
+          "used_for": [
+            "microsecond read latency",
+            "no application rewrite required"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "global-accelerator",
+          "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
+          "title": "What is AWS Global Accelerator",
+          "used_for": [
+            "static anycast addresses",
+            "non-HTTP protocols and regional failover",
+            "distinction from a content delivery network"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -5317,7 +5632,9 @@
       "episode_ids": [
         364,
         365,
-        366
+        366,
+        385,
+        386
       ]
     },
     "aws-security-specialty": {
@@ -5334,7 +5651,8 @@
         379,
         381,
         382,
-        383
+        383,
+        384
       ]
     },
     "aws-mlops": {
