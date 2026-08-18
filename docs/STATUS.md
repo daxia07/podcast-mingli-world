@@ -50,8 +50,8 @@ UPGRADE-SPEC §0b.
 | | Count |
 |---|---|
 | Episodes in the manifest | 200 |
-| Shows | 18 — 15 active, 3 archived |
-| Blueprints | 124 |
+| Shows | 20 — 17 active, 3 archived |
+| Blueprints | 137 |
 | Templates | 12 |
 | Episodes with exact chapters + transcript | 43 |
 | Search index | 2,355 lines + 220 chapters across 43 episodes (~385 KB) |

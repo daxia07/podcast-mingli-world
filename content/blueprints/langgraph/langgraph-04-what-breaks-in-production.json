@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "slug": "langgraph-04-what-breaks-in-production",
+  "show": "langgraph",
+  "template": "concept-explainer",
+  "title": "LangGraph 4 — What Breaks in Production",
+  "description": "Fan-out that finds your rate limit, retries that double-charge, caches that serve yesterday, and the checkpoint table nobody planned for.",
+  "keywords": [
+    "langgraph",
+    "production",
+    "reliability",
+    "cost",
+    "observability"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "title": "Why this matters",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The graph that works in a notebook and the graph that survives traffic differ in five places. Where state lives. Who owns the thread identifier. What happens when a step fails. What you can see afterwards. And what it costs."
+        },
+        {
+          "voice": "narrator",
+          "text": "None of those five is a feature you switch on. They are decisions, and the framework's contribution is that it makes them implementable rather than making them for you."
+        },
+        {
+          "voice": "narrator",
+          "text": "So this episode is a list of things that break, each with the decision that would have prevented it. Nothing here is exotic. All of it is boring, and all of it has happened."
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "title": "How it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the failure that is easiest to cause and hardest to see coming: unbounded fan out."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a mechanism for dynamic parallelism. From a routing function you return a list of send objects, one per item, and each schedules an independent execution of a node with its own input. Twenty documents, twenty parallel summarisers. It is the map half of map reduce, and the reduce half is just a reducer on the channel they all write to."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is also one line away from a live incident. Fan out over a query that returned two thousand rows and you launch two thousand model calls in a single super step. The runtime will do it. Your provider will not. The cap belongs in the routing function, before the fan out, and the number should be a constant someone chose rather than however many rows came back."
+        },
+        {
+          "voice": "narrator",
+          "text": "One subtlety about that mechanism, because it trips everyone once. The dictionary you send becomes the entire input to that node. Not a merge with the graph state. The whole input. So a node written against the full state, then reached by a send, fails on the first key it reads that you did not send. Give the mapped node its own narrow schema and the asymmetry becomes visible in the types instead of at runtime."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next, retries. You can attach a retry policy per node, with attempts and backoff. Sensibly, the defaults retry on connection errors and transient server errors rather than on everything, and that instinct is correct: a parsing error in your own code will not improve on the third attempt, and retrying it just triples the latency of a guaranteed failure."
+        },
+        {
+          "voice": "narrator",
+          "text": "But a retried node re runs the whole node. Side effects included. So the same rule as the human pause applies here, for the same reason: idempotency is not a nice property, it is the precondition for every recovery mechanism in the system. Retry, resume, replay, and step re execution all mean the same thing to your node, which is that it may run twice."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is worth stating as a ranking. If you can only do one thing for reliability, make nodes idempotent. It is worth more than the retry policy, more than the fallback, more than any of it, because everything else assumes it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second on that list is not more retries. It is fallback routing. After three failures, route to a smaller model, or a cached answer, or a human. That is a conditional edge, not a try block, and it is the thing that keeps the product usable during a provider outage rather than merely correct about being broken."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then caching. You can cache a node on its input with a time to live. Worth it for deterministic expensive work that repeats. Not worth it for anything time sensitive. And be realistic about hit rates: a node whose input includes the whole message history has a different key every single turn, so the cache never hits and you have added a lookup for nothing. Cache narrow nodes with narrow inputs."
+        },
+        {
+          "voice": "narrator",
+          "text": "Last of the mechanics, streaming, which people file under user experience and is actually an operational tool. There are several granularities. Full state after each step, which is heavy. Just the deltas each node returned, which is what drives a progress display. Model tokens as they are generated. And a custom channel that a node can write to from inside itself."
+        },
+        {
+          "voice": "narrator",
+          "text": "That last one matters more than it sounds. The delta stream fires when a node finishes, which is exactly when the user has already decided your product is broken. If a node takes forty seconds, it has to report from inside, and the custom stream is the only way to do it."
+        }
+      ]
+    },
+    {
+      "id": "real-world",
+      "title": "In the wild",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The concrete operational facts, in the order they tend to bite."
+        },
+        {
+          "voice": "narrator",
+          "text": "One. The in memory checkpointer in production. It works in development and in a single instance staging environment, and it loses every conversation on deploy. The failure is silent because everything still functions; users just find their history gone."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two. No checkpoint retention. Nothing prunes them. This shows up as an unexplained database bill and a table that is awkward to clean once it is large."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three. Serverless and long runs. The function times out mid graph. On synchronous durability the run is resumable and you can pick it back up. On the exit setting it is simply gone, having spent every token along the way."
+        },
+        {
+          "voice": "narrator",
+          "text": "Four. Recursion limit raised to make an error go away. The default of twenty five counts super steps. When you hit it, the honest question is which cycle does not terminate, and raising the number converts a fast, cheap failure into a slow, expensive one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Five. Cost measured per call. Retries are billed per attempt, and multi agent handoffs re read context, so the right unit is cost per completed run. A cheap model that fails twice and retries is more expensive than an expensive model that works, and per call metrics hide that completely."
+        },
+        {
+          "voice": "narrator",
+          "text": "And on observability, the pairing worth having is traces plus checkpoint history. Traces tell you what happened. The checkpoint history lets you rewind to the step before it happened and try again with one thing changed. Having both is the practical argument for running a graph rather than a loop, and it is worth more than any single feature in the framework."
+        }
+      ]
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The big deployment trade-off is one question: do you need runs that outlive an HTTP request?"
+        },
+        {
+          "voice": "narrator",
+          "text": "If the answer is no, compile the graph and call it inside your own service. Total control, and you own scaling and queuing, which you were doing anyway."
+        },
+        {
+          "voice": "narrator",
+          "text": "If the answer is yes, you need a queue, a durable store, and something that can hand back a run identifier. You can build that, or you can run a server that provides threads, runs and streaming over HTTP with Postgres and Redis behind it, or you can pay for that server operated by someone else. The work is the same in all three cases. The only question is who does it."
+        },
+        {
+          "voice": "narrator",
+          "text": "On multi agent, which is the direction everyone drifts: it is a context isolation technique, not an intelligence multiplier. Splitting one agent into four gives each a smaller tool list and a narrower prompt. It also multiplies token spend, typically five to fifteen times for the same task, and adds a coordination failure that did not exist before. Two agents that can hand to each other will ping pong, and a hop counter with a hard cap in the router is not optional."
+        },
+        {
+          "voice": "narrator",
+          "text": "Build a subgraph when you want clean code. Build a second agent when a single agent's context or tool list has genuinely stopped working. Those are different problems and only one of them costs five times as much."
+        },
+        {
+          "voice": "narrator",
+          "text": "Testing is the cheapest thing on this list and the most skipped. Routing functions are pure functions over a dictionary, so they unit test in four lines and they cover most of your control flow. Then one graph level test with a fake model and an in memory checkpointer, asserting the sequence of nodes visited. And one resume test: interrupt, resume, assert the side effect happened once. That last test is the regression test for the duplicate charge, and it is about fifteen lines."
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "In an interview",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The move here is to answer an operational question operationally."
+        },
+        {
+          "voice": "narrator",
+          "text": "If someone asks how you would make an agent reliable, do not start with prompts. Start with: every recovery mechanism in the system re runs a node, so the first requirement is that nodes are idempotent. Then retries for the transient tail. Then a degraded path for sustained failure."
+        },
+        {
+          "voice": "narrator",
+          "text": "And if they ask what surprised you, the checkpoint table is a good answer, because it is specific, unglamorous, and clearly the answer of someone who ran the thing rather than read about it."
+        },
+        {
+          "voice": "narrator",
+          "text": "That closes the series. Four episodes: why a graph, state and reducers, checkpoints and the pause, and what breaks. If you take one sentence from all of it, take this one. The framework does not make your agent smarter. It makes it recoverable, inspectable, and constrained, and those three are what turn a demo into something you can leave running."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "id": "langgraph-docs",
+      "url": "https://docs.langchain.com/oss/python/langgraph",
+      "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+      "used_for": [
+        "api behaviour",
+        "defaults",
+        "durability modes"
+      ]
+    }
+  ]
+}

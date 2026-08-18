@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "slug": "langgraph-03-checkpoints-and-the-pause",
+  "show": "langgraph",
+  "template": "concept-explainer",
+  "title": "LangGraph 3 — Checkpoints, Threads and the Human Pause",
+  "description": "One line of setup buys memory, crash recovery, human approval and time travel. Plus the re-execution rule that causes duplicate charges.",
+  "keywords": [
+    "langgraph",
+    "checkpointer",
+    "human in the loop",
+    "interrupt",
+    "time travel"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "title": "Why this matters",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "A customer is charged twice for the same refund. The logs show the refund node ran once. The support ticket says otherwise, and the bank agrees with the support ticket."
+        },
+        {
+          "voice": "narrator",
+          "text": "What happened is not a bug in anyone's business logic. It is a rule about how a paused graph resumes, and it is the single most common defect that reaches production in a human in the loop system. By the end of this episode you will know the rule and the one line placement that prevents it."
+        },
+        {
+          "voice": "narrator",
+          "text": "But start with what you are buying. One line of setup, a checkpointer, and you get four things that look unrelated and are actually the same feature. Conversation memory. Crash recovery. A pause that can last three days. And the ability to rewind a run to any earlier point and take a different path."
+        },
+        {
+          "voice": "narrator",
+          "text": "They are the same feature because they all rest on one mechanism: after every super step, the entire state is written to storage under a thread identifier."
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "title": "How it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Attach a checkpointer when you compile. From that moment, every call must carry a thread identifier in its config."
+        },
+        {
+          "voice": "narrator",
+          "text": "Same thread identifier, same conversation, state carried forward. New thread identifier, clean slate. That is the whole memory model, and it is worth pausing on how much it is not doing. There is no summarisation, no retrieval, no cleverness. It is the state, saved, keyed by a string."
+        },
+        {
+          "voice": "narrator",
+          "text": "Which means the string matters enormously. Attach a checkpointer and forget to pass a thread identifier, and it raises, which is fine. Pass a fresh random one on every request, and every request has amnesia. The code looks right. Memory just never works. That is a much worse failure than an exception."
+        },
+        {
+          "voice": "narrator",
+          "text": "And it is a security boundary. If the thread identifier comes from the client, a user can ask for someone else's conversation and get it. Derive it on the server from the authenticated session. Always."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the pause. There is a function called interrupt. You call it inside a node with a payload. The graph stops, checkpoints, and surfaces that payload to whoever called it. The process can now exit entirely. Nothing is being held open."
+        },
+        {
+          "voice": "narrator",
+          "text": "Later, and later can mean three days, you call the graph again with a resume command carrying the human's answer. Execution restarts, and this time the interrupt call returns that answer instead of stopping."
+        },
+        {
+          "voice": "narrator",
+          "text": "Here is the rule. Resuming does not continue from the line after the interrupt. It re runs the node from the top. Everything before the interrupt call in that node executes a second time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Read that again, because it is the refund bug. If your node charges the card and then asks for approval, the charge happens on the first pass, the graph pauses, the human approves, the node runs again from the top, and the card is charged again."
+        },
+        {
+          "voice": "narrator",
+          "text": "The fix is placement, not cleverness. Put the interrupt as early in the node as you can. Do the side effect after it, never before. If you cannot avoid work before the pause, put an idempotency key in state and check it at the top of the node."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a second flavour of the same idea called a static interrupt, configured at compile time: pause before this node, or after that one, without touching node code. Good for debugging, and good for a blanket policy like always approve sending. Less good for a conditional policy like only ask when the amount is over ten thousand, which is what the in node version gives you."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then time travel, which falls out for free. Because every step is checkpointed, you can list the history of a thread, pick any checkpoint, and resume from it. Everything after that point re executes, and the new run branches off as its own line of history rather than overwriting the old one. So the original trajectory stays inspectable."
+        },
+        {
+          "voice": "narrator",
+          "text": "You can also edit state by hand, writing a new checkpoint as if a particular node had produced it. That is the fix the agent's mistake and let it carry on primitive. Note the as if a particular node part: which node you claim wrote it also determines what runs next, because routing is computed from the writing node. Get that argument wrong and your state edit is correct while the graph goes somewhere unexpected, which is a confusing thing to debug."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is one more persistence layer, and confusing it with the checkpointer is a common mistake worth heading off."
+        },
+        {
+          "voice": "narrator",
+          "text": "The checkpointer remembers this conversation. A separate thing, called the store, remembers this user, across every conversation they ever have. They are deliberately different subsystems, because they have different jobs. Thread state is a transcript that has to replay exactly. Long term memory is a knowledge base that is written deliberately and read from everywhere."
+        },
+        {
+          "voice": "narrator",
+          "text": "The store is a namespaced key value store with optional semantic search. The namespace is a tuple, typically the user identifier and a category, and here is the part that matters: there is no implicit tenancy. Whatever you put in that namespace is the entire isolation model. Derive the first element from the authenticated session, never from model output, or you have built a cross tenant read."
+        },
+        {
+          "voice": "narrator",
+          "text": "And be selective about what goes in. Everything you retrieve from memory goes into the prompt and competes with the actual task for attention and budget. A store filled with restated conversation makes every future turn worse, not better. Stale memories are worse still, because a fact written eighteen months ago is now a confident falsehood the model has no reason to doubt."
+        }
+      ]
+    },
+    {
+      "id": "real-world",
+      "title": "In the wild",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Some specifics that matter when you build this."
+        },
+        {
+          "voice": "narrator",
+          "text": "A snapshot from the history is not just values. It carries the channel values, the nodes that are about to run, the checkpoint identifier, metadata about which node wrote it and at which step, and any pending tasks including interrupts. That is enough to reconstruct exactly why a run is where it is."
+        },
+        {
+          "voice": "narrator",
+          "text": "Multiple interrupt calls in one node are resolved positionally on resume. So if you reorder them between deploys, saved resume values match up with the wrong calls. Treat their order as part of your interface."
+        },
+        {
+          "voice": "narrator",
+          "text": "The documentation is explicit that a checkpointer and a thread identifier are required for interrupts. There is no pausing a stateless graph. If you want the human step, you have accepted the database."
+        },
+        {
+          "voice": "narrator",
+          "text": "Durability interacts with all of this. On the exit setting, state is written only when the run completes, so a crash mid run leaves nothing to resume. Anything that waits on a human runs on the synchronous setting, because the pause is precisely a crash you are choosing to have."
+        },
+        {
+          "voice": "narrator",
+          "text": "And replay does not undo side effects. Rewinding a run that sent emails sends the emails again on the way forward. Time travel is a debugging tool for state, not a transaction rollback."
+        }
+      ]
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "What does this cost? Three things, and they are all operational rather than intellectual."
+        },
+        {
+          "voice": "narrator",
+          "text": "First, a database on the critical path. On the synchronous durability setting, every super step waits for a write. For a ten step graph, that is ten round trips you did not have before. The asynchronous setting gets most of the safety back for most of the speed, with a small window where a crash costs the last step."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second, unbounded growth. Checkpoints accumulate and nothing removes them. A thread that lives for months holds every step of every turn. Decide retention on day one, when it is a configuration line, rather than in month four, when it is a migration against a table nobody wants to touch."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third, schema coupling to in flight runs. A deploy that renames a channel breaks any run that was paused when it went out, because that run resumes into a state whose keys no longer match. Add channels freely. Renaming means draining first, or writing a migration."
+        },
+        {
+          "voice": "narrator",
+          "text": "And a design trade-off on the pause itself. A human approving a draft three days later is approving something written against a world that may have moved. The framework will happily resume; whether that is correct is your problem. Where the world can change, re validate after resume rather than trusting the paused state."
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "In an interview",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "If someone asks how you would build an approval step, the weak answer describes a queue and a callback. The strong answer names the failure it prevents."
+        },
+        {
+          "voice": "narrator",
+          "text": "Try this. The pause has to be a checkpoint rather than a blocked thread, because a human might take days, and no process should be alive for that. And the node has to be written so that resuming re runs it from the top without repeating side effects, because that is what resume actually does."
+        },
+        {
+          "voice": "narrator",
+          "text": "That second sentence is the one that lands, because it is the thing people learn from an incident rather than from documentation."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: the last one, and the least glamorous. What actually breaks when this thing carries traffic."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "id": "langgraph-docs",
+      "url": "https://docs.langchain.com/oss/python/langgraph",
+      "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+      "used_for": [
+        "api behaviour",
+        "defaults",
+        "durability modes"
+      ]
+    }
+  ]
+}

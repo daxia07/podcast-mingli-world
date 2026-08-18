@@ -174,6 +174,15 @@
       "default_template": "deep-dive-2voice",
       "order": 14,
       "featured": false
+    },
+    "langgraph": {
+      "title": "LangGraph — Agents as Graphs",
+      "description": "Building stateful agents with LangGraph: the state and reducer model, the execution engine underneath it, checkpointed durability, the human pause, and what actually breaks in production.",
+      "mono": "LG",
+      "icon": "🕸️",
+      "default_template": "concept-explainer",
+      "order": 15,
+      "featured": true
     }
   }
 }

@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "slug": "langgraph-01-why-a-graph",
+  "show": "langgraph",
+  "template": "concept-explainer",
+  "title": "LangGraph 1 — Why a Graph and Not a Loop",
+  "description": "The agent loop everyone writes first, the four things it cannot do, and what a graph gives you instead.",
+  "keywords": [
+    "langgraph",
+    "agents",
+    "state machine",
+    "orchestration"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "title": "Why this matters",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Every agent starts life as the same twenty lines. A while loop. Call the model. If the model asked for a tool, run the tool, append the result, loop again. Stop when it stops asking. That code is correct, it is readable, and for a demo it is genuinely all you need."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then it meets reality, and it fails in four specific ways. Not vaguely. Four."
+        },
+        {
+          "voice": "narrator",
+          "text": "One. The process dies forty seconds into a two minute run. There is no resume point, because the only record of where you were is the call stack, and the call stack is gone. You start again from the top and pay for every token a second time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two. A human has to approve something before it happens. Sending the email, issuing the refund, merging the branch. In a loop, waiting for a human means holding a process open for however long that takes. Minutes is awkward. Hours is a leak. Days is impossible."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three. Something goes wrong and you want to know which step made the bad call. Inside a loop, the decision was an if statement three frames deep. There is nothing to inspect afterwards. You have logs, if you remembered to write them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Four. You need a rule that always holds. Never spend more than ten dollars. Never send without approval. In a loop where the model decides what happens next, that rule lives in the prompt, and a prompt is a suggestion."
+        },
+        {
+          "voice": "narrator",
+          "text": "LangGraph is what you get when you take those four problems seriously. It is not a smarter agent. It is the same agent, made resumable, pausable, inspectable, and constrained."
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "title": "How it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The whole framework is four declarations and one compile step."
+        },
+        {
+          "voice": "narrator",
+          "text": "First, a state schema. This is the part people underestimate, and it is the part that decides whether the rest works. You declare a typed dictionary whose keys are the things your agent knows. Messages. The current plan. A retry count. Whatever the run needs to carry."
+        },
+        {
+          "voice": "narrator",
+          "text": "That schema is not a convenience. It is the contract with the runtime. Anything in it gets persisted at every step and survives a crash. Anything not in it lives in a local variable and disappears the moment the process does."
+        },
+        {
+          "voice": "narrator",
+          "text": "Second, nodes. A node is a function that takes the state and returns a partial update. Not the whole state. Just the keys it touched. If a node classifies an email, it returns one key, the label. Everything else it leaves alone."
+        },
+        {
+          "voice": "narrator",
+          "text": "Third, edges. An edge says what runs next. Some edges are fixed: after classify, always draft. Some are conditional: you write an ordinary Python function that looks at the state and returns the name of the next node. That function is plain code. No model call. It is deterministic, and you can unit test it with a hand built dictionary in about four lines."
+        },
+        {
+          "voice": "narrator",
+          "text": "This is the moment the framework earns its keep, so sit with it. In the loop version, the model decides what happens next. In the graph version, your routing function decides, and the model only decides what goes into the state that your function reads. Control flow moved from the prompt into code."
+        },
+        {
+          "voice": "narrator",
+          "text": "Fourth, compile. The builder is validated and turned into a runnable object. Missing edge targets, unreachable nodes, no path to the end: those become errors at compile time rather than hangs at three in the morning."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now, the part that surprises people. The engine underneath is not a for loop over nodes. It is a bulk synchronous parallel engine, the same model as Pregel, the graph processing system Google published for computing over very large graphs."
+        },
+        {
+          "voice": "narrator",
+          "text": "Execution advances in what the documentation calls super steps. In each super step, every node that has input runs. They all run against the same snapshot of the state. Then, and only then, all their updates are applied at once. Then the next set of nodes is scheduled."
+        },
+        {
+          "voice": "narrator",
+          "text": "That has one consequence you need to internalise before you write anything real. Two nodes running in the same super step cannot see each other's writes. If node B needs node A's output, they must be in different super steps. You express that by putting an edge between them. People spend an afternoon debugging this before they read it, and about four seconds after."
+        },
+        {
+          "voice": "narrator",
+          "text": "It has a second consequence. Because all the updates land together, two parallel branches might both write the same key. What happens then? That is what a reducer is for. A reducer is a function that says how a new value merges with the old one. No reducer means overwrite, last write wins. Add a reducer, and two branches writing a list get their lists concatenated instead of one silently winning."
+        },
+        {
+          "voice": "narrator",
+          "text": "The message history has its own reducer, because concatenating messages is not quite right. It merges by message identifier, so a message that is re emitted updates in place rather than appearing twice."
+        },
+        {
+          "voice": "narrator",
+          "text": "And then, one line: attach a checkpointer. Now the state after every super step is written to storage, keyed by a thread identifier. That single addition is what turns the graph from a function into a process. Conversation memory, crash recovery, the human pause, and the ability to rewind are all the same feature seen from four angles."
+        }
+      ]
+    },
+    {
+      "id": "real-world",
+      "title": "In the wild",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Let me be concrete about the defaults, because the numbers are where the design shows."
+        },
+        {
+          "voice": "narrator",
+          "text": "The recursion limit defaults to twenty five. That counts super steps, not node executions. So a fan out to fifty parallel nodes costs one step, while a thirty node chain costs thirty and trips the limit. It is a safety net against a routing bug that never terminates, not a budget dial. Raising it to fix a loop that does not stop converts a fast failure into an expensive one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Durability is a choice you make per run, and there are three settings. Exit means state is written only when the run finishes. Fastest, and a crash halfway through loses everything. Async writes in the background after each step, which is the sensible default, with a small window where a crash costs you the last step. Sync writes before each step proceeds, which is the strongest guarantee and puts a database write on the critical path of every super step."
+        },
+        {
+          "voice": "narrator",
+          "text": "The rule for choosing is not about performance. It is about what a lost step costs. A research summariser can run on exit. Anything that spends money, calls a partner service, or waits on a human runs on sync."
+        },
+        {
+          "voice": "narrator",
+          "text": "For storage there is an in memory saver for tests, a SQLite saver for single node work, and a Postgres saver for production. The Postgres one needs a one time setup call to create its tables, and the first run fails on a missing table if you skip it."
+        },
+        {
+          "voice": "narrator",
+          "text": "One more real number. Checkpoints accumulate forever. There is no retention policy by default. Three months in, the checkpoint table is the largest object in the database, and nobody planned for it. That is the most common operational surprise in a LangGraph deployment, and it is a two line fix on day one and a migration later."
+        }
+      ]
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now the honest part. This is real complexity, and there are cases where it is not worth it."
+        },
+        {
+          "voice": "narrator",
+          "text": "One model call with a fixed prompt does not need a graph. It needs a function. A straight line pipeline with no branching and no retry semantics does not need one either."
+        },
+        {
+          "voice": "narrator",
+          "text": "A tool calling agent with no approval step, no persistence requirement, and a short horizon is best served by the prebuilt agent, which is a single call that gives you the standard loop already compiled. It is still a graph underneath, so streaming and checkpointing work on it, but you did not write it."
+        },
+        {
+          "voice": "narrator",
+          "text": "The test I would apply is three words. Durability. Branching. Supervision. If none of those three is on your requirements list, a graph is ceremony."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a cost people miss too. The state schema is now a public contract. Adding a key is safe. Renaming one breaks any run that was in flight when you deployed, because it resumes into a state whose keys no longer match. You have to think about state migrations the way you think about database migrations, which is a discipline the loop never asked of you."
+        },
+        {
+          "voice": "narrator",
+          "text": "And there is a failure of adoption worth naming. People adopt LangGraph because they like the diagram, and then they write one enormous node with all the logic inside it. That node is the loop again, with extra imports. If your graph has three nodes and one of them is four hundred lines, you have not adopted anything."
+        },
+        {
+          "voice": "narrator",
+          "text": "The honest summary is this. A graph does not make an unreliable agent reliable. It makes an unreliable agent recoverable and observable, which is a different property and often the more valuable one. Per step accuracy still comes from your prompts, your tools, and your evaluations. Nothing about the topology fixes a bad tool description."
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "In an interview",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "If this comes up in an interview, do not lead with the framework. Lead with the requirement."
+        },
+        {
+          "voice": "narrator",
+          "text": "Something like: the moment we needed an approval step before sending, we needed the run to survive the process, so state had to be persisted and the pause had to be a checkpoint rather than a blocked thread. That is what pushed us to a graph."
+        },
+        {
+          "voice": "narrator",
+          "text": "That sentence tells the interviewer you chose a tool for a reason rather than because it was on the front page. And if they push back and ask whether you could have done it with a queue and a database, the correct answer is yes, absolutely, and that is roughly what the framework is doing for you."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: state, channels, and reducers, which is where most of the real bugs live."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "id": "langgraph-docs",
+      "url": "https://docs.langchain.com/oss/python/langgraph",
+      "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+      "used_for": [
+        "api behaviour",
+        "defaults",
+        "durability modes"
+      ]
+    }
+  ]
+}

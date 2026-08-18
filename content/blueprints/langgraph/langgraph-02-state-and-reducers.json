@@ -1,0 +1,207 @@
+{
+  "schema": 1,
+  "slug": "langgraph-02-state-and-reducers",
+  "show": "langgraph",
+  "template": "concept-explainer",
+  "title": "LangGraph 2 — State, Channels and Reducers",
+  "description": "The state schema is the design. Reducers are where the real bugs live, and parallel branches are why they exist.",
+  "keywords": [
+    "langgraph",
+    "state",
+    "reducers",
+    "parallelism"
+  ],
+  "voices": {
+    "narrator": "narrator"
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "title": "Why this matters",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here is a bug I want you to be able to diagnose in ten seconds by the end of this episode."
+        },
+        {
+          "voice": "narrator",
+          "text": "An agent runs. Each turn, the message history roughly doubles. By turn six the context window is full and the bill is absurd. Nothing in the code looks wrong. Every node does something reasonable."
+        },
+        {
+          "voice": "narrator",
+          "text": "And here is a second one. A node runs. The logs say it ran. It returns a value. The next node reads that value and sees the old one. No error. No warning. Just a stale read."
+        },
+        {
+          "voice": "narrator",
+          "text": "Both of those are state bugs, and both come from the same misunderstanding: that state in a graph works like a variable you assign to. It does not. It works like a set of channels, each with its own merge rule, updated in batches. Once you hold that model, both bugs are obvious."
+        },
+        {
+          "voice": "narrator",
+          "text": "This episode is about that model. It is the least glamorous part of the framework and by a wide margin the part that decides whether your agent works."
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "title": "How it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Start with the word channel, because it is the right word and dictionary is the wrong one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your state schema declares keys. Messages. Plan. Retry count. Each of those keys is an independent channel. It has a current value, and it has a rule for how a new value merges with the current one. Nodes do not assign to channels. Nodes emit updates, and the runtime applies them."
+        },
+        {
+          "voice": "narrator",
+          "text": "So a node returns a partial dictionary. Just the keys it touched. If a node bumps a retry counter, it returns one key with the new number, and every other channel is untouched. Not overwritten with the same value. Untouched."
+        },
+        {
+          "voice": "narrator",
+          "text": "That convention is what makes parallel branches possible at all. Two branches that write different keys can never conflict, because they are writing to different channels."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the merge rule. By default it is overwrite. Last write wins. For a scalar like the current plan, that is exactly right, and you should not change it."
+        },
+        {
+          "voice": "narrator",
+          "text": "But consider a channel that is a list, and two parallel branches that both append to it. With overwrite, one branch's work vanishes. In fact LangGraph will not let that happen quietly. Two writers to the same channel in the same step with no merge rule is an error, by design, rather than a silent choice of winner."
+        },
+        {
+          "voice": "narrator",
+          "text": "The fix is a reducer. You annotate the channel with a function that takes the current value and the update and returns the merged result. For a list of findings, that function is addition, which for lists means concatenation. Now both branches contribute and nothing is lost."
+        },
+        {
+          "voice": "narrator",
+          "text": "The message channel gets a specialised reducer, and it is worth knowing what it does beyond appending. It merges by message identifier. Same identifier, the message is replaced. New identifier, it is appended. That is what lets you edit or remove a message from history rather than only ever growing it."
+        },
+        {
+          "voice": "narrator",
+          "text": "So. Back to the doubling bug. If a node returns the entire message list rather than only the new messages, and the channel has an appending reducer, the runtime appends everything it was just given to what it already had. The list doubles. Every turn. The node looks completely reasonable in isolation, which is why this one costs people an afternoon."
+        },
+        {
+          "voice": "narrator",
+          "text": "The rule that prevents it: return your increment, never the whole channel."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the stale read. Remember that execution advances in super steps, and every node scheduled in a step runs against the same snapshot. If two nodes are in the same step, the second one cannot see the first one's write, because the writes have not been applied yet. They are applied together, at the end of the step."
+        },
+        {
+          "voice": "narrator",
+          "text": "So a stale read almost always means two nodes are running in parallel when you thought they were sequential. And the reason that happens is usually that someone added two edges out of one node expecting a choice, and got a fan out. Two unconditional edges out of a node is not pick one. It is run both."
+        },
+        {
+          "voice": "narrator",
+          "text": "One more state failure that is quieter than either. If your schema is a typed dictionary and a node returns a key that is not in the schema, that key is dropped. No error. The node ran, the update went nowhere, and the next node reads the previous value. A typo in a channel name is invisible. If that bothers you, and it should, use a Pydantic model for the state instead and pay a small validation cost per step to get a real error."
+        },
+        {
+          "voice": "narrator",
+          "text": "One last piece of the state model, because it decides how you compose things later. A compiled graph can be a node inside another graph. When that happens, the two schemas meet in one of two ways."
+        },
+        {
+          "voice": "narrator",
+          "text": "Either they share channel names, and the child reads and writes the parent's state directly. That is the least code and the most coupling, because renaming a key in the parent silently breaks the child, and a key that means something slightly different in each graph is a bug no type checker will find."
+        },
+        {
+          "voice": "narrator",
+          "text": "Or the parent wraps the child in a small function that translates: take these parent keys, build the child's input, call it, map the result back. More code, fully decoupled, and the child is independently testable. That is the right shape at a team boundary or anywhere the child has its own release cycle."
+        },
+        {
+          "voice": "narrator",
+          "text": "The decision is the same one you make with any module boundary. The only difference is that here the shared thing is a persisted schema, so getting it wrong is a migration rather than a refactor."
+        }
+      ]
+    },
+    {
+      "id": "real-world",
+      "title": "In the wild",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Some specifics from the documentation that shape how you design a schema."
+        },
+        {
+          "voice": "narrator",
+          "text": "The state is serialised into a checkpoint at every super step, not once at the end. That is the single most important fact for deciding what goes in it. A five megabyte document parked in state is written to storage on every step of the run. Store an identifier and fetch it in the node; do not carry the payload."
+        },
+        {
+          "voice": "narrator",
+          "text": "You can declare separate input and output schemas from the internal one. That means scratch channels, retry counters, raw tool payloads, intermediate scores, do not have to be part of what callers see. Worth doing early, because trimming the public surface later is a breaking change."
+        },
+        {
+          "voice": "narrator",
+          "text": "The prebuilt messages state is a typed dictionary with one channel, messages, already annotated with the message reducer. Subclass it and add your own keys. Most graphs start exactly there."
+        },
+        {
+          "voice": "narrator",
+          "text": "And a detail that catches people writing their own reducers. A reducer runs once per update, not once per step. Five parallel writers to one channel call it five times, in an order that is not guaranteed. If your reducer is not associative, different runs give different answers, and it will look like flakiness rather than a design error."
+        }
+      ]
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The trade-offs here are mostly about how much you put in state, and there is a real tension."
+        },
+        {
+          "voice": "narrator",
+          "text": "Everything in state is durable, inspectable, and time travellable. That argues for putting a lot in it. Everything in state is also serialised on every step and forms a schema you now have to migrate. That argues for putting a little in it."
+        },
+        {
+          "voice": "narrator",
+          "text": "My working rule is: state holds what a resume needs, plus what a human debugging the run would want to see. Not intermediate scratch that the node can recompute. Not large payloads. Not anything with a live handle, like a database connection or an open file, because those do not serialise at all."
+        },
+        {
+          "voice": "narrator",
+          "text": "On reducers, the tension is different. It is tempting, once you learn what they are, to add one to every channel. Resist that. Most scalar channels genuinely want last write wins, and a schema where every key accumulates is a schema that only grows. Add a reducer when you have an actual parallel writer or an actual accumulation, not as insurance."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is one more trade-off worth naming, between typed dictionaries and Pydantic models. Typed dictionaries are fast and give you no runtime enforcement, so a channel declared as an integer can hold a string if some node put one there. Pydantic validates the input to each node and gives you a real error at the point of the mistake, at the cost of validating on every step. For a graph with many nodes and a schema that several people edit, I would pay that cost. For a five node graph you wrote yesterday, probably not."
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "In an interview",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The thing to demonstrate here is not that you know what a reducer is. It is that you know why one exists."
+        },
+        {
+          "voice": "narrator",
+          "text": "The clean way to say it: because updates from parallel branches land together, the framework needs a defined merge per key, and refusing to guess is better than silently picking a winner."
+        },
+        {
+          "voice": "narrator",
+          "text": "If you want to go one level further, mention that this is the same constraint bulk synchronous parallel systems have had since Pregel, and that the reason nodes cannot see each other's writes within a step is the same reason the merge has to be explicit. That answer says you understand the engine, not just the API."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next episode: checkpoints, threads, and the pause, which is where the framework starts doing something a loop genuinely cannot."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "id": "langgraph-docs",
+      "url": "https://docs.langchain.com/oss/python/langgraph",
+      "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+      "used_for": [
+        "api behaviour",
+        "defaults",
+        "durability modes"
+      ]
+    }
+  ]
+}
