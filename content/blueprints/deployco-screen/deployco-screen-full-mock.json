@@ -1,0 +1,700 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-full-mock",
+  "show": "deployco-screen",
+  "template": "screen-mock",
+  "title": "The Full Screen, Start To Finish",
+  "description": "Thirty minutes played end to end with no commentary. Every answer from the series, in the order a real recruiter call runs, including the interruptions.",
+  "keywords": [
+    "mock interview",
+    "recruiter screen",
+    "deployco",
+    "full run"
+  ],
+  "voices": {
+    "interviewer": "interviewer",
+    "candidate": "candidate"
+  },
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Opening",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Hi, is that Mingxia? It's Isabelle from the OpenAI Deployment Company. Can you hear me alright?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Hi Isabelle, yes, loud and clear. Thanks for making the time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "No problem at all. So, quick bit of context first. You applied through our Tomoro careers page back on the eleventh."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Tomoro is now part of the OpenAI Deployment Company. That went through at the start of July, so you'll see both names around."
+        },
+        {
+          "voice": "interviewer",
+          "text": "I've been with the team since April, and I look after hiring across Australia. Sydney and Melbourne both."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's helpful, thank you. I had seen the change, and I wasn't completely sure how the two boards related to each other."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Yeah, we're still tidying that up honestly. So, I've got half an hour."
+        },
+        {
+          "voice": "interviewer",
+          "text": "I'd love to hear about your background, then talk about what the role actually is, and leave time for your questions at the end."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Nothing technical from me today. I'm not an engineer, so I'll be asking you to keep me with you."
+        },
+        {
+          "voice": "candidate",
+          "text": "That works. Say if I go too deep and I'll come back up."
+        }
+      ]
+    },
+    {
+      "id": "background",
+      "title": "Background",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Great. So do you want to start by telling me a bit about yourself?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Sure. I'm a software engineer, eight and a half years, almost all of it in regulated financial services at GBST."
+        },
+        {
+          "voice": "candidate",
+          "text": "We build capital-markets tax software for banks and super funds. So my customers have always been other institutions, not consumers."
+        },
+        {
+          "voice": "candidate",
+          "text": "Since April I've been running large language model systems in production. The main one handles security vulnerability management."
+        },
+        {
+          "voice": "candidate",
+          "text": "Every night a model drafts the day's remediation plans. Three different groups inside the business review and approve them the next morning."
+        },
+        {
+          "voice": "candidate",
+          "text": "Review time went from about forty-five minutes down to five, and the engineering hours we spend on it fell eighty percent."
+        },
+        {
+          "voice": "candidate",
+          "text": "It's now used by teams beyond the one I built it for."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Sorry, can I stop you there. Forty-five minutes down to five, per what?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Per item. Every week new security flaws get published against the open-source components our software is built from."
+        },
+        {
+          "voice": "candidate",
+          "text": "A regulated company has to prove it looked at every one of them. Most turn out not to matter in the way we actually run the software."
+        },
+        {
+          "voice": "candidate",
+          "text": "Working out which few genuinely matter used to take a person about forty-five minutes each. Now it's about five."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Got it. That's clearer, thank you. Carry on."
+        },
+        {
+          "voice": "candidate",
+          "text": "The reason I'm interested in this job is that the hard part of that project was never the model."
+        },
+        {
+          "voice": "candidate",
+          "text": "It was getting three groups with different incentives to trust it enough to act on it."
+        },
+        {
+          "voice": "candidate",
+          "text": "So I didn't switch anything over at the start. I ran it silently, next to the commercial tools the team already paid for, and compared."
+        },
+        {
+          "voice": "candidate",
+          "text": "When it agreed with them ninety-six percent of the time, and was also finding things they'd missed, people started acting on it."
+        },
+        {
+          "voice": "interviewer",
+          "text": "So it replaced the commercial tools?"
+        },
+        {
+          "voice": "candidate",
+          "text": "No, and that's deliberate. It runs alongside them and it stays advisory."
+        },
+        {
+          "voice": "candidate",
+          "text": "It flags something and a person makes the call. In a regulated environment that isn't a limitation, it's the design."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Interesting. And how much of that did you build yourself, versus a team?"
+        },
+        {
+          "voice": "candidate",
+          "text": "That one I designed and built. It's since been picked up by other teams, which I didn't do, and I'm probably most pleased about that part."
+        },
+        {
+          "voice": "candidate",
+          "text": "On the older products at GBST I'd describe myself as a primary contributor rather than the author. I try to be precise about that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You mentioned three groups reviewing it every morning. Who are they, in practice?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Image maintainers, application developers, and release managers. They want different things, which is the whole difficulty."
+        },
+        {
+          "voice": "candidate",
+          "text": "The maintainers want fewer changes. The developers want to ship. The release managers want a clean audit trail."
+        },
+        {
+          "voice": "candidate",
+          "text": "They all look at the same plan on one screen, and any of them can push back on it by talking to it before approving."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And they actually use it? People are usually good at ignoring internal tools."
+        },
+        {
+          "voice": "candidate",
+          "text": "They do now. They didn't at first, and that gap is the interesting part."
+        },
+        {
+          "voice": "candidate",
+          "text": "For weeks it ran and nobody acted on it. What changed was showing them it agreed with the tools they already believed in."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's a good story. Keep that one for the engineers."
+        }
+      ]
+    },
+    {
+      "id": "motivation",
+      "title": "Motivation",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Let me tell you a bit about the role and then come back to you."
+        },
+        {
+          "voice": "interviewer",
+          "text": "So we embed engineers directly inside customer organisations. Forward deployed engineering, that's the language we use."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You'd be on client sites a lot, sometimes up to three days a week, working with their teams to build and ship AI systems."
+        },
+        {
+          "voice": "interviewer",
+          "text": "The Australian team is small and growing. We're across Sydney and Melbourne."
+        },
+        {
+          "voice": "candidate",
+          "text": "Can I ask something about that before we go on? I think there might be two versions of this role."
+        },
+        {
+          "voice": "candidate",
+          "text": "I applied through the Tomoro advert, which publishes a hundred and thirty to a hundred and eighty thousand."
+        },
+        {
+          "voice": "candidate",
+          "text": "Your own board has a Sydney forward deployed engineer role posted on the seventh of August at a hundred and thirty-five to three hundred and sixty, plus equity."
+        },
+        {
+          "voice": "candidate",
+          "text": "And the body of that one opens by saying you're seeking a senior applied AI software engineer. Which one am I being considered against?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Right, good question, and honestly a fair one. The Ashby posting is the current one. The Tomoro board is the legacy system."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Let me check where your application actually sits and come back to you on the level. It may well be the newer one."
+        },
+        {
+          "voice": "candidate",
+          "text": "Thank you, that's useful. I'd want to be considered against the forward deployed role if that's possible."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Noted. So tell me, what drew you to this? Is it the company, or is it the type of role?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Two reasons, and the first one is about me."
+        },
+        {
+          "voice": "candidate",
+          "text": "I've done the internal version of this job four or five times now, and the part I'm best at is the front half."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sitting with the people who have the problem, arguing about what the system should refuse to do, and then building it."
+        },
+        {
+          "voice": "candidate",
+          "text": "At GBST the business analysis team were my internal customers for a set of agents I wrote for their workflow."
+        },
+        {
+          "voice": "candidate",
+          "text": "A report that used to take three days now runs in under thirty minutes."
+        },
+        {
+          "voice": "candidate",
+          "text": "And at Macquarie Business School I had to win an argument with a professor about a tutor that deliberately doesn't give students the answer."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's client work with the invoice missing."
+        },
+        {
+          "voice": "interviewer",
+          "text": "I like that. Say more about the tutor one."
+        },
+        {
+          "voice": "candidate",
+          "text": "It's running in a course now, about two hundred students. It reads each student's profile and that week's lecture material."
+        },
+        {
+          "voice": "candidate",
+          "text": "Then it walks them toward their own decision instead of handing over an answer. The easy build was the one that answers."
+        },
+        {
+          "voice": "candidate",
+          "text": "I had to make the case for the harder one, and win it, before I could build anything. That's the conversation I actually enjoy."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And the second reason?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Your own framing is the one I'd already arrived at. Your site describes the cycle as build, prove, generalise."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a platform called Foundry for that reason, because running agent crews showed me what was missing around them."
+        },
+        {
+          "voice": "candidate",
+          "text": "Every project rebuilds identity, audit, dispatch and cost accounting from scratch."
+        },
+        {
+          "voice": "candidate",
+          "text": "The model work is different every time. The plumbing underneath it isn't, and most teams pay for it again anyway."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And what's making you look right now? Is something not working where you are?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Nothing's wrong there. I led the AWS migration, and I've onboarded every engineer who's joined the core team since I took a lead role."
+        },
+        {
+          "voice": "candidate",
+          "text": "But the AI work is something I made space for, rather than something the company is organised around."
+        },
+        {
+          "voice": "candidate",
+          "text": "I want to be somewhere that's the product, and somewhere I see more than one industry a year."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Let me give you a picture of the team, since you'd be joining a small one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Dan Edgar leads Australia. We launched here in December, so it's still early, and we're hiring across engineering and delivery."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Sydney and Melbourne got together for an offsite a couple of weeks ago, which was the first time everyone was in a room."
+        },
+        {
+          "voice": "candidate",
+          "text": "How big is the Australian team at the moment?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Smaller than the headline number you'll have read. That's part of the appeal, if it appeals."
+        },
+        {
+          "voice": "candidate",
+          "text": "It does. Being early enough that how things are done is still being decided is the part I'd want."
+        },
+        {
+          "voice": "interviewer",
+          "text": "One thing I should check. This is hybrid, and there's a fair bit of client site work. Does that suit you?"
+        },
+        {
+          "voice": "candidate",
+          "text": "It does. The part of the week I look forward to is the requirements conversation, not the implementation."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a design-phase agent at work whose whole job is running that conversation properly before anyone writes code."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a tool for the part of the job most engineers try to avoid, so I think the answer is yes."
+        }
+      ]
+    },
+    {
+      "id": "gaps",
+      "title": "Gaps",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Is there anything in the job description where you thought, that's not me?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Two things, and I'd rather name them than have you find them."
+        },
+        {
+          "voice": "candidate",
+          "text": "The first is that I've been running these systems in production for four months, since April. That's short and I know it."
+        },
+        {
+          "voice": "candidate",
+          "text": "Before that it was about seven months of retrieval and small-model work in my own projects."
+        },
+        {
+          "voice": "candidate",
+          "text": "What the four months bought me isn't model knowledge, it's the list of ways these systems fail quietly."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Meaning what, in practice?"
+        },
+        {
+          "voice": "candidate",
+          "text": "My own retrieval pipeline ran for a month with every test passing and a silent quality regression inside it."
+        },
+        {
+          "voice": "candidate",
+          "text": "Nothing was red. Nothing alerted. The answers were just getting worse and no test could see it."
+        },
+        {
+          "voice": "candidate",
+          "text": "I only caught it because I'd built a check that verifies every quote against the source it came from."
+        },
+        {
+          "voice": "candidate",
+          "text": "You learn that once, in production, and then never design without it again."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's a good answer. And the second thing?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Fine-tuning. Your advert lists it and I've deployed, not fine-tuned. Everything in production is hosted models through Bedrock."
+        },
+        {
+          "voice": "candidate",
+          "text": "What I have done is the decision next to it. Whether a problem needs a different model, better retrieval, or a harder verification step."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'd expect to pick the tuning up. Knowing whether it's the right lever is the part that took me time."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's fine, honestly. Most of our engineers aren't fine-tuning day to day."
+        },
+        {
+          "voice": "interviewer",
+          "text": "One more from me. This is consulting. Have you worked that way before, on client engagements?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Not billably, no. All my client work has been through a product company, so I haven't lived the utilisation and timesheet side of it."
+        },
+        {
+          "voice": "candidate",
+          "text": "What I have done is scope work directly with a client. A tax relief capability for Qantas Super, the super fund."
+        },
+        {
+          "voice": "candidate",
+          "text": "We worked from the client's own reading of the twenty seventeen legislation rather than ours. And Macquarie commissioned a second phase after the first one shipped."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And team leadership? The role's pitched as a bit of a player-coach."
+        },
+        {
+          "voice": "candidate",
+          "text": "The coaching half I've done. Enablement and mentoring across the project group, and I led the AWS migration end to end."
+        },
+        {
+          "voice": "candidate",
+          "text": "I haven't carried an engineering-management title, so there's no reporting line on my record. I'd rather say that plainly."
+        },
+        {
+          "voice": "interviewer",
+          "text": "One more, and this might be from the old advert. Have you used Spark?"
+        },
+        {
+          "voice": "candidate",
+          "text": "No Spark. I've built batch data pipelines, Spring Batch on containers, doing corporate actions and parcel-level reconciliation."
+        },
+        {
+          "voice": "candidate",
+          "text": "So the shape of the problem is familiar, but I'd be learning the framework and I wouldn't pretend otherwise."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's the legacy job description, I think. I'll check. It isn't on the current one."
+        }
+      ]
+    },
+    {
+      "id": "logistics",
+      "title": "Logistics",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Let me run through the boring bits quickly. Where are you based?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Sydney, out in Baulkham Hills."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And you're comfortable on client sites, up to three days a week?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Yes, comfortable with that."
+        },
+        {
+          "voice": "interviewer",
+          "text": "There's some regional travel too, Singapore mostly. Is that alright?"
+        },
+        {
+          "voice": "candidate",
+          "text": "That's fine. Can I ask roughly how often, so I know what I'd be agreeing to?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "It varies by engagement, honestly. I'll find out what it's looked like for the Sydney team this year."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Notice period?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Four weeks."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And your right to work here?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Australian permanent resident. Full working rights, no sponsorship now or in the future."
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "title": "Money",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Great. And what are you looking for, salary-wise?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Given what you said earlier about the Ashby posting being the current one, I'll answer against that band."
+        },
+        {
+          "voice": "candidate",
+          "text": "Based on the scope in that advert, owning architecture across engagements, setting the evaluation approach, mentoring."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'd be looking at two hundred to two hundred and forty thousand base."
+        },
+        {
+          "voice": "candidate",
+          "text": "And I'd want to understand the equity component before fixing on a figure."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's within range. It's not the bottom of it, but it's within range."
+        },
+        {
+          "voice": "interviewer",
+          "text": "On equity, everyone gets a grant. I'd have to come back to you on the exact instrument."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's fair. When you do, the three things I'd want to know are what instrument it is, how it vests, and what happens on a liquidity event."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'm asking because it's a joint venture rather than an ordinary subsidiary, so I don't want to assume it works like a normal option grant."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's a reasonable ask and not one I get often. I'll get you a proper answer."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Just so I set expectations, if it turns out your application sits on the legacy requisition, that band tops out lower."
+        },
+        {
+          "voice": "candidate",
+          "text": "Then I should be straight with you. A hundred and eighty is my floor, so I'd only be workable at the very top of that band."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'd much rather be considered against the forward deployed role, if that's something you can do."
+        },
+        {
+          "voice": "interviewer",
+          "text": "I think it will be. Leave that one with me."
+        }
+      ]
+    },
+    {
+      "id": "his-questions",
+      "title": "His questions",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "We've got about five minutes. Do you have questions for me?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Three, if there's time. First, what does the rest of the process look like, and what's a normal timeline?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "So after this there'd be a technical conversation with one of our engineers, and then a session with someone senior on the delivery side."
+        },
+        {
+          "voice": "interviewer",
+          "text": "There's usually an exercise in there too. I'd need to confirm what the current one is, because we've changed it since the acquisition."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Timeline, usually two to three weeks end to end, assuming diaries cooperate."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's helpful. Second one. I saw the Northslope announcement in July, that you'd agreed to acquire them."
+        },
+        {
+          "voice": "candidate",
+          "text": "Does that mean anything for the Australian team, or is it mostly a northern hemisphere thing?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Honestly, that's above my line. I know it's not closed yet. Let me ask and come back to you, because a few people have wondered."
+        },
+        {
+          "voice": "candidate",
+          "text": "No problem, and it's genuinely just curiosity. Last one, and this is the one I most want to know."
+        },
+        {
+          "voice": "candidate",
+          "text": "What does the Australian client work actually look like right now?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Is it mostly greenfield builds, or is a lot of it taking pilots that have stalled and getting them into production?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "It's more of the second than people expect. A lot of our clients have done a proof of concept that never went anywhere."
+        },
+        {
+          "voice": "interviewer",
+          "text": "The work is often as much about the organisation as the code. Getting people to actually use the thing."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's the part I'd be most useful on, so that's good to hear."
+        },
+        {
+          "voice": "candidate",
+          "text": "The system I described earlier, the reason it worked wasn't the model. It was running it silently for weeks until people trusted it."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That's a good thing to say to the engineers, by the way. Say it exactly like that."
+        }
+      ]
+    },
+    {
+      "id": "next-steps",
+      "title": "Next steps",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Alright, we're at time. This has been a really good conversation."
+        },
+        {
+          "voice": "candidate",
+          "text": "Thank you. Before we finish, what would the next step be, and roughly when should I expect to hear?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "I'll write this up today and get it in front of the team this week. You should hear something by early next week."
+        },
+        {
+          "voice": "candidate",
+          "text": "And if I haven't heard by then, is it alright to email you directly?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Please do. I'll send you a note after this so you've got my address."
+        },
+        {
+          "voice": "candidate",
+          "text": "Perfect. And you'll come back to me on the requisition and the equity?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "I will. Those two and the travel question. I've got them written down."
+        },
+        {
+          "voice": "candidate",
+          "text": "Thanks Isabelle, I appreciate you being straight about the two boards. Have a good afternoon."
+        },
+        {
+          "voice": "interviewer",
+          "text": "You too. Speak soon."
+        }
+      ]
+    }
+  ]
+}

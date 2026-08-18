@@ -1,0 +1,408 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-why-forward-deployed",
+  "show": "deployco-screen",
+  "template": "interview-rehearsal",
+  "title": "Why Forward Deployed",
+  "description": "The question this screen exists to filter on. Not why OpenAI, but why customer-facing technical work, in a way that would be false about a pure engineering job.",
+  "keywords": [
+    "forward deployed engineer",
+    "motivation",
+    "why this role",
+    "client facing"
+  ],
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "board": {
+    "tabs": [
+      {
+        "title": "The answer",
+        "content": "Two reasons. The first is about me. I've done the internal version of this job four or five times, and the part I'm best at is the front half — sitting with the people who have the problem, arguing about what the system should refuse to do, then building it. At GBST the business analysis team were my internal customers for a set of agents that took a three-day report down to under 30 minutes. At Macquarie Business School I had to win an argument with a professor about a tutor that deliberately doesn't give students the answer. That's client work with the invoice missing.\n\nThe second is that your own framing is the one I'd already arrived at. Your site describes the cycle as build, prove, generalise. I built a platform called Foundry for exactly that reason, because running agent crews showed me that every project rebuilds identity, audit, dispatch and cost accounting from scratch. The model work is different every time. The plumbing underneath it isn't, and most teams pay for it again anyway."
+      },
+      {
+        "title": "The test",
+        "content": "The answer must be FALSE about a pure engineering job at the same company.\n\nFails the test: I like working with people. I want impact. I like variety. I want to be at the frontier. These are all equally true of the platform team.\n\nPasses the test: I am best at the front half — scoping with the person who owns the problem, and arguing about what the system should refuse to do. You cannot do that from behind a backlog."
+      },
+      {
+        "title": "Evidence, ranked",
+        "content": "1. BA team as internal customers — a three-day report to under 30 minutes. Client work with the invoice missing.\n2. Macquarie Business School — winning the argument for a tutor that refuses to answer. Scoping against a stakeholder who wanted the opposite.\n3. Qantas Super — scoped against the client's own reading of the 2017 legislation. (Qantas Super, never bare Qantas.)\n4. Foundry — build, prove, generalise, in code. 133,539 lines, 28 ADRs."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Where the process stops",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "There is one question at recruiter stage that ends processes, and it is not a technical one."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is why forward deployed. Not why this company. Why this shape of job."
+        },
+        {
+          "voice": "estimation",
+          "text": "Everyone answers that the same way. I want impact, I like variety, I like talking to people."
+        },
+        {
+          "voice": "narrator",
+          "text": "Yes. And every one of those sentences is equally true of the platform team down the hall."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the test. If your answer is also true of a pure engineering job, it is not an answer."
+        },
+        {
+          "voice": "estimation",
+          "text": "Harsh for a first call."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is the whole point of a first call. They are not filtering for skill here. They are filtering for fit with the work."
+        }
+      ]
+    },
+    {
+      "id": "the-ask",
+      "title": "What she is really asking",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "So what drew you to this one? Is it the company, or is it the type of role?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Notice the shape of that. She has offered you two doors and one of them is a trap."
+        },
+        {
+          "voice": "estimation",
+          "text": "The company door is not a trap. It is the truth. It is OpenAI."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is the truth and it is worth nothing, because it is true for every applicant she will speak to."
+        },
+        {
+          "voice": "narrator",
+          "text": "Forward deployed work is unusual, and the people who hate it hate it for predictable reasons."
+        },
+        {
+          "voice": "narrator",
+          "text": "Travel. Ambiguity. Somebody else's codebase. A client who changes their mind in week three."
+        },
+        {
+          "voice": "narrator",
+          "text": "Work that ends and then you leave. No long-term ownership of the thing you built."
+        },
+        {
+          "voice": "estimation",
+          "text": "Then the honest answer for most engineers is that they have not done it and do not know."
+        },
+        {
+          "voice": "narrator",
+          "text": "Which is why the strong answer is not enthusiasm. It is evidence that you have already done the shape of it."
+        },
+        {
+          "voice": "narrator",
+          "text": "You have done it four or five times. It was called something else, and there was no invoice."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the answer has two halves. Evidence about you, then a specific idea you share with them."
+        },
+        {
+          "voice": "narrator",
+          "text": "The second half is what turns a good answer into one she repeats to the hiring manager."
+        }
+      ]
+    },
+    {
+      "id": "the-answer",
+      "title": "The answer, out loud",
+      "lines": [
+        {
+          "voice": "candidate",
+          "text": "Two reasons. The first one is about me."
+        },
+        {
+          "voice": "candidate",
+          "text": "I've done the internal version of this job four or five times now, and the part I'm best at is the front half."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sitting with the people who have the problem, arguing about what the system should refuse to do, and then building it."
+        },
+        {
+          "voice": "candidate",
+          "text": "At GBST the business analysis team were my internal customers for a set of agents I wrote for their workflow."
+        },
+        {
+          "voice": "candidate",
+          "text": "A report that used to take three days now runs in under thirty minutes."
+        },
+        {
+          "voice": "candidate",
+          "text": "At Macquarie Business School I had to win an argument with a professor about a tutor that deliberately doesn't give students the answer."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's client work with the invoice missing."
+        },
+        {
+          "voice": "candidate",
+          "text": "The second reason is that your own framing is the one I'd already arrived at."
+        },
+        {
+          "voice": "candidate",
+          "text": "Your site describes the cycle as build, prove, generalise."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a platform called Foundry for exactly that reason, because running agent crews showed me what was missing around them."
+        },
+        {
+          "voice": "candidate",
+          "text": "Every project rebuilds identity, audit, dispatch and cost accounting from scratch."
+        },
+        {
+          "voice": "candidate",
+          "text": "The model work is different every time. The plumbing underneath it isn't, and most teams pay for it again anyway."
+        }
+      ]
+    },
+    {
+      "id": "teardown",
+      "title": "Why it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Take the first half. Notice what it does not say. It does not say he enjoys people."
+        },
+        {
+          "voice": "narrator",
+          "text": "It names the specific half of the work he is good at, and that half only exists in a client-facing role."
+        },
+        {
+          "voice": "narrator",
+          "text": "Arguing about what the system should refuse to do. That is scoping, and scoping is done with a stakeholder."
+        },
+        {
+          "voice": "estimation",
+          "text": "The business analysis team were colleagues, not clients. That is not the same thing."
+        },
+        {
+          "voice": "narrator",
+          "text": "Not the same, and he says so. Client work with the invoice missing concedes the difference and keeps the substance."
+        },
+        {
+          "voice": "narrator",
+          "text": "That single clause is doing two jobs. It is honest, and it is the line she will remember."
+        },
+        {
+          "voice": "narrator",
+          "text": "Give a recruiter one repeatable sentence per call. That one is his."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the Macquarie example, which is the strongest thing in the answer and the least obvious."
+        },
+        {
+          "voice": "narrator",
+          "text": "He built a tutor that refuses to give the answer, and he had to persuade a professor to accept that."
+        },
+        {
+          "voice": "estimation",
+          "text": "Why does that beat the security platform, which has real numbers on it?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Because it is a disagreement he won with a stakeholder who wanted something else. That is the job."
+        },
+        {
+          "voice": "narrator",
+          "text": "The security platform proves he can build. Macquarie proves he can hold a position in front of a customer."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now the second half. Build, prove, generalise is a phrase from their own front page."
+        },
+        {
+          "voice": "narrator",
+          "text": "Quoting a company's framing back at them is cheap. Having already built the thing it describes is not."
+        },
+        {
+          "voice": "narrator",
+          "text": "Foundry is one hundred and thirty-three thousand lines of code and twenty-eight architecture decision records."
+        },
+        {
+          "voice": "narrator",
+          "text": "It exists because he hit the standardisation problem himself and would not accept rebuilding the scaffold each time."
+        },
+        {
+          "voice": "estimation",
+          "text": "And the last line? The plumbing one?"
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the thesis of their business, said in his own words with his own evidence behind it."
+        },
+        {
+          "voice": "narrator",
+          "text": "The Sydney ad asks for disciplined standardisation-versus-customisation decisions instead of defaulting to bespoke work."
+        },
+        {
+          "voice": "narrator",
+          "text": "He has an answer to that question that predates reading their advert. Say that if it comes up."
+        }
+      ]
+    },
+    {
+      "id": "the-trap",
+      "title": "The version that loses",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here is the losing version. It sounds enthusiastic and it says nothing."
+        },
+        {
+          "voice": "candidate",
+          "text": "Honestly, it's OpenAI. The models are the most capable thing out there and I want to be near the frontier."
+        },
+        {
+          "voice": "candidate",
+          "text": "And I like variety. I get bored working on the same product for years, so consulting appeals to me."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two failures, and they compound."
+        },
+        {
+          "voice": "estimation",
+          "text": "The first one is at least true."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is true and it is a red flag, because the models are made by a different company than the one hiring."
+        },
+        {
+          "voice": "narrator",
+          "text": "DeployCo deploys. If you are here for the research, you are in the wrong building."
+        },
+        {
+          "voice": "narrator",
+          "text": "The second failure is worse. Getting bored is a reason to leave, not a reason to arrive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Framed as boredom, variety predicts that you will be bored here too, in about two years."
+        },
+        {
+          "voice": "narrator",
+          "text": "The mechanism is that both answers are about you receiving something. Neither is about a customer."
+        },
+        {
+          "voice": "narrator",
+          "text": "In a forward deployed role, an answer with no customer in it is the wrong answer by definition."
+        },
+        {
+          "voice": "estimation",
+          "text": "There is a third losing answer nobody warns about. The one that sounds humble."
+        },
+        {
+          "voice": "estimation",
+          "text": "I want to learn from the best engineers in the world and grow faster than I could here."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is a graduate answer, and he is applying against a senior requisition."
+        },
+        {
+          "voice": "narrator",
+          "text": "It positions him as someone who needs the job rather than someone who can do it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Learning is a fine thing to want and a bad thing to lead with at eight and a half years."
+        },
+        {
+          "voice": "narrator",
+          "text": "If it is true, attach it to a specific gap. I want to see how they run evaluation across many customers."
+        },
+        {
+          "voice": "narrator",
+          "text": "A named thing you want to learn reads as judgement. Wanting to grow reads as unformed."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Drill. She asks the follow-up that catches most people out."
+        },
+        {
+          "voice": "interviewer",
+          "text": "This role is on client sites a lot. Some engineers find that draining. How do you know you won't?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause and answer that out loud before I do. Do not say you are a people person."
+        },
+        {
+          "voice": "narrator",
+          "text": "The good answer names something specific about client time that you already know you like."
+        },
+        {
+          "voice": "candidate",
+          "text": "I don't think I'd find it draining, and the reason is fairly narrow."
+        },
+        {
+          "voice": "candidate",
+          "text": "The part of my week I look forward to is the requirements conversation, not the implementation."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a design-phase agent at work whose whole job is running that conversation properly before anyone writes code."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built a tool for the part of the job most engineers try to avoid. That's the honest evidence."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the shape. Not a claim about personality, an artefact that proves the preference."
+        },
+        {
+          "voice": "narrator",
+          "text": "Anyone can say they enjoy stakeholders. Almost nobody has built a tool for it."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Self-test. Is your answer false about a pure engineering job at the same company?"
+        },
+        {
+          "voice": "narrator",
+          "text": "If it would still be true on the platform team, it is not an answer, it is a mood."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next time: explaining what you built to somebody who does not write code. The skill this whole screen measures."
+        }
+      ]
+    }
+  ]
+}

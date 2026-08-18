@@ -1,0 +1,419 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-the-gaps",
+  "show": "deployco-screen",
+  "template": "interview-rehearsal",
+  "title": "The Four Things You Haven't Done",
+  "description": "Four months of production, no fine-tuning, no Spark, no billable consulting and no reporting line. Each one named before she has to ask, in the words that make naming it a strength.",
+  "keywords": [
+    "gaps",
+    "weaknesses",
+    "fine-tuning",
+    "spark",
+    "consulting",
+    "team leadership",
+    "honesty"
+  ],
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "board": {
+    "tabs": [
+      {
+        "title": "Four months",
+        "content": "Four months in production, since April, and about seven months of retrieval and small-model work in my own projects before that. The honest thing about four months is that what it bought me isn't model knowledge, it's the list of ways these systems fail quietly. My own retrieval pipeline ran for a month with every test passing and a silent quality regression in it. I only caught it because I'd built a judge that checks each quote against the source. You learn that once, in production, and then never design without it again."
+      },
+      {
+        "title": "Fine-tuning",
+        "content": "I've deployed, not fine-tuned. Everything in production is hosted models through Bedrock. What I've done instead is the decision next to it — whether a problem needs a different model, better retrieval, or a harder verification step, and having the evaluation to tell the difference. I'd pick the tuning up. The judgement about whether it's the right lever took longer to learn."
+      },
+      {
+        "title": "Spark",
+        "content": "No Spark. I've built batch data pipelines — Spring Batch on EKS, corporate actions and parcel-level reconciliation — so the shape is familiar, but I'd be learning the framework.\n\n(Spark is in the old Tomoro ad, not the DeployCo one. Only comes up if she is reading from the legacy req.)"
+      },
+      {
+        "title": "Consulting and leadership",
+        "content": "CONSULTING: All my client work has been through a product company rather than billable engagements, so I haven't lived the utilisation-and-timesheet side of consulting. What I have done is scope work directly with a client — a tax relief capability for Qantas Super, worked from the client's own reading of the 2017 legislation. And Macquarie Business School commissioned a second phase after the first one shipped.\n\nLEADERSHIP: I've run enablement and mentoring across the project group and led an AWS migration end to end. I haven't carried an engineering-management title. The coaching half of player-coach I've done; the reporting line I haven't."
+      },
+      {
+        "title": "Never claim",
+        "content": "Spark · LangChain · Hugging Face · Rust · Go · fine-tuning · Azure OpenAI in production · an engineering-management title · knowledge of their Australian clients · that SecGate replaced anything.\n\nSay Qantas Super, never bare Qantas. Say primary contributor to TaxAnalyser, key contributor to the super fund engine — not built."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Who gets to name it",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "There are four or five things on your resume that you have not done, and she will find at least one."
+        },
+        {
+          "voice": "narrator",
+          "text": "The only variable is who names it. If you do, it costs a sentence. If she does, it costs the frame."
+        },
+        {
+          "voice": "estimation",
+          "text": "Volunteering weaknesses to a recruiter sounds like a good way to be screened out."
+        },
+        {
+          "voice": "narrator",
+          "text": "It would be, if you volunteered them cold. You do not. You attach each one to something adjacent that you have done."
+        },
+        {
+          "voice": "narrator",
+          "text": "A gap named with the adjacent skill attached is a demonstration of judgement."
+        },
+        {
+          "voice": "narrator",
+          "text": "The same gap discovered by her, three questions later, is a credibility problem."
+        },
+        {
+          "voice": "estimation",
+          "text": "And if she never finds it?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Then a technical interviewer finds it next week, with your recruiter screen notes in front of him."
+        }
+      ]
+    },
+    {
+      "id": "the-ask",
+      "title": "Four gaps, ranked",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "Is there anything in the job description you looked at and thought, that's not me?"
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the polite version. There is also the blunt version, which is: what are you weakest at."
+        },
+        {
+          "voice": "narrator",
+          "text": "Four real gaps, and they are not equally dangerous. Rank them before you talk."
+        },
+        {
+          "voice": "narrator",
+          "text": "Number one, and the only one she is guaranteed to notice. Four months of production model work."
+        },
+        {
+          "voice": "estimation",
+          "text": "Four months is very short for a senior requisition."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is, and it is also unfixable by Thursday, so it needs the best answer in the set."
+        },
+        {
+          "voice": "narrator",
+          "text": "Number two, fine-tuning. It is listed explicitly in the DeployCo Sydney advert's own thrive list."
+        },
+        {
+          "voice": "narrator",
+          "text": "Number three, no billable consulting. Eight and a half years of client work, all of it through a product company."
+        },
+        {
+          "voice": "narrator",
+          "text": "Number four, no reporting line. They want a player-coach and he has the coaching, not the title."
+        },
+        {
+          "voice": "narrator",
+          "text": "And a fifth, conditional. Spark is in the old Tomoro advert but not in the DeployCo one."
+        },
+        {
+          "voice": "estimation",
+          "text": "So he may not need the Spark answer at all."
+        },
+        {
+          "voice": "narrator",
+          "text": "He may not, and he still prepares it, because we do not yet know which advert she is reading from."
+        }
+      ]
+    },
+    {
+      "id": "the-answer",
+      "title": "The answers, out loud",
+      "lines": [
+        {
+          "voice": "candidate",
+          "text": "Four months in production, since April, and about seven months of retrieval and small-model work in my own projects before that."
+        },
+        {
+          "voice": "candidate",
+          "text": "The honest thing about four months is that what it bought me isn't model knowledge, it's the list of ways these systems fail quietly."
+        },
+        {
+          "voice": "candidate",
+          "text": "My own retrieval pipeline ran for a month with every test passing and a silent quality regression in it."
+        },
+        {
+          "voice": "candidate",
+          "text": "I only caught it because I'd built a judge that checks each quote against the source."
+        },
+        {
+          "voice": "candidate",
+          "text": "You learn that once, in production, and then never design without it again."
+        },
+        {
+          "voice": "candidate",
+          "text": "On fine-tuning, I've deployed, not fine-tuned. Everything in production is hosted models through Bedrock."
+        },
+        {
+          "voice": "candidate",
+          "text": "What I've done instead is the decision next to it."
+        },
+        {
+          "voice": "candidate",
+          "text": "Whether a problem needs a different model, better retrieval, or a harder verification step, and having the evaluation to tell the difference."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'd pick the tuning up. The judgement about whether it's the right lever took longer to learn."
+        },
+        {
+          "voice": "candidate",
+          "text": "On consulting, all my client work has been through a product company rather than billable engagements."
+        },
+        {
+          "voice": "candidate",
+          "text": "So I haven't lived the utilisation and timesheet side of it."
+        },
+        {
+          "voice": "candidate",
+          "text": "What I have done is scope work directly with a client. A tax relief capability for Qantas Super, worked from the client's own reading of the twenty seventeen legislation."
+        },
+        {
+          "voice": "candidate",
+          "text": "And Macquarie Business School commissioned a second phase after the first one shipped."
+        },
+        {
+          "voice": "candidate",
+          "text": "On leadership, I've run enablement and mentoring across the project group, and led an AWS migration end to end."
+        },
+        {
+          "voice": "candidate",
+          "text": "I haven't carried an engineering-management title. The coaching half of player-coach I've done. The reporting line I haven't."
+        }
+      ]
+    },
+    {
+      "id": "teardown",
+      "title": "Why they work",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Take the four months answer first, because it is the one doing real work."
+        },
+        {
+          "voice": "narrator",
+          "text": "He does not argue that four months is longer than it sounds. Arguing with a number never lands."
+        },
+        {
+          "voice": "narrator",
+          "text": "He changes what the number measures. Four months bought him a failure list, not model knowledge."
+        },
+        {
+          "voice": "estimation",
+          "text": "That is a rhetorical move. The experience is still four months."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is a rhetorical move with a receipt attached, which is why it survives. Listen to the receipt again."
+        },
+        {
+          "voice": "narrator",
+          "text": "A pipeline ran for a month with every test green and a silent quality regression inside it."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the most senior sentence available to anyone with four months of production time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Green tests and a broken system is a thing you only believe after it happens to you."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the fix he names is a verification step, which is the thing this company sells."
+        },
+        {
+          "voice": "narrator",
+          "text": "Now fine-tuning. The rule is: say what you did not do in the first five words, then pivot to the adjacent judgement."
+        },
+        {
+          "voice": "narrator",
+          "text": "I've deployed, not fine-tuned. Five words, no hedging, no attempt to blur it."
+        },
+        {
+          "voice": "estimation",
+          "text": "Why not say he has read a lot about it and would be comfortable?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Because that is the sentence that gets checked in the next interview, and it will not hold."
+        },
+        {
+          "voice": "narrator",
+          "text": "The pivot is the strong part. Choosing between a different model, better retrieval, or harder verification."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is a more senior skill than tuning, and he is right that it takes longer to learn."
+        },
+        {
+          "voice": "narrator",
+          "text": "On consulting, notice he names a specific thing he has not lived. Utilisation and timesheets."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naming the exact texture of the gap proves he knows what the job is, rather than hand-waving at it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then two receipts. Qantas Super, scoped against the client's own reading of the legislation."
+        },
+        {
+          "voice": "narrator",
+          "text": "And Macquarie Business School coming back for a second phase, which is the closest thing to a renewal he has."
+        },
+        {
+          "voice": "estimation",
+          "text": "Say Qantas Super, not Qantas."
+        },
+        {
+          "voice": "narrator",
+          "text": "Always. They are different organisations, and getting that wrong in financial services is expensive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Last, leadership. Player-coach is their word, from the Sydney advert, and he splits it in half."
+        },
+        {
+          "voice": "narrator",
+          "text": "The coaching half I have done, the reporting line I have not. That is precise and it is checkable."
+        }
+      ]
+    },
+    {
+      "id": "the-trap",
+      "title": "The version that loses",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Two losing versions here, and they fail in opposite directions."
+        },
+        {
+          "voice": "narrator",
+          "text": "The first is the inflated one. It is what happens when a gap makes you nervous."
+        },
+        {
+          "voice": "candidate",
+          "text": "I've done some fine-tuning, mostly with hosted APIs, and I've worked with LangChain a bit on personal projects."
+        },
+        {
+          "voice": "narrator",
+          "text": "Stop there. Two claims, both soft, both false, both easy to check."
+        },
+        {
+          "voice": "estimation",
+          "text": "A bit on personal projects is nearly true of anyone in this field."
+        },
+        {
+          "voice": "narrator",
+          "text": "Nearly true is the problem. In the technical round, nearly true collapses in two follow-up questions."
+        },
+        {
+          "voice": "narrator",
+          "text": "And when one claim collapses, the interviewer re-reads every other claim in the file."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ninety-six percent overlap, eighty percent fewer hours, twenty-eight decision records. All of those become suspect at once."
+        },
+        {
+          "voice": "narrator",
+          "text": "The second losing version is the over-apologetic one."
+        },
+        {
+          "voice": "candidate",
+          "text": "I have to be honest, my AI experience is quite limited. Only four months, so I'm still very much learning."
+        },
+        {
+          "voice": "narrator",
+          "text": "Every word of that is true and it has recategorised him as a junior candidate."
+        },
+        {
+          "voice": "estimation",
+          "text": "He was told to name the gap. That is naming it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Naming without the adjacent skill is not honesty, it is just a low bid on yourself."
+        },
+        {
+          "voice": "narrator",
+          "text": "The mechanism is the same in both directions. A gap must arrive attached to something, or it floats free."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Drill. She asks the sharpest version, which sounds friendly."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Our team does a lot of fine-tuning work. Would that be new for you?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause and answer out loud. Five words to the admission, then the pivot, then stop."
+        },
+        {
+          "voice": "candidate",
+          "text": "Yes, that would be new. I've deployed, not fine-tuned."
+        },
+        {
+          "voice": "candidate",
+          "text": "What I have done is the decision next to it. Whether the answer is a different model, better retrieval, or a harder verification step."
+        },
+        {
+          "voice": "candidate",
+          "text": "I'd expect to pick up the tuning quickly. Knowing whether it's the right lever is the part that took me time."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then stop, and let her move on. A gap answered in three sentences is a gap that closed."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Self-test. Name the five words that open the fine-tuning answer, and the receipt on the four-month answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "I've deployed, not fine-tuned. And a month of green tests with a silent regression underneath."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next time: two requisitions, two bands, and the moment in the call where money is either won or given away."
+        }
+      ]
+    }
+  ]
+}

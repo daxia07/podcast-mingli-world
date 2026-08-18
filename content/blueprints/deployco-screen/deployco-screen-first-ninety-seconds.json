@@ -1,0 +1,404 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-first-ninety-seconds",
+  "show": "deployco-screen",
+  "template": "interview-rehearsal",
+  "title": "The First Ninety Seconds",
+  "description": "Tell me about yourself, answered in ninety seconds, then pulled apart move by move. Plus the harder one underneath it: why are you leaving.",
+  "keywords": [
+    "tell me about yourself",
+    "self introduction",
+    "recruiter screen",
+    "why are you leaving"
+  ],
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "board": {
+    "tabs": [
+      {
+        "title": "The opener",
+        "content": "I'm a software engineer, eight and a half years, almost all of it in regulated financial services at GBST. We build capital-markets tax software for banks and super funds, so my customers have always been other institutions, not consumers.\n\nSince April I've been running LLM systems in production. The main one handles security vulnerability management. Every night a model drafts the day's remediation plans, and three different groups inside the business review and approve them the next morning. Review time went from about 45 minutes to five, and the engineering hours we spend on it fell 80 percent. It's now used by teams beyond the one I built it for.\n\nThe reason I want this job is that the hard part of that project was never the model. It was getting three groups with different incentives to trust it enough to act on it. I ran it in shadow mode next to the commercial scanners the team already believed in, until it agreed with them 96 percent of the time, and only then asked anyone to use it. That's the work I want to do full time. Doing it inside one company is a much smaller version of doing it across many."
+      },
+      {
+        "title": "Why leaving",
+        "content": "Nothing's wrong there. I led the AWS migration, and I've onboarded every engineer who's joined the core team since I took a lead role. But the AI work is something I made space for, rather than something the company is organised around. I want to be somewhere that's the product, and somewhere I see more than one industry a year."
+      },
+      {
+        "title": "The three beats",
+        "content": "1. WHERE — eight and a half years, regulated fintech, institutional customers. Establishes domain, seniority, and that you have never had a consumer user.\n\n2. WHAT — one system, three numbers, one adoption fact. 45 minutes to five. 80 percent. Used by teams beyond the one you built it for.\n\n3. WHY — the hard part was trust, not the model. Shadow mode, 96 percent, then adoption. Ends pointing at their job."
+      },
+      {
+        "title": "Rules",
+        "content": "- Stop talking at ninety seconds. Silence is her turn.\n- One system, not four. The others come out under follow-up.\n- No stack names in the opener. No Bedrock, no retrieval, no orchestration.\n- Say the numbers slowly. They are the only thing she can write down.\n- Never open with a job title or a chronological career history."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "What the opener decides",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Ninety seconds. That is the whole budget for the answer that sets up the other twenty-eight minutes."
+        },
+        {
+          "voice": "narrator",
+          "text": "Open with your job titles in order, and the rest of the call is about your job titles."
+        },
+        {
+          "voice": "narrator",
+          "text": "Open with the trust problem, and the rest of the call is about the work she is hiring for."
+        },
+        {
+          "voice": "estimation",
+          "text": "Or she has a script, asks the same eight questions regardless, and the opener changes nothing."
+        },
+        {
+          "voice": "narrator",
+          "text": "She has a script. What the opener changes is which of the eight she spends time on."
+        },
+        {
+          "voice": "narrator",
+          "text": "And it changes the two sentences she types into the notes field that a hiring manager reads on Friday."
+        }
+      ]
+    },
+    {
+      "id": "the-ask",
+      "title": "What she is scoring",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "So, thanks for taking the time. Do you want to start by telling me a bit about yourself?"
+        },
+        {
+          "voice": "narrator",
+          "text": "That is the question. Now what is being scored, which is not what is being asked."
+        },
+        {
+          "voice": "estimation",
+          "text": "She is scoring experience. Years, employers, whether the resume was honest."
+        },
+        {
+          "voice": "narrator",
+          "text": "She has the resume open. She is not verifying it, she is testing whether you can compress it."
+        },
+        {
+          "voice": "narrator",
+          "text": "This role is client-facing. The ad says the technical team is front of house, not behind the scenes."
+        },
+        {
+          "voice": "narrator",
+          "text": "So the first ninety seconds are a live sample of how you would open in front of a client."
+        },
+        {
+          "voice": "estimation",
+          "text": "That is a lot of weight for one answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is one answer she will hear forty times this month. Three of the forty will be compressible."
+        },
+        {
+          "voice": "narrator",
+          "text": "There are three beats and they never change. Where you have been, what you built, why you want this."
+        },
+        {
+          "voice": "narrator",
+          "text": "Where you have been is one sentence. What you built is one system with three numbers."
+        },
+        {
+          "voice": "narrator",
+          "text": "Why you want this is the only part that is about them, and it goes last so it is what she is holding when you stop."
+        }
+      ]
+    },
+    {
+      "id": "the-answer",
+      "title": "The answer, out loud",
+      "lines": [
+        {
+          "voice": "candidate",
+          "text": "I'm a software engineer, eight and a half years, almost all of it in regulated financial services at GBST."
+        },
+        {
+          "voice": "candidate",
+          "text": "We build capital-markets tax software for banks and super funds. So my customers have always been other institutions, not consumers."
+        },
+        {
+          "voice": "candidate",
+          "text": "Since April I've been running large language model systems in production. The main one handles security vulnerability management."
+        },
+        {
+          "voice": "candidate",
+          "text": "Every night a model drafts the day's remediation plans. Three different groups inside the business review and approve them the next morning."
+        },
+        {
+          "voice": "candidate",
+          "text": "Review time went from about forty-five minutes down to five, and the engineering hours we spend on it fell eighty percent."
+        },
+        {
+          "voice": "candidate",
+          "text": "It's now used by teams beyond the one I built it for."
+        },
+        {
+          "voice": "candidate",
+          "text": "The reason I want this job is that the hard part of that project was never the model."
+        },
+        {
+          "voice": "candidate",
+          "text": "It was getting three groups with different incentives to trust it enough to act on it."
+        },
+        {
+          "voice": "candidate",
+          "text": "I ran it in shadow mode next to the commercial scanners the team already believed in."
+        },
+        {
+          "voice": "candidate",
+          "text": "Only when it agreed with them ninety-six percent of the time did I ask anyone to use it."
+        },
+        {
+          "voice": "candidate",
+          "text": "That's the work I want to do full time. Doing it inside one company is a much smaller version of doing it across many."
+        }
+      ]
+    },
+    {
+      "id": "teardown",
+      "title": "Why it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now move by move. Every sentence in there is doing a job."
+        },
+        {
+          "voice": "narrator",
+          "text": "Eight and a half years, regulated financial services. That is seniority and domain in eleven words."
+        },
+        {
+          "voice": "narrator",
+          "text": "Banks and super funds, not consumers. That pre-empts the question about whether you have faced customers."
+        },
+        {
+          "voice": "estimation",
+          "text": "It also admits he has never shipped to a real end user."
+        },
+        {
+          "voice": "narrator",
+          "text": "It admits it before she can find it, which turns a gap into a positioning statement."
+        },
+        {
+          "voice": "narrator",
+          "text": "Since April. Four months. He says it plainly rather than letting her work it out from the dates."
+        },
+        {
+          "voice": "estimation",
+          "text": "Four months is thin for a company hiring senior people."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is thin, and hiding it is worse. Stated plainly it costs one sentence; discovered later it costs the call."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the system. One system, not four. Under follow-up the others come out and each one feels like a bonus."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three numbers, and only three. Forty-five minutes to five. Eighty percent. Ninety-six percent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say them slowly. They are the only things she can physically write down while you talk."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the sentence that is load-bearing. It's now used by teams beyond the one I built it for."
+        },
+        {
+          "voice": "estimation",
+          "text": "That is the least impressive line in the answer."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is the most important. Everything else is a build. That line is adoption, and adoption is the job."
+        },
+        {
+          "voice": "narrator",
+          "text": "A tool becomes infrastructure only when people who did not build it depend on it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Finally the why. The hard part was never the model, it was trust. That is their business in one clause."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the last line scales it. One company is a small version of what they do across many."
+        },
+        {
+          "voice": "estimation",
+          "text": "What happens when she interrupts halfway through? People lose the thread and never recover it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Assume she will. Recruiters interrupt because thirty minutes is short and they are triaging."
+        },
+        {
+          "voice": "narrator",
+          "text": "The three beats are why the interruption is survivable. You always know which beat you were in."
+        },
+        {
+          "voice": "narrator",
+          "text": "Answer her question in two sentences. Then say, and the reason I mention that, and rejoin at the next beat."
+        },
+        {
+          "voice": "narrator",
+          "text": "Never restart. Restarting signals that the answer was memorised rather than understood."
+        },
+        {
+          "voice": "estimation",
+          "text": "And if she interrupts before the why, which is the part that is about her?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Then you place the why at the end of whatever she asked next. It does not need its own runway."
+        },
+        {
+          "voice": "narrator",
+          "text": "The why is one sentence: the hard part was never the model, it was trust. That fits anywhere."
+        }
+      ]
+    },
+    {
+      "id": "the-trap",
+      "title": "The version that loses",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Here is the version that loses, and it is not obviously bad."
+        },
+        {
+          "voice": "candidate",
+          "text": "Sure. I graduated from Tsinghua, then did a masters in computer vision, then a masters in financial engineering in Hong Kong."
+        },
+        {
+          "voice": "candidate",
+          "text": "I worked at Futu Securities as a quant developer for two years building risk models, and then moved to Australia."
+        },
+        {
+          "voice": "candidate",
+          "text": "I've been at GBST since twenty twenty, working across TaxIntell, TaxAnalyser, the super fund calculation engine and more recently AI."
+        },
+        {
+          "voice": "narrator",
+          "text": "Stop. Ninety seconds gone and nothing has happened yet."
+        },
+        {
+          "voice": "estimation",
+          "text": "It is accurate. And the education is genuinely strong."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is accurate and inert. The mechanism is that chronology puts the least relevant thing first."
+        },
+        {
+          "voice": "narrator",
+          "text": "She now has to hold nine proper nouns before hearing anything she could repeat to a hiring manager."
+        },
+        {
+          "voice": "narrator",
+          "text": "Working across three product names is not a claim. It is a list, and lists do not survive being retold."
+        },
+        {
+          "voice": "narrator",
+          "text": "The education comes out later, in one line, when she asks. It is a good closing detail and a terrible opening one."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Now the harder question underneath the opener. She will ask it, usually gently."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And what's making you look right now? Is there something not working where you are?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause here and answer it out loud before I do. Say the whole thing."
+        },
+        {
+          "voice": "narrator",
+          "text": "Take your time. The trap in this one is complaining."
+        },
+        {
+          "voice": "candidate",
+          "text": "Nothing's wrong there. I led the AWS migration, and I've onboarded every engineer who's joined the core team since I took a lead role."
+        },
+        {
+          "voice": "candidate",
+          "text": "But the AI work is something I made space for, rather than something the company is organised around."
+        },
+        {
+          "voice": "candidate",
+          "text": "I want to be somewhere that's the product, and somewhere I see more than one industry a year."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three beats again. Something good about the current place, a real structural reason, and a pull toward them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Made space for rather than organised around is the load-bearing phrase. It is true and it is not a complaint."
+        },
+        {
+          "voice": "narrator",
+          "text": "And more than one industry a year is a reason that only a consultancy can satisfy."
+        },
+        {
+          "voice": "estimation",
+          "text": "One more. What if she asks how much of that platform he personally built?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Answer precisely and do not inflate. He designed and built it, and it is now used by other teams."
+        },
+        {
+          "voice": "narrator",
+          "text": "On the older products the honest words are primary contributor and key contributor, not built."
+        },
+        {
+          "voice": "narrator",
+          "text": "Precision here is cheap and it buys you credit for everything else you claim."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Self-test. What are the three numbers in the opener, and which sentence is the load-bearing one?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Forty-five to five, eighty percent, ninety-six percent. And the load-bearing line is about teams who did not build it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next time: the question this whole screen exists to filter on. Why forward deployed, and not just OpenAI."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-what-deployco-is",
+  "show": "deployco-screen",
+  "template": "screen-briefing",
+  "title": "What DeployCo Actually Is",
+  "description": "A ten billion dollar joint venture, an acquisition that closed in July and a second one that has not, and the Australian team you would be joining. Everything checkable, as of the eighteenth of August.",
+  "keywords": [
+    "deployco",
+    "openai",
+    "tomoro",
+    "northslope",
+    "forward deployed engineer",
+    "australia"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "openai-launch",
+      "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+      "title": "OpenAI launches the OpenAI Deployment Company",
+      "used_for": [
+        "the launch date and the purpose of the venture",
+        "the Tomoro acquisition and the forward deployed engineering model"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tnw",
+      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
+      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
+      "used_for": [
+        "the ten billion dollar vehicle and OpenAI's commitment",
+        "the guaranteed annual return to the private equity backers",
+        "the lead investors"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "northslope",
+      "url": "https://deploy.co/news/the-openai-deployment-company-to-acquire-northslope",
+      "title": "The OpenAI Deployment Company to acquire Northslope",
+      "used_for": [
+        "the July acquisition announcement and its closing conditions",
+        "the Palantir Vanguard membership and the joint engagement language",
+        "the Codex and business adoption figures"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "deployco-home",
+      "url": "https://deploy.co/",
+      "title": "OpenAI Deploy Co, home page",
+      "used_for": [
+        "the definition of forward deployed engineering",
+        "the BBVA and John Deere case studies"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "consultancy-au",
+      "url": "https://www.consultancy.com.au/news/11799/uk-based-ai-consultancy-tomoro-launches-with-bold-ambitions-in-australia",
+      "title": "Tomoro launches in Australia",
+      "used_for": [
+        "the Australian launch, its leader and the hiring target"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "A promised return",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The people who funded this company were promised a seventeen and a half percent annual return."
+        },
+        {
+          "voice": "engineer",
+          "text": "Not hoped for. Promised, over five years, as reported terms of the joint venture."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Every fund wants that. Wanting it is not the same as being owed it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is why the number matters. A consultancy with a contractual return has a clock on every engagement."
+        },
+        {
+          "voice": "engineer",
+          "text": "That clock is the thing you will feel on a Tuesday afternoon in a client's office."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the interesting question is not what they build. It is how fast they have to prove it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. And their own website answers it in three words: build, prove, generalise."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Who you are talking to",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is The DeployCo Screen. Everything in this episode is checkable and dated the eighteenth of August."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Here is the lazy version. It is OpenAI's consulting arm. That is the whole story."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not the whole story, and the gap is where your questions on Thursday come from."
+        },
+        {
+          "voice": "engineer",
+          "text": "DeployCo is a separate company, majority owned by OpenAI, funded by outside investors."
+        },
+        {
+          "voice": "engineer",
+          "text": "It has bought one consultancy, agreed to buy a second, and is standing up a team in Sydney right now."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three of those facts post-date the pack you wrote for your application. That is why this episode exists."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "The three moving parts",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three moving parts. The venture, the acquisitions, and the Australian team."
+        },
+        {
+          "voice": "engineer",
+          "text": "One, the venture. OpenAI launched the Deployment Company on the eleventh of May this year."
+        },
+        {
+          "voice": "engineer",
+          "text": "Reported structure: a ten billion dollar vehicle, with OpenAI committing up to one and a half billion."
+        },
+        {
+          "voice": "engineer",
+          "text": "Five hundred million at close, with an option for a further billion. Nineteen investors in total."
+        },
+        {
+          "voice": "engineer",
+          "text": "TPG anchors it, alongside Brookfield, Advent International, Bain Capital and Goanna Capital."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Private equity money in an AI services business. That is a bet on billable hours, not on models."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is a bet on deployment being the bottleneck. Their own framing says the models are not the constraint any more."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two, the acquisitions. Tomoro was the founding one, announced in May and formally done on the first of July."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tomoro was founded in twenty twenty-three in alliance with OpenAI. It brought roughly a hundred and fifty forward deployed engineers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then on the eighth of July they announced a second one. A company called Northslope."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Never heard of them."
+        },
+        {
+          "voice": "engineer",
+          "text": "Neither had most people. Northslope was the first member of Palantir's Vanguard Elite network."
+        },
+        {
+          "voice": "engineer",
+          "text": "Its revenue grew seven times in twenty twenty-five, with customers across the United States, Europe and the Middle East."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cancer detection in healthcare, supply chain bottlenecks in manufacturing, renewable megawatts on the grid."
+        },
+        {
+          "voice": "engineer",
+          "text": "That deal has not closed. It is still subject to regulatory approval, and the two companies remain separate until it does."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then why does it matter to a Sydney candidate at all?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because of one sentence in the announcement. After closing, Northslope may support joint commercial engagements with Palantir."
+        },
+        {
+          "voice": "engineer",
+          "text": "A forward deployed engineering firm partnering with the original forward deployed engineering firm. That changes what the work looks like."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three, Australia. Tomoro launched here in December twenty twenty-five, in Sydney and Melbourne."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is led by Dan Edgar, formerly Accenture's banking data and AI lead, with KPMG and Deloitte before that."
+        },
+        {
+          "voice": "engineer",
+          "text": "The stated target was forty to fifty staff within twelve months."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "What the work looks like",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now what an engagement actually looks like, in their own published examples."
+        },
+        {
+          "voice": "engineer",
+          "text": "Their definition: forward deployed engineering teams work directly with customers to solve a specific problem."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then validate the impact, then identify the patterns that scale. Build, prove, generalise."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two case studies are on the front page. BBVA, the bank, and John Deere, the tractor company."
+        },
+        {
+          "voice": "engineer",
+          "text": "BBVA started with ChatGPT Enterprise and is now scaling to a hundred and twenty thousand employees across twenty-five countries."
+        },
+        {
+          "voice": "engineer",
+          "text": "John Deere is the more useful one for you. Read how they describe it."
+        },
+        {
+          "voice": "engineer",
+          "text": "They reviewed hundreds of real-world examples with domain experts. They built custom evaluation systems to measure accuracy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then they iterated to improve model performance. The result was seventy percent less chemical usage for farmers."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the headline number is the chemical reduction. That is what a client buys."
+        },
+        {
+          "voice": "engineer",
+          "text": "The headline number is what a client buys. The evaluation system is what made anyone believe the number."
+        },
+        {
+          "voice": "engineer",
+          "text": "That sentence is the argument you have been making at work for four months. It is on their front page."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is one public engagement in this region. CapitaLand, in Singapore."
+        },
+        {
+          "voice": "engineer",
+          "text": "Seven AI Experience Days, more than a hundred and twenty employees, over a hundred use cases, fifty prototypes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Built with Codex, described in a CapitaLand post that Isabelle herself reshared."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the Australian clients?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not public. The launch coverage said only a major airline and a major telco in this region."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do not guess at names on Thursday. Guessing wrong in front of a recruiter is unrecoverable."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Numbers to have ready",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The numbers, said twice, because you cannot glance back at audio."
+        },
+        {
+          "voice": "engineer",
+          "text": "Eleventh of May: the venture launches. First of July: Tomoro formally becomes DeployCo."
+        },
+        {
+          "voice": "engineer",
+          "text": "Eighth of July: the Northslope announcement, still unclosed. Seventh of August: the Sydney role goes live."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ten billion dollar vehicle. Nineteen investors. Roughly a hundred and fifty engineers from Tomoro."
+        },
+        {
+          "voice": "engineer",
+          "text": "More than two million businesses now use OpenAI, double a year ago. Codex has over five million weekly users."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those last two are marketing figures in an acquisition announcement."
+        },
+        {
+          "voice": "engineer",
+          "text": "They are, and you should treat them that way. They are context, not evidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourteen roles are open on their board today, across New York, London, Paris, Singapore, Sydney and Melbourne."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sydney went live last, on the seventh of August, a month after Singapore, London and Paris."
+        },
+        {
+          "voice": "engineer",
+          "text": "Australia was opened last, which tells you the Australian pod is being stood up right now."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How this knowledge backfires",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Knowing all of this is a liability if you use it badly. Three ways it backfires."
+        },
+        {
+          "voice": "engineer",
+          "text": "First: reciting it. You list the investors, the valuation and the acquisition dates at a recruiter."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That shows preparation. Why is that bad?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because none of it is about the job, and she has heard it from every candidate this month."
+        },
+        {
+          "voice": "engineer",
+          "text": "Preparation reads as insight only when it changes a question you ask. Otherwise it reads as revision."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second: getting a detail wrong with confidence. Say the Northslope deal has closed and you have taught her to check you."
+        },
+        {
+          "voice": "engineer",
+          "text": "It has not closed. It is pending regulatory approval. Say agreed to acquire, not acquired."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third: naming a client you cannot source. The Australian accounts are not public and one commonly repeated name is unverified."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal for all three is the same. If a fact is not attached to a question, do not say it."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Two facts and one question. That is the whole homework budget for a thirty minute call."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fact one: build, prove, generalise. Their words for the cycle you have been arguing for."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fact two: John Deere shipped behind a custom evaluation system. Their words for shadow mode."
+        },
+        {
+          "voice": "engineer",
+          "text": "The question: what does Northslope mean for the Australian team? Nobody outside can answer it, so it is a real question."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if she does not know?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then you have learned something useful, and she will remember being asked something she had to think about."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test. Has the Northslope acquisition closed, and what is the one word that makes the difference?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The word is agreed. They have agreed to acquire, and it is still pending approval."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: the first ninety seconds. The answer that decides how the other twenty-eight minutes go."
+        }
+      ]
+    }
+  ]
+}

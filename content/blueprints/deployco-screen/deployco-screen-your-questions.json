@@ -1,0 +1,401 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-your-questions",
+  "show": "deployco-screen",
+  "template": "interview-rehearsal",
+  "title": "The Questions You Ask",
+  "description": "Six minutes at the end belong to you. Which three questions to ask a recruiter rather than an engineer, and how to read what comes back.",
+  "keywords": [
+    "questions to ask",
+    "recruiter",
+    "northslope",
+    "equity",
+    "next steps"
+  ],
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "board": {
+    "tabs": [
+      {
+        "title": "Ask early",
+        "content": "1. Which requisition and what level am I being considered at? — Ask when she describes the role, not at the end."
+      },
+      {
+        "title": "Ask at the end",
+        "content": "2. What does the rest of the process look like, and what's the usual timeline?\n\n3. Northslope — what does that mean for the Australian team?\n\n4. What does the Australian client base look like now — mostly greenfield builds, or getting stalled pilots into production?\n\n5. Equity: what instrument, what vesting, what happens on a liquidity event?\n\n6. Which entity employs me — DeployCo Australia or the Tomoro Australian entity — and did terms carry across on 1 July?\n\n7. (Only with rapport) The Sydney ad still says 'This role is based in Singapore.' Is the Australian team its own pod, or an extension of the APAC practice out of Singapore?"
+      },
+      {
+        "title": "Reading the answers",
+        "content": "Vague on process → the loop is not designed yet. Good news: you can shape it. Ask what the take-home is.\n\nVague on the Australian client base → the pod is early. Means more greenfield and more ambiguity, and it makes the band question more urgent, not less.\n\nCrisp on equity → they have done this before. Vague on equity → nobody has asked yet, which is itself worth knowing.\n\nNo answer on Northslope → expected. She is not required to know. Watch whether she says she'll find out."
+      },
+      {
+        "title": "Never ask",
+        "content": "- Anything answered on the first page of their website.\n- How many holidays, when can I work from home, what's the parental leave — not in call one.\n- Do you think I'm a good fit? — hands her your own assessment to make.\n- Nothing at all. Ending with 'no, I think you covered everything' reads as low interest."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The last six minutes",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "At about minute twenty-four she will say: do you have any questions for me?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Most candidates treat that as the polite end of the call. It is not. It is the last scored section."
+        },
+        {
+          "voice": "estimation",
+          "text": "Scored how? She is answering, not assessing."
+        },
+        {
+          "voice": "narrator",
+          "text": "She is doing both. The questions you choose tell her what you think the job is."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ask about the technology and she files you as an engineer who wants a technical interview."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ask about the client work and the team, and she files you as someone who understood the role."
+        },
+        {
+          "voice": "narrator",
+          "text": "And there is one question that has to be asked earlier than this, or the money conversation happens without it."
+        }
+      ]
+    },
+    {
+      "id": "the-ask",
+      "title": "Questions for a recruiter",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "We're nearly at time. Do you have any questions for me before we wrap up?"
+        },
+        {
+          "voice": "narrator",
+          "text": "First rule. Ask a recruiter recruiter questions. Ask an engineer engineering questions."
+        },
+        {
+          "voice": "estimation",
+          "text": "Asking her something technical shows depth, though. She will pass it on."
+        },
+        {
+          "voice": "narrator",
+          "text": "She will pass on that you asked something she could not answer, which helps nobody."
+        },
+        {
+          "voice": "narrator",
+          "text": "She owns four things and knows them well. Process, timeline, team shape, and how the offer works."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a fifth thing she may know: what the Australian client work actually looks like day to day."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three questions is the right number. Two feels thin. Five turns her answer into your interview."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the requisition question does not belong here. It belongs at minute twelve, when she describes the role."
+        },
+        {
+          "voice": "estimation",
+          "text": "Why not save it? Everything is calmer at the end."
+        },
+        {
+          "voice": "narrator",
+          "text": "Because salary comes up around minute twenty, and by then the frame is set and cannot be reopened."
+        },
+        {
+          "voice": "narrator",
+          "text": "One more rule, and it decides the order. Ask the question you most want answered second, not first."
+        },
+        {
+          "voice": "narrator",
+          "text": "The first question is a warm-up for both of you, and her first answer is always the most rehearsed."
+        },
+        {
+          "voice": "narrator",
+          "text": "By the second she has settled, and the answers get more specific and more honest."
+        }
+      ]
+    },
+    {
+      "id": "the-answer",
+      "title": "The questions, out loud",
+      "lines": [
+        {
+          "voice": "candidate",
+          "text": "Can I ask two or three things? First, what does the rest of the process look like from here, and what's a normal timeline?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Second, I saw the Northslope announcement in July. What does that mean for the Australian team, if anything?"
+        },
+        {
+          "voice": "candidate",
+          "text": "And third, what does the Australian client work actually look like at the moment?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Is it mostly greenfield builds, or is it getting pilots that have stalled into production?"
+        },
+        {
+          "voice": "candidate",
+          "text": "One more if there's time. On the equity side, what instrument is it, and how does it vest?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I ask because it's a joint venture rather than an ordinary subsidiary, so I don't want to assume it works like a normal option grant."
+        }
+      ]
+    },
+    {
+      "id": "teardown",
+      "title": "Why these four",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Question one, the process, is not really about the process."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is the question that makes her tell you what happens next, which is the thing you actually need."
+        },
+        {
+          "voice": "narrator",
+          "text": "It also gives you the take-home, if there is one. The reported next stage is a build over financial documents."
+        },
+        {
+          "voice": "estimation",
+          "text": "Reported by whom?"
+        },
+        {
+          "voice": "narrator",
+          "text": "A small number of Glassdoor accounts of the old Tomoro process. Directional, not certain, so let her correct you."
+        },
+        {
+          "voice": "narrator",
+          "text": "Do not say I heard you set a take-home. Ask, and let her tell you what it is now."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question two, Northslope, is the strongest one you own."
+        },
+        {
+          "voice": "narrator",
+          "text": "It was announced on the eighth of July and it has not closed. Nobody outside the company can answer it."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is what makes it a real question rather than a display of homework."
+        },
+        {
+          "voice": "estimation",
+          "text": "And if she does not know?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Then she says so, and she remembers being asked something she had to think about."
+        },
+        {
+          "voice": "narrator",
+          "text": "Say agreed to acquire, not acquired. The word agreed is the whole accuracy of that question."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question three, the client base, is the one that changes your decision."
+        },
+        {
+          "voice": "narrator",
+          "text": "Greenfield builds and rescuing stalled pilots are different jobs with different daily texture."
+        },
+        {
+          "voice": "narrator",
+          "text": "It also lets her talk about the work rather than the process, which is where recruiters are most candid."
+        },
+        {
+          "voice": "narrator",
+          "text": "Question four, equity. The reason clause is what makes it land rather than sound grabby."
+        },
+        {
+          "voice": "narrator",
+          "text": "Because it is a joint venture, not an ordinary subsidiary. That sentence shows you read the structure."
+        },
+        {
+          "voice": "narrator",
+          "text": "Reported terms describe a ten billion dollar vehicle with nineteen investors. Equity there is not a normal grant."
+        },
+        {
+          "voice": "estimation",
+          "text": "There is a fifth question sitting there that nobody has mentioned. Which company actually employs him?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Good. Tomoro formally became DeployCo on the first of July, and he would be hired in Australia."
+        },
+        {
+          "voice": "narrator",
+          "text": "So ask which entity issues the contract, and whether terms carried across at the first of July."
+        },
+        {
+          "voice": "narrator",
+          "text": "It sounds dry and it is the kind of question that makes a recruiter treat you as a serious candidate."
+        },
+        {
+          "voice": "estimation",
+          "text": "And the Singapore line in the Sydney advert? That is the sharpest thing he noticed."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is, and it is optional. The Sydney posting still contains a sentence saying the role is based in Singapore."
+        },
+        {
+          "voice": "narrator",
+          "text": "Left over from the Singapore requisition published a month earlier. Almost certainly a copy and paste."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ask it as a real question, never as a catch. Is the Australian team its own pod, or an extension of the Singapore practice?"
+        },
+        {
+          "voice": "estimation",
+          "text": "And if it is a catch, it costs him the rapport he just built."
+        },
+        {
+          "voice": "narrator",
+          "text": "Which is why it goes last, and only if the call has been warm. It is a bonus, not a plan."
+        }
+      ]
+    },
+    {
+      "id": "the-trap",
+      "title": "The questions that lose",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Four questions that cost you something, and two of them look harmless."
+        },
+        {
+          "voice": "candidate",
+          "text": "So what does DeployCo actually do? I wasn't totally clear from the website."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is answered in three paragraphs on their front page. It says you did not look."
+        },
+        {
+          "voice": "candidate",
+          "text": "What's the work from home policy, and how much annual leave is there?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Fair questions, wrong call. Those arrive at offer stage, not in the first thirty minutes."
+        },
+        {
+          "voice": "estimation",
+          "text": "People do need to know. Hybrid three days is a real constraint."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then ask it as a scope question, not a benefits question. What does a typical week on a client engagement look like?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Same information, and it reads as interest in the work rather than in the terms."
+        },
+        {
+          "voice": "candidate",
+          "text": "How did I do? Do you think I'd be a good fit for the team?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Never. It hands her your own assessment to make, and puts her on the spot with nothing to gain."
+        },
+        {
+          "voice": "narrator",
+          "text": "And the fourth one is the worst, because it is silence."
+        },
+        {
+          "voice": "candidate",
+          "text": "No, I think you've covered everything. Thanks."
+        },
+        {
+          "voice": "narrator",
+          "text": "The mechanism is that no questions reads as no interest, whatever you meant by it."
+        },
+        {
+          "voice": "narrator",
+          "text": "Have three written down in front of you. You will not remember them under time pressure."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Drill. Two things to get before the call ends, and most people leave without either."
+        },
+        {
+          "voice": "narrator",
+          "text": "One, the next step and its date. Two, permission to follow up and how."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause and say how you would ask for both, in one sentence, without sounding pushy."
+        },
+        {
+          "voice": "candidate",
+          "text": "That all sounds good. What would the next step be, and roughly when would I expect to hear?"
+        },
+        {
+          "voice": "candidate",
+          "text": "And if I haven't heard by then, is it alright to email you directly?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Two sentences, both about logistics, neither about your chances. That is the right register."
+        },
+        {
+          "voice": "narrator",
+          "text": "Write down the answer while she says it. A date you can quote in a follow-up email is worth more than any question you asked."
+        },
+        {
+          "voice": "narrator",
+          "text": "And thank her by name at the end. Isabelle. People remember being called by their name on a first call."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Self-test. Which of your questions is the one that has to be asked before minute twenty, and why?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Which requisition, because after minute twenty the salary frame is already set."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next time, the last one. The whole thirty minutes, played end to end, without commentary."
+        }
+      ]
+    }
+  ]
+}

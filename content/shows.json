@@ -1,6 +1,15 @@
 {
   "schema": 1,
   "shows": {
+    "deployco-screen": {
+      "title": "The DeployCo Screen",
+      "description": "The recruiter screen at the OpenAI Deployment Company, Thursday 20 August. Who is asking, what she can actually judge, and every answer said out loud before you have to say it.",
+      "mono": "DC",
+      "icon": "📞",
+      "default_template": "interview-rehearsal",
+      "order": -1,
+      "featured": true
+    },
     "coding-prep": {
       "title": "Coding Prep — Airwallex Muscle Memory",
       "description": "Think-aloud coding for Airwallex screens. Pair with tutor deep drills.",

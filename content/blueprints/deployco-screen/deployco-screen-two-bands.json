@@ -1,0 +1,421 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-two-bands",
+  "show": "deployco-screen",
+  "template": "screen-briefing",
+  "title": "Two Requisitions, Two Bands",
+  "description": "The same job in the same city is advertised twice, a hundred and eighty thousand dollars apart. The question that has to be asked before any number is spoken, and what to say in each branch.",
+  "keywords": [
+    "salary",
+    "band",
+    "requisition",
+    "negotiation",
+    "equity",
+    "anchoring"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "ashby",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
+      "title": "DeployCo job board, Ashby posting API",
+      "used_for": [
+        "the Sydney Forward Deployed Engineer band, publish date and equity note",
+        "the Singapore and Melbourne postings for comparison"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "workable",
+      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
+      "title": "Tomoro, Australia Applied AI Solution Engineer",
+      "used_for": [
+        "the legacy band and the September twenty twenty-five publish date"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tnw",
+      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
+      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
+      "used_for": [
+        "the joint venture structure behind the equity question"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "A hundred and eighty thousand",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Two adverts. Same company, same city, same work. The gap between their ceilings is a hundred and eighty thousand dollars."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is more than the whole of the lower advert. It is a second salary sitting in the difference."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then obviously you apply to the higher one. This is not a hard problem."
+        },
+        {
+          "voice": "engineer",
+          "text": "He applied to the lower one, on the eleventh of August, and the call on Thursday came from that application."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then it is already lost."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not lost. It is one question, asked at the right minute, by the right person."
+        },
+        {
+          "voice": "engineer",
+          "text": "The wrong person to ask it is her. The right person is him, and the right minute is early."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "The decision being made",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is The DeployCo Screen. This episode is about the six minutes near the end where money comes up."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The lazy version says never discuss salary in a first call. Deflect and deal with it later."
+        },
+        {
+          "voice": "engineer",
+          "text": "That advice assumes one band that you cannot see. Here there are two bands and both are published."
+        },
+        {
+          "voice": "engineer",
+          "text": "When the numbers are public there is no information to protect. Deflecting just leaves the default in place."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the default is the advert he applied through, which tops out exactly at his floor."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the goal is to name a higher number."
+        },
+        {
+          "voice": "engineer",
+          "text": "No. The goal is to change which advert the conversation is about, before any number is named at all."
+        },
+        {
+          "voice": "engineer",
+          "text": "Numbers argued inside the wrong requisition go nowhere, because the recruiter cannot pay above a band she does not own."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Three things about bands",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three things to understand about how this works inside a company."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, a recruiter cannot exceed a band. She can move you between requisitions. She cannot rewrite one."
+        },
+        {
+          "voice": "engineer",
+          "text": "So a salary conversation inside the wrong requisition is a negotiation nobody in the room can win."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Surely she would move him herself if he were obviously senior."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sometimes. More often the application arrives filed against a requisition and stays there because nobody questioned it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, the first number spoken becomes the reference point for everything after it."
+        },
+        {
+          "voice": "engineer",
+          "text": "If he says a hundred and seventy-five, every later conversation is an argument about how far above a hundred and seventy-five he can get."
+        },
+        {
+          "voice": "engineer",
+          "text": "If she says the band is a hundred and thirty-five to three hundred and sixty, the conversation starts somewhere else entirely."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, equity here is not an ordinary grant, because this is not an ordinary company."
+        },
+        {
+          "voice": "engineer",
+          "text": "DeployCo is a joint venture inside a reported ten billion dollar vehicle with nineteen investors."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Equity in a private subsidiary is a lottery ticket. Not worth spending call time on."
+        },
+        {
+          "voice": "engineer",
+          "text": "It might be a lottery ticket. Asking what instrument it is tells you whether they know, which is itself information."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "How the moment plays",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now the moment, played out. There are two branches and both are fine if you take them deliberately."
+        },
+        {
+          "voice": "engineer",
+          "text": "She will describe the role at some point in the first fifteen minutes. That is the opening."
+        },
+        {
+          "voice": "engineer",
+          "text": "You say: can I ask which requisition this is against, because I think there may be two."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then the reason. I applied through the Tomoro advert, which publishes one thirty to one eighty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your own board has a Sydney forward deployed engineer role posted on the seventh of August at one thirty-five to three sixty."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the body of that one describes a senior applied AI software engineer. Which am I being considered for?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is a lot of detail to recite at a recruiter."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is four sentences and every one of them is checkable on her own systems. That is why it works."
+        },
+        {
+          "voice": "engineer",
+          "text": "Branch one. She says it is the DeployCo forward deployed role. Good. Now you can talk about numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Based on the scope in that advert, owning architecture across engagements, setting the evaluation approach, mentoring."
+        },
+        {
+          "voice": "engineer",
+          "text": "I'd be looking at two hundred to two forty base, and I'd want to understand the equity before fixing on a figure."
+        },
+        {
+          "voice": "engineer",
+          "text": "Branch two. She says it is the Tomoro requisition, at one thirty to one eighty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then you say it plainly. One eighty is my floor, so on that band I'd only be workable at the top of it."
+        },
+        {
+          "voice": "engineer",
+          "text": "I'd rather be considered against the forward deployed role. Can we do that?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if she says no?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then you have learned something real on day one instead of week four, and you have lost nothing."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The four numbers",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Four numbers, said twice, because they have to be available without thinking."
+        },
+        {
+          "voice": "engineer",
+          "text": "One thirty to one eighty. The Tomoro advert, published September twenty twenty-five, never refreshed."
+        },
+        {
+          "voice": "engineer",
+          "text": "One thirty-five to three sixty plus equity. The DeployCo Sydney advert, published the seventh of August this year."
+        },
+        {
+          "voice": "engineer",
+          "text": "The midpoint of the wide band is about two hundred and forty-seven thousand."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Nobody gets the midpoint of a band that wide at four months of production experience."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agreed, and he is not asking for it. He is asking for two hundred to two forty, which sits below the midpoint."
+        },
+        {
+          "voice": "engineer",
+          "text": "His floor is one hundred and eighty thousand. That number stays private and it never gets said out loud."
+        },
+        {
+          "voice": "engineer",
+          "text": "A floor spoken aloud stops being a floor and becomes the offer."
+        },
+        {
+          "voice": "engineer",
+          "text": "One thirty to one eighty. One thirty-five to three sixty. Two hundred to two forty as the ask."
+        },
+        {
+          "voice": "engineer",
+          "text": "And one date to have ready. The seventh of August, which is when the Sydney role went live."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "One pass",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The whole move in one pass, nothing new."
+        },
+        {
+          "voice": "engineer",
+          "text": "She describes the role. You ask which requisition, and you give the two bands as the reason for asking."
+        },
+        {
+          "voice": "engineer",
+          "text": "She answers. If it is the forward deployed role, you tie your range to the scope in that advert."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two hundred to two forty, then a question about the equity instrument, and then you stop talking."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it is the legacy requisition, you name your floor as a constraint and ask to be moved."
+        },
+        {
+          "voice": "engineer",
+          "text": "Either way, no number left your mouth before you knew which band it was landing in."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How money goes wrong",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three ways this goes wrong, each with an early signal."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, answering the expectations question directly. She asks, you answer, and it is over in four seconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is the shape of her question. What are you looking for, salary-wise, is a request for an anchor."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Refusing to answer a direct question is rude, and recruiters hate it."
+        },
+        {
+          "voice": "engineer",
+          "text": "He is not refusing. He is asking one question first and then answering fully. That is not the same thing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, quoting the range but sounding unsure. Two hundred to two forty, said as a question, becomes two hundred."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is your own voice going up at the end. Say the range flat, then stop."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, negotiating against yourself in the silence. She pauses, and you fill it by lowering the number."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is the silence itself. Recruiters use silence, and it is not disapproval."
+        },
+        {
+          "voice": "engineer",
+          "text": "After you name a range, the next person to speak should be her."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three things, as questions to ask yourself in the call."
+        },
+        {
+          "voice": "engineer",
+          "text": "Have I asked which requisition, before a number left my mouth?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Am I quoting a range tied to the scope in their advert, rather than to what I earn now?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Have I asked what the equity actually is, given this is a joint venture and not a normal subsidiary?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the whole thing goes past without money coming up at all?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then you raise the requisition question anyway, at the end, under what happens next."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test. What is the first thing you say when she asks about salary expectations?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not a number. A question about which requisition, with the two bands as the reason for asking."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: the questions you ask her, and how to read the answers she gives."
+        }
+      ]
+    }
+  ]
+}

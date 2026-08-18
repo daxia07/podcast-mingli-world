@@ -1,0 +1,19 @@
+{
+  "name": "screen-briefing",
+  "title": "Interview briefing, two voices",
+  "description": "Coach and sceptic brief the listener on one interview situation: who is asking, what is at stake, and what the public record says.",
+  "voices": {"engineer": "narrator", "sceptic": "interviewer"},
+  "target_minutes": [9, 16],
+  "authoring_brief": "This is a briefing, not a technical deep dive. There is no architecture and no capacity maths. The engineer voice is a coach who has sat on the hiring side; the sceptic holds a genuinely wrong or lazy position and has to be argued out of it, never a stooge. Every claim about the company, the interviewer or the requisition is checkable and belongs in a factual section with sources. Never invent a client, a headcount or a date. Where the public record is thin, say so out loud rather than filling the gap. Sentences run twelve to eighteen words; names, dates and salary figures are repeated at least twice because the listener cannot glance back.",
+  "sections": [
+    {"id": "cold-open", "title": "Cold open", "required": true, "target_minutes": 1, "brief": "A concrete stake before anything is named or branded. What this situation costs if it is misread."},
+    {"id": "question", "title": "The real decision", "required": true, "target_minutes": 1.5, "brief": "Name the show and the situation. The sceptic states the lazy reading; the coach replaces it with the decision that is actually being made."},
+    {"id": "concepts", "title": "What to hold", "required": true, "target_minutes": 3, "brief": "At most three named ideas, each with a concrete image. Who the people are and what they can and cannot judge."},
+    {"id": "case", "title": "Walked through", "required": true, "target_minutes": 3, "brief": "The situation played out beat by beat, in time order, as it will actually happen."},
+    {"id": "numbers", "title": "The numbers", "required": true, "target_minutes": 2, "brief": "The public figures that decide the outcome. Every one sourced, every one repeated."},
+    {"id": "rebuild", "title": "One pass", "required": false, "target_minutes": 2, "brief": "The whole thing again in one continuous pass, introducing nothing new."},
+    {"id": "failure", "title": "How it goes wrong", "required": true, "target_minutes": 2.5, "brief": "Failure modes with the early signal for each, heard while it is happening rather than afterwards."},
+    {"id": "carry", "title": "Carry this", "required": false, "target_minutes": 1.5, "brief": "Three things phrased as questions to ask yourself, not facts to reread."},
+    {"id": "close", "title": "Close", "required": false, "target_minutes": 1, "brief": "A self-test question, then a tease naming a genuinely unresolved thing."}
+  ]
+}

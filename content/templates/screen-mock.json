@@ -1,0 +1,18 @@
+{
+  "name": "screen-mock",
+  "title": "Recruiter screen mock, two voices",
+  "description": "A full recruiter screen played end to end, interviewer and candidate, in the order a real call runs.",
+  "voices": {"interviewer": "interviewer", "candidate": "candidate"},
+  "target_minutes": [18, 35],
+  "authoring_brief": "Play it straight. The interviewer is a real recruiter, warm and quick, not an examiner and not hostile. She interrupts, follows up, and occasionally moves on before the answer is finished, because that is what thirty minutes does. The candidate answers as the listener would want to answer, including the pauses, the clarifying question, and the moment he declines to name a number first. Never let either side monologue past about two hundred words. Nothing may be claimed on the candidate's behalf that is not in his own application material. The call must end with next steps stated, because that is the part people forget to ask for.",
+  "sections": [
+    {"id": "opening", "title": "Opening", "required": true, "target_minutes": 3, "brief": "Greeting, who she is, what the company is now, and how she will use the half hour."},
+    {"id": "background", "title": "Background", "required": true, "target_minutes": 6, "brief": "Tell me about yourself, then her follow-ups inside the answer. The translation test lives here."},
+    {"id": "motivation", "title": "Motivation", "required": true, "target_minutes": 5, "brief": "Why this role, why leave, why customer-facing rather than pure engineering."},
+    {"id": "gaps", "title": "Gaps", "required": true, "target_minutes": 4, "brief": "The things he has not done, named by him before she has to ask."},
+    {"id": "logistics", "title": "Logistics", "required": true, "target_minutes": 2, "brief": "Notice, work rights, location, travel. Short, certain answers."},
+    {"id": "money", "title": "Money", "required": true, "target_minutes": 4, "brief": "The requisition question first, then a range tied to the scope, then equity."},
+    {"id": "his-questions", "title": "His questions", "required": true, "target_minutes": 4, "brief": "Two or three real questions, and her answers, including one she cannot fully answer."},
+    {"id": "next-steps", "title": "Next steps", "required": true, "target_minutes": 2, "brief": "What happens after, by when, and who to contact. Asked for, not waited for."}
+  ]
+}

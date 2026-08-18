@@ -1,0 +1,414 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-explain-it-plainly",
+  "show": "deployco-screen",
+  "template": "interview-rehearsal",
+  "title": "Explain It To Someone Who Doesn't Code",
+  "description": "The only technical test in a recruiter screen is whether she can retell your work. Three versions of the security platform, at thirty seconds, two minutes, and under follow-up.",
+  "keywords": [
+    "translation",
+    "non-technical audience",
+    "secgate",
+    "cve",
+    "explaining",
+    "stakeholders"
+  ],
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "board": {
+    "tabs": [
+      {
+        "title": "Thirty seconds",
+        "content": "I built the system that decides which security flaws in our software are actually worth fixing, and in what order. It drafts a plan overnight, three teams approve it in the morning, and it cut the review from about 45 minutes an item to five."
+      },
+      {
+        "title": "Two minutes",
+        "content": "A bank's software is built out of thousands of open-source components, and every week new security flaws are published against them. A regulated company has to prove it looked at all of them. Most are irrelevant to how you actually run the software, and working out which few matter used to take a person about 45 minutes each.\n\nSo I built two things. The first reads the advisory and our own deployment and works out whether the flaw is actually reachable in our system. The second turns that into a daily plan that three groups review and approve on one screen each morning. They can push back on a plan by talking to it, rather than rejecting the whole thing.\n\nI didn't switch anything over at the start. I ran it silently next to the commercial tools the team already paid for, and compared. When it agreed with them 96 percent of the time and was also finding things they'd missed, that's when people started acting on it. Review is down to about five minutes now, and CVE effort dropped 80 percent."
+      },
+      {
+        "title": "Words to swap",
+        "content": "CVE → a published security flaw in a piece of software we use\nTriage → deciding which ones actually matter to us\nLLM / model → the model, or just: it reads the advisory\nRAG / retrieval → it reads our own deployment records alongside the advisory\nShadow mode → I ran it silently alongside the tools they already trusted\nEval harness → a way to measure whether it was right, before anyone relied on it\nFalse positive → a flaw that turns out not to matter in how we run the software\nHuman in the loop → a person approves the plan, and can change it first"
+      },
+      {
+        "title": "Rule",
+        "content": "If she cannot repeat your answer to a hiring manager in two sentences, the answer failed — no matter how accurate it was.\n\nNever use an acronym she has not used first."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The note she types",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "At the end of Thursday, Isabelle types two or three sentences into a notes field."
+        },
+        {
+          "voice": "narrator",
+          "text": "A hiring manager reads those sentences and decides whether you get an engineering interview."
+        },
+        {
+          "voice": "narrator",
+          "text": "Nothing else from the call survives. Not the numbers, not the nuance, not the good bits."
+        },
+        {
+          "voice": "estimation",
+          "text": "Then the goal is to say something quotable."
+        },
+        {
+          "voice": "narrator",
+          "text": "The goal is to say something she can restate without you in the room."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is a harder target, and it is the only technical test in a recruiter screen."
+        }
+      ]
+    },
+    {
+      "id": "the-ask",
+      "title": "What she can and cannot hold",
+      "lines": [
+        {
+          "voice": "interviewer",
+          "text": "So tell me a bit more about the security work. What does the system actually do?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Isabelle's degree is in English, and she has been recruiting for about two years."
+        },
+        {
+          "voice": "narrator",
+          "text": "She is bright and she is fast. She has no way to hold retrieval, orchestration and shadow mode in one sentence."
+        },
+        {
+          "voice": "estimation",
+          "text": "So dumb it down."
+        },
+        {
+          "voice": "narrator",
+          "text": "No. Dumbing down is condescending and she will hear it. The move is different."
+        },
+        {
+          "voice": "narrator",
+          "text": "You keep the full logic and swap only the vocabulary. Same argument, ordinary words."
+        },
+        {
+          "voice": "narrator",
+          "text": "And there is one rule that does most of the work on its own."
+        },
+        {
+          "voice": "narrator",
+          "text": "Never use an acronym she has not used first. Not CVE, not RAG, not LLM if you can avoid it."
+        },
+        {
+          "voice": "estimation",
+          "text": "Not even LLM? Everyone says LLM now."
+        },
+        {
+          "voice": "narrator",
+          "text": "She will say it. Let her say it first and then match her. Until she does, say the model."
+        },
+        {
+          "voice": "narrator",
+          "text": "There is a second reason to practise this, beyond Thursday."
+        },
+        {
+          "voice": "narrator",
+          "text": "The ad asks for someone who can explain complex AI concepts in an accessible manner."
+        },
+        {
+          "voice": "narrator",
+          "text": "She is not just failing to understand the jargon. She is scoring you on removing it."
+        }
+      ]
+    },
+    {
+      "id": "the-answer",
+      "title": "The answer, out loud",
+      "lines": [
+        {
+          "voice": "candidate",
+          "text": "A bank's software is built out of thousands of open-source components."
+        },
+        {
+          "voice": "candidate",
+          "text": "Every week, new security flaws get published against those components."
+        },
+        {
+          "voice": "candidate",
+          "text": "A regulated company has to prove it looked at all of them."
+        },
+        {
+          "voice": "candidate",
+          "text": "In practice most of them are irrelevant to the way you actually run the software."
+        },
+        {
+          "voice": "candidate",
+          "text": "Working out which few genuinely matter used to take a person about forty-five minutes each."
+        },
+        {
+          "voice": "candidate",
+          "text": "So I built two things. The first reads the published advisory and our own deployment records."
+        },
+        {
+          "voice": "candidate",
+          "text": "It works out whether the flaw is actually reachable in the way we run the system."
+        },
+        {
+          "voice": "candidate",
+          "text": "The second turns that into a daily plan that three groups review and approve on one screen each morning."
+        },
+        {
+          "voice": "candidate",
+          "text": "They can push back on a plan by talking to it, rather than accepting or rejecting the whole thing."
+        },
+        {
+          "voice": "candidate",
+          "text": "I didn't switch anything over at the start, which I think is the important part."
+        },
+        {
+          "voice": "candidate",
+          "text": "I ran it silently, next to the commercial tools the team already paid for, and compared the two."
+        },
+        {
+          "voice": "candidate",
+          "text": "When it agreed with them ninety-six percent of the time, and was also finding things they had missed, people started acting on it."
+        },
+        {
+          "voice": "candidate",
+          "text": "Review is down to about five minutes now, and the engineering hours we spend on this fell eighty percent."
+        }
+      ]
+    },
+    {
+      "id": "teardown",
+      "title": "Why it works",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Count the jargon in that answer. There is almost none, and nothing was lost."
+        },
+        {
+          "voice": "narrator",
+          "text": "No CVE. No triage. No retrieval. No shadow mode. No harness. No false positives."
+        },
+        {
+          "voice": "estimation",
+          "text": "He did say the model reads the advisory. That is still a model."
+        },
+        {
+          "voice": "narrator",
+          "text": "That is fine, because it is doing a verb she understands. It reads something."
+        },
+        {
+          "voice": "narrator",
+          "text": "The first four sentences are not about his system at all. They set up the problem."
+        },
+        {
+          "voice": "narrator",
+          "text": "Thousands of components. New flaws every week. A regulator that requires proof. Forty-five minutes each."
+        },
+        {
+          "voice": "narrator",
+          "text": "By sentence five she already understands why anyone would build this, which means she can retell why."
+        },
+        {
+          "voice": "estimation",
+          "text": "That is a lot of runway before the actual work."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is twenty seconds, and it is what makes the rest quotable rather than impressive."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then two things, numbered. Two is the right number of components for audio."
+        },
+        {
+          "voice": "narrator",
+          "text": "Three would be one too many and she would lose the first one."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the sentence that is doing the most work. I didn't switch anything over at the start."
+        },
+        {
+          "voice": "narrator",
+          "text": "He flags it himself as the important part, which tells her where to put her attention."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ran it silently, next to the tools they already paid for, and compared. That is shadow mode in ordinary words."
+        },
+        {
+          "voice": "estimation",
+          "text": "Silently is a better word than shadow anyway."
+        },
+        {
+          "voice": "narrator",
+          "text": "It is, and this is the point. Removing the jargon made the argument clearer, not weaker."
+        },
+        {
+          "voice": "narrator",
+          "text": "Then the numbers land at the end, once she already believes the story. Ninety-six percent. Five minutes. Eighty percent."
+        },
+        {
+          "voice": "narrator",
+          "text": "And one detail carries more weight than it looks. It was also finding things the paid tools had missed."
+        },
+        {
+          "voice": "narrator",
+          "text": "Agreement alone proves it is safe. Finding more proves it is worth having."
+        }
+      ]
+    },
+    {
+      "id": "the-trap",
+      "title": "The version that loses",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "The losing version is not wrong. It is the one you would give another engineer."
+        },
+        {
+          "voice": "candidate",
+          "text": "It's a multi-stage pipeline. We run Trivy, gosec, Semgrep and cargo-audit per language ecosystem."
+        },
+        {
+          "voice": "candidate",
+          "text": "Then there's an LLM exploitability layer on top doing retrieval over NIST advisory data and our deployment context."
+        },
+        {
+          "voice": "candidate",
+          "text": "Structured output feeds the remediation planner, and we ran it in shadow against Veracode and Anchore until overlap hit ninety-six percent."
+        },
+        {
+          "voice": "narrator",
+          "text": "Every word of that is true and she has retained none of it."
+        },
+        {
+          "voice": "estimation",
+          "text": "She might retain ninety-six percent."
+        },
+        {
+          "voice": "narrator",
+          "text": "She might, with nothing attached to it. Ninety-six percent of what, compared to what?"
+        },
+        {
+          "voice": "narrator",
+          "text": "The mechanism is that four proper nouns arrive before any reason to care about them."
+        },
+        {
+          "voice": "narrator",
+          "text": "Trivy, gosec, Semgrep, cargo-audit. Four names, zero meaning, in one sentence."
+        },
+        {
+          "voice": "narrator",
+          "text": "In writing she could reread. In audio, and a phone call is audio, there is no rereading."
+        },
+        {
+          "voice": "narrator",
+          "text": "The note she types after that answer says: technical, hard to follow. That note does not get you an interview."
+        }
+      ]
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Drill. Compress the whole thing into thirty seconds, because sometimes that is all she gives you."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And in a sentence, what does that system do for the business?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause and say your thirty second version out loud. One problem, one mechanism, one number."
+        },
+        {
+          "voice": "candidate",
+          "text": "I built the system that decides which security flaws in our software are actually worth fixing, and in what order."
+        },
+        {
+          "voice": "candidate",
+          "text": "It drafts a plan overnight, three teams approve it in the morning, and it cut the review from about forty-five minutes an item to five."
+        },
+        {
+          "voice": "narrator",
+          "text": "Thirty-eight words. Problem, mechanism, number, in that order."
+        },
+        {
+          "voice": "narrator",
+          "text": "Have that version ready, because she may ask for it right at the end when time has run out."
+        },
+        {
+          "voice": "narrator",
+          "text": "And it is the version she will actually type into the notes."
+        },
+        {
+          "voice": "narrator",
+          "text": "One follow-up is close to guaranteed, and there is a wrong answer that feels generous."
+        },
+        {
+          "voice": "interviewer",
+          "text": "So it replaced the commercial scanners you were paying for?"
+        },
+        {
+          "voice": "narrator",
+          "text": "Say no. Say it quickly and say it plainly, even though yes is the more impressive answer."
+        },
+        {
+          "voice": "candidate",
+          "text": "No, and that's deliberate. It runs alongside them and it stays advisory."
+        },
+        {
+          "voice": "candidate",
+          "text": "It flags something and a person makes the call. In a regulated environment that's not a limitation, it's the design."
+        },
+        {
+          "voice": "narrator",
+          "text": "Two reasons that matters. The first is that it is true, and the claim would not survive a technical round."
+        },
+        {
+          "voice": "narrator",
+          "text": "The second is that advisory by design is the most senior thing he can say about an AI system."
+        },
+        {
+          "voice": "estimation",
+          "text": "Most candidates would take the compliment and move on."
+        },
+        {
+          "voice": "narrator",
+          "text": "Most candidates would, and it is the moment a recruiter stops believing the rest."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "narrator",
+          "text": "Self-test. Say shadow mode without saying shadow mode, and say CVE without saying CVE."
+        },
+        {
+          "voice": "narrator",
+          "text": "Ran it silently next to the tools they already trusted. And a published security flaw in software we use."
+        },
+        {
+          "voice": "narrator",
+          "text": "Next time: the four things you have not done, and how to name each one before she has to ask."
+        }
+      ]
+    }
+  ]
+}

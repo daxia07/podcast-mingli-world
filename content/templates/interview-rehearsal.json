@@ -1,0 +1,64 @@
+{
+  "name": "interview-rehearsal",
+  "title": "Interview rehearsal",
+  "description": "One interview question per episode: what is being tested, the answer said out loud, why it works, and the version that loses.",
+  "voices": {
+    "narrator": "narrator",
+    "estimation": "estimation",
+    "candidate": "candidate",
+    "interviewer": "interviewer"
+  },
+  "target_minutes": [9, 18],
+  "authoring_brief": "The narrator is a coach who has sat on the hiring side. The estimation voice is a sceptic who holds a genuinely wrong or opposing view and has to be argued out of it, never a stooge asking leading questions. The candidate voice delivers the model answer uninterrupted so the listener hears it as a whole; the interviewer voice speaks only the questions a real interviewer would ask. Sentences run twelve to eighteen words. Every number and name is repeated at least twice across the episode because the listener cannot glance back. Never invent a fact about the company or the candidate.",
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Cold open",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "A concrete stake before anything is branded or named. What this question costs if it goes wrong."
+    },
+    {
+      "id": "the-ask",
+      "title": "What they are testing",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "The question in the interviewer's words, then what the interviewer is really scoring. The sceptic proposes the obvious answer and is talked out of it."
+    },
+    {
+      "id": "the-answer",
+      "title": "The answer, out loud",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "The candidate voice delivers the model answer with no interruptions, so the listener hears the whole shape and the pacing."
+    },
+    {
+      "id": "teardown",
+      "title": "Why it works",
+      "required": true,
+      "target_minutes": 4,
+      "brief": "Move by move. What each beat is doing, what it pre-empts, and the sentence that is load-bearing."
+    },
+    {
+      "id": "the-trap",
+      "title": "The version that loses",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Name the mechanism of the failure, not just the symptom. A worse answer said out loud, then diagnosed."
+    },
+    {
+      "id": "drill",
+      "title": "Say it back",
+      "required": false,
+      "target_minutes": 2,
+      "brief": "Pose the question, script a real pause, then give the answer. The listener must have enough to actually attempt it."
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "required": false,
+      "target_minutes": 1,
+      "brief": "Recap as a self-test question, not a restated list. One line of tease for the next episode."
+    }
+  ]
+}

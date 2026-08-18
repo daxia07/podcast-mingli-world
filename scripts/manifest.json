@@ -5858,6 +5858,17 @@
         377,
         378
       ]
+    },
+    "deployco-screen": {
+      "title": "The DeployCo Screen",
+      "description": "The recruiter screen at the OpenAI Deployment Company, Thursday 20 August. Who is asking, what she can actually judge, and every answer said out loud before you have to say it.",
+      "icon": "📞",
+      "mono": "DC",
+      "order": -1,
+      "featured": true,
+      "default_template": "interview-rehearsal",
+      "archived": false,
+      "episode_ids": []
     }
   }
 }

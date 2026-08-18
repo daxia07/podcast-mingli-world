@@ -1,0 +1,442 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-thirty-minutes",
+  "show": "deployco-screen",
+  "template": "screen-briefing",
+  "title": "Thirty Minutes With A Recruiter",
+  "description": "What the first call at the OpenAI Deployment Company is actually for, who Isabelle Atack is, and the one thing on Thursday that decides how much the job pays.",
+  "keywords": [
+    "recruiter screen",
+    "forward deployed engineer",
+    "deployco",
+    "salary band",
+    "requisition"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "ashby",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
+      "title": "DeployCo job board, Ashby posting API",
+      "used_for": [
+        "Sydney Forward Deployed Engineer band and publish date",
+        "the fourteen open roles and their locations"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "workable",
+      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
+      "title": "Tomoro, Australia Applied AI Solution Engineer",
+      "used_for": [
+        "the legacy requisition band",
+        "the client-facing requirements the ad lists"
+      ]
+    },
+    {
+      "type": "profile",
+      "id": "atack",
+      "url": "https://au.linkedin.com/in/isabelle-atack-789389289",
+      "title": "Isabelle Atack, Member of Recruiting Staff, The OpenAI Deployment Company",
+      "used_for": [
+        "her role, tenure and prior employment",
+        "her posts about AI adoption and Australian hiring"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Two ads, one job",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "You applied for a job in Sydney that pays up to a hundred and eighty thousand dollars."
+        },
+        {
+          "voice": "engineer",
+          "text": "The same job, at the same company, in the same city, is advertised at up to three hundred and sixty."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That cannot be the same job. Nobody publishes two bands that far apart."
+        },
+        {
+          "voice": "engineer",
+          "text": "They do when a company is mid-rebrand. One ad is the old company. One is the new one."
+        },
+        {
+          "voice": "engineer",
+          "text": "On Thursday at three you get thirty minutes to find out which of the two you are standing in."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the call ends without asking?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then the cheaper ad wins by default, because it is the one you applied through."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What a screen is for",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is The DeployCo Screen. One call on Thursday the twentieth of August, at three in the afternoon."
+        },
+        {
+          "voice": "engineer",
+          "text": "The company is the OpenAI Deployment Company. Everyone calls it DeployCo, and the website is deploy dot co."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Let me state the obvious position first, so you can knock it down."
+        },
+        {
+          "voice": "sceptic",
+          "text": "A recruiter screen is a formality. She checks you are real, checks your visa, and passes you on."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is true at a large company with a fixed pipeline. It is not true here, and it is not true of this recruiter."
+        },
+        {
+          "voice": "engineer",
+          "text": "The real decision she makes is not pass or fail. It is which requisition and which level you get routed to."
+        },
+        {
+          "voice": "engineer",
+          "text": "Routing decides the money, the interviewers, and the whole shape of the loop after this."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the win condition is not impressing her. It is being filed correctly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Being filed correctly, and being memorable enough that she argues for you when the file is thin."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Three things to hold",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three concepts carry this whole episode. First: she is a router, not an examiner."
+        },
+        {
+          "voice": "engineer",
+          "text": "Isabelle Atack is Member of Recruiting Staff at DeployCo, based in Sydney."
+        },
+        {
+          "voice": "engineer",
+          "text": "She joined Tomoro in April as Talent Acquisition Manager. Tomoro became DeployCo in July, and her title changed with it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Before that she spent sixteen months at a London recruitment agency called Saragossa. Her degree is in English."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So she cannot judge whether the architecture was any good."
+        },
+        {
+          "voice": "engineer",
+          "text": "Correct, and that is the second concept. She is not judging the engineering. She is judging the translation."
+        },
+        {
+          "voice": "engineer",
+          "text": "The ad says the technical team is front of house. It asks for client ambassadors who explain complex ideas in an accessible manner."
+        },
+        {
+          "voice": "engineer",
+          "text": "She is exactly qualified to score that, because she is the accessible-manner test walking around on two legs."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then the deep technical answer is wasted on her."
+        },
+        {
+          "voice": "engineer",
+          "text": "Worse than wasted. A deep technical answer to a non-technical listener reads as poor judgement about audience."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third concept: the requisition. A requisition is the internal job record that carries the band and the level."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two of them exist for this role, and you applied through the older, cheaper one."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The thirty minutes, walked",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Here is how the thirty minutes will actually run. It is the same shape at almost every company."
+        },
+        {
+          "voice": "engineer",
+          "text": "Minutes zero to three: she introduces herself and DeployCo, and asks if you can hear her."
+        },
+        {
+          "voice": "engineer",
+          "text": "Minutes three to ten: tell me about yourself. This is the single highest-leverage block in the call."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Seven minutes for a background walk seems generous."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not seven minutes of you talking. It is ninety seconds of you, then her questions inside your answer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Minutes ten to eighteen: motivation. Why this role, why leave where you are, why customer-facing work."
+        },
+        {
+          "voice": "engineer",
+          "text": "Minutes eighteen to twenty-four: logistics and money. Notice period, work rights, location, travel, expectations."
+        },
+        {
+          "voice": "engineer",
+          "text": "Minutes twenty-four to thirty: your questions, and what happens next."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the money conversation lands with six minutes left and no room to recover."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes, and that is precisely why the requisition question goes in earlier. You raise it, not her."
+        },
+        {
+          "voice": "engineer",
+          "text": "The natural place is the moment she describes the role. That is an invitation, and you take it."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The numbers that decide it",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Five numbers matter on Thursday, and every one of them is public."
+        },
+        {
+          "voice": "engineer",
+          "text": "One hundred and thirty thousand to a hundred and eighty thousand. That is the Tomoro ad you applied through."
+        },
+        {
+          "voice": "engineer",
+          "text": "It was published in September twenty twenty-five and has never been refreshed."
+        },
+        {
+          "voice": "engineer",
+          "text": "One hundred and thirty-five thousand to three hundred and sixty thousand, plus equity. That is the DeployCo Sydney ad."
+        },
+        {
+          "voice": "engineer",
+          "text": "It went live on the seventh of August this year, four days before you applied to the other one."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then the wide band is just a range covering several levels. The top is not real for him."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agreed, the top is not the target. But the midpoint of that band is about two hundred and forty-seven thousand."
+        },
+        {
+          "voice": "engineer",
+          "text": "And the body of that ad opens by saying they are seeking a senior applied AI software engineer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your floor is a hundred and eighty. The old ad tops out exactly at your floor."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the old ad cannot pay him anything above the minimum he will accept."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the whole problem in one sentence. Say it to yourself before the call."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "The call in one pass",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now the whole thing in one continuous pass, with nothing new added."
+        },
+        {
+          "voice": "engineer",
+          "text": "She calls at three. You answer, sound pleased, and let her talk first."
+        },
+        {
+          "voice": "engineer",
+          "text": "She describes DeployCo and the Australian team. You listen for which role she names."
+        },
+        {
+          "voice": "engineer",
+          "text": "She asks about your background. You give the ninety-second version and stop talking."
+        },
+        {
+          "voice": "engineer",
+          "text": "She asks why this, and why now. You separate customer-facing work from pure engineering, out loud."
+        },
+        {
+          "voice": "engineer",
+          "text": "Somewhere in there she describes the role. That is your moment. You ask which requisition it is."
+        },
+        {
+          "voice": "engineer",
+          "text": "She answers, and now the salary conversation has a frame before any number is spoken."
+        },
+        {
+          "voice": "engineer",
+          "text": "She asks logistics. Sydney, four weeks notice, permanent resident, comfortable on client sites three days a week."
+        },
+        {
+          "voice": "engineer",
+          "text": "She asks expectations. You give a range tied to the scope in the ad, and you ask about the equity."
+        },
+        {
+          "voice": "engineer",
+          "text": "You ask two or three real questions. You ask what happens next and by when."
+        },
+        {
+          "voice": "engineer",
+          "text": "You thank her by name. The call ends. You write down what she said about the requisition."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "Three ways this goes wrong",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three failure modes, each with an early signal you can hear while it is happening."
+        },
+        {
+          "voice": "engineer",
+          "text": "First: answering the technical question technically. You say retrieval, orchestration, shadow mode, and she goes quiet."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is her follow-up getting shorter. Short follow-ups mean she has stopped tracking."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Surely a recruiter expects some jargon from an engineer."
+        },
+        {
+          "voice": "engineer",
+          "text": "She expects it and she cannot use it. What she writes in the notes is what the hiring manager reads."
+        },
+        {
+          "voice": "engineer",
+          "text": "If she cannot restate your work in her own words, the note is empty and you are one of forty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second failure: naming a number first. She asks expectations, you say a figure, and it is anchored to the old ad."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is your own mouth. If a number arrives before the requisition question, you have already lost the frame."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third failure: sounding like you want OpenAI rather than this job."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Everyone wants OpenAI. She knows that."
+        },
+        {
+          "voice": "engineer",
+          "text": "She knows it, which is why it is the question the whole screen exists to filter on."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal is you talking about models rather than customers."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Three things to carry",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three things to carry, phrased as questions to ask yourself, not facts to reread."
+        },
+        {
+          "voice": "engineer",
+          "text": "One. If she had to describe my work to a hiring manager in two sentences, what would she say?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If you cannot answer that, your background answer is still too technical."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two. Have I asked which requisition this is, before any number left my mouth?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three. Can I say why customer-facing, in a way that would be false about a pure engineering job?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "That last one is the real test. Most people cannot pass it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Most people say they like working with people. That is not an answer, it is a personality trait."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Close",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test before the next episode. Which ad did you apply through, and what is its ceiling?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If the answer took more than two seconds, play the numbers chapter again."
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: what DeployCo actually is. A ten billion dollar joint venture, an acquisition in July, and a second one that has not closed."
+        }
+      ]
+    }
+  ]
+}
