@@ -5004,6 +5004,154 @@
       ]
     },
     {
+      "id": 389,
+      "slug": "deployco-screen-thirty-minutes",
+      "title": "Thirty Minutes With A Recruiter",
+      "description": "What the first call at the OpenAI Deployment Company is actually for, who Isabelle Atack is, and the one thing on Thursday that decides how much the job pays.",
+      "duration": "8:39",
+      "file_size_bytes": 4158957,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-thirty-minutes.mp3?v=c8f6d0c5",
+      "filename": "deployco-screen-thirty-minutes.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "recruiter screen",
+        "forward deployed engineer",
+        "deployco",
+        "salary band",
+        "requisition"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "ashby",
+          "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
+          "title": "DeployCo job board, Ashby posting API",
+          "used_for": [
+            "Sydney Forward Deployed Engineer band and publish date",
+            "the fourteen open roles and their locations"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "workable",
+          "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
+          "title": "Tomoro, Australia Applied AI Solution Engineer",
+          "used_for": [
+            "the legacy requisition band",
+            "the client-facing requirements the ad lists"
+          ]
+        },
+        {
+          "type": "profile",
+          "id": "atack",
+          "url": "https://au.linkedin.com/in/isabelle-atack-789389289",
+          "title": "Isabelle Atack, Member of Recruiting Staff, The OpenAI Deployment Company",
+          "used_for": [
+            "her role, tenure and prior employment",
+            "her posts about AI adoption and Australian hiring"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 390,
+      "slug": "deployco-screen-what-deployco-is",
+      "title": "What DeployCo Actually Is",
+      "description": "A ten billion dollar joint venture, an acquisition that closed in July and a second one that has not, and the Australian team you would be joining. Everything checkable, as of the eighteenth of August.",
+      "duration": "8:36",
+      "file_size_bytes": 4129197,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-what-deployco-is.mp3?v=b6a220c0",
+      "filename": "deployco-screen-what-deployco-is.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "deployco",
+        "openai",
+        "tomoro",
+        "northslope",
+        "forward deployed engineer",
+        "australia"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "openai-launch",
+          "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+          "title": "OpenAI launches the OpenAI Deployment Company",
+          "used_for": [
+            "the launch date and the purpose of the venture",
+            "the Tomoro acquisition and the forward deployed engineering model"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "tnw",
+          "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
+          "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
+          "used_for": [
+            "the ten billion dollar vehicle and OpenAI's commitment",
+            "the guaranteed annual return to the private equity backers",
+            "the lead investors"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "northslope",
+          "url": "https://deploy.co/news/the-openai-deployment-company-to-acquire-northslope",
+          "title": "The OpenAI Deployment Company to acquire Northslope",
+          "used_for": [
+            "the July acquisition announcement and its closing conditions",
+            "the Palantir Vanguard membership and the joint engagement language",
+            "the Codex and business adoption figures"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "deployco-home",
+          "url": "https://deploy.co/",
+          "title": "OpenAI Deploy Co, home page",
+          "used_for": [
+            "the definition of forward deployed engineering",
+            "the BBVA and John Deere case studies"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "consultancy-au",
+          "url": "https://www.consultancy.com.au/news/11799/uk-based-ai-consultancy-tomoro-launches-with-bold-ambitions-in-australia",
+          "title": "Tomoro launches in Australia",
+          "used_for": [
+            "the Australian launch, its leader and the hiring target"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 391,
+      "slug": "deployco-screen-first-ninety-seconds",
+      "title": "The First Ninety Seconds",
+      "description": "Tell me about yourself, answered in ninety seconds, then pulled apart move by move. Plus the harder one underneath it: why are you leaving.",
+      "duration": "8:20",
+      "file_size_bytes": 4005741,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-first-ninety-seconds.mp3?v=23b22920",
+      "filename": "deployco-screen-first-ninety-seconds.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "tell me about yourself",
+        "self introduction",
+        "recruiter screen",
+        "why are you leaving"
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -5868,7 +6016,11 @@
       "featured": true,
       "default_template": "interview-rehearsal",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        389,
+        390,
+        391
+      ]
     }
   }
 }

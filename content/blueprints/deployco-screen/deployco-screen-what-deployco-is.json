@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 390,
   "slug": "deployco-screen-what-deployco-is",
   "show": "deployco-screen",
   "template": "screen-briefing",
@@ -17,59 +18,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "openai-launch",
-      "url": "https://openai.com/index/openai-launches-the-deployment-company/",
-      "title": "OpenAI launches the OpenAI Deployment Company",
-      "used_for": [
-        "the launch date and the purpose of the venture",
-        "the Tomoro acquisition and the forward deployed engineering model"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "tnw",
-      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
-      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
-      "used_for": [
-        "the ten billion dollar vehicle and OpenAI's commitment",
-        "the guaranteed annual return to the private equity backers",
-        "the lead investors"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "northslope",
-      "url": "https://deploy.co/news/the-openai-deployment-company-to-acquire-northslope",
-      "title": "The OpenAI Deployment Company to acquire Northslope",
-      "used_for": [
-        "the July acquisition announcement and its closing conditions",
-        "the Palantir Vanguard membership and the joint engagement language",
-        "the Codex and business adoption figures"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "deployco-home",
-      "url": "https://deploy.co/",
-      "title": "OpenAI Deploy Co, home page",
-      "used_for": [
-        "the definition of forward deployed engineering",
-        "the BBVA and John Deere case studies"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "consultancy-au",
-      "url": "https://www.consultancy.com.au/news/11799/uk-based-ai-consultancy-tomoro-launches-with-bold-ambitions-in-australia",
-      "title": "Tomoro launches in Australia",
-      "used_for": [
-        "the Australian launch, its leader and the hiring target"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -437,6 +385,59 @@
           "voice": "engineer",
           "text": "Next time: the first ninety seconds. The answer that decides how the other twenty-eight minutes go."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "openai-launch",
+      "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+      "title": "OpenAI launches the OpenAI Deployment Company",
+      "used_for": [
+        "the launch date and the purpose of the venture",
+        "the Tomoro acquisition and the forward deployed engineering model"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tnw",
+      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
+      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
+      "used_for": [
+        "the ten billion dollar vehicle and OpenAI's commitment",
+        "the guaranteed annual return to the private equity backers",
+        "the lead investors"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "northslope",
+      "url": "https://deploy.co/news/the-openai-deployment-company-to-acquire-northslope",
+      "title": "The OpenAI Deployment Company to acquire Northslope",
+      "used_for": [
+        "the July acquisition announcement and its closing conditions",
+        "the Palantir Vanguard membership and the joint engagement language",
+        "the Codex and business adoption figures"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "deployco-home",
+      "url": "https://deploy.co/",
+      "title": "OpenAI Deploy Co, home page",
+      "used_for": [
+        "the definition of forward deployed engineering",
+        "the BBVA and John Deere case studies"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "consultancy-au",
+      "url": "https://www.consultancy.com.au/news/11799/uk-based-ai-consultancy-tomoro-launches-with-bold-ambitions-in-australia",
+      "title": "Tomoro launches in Australia",
+      "used_for": [
+        "the Australian launch, its leader and the hiring target"
       ]
     }
   ]

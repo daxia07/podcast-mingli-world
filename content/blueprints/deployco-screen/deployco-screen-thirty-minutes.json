@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 389,
   "slug": "deployco-screen-thirty-minutes",
   "show": "deployco-screen",
   "template": "screen-briefing",
@@ -16,38 +17,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "ashby",
-      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
-      "title": "DeployCo job board, Ashby posting API",
-      "used_for": [
-        "Sydney Forward Deployed Engineer band and publish date",
-        "the fourteen open roles and their locations"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "workable",
-      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
-      "title": "Tomoro, Australia Applied AI Solution Engineer",
-      "used_for": [
-        "the legacy requisition band",
-        "the client-facing requirements the ad lists"
-      ]
-    },
-    {
-      "type": "profile",
-      "id": "atack",
-      "url": "https://au.linkedin.com/in/isabelle-atack-789389289",
-      "title": "Isabelle Atack, Member of Recruiting Staff, The OpenAI Deployment Company",
-      "used_for": [
-        "her role, tenure and prior employment",
-        "her posts about AI adoption and Australian hiring"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -436,6 +405,38 @@
           "voice": "engineer",
           "text": "Next time: what DeployCo actually is. A ten billion dollar joint venture, an acquisition in July, and a second one that has not closed."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "ashby",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
+      "title": "DeployCo job board, Ashby posting API",
+      "used_for": [
+        "Sydney Forward Deployed Engineer band and publish date",
+        "the fourteen open roles and their locations"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "workable",
+      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
+      "title": "Tomoro, Australia Applied AI Solution Engineer",
+      "used_for": [
+        "the legacy requisition band",
+        "the client-facing requirements the ad lists"
+      ]
+    },
+    {
+      "type": "profile",
+      "id": "atack",
+      "url": "https://au.linkedin.com/in/isabelle-atack-789389289",
+      "title": "Isabelle Atack, Member of Recruiting Staff, The OpenAI Deployment Company",
+      "used_for": [
+        "her role, tenure and prior employment",
+        "her posts about AI adoption and Australian hiring"
       ]
     }
   ]

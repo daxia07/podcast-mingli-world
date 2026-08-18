@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 391,
   "slug": "deployco-screen-first-ninety-seconds",
   "show": "deployco-screen",
   "template": "interview-rehearsal",
@@ -16,26 +17,6 @@
     "estimation": "estimation",
     "candidate": "candidate",
     "interviewer": "interviewer"
-  },
-  "board": {
-    "tabs": [
-      {
-        "title": "The opener",
-        "content": "I'm a software engineer, eight and a half years, almost all of it in regulated financial services at GBST. We build capital-markets tax software for banks and super funds, so my customers have always been other institutions, not consumers.\n\nSince April I've been running LLM systems in production. The main one handles security vulnerability management. Every night a model drafts the day's remediation plans, and three different groups inside the business review and approve them the next morning. Review time went from about 45 minutes to five, and the engineering hours we spend on it fell 80 percent. It's now used by teams beyond the one I built it for.\n\nThe reason I want this job is that the hard part of that project was never the model. It was getting three groups with different incentives to trust it enough to act on it. I ran it in shadow mode next to the commercial scanners the team already believed in, until it agreed with them 96 percent of the time, and only then asked anyone to use it. That's the work I want to do full time. Doing it inside one company is a much smaller version of doing it across many."
-      },
-      {
-        "title": "Why leaving",
-        "content": "Nothing's wrong there. I led the AWS migration, and I've onboarded every engineer who's joined the core team since I took a lead role. But the AI work is something I made space for, rather than something the company is organised around. I want to be somewhere that's the product, and somewhere I see more than one industry a year."
-      },
-      {
-        "title": "The three beats",
-        "content": "1. WHERE — eight and a half years, regulated fintech, institutional customers. Establishes domain, seniority, and that you have never had a consumer user.\n\n2. WHAT — one system, three numbers, one adoption fact. 45 minutes to five. 80 percent. Used by teams beyond the one you built it for.\n\n3. WHY — the hard part was trust, not the model. Shadow mode, 96 percent, then adoption. Ends pointing at their job."
-      },
-      {
-        "title": "Rules",
-        "content": "- Stop talking at ninety seconds. Silence is her turn.\n- One system, not four. The others come out under follow-up.\n- No stack names in the opener. No Bedrock, no retrieval, no orchestration.\n- Say the numbers slowly. They are the only thing she can write down.\n- Never open with a job title or a chronological career history."
-      }
-    ]
   },
   "sections": [
     {
@@ -400,5 +381,25 @@
         }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "The opener",
+        "content": "I'm a software engineer, eight and a half years, almost all of it in regulated financial services at GBST. We build capital-markets tax software for banks and super funds, so my customers have always been other institutions, not consumers.\n\nSince April I've been running LLM systems in production. The main one handles security vulnerability management. Every night a model drafts the day's remediation plans, and three different groups inside the business review and approve them the next morning. Review time went from about 45 minutes to five, and the engineering hours we spend on it fell 80 percent. It's now used by teams beyond the one I built it for.\n\nThe reason I want this job is that the hard part of that project was never the model. It was getting three groups with different incentives to trust it enough to act on it. I ran it in shadow mode next to the commercial scanners the team already believed in, until it agreed with them 96 percent of the time, and only then asked anyone to use it. That's the work I want to do full time. Doing it inside one company is a much smaller version of doing it across many."
+      },
+      {
+        "title": "Why leaving",
+        "content": "Nothing's wrong there. I led the AWS migration, and I've onboarded every engineer who's joined the core team since I took a lead role. But the AI work is something I made space for, rather than something the company is organised around. I want to be somewhere that's the product, and somewhere I see more than one industry a year."
+      },
+      {
+        "title": "The three beats",
+        "content": "1. WHERE — eight and a half years, regulated fintech, institutional customers. Establishes domain, seniority, and that you have never had a consumer user.\n\n2. WHAT — one system, three numbers, one adoption fact. 45 minutes to five. 80 percent. Used by teams beyond the one you built it for.\n\n3. WHY — the hard part was trust, not the model. Shadow mode, 96 percent, then adoption. Ends pointing at their job."
+      },
+      {
+        "title": "Rules",
+        "content": "- Stop talking at ninety seconds. Silence is her turn.\n- One system, not four. The others come out under follow-up.\n- No stack names in the opener. No Bedrock, no retrieval, no orchestration.\n- Say the numbers slowly. They are the only thing she can write down.\n- Never open with a job title or a chronological career history."
+      }
+    ]
+  }
 }
