@@ -604,6 +604,51 @@ class TestShowRegistryGate(unittest.TestCase):
         self.assertEqual(gates_mod.gate_show_registry(manifest), [])
 
 
+class TestShowsSyncedGate(unittest.TestCase):
+    """The guard for the langgraph build that died mid-publish on 2026-08-18."""
+
+    def _registry(self, tmp, show_ids):
+        path = Path(tmp) / "shows.json"
+        payload = {"schema": 1, "shows": {sid: {"title": sid} for sid in show_ids}}
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        return path
+
+    def test_synced_show_passes(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = {"playlists": {"x": {"episode_ids": []}}}
+            registry = self._registry(tmp, ["x"])
+            self.assertEqual(gates_mod.gate_shows_synced(manifest, shows_path=registry), [])
+
+    def test_registered_but_unsynced_show_is_an_error(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = {"playlists": {"x": {"episode_ids": []}}}
+            registry = self._registry(tmp, ["x", "langgraph"])
+            findings = gates_mod.gate_shows_synced(manifest, shows_path=registry)
+            self.assertEqual(len(findings), 1)
+            self.assertEqual(findings[0].level, gates_mod.ERROR)
+            self.assertIn("langgraph", findings[0].message)
+
+    def test_playlist_without_a_registry_entry_is_not_flagged(self):
+        # apply_shows never removes a playlist, so one left behind by a deleted
+        # show is expected rather than a failure.
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = {"playlists": {"x": {}, "retired": {}}}
+            registry = self._registry(tmp, ["x"])
+            self.assertEqual(gates_mod.gate_shows_synced(manifest, shows_path=registry), [])
+
+    def test_unreadable_registry_warns_rather_than_blocks(self):
+        findings = gates_mod.gate_shows_synced({"playlists": {}}, shows_path="/nope/shows.json")
+        self.assertEqual([f.level for f in findings], [gates_mod.WARN])
+
+    def test_the_committed_manifest_is_in_sync(self):
+        # The regression itself: the real registry against the real manifest.
+        manifest = json.loads(Path("scripts/manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(gates_mod.gate_shows_synced(manifest), [])
+
+
 class TestAudioUniformity(unittest.TestCase):
     """The guard for the bug where episodes stopped playing at 11 seconds."""
 

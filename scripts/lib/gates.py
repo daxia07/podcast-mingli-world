@@ -389,6 +389,43 @@ def gate_show_registry(manifest: dict) -> list[Finding]:
     return out
 
 
+def gate_shows_synced(
+    manifest: dict, *, shows_path: str | Path = "content/shows.json"
+) -> list[Finding]:
+    """Every registered show must already exist as a manifest playlist.
+
+    `content/shows.json` is the registry an author edits, but publishing goes
+    through `manifest.attach_to_playlist`, which refuses to create a playlist it
+    does not already find. Registering a show without running the sync in
+    `.claude/skills/show-new` step 2 therefore synthesises the whole episode,
+    uploads the audio to R2, and only then dies on a KeyError — leaving an MP3
+    in the bucket that nothing records. That is what happened to `langgraph` on
+    2026-08-18, and nothing caught it locally: parity compares the two committed
+    copies, which were equally unsynced, and `gate_show_registry` checks the
+    fields of the playlists that exist rather than the ones that should.
+
+    The reverse direction is deliberately not an error. `apply_shows` never
+    removes a playlist, so one left behind by a deleted show is expected.
+    """
+    path = Path(shows_path)
+    try:
+        shows = json.loads(path.read_text(encoding="utf-8")).get("shows", {})
+    except (OSError, json.JSONDecodeError) as exc:
+        return [Finding("shows_synced", WARN, f"{path.as_posix()}: {exc}")]
+
+    playlists = manifest.get("playlists") or {}
+    return [
+        Finding(
+            "shows_synced",
+            ERROR,
+            f"show {sid!r} is registered in {path.as_posix()} but has no manifest "
+            "playlist — run the sync in .claude/skills/show-new step 2",
+        )
+        for sid in shows
+        if sid not in playlists
+    ]
+
+
 def gate_new_episodes_have_blueprints(
     manifest: dict,
     *,
@@ -491,7 +528,12 @@ def main(argv: list[str]) -> int:
                 print(f"{path}: invalid JSON — {exc}")
                 rc = 1
                 continue
-            rc |= report(run_manifest(manifest) + gate_show_registry(manifest), path)
+            rc |= report(
+                run_manifest(manifest)
+                + gate_show_registry(manifest)
+                + gate_shows_synced(manifest),
+                path,
+            )
 
         manifest = json.loads(Path("scripts/manifest.json").read_text(encoding="utf-8"))
         rc |= report(gate_new_episodes_have_blueprints(manifest), "blueprint coverage")

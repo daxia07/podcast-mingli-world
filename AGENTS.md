@@ -41,7 +41,10 @@ frozen.
 must be uniform 48 kHz mono (mixed sample rates make browsers stop mid-file —
 `scripts/lib/audio.py`); episode URLs carry a `?v=` content hash because rebuilds
 happen in place; the manifest the app reads lives on R2 and only reaches it via
-the deploy sync; a new show needs `mono` and `order` or it renders nowhere; CSS
+the deploy sync; a new show needs `mono` and `order` or it renders nowhere, and
+registering one in `content/shows.json` without syncing it into the manifest's
+`playlists` block kills the build mid-publish, after the audio has already
+reached R2 (`gate_shows_synced`); CSS
 additions must not redefine shared tokens, and must use tokens rather than raw
 colours or dark mode breaks (`tests/test_theme.mjs`); and
 `site/search-index.json` is a build artifact — rebuild it with
