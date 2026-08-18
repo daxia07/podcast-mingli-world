@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 395,
   "slug": "deployco-screen-two-bands",
   "show": "deployco-screen",
   "template": "screen-briefing",
@@ -17,36 +18,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "ashby",
-      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
-      "title": "DeployCo job board, Ashby posting API",
-      "used_for": [
-        "the Sydney Forward Deployed Engineer band, publish date and equity note",
-        "the Singapore and Melbourne postings for comparison"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "workable",
-      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
-      "title": "Tomoro, Australia Applied AI Solution Engineer",
-      "used_for": [
-        "the legacy band and the September twenty twenty-five publish date"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "tnw",
-      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
-      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
-      "used_for": [
-        "the joint venture structure behind the equity question"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -415,6 +386,36 @@
           "voice": "engineer",
           "text": "Next time: the questions you ask her, and how to read the answers she gives."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "ashby",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
+      "title": "DeployCo job board, Ashby posting API",
+      "used_for": [
+        "the Sydney Forward Deployed Engineer band, publish date and equity note",
+        "the Singapore and Melbourne postings for comparison"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "workable",
+      "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
+      "title": "Tomoro, Australia Applied AI Solution Engineer",
+      "used_for": [
+        "the legacy band and the September twenty twenty-five publish date"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tnw",
+      "url": "https://thenextweb.com/news/openai-deployco-finalized-10-billion-joint-venture",
+      "title": "OpenAI closes the Deployment Company, a ten billion dollar joint venture",
+      "used_for": [
+        "the joint venture structure behind the equity question"
       ]
     }
   ]

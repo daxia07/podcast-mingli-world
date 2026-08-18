@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 396,
   "slug": "deployco-screen-your-questions",
   "show": "deployco-screen",
   "template": "interview-rehearsal",
@@ -17,26 +18,6 @@
     "estimation": "estimation",
     "candidate": "candidate",
     "interviewer": "interviewer"
-  },
-  "board": {
-    "tabs": [
-      {
-        "title": "Ask early",
-        "content": "1. Which requisition and what level am I being considered at? — Ask when she describes the role, not at the end."
-      },
-      {
-        "title": "Ask at the end",
-        "content": "2. What does the rest of the process look like, and what's the usual timeline?\n\n3. Northslope — what does that mean for the Australian team?\n\n4. What does the Australian client base look like now — mostly greenfield builds, or getting stalled pilots into production?\n\n5. Equity: what instrument, what vesting, what happens on a liquidity event?\n\n6. Which entity employs me — DeployCo Australia or the Tomoro Australian entity — and did terms carry across on 1 July?\n\n7. (Only with rapport) The Sydney ad still says 'This role is based in Singapore.' Is the Australian team its own pod, or an extension of the APAC practice out of Singapore?"
-      },
-      {
-        "title": "Reading the answers",
-        "content": "Vague on process → the loop is not designed yet. Good news: you can shape it. Ask what the take-home is.\n\nVague on the Australian client base → the pod is early. Means more greenfield and more ambiguity, and it makes the band question more urgent, not less.\n\nCrisp on equity → they have done this before. Vague on equity → nobody has asked yet, which is itself worth knowing.\n\nNo answer on Northslope → expected. She is not required to know. Watch whether she says she'll find out."
-      },
-      {
-        "title": "Never ask",
-        "content": "- Anything answered on the first page of their website.\n- How many holidays, when can I work from home, what's the parental leave — not in call one.\n- Do you think I'm a good fit? — hands her your own assessment to make.\n- Nothing at all. Ending with 'no, I think you covered everything' reads as low interest."
-      }
-    ]
   },
   "sections": [
     {
@@ -397,5 +378,25 @@
         }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Ask early",
+        "content": "1. Which requisition and what level am I being considered at? — Ask when she describes the role, not at the end."
+      },
+      {
+        "title": "Ask at the end",
+        "content": "2. What does the rest of the process look like, and what's the usual timeline?\n\n3. Northslope — what does that mean for the Australian team?\n\n4. What does the Australian client base look like now — mostly greenfield builds, or getting stalled pilots into production?\n\n5. Equity: what instrument, what vesting, what happens on a liquidity event?\n\n6. Which entity employs me — DeployCo Australia or the Tomoro Australian entity — and did terms carry across on 1 July?\n\n7. (Only with rapport) The Sydney ad still says 'This role is based in Singapore.' Is the Australian team its own pod, or an extension of the APAC practice out of Singapore?"
+      },
+      {
+        "title": "Reading the answers",
+        "content": "Vague on process → the loop is not designed yet. Good news: you can shape it. Ask what the take-home is.\n\nVague on the Australian client base → the pod is early. Means more greenfield and more ambiguity, and it makes the band question more urgent, not less.\n\nCrisp on equity → they have done this before. Vague on equity → nobody has asked yet, which is itself worth knowing.\n\nNo answer on Northslope → expected. She is not required to know. Watch whether she says she'll find out."
+      },
+      {
+        "title": "Never ask",
+        "content": "- Anything answered on the first page of their website.\n- How many holidays, when can I work from home, what's the parental leave — not in call one.\n- Do you think I'm a good fit? — hands her your own assessment to make.\n- Nothing at all. Ending with 'no, I think you covered everything' reads as low interest."
+      }
+    ]
+  }
 }
