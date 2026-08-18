@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 400,
   "slug": "langgraph-03-checkpoints-and-the-pause",
   "show": "langgraph",
   "template": "concept-explainer",

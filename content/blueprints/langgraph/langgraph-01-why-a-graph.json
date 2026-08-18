@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 398,
   "slug": "langgraph-01-why-a-graph",
   "show": "langgraph",
   "template": "concept-explainer",

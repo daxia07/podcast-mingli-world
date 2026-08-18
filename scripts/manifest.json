@@ -5310,6 +5310,106 @@
       ]
     },
     {
+      "id": 398,
+      "slug": "langgraph-01-why-a-graph",
+      "title": "LangGraph 1 — Why a Graph and Not a Loop",
+      "description": "The agent loop everyone writes first, the four things it cannot do, and what a graph gives you instead.",
+      "duration": "9:36",
+      "file_size_bytes": 4613997,
+      "file_url": "https://podcast.mingli.world/episodes/langgraph-01-why-a-graph.mp3?v=57e871f2",
+      "filename": "langgraph-01-why-a-graph.mp3",
+      "playlist": "langgraph",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "langgraph",
+        "agents",
+        "state machine",
+        "orchestration"
+      ],
+      "sources": [
+        {
+          "type": "docs",
+          "id": "langgraph-docs",
+          "url": "https://docs.langchain.com/oss/python/langgraph",
+          "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+          "used_for": [
+            "api behaviour",
+            "defaults",
+            "durability modes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 399,
+      "slug": "langgraph-02-state-and-reducers",
+      "title": "LangGraph 2 — State, Channels and Reducers",
+      "description": "The state schema is the design. Reducers are where the real bugs live, and parallel branches are why they exist.",
+      "duration": "8:57",
+      "file_size_bytes": 4299885,
+      "file_url": "https://podcast.mingli.world/episodes/langgraph-02-state-and-reducers.mp3?v=23a9f57b",
+      "filename": "langgraph-02-state-and-reducers.mp3",
+      "playlist": "langgraph",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "langgraph",
+        "state",
+        "reducers",
+        "parallelism"
+      ],
+      "sources": [
+        {
+          "type": "docs",
+          "id": "langgraph-docs",
+          "url": "https://docs.langchain.com/oss/python/langgraph",
+          "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+          "used_for": [
+            "api behaviour",
+            "defaults",
+            "durability modes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 400,
+      "slug": "langgraph-03-checkpoints-and-the-pause",
+      "title": "LangGraph 3 — Checkpoints, Threads and the Human Pause",
+      "description": "One line of setup buys memory, crash recovery, human approval and time travel. Plus the re-execution rule that causes duplicate charges.",
+      "duration": "8:50",
+      "file_size_bytes": 4248237,
+      "file_url": "https://podcast.mingli.world/episodes/langgraph-03-checkpoints-and-the-pause.mp3?v=490062a6",
+      "filename": "langgraph-03-checkpoints-and-the-pause.mp3",
+      "playlist": "langgraph",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "langgraph",
+        "checkpointer",
+        "human in the loop",
+        "interrupt",
+        "time travel"
+      ],
+      "sources": [
+        {
+          "type": "docs",
+          "id": "langgraph-docs",
+          "url": "https://docs.langchain.com/oss/python/langgraph",
+          "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+          "used_for": [
+            "api behaviour",
+            "defaults",
+            "durability modes"
+          ]
+        }
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -5572,6 +5672,40 @@
       "audio_fit": "excellent",
       "source": "youtube",
       "slug": "yt-coding-two-sum-ii"
+    },
+    {
+      "id": 412,
+      "slug": "langgraph-04-what-breaks-in-production",
+      "title": "LangGraph 4 — What Breaks in Production",
+      "description": "Fan-out that finds your rate limit, retries that double-charge, caches that serve yesterday, and the checkpoint table nobody planned for.",
+      "duration": "8:35",
+      "file_size_bytes": 4121133,
+      "file_url": "https://podcast.mingli.world/episodes/langgraph-04-what-breaks-in-production.mp3?v=c1a6050d",
+      "filename": "langgraph-04-what-breaks-in-production.mp3",
+      "playlist": "langgraph",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "langgraph",
+        "production",
+        "reliability",
+        "cost",
+        "observability"
+      ],
+      "sources": [
+        {
+          "type": "docs",
+          "id": "langgraph-docs",
+          "url": "https://docs.langchain.com/oss/python/langgraph",
+          "title": "LangGraph documentation — graph API, checkpointers, interrupts, streaming (read August 2026)",
+          "used_for": [
+            "api behaviour",
+            "defaults",
+            "durability modes"
+          ]
+        }
+      ]
     },
     {
       "id": 450,
@@ -6195,7 +6329,12 @@
       "featured": true,
       "default_template": "concept-explainer",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        398,
+        399,
+        400,
+        412
+      ]
     }
   }
 }
