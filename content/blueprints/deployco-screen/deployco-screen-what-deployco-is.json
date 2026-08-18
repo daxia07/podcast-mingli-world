@@ -123,6 +123,22 @@
         },
         {
           "voice": "engineer",
+          "text": "The UK register shows what that meant. On that day all eight Tomoro directors resigned together."
+        },
+        {
+          "voice": "engineer",
+          "text": "They were replaced by a single OpenAI-side director based in San Francisco."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the founders are gone and it is an OpenAI shell now."
+        },
+        {
+          "voice": "engineer",
+          "text": "No. That is corporate governance, not an exodus. The founders still publish and still speak at conferences."
+        },
+        {
+          "voice": "engineer",
           "text": "Tomoro was founded in twenty twenty-three in alliance with OpenAI. It brought roughly a hundred and fifty forward deployed engineers."
         },
         {
@@ -156,6 +172,14 @@
         {
           "voice": "engineer",
           "text": "Because of one sentence in the announcement. After closing, Northslope may support joint commercial engagements with Palantir."
+        },
+        {
+          "voice": "engineer",
+          "text": "One caveat before you use that on Thursday. Northslope has offices in New York, London and Denver."
+        },
+        {
+          "voice": "engineer",
+          "text": "None in this region. So it cannot mean more people in Sydney. Say it that way and you sound accurate."
         },
         {
           "voice": "engineer",
@@ -247,6 +271,30 @@
         {
           "voice": "engineer",
           "text": "Do not guess at names on Thursday. Guessing wrong in front of a recruiter is unrecoverable."
+        },
+        {
+          "voice": "engineer",
+          "text": "One more thing about how they work, from their own head of talent, in numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Thirty people at the start of twenty twenty-five. About a hundred and fifty now."
+        },
+        {
+          "voice": "engineer",
+          "text": "Four hundred applications running in the cloud, and twelve weeks on average from proof of concept to production."
+        },
+        {
+          "voice": "engineer",
+          "text": "Teams of three to six. Engineers work on one project at a time."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One project at a time is not how consultancies work. That is how product teams work."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is the point, and it is worth saying back to her. It is the opposite of the timesheet world."
         }
       ]
     },
@@ -285,11 +333,11 @@
         },
         {
           "voice": "engineer",
-          "text": "Fourteen roles are open on their board today, across New York, London, Paris, Singapore, Sydney and Melbourne."
+          "text": "Eleven roles are open on their board today, across New York, San Francisco, London, Edinburgh, Paris, Sydney and Melbourne."
         },
         {
           "voice": "engineer",
-          "text": "Sydney went live last, on the seventh of August, a month after Singapore, London and Paris."
+          "text": "Sydney and Melbourne went live last, on the seventh of August, a month after London and Paris."
         },
         {
           "voice": "engineer",

@@ -5,7 +5,7 @@
   "show": "deployco-screen",
   "template": "screen-briefing",
   "title": "Thirty Minutes With A Recruiter",
-  "description": "What the first call at the OpenAI Deployment Company is actually for, who Isabelle Atack is, and the one thing on Thursday that decides how much the job pays.",
+  "description": "What the first call at the OpenAI Deployment Company is actually for, who Isabelle Atack is, and the three requisitions behind one job that decide how much it pays.",
   "keywords": [
     "recruiter screen",
     "forward deployed engineer",
@@ -20,7 +20,7 @@
   "sections": [
     {
       "id": "cold-open",
-      "title": "Two ads, one job",
+      "title": "Three ads, one job",
       "factual": true,
       "lines": [
         {
@@ -29,19 +29,31 @@
         },
         {
           "voice": "engineer",
-          "text": "The same job, at the same company, in the same city, is advertised at up to three hundred and sixty."
+          "text": "The same job, same company, same city, is advertised twice more. Up to two seventy-five, and up to three sixty."
         },
         {
           "voice": "sceptic",
-          "text": "That cannot be the same job. Nobody publishes two bands that far apart."
+          "text": "Three bands for one job. That has to be a rebrand artefact. Old company, new company."
         },
         {
           "voice": "engineer",
-          "text": "They do when a company is mid-rebrand. One ad is the old company. One is the new one."
+          "text": "That was my first reading too, and it is wrong. Two of the three sit on the same old board."
         },
         {
           "voice": "engineer",
-          "text": "On Thursday at three you get thirty minutes to find out which of the two you are standing in."
+          "text": "Same board, same publication date, ninety-five thousand apart. That is not a rebrand. That is a level split."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then the gap is about seniority, not about which company is doing the hiring."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. And that matters, because a rebrand is nobody's fault. A level is a decision someone makes about you."
+        },
+        {
+          "voice": "engineer",
+          "text": "On Thursday at three you get thirty minutes to find out which of the three you are standing in."
         },
         {
           "voice": "sceptic",
@@ -49,7 +61,7 @@
         },
         {
           "voice": "engineer",
-          "text": "Then the cheaper ad wins by default, because it is the one you applied through."
+          "text": "Then the cheapest ad wins by default, because it is the one you applied through."
         }
       ]
     },
@@ -142,11 +154,11 @@
         },
         {
           "voice": "engineer",
-          "text": "Third concept: the requisition. A requisition is the internal job record that carries the band and the level."
+          "text": "Third concept: the requisition. A requisition is the internal job record carrying the band and the level."
         },
         {
           "voice": "engineer",
-          "text": "Two of them exist for this role, and you applied through the older, cheaper one."
+          "text": "Three exist for this role, and you applied through the cheapest of them, on the eleventh of August."
         }
       ]
     },
@@ -207,47 +219,55 @@
       "lines": [
         {
           "voice": "engineer",
-          "text": "Five numbers matter on Thursday, and every one of them is public."
+          "text": "The numbers that matter on Thursday, and every one of them is public."
         },
         {
           "voice": "engineer",
-          "text": "One hundred and thirty thousand to a hundred and eighty thousand. That is the Tomoro ad you applied through."
+          "text": "One hundred and thirty thousand to one hundred and eighty thousand. The Tomoro ad you applied through."
         },
         {
           "voice": "engineer",
-          "text": "It was published in September twenty twenty-five and has never been refreshed."
+          "text": "Published September twenty twenty-five, and never refreshed since."
         },
         {
           "voice": "engineer",
-          "text": "One hundred and thirty-five thousand to three hundred and sixty thousand, plus equity. That is the DeployCo Sydney ad."
-        },
-        {
-          "voice": "engineer",
-          "text": "It went live on the seventh of August this year, four days before you applied to the other one."
+          "text": "One hundred and eighty thousand to two hundred and seventy-five thousand. The senior version of that same ad."
         },
         {
           "voice": "sceptic",
-          "text": "Then the wide band is just a range covering several levels. The top is not real for him."
+          "text": "On the same board? Then why was he not put forward for that one?"
         },
         {
           "voice": "engineer",
-          "text": "Agreed, the top is not the target. But the midpoint of that band is about two hundred and forty-seven thousand."
+          "text": "Because his own application pack told him to skip it. That advice is the expensive part of this episode."
         },
         {
           "voice": "engineer",
-          "text": "And the body of that ad opens by saying they are seeking a senior applied AI software engineer."
+          "text": "One hundred and thirty-five thousand to three hundred and sixty thousand, plus equity. The DeployCo Sydney ad."
         },
         {
           "voice": "engineer",
-          "text": "Your floor is a hundred and eighty. The old ad tops out exactly at your floor."
+          "text": "It went live on the seventh of August, four days before he applied to the cheapest one."
         },
         {
           "voice": "sceptic",
-          "text": "So the old ad cannot pay him anything above the minimum he will accept."
+          "text": "The wide band covers several levels. Its top is not real for him."
         },
         {
           "voice": "engineer",
-          "text": "That is the whole problem in one sentence. Say it to yourself before the call."
+          "text": "Agreed, and he is not chasing the top. The senior band is the one that changes his week."
+        },
+        {
+          "voice": "engineer",
+          "text": "His floor is one hundred and eighty thousand. The ad he applied through tops out exactly at that floor."
+        },
+        {
+          "voice": "engineer",
+          "text": "The senior ad starts there. Same board, same day, and nobody has moved his file across."
+        },
+        {
+          "voice": "engineer",
+          "text": "Again. One thirty to one eighty. One eighty to two seventy-five. One thirty-five to three sixty."
         }
       ]
     },

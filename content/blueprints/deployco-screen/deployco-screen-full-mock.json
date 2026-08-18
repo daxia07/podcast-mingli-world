@@ -569,19 +569,47 @@
         },
         {
           "voice": "interviewer",
-          "text": "Just so I set expectations, if it turns out your application sits on the legacy requisition, that band tops out lower."
+          "text": "Just so I set expectations. I need to check which requisition your application actually sits on."
         },
         {
           "voice": "candidate",
-          "text": "Then I should be straight with you. A hundred and eighty is my floor, so I'd only be workable at the very top of that band."
-        },
-        {
-          "voice": "candidate",
-          "text": "I'd much rather be considered against the forward deployed role, if that's something you can do."
+          "text": "Can I ask what the options are? I think there may be three rather than two."
         },
         {
           "voice": "interviewer",
-          "text": "I think it will be. Leave that one with me."
+          "text": "Three?"
+        },
+        {
+          "voice": "candidate",
+          "text": "The Tomoro board has an applied AI solution engineer at one thirty to one eighty. That is the one I applied through."
+        },
+        {
+          "voice": "candidate",
+          "text": "It also has a senior version of the same role at one eighty to two seventy-five. Same board, same posting date."
+        },
+        {
+          "voice": "candidate",
+          "text": "And then the forward deployed role on your own board at one thirty-five to three sixty."
+        },
+        {
+          "voice": "interviewer",
+          "text": "I did not know the senior one was still live. Let me check that, because it changes what I can do."
+        },
+        {
+          "voice": "candidate",
+          "text": "If it turns out to be the one thirty to one eighty requisition, I should be straight with you."
+        },
+        {
+          "voice": "candidate",
+          "text": "A hundred and eighty is my floor, so I would only be workable at the very top of that band."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would much rather be considered against the senior role, or the forward deployed one."
+        },
+        {
+          "voice": "interviewer",
+          "text": "That is fair, and useful to know now rather than in three weeks. Leave it with me."
         }
       ]
     },
@@ -608,6 +636,26 @@
         {
           "voice": "interviewer",
           "text": "Timeline, usually two to three weeks end to end, assuming diaries cooperate."
+        },
+        {
+          "voice": "candidate",
+          "text": "Can I ask two things about that exercise, while it is on your mind?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Go ahead."
+        },
+        {
+          "voice": "candidate",
+          "text": "Does it want a written report alongside the code? And do you cover the API costs, or does the candidate?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Honestly I would have to check both. That is a fair question and I should know the answer."
+        },
+        {
+          "voice": "candidate",
+          "text": "No problem. The reason I ask is that it changes how I would budget the time, not whether I would do it."
         },
         {
           "voice": "candidate",
