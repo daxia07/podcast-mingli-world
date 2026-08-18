@@ -5152,6 +5152,71 @@
       ]
     },
     {
+      "id": 392,
+      "slug": "deployco-screen-why-forward-deployed",
+      "title": "Why Forward Deployed",
+      "description": "The question this screen exists to filter on. Not why OpenAI, but why customer-facing technical work, in a way that would be false about a pure engineering job.",
+      "duration": "8:08",
+      "file_size_bytes": 3907437,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-why-forward-deployed.mp3?v=3fcee240",
+      "filename": "deployco-screen-why-forward-deployed.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "forward deployed engineer",
+        "motivation",
+        "why this role",
+        "client facing"
+      ]
+    },
+    {
+      "id": 393,
+      "slug": "deployco-screen-explain-it-plainly",
+      "title": "Explain It To Someone Who Doesn't Code",
+      "description": "The only technical test in a recruiter screen is whether she can retell your work. Three versions of the security platform, at thirty seconds, two minutes, and under follow-up.",
+      "duration": "7:58",
+      "file_size_bytes": 3825837,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-explain-it-plainly.mp3?v=5610b021",
+      "filename": "deployco-screen-explain-it-plainly.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "translation",
+        "non-technical audience",
+        "secgate",
+        "cve",
+        "explaining",
+        "stakeholders"
+      ]
+    },
+    {
+      "id": 394,
+      "slug": "deployco-screen-the-gaps",
+      "title": "The Four Things You Haven't Done",
+      "description": "Four months of production, no fine-tuning, no Spark, no billable consulting and no reporting line. Each one named before she has to ask, in the words that make naming it a strength.",
+      "duration": "8:18",
+      "file_size_bytes": 3984429,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-the-gaps.mp3?v=65899a5b",
+      "filename": "deployco-screen-the-gaps.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "gaps",
+        "weaknesses",
+        "fine-tuning",
+        "spark",
+        "consulting",
+        "team leadership",
+        "honesty"
+      ]
+    },
+    {
       "id": 401,
       "title": "NeetCode: Two Sum (LC 1)",
       "subtitle": "Day 1 · HashMap complement · audio-first",
@@ -6019,7 +6084,10 @@
       "episode_ids": [
         389,
         390,
-        391
+        391,
+        392,
+        393,
+        394
       ]
     }
   }

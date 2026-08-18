@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 392,
   "slug": "deployco-screen-why-forward-deployed",
   "show": "deployco-screen",
   "template": "interview-rehearsal",
@@ -16,22 +17,6 @@
     "estimation": "estimation",
     "candidate": "candidate",
     "interviewer": "interviewer"
-  },
-  "board": {
-    "tabs": [
-      {
-        "title": "The answer",
-        "content": "Two reasons. The first is about me. I've done the internal version of this job four or five times, and the part I'm best at is the front half — sitting with the people who have the problem, arguing about what the system should refuse to do, then building it. At GBST the business analysis team were my internal customers for a set of agents that took a three-day report down to under 30 minutes. At Macquarie Business School I had to win an argument with a professor about a tutor that deliberately doesn't give students the answer. That's client work with the invoice missing.\n\nThe second is that your own framing is the one I'd already arrived at. Your site describes the cycle as build, prove, generalise. I built a platform called Foundry for exactly that reason, because running agent crews showed me that every project rebuilds identity, audit, dispatch and cost accounting from scratch. The model work is different every time. The plumbing underneath it isn't, and most teams pay for it again anyway."
-      },
-      {
-        "title": "The test",
-        "content": "The answer must be FALSE about a pure engineering job at the same company.\n\nFails the test: I like working with people. I want impact. I like variety. I want to be at the frontier. These are all equally true of the platform team.\n\nPasses the test: I am best at the front half — scoping with the person who owns the problem, and arguing about what the system should refuse to do. You cannot do that from behind a backlog."
-      },
-      {
-        "title": "Evidence, ranked",
-        "content": "1. BA team as internal customers — a three-day report to under 30 minutes. Client work with the invoice missing.\n2. Macquarie Business School — winning the argument for a tutor that refuses to answer. Scoping against a stakeholder who wanted the opposite.\n3. Qantas Super — scoped against the client's own reading of the 2017 legislation. (Qantas Super, never bare Qantas.)\n4. Foundry — build, prove, generalise, in code. 133,539 lines, 28 ADRs."
-      }
-    ]
   },
   "sections": [
     {
@@ -404,5 +389,21 @@
         }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "The answer",
+        "content": "Two reasons. The first is about me. I've done the internal version of this job four or five times, and the part I'm best at is the front half — sitting with the people who have the problem, arguing about what the system should refuse to do, then building it. At GBST the business analysis team were my internal customers for a set of agents that took a three-day report down to under 30 minutes. At Macquarie Business School I had to win an argument with a professor about a tutor that deliberately doesn't give students the answer. That's client work with the invoice missing.\n\nThe second is that your own framing is the one I'd already arrived at. Your site describes the cycle as build, prove, generalise. I built a platform called Foundry for exactly that reason, because running agent crews showed me that every project rebuilds identity, audit, dispatch and cost accounting from scratch. The model work is different every time. The plumbing underneath it isn't, and most teams pay for it again anyway."
+      },
+      {
+        "title": "The test",
+        "content": "The answer must be FALSE about a pure engineering job at the same company.\n\nFails the test: I like working with people. I want impact. I like variety. I want to be at the frontier. These are all equally true of the platform team.\n\nPasses the test: I am best at the front half — scoping with the person who owns the problem, and arguing about what the system should refuse to do. You cannot do that from behind a backlog."
+      },
+      {
+        "title": "Evidence, ranked",
+        "content": "1. BA team as internal customers — a three-day report to under 30 minutes. Client work with the invoice missing.\n2. Macquarie Business School — winning the argument for a tutor that refuses to answer. Scoping against a stakeholder who wanted the opposite.\n3. Qantas Super — scoped against the client's own reading of the 2017 legislation. (Qantas Super, never bare Qantas.)\n4. Foundry — build, prove, generalise, in code. 133,539 lines, 28 ADRs."
+      }
+    ]
+  }
 }

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 393,
   "slug": "deployco-screen-explain-it-plainly",
   "show": "deployco-screen",
   "template": "interview-rehearsal",
@@ -18,26 +19,6 @@
     "estimation": "estimation",
     "candidate": "candidate",
     "interviewer": "interviewer"
-  },
-  "board": {
-    "tabs": [
-      {
-        "title": "Thirty seconds",
-        "content": "I built the system that decides which security flaws in our software are actually worth fixing, and in what order. It drafts a plan overnight, three teams approve it in the morning, and it cut the review from about 45 minutes an item to five."
-      },
-      {
-        "title": "Two minutes",
-        "content": "A bank's software is built out of thousands of open-source components, and every week new security flaws are published against them. A regulated company has to prove it looked at all of them. Most are irrelevant to how you actually run the software, and working out which few matter used to take a person about 45 minutes each.\n\nSo I built two things. The first reads the advisory and our own deployment and works out whether the flaw is actually reachable in our system. The second turns that into a daily plan that three groups review and approve on one screen each morning. They can push back on a plan by talking to it, rather than rejecting the whole thing.\n\nI didn't switch anything over at the start. I ran it silently next to the commercial tools the team already paid for, and compared. When it agreed with them 96 percent of the time and was also finding things they'd missed, that's when people started acting on it. Review is down to about five minutes now, and CVE effort dropped 80 percent."
-      },
-      {
-        "title": "Words to swap",
-        "content": "CVE → a published security flaw in a piece of software we use\nTriage → deciding which ones actually matter to us\nLLM / model → the model, or just: it reads the advisory\nRAG / retrieval → it reads our own deployment records alongside the advisory\nShadow mode → I ran it silently alongside the tools they already trusted\nEval harness → a way to measure whether it was right, before anyone relied on it\nFalse positive → a flaw that turns out not to matter in how we run the software\nHuman in the loop → a person approves the plan, and can change it first"
-      },
-      {
-        "title": "Rule",
-        "content": "If she cannot repeat your answer to a hiring manager in two sentences, the answer failed — no matter how accurate it was.\n\nNever use an acronym she has not used first."
-      }
-    ]
   },
   "sections": [
     {
@@ -410,5 +391,25 @@
         }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Thirty seconds",
+        "content": "I built the system that decides which security flaws in our software are actually worth fixing, and in what order. It drafts a plan overnight, three teams approve it in the morning, and it cut the review from about 45 minutes an item to five."
+      },
+      {
+        "title": "Two minutes",
+        "content": "A bank's software is built out of thousands of open-source components, and every week new security flaws are published against them. A regulated company has to prove it looked at all of them. Most are irrelevant to how you actually run the software, and working out which few matter used to take a person about 45 minutes each.\n\nSo I built two things. The first reads the advisory and our own deployment and works out whether the flaw is actually reachable in our system. The second turns that into a daily plan that three groups review and approve on one screen each morning. They can push back on a plan by talking to it, rather than rejecting the whole thing.\n\nI didn't switch anything over at the start. I ran it silently next to the commercial tools the team already paid for, and compared. When it agreed with them 96 percent of the time and was also finding things they'd missed, that's when people started acting on it. Review is down to about five minutes now, and CVE effort dropped 80 percent."
+      },
+      {
+        "title": "Words to swap",
+        "content": "CVE → a published security flaw in a piece of software we use\nTriage → deciding which ones actually matter to us\nLLM / model → the model, or just: it reads the advisory\nRAG / retrieval → it reads our own deployment records alongside the advisory\nShadow mode → I ran it silently alongside the tools they already trusted\nEval harness → a way to measure whether it was right, before anyone relied on it\nFalse positive → a flaw that turns out not to matter in how we run the software\nHuman in the loop → a person approves the plan, and can change it first"
+      },
+      {
+        "title": "Rule",
+        "content": "If she cannot repeat your answer to a hiring manager in two sentences, the answer failed — no matter how accurate it was.\n\nNever use an acronym she has not used first."
+      }
+    ]
+  }
 }

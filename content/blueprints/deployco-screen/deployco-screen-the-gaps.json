@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 394,
   "slug": "deployco-screen-the-gaps",
   "show": "deployco-screen",
   "template": "interview-rehearsal",
@@ -19,30 +20,6 @@
     "estimation": "estimation",
     "candidate": "candidate",
     "interviewer": "interviewer"
-  },
-  "board": {
-    "tabs": [
-      {
-        "title": "Four months",
-        "content": "Four months in production, since April, and about seven months of retrieval and small-model work in my own projects before that. The honest thing about four months is that what it bought me isn't model knowledge, it's the list of ways these systems fail quietly. My own retrieval pipeline ran for a month with every test passing and a silent quality regression in it. I only caught it because I'd built a judge that checks each quote against the source. You learn that once, in production, and then never design without it again."
-      },
-      {
-        "title": "Fine-tuning",
-        "content": "I've deployed, not fine-tuned. Everything in production is hosted models through Bedrock. What I've done instead is the decision next to it — whether a problem needs a different model, better retrieval, or a harder verification step, and having the evaluation to tell the difference. I'd pick the tuning up. The judgement about whether it's the right lever took longer to learn."
-      },
-      {
-        "title": "Spark",
-        "content": "No Spark. I've built batch data pipelines — Spring Batch on EKS, corporate actions and parcel-level reconciliation — so the shape is familiar, but I'd be learning the framework.\n\n(Spark is in the old Tomoro ad, not the DeployCo one. Only comes up if she is reading from the legacy req.)"
-      },
-      {
-        "title": "Consulting and leadership",
-        "content": "CONSULTING: All my client work has been through a product company rather than billable engagements, so I haven't lived the utilisation-and-timesheet side of consulting. What I have done is scope work directly with a client — a tax relief capability for Qantas Super, worked from the client's own reading of the 2017 legislation. And Macquarie Business School commissioned a second phase after the first one shipped.\n\nLEADERSHIP: I've run enablement and mentoring across the project group and led an AWS migration end to end. I haven't carried an engineering-management title. The coaching half of player-coach I've done; the reporting line I haven't."
-      },
-      {
-        "title": "Never claim",
-        "content": "Spark · LangChain · Hugging Face · Rust · Go · fine-tuning · Azure OpenAI in production · an engineering-management title · knowledge of their Australian clients · that SecGate replaced anything.\n\nSay Qantas Super, never bare Qantas. Say primary contributor to TaxAnalyser, key contributor to the super fund engine — not built."
-      }
-    ]
   },
   "sections": [
     {
@@ -415,5 +392,29 @@
         }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Four months",
+        "content": "Four months in production, since April, and about seven months of retrieval and small-model work in my own projects before that. The honest thing about four months is that what it bought me isn't model knowledge, it's the list of ways these systems fail quietly. My own retrieval pipeline ran for a month with every test passing and a silent quality regression in it. I only caught it because I'd built a judge that checks each quote against the source. You learn that once, in production, and then never design without it again."
+      },
+      {
+        "title": "Fine-tuning",
+        "content": "I've deployed, not fine-tuned. Everything in production is hosted models through Bedrock. What I've done instead is the decision next to it — whether a problem needs a different model, better retrieval, or a harder verification step, and having the evaluation to tell the difference. I'd pick the tuning up. The judgement about whether it's the right lever took longer to learn."
+      },
+      {
+        "title": "Spark",
+        "content": "No Spark. I've built batch data pipelines — Spring Batch on EKS, corporate actions and parcel-level reconciliation — so the shape is familiar, but I'd be learning the framework.\n\n(Spark is in the old Tomoro ad, not the DeployCo one. Only comes up if she is reading from the legacy req.)"
+      },
+      {
+        "title": "Consulting and leadership",
+        "content": "CONSULTING: All my client work has been through a product company rather than billable engagements, so I haven't lived the utilisation-and-timesheet side of consulting. What I have done is scope work directly with a client — a tax relief capability for Qantas Super, worked from the client's own reading of the 2017 legislation. And Macquarie Business School commissioned a second phase after the first one shipped.\n\nLEADERSHIP: I've run enablement and mentoring across the project group and led an AWS migration end to end. I haven't carried an engineering-management title. The coaching half of player-coach I've done; the reporting line I haven't."
+      },
+      {
+        "title": "Never claim",
+        "content": "Spark · LangChain · Hugging Face · Rust · Go · fine-tuning · Azure OpenAI in production · an engineering-management title · knowledge of their Australian clients · that SecGate replaced anything.\n\nSay Qantas Super, never bare Qantas. Say primary contributor to TaxAnalyser, key contributor to the super fund engine — not built."
+      }
+    ]
+  }
 }
