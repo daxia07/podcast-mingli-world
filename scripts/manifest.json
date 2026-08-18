@@ -5219,11 +5219,11 @@
     {
       "id": 395,
       "slug": "deployco-screen-two-bands",
-      "title": "Two Requisitions, Two Bands",
-      "description": "The same job in the same city is advertised twice, a hundred and eighty thousand dollars apart. The question that has to be asked before any number is spoken, and what to say in each branch.",
-      "duration": "7:59",
-      "file_size_bytes": 3839469,
-      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-two-bands.mp3?v=22e28d27",
+      "title": "Three Requisitions, Three Bands",
+      "description": "The same job in the same city is advertised three times, and he applied to the cheapest. The middle advert pays ninety-five thousand more, and his own pack told him to skip it. One question, asked early, that puts the money back on the table.",
+      "duration": "8:53",
+      "file_size_bytes": 4271853,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-two-bands.mp3?v=f8e2669f",
       "filename": "deployco-screen-two-bands.mp3",
       "playlist": "deployco-screen",
       "source": "tts",
@@ -5244,17 +5244,27 @@
           "url": "https://api.ashbyhq.com/posting-api/job-board/openai-deployment-company",
           "title": "DeployCo job board, Ashby posting API",
           "used_for": [
-            "the Sydney Forward Deployed Engineer band, publish date and equity note",
-            "the Singapore and Melbourne postings for comparison"
+            "the Sydney Forward Deployed Engineer band, its equity note and its seventh of August publish date"
           ]
         },
         {
           "type": "doc",
-          "id": "workable",
-          "url": "https://jobs.workable.com/view/7vVWCKwpoD5ib6agxn1HPQ/hybrid-australia-applied-ai-solution-engineer-in-sydney-at-tomoro",
-          "title": "Tomoro, Australia Applied AI Solution Engineer",
+          "id": "workable-standard",
+          "url": "https://apply.workable.com/j/41BB852600",
+          "title": "Tomoro, Australia Applied AI Solution Engineer, Sydney",
           "used_for": [
-            "the legacy band and the September twenty twenty-five publish date"
+            "the one thirty to one eighty band and the September twenty twenty-five publish date",
+            "the requisition the eleventh of August application was filed against"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "workable-senior",
+          "url": "https://apply.workable.com/j/9CE8B9740F",
+          "title": "Tomoro, Australia Senior Applied AI Solution Engineer, Sydney",
+          "used_for": [
+            "the one eighty to two seventy-five band on the same board and the same publish date",
+            "the ninety-five thousand dollar gap between the two ceilings"
           ]
         },
         {
