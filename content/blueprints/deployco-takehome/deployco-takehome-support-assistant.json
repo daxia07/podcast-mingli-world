@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 414,
   "slug": "deployco-takehome-support-assistant",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -18,73 +19,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "rehearsal-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/README.md",
-      "title": "Acme Cloud Support Assistant README",
-      "used_for": [
-        "problem framing and constraints",
-        "architecture and design decisions",
-        "commands",
-        "limitations and future work"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "rehearsal-results",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/evals/RESULTS.md",
-      "title": "Rehearsal Evaluation Results",
-      "used_for": [
-        "offline category table",
-        "nine of nine retrieval hits after heading boost",
-        "unanswerable limitation in no-model mode"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "two-day-plan",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/two-day-prep-plan.md",
-      "title": "Two-Day Take-Home Battle Plan",
-      "used_for": [
-        "build sequence",
-        "twelve-question defense drill",
-        "packaging and walkthrough guidance"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "judge-verifier",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-judge-verifier.md",
-      "title": "LLM-as-Judge Versus LLM-as-Verifier Notes",
-      "used_for": [
-        "runtime verifier distinction",
-        "position bias and swap-order mitigation",
-        "hand-labeled agreement target"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "pydantic-patterns",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/pydantic-patterns.md",
-      "title": "Pydantic Patterns From the Cohort",
-      "used_for": [
-        "schema validation and retryable repair loop"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "best-practices",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/best-practices-takehome.md",
-      "title": "Best Practices for AI Take-Homes",
-      "used_for": [
-        "minimum viable eval suite",
-        "repository structure",
-        "time allocation"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -1043,6 +977,73 @@
           "voice": "engineer",
           "text": "Until then, remember the order: customer definition, honest contract, measured loop, then polish."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "rehearsal-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/README.md",
+      "title": "Acme Cloud Support Assistant README",
+      "used_for": [
+        "problem framing and constraints",
+        "architecture and design decisions",
+        "commands",
+        "limitations and future work"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "rehearsal-results",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/evals/RESULTS.md",
+      "title": "Rehearsal Evaluation Results",
+      "used_for": [
+        "offline category table",
+        "nine of nine retrieval hits after heading boost",
+        "unanswerable limitation in no-model mode"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "two-day-plan",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/two-day-prep-plan.md",
+      "title": "Two-Day Take-Home Battle Plan",
+      "used_for": [
+        "build sequence",
+        "twelve-question defense drill",
+        "packaging and walkthrough guidance"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "judge-verifier",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-judge-verifier.md",
+      "title": "LLM-as-Judge Versus LLM-as-Verifier Notes",
+      "used_for": [
+        "runtime verifier distinction",
+        "position bias and swap-order mitigation",
+        "hand-labeled agreement target"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "pydantic-patterns",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/pydantic-patterns.md",
+      "title": "Pydantic Patterns From the Cohort",
+      "used_for": [
+        "schema validation and retryable repair loop"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "best-practices",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/best-practices-takehome.md",
+      "title": "Best Practices for AI Take-Homes",
+      "used_for": [
+        "minimum viable eval suite",
+        "repository structure",
+        "time allocation"
       ]
     }
   ]

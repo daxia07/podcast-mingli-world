@@ -5718,6 +5718,188 @@
       ]
     },
     {
+      "id": 413,
+      "slug": "deployco-takehome-catalog-search",
+      "title": "Catalog Search, Built Like The Job",
+      "description": "A detailed teaching walkthrough of the Marlow and Co catalog-search take-home: customer framing, BM25 retrieval, the MCP contract, refusal behavior, golden-set evals, the cold grader's findings, production gaps, and the next decisions.",
+      "duration": "25:08",
+      "file_size_bytes": 12068589,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-catalog-search.mp3?v=7a70fb0d",
+      "filename": "deployco-takehome-catalog-search.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "forward deployed engineer",
+        "MCP",
+        "catalog search",
+        "BM25",
+        "evals",
+        "golden set",
+        "take-home"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "poc-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/README.md",
+          "title": "Marlow & Co Catalog Search README",
+          "used_for": [
+            "problem framing and good definition",
+            "architecture and eight design decisions",
+            "run commands",
+            "known limitations and next steps"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "poc-results",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/RESULTS.md",
+          "title": "Catalog Search Evaluation Results",
+          "used_for": [
+            "83 percent to 92 percent to 100 percent progression",
+            "mean reciprocal rank 0.93",
+            "failure narrative and cohesion-filter fix"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "poc-review",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/REVIEW.md",
+          "title": "Fresh-Context Grader Review",
+          "used_for": [
+            "23 out of 30 score",
+            "criterion scores",
+            "top weaknesses and post-grade fixes"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "tech-landscape",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-tech-landscape.md",
+          "title": "Take-Home Tech Landscape Notes",
+          "used_for": [
+            "ChatGPT plugins as an MCP server",
+            "hybrid retrieval consensus",
+            "mcp version 2 migration gotchas"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "submission-checklist",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/submission-checklist.md",
+          "title": "Submission Checklist From Nineteen Graded Repositories",
+          "used_for": [
+            "gate items and hygiene failures",
+            "eval bar",
+            "documentation drift warnings"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "research-verdict",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/research-verdict.md",
+          "title": "DeployCo Research Verdict",
+          "used_for": [
+            "one-week proxy brief",
+            "scoring criteria",
+            "Singapore versus Melbourne location question"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 414,
+      "slug": "deployco-takehome-support-assistant",
+      "title": "Support Assistant, Grounded Under Pressure",
+      "description": "A detailed teaching walkthrough of the Acme Cloud support-assistant rehearsal: messy policy documents, section-level BM25, provider-neutral generation, citations, refusals, clarification behavior, offline evals, and the production plan.",
+      "duration": "23:29",
+      "file_size_bytes": 11272557,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-support-assistant.mp3?v=ada8ae24",
+      "filename": "deployco-takehome-support-assistant.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "RAG",
+        "support assistant",
+        "retrieval augmented generation",
+        "evals",
+        "grounding",
+        "forward deployed engineer",
+        "take-home"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "rehearsal-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/README.md",
+          "title": "Acme Cloud Support Assistant README",
+          "used_for": [
+            "problem framing and constraints",
+            "architecture and design decisions",
+            "commands",
+            "limitations and future work"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "rehearsal-results",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/evals/RESULTS.md",
+          "title": "Rehearsal Evaluation Results",
+          "used_for": [
+            "offline category table",
+            "nine of nine retrieval hits after heading boost",
+            "unanswerable limitation in no-model mode"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "two-day-plan",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/two-day-prep-plan.md",
+          "title": "Two-Day Take-Home Battle Plan",
+          "used_for": [
+            "build sequence",
+            "twelve-question defense drill",
+            "packaging and walkthrough guidance"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "judge-verifier",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-judge-verifier.md",
+          "title": "LLM-as-Judge Versus LLM-as-Verifier Notes",
+          "used_for": [
+            "runtime verifier distinction",
+            "position bias and swap-order mitigation",
+            "hand-labeled agreement target"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "pydantic-patterns",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/pydantic-patterns.md",
+          "title": "Pydantic Patterns From the Cohort",
+          "used_for": [
+            "schema validation and retryable repair loop"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "best-practices",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/best-practices-takehome.md",
+          "title": "Best Practices for AI Take-Homes",
+          "used_for": [
+            "minimum viable eval suite",
+            "repository structure",
+            "time allocation"
+          ]
+        }
+      ]
+    },
+    {
       "id": 450,
       "title": "Behavioral: Why Leaving + Biggest Weakness",
       "description": "TTS-generated practice episode for behavioral interview preparation.",
@@ -6355,7 +6537,10 @@
       "featured": false,
       "default_template": "deep-dive-2voice",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        413,
+        414
+      ]
     }
   }
 }

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 413,
   "slug": "deployco-takehome-catalog-search",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -18,75 +19,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "poc-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/README.md",
-      "title": "Marlow & Co Catalog Search README",
-      "used_for": [
-        "problem framing and good definition",
-        "architecture and eight design decisions",
-        "run commands",
-        "known limitations and next steps"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "poc-results",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/RESULTS.md",
-      "title": "Catalog Search Evaluation Results",
-      "used_for": [
-        "83 percent to 92 percent to 100 percent progression",
-        "mean reciprocal rank 0.93",
-        "failure narrative and cohesion-filter fix"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "poc-review",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/REVIEW.md",
-      "title": "Fresh-Context Grader Review",
-      "used_for": [
-        "23 out of 30 score",
-        "criterion scores",
-        "top weaknesses and post-grade fixes"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "tech-landscape",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-tech-landscape.md",
-      "title": "Take-Home Tech Landscape Notes",
-      "used_for": [
-        "ChatGPT plugins as an MCP server",
-        "hybrid retrieval consensus",
-        "mcp version 2 migration gotchas"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "submission-checklist",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/submission-checklist.md",
-      "title": "Submission Checklist From Nineteen Graded Repositories",
-      "used_for": [
-        "gate items and hygiene failures",
-        "eval bar",
-        "documentation drift warnings"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "research-verdict",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/research-verdict.md",
-      "title": "DeployCo Research Verdict",
-      "used_for": [
-        "one-week proxy brief",
-        "scoring criteria",
-        "Singapore versus Melbourne location question"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -1061,6 +993,75 @@
           "voice": "engineer",
           "text": "The grade follows from the same three habits: frame the customer, measure the failure, and never let the README outrun the code."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "poc-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/README.md",
+      "title": "Marlow & Co Catalog Search README",
+      "used_for": [
+        "problem framing and good definition",
+        "architecture and eight design decisions",
+        "run commands",
+        "known limitations and next steps"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "poc-results",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/RESULTS.md",
+      "title": "Catalog Search Evaluation Results",
+      "used_for": [
+        "83 percent to 92 percent to 100 percent progression",
+        "mean reciprocal rank 0.93",
+        "failure narrative and cohesion-filter fix"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "poc-review",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/REVIEW.md",
+      "title": "Fresh-Context Grader Review",
+      "used_for": [
+        "23 out of 30 score",
+        "criterion scores",
+        "top weaknesses and post-grade fixes"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tech-landscape",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-tech-landscape.md",
+      "title": "Take-Home Tech Landscape Notes",
+      "used_for": [
+        "ChatGPT plugins as an MCP server",
+        "hybrid retrieval consensus",
+        "mcp version 2 migration gotchas"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "submission-checklist",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/submission-checklist.md",
+      "title": "Submission Checklist From Nineteen Graded Repositories",
+      "used_for": [
+        "gate items and hygiene failures",
+        "eval bar",
+        "documentation drift warnings"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "research-verdict",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/research-verdict.md",
+      "title": "DeployCo Research Verdict",
+      "used_for": [
+        "one-week proxy brief",
+        "scoring criteria",
+        "Singapore versus Melbourne location question"
       ]
     }
   ]
