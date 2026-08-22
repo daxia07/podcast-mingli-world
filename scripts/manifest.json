@@ -6345,6 +6345,17 @@
         400,
         412
       ]
+    },
+    "deployco-takehome": {
+      "title": "DeployCo Take-Home — Project Teardowns",
+      "description": "Detailed build journeys for two forward-deployed practice projects: a catalog search server ChatGPT can query, and a grounded support assistant. Customer framing first, then architecture, evals, production risks, and the questions to ask before shipping.",
+      "icon": "📦",
+      "mono": "TH",
+      "order": 16,
+      "featured": false,
+      "default_template": "deep-dive-2voice",
+      "archived": false,
+      "episode_ids": []
     }
   }
 }

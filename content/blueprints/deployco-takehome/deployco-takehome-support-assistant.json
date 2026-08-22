@@ -1,0 +1,1049 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-support-assistant",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Support Assistant, Grounded Under Pressure",
+  "description": "A detailed teaching walkthrough of the Acme Cloud support-assistant rehearsal: messy policy documents, section-level BM25, provider-neutral generation, citations, refusals, clarification behavior, offline evals, and the production plan.",
+  "keywords": [
+    "RAG",
+    "support assistant",
+    "retrieval augmented generation",
+    "evals",
+    "grounding",
+    "forward deployed engineer",
+    "take-home"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "rehearsal-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/README.md",
+      "title": "Acme Cloud Support Assistant README",
+      "used_for": [
+        "problem framing and constraints",
+        "architecture and design decisions",
+        "commands",
+        "limitations and future work"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "rehearsal-results",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/rehearsal/evals/RESULTS.md",
+      "title": "Rehearsal Evaluation Results",
+      "used_for": [
+        "offline category table",
+        "nine of nine retrieval hits after heading boost",
+        "unanswerable limitation in no-model mode"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "two-day-plan",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/two-day-prep-plan.md",
+      "title": "Two-Day Take-Home Battle Plan",
+      "used_for": [
+        "build sequence",
+        "twelve-question defense drill",
+        "packaging and walkthrough guidance"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "judge-verifier",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-judge-verifier.md",
+      "title": "LLM-as-Judge Versus LLM-as-Verifier Notes",
+      "used_for": [
+        "runtime verifier distinction",
+        "position bias and swap-order mitigation",
+        "hand-labeled agreement target"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "pydantic-patterns",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/pydantic-patterns.md",
+      "title": "Pydantic Patterns From the Cohort",
+      "used_for": [
+        "schema validation and retryable repair loop"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "best-practices",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/best-practices-takehome.md",
+      "title": "Best Practices for AI Take-Homes",
+      "used_for": [
+        "minimum viable eval suite",
+        "repository structure",
+        "time allocation"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The inbox already knows",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The support inbox is drowning in questions the documents already answer."
+        },
+        {
+          "voice": "engineer",
+          "text": "That sentence looks like a product opportunity. It is actually a trust contract."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Just connect a chat model to the docs."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now imagine it confidently quotes a deleted regional exception."
+        },
+        {
+          "voice": "sceptic",
+          "text": "All right. That is worse than a slow human."
+        },
+        {
+          "voice": "engineer",
+          "text": "This episode walks a small rehearsal build designed to make that failure visible before a customer ever sees it."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What must the assistant never do?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Welcome back to DeployCo Take-Home, Project Teardowns. Today's project is the Acme Cloud Support Assistant."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is deliberately small: eight markdown documents, a command line interface, and twelve frozen test cases."
+        },
+        {
+          "voice": "engineer",
+          "text": "But it rehearses the hardest part of a customer-facing retrieval build: knowing when to answer, clarify, correct, or refuse."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Here is my confident simplification. Retrieval augmented generation solves it. Fetch chunks, hand them to the model, done."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fetching context is necessary, not sufficient."
+        },
+        {
+          "voice": "engineer",
+          "text": "The real decision is behavior under uncertainty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good means answers grounded strictly in retrieved documents, citations back to chunk identifiers, corrections for false premises, clarification for ambiguity, and refusal when coverage is absent."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So accuracy is not one number."
+        },
+        {
+          "voice": "engineer",
+          "text": "It never is. There is retrieval quality, answer faithfulness, factual correctness, and behavioral safety."
+        },
+        {
+          "voice": "engineer",
+          "text": "Mix them into one average and you learn nothing useful from a regression."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Chunks, grounding, behavior",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Hold three concepts: section chunks, grounding, and a behavior contract."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each markdown file is split at heading boundaries. Heading tokens are indexed three times alongside body text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Picture a filing cabinet where every folder label is printed on every sheet inside it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Triples the label? That feels arbitrary."
+        },
+        {
+          "voice": "engineer",
+          "text": "It started arbitrary and became measured. Plain body indexing ranked the Slack integration page first for a Team plan cost question."
+        },
+        {
+          "voice": "engineer",
+          "text": "The plans page was relevant but lost because headings carried topical signal the body lacked."
+        },
+        {
+          "voice": "engineer",
+          "text": "After boosting heading tokens, nine of nine retrieval hits passed at rank four."
+        },
+        {
+          "voice": "engineer",
+          "text": "Grounding means the composer may only use claims supported by supplied chunks."
+        },
+        {
+          "voice": "engineer",
+          "text": "The generator returns structured JSON containing the answer, cited chunk identifiers, and a behavior marker such as answer, refuse, clarify, or correct."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pydantic validates that shape. Invalid output becomes a retryable event rather than silent corruption."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not let the model answer freely and check it afterwards?"
+        },
+        {
+          "voice": "engineer",
+          "text": "You need both, in that order. Structure makes the claim inspectable. Verification then asks whether each claim traces to evidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "The third concept is the behavior contract."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do guests count against seat billing is answerable. A question built on a nonexistent feature requires correction."
+        },
+        {
+          "voice": "engineer",
+          "text": "Billing alone is ambiguous and deserves a clarifying question. Something entirely outside the policies deserves refusal."
+        },
+        {
+          "voice": "engineer",
+          "text": "Those categories become test cases before prompts are polished."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Slow down on the chunking. Why sections and not fixed character windows?"
+        },
+        {
+          "voice": "engineer",
+          "text": "A policy section is written as one idea. A fixed window can cut the exception away from the rule it modifies."
+        },
+        {
+          "voice": "engineer",
+          "text": "Heading boundaries preserve that local logic and give every chunk a stable address."
+        },
+        {
+          "voice": "engineer",
+          "text": "That address is what a citation points to later, so it is part of the product, not an implementation detail."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the tripled heading tokens?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Think of it as saying the folder name three times when you file the sheet."
+        },
+        {
+          "voice": "engineer",
+          "text": "A question about the Team plan may not contain the word pricing, but the heading Team plan and pricing does."
+        },
+        {
+          "voice": "engineer",
+          "text": "The boost is a hypothesis. The golden set is what turns it into a decision."
+        },
+        {
+          "voice": "engineer",
+          "text": "Grounding also changes what the model sees."
+        },
+        {
+          "voice": "engineer",
+          "text": "It never receives the whole corpus. It receives a handful of scored sections, their identifiers, and the question."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So context is a budget, not a landfill."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. Smaller grounded context usually means less distraction, lower cost, and easier checking."
+        },
+        {
+          "voice": "engineer",
+          "text": "The behavior contract then tells the model what to do when the evidence does not fit the question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Answer, clarify, correct, and refuse are four different outputs, not one answer with a hedge attached."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Build the smallest honest loop",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Walk the build as a series of commitments."
+        },
+        {
+          "voice": "engineer",
+          "text": "Commitment one: clean checkout in under a minute, with no mandatory paid service."
+        },
+        {
+          "voice": "engineer",
+          "text": "Create a virtual environment, install requirements, copy the example environment file, and run the CLI."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why so austere?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because a reviewer without credits must still verify the machinery. Provider access improves fluency; it must not gate correctness tests."
+        },
+        {
+          "voice": "engineer",
+          "text": "Commitment two: seed the corpus with traps."
+        },
+        {
+          "voice": "engineer",
+          "text": "Eight documents cover plans, refunds, security, onboarding, integrations, support, the application programming interface, and team rules."
+        },
+        {
+          "voice": "engineer",
+          "text": "They include regional exceptions, deprecated calls, false-premise bait, and one ambiguous single-word question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Commitment three: retrieve before generating."
+        },
+        {
+          "voice": "engineer",
+          "text": "Section-level BM25 returns a small candidate set with stable identifiers."
+        },
+        {
+          "voice": "engineer",
+          "text": "An absolute relevance floor of one point five supports refusal, rather than feeding weak matches to the model as though they were evidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "A statistical z-score alternative looked sophisticated but overlapped: weak matches scored around two point six while answerable queries scored around three point three."
+        },
+        {
+          "voice": "engineer",
+          "text": "The overlap was too wide to calibrate honestly on this small corpus."
+        },
+        {
+          "voice": "engineer",
+          "text": "Commitment four: generate through a provider-neutral client."
+        },
+        {
+          "voice": "engineer",
+          "text": "Any OpenAI-compatible base URL works, so a free tier can develop the flow and a stronger model can grade it later."
+        },
+        {
+          "voice": "engineer",
+          "text": "Commitment five: validate output, then evaluate behavior separately."
+        },
+        {
+          "voice": "engineer",
+          "text": "Offline mode measures retrieval hits and deterministic behavior without calling a model."
+        },
+        {
+          "voice": "engineer",
+          "text": "Full mode adds judge-scored faithfulness and correctness."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Walk me through the actual files."
+        },
+        {
+          "voice": "engineer",
+          "text": "Search dot py owns retrieval. Answer dot py owns generation and schema. C L I dot py owns the human loop."
+        },
+        {
+          "voice": "engineer",
+          "text": "The evals folder holds the frozen cases, the runner, and the append-only results log."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Where does the model provider fit?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Behind one OpenAI-compatible client configuration."
+        },
+        {
+          "voice": "engineer",
+          "text": "The base URL and key arrive from environment variables, so Groq, OpenAI, or another compatible service can be swapped without touching business logic."
+        },
+        {
+          "voice": "engineer",
+          "text": "That matters for a take-home. The reviewer can run offline tests without credits, then enable a model for the full behavior suite."
+        },
+        {
+          "voice": "engineer",
+          "text": "The generation prompt asks for JSON with the response, cited chunk identifiers, and behavior marker."
+        },
+        {
+          "voice": "engineer",
+          "text": "If validation fails, the system can repair or retry instead of passing malformed output downstream."
+        },
+        {
+          "voice": "sceptic",
+          "text": "How do you write the golden cases without tuning to them?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Write categories first, examples second, then freeze them."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each case records the question, expected retrieval target where relevant, and expected behavior."
+        },
+        {
+          "voice": "engineer",
+          "text": "The runner prints a table by category, so a single average cannot hide a broken refusal path."
+        },
+        {
+          "voice": "engineer",
+          "text": "The first run exposed the heading bug. Fixing it changed retrieval from five of five factual hits to nine of nine total hits."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And you kept the red table?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. The append-only log keeps the broken table, the cause, and the repaired table."
+        },
+        {
+          "voice": "engineer",
+          "text": "That log is the actual seniority signal. Anyone can show a green dashboard. A disciplined engineer shows the red one that caused the change."
+        },
+        {
+          "voice": "engineer",
+          "text": "The first run exposed the heading bug. Fixing it changed retrieval from five of five factual hits to nine of nine total hits."
+        },
+        {
+          "voice": "engineer",
+          "text": "The append-only log kept the broken table, the cause, and the repaired table."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That log is the actual seniority signal."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. Anyone can show a green dashboard. A disciplined engineer shows the red one that caused the change."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Budgets, latency, and judge bias",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Numbers first from the current build."
+        },
+        {
+          "voice": "engineer",
+          "text": "Twelve golden cases span six categories: factual, ambiguous, multi-part, paraphrase, false premise, and unanswerable."
+        },
+        {
+          "voice": "engineer",
+          "text": "Offline mode reports nine of nine retrieval hits after the heading fix, but cannot judge contextual insufficiency without a model."
+        },
+        {
+          "voice": "engineer",
+          "text": "So unanswerable rows remain visibly incomplete in that mode rather than being declared safe."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What happens at ten times the corpus?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Eighty documents and perhaps hundreds of chunks still fit comfortably in memory."
+        },
+        {
+          "voice": "engineer",
+          "text": "Lexical search remains roughly tens of milliseconds. Persistence and a vector database remain unnecessary complexity at this size."
+        },
+        {
+          "voice": "engineer",
+          "text": "At thousands of documents, add persistence, incremental ingestion, caching, and hybrid retrieval behind the same interface."
+        },
+        {
+          "voice": "engineer",
+          "text": "Token cost scales mostly with retrieved context plus prompt, not corpus size."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cap chunks, deduplicate overlapping sections, cache repeated retrieval, and log tokens per query."
+        },
+        {
+          "voice": "engineer",
+          "text": "Judge quality has numbers too. Frontier judges reach only around eighty-five percent agreement with humans, and they are weakest on reasoning, mathematics, and code."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pairwise judges also have position bias: they can prefer whichever answer appears first."
+        },
+        {
+          "voice": "engineer",
+          "text": "Swap the two answers and compare verdicts. Use anchored binary scales instead of vague ten-point ratings."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hand-label about twenty-five cases and report judge-to-human agreement."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Give me the latency story end to end."
+        },
+        {
+          "voice": "engineer",
+          "text": "Retrieval is in-memory BM25, so it is roughly tens of milliseconds for eight documents."
+        },
+        {
+          "voice": "engineer",
+          "text": "Generation dominates the request. It depends on provider queueing, prompt size, and output length."
+        },
+        {
+          "voice": "engineer",
+          "text": "A short grounded answer with a handful of chunks is usually one to three seconds in practice, but the prototype does not claim a measured production percentile."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the point. Measure it, publish the percentile, and do not guess."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And cost per query?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost is roughly input chunks plus question plus generated answer, priced at the chosen model."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cap retrieved chunks, avoid repeating the corpus, cache identical questions, and log tokens per request."
+        },
+        {
+          "voice": "engineer",
+          "text": "At one hundred thousand queries a day, caching and context caps matter more than switching frameworks."
+        },
+        {
+          "voice": "engineer",
+          "text": "The eval numbers are deliberately modest. Twelve cases across six categories is a smoke set."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is enough to catch structural regressions, not enough to claim coverage."
+        },
+        {
+          "voice": "engineer",
+          "text": "Judge agreement needs about twenty-five hand-labelled examples before you can trust automated faithfulness scores."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why is swap-order judging so important?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because pairwise judges can prefer whichever answer comes first."
+        },
+        {
+          "voice": "engineer",
+          "text": "You ask for a verdict, swap the order, ask again, and compare."
+        },
+        {
+          "voice": "engineer",
+          "text": "If the verdict flips, the judge is measuring position, not quality."
+        },
+        {
+          "voice": "engineer",
+          "text": "Binary anchored scales reduce another failure mode: vague middle scores that nobody can act on."
+        },
+        {
+          "voice": "engineer",
+          "text": "And a runtime verifier adds the last check: does every claim trace to a cited chunk?"
+        },
+        {
+          "voice": "engineer",
+          "text": "At runtime, a separate verifier pass asks whether every claim traces to a cited chunk."
+        },
+        {
+          "voice": "engineer",
+          "text": "That costs one extra call, but turns faithfulness from hope into a checkable event."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One continuous pass now."
+        },
+        {
+          "voice": "engineer",
+          "text": "A support question enters the command line or future service."
+        },
+        {
+          "voice": "engineer",
+          "text": "Retrieval splits documents at headings, boosts heading terms, scores sections with BM25, applies a relevance floor, and returns stable chunk references."
+        },
+        {
+          "voice": "engineer",
+          "text": "If evidence is too weak, the system refuses rather than inviting invention."
+        },
+        {
+          "voice": "engineer",
+          "text": "If evidence supports an answer, a provider-neutral generator receives only that evidence and returns validated JSON."
+        },
+        {
+          "voice": "engineer",
+          "text": "The JSON carries the response, cited chunk identifiers, and a behavior marker."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ambiguity triggers clarification. False premises trigger correction. Unsupported requests trigger refusal."
+        },
+        {
+          "voice": "engineer",
+          "text": "Evaluators separate retrieval, behavior, faithfulness, and correctness, and save every run in an append-only log."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the customer hears?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Either a sourced answer, a precise question, a correction, or an honest no."
+        },
+        {
+          "voice": "engineer",
+          "text": "Nothing in that pass depends on a particular vendor."
+        },
+        {
+          "voice": "engineer",
+          "text": "Swap the model provider and the contract survives."
+        },
+        {
+          "voice": "engineer",
+          "text": "Swap the corpus and the same eval spine asks whether the behavior survived too."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is what makes it reusable rather than a one-off demo."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. The skeleton is the contract, the categories, and the command that proves both."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "Failure modes and open questions",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Start with known weaknesses."
+        },
+        {
+          "voice": "engineer",
+          "text": "The absolute BM25 floor is not calibrated on held-out queries."
+        },
+        {
+          "voice": "engineer",
+          "text": "Twelve cases are a smoke set, not coverage. The index is in memory. Judge alignment against human labels is still pending."
+        },
+        {
+          "voice": "engineer",
+          "text": "In offline mode, the system cannot decide that retrieved context is insufficient, so refusal quality is not fully measured."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Would you hide that in an interview?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Never. Say it, quantify the risk, and name the experiment."
+        },
+        {
+          "voice": "engineer",
+          "text": "Production adds harder failures."
+        },
+        {
+          "voice": "engineer",
+          "text": "Documents drift: pricing changes, an API deprecates, or a regional exception moves."
+        },
+        {
+          "voice": "engineer",
+          "text": "Use source timestamps, versioned ingestion, stale-content alerts, and golden cases tied to policy versions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Conflicting sources are subtler than missing sources."
+        },
+        {
+          "voice": "engineer",
+          "text": "Return both claims with dates and owners, or escalate to a human rather than averaging policy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prompt injection can arrive through a ticket, a pasted web page, or the document corpus itself."
+        },
+        {
+          "voice": "engineer",
+          "text": "Treat retrieved text as data, constrain tools, require explicit authorization for actions, and log suspicious instructions."
+        },
+        {
+          "voice": "engineer",
+          "text": "PII needs redaction before logging, least-privilege storage, retention limits, and clear audit trails."
+        },
+        {
+          "voice": "engineer",
+          "text": "Operations need timeouts, bounded retries, circuit breakers, rate limits, structured logs, tracing, and a health check."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What would you deliberately not build for a one-week brief?"
+        },
+        {
+          "voice": "engineer",
+          "text": "No fine tuning, no custom agent framework, no vector database before evidence, no elaborate UI before evals, and no live customer traffic."
+        },
+        {
+          "voice": "engineer",
+          "text": "State that budget openly. Choosing within constraints reads as seniority."
+        },
+        {
+          "voice": "engineer",
+          "text": "Before Monday, resolve scope and logistics."
+        },
+        {
+          "voice": "engineer",
+          "text": "Confirm exact deliverables, expected hours, private versus public repository, deployment requirement, model-provider allowance, data sensitivity, and who reviews the recorded walkthrough."
+        },
+        {
+          "voice": "engineer",
+          "text": "Confirm the Melbourne or Sydney location issue and work rights early, because the public notes contain a conflicting Singapore mention."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Let's run the defense drill. Why retrieval augmented generation and not fine tuning?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The policies change, the facts must be citable, and refusal must be measurable."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fine tuning bakes a snapshot into weights and makes provenance harder."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Defend your chunk size at ten times the corpus."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sections still work if authors keep one idea per heading."
+        },
+        {
+          "voice": "engineer",
+          "text": "If documents grow into long procedures, I would keep section boundaries, add overlapping windows inside very long sections, and preserve parent identifiers."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Where do you cache at one hundred thousand queries a day?"
+        },
+        {
+          "voice": "engineer",
+          "text": "First, exact-question retrieval results, with a short time-to-live tied to document versions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, frequent semantic clusters, if evaluation shows the cache does not serve stale policy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, generated answers only for read-only factual questions with explicit versioning."
+        },
+        {
+          "voice": "sceptic",
+          "text": "A customer says it is sometimes wrong. What now?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Capture the question, cited chunks, answer, and expected policy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Classify the miss: retrieval, grounding, behavior, stale document, or composer invention."
+        },
+        {
+          "voice": "engineer",
+          "text": "Add a frozen regression case, fix the mechanism, and show the category table moving."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What is the weakest part of this build?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Refusal calibration. The floor is defensible but not fitted on held-out data."
+        },
+        {
+          "voice": "engineer",
+          "text": "The next experiment is a labelled threshold set, then a report of false refusals and false answers."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What would you deliberately not build in one week?"
+        },
+        {
+          "voice": "engineer",
+          "text": "No fine tuning, no custom agent framework, no vector database before evidence, no web interface before evals, and no autonomous account actions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each omission protects the core promise: grounded, auditable support answers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions for Monday are concrete. Confirm the brief, deadline, repository visibility, deployment requirement, and provider budget."
+        },
+        {
+          "voice": "engineer",
+          "text": "Confirm data sensitivity, whether real customer text is allowed, and what the recorded walkthrough must show."
+        },
+        {
+          "voice": "engineer",
+          "text": "Confirm Melbourne or Sydney and work rights early, because the public notes contain a conflicting Singapore mention."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then start with the customer definition, the trap corpus, the golden categories, and the smallest honest loop."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then choose Python, uv, Pydantic, BM25, an OpenAI-compatible client, and a small custom golden-set harness."
+        },
+        {
+          "voice": "engineer",
+          "text": "That stack maximizes evidence per hour and minimizes setup risk."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Let's finish by generalising this into a build method you can reuse on Monday."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Good, because I do not want a support-chat recipe. I want the skeleton."
+        },
+        {
+          "voice": "engineer",
+          "text": "Frame first. Define customer, consequence, good answer, bad answer, ambiguity policy, refusal policy, and non-goals."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then choose the evidence layer before the language layer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Inspect source quality, update frequency, conflicts, permissions, sensitive fields, and natural section boundaries."
+        },
+        {
+          "voice": "engineer",
+          "text": "Chunk according to meaning and provenance, not according to an arbitrary character count."
+        },
+        {
+          "voice": "engineer",
+          "text": "Build the smallest grounded loop next: retrieve, construct context, generate structured output, validate, cite."
+        },
+        {
+          "voice": "sceptic",
+          "text": "When do evals enter?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Before prompt polish. Create categories from expected failure: factual answer, paraphrase, multi-part, ambiguity, false premise, unanswerable, conflict, injection, and privacy."
+        },
+        {
+          "voice": "engineer",
+          "text": "Freeze twenty to fifty cases as JSONL, tag them, print pass rates by category, and append every run to a results log."
+        },
+        {
+          "voice": "engineer",
+          "text": "Keep offline deterministic checks even after enabling a live model."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then run one improvement loop."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pick the largest failure class, change one mechanism, rerun all categories, and record the before-and-after delta."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do not tune the prompt to rescue an unretrieved fact. Fix retrieval, context assembly, behavior rule, or source freshness at the responsible layer."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about the generation layer?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Use Pydantic models for response, citations, and behavior marker."
+        },
+        {
+          "voice": "engineer",
+          "text": "On invalid output, repair or retry visibly rather than returning malformed text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Keep the provider behind an OpenAI-compatible interface, but avoid pretending provider swap removes evaluation work."
+        },
+        {
+          "voice": "engineer",
+          "text": "Different models fail differently on grounding and instruction following."
+        },
+        {
+          "voice": "engineer",
+          "text": "For runtime safety, add a citation verifier, source-version checks, redaction before logs, tool permission boundaries, timeouts, bounded retries, rate limits, tracing, and health reporting."
+        },
+        {
+          "voice": "engineer",
+          "text": "For human handoff, define confidence triggers and make escalation cheap."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Now name the stack plainly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Python with uv, Pydantic, BM25 over meaningful chunks, SQLite only when persistence earns its place, an OpenAI-compatible SDK client, pytest plus a custom golden-set runner, and MCP only when external clients must call the capability."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hybrid retrieval arrives after lexical and dense errors differ measurably. Docker arrives only if the brief demands reproducible deployment."
+        },
+        {
+          "voice": "engineer",
+          "text": "The packaging checklist is fixed: problem frame, architecture, requirement-to-command matrix, trade-offs with alternatives, eval artifacts, limitations, next steps, recorded walkthrough, and clean incremental history."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the highest-leverage defense answers?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Why RAG, why these chunks, how faithfulness is measured, how refusals are tested, what breaks at ten times scale, what costs at one hundred thousand queries, how judges are debiased, what was deliberately omitted, and where the system would fail first tomorrow."
+        },
+        {
+          "voice": "engineer",
+          "text": "Quality is not perfection."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is a narrow promise, kept honestly, with evidence attached and limits stated."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is the whole discipline."
+        },
+        {
+          "voice": "engineer",
+          "text": "And it is exactly what separates a deployed engineer from someone who shipped a demo."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three questions to carry."
+        },
+        {
+          "voice": "engineer",
+          "text": "Can your system say no in a way the customer would call helpful?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Can every sentence in an answer be traced to a stable source identifier?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Can one command reproduce your latest improvement, including the failure that motivated it?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Answer those three and the rest is presentation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Almost. Presentation decides whether a tired reviewer discovers them in five minutes."
+        },
+        {
+          "voice": "engineer",
+          "text": "A fourth question separates strong submissions: which experiment would most reduce risk in the next two hours?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If you cannot answer that, you are polishing instead of de-risking."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: a policy says one thing in the general refund rule and another in a regional exception. What does grounded behavior mean, and which golden-case category proves it?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That conflict is the genuine boundary this skeleton has not fully crossed yet."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the next episode should be the defense itself."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. Architecture, chunk size, cost at one hundred thousand queries, judge reliability, and the weakest deliberate omission, answered out loud under time pressure."
+        },
+        {
+          "voice": "engineer",
+          "text": "Until then, remember the order: customer definition, honest contract, measured loop, then polish."
+        }
+      ]
+    }
+  ]
+}

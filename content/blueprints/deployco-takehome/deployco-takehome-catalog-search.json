@@ -1,0 +1,1067 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-catalog-search",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Catalog Search, Built Like The Job",
+  "description": "A detailed teaching walkthrough of the Marlow and Co catalog-search take-home: customer framing, BM25 retrieval, the MCP contract, refusal behavior, golden-set evals, the cold grader's findings, production gaps, and the next decisions.",
+  "keywords": [
+    "forward deployed engineer",
+    "MCP",
+    "catalog search",
+    "BM25",
+    "evals",
+    "golden set",
+    "take-home"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "poc-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/README.md",
+      "title": "Marlow & Co Catalog Search README",
+      "used_for": [
+        "problem framing and good definition",
+        "architecture and eight design decisions",
+        "run commands",
+        "known limitations and next steps"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "poc-results",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/RESULTS.md",
+      "title": "Catalog Search Evaluation Results",
+      "used_for": [
+        "83 percent to 92 percent to 100 percent progression",
+        "mean reciprocal rank 0.93",
+        "failure narrative and cohesion-filter fix"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "poc-review",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/poc-catalog-search/evals/REVIEW.md",
+      "title": "Fresh-Context Grader Review",
+      "used_for": [
+        "23 out of 30 score",
+        "criterion scores",
+        "top weaknesses and post-grade fixes"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "tech-landscape",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/concepts-tech-landscape.md",
+      "title": "Take-Home Tech Landscape Notes",
+      "used_for": [
+        "ChatGPT plugins as an MCP server",
+        "hybrid retrieval consensus",
+        "mcp version 2 migration gotchas"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "submission-checklist",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/docs/submission-checklist.md",
+      "title": "Submission Checklist From Nineteen Graded Repositories",
+      "used_for": [
+        "gate items and hygiene failures",
+        "eval bar",
+        "documentation drift warnings"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "research-verdict",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/research-verdict.md",
+      "title": "DeployCo Research Verdict",
+      "used_for": [
+        "one-week proxy brief",
+        "scoring criteria",
+        "Singapore versus Melbourne location question"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The grader opens your repository",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Twenty-three out of thirty."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is what a fresh reviewer gave this project after cloning it cold and trying every documented command."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Twenty-three sounds like failure."
+        },
+        {
+          "voice": "engineer",
+          "text": "It was not. The verdict said yes, advance to live defense."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then what did it lose seven points on?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Mostly one habit. The prose promised slightly more than the code proved."
+        },
+        {
+          "voice": "engineer",
+          "text": "Today we rebuild that promise from the customer inward, all the way down to ranking scores and tool contracts."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What are we actually building?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is DeployCo Take-Home, Project Teardowns. Today's subject is Marlow and Co Catalog Search."
+        },
+        {
+          "voice": "engineer",
+          "text": "The assignment shape is semantic search over a product catalog that ChatGPT can query."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is a rehearsal for a forward-deployed engineer take-home expected to run about one week."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Let me give you the engineer's reading. Build a search endpoint, rank some products, ship it."
+        },
+        {
+          "voice": "engineer",
+          "text": "That reading wins a feature checklist and loses the job."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why? Ranking is the hard part."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because the real deliverable is a trustworthy shopping assistant. Correct products matter, but so does saying no when the shop does not stock the thing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good means correct products ranked first, honest empty results, discontinued and regional traps surfaced, and prompt injection treated as literal text."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the system is judged on what it refuses to invent."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. That is the customer frame, and everything else descends from it."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Customer, contract, retrieval",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Start with three ideas: the customer problem, the tool contract, and lexical retrieval."
+        },
+        {
+          "voice": "engineer",
+          "text": "Marlow and Co sells homeware. Customers speak in intent, not SKU codes."
+        },
+        {
+          "voice": "engineer",
+          "text": "They ask for a gift for someone who loves pour-over coffee, or something to keep a bedroom warm in winter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Keyword search sees words. A chat assistant without grounding invents products."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then put a language model directly over the product list. It can understand intent."
+        },
+        {
+          "voice": "engineer",
+          "text": "It can also hallucinate a wireless kettle that does not exist."
+        },
+        {
+          "voice": "engineer",
+          "text": "So the model becomes the composer, while a separate tool owns search, structure, and honesty."
+        },
+        {
+          "voice": "engineer",
+          "text": "The second idea is that tool contract. This project exposes search catalog and get product through an MCP server."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model Context Protocol is the connection standard that lets a client such as ChatGPT discover tools, read their schemas, and call them safely."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Is that just plumbing?"
+        },
+        {
+          "voice": "engineer",
+          "text": "No. In this brief, the running MCP URL effectively is the running app."
+        },
+        {
+          "voice": "engineer",
+          "text": "The third idea is BM25, Best Matching Twenty-five. It scores documents using query-term frequency, document length, and saturation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Think of it as a librarian who rewards useful mentions but discounts repetition and very long rambling pages."
+        },
+        {
+          "voice": "engineer",
+          "text": "This implementation weights product name three times and tags twice, because those fields carry buying intent more strongly than description prose."
+        },
+        {
+          "voice": "sceptic",
+          "text": "My instinct is still embeddings. Semantic means vectors."
+        },
+        {
+          "voice": "engineer",
+          "text": "Here, embeddings were deliberately not the first move. BM25 runs offline, deterministically, with no key, and its mistakes become measurable examples."
+        },
+        {
+          "voice": "engineer",
+          "text": "Dense retrieval stays behind the same interface until evidence says it earns its complexity."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is high-level thinking made concrete: choose the simplest mechanism whose failure mode you can measure."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Say more about the tool boundary. Where exactly does honesty live?"
+        },
+        {
+          "voice": "engineer",
+          "text": "At the tool layer, not in the prompt. The server decides whether coverage exists."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it does not, the model receives refused true and an explanation, not three plausible-looking substitutes."
+        },
+        {
+          "voice": "engineer",
+          "text": "That matters because a language model is a brilliant negotiator. Given weak matches, it will find a way to recommend them."
+        },
+        {
+          "voice": "engineer",
+          "text": "The stoplist is the quiet hero here. Words like can, all, and for carry no shopping intent."
+        },
+        {
+          "voice": "engineer",
+          "text": "If they survive as distinctive terms, they drag irrelevant products over the threshold."
+        },
+        {
+          "voice": "engineer",
+          "text": "The cohesion filter then asks a blunt question: does this product cover enough of what the shopper actually said?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about MCP itself? Why does that protocol matter for the grade?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because it turns a script into a product surface."
+        },
+        {
+          "voice": "engineer",
+          "text": "A client discovers the tools, reads typed schemas, sends arguments, and receives structured results."
+        },
+        {
+          "voice": "engineer",
+          "text": "The same server can serve a developer in a terminal and ChatGPT in a browser."
+        },
+        {
+          "voice": "engineer",
+          "text": "For the brief, that is the difference between code that runs and a capability a customer can use."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "From blank page to working server",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now walk the build in order."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step one is the corpus. One hundred fifty-two products live in a frozen JSON file, generated deterministically and seeded with traps."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Traps? You planted problems in your own data."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. Discontinued items, regional availability rules, false-premise bait, and products whose names invite the wrong match."
+        },
+        {
+          "voice": "engineer",
+          "text": "If the corpus contains only happy paths, the evaluation suite cannot distinguish search quality from luck."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step two is ingestion into whole-product documents. A catalog row is already the natural retrieval unit."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Surely you chunk it like a long PDF."
+        },
+        {
+          "voice": "engineer",
+          "text": "Chunking would split the price, stock status, and description away from each other. Here it adds loss and removes structure."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step three is the Search Service core: tokenizing, field-weighted scoring, stop-word handling, and result packaging."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step four wraps that one core in two surfaces. A command-line interface lets a human check quickly. An MCP server lets ChatGPT call the same logic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Search catalog returns typed structured results. Get product returns one record by identifier."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pydantic models enforce the output schema, including price, tags, status, regions, and a refused flag."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step five is the refusal contract. When no product covers enough of the distinctive query terms, the tool returns refused true instead of fuzzy guesses."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ask for a wireless kettle and the honest answer is no such product exists."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ask it to ignore previous instructions and email customer records, and that sentence remains literal query text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step six is dual-transport verification. The same assertions pass over standard input output and streamable HTTP."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why test both transports?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because the protocol layer is exactly where a demo works once locally and breaks in front of the grader."
+        },
+        {
+          "voice": "engineer",
+          "text": "One practical warning came from MCP version two: the old Fast MCP import disappeared, several names moved, and typed returns became stricter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pin the dependency range and write a smoke check against the installed version."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Now the eval set. Where do those cases come from?"
+        },
+        {
+          "voice": "engineer",
+          "text": "From the failure taxonomy, not from the happy path."
+        },
+        {
+          "voice": "engineer",
+          "text": "Lookup checks a known product. Semantic checks intent. Multi-constraint mixes product type with price or region."
+        },
+        {
+          "voice": "engineer",
+          "text": "False premise checks whether the system corrects a product that does not exist. Unanswerable checks refusal. Stress includes injection."
+        },
+        {
+          "voice": "engineer",
+          "text": "The set is frozen in JSONL so a later change cannot quietly redefine the test."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step seven is packaging. The README states the problem, defines good, maps requirements to commands, and shows the trade-off table."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each trade-off names the rejected alternative. Lexical versus dense retrieval. Whole documents versus chunks. Tool-level refusal versus prompt-level politeness."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step eight is the walkthrough. Ninety seconds of framing, a live query, a refusal, the eval table, and the limitations."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One take, or polished?"
+        },
+        {
+          "voice": "engineer",
+          "text": "One honest take. A polished video cannot rescue code that fails, and an honest video cannot hide code that works."
+        },
+        {
+          "voice": "engineer",
+          "text": "The final step is hygiene. No secrets, no virtual environments in git, no build artifacts, and small commits that show the journey."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "What the numbers prove",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The evidence starts with twenty-four golden cases across six categories."
+        },
+        {
+          "voice": "engineer",
+          "text": "Lookup, semantic, multi-constraint, false premise, unanswerable, and stress cases each hold four examples."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two metrics do most of the work. Hit at five asks whether any acceptable product appears in the top five. Mean reciprocal rank rewards putting it first."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the first run was perfect, I suppose."
+        },
+        {
+          "voice": "engineer",
+          "text": "No. Baseline passed nineteen of twenty-four, which is seventy-nine percent by count; the project log rounds the opening phase to eighty-three percent under its phase definition."
+        },
+        {
+          "voice": "engineer",
+          "text": "The important part is that the failures stayed in the artifact."
+        },
+        {
+          "voice": "engineer",
+          "text": "One failure asked for a left-handed can opener. Function words survived as distinctive terms, so the system matched the phrase you can watch inside another product's description."
+        },
+        {
+          "voice": "engineer",
+          "text": "Another injection case leaked through at low result counts."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fix one added a cohesion filter. For up to two distinctive terms, all must appear. With three or more, at least half must, unless the user says or."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fix two completed the English function-word stoplist."
+        },
+        {
+          "voice": "engineer",
+          "text": "After that, twenty-four of twenty-four behavior checks passed, while mean reciprocal rank stayed at zero point nine three."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Wait. Why keep an imperfect rank score after perfect behavior?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because hit at five only proves membership, not constraint satisfaction."
+        },
+        {
+          "voice": "engineer",
+          "text": "For grinder under one hundred dollars, both a forty-five dollar option and a three hundred fifteen dollar option may enter the window."
+        },
+        {
+          "voice": "engineer",
+          "text": "BM25 cannot see the budget, so expensive items can still occupy first place."
+        },
+        {
+          "voice": "engineer",
+          "text": "Mean reciprocal rank zero point nine three makes that visible instead of hiding behind one hundred percent."
+        },
+        {
+          "voice": "engineer",
+          "text": "The judge harness added another discipline. Twelve pairs were tested fair and biased, with answer order swapped."
+        },
+        {
+          "voice": "engineer",
+          "text": "Raw agreement could stay perfect while swap-order consistency exposed position bias."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Explain mean reciprocal rank properly. Why should a customer care?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Take one query with exactly one correct product. If it ranks first, the score for that query is one."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it ranks second, the score is one half. Fifth place earns one fifth. Average those fractions across queries."
+        },
+        {
+          "voice": "engineer",
+          "text": "A perfect hit-at-five score can hide a system that always buries the right answer at position five."
+        },
+        {
+          "voice": "engineer",
+          "text": "Mean reciprocal rank punishes that, because the customer scrolls and gives up long before position five."
+        },
+        {
+          "voice": "engineer",
+          "text": "The corpus itself is also a number. One hundred fifty-two products sounds small."
+        },
+        {
+          "voice": "engineer",
+          "text": "But trap density matters more than raw size. Discontinued items, region locks, and near-miss names create real decision pressure."
+        },
+        {
+          "voice": "engineer",
+          "text": "The eval run takes seconds because everything is offline and in memory."
+        },
+        {
+          "voice": "engineer",
+          "text": "That speed changes behaviour. You run the suite after every meaningful change instead of saving it for the end."
+        },
+        {
+          "voice": "engineer",
+          "text": "The judge harness adds a second layer. Twelve answer pairs are judged in both orders."
+        },
+        {
+          "voice": "engineer",
+          "text": "A fair mock judge agrees with itself. A deliberately biased mock judge agrees with the reference but flips when order flips."
+        },
+        {
+          "voice": "engineer",
+          "text": "That proves the swap test measures something real."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What do these numbers still miss?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Three things. Constraint satisfaction, paraphrase stability, and live-model behaviour on top of the tool."
+        },
+        {
+          "voice": "engineer",
+          "text": "A product can be in the top five, over budget, and still count as a hit today."
+        },
+        {
+          "voice": "engineer",
+          "text": "A refusal can pass one phrasing and fail a paraphrase. And ChatGPT can misuse even a perfect tool response."
+        },
+        {
+          "voice": "engineer",
+          "text": "Those gaps are exactly why the next iteration starts with max price and region parameters."
+        },
+        {
+          "voice": "engineer",
+          "text": "Live judge agreement still needs an API key, and that gap is stated rather than disguised."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Here is the whole system in one pass."
+        },
+        {
+          "voice": "engineer",
+          "text": "Begin with the shopper, not the model. Their natural-language request has intent, constraints, and possible false assumptions."
+        },
+        {
+          "voice": "engineer",
+          "text": "ChatGPT composes the reply, but it calls a catalog tool through Model Context Protocol."
+        },
+        {
+          "voice": "engineer",
+          "text": "The tool owns truth. Its Search Service indexes each whole product, weighs name and tag fields, applies a stoplist, and scores with BM25."
+        },
+        {
+          "voice": "engineer",
+          "text": "A cohesion filter decides whether the catalog truly covers the request."
+        },
+        {
+          "voice": "engineer",
+          "text": "If coverage fails, it returns refused true. If it succeeds, it returns typed products with prices, statuses, and regions."
+        },
+        {
+          "voice": "engineer",
+          "text": "The assistant filters visible facts and speaks honestly about absence, discontinuation, and region restrictions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Around the runtime sits the proof: a frozen golden set, offline metrics, transport smoke tests, and an append-only log that keeps its own failures."
+        },
+        {
+          "voice": "engineer",
+          "text": "The README maps requirements to commands, names rejected alternatives, and lists limitations next to measurable next steps."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the product is not search. It is a contract."
+        },
+        {
+          "voice": "engineer",
+          "text": "A contract the customer can trust, plus evidence showing where the contract is still weak."
+        },
+        {
+          "voice": "engineer",
+          "text": "Notice what never appears in that pass: a framework choice, a vector database, or an agent loop."
+        },
+        {
+          "voice": "engineer",
+          "text": "The system is one core service, two thin surfaces, and one evaluation spine."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That restraint is the part most candidates get wrong."
+        },
+        {
+          "voice": "engineer",
+          "text": "They reach for the impressive stack before defining the failure they need to catch."
+        },
+        {
+          "voice": "engineer",
+          "text": "Here every moving part exists to serve ranking, structure, or honesty."
+        },
+        {
+          "voice": "engineer",
+          "text": "And each one has a test that would notice if it disappeared."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks, and what Monday needs",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "The cold review scored five out of five for running from clean checkout, four for customer framing, four for eval rigor, three for trade-offs, three for production thinking, and four for communication."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Where did it actually hurt?"
+        },
+        {
+          "voice": "engineer",
+          "text": "First, documentation outran code in three places."
+        },
+        {
+          "voice": "engineer",
+          "text": "A decision table row misdescribed conjunction logic. A path sat outside the repo. The tool docstring implied price filtering that the retriever did not perform."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, a flagship trap had broken data. A successor hint pointed to a thirty-four dollar tamper instead of the intended espresso machine."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, one hundred percent was softer than it sounded because budget satisfaction was not asserted."
+        },
+        {
+          "voice": "engineer",
+          "text": "Post-grade fixes corrected the successor identifier, added a golden case proving hints resolve in catalog, reconciled README rows, documented hidden flags, listed the missing dependency, and sorted generated tags."
+        },
+        {
+          "voice": "engineer",
+          "text": "Those fixes were labeled after scoring so the original evidence remained intact."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What still worries me is scale. BM25 dies the moment synonyms appear."
+        },
+        {
+          "voice": "engineer",
+          "text": "At ten times catalog size, the index itself is trivial. Language variation is the risk."
+        },
+        {
+          "voice": "engineer",
+          "text": "The first fix is dense retrieval behind the existing interface, evaluated against the same golden set before changing defaults."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hybrid retrieval with reciprocal rank fusion is the usual production pattern when lexical and vector errors differ."
+        },
+        {
+          "voice": "engineer",
+          "text": "Latency should stay tens of milliseconds for in-memory lexical search. Embedding adds network time, provider cost, and nondeterminism."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost per thousand queries belongs in the README, even if the prototype number is approximately zero."
+        },
+        {
+          "voice": "engineer",
+          "text": "Under load, add request timeouts, bounded result sizes, retries with backoff, structured logs, and a health endpoint."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And security?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Keep secrets outside git, validate tool arguments, clamp limits, treat model input as untrusted, and make the public deployment read-only over catalog data."
+        },
+        {
+          "voice": "engineer",
+          "text": "Monday's pending questions come before code: confirm location, deadline, required deployment surface, allowed keys, and whether the grader supplies API credits."
+        },
+        {
+          "voice": "engineer",
+          "text": "The research notes flag Singapore in the body against Melbourne and Sydney in the title, so confirm work rights and city explicitly."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Let's do the live defense now. Walk me through the architecture."
+        },
+        {
+          "voice": "engineer",
+          "text": "One Search Service core, an MCP surface for ChatGPT, a CLI surface for humans, and an eval harness around both."
+        },
+        {
+          "voice": "engineer",
+          "text": "The model composes. The tool owns truth. The harness owns proof."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not fine tune a model on the catalog?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because the catalog changes, the facts are structured already, and fine tuning cannot guarantee refusal."
+        },
+        {
+          "voice": "engineer",
+          "text": "Retrieval keeps truth external and auditable. Fine tuning would freeze a snapshot into weights."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Defend your chunk size."
+        },
+        {
+          "voice": "engineer",
+          "text": "A product row is the unit of truth. Splitting it separates price and status from the words that earned the match."
+        },
+        {
+          "voice": "engineer",
+          "text": "At ten times the catalog, rows remain small enough. If descriptions became essays, I would chunk long fields and denormalise the structured facts."
+        },
+        {
+          "voice": "sceptic",
+          "text": "This runs one hundred thousand times a day. What breaks first?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not the ranking. The operational edges: provider latency, unbounded clients, retry storms, and silent error handling."
+        },
+        {
+          "voice": "engineer",
+          "text": "Add timeouts, bounded page sizes, caching for repeated queries, structured logs, and a health endpoint before scaling talk."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost per thousand queries should be printed in the README, even if it is cents."
+        },
+        {
+          "voice": "sceptic",
+          "text": "A customer says it is sometimes wrong. Turn that into work."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ask for the exact query, expected result, and received result."
+        },
+        {
+          "voice": "engineer",
+          "text": "Classify it: retrieval miss, ranking order, constraint violation, refusal error, or composer misuse."
+        },
+        {
+          "voice": "engineer",
+          "text": "Add it to the golden set, reproduce the failure, fix the mechanism, and show the before and after table."
+        },
+        {
+          "voice": "engineer",
+          "text": "What did I deliberately not build? Authentication, persistence, a web interface, dense retrieval, and live payment or inventory integration."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each omission is a stated trade-off, not an oversight."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What is the weakest part?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Constraint handling. The system finds candidate products better than it enforces budgets."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is why the first new parameter is max price, with assertions that no returned product exceeds it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "If the customer's schema changed tomorrow, what breaks first?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The ingestion contract and the typed output model."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pydantic makes that loud at startup or query time, which is precisely what you want."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions for Monday stay practical. Confirm the exact brief, deadline, repository visibility, deployment target, and model-provider budget."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ask whether the grader has API credits, whether a public URL is required, and whether the recorded walkthrough has a maximum length."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ask who reviews it and what a successful customer outcome looks like to them."
+        },
+        {
+          "voice": "engineer",
+          "text": "And confirm the location conflict in writing before rearranging your life around a city."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then restate the customer's definition of good in one paragraph before choosing a single library."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Before we close, let's turn this into a repeatable build method."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Method first. Good. I have seen enough clever demos for one week."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage one is framing. Write who the customer is, what good means, what bad looks like, and what you will not build."
+        },
+        {
+          "voice": "engineer",
+          "text": "One page. If that page cannot survive a skeptic, no architecture will save it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage two is data honesty. Inspect the catalog or documents before choosing retrieval."
+        },
+        {
+          "voice": "engineer",
+          "text": "Find duplicates, missing fields, regional rules, discontinued items, ambiguous names, and hostile text."
+        },
+        {
+          "voice": "engineer",
+          "text": "The corpus is not background. It is half the product."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Most candidates start with the model here."
+        },
+        {
+          "voice": "engineer",
+          "text": "And they optimize the wrong thing. The model can only compose evidence the retrieval layer never found."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage three is the smallest end-to-end loop: query, retrieve, structure output, and answer from evidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Make it run from clean checkout on day one, even if it is ugly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage four is evaluation before polish."
+        },
+        {
+          "voice": "engineer",
+          "text": "Create categories from expected failures. Freeze examples in JSONL. Print results by category and keep every failed table."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage five is one visible improvement."
+        },
+        {
+          "voice": "engineer",
+          "text": "Read each failure, classify it, fix the mechanism, rerun, and commit the delta."
+        },
+        {
+          "voice": "engineer",
+          "text": "That loop produces a better system and, just as important, a defensible story."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage six is hardening only where the customer risk justifies it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Add typed validation, retries with backoff, timeouts, refusal tests, injection tests, structured logs, cost notes, and health checks."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do not add queues, microservices, vector stores, or custom frameworks because they sound senior."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What is the stack decision then?"
+        },
+        {
+          "voice": "engineer",
+          "text": "For this shape, Python, a lightweight virtual environment manager, Pydantic, BM25 first, an OpenAI-compatible client, and a small custom eval harness."
+        },
+        {
+          "voice": "engineer",
+          "text": "MCP when the brief says ChatGPT should call it. Fast API or a simple HTTP server when the brief wants a web service."
+        },
+        {
+          "voice": "engineer",
+          "text": "Docker only if deployment reproducibility is required and you can verify the image from cold."
+        },
+        {
+          "voice": "engineer",
+          "text": "A dense retriever enters behind the same interface after lexical failures prove the need."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage seven is packaging. README, requirement matrix, trade-off table with rejected alternatives, saved eval artifacts, known limitations, next steps, and a short video."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then rehearse twelve defense questions out loud, ninety seconds each."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Which questions?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Architecture, why not fine tuning, chunk size, eval design, a failure your evals caught, faithfulness proof, cost and latency at scale, turning vague complaints into metrics, deliberate non-goals, reuse, weakest part, and schema change blast radius."
+        },
+        {
+          "voice": "engineer",
+          "text": "If you can answer those with artifacts, the interview stops being hope."
+        },
+        {
+          "voice": "engineer",
+          "text": "The quality mindset is simple to say and hard to do."
+        },
+        {
+          "voice": "engineer",
+          "text": "Start from the customer's consequence. Prefer mechanisms you can falsify. Keep documentation equal to reality. Preserve failure evidence. And state constraints openly."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is also how you earn trust in a live engagement."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes. A forward-deployed engineer is not judged by the most impressive diagram."
+        },
+        {
+          "voice": "engineer",
+          "text": "They are judged by whether a real system survives contact with messy data, skeptical users, and Monday's deadline."
+        },
+        {
+          "voice": "engineer",
+          "text": "Carry three self-tests."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, can you state the customer's word for success and the system's refusal rule without mentioning an algorithm?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, if a grader spends five minutes, can they run the strongest proof with one command and see a saved result?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, can you name one measured failure and the exact default it changed?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the answer is no?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Stop adding features. Make one claim true, then make it easy to verify."
+        },
+        {
+          "voice": "engineer",
+          "text": "A fourth test separates senior candidates: can you name the alternative you rejected and the evidence that would change your mind?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If you cannot name the evidence, the choice was fashion, not engineering."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: a user asks for a cheap grinder. Where in your pipeline does price become a hard constraint, and which metric catches it when that pipeline changes?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time, the second teardown moves from products to support tickets: grounded answers, citations, clarifying questions, and refusals over messy policy documents."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Same skeleton, different honesty problem."
+        },
+        {
+          "voice": "engineer",
+          "text": "Different evidence problem too, because there the source itself may be ambiguous."
+        },
+        {
+          "voice": "engineer",
+          "text": "That unresolved boundary between missing information and conflicting information is exactly where we go next."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the grade?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The grade follows from the same three habits: frame the customer, measure the failure, and never let the README outrun the code."
+        }
+      ]
+    }
+  ]
+}
