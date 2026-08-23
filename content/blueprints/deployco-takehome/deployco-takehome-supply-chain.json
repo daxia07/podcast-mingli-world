@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 421,
   "slug": "deployco-takehome-supply-chain",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -15,20 +16,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "acme-bottles-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/acme-bottles-scm",
-      "title": "ACME Bottles Supply Chain System",
-      "used_for": [
-        "system scope",
-        "FIFO scheduler",
-        "five-state model",
-        "live demo verification"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -443,6 +430,20 @@
           "voice": "engineer",
           "text": "Adds dependency chains between production stages. Significant complexity increase. Worth exploring separately."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "acme-bottles-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/acme-bottles-scm",
+      "title": "ACME Bottles Supply Chain System",
+      "used_for": [
+        "system scope",
+        "FIFO scheduler",
+        "five-state model",
+        "live demo verification"
       ]
     }
   ]

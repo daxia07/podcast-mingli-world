@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 422,
   "slug": "deployco-takehome-text-to-sql",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -15,20 +16,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "agent-open-source-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/agent-open-source-llms",
-      "title": "Text-to-SQL Chat",
-      "used_for": [
-        "architecture",
-        "local models",
-        "benchmarks",
-        "security considerations"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -463,6 +450,20 @@
           "voice": "engineer",
           "text": "Different risk profile entirely. Write access requires transaction rollback, audit trails, and much stricter validation. Separate project."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "agent-open-source-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/agent-open-source-llms",
+      "title": "Text-to-SQL Chat",
+      "used_for": [
+        "architecture",
+        "local models",
+        "benchmarks",
+        "security considerations"
       ]
     }
   ]

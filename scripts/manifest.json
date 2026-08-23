@@ -5723,8 +5723,8 @@
       "title": "Catalog Search, Built Like The Job",
       "description": "A detailed teaching walkthrough of the Marlow and Co catalog-search take-home: customer framing, BM25 retrieval, the MCP contract, refusal behavior, golden-set evals, the cold grader's findings, production gaps, and the next decisions.",
       "duration": "25:08",
-      "file_size_bytes": 12068589,
-      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-catalog-search.mp3?v=7a70fb0d",
+      "file_size_bytes": 12068973,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-catalog-search.mp3?v=5327aa54",
       "filename": "deployco-takehome-catalog-search.mp3",
       "playlist": "deployco-takehome",
       "source": "tts",
@@ -5815,8 +5815,8 @@
       "title": "Support Assistant, Grounded Under Pressure",
       "description": "A detailed teaching walkthrough of the Acme Cloud support-assistant rehearsal: messy policy documents, section-level BM25, provider-neutral generation, citations, refusals, clarification behavior, offline evals, and the production plan.",
       "duration": "23:29",
-      "file_size_bytes": 11272557,
-      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-support-assistant.mp3?v=ada8ae24",
+      "file_size_bytes": 11274285,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-support-assistant.mp3?v=946d866e",
       "filename": "deployco-takehome-support-assistant.mp3",
       "playlist": "deployco-takehome",
       "source": "tts",
@@ -5895,6 +5895,296 @@
             "minimum viable eval suite",
             "repository structure",
             "time allocation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 415,
+      "slug": "deployco-takehome-assessment-recommender",
+      "title": "Assessment Recommender, Multi-Turn Without Memory",
+      "description": "A conversational assessment recommender using stateless architecture: TF-IDF retrieval, two-call routing and generation, self-describing replies as memory, and the null-versus-empty distinction that makes API contracts honest.",
+      "duration": "12:03",
+      "file_size_bytes": 5790381,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-assessment-recommender.mp3?v=b59ea206",
+      "filename": "deployco-takehome-assessment-recommender.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "conversational AI",
+        "TF-IDF",
+        "multi-turn",
+        "stateless",
+        "recommendation"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "shl-recommender-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/shl-recommender",
+          "title": "SHL Assessment Recommender",
+          "used_for": [
+            "architecture",
+            "stateless design",
+            "null vs empty rule",
+            "retrieval metrics"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "shl-recommender-approach",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/resources/shl-recommender/APPROACH.md",
+          "title": "Approach Document",
+          "used_for": [
+            "two-call design",
+            "pool construction trade-offs",
+            "what did not work"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 416,
+      "slug": "deployco-takehome-clinical-rag",
+      "title": "Clinical Prior Auth, Decisions With Citations",
+      "description": "A retrieval-augmented decision support system for clinical prior authorization: policy PDFs, patient charts, structured verdicts with inline citations, and the safety architecture that keeps hallucination out of medicine.",
+      "duration": "12:43",
+      "file_size_bytes": 6104685,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-clinical-rag.mp3?v=a78da693",
+      "filename": "deployco-takehome-clinical-rag.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "clinical",
+        "RAG",
+        "prior authorization",
+        "citations",
+        "healthcare AI",
+        "structured output"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "prior-auth-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/prior-auth-assistant",
+          "title": "Prior Authorization Assistant",
+          "used_for": [
+            "architecture",
+            "verdict types",
+            "hybrid retrieval",
+            "known limitations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 417,
+      "slug": "deployco-takehome-document-pipeline",
+      "title": "Documents Into Guides, Five Stages Deep",
+      "description": "A multi-stage document-to-HTML conversion pipeline: drag-and-drop upload, topic grouping, staged processing with progress tracking, error recovery, concurrent batches, and rate limiting that keeps external APIs alive.",
+      "duration": "10:24",
+      "file_size_bytes": 4992429,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-document-pipeline.mp3?v=db4c3a6c",
+      "filename": "deployco-takehome-document-pipeline.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "document processing",
+        "pipeline",
+        "error recovery",
+        "rate limiting"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "trelent-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/Trelent-fde-take-home",
+          "title": "Guide Generator - Document Pipeline",
+          "used_for": [
+            "five stages",
+            "topic grouping",
+            "progress tracking",
+            "error recovery",
+            "rate limiting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 418,
+      "slug": "deployco-takehome-feed-validation",
+      "title": "Client Feed Validation, First Impressions Count",
+      "description": "Enterprise client onboarding through CSV feed validation: canonical mapping, reject-warn-autocorrect classification, idempotent re-ingestion, and the follow-up email that builds trust while surfacing problems.",
+      "duration": "10:16",
+      "file_size_bytes": 4928493,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-feed-validation.mp3?v=4001c79c",
+      "filename": "deployco-takehome-feed-validation.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "data validation",
+        "CSV",
+        "onboarding",
+        "idempotency",
+        "client communication"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "fde-assignment-brief",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/fde-assignment",
+          "title": "Take-Home Assignment: Client Positions Feed Onboarding",
+          "used_for": [
+            "problem framing",
+            "deliverables",
+            "validation classification",
+            "email component"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 419,
+      "slug": "deployco-takehome-freight-voice-agent",
+      "title": "Freight Calls, Negotiating With Voices",
+      "description": "An inbound voice agent for freight brokerages: carriers call in, the system vets them, searches loads, negotiates rates, and books. Real-time voice UX, tool calling under latency constraints, and the ethics of autonomous pricing.",
+      "duration": "10:36",
+      "file_size_bytes": 5089389,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-freight-voice-agent.mp3?v=e2d12484",
+      "filename": "deployco-takehome-freight-voice-agent.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "voice agent",
+        "freight",
+        "negotiation",
+        "tool calling",
+        "real-time"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "happyrobot-instructions",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/happyrobot-fde",
+          "title": "FDE Technical Challenge: Inbound Carrier Sales",
+          "used_for": [
+            "use case definition",
+            "load fields",
+            "vetting workflow",
+            "negotiation requirements"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 420,
+      "slug": "deployco-takehome-sales-transcript-crm",
+      "title": "Sales Transcripts Into CRM, Two Passes Only",
+      "description": "A two-pass workflow turning sales call transcripts into structured CRM payloads and grounded follow-up emails: forced tool use, Pydantic validation, MEDDIC fields with confidence levels, and why the email can only read the JSON.",
+      "duration": "10:29",
+      "file_size_bytes": 5036781,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-sales-transcript-crm.mp3?v=49c10a09",
+      "filename": "deployco-takehome-sales-transcript-crm.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "sales",
+        "CRM",
+        "extraction",
+        "MEDDIC",
+        "grounding"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "sora-union-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/sora-union",
+          "title": "Sales Call Transcript to CRM Update",
+          "used_for": [
+            "architecture",
+            "alternatives considered",
+            "MEDDIC fields",
+            "messy fixture behavior"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "slug": "deployco-takehome-supply-chain",
+      "title": "Supply Chain Scheduler, FIFO Under Constraints",
+      "description": "A production scheduler for plastic bottle manufacturing: purchase orders queued FIFO, per-line capacity constraints, material availability windows, ETA computation, and a five-state fulfillment model that makes status readable.",
+      "duration": "10:36",
+      "file_size_bytes": 5088813,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-supply-chain.mp3?v=7bbdde7e",
+      "filename": "deployco-takehome-supply-chain.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "supply chain",
+        "scheduling",
+        "FIFO",
+        "capacity planning"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "acme-bottles-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/acme-bottles-scm",
+          "title": "ACME Bottles Supply Chain System",
+          "used_for": [
+            "system scope",
+            "FIFO scheduler",
+            "five-state model",
+            "live demo verification"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 422,
+      "slug": "deployco-takehome-text-to-sql",
+      "title": "Natural Language To SQL, Guarded Execution",
+      "description": "Natural language to SQL using locally hosted models: schema-aware prompting, read-only database roles, benchmark notebooks measuring accuracy, and the security architecture preventing arbitrary query execution.",
+      "duration": "10:51",
+      "file_size_bytes": 5208621,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-text-to-sql.mp3?v=f0dd1d1d",
+      "filename": "deployco-takehome-text-to-sql.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "text-to-SQL",
+        "local LLM",
+        "PostgreSQL",
+        "security"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "agent-open-source-readme",
+          "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/agent-open-source-llms",
+          "title": "Text-to-SQL Chat",
+          "used_for": [
+            "architecture",
+            "local models",
+            "benchmarks",
+            "security considerations"
           ]
         }
       ]
@@ -6539,7 +6829,15 @@
       "archived": false,
       "episode_ids": [
         413,
-        414
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422
       ]
     }
   }

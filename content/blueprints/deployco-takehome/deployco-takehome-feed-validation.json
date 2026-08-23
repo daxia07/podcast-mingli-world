@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 418,
   "slug": "deployco-takehome-feed-validation",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -16,20 +17,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "fde-assignment-brief",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/fde-assignment",
-      "title": "Take-Home Assignment: Client Positions Feed Onboarding",
-      "used_for": [
-        "problem framing",
-        "deliverables",
-        "validation classification",
-        "email component"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -444,6 +431,20 @@
           "voice": "engineer",
           "text": "Different ingestion model requiring delta detection. Worth designing but beyond initial scope."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "fde-assignment-brief",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/fde-assignment",
+      "title": "Take-Home Assignment: Client Positions Feed Onboarding",
+      "used_for": [
+        "problem framing",
+        "deliverables",
+        "validation classification",
+        "email component"
       ]
     }
   ]

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 415,
   "slug": "deployco-takehome-assessment-recommender",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -16,31 +17,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "shl-recommender-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/shl-recommender",
-      "title": "SHL Assessment Recommender",
-      "used_for": [
-        "architecture",
-        "stateless design",
-        "null vs empty rule",
-        "retrieval metrics"
-      ]
-    },
-    {
-      "type": "doc",
-      "id": "shl-recommender-approach",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/resources/shl-recommender/APPROACH.md",
-      "title": "Approach Document",
-      "used_for": [
-        "two-call design",
-        "pool construction trade-offs",
-        "what did not work"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -527,6 +503,31 @@
           "voice": "engineer",
           "text": "Catalog currently English-only. Multi-language would need localized retrieval and generation prompts. Genuinely unresolved."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "shl-recommender-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/shl-recommender",
+      "title": "SHL Assessment Recommender",
+      "used_for": [
+        "architecture",
+        "stateless design",
+        "null vs empty rule",
+        "retrieval metrics"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "shl-recommender-approach",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/blob/master/resources/shl-recommender/APPROACH.md",
+      "title": "Approach Document",
+      "used_for": [
+        "two-call design",
+        "pool construction trade-offs",
+        "what did not work"
       ]
     }
   ]

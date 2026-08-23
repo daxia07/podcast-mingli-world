@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 416,
   "slug": "deployco-takehome-clinical-rag",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -17,20 +18,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "prior-auth-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/prior-auth-assistant",
-      "title": "Prior Authorization Assistant",
-      "used_for": [
-        "architecture",
-        "verdict types",
-        "hybrid retrieval",
-        "known limitations"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -533,6 +520,20 @@
           "voice": "engineer",
           "text": "Genuinely unresolved coordination-of-benefits logic. Good candidate for future iteration."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "prior-auth-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/prior-auth-assistant",
+      "title": "Prior Authorization Assistant",
+      "used_for": [
+        "architecture",
+        "verdict types",
+        "hybrid retrieval",
+        "known limitations"
       ]
     }
   ]

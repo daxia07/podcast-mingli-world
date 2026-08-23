@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 419,
   "slug": "deployco-takehome-freight-voice-agent",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -16,20 +17,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "happyrobot-instructions",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/happyrobot-fde",
-      "title": "FDE Technical Challenge: Inbound Carrier Sales",
-      "used_for": [
-        "use case definition",
-        "load fields",
-        "vetting workflow",
-        "negotiation requirements"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -472,6 +459,20 @@
           "voice": "engineer",
           "text": "Different consent model, different regulatory environment. Worth exploring separately."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "happyrobot-instructions",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/happyrobot-fde",
+      "title": "FDE Technical Challenge: Inbound Carrier Sales",
+      "used_for": [
+        "use case definition",
+        "load fields",
+        "vetting workflow",
+        "negotiation requirements"
       ]
     }
   ]

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 420,
   "slug": "deployco-takehome-sales-transcript-crm",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -16,20 +17,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "sora-union-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/sora-union",
-      "title": "Sales Call Transcript to CRM Update",
-      "used_for": [
-        "architecture",
-        "alternatives considered",
-        "MEDDIC fields",
-        "messy fixture behavior"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -456,6 +443,20 @@
           "voice": "engineer",
           "text": "Real-time extraction changes latency requirements significantly. Worth prototyping but different problem."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "sora-union-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/sora-union",
+      "title": "Sales Call Transcript to CRM Update",
+      "used_for": [
+        "architecture",
+        "alternatives considered",
+        "MEDDIC fields",
+        "messy fixture behavior"
       ]
     }
   ]

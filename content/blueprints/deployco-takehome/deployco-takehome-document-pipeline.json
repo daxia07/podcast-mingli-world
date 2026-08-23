@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 417,
   "slug": "deployco-takehome-document-pipeline",
   "show": "deployco-takehome",
   "template": "deep-dive-2voice",
@@ -15,21 +16,6 @@
     "engineer": "narrator",
     "sceptic": "interviewer"
   },
-  "sources": [
-    {
-      "type": "doc",
-      "id": "trelent-readme",
-      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/Trelent-fde-take-home",
-      "title": "Guide Generator - Document Pipeline",
-      "used_for": [
-        "five stages",
-        "topic grouping",
-        "progress tracking",
-        "error recovery",
-        "rate limiting"
-      ]
-    }
-  ],
   "sections": [
     {
       "id": "cold-open",
@@ -448,6 +434,21 @@
           "voice": "engineer",
           "text": "Content hash differs on revision so treated as new. Version tracking would need document-level identity beyond content hash."
         }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "trelent-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/Trelent-fde-take-home",
+      "title": "Guide Generator - Document Pipeline",
+      "used_for": [
+        "five stages",
+        "topic grouping",
+        "progress tracking",
+        "error recovery",
+        "rate limiting"
       ]
     }
   ]
