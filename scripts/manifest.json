@@ -6190,6 +6190,73 @@
       ]
     },
     {
+      "id": 423,
+      "slug": "deployco-screen-seven-day-prep",
+      "title": "Seven Days to the DeployCo Interview",
+      "description": "The coding test is not LeetCode, there is no AI environment, and Python fundamentals are what they say they want. Here is the seven day plan built around those constraints.",
+      "duration": "12:41",
+      "file_size_bytes": 6092973,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-screen-seven-day-prep.mp3?v=fd362155",
+      "filename": "deployco-screen-seven-day-prep.mp3",
+      "playlist": "deployco-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "deployco",
+        "interview prep",
+        "python",
+        "coding test",
+        "system design",
+        "forward deployed engineer"
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "jarvis-transcript",
+          "url": "https://www.youtube.com/watch?v=cBD7_R-Cizg",
+          "title": "Colin Jarvis on Forward Deployed Engineering at OpenAI",
+          "used_for": [
+            "eval driven development",
+            "determinism over LLM",
+            "do what does not scale",
+            "high stakes problem selection"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "exponent-fde-guide",
+          "url": "https://www.tryexponent.com/blog/openai-fde-interview",
+          "title": "Exponent: OpenAI Forward Deployed Engineer Interview Guide 2026",
+          "used_for": [
+            "coding test format: practical builds not algorithmic puzzles",
+            "candidate-reported task types"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "recruiter-confirmation",
+          "url": "https://www.linkedin.com/in/naomi-jones-tomoro",
+          "title": "Naomi Jones, Talent Acquisition at Tomoro / DeployCo",
+          "used_for": [
+            "no AI environment for coding test",
+            "Python fundamentals emphasis",
+            "not LeetCode style"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "openai-launch-deployco",
+          "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+          "title": "OpenAI launches the Deployment Company",
+          "used_for": [
+            "company background",
+            "Tomoro acquisition and FDE model"
+          ]
+        }
+      ]
+    },
+    {
       "id": 450,
       "title": "Behavioral: Why Leaving + Biggest Weakness",
       "description": "TTS-generated practice episode for behavioral interview preparation.",
@@ -6799,7 +6866,8 @@
         394,
         395,
         396,
-        397
+        397,
+        423
       ]
     },
     "langgraph": {

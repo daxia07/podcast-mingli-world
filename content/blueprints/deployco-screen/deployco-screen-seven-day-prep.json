@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 423,
   "slug": "deployco-screen-seven-day-prep",
   "show": "deployco-screen",
   "template": "screen-briefing",
@@ -215,19 +216,6 @@
           "voice": "engineer",
           "text": "Ship something scrappy for one client. Learn. Then generalise if the pattern holds."
         }
-      ],
-      "sources": [
-        {
-          "type": "doc",
-          "id": "jarvis-transcript",
-          "url": "https://www.youtube.com/watch?v=cBD7_R-Cizg",
-          "title": "Colin Jarvis on Forward Deployed Engineering at OpenAI",
-          "used_for": [
-            "eval driven development principle",
-            "determinism over LLM where possible",
-            "do what does not scale"
-          ]
-        }
       ]
     },
     {
@@ -351,29 +339,6 @@
           "voice": "engineer",
           "text": "Light review only, one hour maximum. A tired expert loses to a rested intermediate every time."
         }
-      ],
-      "sources": [
-        {
-          "type": "doc",
-          "id": "exponent-reports",
-          "url": "https://www.tryexponent.com/blog/openai-fde-interview",
-          "title": "Exponent: OpenAI Forward Deployed Engineer Interview Guide",
-          "used_for": [
-            "practical build tasks reported by candidates",
-            "rate limiter, key value store, refactoring patterns"
-          ]
-        },
-        {
-          "type": "doc",
-          "id": "recruiter-confirmation",
-          "url": "https://www.linkedin.com/in/naomijones-tomoro",
-          "title": "Naomi Jones, Talent Acquisition at Tomoro / DeployCo, LinkedIn July 2026",
-          "used_for": [
-            "no AI environment confirmed",
-            "Python fundamentals focus confirmed",
-            "not LeetCode style"
-          ]
-        }
       ]
     },
     {
@@ -468,28 +433,6 @@
         {
           "voice": "engineer",
           "text": "Effectively yes. Which means he knows exactly what good looks like and cannot be bluffed."
-        }
-      ],
-      "sources": [
-        {
-          "type": "doc",
-          "id": "poc-grader",
-          "url": "file:///Users/daxia/projects/deployco-fde-takehome/poc-catalog-search/evals/REVIEW.md",
-          "title": "Independent grader review of POC catalog search, 22 August 2026",
-          "used_for": [
-            "twenty three out of thirty score",
-            "prose outruns code weakness"
-          ]
-        },
-        {
-          "type": "doc",
-          "id": "jd-salary",
-          "url": "https://deploy.co/careers",
-          "title": "DeployCo FDE Australia job description",
-          "used_for": [
-            "salary range",
-            "Sydney and Melbourne locations"
-          ]
         }
       ]
     },
@@ -607,6 +550,7 @@
     },
     {
       "id": "close",
+      "title": "Close",
       "lines": [
         {
           "voice": "engineer",
@@ -644,8 +588,7 @@
           "voice": "engineer",
           "text": "Good. Because that is exactly what DeployCo will do too."
         }
-      ],
-      "title": "Close"
+      ]
     }
   ],
   "sources": [
