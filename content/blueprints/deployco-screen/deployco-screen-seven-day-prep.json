@@ -1,0 +1,696 @@
+{
+  "schema": 1,
+  "slug": "deployco-screen-seven-day-prep",
+  "show": "deployco-screen",
+  "template": "screen-briefing",
+  "title": "Seven Days to the DeployCo Interview",
+  "description": "The coding test is not LeetCode, there is no AI environment, and Python fundamentals are what they say they want. Here is the seven day plan built around those constraints.",
+  "keywords": [
+    "deployco",
+    "interview prep",
+    "python",
+    "coding test",
+    "system design",
+    "forward deployed engineer"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Seven days and a constraint",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "You have seven days. The coding test has no AI environment."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not LeetCode. It is Python fundamentals in a practical build."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So just grind LeetCode for a week and you will be fine."
+        },
+        {
+          "voice": "engineer",
+          "text": "No, because that trains the wrong muscle entirely."
+        },
+        {
+          "voice": "engineer",
+          "text": "LeetCode teaches you to spot a trick in a puzzle. DeployCo wants to see if you can build a thing that works under real constraints."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Then what do I actually practise?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That is exactly what this episode answers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Here is the stake. This role pays up to three hundred and sixty thousand Australian dollars plus equity."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is a serious number for a role that is essentially consulting with code."
+        },
+        {
+          "voice": "engineer",
+          "text": "It is not consulting. Forward deployed engineers embed with clients, understand the domain, and ship production systems."
+        },
+        {
+          "voice": "engineer",
+          "text": "Colin Jarvis, who runs the practice, says the job of an FDE is to eat pain and excrete product."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Charming image. But it tells me they value shipping over theorising."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. And your seven days should reflect that."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "The real decision",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is The DeployCo Screen. Today we plan your seven days."
+        },
+        {
+          "voice": "engineer",
+          "text": "The recruiter confirmed three things about the coding test."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, no AI tools allowed. You write every line yourself."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second, it focuses on Python fundamentals, not algorithmic puzzles."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third, it is not LeetCode style. It is a practical build task."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Every recruiter says fundamentals matter. That is boilerplate."
+        },
+        {
+          "voice": "engineer",
+          "text": "In this case it is not boilerplate, because the task style proves it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Candidates report building rate limiters with sliding windows, key value stores with expiry, credit management systems with audit trails."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those sound like things you would actually build on the job."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because that is the point. They are testing whether you can ship working code, not whether you memorised a solution."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is also a system design component covering LLM deployment architecture, eval driven development, retrieval design, cost and latency tradeoffs."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the decision is not what to study but how to spend each day?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. Seven days, each with a specific target and a specific deliverable."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Three ideas to hold",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three ideas to hold onto all week."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, eval driven development."
+        },
+        {
+          "voice": "engineer",
+          "text": "Colin Jarvis built OpenAI's forward deployed team from scratch in twenty twenty two."
+        },
+        {
+          "voice": "engineer",
+          "text": "He says code is not done until evals verify efficacy. Not until it compiles. Not until it looks right. Until evals prove it works."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That sounds like something you put on a slide to impress investors."
+        },
+        {
+          "voice": "engineer",
+          "text": "Except it has direct consequences for how they grade take homes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your own project was graded partly on whether the eval assertions actually checked correctness or just checked that results existed."
+        },
+        {
+          "voice": "engineer",
+          "text": "A membership check says did we get anything back. A constraint check says are these results actually correct for the query."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And they can tell the difference from reading the code?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Absolutely. If your test says assert length is greater than zero, that tells them nothing about quality."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second idea: determinism over language models wherever possible."
+        },
+        {
+          "voice": "engineer",
+          "text": "Jarvis showed a supply chain demo where deterministic guardrails verify every model output before the user sees it."
+        },
+        {
+          "voice": "engineer",
+          "text": "If a rule engine can answer it, use a rule engine. Reserve the model for natural language understanding."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Is that not obvious?"
+        },
+        {
+          "voice": "engineer",
+          "text": "It is obvious in hindsight. But most people reach for the model first because it feels like the modern answer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third idea: do what does not scale. Their team watchword."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Wait, is not scaling badly a bad thing?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not early. Jarvis says the biggest mistake teams make is generalising a solution before understanding the problem."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ship something scrappy for one client. Learn. Then generalise if the pattern holds."
+        }
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "jarvis-transcript",
+          "url": "https://www.youtube.com/watch?v=cBD7_R-Cizg",
+          "title": "Colin Jarvis on Forward Deployed Engineering at OpenAI",
+          "used_for": [
+            "eval driven development principle",
+            "determinism over LLM where possible",
+            "do what does not scale"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "The seven days walked through",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Let us walk through all seven days beat by beat."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day one, today, is a diagnostic. Build a sliding window rate limiter in sixty minutes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Thread safe, memory bounded, no AI assistance."
+        },
+        {
+          "voice": "engineer",
+          "text": "At exactly minute thirty, a new requirement arrives. Burst support and a remaining count instead of a boolean."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why inject a requirement change mid-task? That seems designed to stress people out."
+        },
+        {
+          "voice": "engineer",
+          "text": "Because that is literally the job. At a client site, requirements change while you are mid-sprint."
+        },
+        {
+          "voice": "engineer",
+          "text": "They want to see if you refactor gracefully or freeze up."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day two, three coding drills back to back."
+        },
+        {
+          "voice": "engineer",
+          "text": "Drill one: key value store with expiry and thread safety. Forty five minutes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Drill two: refactor deliberately ugly nested code into clean composable pieces. Thirty minutes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Drill three: credit management system with spending, refunds, and an audit trail. Forty five minutes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is two hours of coding in one day."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes, and that is intentional. You need stamina as much as skill."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day three morning: rebuild the key value store but write every single test before writing any implementation."
+        },
+        {
+          "voice": "engineer",
+          "text": "This forces you to think about what correct means before you start coding."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day three afternoon: a staged grid simulation. Agents move, collisions detected, walls block paths."
+        },
+        {
+          "voice": "engineer",
+          "text": "New requirements injected at thirty and sixty minutes, same pattern as day one."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day four: system design using an eight step framework."
+        },
+        {
+          "voice": "engineer",
+          "text": "Clarify who the user is and what failure costs. Map the data flow. Design evals. Model the cost. Budget latency."
+        },
+        {
+          "voice": "engineer",
+          "text": "Decide which parts are deterministic versus LLM. Address failure modes. Then ask what breaks at ten times traffic."
+        },
+        {
+          "voice": "engineer",
+          "text": "The exercise is designing a fintech customer support chatbot. Ten thousand concurrent users, p ninety nine under three seconds, five hundred dollars monthly budget."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day five: defend your existing project. Know its weaknesses specifically, not vaguely."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your grader said prose outran code. Be ready to explain what that means and how you fixed it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Should you bring up weaknesses unprompted?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Only when asked. But know the answers cold so there is no hesitation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Day six: full dress rehearsal. Brand new coding task and a fresh system design scenario."
+        },
+        {
+          "voice": "engineer",
+          "text": "Same rules. No AI. Timed. Requirement injection at the halfway mark."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And day seven? Please say rest."
+        },
+        {
+          "voice": "engineer",
+          "text": "Light review only, one hour maximum. A tired expert loses to a rested intermediate every time."
+        }
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "exponent-reports",
+          "url": "https://www.tryexponent.com/blog/openai-fde-interview",
+          "title": "Exponent: OpenAI Forward Deployed Engineer Interview Guide",
+          "used_for": [
+            "practical build tasks reported by candidates",
+            "rate limiter, key value store, refactoring patterns"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "recruiter-confirmation",
+          "url": "https://www.linkedin.com/in/naomijones-tomoro",
+          "title": "Naomi Jones, Talent Acquisition at Tomoro / DeployCo, LinkedIn July 2026",
+          "used_for": [
+            "no AI environment confirmed",
+            "Python fundamentals focus confirmed",
+            "not LeetCode style"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "The numbers that decide this",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Now the numbers that decide this interview."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sixty minutes for the live coding test. Not ninety. Not thirty."
+        },
+        {
+          "voice": "engineer",
+          "text": "If the task has three components, that gives you roughly twenty minutes per component."
+        },
+        {
+          "voice": "engineer",
+          "text": "Subtract ten minutes for setup, imports, and reading the spec carefully. You have fifty minutes of actual coding time."
+        },
+        {
+          "voice": "sceptic",
+          "text": "That is tight for someone who is used to having AI autocomplete."
+        },
+        {
+          "voice": "engineer",
+          "text": "Which is why you practise without it starting today. Muscle memory matters here."
+        },
+        {
+          "voice": "engineer",
+          "text": "Your existing project scored twenty three out of thirty from an independent grader."
+        },
+        {
+          "voice": "engineer",
+          "text": "Production thinking scored three out of five. Communication scored four out of five."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What specifically cost those points?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Documentation promised things the code did not do. Decision table drift. A docstring promising price filtering that was not implemented."
+        },
+        {
+          "voice": "engineer",
+          "text": "Same failure mode in three places. Writing better than verifying."
+        },
+        {
+          "voice": "engineer",
+          "text": "The salary range is one hundred and thirty five thousand to three hundred and sixty thousand Australian dollars plus equity."
+        },
+        {
+          "voice": "engineer",
+          "text": "That range spans junior to principal level. They calibrate the interview to find your level within it."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So a junior candidate gets a simpler task than a principal?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Probably the same base task but higher expectations on edge cases and testing rigour for senior candidates."
+        },
+        {
+          "voice": "engineer",
+          "text": "The requirement change comes at exactly minute thirty. Halfway through."
+        },
+        {
+          "voice": "engineer",
+          "text": "If you are still writing your first function at minute forty, the interview is already lost."
+        },
+        {
+          "voice": "engineer",
+          "text": "DeployCo launched in May twenty twenty six with four billion dollars in investment and a pre money valuation of ten billion dollars."
+        },
+        {
+          "voice": "engineer",
+          "text": "They acquired Tomoro, which had about one hundred and fifty forward deployed engineers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Arnaud Fournier is chief technology officer. He co-founded OpenAI's FDE team and was the first forward deployed engineer ever hired."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So the person making hiring decisions invented the role you are interviewing for?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Effectively yes. Which means he knows exactly what good looks like and cannot be bluffed."
+        }
+      ],
+      "sources": [
+        {
+          "type": "doc",
+          "id": "poc-grader",
+          "url": "file:///Users/daxia/projects/deployco-fde-takehome/poc-catalog-search/evals/REVIEW.md",
+          "title": "Independent grader review of POC catalog search, 22 August 2026",
+          "used_for": [
+            "twenty three out of thirty score",
+            "prose outruns code weakness"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "jd-salary",
+          "url": "https://deploy.co/careers",
+          "title": "DeployCo FDE Australia job description",
+          "used_for": [
+            "salary range",
+            "Sydney and Melbourne locations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How prep goes wrong",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three ways this preparation week goes sideways."
+        },
+        {
+          "voice": "engineer",
+          "text": "First, grinding LeetCode because it feels productive and everyone else does it."
+        },
+        {
+          "voice": "engineer",
+          "text": "LeetCode teaches you binary search on a rotated sorted array. DeployCo asks you to implement a thread safe queue with retry logic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Different skills entirely. One is puzzle solving. The other is engineering."
+        },
+        {
+          "voice": "sceptic",
+          "text": "But LeetCode is what everyone else prepares with. Does it not help at least a little?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Marginally, for basic syntax fluency. But the marginal hour spent on a practical drill is worth ten hours of LeetCode for this specific interview."
+        },
+        {
+          "voice": "engineer",
+          "text": "Second way it goes wrong: spending all seven days on system design and neglecting live coding fluency."
+        },
+        {
+          "voice": "engineer",
+          "text": "System design is important but the coding test is the gate. You must pass it to reach the design conversation."
+        },
+        {
+          "voice": "engineer",
+          "text": "If you fail live coding, nobody hears your beautiful architecture diagram."
+        },
+        {
+          "voice": "engineer",
+          "text": "Third way: over preparing your project defence until every answer sounds scripted."
+        },
+        {
+          "voice": "engineer",
+          "text": "There is a difference between rehearsed and prepared."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What is the difference exactly?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Rehearsed means every answer is polished, none of them admit uncertainty, and it sounds like you are reading from notes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prepared means you know your weaknesses specifically, you can talk about them without defensiveness, and you have thought about what you learned."
+        },
+        {
+          "voice": "engineer",
+          "text": "The early signal that you are over rehearsed: if your practise answers never change between takes, they are too rigid."
+        },
+        {
+          "voice": "engineer",
+          "text": "One more failure mode: neglecting sleep in the final forty eight hours."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Everyone says that though."
+        },
+        {
+          "voice": "engineer",
+          "text": "Everyone says it and nobody believes it until they walk into an interview having slept four hours and cannot remember how to initialise a lock."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three questions to ask yourself each morning this week."
+        },
+        {
+          "voice": "engineer",
+          "text": "Can I build a practical Python system in under forty five minutes without any AI assistance?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not theoretically. Actually timed, with a stopwatch running."
+        },
+        {
+          "voice": "engineer",
+          "text": "Can I explain why I chose deterministic code instead of a language model for a given step in my design?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If your answer is because it seemed better, that is not enough. You need a reason grounded in cost, latency, or correctness."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do I know what broke in my last significant project, and can I describe it without getting defensive?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not what went wrong in theory. What actually broke, what was the root cause, and what do you do differently now?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One question to test yourself right now."
+        },
+        {
+          "voice": "engineer",
+          "text": "If someone asked you to implement a thread safe counter with a time to live expiry, could you start writing code immediately?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Not after thinking about it. Immediately. Lock placement, data structure choice, expiry check on read."
+        },
+        {
+          "voice": "engineer",
+          "text": "If yes, you are ready for Day Two. If no, start with the drills tonight."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about the system design side? Are you walking through that next?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the next episode. We design a fintech chatbot end to end using the eight step framework."
+        },
+        {
+          "voice": "engineer",
+          "text": "Every number estimated, every failure mode addressed, and the determinism choices justified."
+        },
+        {
+          "voice": "sceptic",
+          "text": "I will hold you to the budget constraint."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good. Because that is exactly what DeployCo will do too."
+        }
+      ],
+      "title": "Close"
+    }
+  ],
+  "sources": [
+    {
+      "type": "doc",
+      "id": "jarvis-transcript",
+      "url": "https://www.youtube.com/watch?v=cBD7_R-Cizg",
+      "title": "Colin Jarvis on Forward Deployed Engineering at OpenAI",
+      "used_for": [
+        "eval driven development",
+        "determinism over LLM",
+        "do what does not scale",
+        "high stakes problem selection"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "exponent-fde-guide",
+      "url": "https://www.tryexponent.com/blog/openai-fde-interview",
+      "title": "Exponent: OpenAI Forward Deployed Engineer Interview Guide 2026",
+      "used_for": [
+        "coding test format: practical builds not algorithmic puzzles",
+        "candidate-reported task types"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "recruiter-confirmation",
+      "url": "https://www.linkedin.com/in/naomi-jones-tomoro",
+      "title": "Naomi Jones, Talent Acquisition at Tomoro / DeployCo",
+      "used_for": [
+        "no AI environment for coding test",
+        "Python fundamentals emphasis",
+        "not LeetCode style"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "openai-launch-deployco",
+      "url": "https://openai.com/index/openai-launches-the-deployment-company/",
+      "title": "OpenAI launches the Deployment Company",
+      "used_for": [
+        "company background",
+        "Tomoro acquisition and FDE model"
+      ]
+    }
+  ]
+}
