@@ -1,0 +1,462 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-sales-transcript-crm",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Sales Transcripts Into CRM, Two Passes Only",
+  "description": "A two-pass workflow turning sales call transcripts into structured CRM payloads and grounded follow-up emails: forced tool use, Pydantic validation, MEDDIC fields with confidence levels, and why the email can only read the JSON.",
+  "keywords": [
+    "sales",
+    "CRM",
+    "extraction",
+    "MEDDIC",
+    "grounding"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "sora-union-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/sora-union",
+      "title": "Sales Call Transcript to CRM Update",
+      "used_for": [
+        "architecture",
+        "alternatives considered",
+        "MEDDIC fields",
+        "messy fixture behavior"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The rep forgets the objection",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Forty-minute discovery call. Rep hangs up, opens CRM, types: good call, they are interested, send deck."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Classic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three weeks later the deal dies. Nobody remembers the compliance objection or the economic buyer's name."
+        },
+        {
+          "voice": "engineer",
+          "text": "The information existed. It was in the transcript. Nobody extracted it in time."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three weeks later nobody can reconstruct why the deal stalled."
+        },
+        {
+          "voice": "sceptic",
+          "text": "The rep quit. Their notes say good call. That is all anyone has."
+        },
+        {
+          "voice": "engineer",
+          "text": "This project ensures the transcript itself becomes the CRM record, not the rep memory."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Why two passes instead of one?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This project turns transcripts into structured CRM updates and drafted emails."
+        },
+        {
+          "voice": "engineer",
+          "text": "CRM payload captures deal stage, MEDDIC fields, blockers, competitors, action items as typed JSON."
+        },
+        {
+          "voice": "engineer",
+          "text": "Email drafts from rep's voice but grounds strictly in the payload."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One call could do both. Save half the tokens."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tried it. Version zero produced an email referencing a Workday comparison sheet the prospect explicitly declined."
+        },
+        {
+          "voice": "engineer",
+          "text": "Email pulled details directly from transcript, bypassing structure. Two passes enforce dependency: email sees only validated JSON."
+        },
+        {
+          "voice": "engineer",
+          "text": "Input is a raw transcript file. Output is validated JSON and a drafted email."
+        },
+        {
+          "voice": "engineer",
+          "text": "MEDDIC framework captures six dimensions: Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why MEDDIC specifically? Why not BANT or SPICED?"
+        },
+        {
+          "voice": "engineer",
+          "text": "MEDDIC works well for complex B2B sales where multiple stakeholders matter. It maps naturally to structured fields."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Forced tool use and confidence levels",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Pass one uses Claude with forced tool use. Model must invoke a defined signature producing JSON."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pydantic validates. On failure, one retry, then refuse."
+        },
+        {
+          "voice": "engineer",
+          "text": "MEDDIC: Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each field carries confidence: high, medium, low, or null."
+        },
+        {
+          "voice": "engineer",
+          "text": "High means direct quote supports it. Low means inference. Null means insufficient information."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why confidence levels, not just populated or empty?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Downstream users need to know what to trust. High-confidence champion drives action. Low-confidence guess triggers verification."
+        },
+        {
+          "voice": "engineer",
+          "text": "Forced tool use means the model must call a defined function signature rather than producing free-form text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Function schema defines every MEDDIC field with types, descriptions, and allowed values."
+        },
+        {
+          "voice": "engineer",
+          "text": "Confidence levels add nuance: high means direct quote supports it verbatim, medium means clear paraphrase, low means inference."
+        },
+        {
+          "voice": "engineer",
+          "text": "Null means the transcript simply lacks information. Not unknown; absent from source data."
+        },
+        {
+          "voice": "sceptic",
+          "text": "How do you distinguish low-confidence inference from hallucination?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Low-confidence fields must include a notes value explaining the reasoning. A bare low-confidence guess with no justification fails validation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass two receives only the validated JSON object. It never sees the original transcript."
+        },
+        {
+          "voice": "engineer",
+          "text": "Email prompt says draft follow-up grounded exclusively in these facts. Any detail not present in JSON must not appear."
+        },
+        {
+          "voice": "engineer",
+          "text": "This architectural separation is the core insight. The email literally cannot hallucinate details the extraction rejected."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Clean versus messy transcript",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Clean discovery: well-run call. Most MEDDIC fields populate high-confidence with direct quotes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Messy negotiation: late-stage check-in. Prospect hedges. Economic buyer null, decision criteria null, confidence drops to low."
+        },
+        {
+          "voice": "engineer",
+          "text": "Notes field surfaces soft signals: potential anti-champion, momentum risk."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Honest gaps are the feature."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. A CRM of confident guesses is worse than one with honest blanks."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass two drafts email from validated payload only. It writes naturally but cannot invent details."
+        },
+        {
+          "voice": "engineer",
+          "text": "Clean discovery call example."
+        },
+        {
+          "voice": "engineer",
+          "text": "Transcript shows prospect saying we process about forty thousand invoices monthly, manual AP takes twelve days."
+        },
+        {
+          "voice": "engineer",
+          "text": "Metrics field populates high confidence: forty thousand monthly volume, twelve-day cycle time."
+        },
+        {
+          "voice": "engineer",
+          "text": "Economic buyer identified: CFO signed off on evaluation budget. Direct quote supports it. High confidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Champion: VP of Operations championing internally. Named explicitly. High confidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Decision criteria mentions integration with existing ERP and security review. Medium confidence, paraphrased not quoted."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now messy negotiation call."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prospect says things are probably fine, we have other priorities right now, maybe revisit next quarter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Economic buyer: null. Nobody named. Decision criteria: null. No specifics given."
+        },
+        {
+          "voice": "engineer",
+          "text": "Champion confidence drops to low. Notes field reads: soft signals suggest competing priorities, potential anti-champion in finance."
+        },
+        {
+          "voice": "engineer",
+          "text": "Deal stage downgrades from proposal to nurture. Email drafts accordingly: brief check-in, no aggressive ask."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Token cost and validation overhead",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Forty-minute transcript: eight thousand words, eleven thousand tokens."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass one input plus output: twenty thousand tokens with Claude Sonnet."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass two: validated JSON plus prompt, three thousand tokens."
+        },
+        {
+          "voice": "engineer",
+          "text": "Combined cost per call: pennies. Compare to fifteen minutes of manual CRM update."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validation retry rate nears zero on clean transcripts. Messy inputs trigger more failures. Budget is one retry."
+        },
+        {
+          "voice": "engineer",
+          "text": "Token accounting per processing run."
+        },
+        {
+          "voice": "engineer",
+          "text": "Forty-minute transcript averages eight thousand spoken words, roughly eleven thousand tokens."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass one input: transcript plus function schema plus system instructions, approximately fourteen thousand tokens total input."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass one output: structured JSON with all MEDDIC fields, typically one thousand tokens."
+        },
+        {
+          "voice": "engineer",
+          "text": "Using Claude Sonnet pricing: input at three dollars per million tokens, output at fifteen dollars per million."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pass one cost: approximately six cents. Pass two input is smaller, output shorter. Total under ten cents per call processed."
+        },
+        {
+          "voice": "engineer",
+          "text": "Compare to fifteen minutes of rep time manually updating CRM at a loaded hourly rate of sixty dollars: fifteen dollars."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Transcript enters. Forced tool call produces raw JSON. Validation with one retry."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validated payload feeds pass two. Email generates grounded in payload facts only."
+        },
+        {
+          "voice": "engineer",
+          "text": "Output writes to simulated CRM keyed by call identifier. Every field traces to quote or marked inference."
+        },
+        {
+          "voice": "engineer",
+          "text": "Complete pipeline once more."
+        },
+        {
+          "voice": "engineer",
+          "text": "Transcript enters. Forced tool call produces JSON with all MEDDIC fields and confidence levels."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pydantic validates types and constraints. One retry if validation fails. Refuse if still broken."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validated payload feeds pass two exclusively. Email drafts from payload facts only, in rep voice."
+        },
+        {
+          "voice": "engineer",
+          "text": "Both outputs save to simulated CRM keyed by call identifier. Every field traces to quote or marked inference."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Speaker diarization errors merge two people into one label. Contradictory attributes attributed to same person. Fix proper diarization upstream."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prospect sarcasm misreads as enthusiasm. High-confidence positive sentiment on stalled deal. Fix: hedging vocabulary lowers confidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "CRM schema changes break existing payloads. Fix: schema versioning with migration path."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: who reviews before commit? Can reps edit and does that feed back? What privacy consent covers recorded calls?"
+        },
+        {
+          "voice": "engineer",
+          "text": "More subtle failure modes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Multiple speakers use similar language. Diarization confuses who said what."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: contradictory attributes attributed to same person. Champion and anti-champion merged. Fix upstream diarization quality."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sarcasm or politeness masks disagreement. Prospect says interesting idea meaning no."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: high positive sentiment followed by deal stalling. Fix hedging vocabulary detection lowers confidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "CRM schema evolves. New required field added after deployment."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: validation errors spike. Fix versioned schemas with migration path for existing records."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: who reviews before CRM commit? Can reps edit extractions and does editing improve future prompts? Privacy consent for recorded calls?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Can you distinguish direct quote from inference in every field?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Does your second pass access anything the first did not validate?"
+        },
+        {
+          "voice": "engineer",
+          "text": "When ambiguous, does confidence drop or does the system guess confidently anyway?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: if the prospect later disputes what was said, can you show the exact quote supporting each CRM field?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: does your system handle a transcript where the rep talks ninety percent of the time?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "That usually means no discovery happened. Most fields should be null."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: prospect says budget is probably fine, subject to finance. What MEDDIC field, what confidence, why?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: validating messy CSV data from enterprise clients and writing the email that builds trust while surfacing problems."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Could this integrate live during the call instead of after?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Real-time extraction changes latency requirements significantly. Worth prototyping but different problem."
+        }
+      ]
+    }
+  ]
+}

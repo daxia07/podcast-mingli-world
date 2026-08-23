@@ -1,0 +1,478 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-freight-voice-agent",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Freight Calls, Negotiating With Voices",
+  "description": "An inbound voice agent for freight brokerages: carriers call in, the system vets them, searches loads, negotiates rates, and books. Real-time voice UX, tool calling under latency constraints, and the ethics of autonomous pricing.",
+  "keywords": [
+    "voice agent",
+    "freight",
+    "negotiation",
+    "tool calling",
+    "real-time"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "happyrobot-instructions",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/happyrobot-fde",
+      "title": "FDE Technical Challenge: Inbound Carrier Sales",
+      "used_for": [
+        "use case definition",
+        "load fields",
+        "vetting workflow",
+        "negotiation requirements"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The phone rings at two AM",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Two AM. A carrier calls a freight brokerage looking for a load. Nobody is in the office."
+        },
+        {
+          "voice": "engineer",
+          "text": "But the phone answers. A voice agent vets the carrier, searches loads, quotes a rate, negotiates, and books."
+        },
+        {
+          "voice": "sceptic",
+          "text": "All without a human picking up."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the assignment. The hard part is doing all of that inside the latency budget of a phone call."
+        },
+        {
+          "voice": "engineer",
+          "text": "The carrier hears a professional voice asking for their MC number."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And if the carrier asks something unexpected?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The agent either handles it from its prompt or transfers to a human. The demo needs to show both paths."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What does good sound like?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This episode covers an inbound freight voice agent."
+        },
+        {
+          "voice": "engineer",
+          "text": "A carrier calls. The system identifies them, checks authority and insurance, matches loads, and agrees on price."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good means natural conversation, tools fast enough to avoid silence, and correct bookings."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Define correct. Best margin or any booked load?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Both matter. But the rubric scores technical depth and customer thinking, not revenue optimization."
+        },
+        {
+          "voice": "engineer",
+          "text": "So the demo shows clean vetting, realistic search, and one counter-offer handled gracefully."
+        },
+        {
+          "voice": "engineer",
+          "text": "The platform handles speech-to-text and text-to-speech. Your job is the conversation logic and tool integrations."
+        },
+        {
+          "voice": "sceptic",
+          "text": "So you are building a brain that sits between ears and mouth."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. The voice layer is plumbing. The intelligence is in vetting, matching, and negotiation."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Voice latency and tool orchestration",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Phone conversations have a latency budget. Humans notice silence after roughly seven hundred milliseconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Every tool call eats into it. Carrier lookup, load search, rate calculation each add round trips."
+        },
+        {
+          "voice": "engineer",
+          "text": "Design principle: prefetch what you can. As soon as the carrier says their MC number, start vetting before the sentence finishes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tool calling uses function schemas the platform exposes to the voice model. Each tool returns structured JSON."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about interruptions? Carriers talk over the agent."
+        },
+        {
+          "voice": "engineer",
+          "text": "Good platforms handle barge-in natively. The harder case is partial information."
+        },
+        {
+          "voice": "engineer",
+          "text": "Carrier says my MC is two one four and pauses. Agent should ask for the rest rather than guessing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Let me go deeper on latency management because it shapes every design choice."
+        },
+        {
+          "voice": "engineer",
+          "text": "Total budget: seven hundred milliseconds from end of caller speech to start of agent reply."
+        },
+        {
+          "voice": "engineer",
+          "text": "Speech recognition finalization: one hundred milliseconds. LLM inference for response generation: two hundred milliseconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tool call execution: varies. FMCSA lookup five hundred milliseconds, database query under fifty. Text-to-speech synthesis: two hundred milliseconds."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Those add up to more than seven hundred already."
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes, if sequential. Prefetching overlaps them. Start FMCSA lookup while caller is still saying their name."
+        },
+        {
+          "voice": "engineer",
+          "text": "Start TTS on partial results rather than waiting for complete tool response."
+        },
+        {
+          "voice": "engineer",
+          "text": "Function schemas define tool names, parameters with types and descriptions, and return types."
+        },
+        {
+          "voice": "engineer",
+          "text": "The voice model sees these schemas and decides when to invoke which tool based on conversation context."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Vetting, matching, negotiating",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Caller states MC number. System calls FMCSA lookup tool and gets authority status, insurance, and safety rating."
+        },
+        {
+          "voice": "engineer",
+          "text": "Inactive authority ends politely with callback option. Active proceeds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agent asks origin, destination, equipment type. Load search queries the database with those parameters."
+        },
+        {
+          "voice": "engineer",
+          "text": "Results include load ID, rate, weight, pickup window. Agent offers top result at asking price."
+        },
+        {
+          "voice": "engineer",
+          "text": "Carrier counters ten percent lower. Negotiation prompt gives floor price and maximum concession."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agent accepts, counters once, or escalates to human."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Who sets the floor? In production, a pricing engine. In the demo, a static field per load."
+        },
+        {
+          "voice": "engineer",
+          "text": "The point is showing the constraint exists, not solving pricing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Walk through a full successful call step by step."
+        },
+        {
+          "voice": "engineer",
+          "text": "Caller says: hi, looking for a load from Chicago to Dallas, dry van."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agent responds: happy to help. Can I get your MC number?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Caller provides MC two-one-four-five-six-seven. Agent immediately fires FMCSA lookup while acknowledging receipt."
+        },
+        {
+          "voice": "engineer",
+          "text": "Lookup returns active authority, valid insurance, satisfactory safety rating."
+        },
+        {
+          "voice": "engineer",
+          "text": "Agent confirms carrier identity, then queries load database for Chicago-Dallas dry van loads."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three matching loads return. Agent picks highest-paying within pickup window."
+        },
+        {
+          "voice": "engineer",
+          "text": "Quotes rate: twenty-three hundred dollars, picking up Thursday morning."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Carrier says twenty-one hundred or I walk."
+        },
+        {
+          "voice": "engineer",
+          "text": "Negotiation logic has a floor of twenty-two hundred. Agent counters at twenty-two fifty, explaining fuel cost increase."
+        },
+        {
+          "voice": "engineer",
+          "text": "Carrier accepts. Booking tool creates load assignment with agreed rate. Confirmation email fires automatically."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Latency, cost, and margin",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Voice synthesis adds roughly two hundred milliseconds. Speech recognition adds another hundred."
+        },
+        {
+          "voice": "engineer",
+          "text": "FMCSA lookup takes five hundred milliseconds. Load search should be under fifty."
+        },
+        {
+          "voice": "engineer",
+          "text": "Target total response: under one second from end of caller speech to agent reply start."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost per minute runs ten to twenty cents. A ten-minute call costs one to two dollars."
+        },
+        {
+          "voice": "engineer",
+          "text": "If it books a load worth two thousand dollars gross margin, negligible. Failed calls burning two dollars need monitoring."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cost breakdown per call."
+        },
+        {
+          "voice": "engineer",
+          "text": "Voice platform charges roughly fifteen cents per minute including STT and TTS."
+        },
+        {
+          "voice": "engineer",
+          "text": "LLM inference for conversation turns adds maybe three cents per call depending on model choice."
+        },
+        {
+          "voice": "engineer",
+          "text": "FMCSA lookup is free government API but rate-limited. Cache results for repeat callers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Load search against your own PostgreSQL: negligible compute cost."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ten-minute successful booking costs about one dollar eighty total. Compare to human dispatcher salary divided by calls handled."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about failed calls where no booking happens?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Still cost a dollar eighty. At scale, tracking conversion rate matters more than per-call cost."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Full loop again."
+        },
+        {
+          "voice": "engineer",
+          "text": "Call arrives. Agent greets, collects MC number, starts vetting prefetch. Authority validates. Load matches lane and equipment."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rate quoted. Counter received. Floor logic applied: accept, counter, or escalate."
+        },
+        {
+          "voice": "engineer",
+          "text": "On agreement, booking tool creates record. Confirmation email fires. Call ends professionally."
+        },
+        {
+          "voice": "engineer",
+          "text": "Full loop once more cleanly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Inbound call arrives. Agent greets and collects MC number. FMCSA lookup starts prefetch during collection."
+        },
+        {
+          "voice": "engineer",
+          "text": "Authority validates. Agent asks lane preferences. Load search matches equipment and route."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rate quoted from top result. Negotiation applies floor logic. Agreement triggers booking and email."
+        },
+        {
+          "voice": "engineer",
+          "text": "Every turn logs transcript, tool invocations, and outcomes for later analysis."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Noisy truck cab degrades speech recognition. Signal: repeated clarification requests. Fix: keypad fallback for MC input."
+        },
+        {
+          "voice": "engineer",
+          "text": "FMCSA API times out mid-call. Signal: long silence after MC collection. Fix: timeout with hold message and retry."
+        },
+        {
+          "voice": "engineer",
+          "text": "Carrier lies about equipment type. Load does not fit at dock. Signal: post-booking complaint. Fix: require DOT inspection timestamp."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: what are the legal constraints on automated rate agreements? Does verbal contract via AI count? Who owns negotiation logs when disputes arise?"
+        },
+        {
+          "voice": "engineer",
+          "text": "More failure modes specific to voice."
+        },
+        {
+          "voice": "engineer",
+          "text": "Background engine noise causes speech recognition to hallucinate words that were never spoken."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: nonsensical MC numbers or city names. Fix: confidence threshold on STT output, fallback to confirmation question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Caller has heavy accent the model struggles with."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: repeated requests to repeat. Fix: offer keypad input option after second failed attempt."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two carriers call simultaneously and the system routes them to overlapping loads before either books."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: double-booking error at dispatch. Fix: atomic reservation with short lock during booking transaction."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions: does the brokerage need consent recording notifications by state? What happens when FMCSA is down for maintenance? Who arbitrates when a carrier disputes what the AI said?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three tests."
+        },
+        {
+          "voice": "engineer",
+          "text": "Can your voice agent recover from a tool timeout without dead air?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Does it escalate at the right threshold rather than making a bad deal?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Can you replay a call transcript and trace every decision to a specific tool response?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: can you replay any call and see exactly which tools fired, what they returned, and how the agent used those results?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "That audit trail is what separates a demo from a deployable system."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: does the agent know what it does not know? If asked about detention fees it has no data for, does it say so or make up an answer?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: the carrier asks for a lane you have no loads on. What exactly does the agent say?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: multi-turn assessment recommendation where statelessness forces better design."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about outbound calls? Proactively calling carriers about available loads?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Different consent model, different regulatory environment. Worth exploring separately."
+        }
+      ]
+    }
+  ]
+}

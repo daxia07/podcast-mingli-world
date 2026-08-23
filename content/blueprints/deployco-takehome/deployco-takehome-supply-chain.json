@@ -1,0 +1,449 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-supply-chain",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Supply Chain Scheduler, FIFO Under Constraints",
+  "description": "A production scheduler for plastic bottle manufacturing: purchase orders queued FIFO, per-line capacity constraints, material availability windows, ETA computation, and a five-state fulfillment model that makes status readable.",
+  "keywords": [
+    "supply chain",
+    "scheduling",
+    "FIFO",
+    "capacity planning"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "acme-bottles-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/acme-bottles-scm",
+      "title": "ACME Bottles Supply Chain System",
+      "used_for": [
+        "system scope",
+        "FIFO scheduler",
+        "five-state model",
+        "live demo verification"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Two orders, one machine",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Two customers order bottles. Both need delivery Friday. One production line. One shift."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Whoever ordered first."
+        },
+        {
+          "voice": "engineer",
+          "text": "FIFO, yes. But what if order one needs material that arrives Thursday? Now scheduling, materials, and customer expectations collide."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What if both orders use different production lines?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Then capacity constraint relaxes but material availability may still block one of them."
+        },
+        {
+          "voice": "engineer",
+          "text": "Real factories juggle multiple lines, multiple materials, and shifting priorities simultaneously."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What does the factory actually need?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Project tracks purchase orders and supply orders for a bottle manufacturer."
+        },
+        {
+          "voice": "engineer",
+          "text": "Purchase orders are demands. Supply orders are raw material deliveries."
+        },
+        {
+          "voice": "engineer",
+          "text": "Core computation: given FIFO ordering, per-line capacity, material arrival dates, compute ETA and fulfillment status."
+        },
+        {
+          "voice": "engineer",
+          "text": "Five states: completed, in production, pending, delay expected, unable to fulfill."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Five states, not just done or not done?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Operations needs triage granularity. Delay expected means proactive customer outreach. Unable means escalate today."
+        },
+        {
+          "voice": "engineer",
+          "text": "System serves two audiences: operations needs scheduling truth, sales needs customer communication."
+        },
+        {
+          "voice": "engineer",
+          "text": "Five-state model gives sales actionable language: pending means not started yet, delay expected means proactive outreach required."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Who sets the line capacities and material lead times?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Operations configures them. System treats them as parameters, not hardcoded constants."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Capacity, materials, and the queue",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Per-line capacity means fixed units per day. One-liter and one-gallon lines differ."
+        },
+        {
+          "voice": "engineer",
+          "text": "Materials: PET resin, PTA, EG must be on site before production starts."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scheduler processes purchase orders in submission order, checking feasibility at each step."
+        },
+        {
+          "voice": "engineer",
+          "text": "Blocked materials cause cascade delays: order two could start but waits behind blocked order one."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Should order two jump ahead? Strict FIFO wastes capacity. Priority scheduling complicates fairness."
+        },
+        {
+          "voice": "engineer",
+          "text": "Implementation chooses strict FIFO and documents that trade-off explicitly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scheduler processes orders in FIFO submission order but checks feasibility at each step."
+        },
+        {
+          "voice": "engineer",
+          "text": "Feasibility check has two parts: material availability at proposed start date, and remaining line capacity in the delivery window."
+        },
+        {
+          "voice": "engineer",
+          "text": "If PET resin arrives Tuesday and order proposes Wednesday start, material check passes."
+        },
+        {
+          "voice": "engineer",
+          "text": "If line already committed through Friday for earlier orders, capacity check fails. Order waits."
+        },
+        {
+          "voice": "engineer",
+          "text": "Cascade effect: order behind blocked order cannot jump ahead in strict FIFO even though its materials are ready."
+        },
+        {
+          "voice": "engineer",
+          "text": "Trade-off documented: strict FIFO maximizes fairness but wastes idle capacity. Priority-based maximizes throughput but complicates fairness."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Could you implement priority classes? Rush versus standard?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes, but then rush orders starve standard ones indefinitely during high demand. Need starvation prevention mechanism."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prototype keeps strict FIFO for simplicity. Priority queues are documented as future enhancement with trade-off analysis."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Computing the schedule",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Order one: ten thousand one-liter bottles submitted Monday. PET resin arrives Tuesday. Line capacity five thousand per day."
+        },
+        {
+          "voice": "engineer",
+          "text": "Production Wednesday through Thursday. ETA Thursday."
+        },
+        {
+          "voice": "engineer",
+          "text": "Order two: eight thousand one-gallon submitted Tuesday. Different line, capacity three thousand. Materials ready. Starts Tuesday, completes Friday."
+        },
+        {
+          "voice": "engineer",
+          "text": "Order three arrives Wednesday needing PET delayed to Monday. Status delay expected with computed slip."
+        },
+        {
+          "voice": "engineer",
+          "text": "Order four exceeds remaining window capacity. Unable to fulfill."
+        },
+        {
+          "voice": "engineer",
+          "text": "Detailed schedule computation walk-through."
+        },
+        {
+          "voice": "engineer",
+          "text": "Monday: purchase order PO-two-zero-two-six-zero-zero-three arrives for ten thousand one-liter bottles. Delivery due following Friday."
+        },
+        {
+          "voice": "engineer",
+          "text": "PET resin supply order SO-zero-zero-one scheduled to arrive Tuesday. Line capacity five thousand daily."
+        },
+        {
+          "voice": "engineer",
+          "text": "Material check for Tuesday start: resin arriving Tuesday, so earliest production start Wednesday. Two production days needed."
+        },
+        {
+          "voice": "engineer",
+          "text": "Line available Wednesday and Thursday. Schedule confirmed. ETA Thursday. Status transitions from pending to in-production on Wednesday."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tuesday afternoon: purchase order PO-two-zero-two-six-zero-zero-four arrives for eight thousand one-gallon bottles. Different line, capacity three thousand daily."
+        },
+        {
+          "voice": "engineer",
+          "text": "Materials already on site for one-gallon production. Line available Tuesday. Three production days: Tuesday Wednesday Thursday. Completes Thursday."
+        },
+        {
+          "voice": "engineer",
+          "text": "Wednesday: PO-two-zero-two-six-zero-zero-five arrives needing PET resin but supply delayed to next Monday."
+        },
+        {
+          "voice": "engineer",
+          "text": "Status becomes delay expected. System computes revised ETA based on new material arrival plus production duration."
+        },
+        {
+          "voice": "engineer",
+          "text": "Friday: PO-two-zero-two-six-zero-zero-six arrives. Delivery due Monday. Required production exceeds remaining weekend capacity."
+        },
+        {
+          "voice": "engineer",
+          "text": "Status unable to fulfill within requested window. Sales team notified to negotiate new deadline with customer."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Units, days, and utilization",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Line rates: five thousand one-liter daily. Three thousand one-gallon daily."
+        },
+        {
+          "voice": "engineer",
+          "text": "Material lead times: PET resin typically five to seven days from supplier."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scheduler recomputes on every new order and every supply update."
+        },
+        {
+          "voice": "engineer",
+          "text": "Utilization metric: committed hours divided by available hours per line per week."
+        },
+        {
+          "voice": "engineer",
+          "text": "Above ninety percent leaves no buffer for breakdowns or rush orders. Dashboard displays all statuses simultaneously."
+        },
+        {
+          "voice": "engineer",
+          "text": "Key operational numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "One-liter line: five thousand units per day, single shift. One-gallon line: three thousand units per day."
+        },
+        {
+          "voice": "engineer",
+          "text": "PET resin lead time from supplier: five to seven business days typical. PTA and EG similar ranges."
+        },
+        {
+          "voice": "engineer",
+          "text": "Current utilization on one-liter line: two committed orders consuming four production days out of ten available weekly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Utilization percentage: forty percent. Plenty of buffer for rush orders or equipment downtime."
+        },
+        {
+          "voice": "engineer",
+          "text": "Dashboard refreshes on every order creation and supply update. No batch processing delay."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Purchase orders queue FIFO. Supply orders track material arrivals."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scheduler walks queue checking availability and capacity. Fit gets scheduled with computed dates."
+        },
+        {
+          "voice": "engineer",
+          "text": "Blocked on materials waits. Beyond window capacity becomes unable. Others show expected delay."
+        },
+        {
+          "voice": "engineer",
+          "text": "Dashboard displays live status for operations and sales."
+        },
+        {
+          "voice": "engineer",
+          "text": "Complete system pass."
+        },
+        {
+          "voice": "engineer",
+          "text": "Purchase orders queue FIFO. Supply orders track material arrival dates and quantities."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scheduler walks queue checking material availability and line capacity at each proposed start date."
+        },
+        {
+          "voice": "engineer",
+          "text": "Feasible orders get scheduled with computed start and end dates. Blocked orders wait with reason recorded."
+        },
+        {
+          "voice": "engineer",
+          "text": "Orders exceeding window capacity become unable. Others with material delays become delay expected."
+        },
+        {
+          "voice": "engineer",
+          "text": "Dashboard displays all five statuses with utilization metrics for operational visibility."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Supply delivers early but system not updated. Orders stuck pending despite physical stock. Fix barcode scan at receiving."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rush order bumped manually without documentation. Other orders slip mysteriously. Fix override requires reason code and audit trail."
+        },
+        {
+          "voice": "engineer",
+          "text": "Line breakdown halves capacity for week. All ETAs suddenly optimistic. Fix adjustable capacity parameter with effective dating."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: customer notification SLA? Penalty clauses? Firm supplier commitments? Who owns fairness-versus-utilization trade-off?"
+        },
+        {
+          "voice": "engineer",
+          "text": "More operational failure modes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Supplier delivers wrong material grade. System shows PET on site but production line rejects it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: production starts late despite system showing ready. Fix barcode verification at receiving dock confirming grade."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rush order manually overrides FIFO without documentation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: other orders slip mysteriously with no explanation. Fix override requires reason code and audit trail entry."
+        },
+        {
+          "voice": "engineer",
+          "text": "Production line breaks down mid-run. Half-completed batch sits idle."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: all downstream ETAs shift. Fix adjustable effective-dated capacity parameter allowing temporary reduction."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: automated customer notification on status change? Penalty clauses? Supplier firm-date commitments? Fairness-versus-utilization governance?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Can scheduler explain WHY delayed, naming the blocking constraint?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Recompute after supply change gives consistent results?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Can operations see per-line utilization and act before bottleneck?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: if you remove one supply order, does the scheduler correctly recalculate all dependent downstream orders?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: can sales answer where is my order without calling operations?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: order A submitted Monday needs material Thursday. Order B submitted Tuesday has material now. Who goes first and why?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: document-to-HTML pipeline with staged processing and error recovery."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about multi-stage manufacturing where bottles need labeling after molding?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Adds dependency chains between production stages. Significant complexity increase. Worth exploring separately."
+        }
+      ]
+    }
+  ]
+}

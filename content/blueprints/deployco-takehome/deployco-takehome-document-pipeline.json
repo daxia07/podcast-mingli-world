@@ -1,0 +1,454 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-document-pipeline",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Documents Into Guides, Five Stages Deep",
+  "description": "A multi-stage document-to-HTML conversion pipeline: drag-and-drop upload, topic grouping, staged processing with progress tracking, error recovery, concurrent batches, and rate limiting that keeps external APIs alive.",
+  "keywords": [
+    "document processing",
+    "pipeline",
+    "error recovery",
+    "rate limiting"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "trelent-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/Trelent-fde-take-home",
+      "title": "Guide Generator - Document Pipeline",
+      "used_for": [
+        "five stages",
+        "topic grouping",
+        "progress tracking",
+        "error recovery",
+        "rate limiting"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Fifty PDFs, one deadline",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Customer success team has fifty PDFs needing HTML guides by tomorrow. Manual conversion: two days of copy-paste."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Or a script."
+        },
+        {
+          "voice": "engineer",
+          "text": "Or a pipeline that groups topics, converts, shows progress, recovers from failures, handles rate limits. This project builds exactly that."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not just send all fifty PDFs to ChatGPT in one batch?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Context window limits, rate limits, no progress visibility, and no recovery from individual failures."
+        },
+        {
+          "voice": "engineer",
+          "text": "The pipeline exists because naive batching breaks at scale."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "Why five stages instead of one?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Pipeline stages per document: upload validation, text extraction, topic classification, content transformation, HTML rendering."
+        },
+        {
+          "voice": "engineer",
+          "text": "One monolithic call means failure at stage four restarts everything, wasting tokens and time."
+        },
+        {
+          "voice": "engineer",
+          "text": "Staged processing resumes from last checkpoint."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What does each stage do?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage one checks file type, size, readability. Stage two extracts raw text. Stage three sends batch to OpenAI for topic grouping."
+        },
+        {
+          "voice": "engineer",
+          "text": "Stage four transforms individual docs into structured content. Stage five renders final HTML."
+        },
+        {
+          "voice": "engineer",
+          "text": "Tech stack: Next.js frontend for drag-and-drop UI, FastAPI backend for orchestration, OpenAI for transformation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Docker Compose packages everything for reproducible startup."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Five stages sounds like a lot of engineering for converting documents."
+        },
+        {
+          "voice": "engineer",
+          "text": "Each stage earns its existence by enabling targeted retry and checkpoint recovery."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Concurrency, rate limits, and recovery",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Documents process concurrently in bounded batches. Not fifty parallel; that trips the limiter."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rate limiting: ten uploads per minute enforced server-side. Prevents overload and runaway cost."
+        },
+        {
+          "voice": "engineer",
+          "text": "Error recovery: failed document marks itself, others finish independently. Retry button targets only failures."
+        },
+        {
+          "voice": "engineer",
+          "text": "Duplicate detection hashes file contents. Re-upload returns cached result without spending tokens."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Progress reporting? Polling. Frontend checks percentage every few seconds. Each stage transition increments count."
+        },
+        {
+          "voice": "engineer",
+          "text": "WebSockets nicer but polling simpler and sufficient."
+        },
+        {
+          "voice": "engineer",
+          "text": "Upload validation stage checks file extension, size limit, and attempts basic readability probe."
+        },
+        {
+          "voice": "engineer",
+          "text": "A corrupted PDF passes extension check but fails readability. Better to catch here than waste tokens downstream."
+        },
+        {
+          "voice": "engineer",
+          "text": "Text extraction uses PyPDF2 or python-docx depending on file type. Output is plain text with page markers preserved."
+        },
+        {
+          "voice": "engineer",
+          "text": "Topic classification sends all extracted texts to OpenAI in one call. Model groups them into categories."
+        },
+        {
+          "voice": "engineer",
+          "text": "Grouping prompt asks for JSON output mapping document IDs to topic labels."
+        },
+        {
+          "voice": "engineer",
+          "text": "Content transformation runs per-document. Prompt converts raw text into structured guide sections."
+        },
+        {
+          "voice": "engineer",
+          "text": "HTML rendering takes structured output and wraps it in styled templates. Pure Python templating, no additional LLM call."
+        },
+        {
+          "voice": "engineer",
+          "text": "Concurrency managed by asyncio semaphore limiting parallel OpenAI calls to three."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rate limiter tracks upload timestamps in sliding window. Eleventh upload within sixty seconds gets four-two-nine response."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Processing a mixed batch",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Twelve files dragged onto upload zone: six PDFs, four Word docs, two images."
+        },
+        {
+          "voice": "engineer",
+          "text": "Images rejected immediately with clear message. Ten proceed."
+        },
+        {
+          "voice": "engineer",
+          "text": "Extraction succeeds for nine. One scanned PDF has no text layer, flags unreadable."
+        },
+        {
+          "voice": "engineer",
+          "text": "Topic grouping sends nine texts in one OpenAI batch call, sorts into three topics."
+        },
+        {
+          "voice": "engineer",
+          "text": "Transformation runs concurrently, three at a time. Eight succeed, one times out."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rendering produces all eight guides. User retries failed transformation. Second attempt succeeds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Detailed walkthrough of processing twelve mixed files."
+        },
+        {
+          "voice": "engineer",
+          "text": "User drops files onto browser zone. Frontend sends multipart form to backend endpoint."
+        },
+        {
+          "voice": "engineer",
+          "text": "Backend validates each: two image files rejected immediately with clear error message returned to frontend."
+        },
+        {
+          "voice": "engineer",
+          "text": "Ten valid files enter pipeline. Upload validation assigns unique job IDs and stores metadata in SQLite."
+        },
+        {
+          "voice": "engineer",
+          "text": "Text extraction runs synchronously for each. Nine succeed. One scanned PDF yields empty string, flagged unreadable."
+        },
+        {
+          "voice": "engineer",
+          "text": "Nine extracted texts batch-sent to OpenAI for topic grouping. Response sorts into three topics: setup guides, troubleshooting, release notes."
+        },
+        {
+          "voice": "engineer",
+          "text": "Content transformation launches concurrently with semaphore limiting to three simultaneous OpenAI calls."
+        },
+        {
+          "voice": "engineer",
+          "text": "Eight transformations succeed within timeout. One times out after sixty seconds and marks failed."
+        },
+        {
+          "voice": "engineer",
+          "text": "HTML rendering converts eight structured outputs into styled pages organized under topic headings."
+        },
+        {
+          "voice": "engineer",
+          "text": "Frontend polls status endpoint every three seconds. Progress bar advances as stages complete."
+        },
+        {
+          "voice": "engineer",
+          "text": "Final state: eight complete, one extraction failure, one transformation failure. User clicks retry on transformation failure only. Succeeds."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Tokens, time, and throughput",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Average doc: three thousand words, four thousand tokens extracted."
+        },
+        {
+          "voice": "engineer",
+          "text": "OpenAI transformation per doc: eight thousand tokens including output."
+        },
+        {
+          "voice": "engineer",
+          "text": "Twelve documents cost roughly one dollar with GPT-four-mini."
+        },
+        {
+          "voice": "engineer",
+          "text": "Transformation takes five to fifteen seconds per document. Concurrent batches of three mean ten docs finish in forty seconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rate limit keeps within OpenAI tier-one thresholds comfortably."
+        },
+        {
+          "voice": "engineer",
+          "text": "Resource consumption measured during testing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Average document: three thousand words, four thousand tokens extracted."
+        },
+        {
+          "voice": "engineer",
+          "text": "Topic grouping call: nine documents totaling thirty-six thousand tokens input, five hundred tokens output."
+        },
+        {
+          "voice": "engineer",
+          "text": "Per-document transformation: four thousand tokens input plus four thousand output average."
+        },
+        {
+          "voice": "engineer",
+          "text": "GPT-four-mini pricing: input sixty cents per million, output two dollars forty per million."
+        },
+        {
+          "voice": "engineer",
+          "text": "Total cost for twelve documents: approximately seventy cents. Well within reasonable take-home budget."
+        },
+        {
+          "voice": "engineer",
+          "text": "Wall-clock time: extraction instant, grouping call five seconds, transformation batches forty seconds total, rendering instant."
+        },
+        {
+          "voice": "engineer",
+          "text": "End-to-end for ten documents: under one minute."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Drag-and-drop frontend to FastAPI backend. Upload validation filters immediately."
+        },
+        {
+          "voice": "engineer",
+          "text": "Text extraction pulls raw content. Topic grouping via single LLM call across batch."
+        },
+        {
+          "voice": "engineer",
+          "text": "Concurrent transformation in bounded batches with retry support. Rendering organizes by topic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Duplicates skip via hashing. Failures mark individually. Progress polling throughout."
+        },
+        {
+          "voice": "engineer",
+          "text": "Complete pipeline flow once more."
+        },
+        {
+          "voice": "engineer",
+          "text": "Drag-and-drop uploads to FastAPI. Validation filters bad files. Extraction pulls text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Single LLM call groups topics across batch. Concurrent transformation with semaphore. HTML rendering organizes by topic."
+        },
+        {
+          "voice": "engineer",
+          "text": "Progress polling updates UI. Duplicate detection via content hash prevents wasted tokens on re-uploads."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Four-twenty-nine rate limit response mid-batch. Burst of transformation failures. Fix exponential backoff with jitter."
+        },
+        {
+          "voice": "engineer",
+          "text": "PDF uses embedded fonts with no text mapping. Garbled extraction. Fix detect low confidence, suggest OCR."
+        },
+        {
+          "voice": "engineer",
+          "text": "Browser closes mid-processing. Orphaned jobs consume quota. Fix background runner with timeout cleanup."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: max file size? Who pays tokens at scale? Editable HTML before publish? Simultaneous duplicate uploads?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Additional failure modes observed or anticipated."
+        },
+        {
+          "voice": "engineer",
+          "text": "OpenAI returns four-two-nine rate limit during concurrent transformation burst."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: multiple failures cluster together. Fix exponential backoff with jitter rather than immediate retry."
+        },
+        {
+          "voice": "engineer",
+          "text": "PDF uses non-standard font encoding producing garbled extraction output."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: transformation produces nonsensical guide content. Fix detect garbled text heuristically and flag for manual review."
+        },
+        {
+          "voice": "engineer",
+          "text": "Browser closes during long processing. Background tasks orphaned."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: jobs stuck in in-progress indefinitely consuming quota. Fix background task runner with timeout and periodic cleanup."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: max supported file size? Token billing responsibility? Editable HTML output? Concurrent duplicate upload handling?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Stage four fails for one doc: others unaffected?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Same file re-upload returns cached result without spending tokens?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Progress reflects actual transitions or fake elapsed time?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: if OpenAI goes down entirely, does the system fail gracefully or lose in-flight work?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: can you add a sixth processing stage without modifying existing stages?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: same PDF uploaded twice with different filenames. Duplicate or distinct? Why?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: natural language to SQL where the model writes code touching production data."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about versioning? User uploads revision of same document."
+        },
+        {
+          "voice": "engineer",
+          "text": "Content hash differs on revision so treated as new. Version tracking would need document-level identity beyond content hash."
+        }
+      ]
+    }
+  ]
+}

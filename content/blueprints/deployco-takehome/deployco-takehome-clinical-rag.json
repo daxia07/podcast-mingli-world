@@ -1,0 +1,539 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-clinical-rag",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Clinical Prior Auth, Decisions With Citations",
+  "description": "A retrieval-augmented decision support system for clinical prior authorization: policy PDFs, patient charts, structured verdicts with inline citations, and the safety architecture that keeps hallucination out of medicine.",
+  "keywords": [
+    "clinical",
+    "RAG",
+    "prior authorization",
+    "citations",
+    "healthcare AI",
+    "structured output"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "prior-auth-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/prior-auth-assistant",
+      "title": "Prior Authorization Assistant",
+      "used_for": [
+        "architecture",
+        "verdict types",
+        "hybrid retrieval",
+        "known limitations"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "The nurse clicks analyze",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "A nurse uploads two PDFs. One is an insurance policy. One is a patient chart."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And the system says approve or deny."
+        },
+        {
+          "voice": "engineer",
+          "text": "It says denied, with a reason: only two weeks of documented conservative therapy. The policy requires six."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What happens if it invents that requirement?"
+        },
+        {
+          "voice": "engineer",
+          "text": "The patient gets a denial letter citing a rule that does not exist. That is a regulatory incident."
+        },
+        {
+          "voice": "engineer",
+          "text": "The nurse trusted the system because it cited a specific policy page number."
+        },
+        {
+          "voice": "sceptic",
+          "text": "But if that citation is fabricated, the trust is worse than no system at all."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What must never be wrong?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "This is DeployCo Take-Home, Project Teardowns. Today's project is a clinical prior-authorization assistant."
+        },
+        {
+          "voice": "engineer",
+          "text": "The user asks: should this be approved? The system returns approved, denied, needs more info, or insufficient evidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Every verdict carries inline citations back to specific pages in both documents."
+        },
+        {
+          "voice": "sceptic",
+          "text": "My instinct is to fine tune on past decisions. Learn the pattern."
+        },
+        {
+          "voice": "engineer",
+          "text": "Policies change quarterly. Fine tuning bakes last quarter's rules into weights with no provenance."
+        },
+        {
+          "voice": "engineer",
+          "text": "Retrieval keeps truth external. Each claim traces to a page number a human can verify in seconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "The assignment shape is retrieval-augmented generation over structured medical documents."
+        },
+        {
+          "voice": "engineer",
+          "text": "Scored on: does it return the right verdict, and can a human verify every claim in seconds?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "So accuracy and auditability, not just fluency."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Hybrid search over two document types",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three concepts carry this build: hybrid retrieval, structured verdicts, and citation enforcement."
+        },
+        {
+          "voice": "engineer",
+          "text": "Patient charts are narrative prose. Insurance policies are numbered criteria lists."
+        },
+        {
+          "voice": "engineer",
+          "text": "BM25 catches exact phrases like six week conservative management. Dense embeddings catch paraphrases like non-surgical treatment first."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hybrid search runs both and fuses results with reciprocal rank fusion."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not just embeddings? Policies are semantic documents."
+        },
+        {
+          "voice": "engineer",
+          "text": "Policy language is adversarial. Except when, must have completed, and at least six weeks are load-bearing exact terms."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pure vector search blurs those into nearby-but-wrong sections."
+        },
+        {
+          "voice": "engineer",
+          "text": "Structured verdicts use Pydantic models with status, reasoning steps, citations, and next steps as separate typed fields."
+        },
+        {
+          "voice": "engineer",
+          "text": "Citation enforcement means every reasoning sentence must reference at least one chunk identifier from the retrieved set."
+        },
+        {
+          "voice": "engineer",
+          "text": "If the model cites a chunk that was not supplied, validation fails and retries or refuses."
+        },
+        {
+          "voice": "engineer",
+          "text": "Let me unpack each concept properly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hybrid retrieval means running BM25 keyword scoring and dense vector similarity independently, then merging ranked lists."
+        },
+        {
+          "voice": "engineer",
+          "text": "Reciprocal rank fusion computes one over sixty plus rank in each list, summed across methods."
+        },
+        {
+          "voice": "engineer",
+          "text": "A result ranking first in both gets a high fused score. First in one but absent from the other gets moderate score."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not just concatenate results and deduplicate?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Because rank information matters more than presence. A method ranking something fifth has weaker evidence than one putting it first."
+        },
+        {
+          "voice": "engineer",
+          "text": "For structured verdicts, Pydantic enforces types: status must be enum value, citations must be strings matching known chunk IDs."
+        },
+        {
+          "voice": "engineer",
+          "text": "Citation enforcement adds post-generation check: extract all chunk references from reasoning text and verify each exists in supplied evidence set."
+        },
+        {
+          "voice": "engineer",
+          "text": "If any reference fails validation, output is invalid. One repair retry asks model to fix only broken citation."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "From upload to verdict",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Walk the flow. A nurse selects a patient and hits analyze."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step one pulls the chart from the document store. Step two reads the insurance company name from the header."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step three filters the policy library to that payer only. Step four chunks both documents by heading boundaries and runs hybrid retrieval for the requested procedure code."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step five sends retrieved chunks to the model with a structured-output prompt."
+        },
+        {
+          "voice": "engineer",
+          "text": "The model returns JSON matching the Pydantic schema. On failure, one repair retry, then refuse."
+        },
+        {
+          "voice": "engineer",
+          "text": "Step six renders the verdict in the UI with clickable citation links."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about follow-up chat? Same pipeline?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Yes, but free-form questions instead of a verdict schema. Same citation requirement applies."
+        },
+        {
+          "voice": "engineer",
+          "text": "Chat cannot see data the analyzer did not retrieve. It shares the same evidence pool."
+        },
+        {
+          "voice": "engineer",
+          "text": "Now walk through a concrete example end to end."
+        },
+        {
+          "voice": "engineer",
+          "text": "Patient presents chronic lower back pain. Physician orders MRI lumbar spine without contrast."
+        },
+        {
+          "voice": "engineer",
+          "text": "Chart header shows Aetna as primary insurer. Policy filter narrows to Aetna lumbar imaging criteria."
+        },
+        {
+          "voice": "engineer",
+          "text": "BM25 finds exact phrase: conservative therapy for at least six weeks. Dense search finds paraphrase: non-surgical management before advanced imaging."
+        },
+        {
+          "voice": "engineer",
+          "text": "Both methods rank the same policy section highly. Fusion confirms it."
+        },
+        {
+          "voice": "engineer",
+          "text": "Patient chart retrieval finds physical therapy notes dated three weeks apart. Total documented conservative treatment approximately two weeks."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model receives both policy criterion and chart evidence. Generates verdict denied."
+        },
+        {
+          "voice": "engineer",
+          "text": "Reasoning step cites policy chunk for six-week requirement and chart chunk for two-week documentation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Recommended next steps generated: obtain four additional weeks of conservative therapy documentation, or consider peer-to-peer review."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What if the chart said approximately seven weeks instead of exactly?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That ambiguity should trigger needs-more-info rather than auto-approve. Model should flag mismatch between approximate language and hard threshold."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Latency, accuracy, and safety budgets",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Clinical review tolerates seconds, not milliseconds. A three-second analysis beats a twenty-minute manual review."
+        },
+        {
+          "voice": "engineer",
+          "text": "But accuracy has asymmetric costs. A false approval risks harm. A false denial delays care and triggers appeals."
+        },
+        {
+          "voice": "engineer",
+          "text": "The system optimizes recall of relevant policy sections first, precision second."
+        },
+        {
+          "voice": "engineer",
+          "text": "Chunk size matters here. Whole policy sections preserve criterion numbering. Charts chunk at visit boundaries."
+        },
+        {
+          "voice": "engineer",
+          "text": "A lumbar imaging policy might be eight thousand tokens. Four retrieved chunks of one thousand each keeps generation manageable."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Who evaluates medical accuracy?"
+        },
+        {
+          "voice": "engineer",
+          "text": "You cannot automate that safely with another LLM alone."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hand-label thirty cases with a clinician. Report agreement against those labels."
+        },
+        {
+          "voice": "engineer",
+          "text": "Automated evals handle regression detection, not truth."
+        },
+        {
+          "voice": "engineer",
+          "text": "Latency breakdown for typical analysis."
+        },
+        {
+          "voice": "engineer",
+          "text": "Document parsing under one second per PDF using text extraction libraries. OCR adds ten to thirty seconds if needed."
+        },
+        {
+          "voice": "engineer",
+          "text": "Embedding generation roughly two hundred milliseconds per chunk using local sentence-transformer model."
+        },
+        {
+          "voice": "engineer",
+          "text": "BM25 indexing happens once at startup, updates incrementally on new documents."
+        },
+        {
+          "voice": "engineer",
+          "text": "Retrieval query time under fifty milliseconds for both lexical and dense paths combined."
+        },
+        {
+          "voice": "engineer",
+          "text": "LLM generation dominates: three to eight seconds depending on model size and output length."
+        },
+        {
+          "voice": "engineer",
+          "text": "Total end-to-end for typical case five to twelve seconds. Acceptable when manual review takes twenty minutes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "And cost?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Using Mistral via API roughly two cents per analysis. Self-hosted on single GPU amortizes lower at volume."
+        },
+        {
+          "voice": "engineer",
+          "text": "Constraint was no vector database and no LangChain. Everything runs on SQLite for metadata and in-memory arrays for embeddings."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "One pass now."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two documents enter. Both chunk by structure, not character count."
+        },
+        {
+          "voice": "engineer",
+          "text": "Insurance filters policies to the right payer. Hybrid retrieval finds relevant sections from both sides."
+        },
+        {
+          "voice": "engineer",
+          "text": "A typed model generates a verdict with per-claim citations. Validation rejects uncited claims."
+        },
+        {
+          "voice": "engineer",
+          "text": "Follow-up questions reuse the same evidence pool so context never drifts between views."
+        },
+        {
+          "voice": "engineer",
+          "text": "Full pass again with specifics."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two documents enter: patient chart and insurance policy. Both parse into structured chunks preserving heading boundaries."
+        },
+        {
+          "voice": "engineer",
+          "text": "Insurance name filters policies. Hybrid retrieval scores relevance from lexical and semantic signals."
+        },
+        {
+          "voice": "engineer",
+          "text": "Top chunks feed the model. Structured JSON returns verdict, per-step reasoning, citations, recommendations."
+        },
+        {
+          "voice": "engineer",
+          "text": "Citation validator checks referenced chunks against supplied set. UI renders clickable links to source pages."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Every claim traceable in seconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is the bar."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks, and pending questions",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Failure one: scanned PDF has no text layer. Signal: zero retrieval hits on known phrases. Fix: detect and route to OCR preprocessing."
+        },
+        {
+          "voice": "engineer",
+          "text": "Failure two: chart mentions a different insurance company than the header. Signal: wrong payer filter. Fix: cross-reference member ID prefix against payer directory."
+        },
+        {
+          "voice": "engineer",
+          "text": "Failure three: procedure code maps to multiple policies with conflicting criteria. Signal: contradictory citations in output. Fix: flag for human review rather than averaging."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions before building for real: what is the liability model? Who signs off on a wrong denial?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Is PHI allowed in the LLM provider? Is there a HIPAA business associate agreement? Can you run locally or on a private endpoint?"
+        },
+        {
+          "voice": "engineer",
+          "text": "What audit trail do regulators require? These are customer conversations before they are engineering choices."
+        },
+        {
+          "voice": "engineer",
+          "text": "More failure modes worth understanding deeply."
+        },
+        {
+          "voice": "engineer",
+          "text": "Policy PDF uses two-column layout. Naive extraction interleaves columns producing garbled sentences."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: retrieval hits look relevant but reasoning quotes nonsensical text. Fix layout-aware parsing with column detection."
+        },
+        {
+          "voice": "engineer",
+          "text": "Patient chart contains scanned handwritten notes mixed with typed text."
+        },
+        {
+          "voice": "engineer",
+          "text": "Typed sections extract cleanly. Handwritten sections produce empty strings or garbage."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: uneven coverage across same document. Fix flag low-quality chunks so reviewers know what was skipped."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model hallucination despite grounding: generates plausible but incorrect medical reasoning not supported by any retrieved chunk."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: citation check passes because model invents plausible-sounding chunk ID. Fix verify chunk ID exists AND quoted text appears in that chunk."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions: escalation protocol when system says insufficient evidence? Who trains nurses? What happens during API outage?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Three self-tests."
+        },
+        {
+          "voice": "engineer",
+          "text": "Can your system produce a verdict where every sentence traces to a page number?"
+        },
+        {
+          "voice": "engineer",
+          "text": "If the policy changes tomorrow, how many golden cases break? Who is the human in the loop and can they override?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth question: if you removed all LLM calls and kept only retrieval, could a human still find relevant policy sections faster?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "If yes the LLM adds convenience on top of real value rather than being single point of failure."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: does your system distinguish between cannot find evidence and evidence says no? Those require different outputs."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: a policy says at least six weeks and the chart says approximately seven. Does the system approve?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That ambiguity boundary leads directly into conversational state: the assessment recommender next time."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about multi-policy scenarios where patient has secondary insurance?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Genuinely unresolved coordination-of-benefits logic. Good candidate for future iteration."
+        }
+      ]
+    }
+  ]
+}

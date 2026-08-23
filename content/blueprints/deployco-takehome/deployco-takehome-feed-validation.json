@@ -1,0 +1,450 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-feed-validation",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Client Feed Validation, First Impressions Count",
+  "description": "Enterprise client onboarding through CSV feed validation: canonical mapping, reject-warn-autocorrect classification, idempotent re-ingestion, and the follow-up email that builds trust while surfacing problems.",
+  "keywords": [
+    "data validation",
+    "CSV",
+    "onboarding",
+    "idempotency",
+    "client communication"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "fde-assignment-brief",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/fde-assignment",
+      "title": "Take-Home Assignment: Client Positions Feed Onboarding",
+      "used_for": [
+        "problem framing",
+        "deliverables",
+        "validation classification",
+        "email component"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Twenty-five rows, nine problems",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "New enterprise client sends their first positions export. Twenty-five rows. Nine problems hide inside."
+        },
+        {
+          "voice": "engineer",
+          "text": "Missing dates. Negative quantities. Duplicates. Unknown fund codes."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Reject the whole file?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Rejecting the file rejects the relationship. This is the first technical exchange."
+        },
+        {
+          "voice": "engineer",
+          "text": "Goal: find problems before the client does, communicate them in a way that builds confidence."
+        },
+        {
+          "voice": "engineer",
+          "text": "Dana from Meridian Capital sent her first CSV export. This is the first technical exchange."
+        },
+        {
+          "voice": "sceptic",
+          "text": "One bad experience here kills the relationship before it starts."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. The validator finds problems. The email communicates them professionally. Both matter equally."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "What blocks, what warns, what auto-corrects?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Project ingests CSV positions and maps to a canonical internal model. Every issue gets severity classification."
+        },
+        {
+          "voice": "engineer",
+          "text": "Reject: record cannot be trusted. Missing identifier, unparseable quantity, unknown fund code with no resolution."
+        },
+        {
+          "voice": "engineer",
+          "text": "Warn: probably fine but flag it. Unusual date format that parses, zero quantity on closed position."
+        },
+        {
+          "voice": "engineer",
+          "text": "Auto-correct: safe deterministic fix. Whitespace trim, date normalization, currency symbol strip."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Who decides which is which? You do, and defend it."
+        },
+        {
+          "voice": "engineer",
+          "text": "That decision IS the skill being tested."
+        },
+        {
+          "voice": "engineer",
+          "text": "Assignment has three parts: build validation service, write client email, document AI usage."
+        },
+        {
+          "voice": "engineer",
+          "text": "Timebox: two hours total. Complete smaller solution beats ambitious fragment."
+        },
+        {
+          "voice": "engineer",
+          "text": "AI assistants explicitly permitted and expected. They evaluate how you use them."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Canonical model and idempotent ingestion",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Canonical position model normalizes field names, types, units. Client sends position_date; internal calls it as_of_date."
+        },
+        {
+          "voice": "engineer",
+          "text": "Idempotency: re-running on same file produces no duplicates."
+        },
+        {
+          "voice": "engineer",
+          "text": "Deterministic content hash per record becomes dedup key."
+        },
+        {
+          "voice": "engineer",
+          "text": "Conflicting re-delivery: same logical position arrives changed. Needs deliberate handling, not silent overwrite."
+        },
+        {
+          "voice": "engineer",
+          "text": "Options: latest-wins by timestamp, manual queue, versioned records. Choose and defend."
+        },
+        {
+          "voice": "engineer",
+          "text": "Canonical position model normalizes everything into consistent types and units."
+        },
+        {
+          "voice": "engineer",
+          "text": "Client column position_date maps to internal as_of_date. Client sends dates as month day year format; internal stores ISO format."
+        },
+        {
+          "voice": "engineer",
+          "text": "Quantity might arrive as text with commas: 1,500.5. Parser strips formatting, converts to decimal."
+        },
+        {
+          "voice": "engineer",
+          "text": "Currency symbols stripped. Negative quantities flagged depending on context."
+        },
+        {
+          "voice": "engineer",
+          "text": "Idempotency uses SHA-256 hash of canonicalized record values concatenated in fixed order."
+        },
+        {
+          "voice": "engineer",
+          "text": "Same logical position produces same hash regardless of column order or whitespace differences in source CSV."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about legitimate updates where a position value changes between exports?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Hash includes all fields. Changed quantity means different hash, detected as conflicting re-delivery."
+        },
+        {
+          "voice": "engineer",
+          "text": "Resolution policy needed: latest-wins by as-of date, manual queue, or versioned records preserving history."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prototype chooses latest-wins with audit log. Simpler and defensible for initial onboarding."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Running the validator",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Input: sample CSV from Meridian Capital, fictional wealth platform."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validator reads, maps columns, applies type coercion and validation rules."
+        },
+        {
+          "voice": "engineer",
+          "text": "Output: structured report with accepted, rejected, warned, auto-corrected counts plus row-level detail."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sample report ships with code so grader sees results immediately."
+        },
+        {
+          "voice": "engineer",
+          "text": "Part two: write follow-up email to Dana, integration lead, technical but not engineer, two hundred to four hundred words."
+        },
+        {
+          "voice": "engineer",
+          "text": "Structure: what works first, then blockers prioritized, then clarifying questions, then next steps both sides."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why does tone matter in technical exercise? Forward-deployed engineering is client-facing."
+        },
+        {
+          "voice": "engineer",
+          "text": "The email IS part of the product."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sample feed walkthrough with actual problems found."
+        },
+        {
+          "voice": "engineer",
+          "text": "Row three: fund_code ABC123 exists nowhere in reference data. Reject: cannot verify fund exists."
+        },
+        {
+          "voice": "engineer",
+          "text": "Row seven: quantity negative fifteen shares. Could be a correction or a data entry error."
+        },
+        {
+          "voice": "engineer",
+          "text": "Classification depends on business rules. Prototype warns and flags for review rather than rejecting outright."
+        },
+        {
+          "voice": "engineer",
+          "text": "Row twelve: date formatted as December thirty-first twenty-twenty-four instead of standard format."
+        },
+        {
+          "voice": "engineer",
+          "text": "Parser recognizes natural language date and auto-corrects to ISO. Logs transformation."
+        },
+        {
+          "voice": "engineer",
+          "text": "Rows eighteen and nineteen identical except one has trailing whitespace in fund name. Hash deduplicates correctly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validation report summarizes: sixteen clean, five warnings, three rejects, four auto-corrections across multiple rows."
+        },
+        {
+          "voice": "engineer",
+          "text": "Email to Dana opens: thanks for sending the first export. Good news: most records map cleanly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Then prioritizes blockers: three rows could not be processed due to missing fund references."
+        },
+        {
+          "voice": "engineer",
+          "text": "Asks clarifying questions: should negative quantities represent corrections or errors? What is the authoritative fund code list?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Proposes next steps: Dana confirms fund codes, we adjust mapping, schedule next export."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Data quality metrics",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Out of twenty-five rows, sixteen accept cleanly, five warn, three reject, several fields auto-correct."
+        },
+        {
+          "voice": "engineer",
+          "text": "Re-ingesting identical file produces identical result: zero new records, zero duplicates."
+        },
+        {
+          "voice": "engineer",
+          "text": "Hash comparison milliseconds for thousands of rows. Millions need batch processing and indexed hash column."
+        },
+        {
+          "voice": "engineer",
+          "text": "Prototype proves correctness small-scale first."
+        },
+        {
+          "voice": "engineer",
+          "text": "Processing performance on sample scale."
+        },
+        {
+          "voice": "engineer",
+          "text": "Twenty-five rows parse and validate in under fifty milliseconds on a laptop."
+        },
+        {
+          "voice": "engineer",
+          "text": "SHA-256 hashing per record: microseconds. Negligible overhead."
+        },
+        {
+          "voice": "engineer",
+          "text": "At enterprise scale, millions of rows need batch processing and database indexing on hash column."
+        },
+        {
+          "voice": "engineer",
+          "text": "But prototype proves correctness at small scale first. Premature optimization hides logic bugs."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "CSV arrives. Column mapping translates headers. Type coercion normalizes dates and numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validation rules classify issues. Content hash enables idempotent re-runs. Conflicts surface deliberately."
+        },
+        {
+          "voice": "engineer",
+          "text": "Report outputs summary and detail. Email communicates findings professionally."
+        },
+        {
+          "voice": "engineer",
+          "text": "Complete flow once more."
+        },
+        {
+          "voice": "engineer",
+          "text": "CSV arrives. Column mapping translates headers to canonical names. Type coercion normalizes dates and numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Validation rules classify issues as reject, warn, or auto-correct. Content hash enables idempotent deduplication."
+        },
+        {
+          "voice": "engineer",
+          "text": "Report outputs summary counts and row-level detail. Follow-up email communicates findings professionally with clear next steps."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Client changes column order next export. Sudden mass rejection. Fix flexible matching with clear error."
+        },
+        {
+          "voice": "engineer",
+          "text": "Encoding issues break parsing. Fix try multiple encodings, log success."
+        },
+        {
+          "voice": "engineer",
+          "text": "Duplicates arrive across different files, not just re-runs. Composite key including source metadata."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: export frequency? Authoritative source system? Known upstream quality issues? SLA for corrections? Who owns data quality on their side?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Additional edge cases worth anticipating."
+        },
+        {
+          "voice": "engineer",
+          "text": "CSV encoding shifts from UTF-8 to Latin-1 between exports because client changed their export tool."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: sudden decode errors on characters that worked last week. Fix try multiple encodings, log which succeeded."
+        },
+        {
+          "voice": "engineer",
+          "text": "Column renamed from fund_code to security_identifier with no notice."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: mass rejection on previously clean column. Fix fuzzy header matching with warning when uncertain."
+        },
+        {
+          "voice": "engineer",
+          "text": "Duplicate positions arrive across different files representing genuine separate holdings."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: hash collision on logically distinct positions sharing all attribute values. Fix composite key including source file metadata."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending questions: export frequency? Authoritative source system? Known upstream issues? Data quality ownership on client side?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Re-run same file, get byte-identical output?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Every rejected row has machine-readable reason code?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Would your follow-up email make client trust you more or less?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: does your validator distinguish I found a problem from I do not know how to interpret this?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: if the client fixes all issues and resends, does your system accept the corrected file without duplicating anything?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: valid quantity but fund code exists nowhere in reference data. Reject, warn, or something else?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Next time: supply chain scheduling where FIFO meets capacity constraints and material availability."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about incremental feeds where each export contains only changes since the last one?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Different ingestion model requiring delta detection. Worth designing but beyond initial scope."
+        }
+      ]
+    }
+  ]
+}

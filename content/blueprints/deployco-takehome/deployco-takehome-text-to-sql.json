@@ -1,0 +1,469 @@
+{
+  "schema": 1,
+  "slug": "deployco-takehome-text-to-sql",
+  "show": "deployco-takehome",
+  "template": "deep-dive-2voice",
+  "title": "Natural Language To SQL, Guarded Execution",
+  "description": "Natural language to SQL using locally hosted models: schema-aware prompting, read-only database roles, benchmark notebooks measuring accuracy, and the security architecture preventing arbitrary query execution.",
+  "keywords": [
+    "text-to-SQL",
+    "local LLM",
+    "PostgreSQL",
+    "security"
+  ],
+  "voices": {
+    "engineer": "narrator",
+    "sceptic": "interviewer"
+  },
+  "sources": [
+    {
+      "type": "doc",
+      "id": "agent-open-source-readme",
+      "url": "https://github.com/daxia07/deployco-fde-takehome/tree/master/resources/agent-open-source-llms",
+      "title": "Text-to-SQL Chat",
+      "used_for": [
+        "architecture",
+        "local models",
+        "benchmarks",
+        "security considerations"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Show me last month payments",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Operations manager types: show me last month's failed payments by provider."
+        },
+        {
+          "voice": "engineer",
+          "text": "Behind the scenes, a language model writes SQL against a production PostgreSQL database."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Read-only, I hope."
+        },
+        {
+          "voice": "engineer",
+          "text": "Exactly. And the answer determines whether this is a productivity tool or a breach waiting to happen."
+        },
+        {
+          "voice": "engineer",
+          "text": "The model writes SQL. That SQL executes against real payment data in PostgreSQL."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What could go wrong?"
+        },
+        {
+          "voice": "engineer",
+          "text": "DROP TABLE customers. Or UPDATE payments SET amount equals zero. Or a JOIN that silently returns wrong revenue figures."
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "title": "How do you let a model write SQL safely?",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Chat interface converts natural language to SQL using locally hosted open-source models."
+        },
+        {
+          "voice": "engineer",
+          "text": "Docker services: web UI, Qwen model server for SQL generation, PostgreSQL."
+        },
+        {
+          "voice": "engineer",
+          "text": "Everything local. Four gigabytes disk for weights. No cloud dependency."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why local? Cloud is better."
+        },
+        {
+          "voice": "engineer",
+          "text": "Sensitive data stays on network. No per-query cost. No vendor lock-in for internal tools."
+        },
+        {
+          "voice": "engineer",
+          "text": "Trade-off acknowledged: Qwen three-billion generates weaker SQL than GPT-four. Benchmarks quantify exactly how much."
+        },
+        {
+          "voice": "engineer",
+          "text": "Project uses Qwen two-point-five models served locally via Ollama or vLLM."
+        },
+        {
+          "voice": "engineer",
+          "text": "Two sizes tested: zero-point-five-billion for speed and three-billion for accuracy."
+        },
+        {
+          "voice": "engineer",
+          "text": "PostgreSQL runs in Docker alongside the model server and web UI. Three containers total."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Why not just use GPT-four via API?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Sensitive payment data must stay on network. No per-query API cost. No vendor dependency for internal tooling."
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Schema-aware prompting and execution guards",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Model needs table definitions, column names, relationships in the prompt to generate valid SQL."
+        },
+        {
+          "voice": "engineer",
+          "text": "Schema representation matters. Full DDL for six tables fits. Larger schemas need selective inclusion."
+        },
+        {
+          "voice": "engineer",
+          "text": "Execution guardrails operate at connection level. PostgreSQL role gets SELECT privilege only, no INSERT UPDATE DELETE DROP."
+        },
+        {
+          "voice": "engineer",
+          "text": "Even destructive generated queries fail at database level."
+        },
+        {
+          "voice": "engineer",
+          "text": "Query timeout prevents runaway scans blocking other users."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Syntactically valid but semantically wrong SQL? Harder problem."
+        },
+        {
+          "voice": "engineer",
+          "text": "Syntax errors get caught. Semantic errors return plausible-looking wrong numbers. Benchmarks compare against hand-written references on known questions."
+        },
+        {
+          "voice": "engineer",
+          "text": "Schema-aware prompting injects table definitions, column names, types, and relationships into every request."
+        },
+        {
+          "voice": "engineer",
+          "text": "Six tables in demo schema: api_gateway logs, auth service users, payment transactions, billing accounts, notification events, reporting jobs."
+        },
+        {
+          "voice": "engineer",
+          "text": "Full DDL for six tables fits comfortably in prompt context. Larger schemas need selective inclusion based on query relevance."
+        },
+        {
+          "voice": "engineer",
+          "text": "Few-shot examples teach the model expected SQL style and common patterns."
+        },
+        {
+          "voice": "engineer",
+          "text": "Execution safety starts at connection level. PostgreSQL role granted SELECT privilege only."
+        },
+        {
+          "voice": "engineer",
+          "text": "Even if model generates DROP TABLE, database refuses with permission denied error."
+        },
+        {
+          "voice": "engineer",
+          "text": "Query timeout set to thirty seconds prevents runaway analytical scans blocking other users."
+        },
+        {
+          "voice": "engineer",
+          "text": "Secondary model generates natural-language summary of results. Zero-point-five-billion variant sufficient for summarization."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "From question to result",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Question enters chat. System constructs prompt: schema, few-shot examples, question."
+        },
+        {
+          "voice": "engineer",
+          "text": "Qwen generates SELECT provider, COUNT FROM payments WHERE status failed AND date range GROUP BY provider."
+        },
+        {
+          "voice": "engineer",
+          "text": "Application validates syntax, enforces timeout, executes read-only."
+        },
+        {
+          "voice": "engineer",
+          "text": "Results return as table. Secondary smaller model summarizes in plain English."
+        },
+        {
+          "voice": "engineer",
+          "text": "Benchmark notebook runs twenty reference questions through both zero-point-five-billion and three-billion-parameter models."
+        },
+        {
+          "voice": "engineer",
+          "text": "Measures execution accuracy and latency. Larger model substantially more accurate. Smaller faster but more logical errors."
+        },
+        {
+          "voice": "engineer",
+          "text": "Concrete example from benchmark notebook."
+        },
+        {
+          "voice": "engineer",
+          "text": "Question: how many payments failed per provider in January twenty-twenty-six?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Reference SQL written by hand: SELECT provider, COUNT star FROM payments WHERE status equals failed AND created_at BETWEEN January first and January thirty-first GROUP BY provider."
+        },
+        {
+          "voice": "engineer",
+          "text": "Qwen three-billion generates nearly identical SQL. Execution result matches reference exactly."
+        },
+        {
+          "voice": "engineer",
+          "text": "Qwen zero-point-five-billion generates syntactically valid query but joins on wrong column, returning inflated count."
+        },
+        {
+          "voice": "engineer",
+          "text": "Syntactically correct, semantically wrong. This is the hardest error class to catch automatically."
+        },
+        {
+          "voice": "engineer",
+          "text": "Benchmark measures execution accuracy: does query result match reference result on same database?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Twenty reference questions cover simple aggregations, grouped counts, multi-table joins, and date-range filters."
+        },
+        {
+          "voice": "engineer",
+          "text": "Three-billion model achieves substantially higher execution accuracy than zero-point-five-billion. Exact percentages documented in notebook."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Accuracy, latency, resource cost",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Model footprint: four gigabytes quantized to four-bit for three-billion variant."
+        },
+        {
+          "voice": "engineer",
+          "text": "Apple M2 inference: one to three seconds per query depending complexity."
+        },
+        {
+          "voice": "engineer",
+          "text": "PostgreSQL varies: simple aggregation milliseconds, reporting joins seconds."
+        },
+        {
+          "voice": "engineer",
+          "text": "Execution accuracy meaningful for prototyping, not production-grade without human verification."
+        },
+        {
+          "voice": "engineer",
+          "text": "Docker Compose startup under two minutes including first model load."
+        },
+        {
+          "voice": "engineer",
+          "text": "Performance and resource numbers."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model disk footprint: four gigabytes quantized Qwen three-billion. Zero-point-five-billion fits in one gigabyte."
+        },
+        {
+          "voice": "engineer",
+          "text": "Apple M2 inference latency: one to three seconds per query for three-billion model."
+        },
+        {
+          "voice": "engineer",
+          "text": "PostgreSQL query time: milliseconds for indexed aggregations, seconds for unindexed analytical joins."
+        },
+        {
+          "voice": "engineer",
+          "text": "Docker Compose cold start including model loading: under two minutes on M2 MacBook Air."
+        },
+        {
+          "voice": "engineer",
+          "text": "Memory usage: three-billion model consumes roughly four gigabytes RAM during inference."
+        },
+        {
+          "voice": "engineer",
+          "text": "Zero infrastructure cost beyond the laptop running Docker. No API keys required."
+        }
+      ]
+    },
+    {
+      "id": "rebuild",
+      "title": "Put it back together",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Question enters. Schema-aware prompt constructs. Local Qwen generates SQL. Application validates syntax and timeout."
+        },
+        {
+          "voice": "engineer",
+          "text": "Read-only role executes. Results return as data. Secondary model summarizes. Both render in UI."
+        },
+        {
+          "voice": "engineer",
+          "text": "Everything Docker Compose locally. No data leaves machine."
+        },
+        {
+          "voice": "engineer",
+          "text": "Complete request lifecycle."
+        },
+        {
+          "voice": "engineer",
+          "text": "Question typed in chat interface. Backend constructs schema-aware prompt with relevant table definitions and few-shot examples."
+        },
+        {
+          "voice": "engineer",
+          "text": "Local Qwen model generates SQL query text. Application validates basic syntax and enforces timeout wrapper."
+        },
+        {
+          "voice": "engineer",
+          "text": "Read-only PostgreSQL role executes query. Results return as structured rows."
+        },
+        {
+          "voice": "engineer",
+          "text": "Secondary model summarizes results in plain English alongside the raw table."
+        },
+        {
+          "voice": "engineer",
+          "text": "Everything runs locally in three Docker containers. No external API dependency."
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "title": "How it breaks",
+      "factual": true,
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Hallucinated column name. PostgreSQL undefined column error. Fix: include descriptions, retry with error feedback."
+        },
+        {
+          "voice": "engineer",
+          "text": "Valid syntax wrong JOIN logic returns plausible wrong numbers. Benchmark mismatch catches on known questions. Novel patterns need human review."
+        },
+        {
+          "voice": "engineer",
+          "text": "Reporting queries lock tables during peak traffic. Route analytics to read replica, never primary."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: who approves accessible tables? Row-level security requirements? Schema changes stale prompts? Audit trail for generated queries?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Additional failure modes from real usage."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model hallucinates column name that sounds plausible but does not exist in schema."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: PostgreSQL undefined column error. Fix include column comments in prompt, retry with error message appended."
+        },
+        {
+          "voice": "engineer",
+          "text": "Model writes correct-looking JOIN but on non-key column, producing Cartesian product explosion."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: result set unexpectedly large or query timeout triggered. Fix row-count sanity checks on results."
+        },
+        {
+          "voice": "engineer",
+          "text": "Schema changes after deployment. Column renamed, breaking cached prompts referencing stale names."
+        },
+        {
+          "voice": "engineer",
+          "text": "Signal: sudden spike in undefined column errors. Fix dynamic schema introspection rather than hardcoded DDL strings."
+        },
+        {
+          "voice": "engineer",
+          "text": "Pending: who approves accessible tables? Row-level security requirements? Audit logging for generated queries? Schema change notification process?"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "Carry this in",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Can your connection execute DROP TABLE? If yes fix first."
+        },
+        {
+          "voice": "engineer",
+          "text": "Do you benchmark against known questions or eyeball output?"
+        },
+        {
+          "voice": "engineer",
+          "text": "When schema changes, how does system know its prompts are stale?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Fourth: if you removed all LLM components, would the read-only database role still protect you from accidental destructive commands?"
+        },
+        {
+          "voice": "sceptic",
+          "text": "Defense in depth means the database guardrail survives independently of the AI guardrail."
+        },
+        {
+          "voice": "engineer",
+          "text": "Fifth: can a non-technical user tell when the generated SQL is likely wrong versus probably right?"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Rating and next",
+      "lines": [
+        {
+          "voice": "engineer",
+          "text": "Self-test: model joins payments to customers on email instead of customer ID. What kind of error and how catch it?"
+        },
+        {
+          "voice": "engineer",
+          "text": "That wraps the series. Search, support, clinical, voice, recommendation, extraction, validation, scheduling, pipelines, and SQL."
+        },
+        {
+          "voice": "engineer",
+          "text": "Common thread: define good precisely, build smallest honest loop, measure failures, keep docs equal to reality."
+        },
+        {
+          "voice": "sceptic",
+          "text": "Same discipline, every domain."
+        },
+        {
+          "voice": "engineer",
+          "text": "That is forward-deployed engineering."
+        },
+        {
+          "voice": "sceptic",
+          "text": "What about letting the model write INSERT statements for data entry automation?"
+        },
+        {
+          "voice": "engineer",
+          "text": "Different risk profile entirely. Write access requires transaction rollback, audit trails, and much stricter validation. Separate project."
+        }
+      ]
+    }
+  ]
+}
