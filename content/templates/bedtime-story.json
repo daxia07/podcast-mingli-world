@@ -1,0 +1,50 @@
+{
+  "name": "bedtime-story",
+  "title": "Bedtime story",
+  "description": "One classic fairytale told slowly and softly, for drifting off to sleep.",
+  "voices": {
+    "storyteller": "estimation"
+  },
+  "target_minutes": [
+    6,
+    14
+  ],
+  "authoring_brief": "One tale per episode, told to one sleepy listener. Slow, warm, second person at the edges. Nothing to teach, nothing scary left unresolved, nothing open at the end. Every section ends somewhere calm.",
+  "sections": [
+    {
+      "id": "welcome",
+      "title": "Settle in",
+      "required": true,
+      "target_minutes": 1,
+      "brief": "Greet the listener, slow everything down, invite them to close their eyes."
+    },
+    {
+      "id": "beginning",
+      "title": "Once upon a time",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Introduce the hero and their world in the gentlest possible way."
+    },
+    {
+      "id": "trouble",
+      "title": "Trouble",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "The trials of the tale. Scary things stay soft and always pass."
+    },
+    {
+      "id": "journey",
+      "title": "The journey",
+      "required": true,
+      "target_minutes": 3,
+      "brief": "How the hero moves toward safety. Kindness is what carries them."
+    },
+    {
+      "id": "happy-ending",
+      "title": "Happy ever after",
+      "required": true,
+      "target_minutes": 2,
+      "brief": "Resolution. Everything settles, nothing is left open."
+    }
+  ]
+}

@@ -43,6 +43,7 @@ class Line:
     voice: str
     text: str
     pause_after: float = 0.0
+    sfx: str | None = None  # name from story_audio.SFX, played at line start
 
     def word_count(self) -> int:
         return len(self.text.split())
@@ -76,6 +77,7 @@ class Blueprint:
     notes_md: str | None = None
     sources: list[dict] = field(default_factory=list)
     audio: str = "synth"  # "synth" | "existing" (migrated episodes)
+    music: bool = False  # story-audio bed mixed under the voice
     path: Path | None = None
 
     # -- derived ------------------------------------------------------------
@@ -127,6 +129,7 @@ class Blueprint:
                             "voice": ln.voice,
                             "text": ln.text,
                             **({"pause_after": ln.pause_after} if ln.pause_after else {}),
+                            **({"sfx": ln.sfx} if ln.sfx else {}),
                         }
                         for ln in s.lines
                     ],
@@ -142,6 +145,8 @@ class Blueprint:
             out["sources"] = self.sources
         if self.audio != "synth":
             out["audio"] = self.audio
+        if self.music:
+            out["music"] = True
         return out
 
 
@@ -205,6 +210,7 @@ def from_dict(data: dict, path: Path | None = None) -> Blueprint:
                     voice=str(rl.get("voice", raw.get("voice", "narrator"))),
                     text=text,
                     pause_after=float(rl.get("pause_after", 0.0) or 0.0),
+                    sfx=(str(rl["sfx"]) if rl.get("sfx") else None),
                 )
             )
 
@@ -242,6 +248,7 @@ def from_dict(data: dict, path: Path | None = None) -> Blueprint:
         notes_md=data.get("notes_md"),
         sources=list(data.get("sources") or []),
         audio=str(data.get("audio", "synth")),
+        music=bool(data.get("music", False)),
         path=path,
     )
 

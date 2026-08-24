@@ -30,6 +30,7 @@ import tempfile
 from pathlib import Path
 
 from . import audio
+from . import story_audio
 from .blueprint import Blueprint
 from .timeline import Timeline, build as build_timeline, calibrate, flatten, gaps_for
 
@@ -156,6 +157,8 @@ def synthesize(
 
     segments: list[Path] = []
     durations: list[float] = []
+    sfx_events: list[tuple[float, str]] = []
+    offset = 0.0
 
     for index, ((section_id, _, line), gap) in enumerate(zip(flat, gaps)):
         segment = temp_root / f"{index:04d}_{section_id}.mp3"
@@ -173,6 +176,9 @@ def synthesize(
 
         # Measured after tts.synthesize's own loudnorm/silence pass — see rule 1.
         durations.append(probe_duration(segment))
+        if line.sfx:
+            sfx_events.append((offset, line.sfx))
+        offset += durations[-1] + gap
         segments.append(segment)
 
         if gap > 0:
@@ -180,6 +186,17 @@ def synthesize(
             segments.append(silence)
 
     concat(segments, out_path)
+
+    # Bed and effects are mixed under the voice before any validation, so the
+    # uniformity and drift checks below describe the file that actually ships.
+    if story_audio.has_story_audio(bp):
+        story_audio.mix(
+            out_path,
+            probe_duration(out_path),
+            bp.music,
+            sfx_events,
+            progress=progress,
+        )
 
     # A file whose frame parameters change mid-stream decodes fine in ffmpeg and
     # stops dead in a browser, so ffprobe's duration is not enough evidence.

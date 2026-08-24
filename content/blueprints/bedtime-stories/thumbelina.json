@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "slug": "thumbelina",
+  "show": "bedtime-stories",
+  "template": "bedtime-story",
+  "title": "Thumbelina — A Bedtime Story",
+  "description": "Thumbelina, born from a tulip no bigger than a thumb, carried away by a toad, rescued by golden fishes, and finally flown to the warm countries by the swallow she saved. Told slowly and gently, for drifting off to sleep.",
+  "keywords": [
+    "thumbelina",
+    "fairytale",
+    "bedtime story",
+    "hans christian andersen"
+  ],
+  "voices": {
+    "storyteller": "estimation"
+  },
+  "music": true,
+  "sections": [
+    {
+      "id": "welcome",
+      "title": "Settle in",
+      "lines": [
+        {
+          "voice": "storyteller",
+          "text": "Hello, little one. The light is off now, the house is quiet, and outside the window the world is turning dark and soft. This is your story time."
+        },
+        {
+          "voice": "storyteller",
+          "text": "Wriggle down into your pillow, pull the blanket up to your chin, and close your eyes. You do not need them anymore tonight. Just your ears, and your breathing, nice and slow."
+        },
+        {
+          "voice": "storyteller",
+          "text": "Tonight I am going to tell you about a girl who was smaller than your hand. Her name was Thumbelina. Hers is a story about being carried away, about finding your way, and about one very loyal bird."
+        }
+      ]
+    },
+    {
+      "id": "beginning",
+      "title": "A girl in a tulip",
+      "lines": [
+        {
+          "voice": "storyteller",
+          "text": "Once upon a time, there was a woman who wished for a little child of her own. She planted a seed, and wished over it every day. Up grew a flower, a tulip, red and gold. And when its petals opened, there in the middle sat a tiny girl, pretty and delicate, no bigger than a thumb. So everyone called her Thumbelina."
+        },
+        {
+          "voice": "storyteller",
+          "text": "Her bed was a polished walnut shell, smooth and brown. Her mattress was a violet petal, and her blanket was a rose petal, pink and soft. In the daytime she played on a plate of water, sailing from side to side in a little boat made of a tulip petal, rowing with two white oars of horsehair. And oh, she could sing more sweetly than anyone has ever sung."
+        },
+        {
+          "voice": "storyteller",
+          "text": "She was so small, and the garden was so big. And big gardens, my darling, are full of surprises."
+        }
+      ]
+    },
+    {
+      "id": "trouble",
+      "title": "Carried away",
+      "lines": [
+        {
+          "voice": "storyteller",
+          "text": "One night, while Thumbelina lay fast asleep in her walnut shell, something came hopping through the window. An old toad, big and wet and warty. She looked at the sleeping girl and said, what a lovely little wife she would make for my son. And she lifted up the whole walnut shell, with Thumbelina still inside it, and hopped away with it to the middle of the river."
+        },
+        {
+          "voice": "storyteller",
+          "sfx": "splash",
+          "text": "When Thumbelina woke up, she was sitting all alone on a water lily leaf, far from home, and she cried and cried. But listen. Underneath the water lived three little golden fishes, and they heard her crying. They nibbled and gnawed through the stem of the leaf until it broke free, and off it floated downstream, carrying Thumbelina away from the toads."
+        },
+        {
+          "voice": "storyteller",
+          "text": "Then a pretty white butterfly came flying down and settled on the leaf, looking just like a moth. Thumbelina tied her sash around it ever so gently, and the butterfly pulled her little green boat along the shining water, past meadows and flowers, all morning long."
+        },
+        {
+          "voice": "storyteller",
+          "sfx": "buzz",
+          "text": "But then, oh no. An enormous cockchafer came buzzing through the air. He caught Thumbelina around the waist with his claws and carried her up into a tall tree, while her leaf went floating on down the river without her."
+        },
+        {
+          "voice": "storyteller",
+          "text": "The cockchafer did not keep her for long. Soon he lost interest, dropped her, and flew away. And so Thumbelina lived alone in the forest, all through the summer. She wove herself a bed from blades of grass, sheltered from the rain under a big clover leaf, ate honey from the flowers, and drank dew from their petals every morning. The sun warmed her back, and the birds sang to her. But summer, little one, never lasts forever."
+        }
+      ]
+    },
+    {
+      "id": "journey",
+      "title": "The long winter",
+      "lines": [
+        {
+          "voice": "storyteller",
+          "sfx": "wind",
+          "text": "Then autumn came, and after autumn came winter, and with winter came the cold. The flowers folded themselves away, the birds flew south, and poor Thumbelina shivered and shivered. Her clothes were in rags. She was such a tiny thing, and she was so cold."
+        },
+        {
+          "voice": "storyteller",
+          "text": "At last she came to the door of a field mouse, tucked snugly under a warm brown hill. Please may I sit by your fire, asked Thumbelina. And the kind old field mouse said, you poor little thing, come in, and share my food all winter."
+        },
+        {
+          "voice": "storyteller",
+          "text": "So Thumbelina stayed. She kept the little house clean and cosy, she cooked the meals, she told wonderful stories, and the frosty days passed safely underground, one after another, like beads on a string."
+        },
+        {
+          "voice": "storyteller",
+          "text": "But one day the field mouse said, my neighbour the mole is coming to visit. He is rich, he wears a beautiful black velvet coat, and he knows everything. You shall marry him. Thumbelina did not want to marry the mole. He lived deep, deep underground, where the sun never shines, and he cared nothing for flowers, or birdsong, or the sky. But the mouse's house was warm and the world above was freezing, and tiny Thumbelina felt she had no choice at all."
+        },
+        {
+          "voice": "storyteller",
+          "text": "All that winter, Thumbelina had been caring for a swallow she had found in the tunnel, lying cold and still upon the floor. Day after day she brought him grains of corn, and covered him with hay, and whispered to him. And one bright morning he opened his eyes, beat his wings, and flew up through the hole in the roof, away into the spring."
+        },
+        {
+          "voice": "storyteller",
+          "text": "The day before her wedding, Thumbelina crept outside, just once, to say goodbye to the sun. She gazed up at the great wide sky, and she thought of her swallow, far away in the warm countries. I wish I could have flown away with him, she said quietly."
+        },
+        {
+          "voice": "storyteller",
+          "sfx": "chirp",
+          "text": "And then, from high above her. Tweet tweet. Tweet tweet. A bird came swooping down, quick as anything, and it was the swallow. Her own swallow, alive and glad, and he had come back for her."
+        }
+      ]
+    },
+    {
+      "id": "happy-ending",
+      "title": "Over the clouds",
+      "lines": [
+        {
+          "voice": "storyteller",
+          "text": "Come with me, sang the swallow. Climb onto my back, hold tight to my feathers, and I will fly you far away from the mole and his dark tunnels, to a land where it never snows, and never, ever grows cold."
+        },
+        {
+          "voice": "storyteller",
+          "sfx": "wingflap",
+          "text": "So Thumbelina climbed onto the swallow's back, nestled her cheek against his feathers, and up he rose. Over the woods and the frozen fields, over the mountains and the clouds, higher and higher and higher, all the way to the warm countries."
+        },
+        {
+          "voice": "storyteller",
+          "text": "There, the sky is bluer than anywhere else, and the air smells of lemons and roses. The swallow set Thumbelina down beside a clear blue lake, where the flowers grew taller than trees."
+        },
+        {
+          "voice": "storyteller",
+          "text": "And in the middle of the loveliest pink flower of all sat a little man, with the brightest golden crown upon his head. He was the king of the flower fairies. When he saw Thumbelina, he lifted his crown, and asked her, will you marry me, and be queen of all the flowers?"
+        },
+        {
+          "voice": "storyteller",
+          "sfx": "sparkle",
+          "text": "And Thumbelina looked at the king, and at the sunshine dancing on the lake, and she said, yes. Yes, with all her heart. The fairies brought her a pair of wings of her very own, shimmering like moonlight on water, and the swallow sang his happiest song as he circled once above them all, and flew home to tell everybody the news."
+        },
+        {
+          "voice": "storyteller",
+          "text": "And there, in a palace of petals beside the blue lake, with the warm sun always shining on her new wings, Thumbelina lived happily ever after. The end."
+        }
+      ]
+    }
+  ],
+  "publish": {
+    "pub_date": null,
+    "explicit": false
+  }
+}

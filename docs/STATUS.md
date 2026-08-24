@@ -21,7 +21,8 @@ content/blueprints/<show>/<slug>.json
         │                        duration, claims, board, id uniqueness
         │
         ├─ synth  ────────────── one TTS call per line, each ffprobe'd, then
-        │                        concatenated with -c copy (48 kHz mono, pinned)
+        │                        concatenated with -c copy (48 kHz mono, pinned);
+        │                        optional synthesised music bed + SFX mixed in
         │
         ├─ timeline ──────────── measured offsets → chapters + WebVTT
         │
@@ -50,13 +51,13 @@ UPGRADE-SPEC §0b.
 | | Count |
 |---|---|
 | Episodes in the manifest | 200 |
-| Shows | 20 — 17 active, 3 archived |
-| Blueprints | 137 |
-| Templates | 12 |
+| Shows | 21 — 18 active, 3 archived |
+| Blueprints | 138 |
+| Templates | 13 |
 | Episodes with exact chapters + transcript | 43 |
 | Search index | 2,355 lines + 220 chapters across 43 episodes (~385 KB) |
 | Grandfathered legacy ids (blueprint not required) | 157 |
-| Tests | 165 — 81 `node:test`, 84 `unittest` |
+| Tests | 175 — 81 `node:test`, 94 `unittest` |
 | Pages Functions | 11 |
 | Skills / slash commands | 5 / 3 |
 | Workflows | ci, deploy, build-episode, build-apk, daily |
@@ -81,6 +82,11 @@ UPGRADE-SPEC §0b.
 - **AWS certification tracks.** All three exams Ming is sitting have over an hour
   of audio: AIF-C01 66:38 (9 eps), SAA-C03 69:41 (6), SCS-C03 70:04 (6). Roadmap
   and remaining episodes: `aws-cert-track.md`.
+- **Bedtime stories.** `bedtime-stories` show on the `bedtime-story` template:
+  one fairytale per episode told slowly. Episodes can declare `music: true` and
+  per-line `sfx` names; `lib/story_audio.py` synthesises a music-box bed and six
+  soft effects in stdlib and mixes them under the voice in CI — no audio assets,
+  nothing downloaded. One episode live (Thumbelina); an album wants two more tales.
 
 ## Guardrails, and the bug each one remembers
 

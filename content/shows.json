@@ -192,6 +192,15 @@
       "default_template": "deep-dive-2voice",
       "order": 16,
       "featured": false
+    },
+    "bedtime-stories": {
+      "title": "Bedtime Stories",
+      "description": "Classic fairytales retold gently, one story an episode, told slowly for drifting off to sleep.",
+      "mono": "ST",
+      "icon": "🌙",
+      "default_template": "bedtime-story",
+      "order": 17,
+      "featured": false
     }
   }
 }

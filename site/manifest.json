@@ -6907,6 +6907,17 @@
         421,
         422
       ]
+    },
+    "bedtime-stories": {
+      "title": "Bedtime Stories",
+      "description": "Classic fairytales retold gently, one story an episode, told slowly for drifting off to sleep.",
+      "icon": "🌙",
+      "mono": "ST",
+      "order": 17,
+      "featured": false,
+      "default_template": "bedtime-story",
+      "archived": false,
+      "episode_ids": []
     }
   }
 }

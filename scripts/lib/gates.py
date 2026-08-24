@@ -243,6 +243,25 @@ def gate_board(bp: Blueprint) -> list[Finding]:
     return out
 
 
+def gate_story_audio(bp: Blueprint) -> list[Finding]:
+    from . import story_audio
+
+    out = []
+    for section in bp.sections:
+        for i, line in enumerate(section.lines):
+            if line.sfx and line.sfx not in story_audio.SFX:
+                known = ", ".join(sorted(story_audio.SFX))
+                out.append(
+                    Finding(
+                        "story_audio",
+                        ERROR,
+                        f"unknown sfx {line.sfx!r} — known effects: {known}",
+                        f"{section.id}.lines[{i}]",
+                    )
+                )
+    return out
+
+
 def run_blueprint(
     bp: Blueprint, template: dict | None = None, manifest: dict | None = None
 ) -> list[Finding]:
@@ -254,6 +273,7 @@ def run_blueprint(
     findings += gate_duration(bp, template)
     findings += gate_claims(bp)
     findings += gate_board(bp)
+    findings += gate_story_audio(bp)
     if manifest is not None:
         findings += gate_id_unique(bp, manifest)
     return findings
