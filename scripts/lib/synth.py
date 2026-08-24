@@ -167,8 +167,9 @@ def synthesize(
         progress(f"  [{index + 1}/{len(flat)}] {section_id} ({voice}) {line.text[:48]!r}")
 
         kwargs = {"voice": voice}
-        if rate:
-            kwargs["rate"] = rate
+        line_rate = rate or bp.rate
+        if line_rate:
+            kwargs["rate"] = line_rate
         tts_module.synthesize(line.text, str(segment), **kwargs)
 
         if not segment.exists() or segment.stat().st_size == 0:

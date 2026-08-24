@@ -78,6 +78,7 @@ class Blueprint:
     sources: list[dict] = field(default_factory=list)
     audio: str = "synth"  # "synth" | "existing" (migrated episodes)
     music: bool = False  # story-audio bed mixed under the voice
+    rate: str | None = None  # edge-tts speaking rate, e.g. "-15%" for sleepy
     path: Path | None = None
 
     # -- derived ------------------------------------------------------------
@@ -147,6 +148,8 @@ class Blueprint:
             out["audio"] = self.audio
         if self.music:
             out["music"] = True
+        if self.rate:
+            out["rate"] = self.rate
         return out
 
 
@@ -249,6 +252,7 @@ def from_dict(data: dict, path: Path | None = None) -> Blueprint:
         sources=list(data.get("sources") or []),
         audio=str(data.get("audio", "synth")),
         music=bool(data.get("music", False)),
+        rate=(str(data["rate"]) if data.get("rate") else None),
         path=path,
     )
 

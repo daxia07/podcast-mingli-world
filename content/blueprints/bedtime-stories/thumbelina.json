@@ -15,28 +15,12 @@
   "voices": {
     "storyteller": "estimation"
   },
+  "music": true,
+  "rate": "-15%",
   "sections": [
     {
-      "id": "welcome",
-      "title": "Settle in",
-      "lines": [
-        {
-          "voice": "storyteller",
-          "text": "Hello, little one. The light is off now, the house is quiet, and outside the window the world is turning dark and soft. This is your story time."
-        },
-        {
-          "voice": "storyteller",
-          "text": "Wriggle down into your pillow, pull the blanket up to your chin, and close your eyes. You do not need them anymore tonight. Just your ears, and your breathing, nice and slow."
-        },
-        {
-          "voice": "storyteller",
-          "text": "Tonight I am going to tell you about a girl who was smaller than your hand. Her name was Thumbelina. Hers is a story about being carried away, about finding your way, and about one very loyal bird."
-        }
-      ]
-    },
-    {
       "id": "beginning",
-      "title": "A girl in a tulip",
+      "title": "Once upon a time",
       "lines": [
         {
           "voice": "storyteller",

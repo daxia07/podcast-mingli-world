@@ -9,15 +9,8 @@
     6,
     14
   ],
-  "authoring_brief": "One tale per episode, told to one sleepy listener. Slow, warm, second person at the edges. Nothing to teach, nothing scary left unresolved, nothing open at the end. Every section ends somewhere calm.",
+  "authoring_brief": "One tale per episode, told to one sleepy listener. Start straight at once upon a time, no greeting. Slow pace: set rate -15 percent on the blueprint. Nothing scary left unresolved, nothing open at the end.",
   "sections": [
-    {
-      "id": "welcome",
-      "title": "Settle in",
-      "required": true,
-      "target_minutes": 1,
-      "brief": "Greet the listener, slow everything down, invite them to close their eyes."
-    },
     {
       "id": "beginning",
       "title": "Once upon a time",
