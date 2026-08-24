@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "id": 424,
   "slug": "thumbelina",
   "show": "bedtime-stories",
   "template": "bedtime-story",
@@ -14,7 +15,6 @@
   "voices": {
     "storyteller": "estimation"
   },
-  "music": true,
   "sections": [
     {
       "id": "welcome",
@@ -62,8 +62,8 @@
         },
         {
           "voice": "storyteller",
-          "sfx": "splash",
-          "text": "When Thumbelina woke up, she was sitting all alone on a water lily leaf, far from home, and she cried and cried. But listen. Underneath the water lived three little golden fishes, and they heard her crying. They nibbled and gnawed through the stem of the leaf until it broke free, and off it floated downstream, carrying Thumbelina away from the toads."
+          "text": "When Thumbelina woke up, she was sitting all alone on a water lily leaf, far from home, and she cried and cried. But listen. Underneath the water lived three little golden fishes, and they heard her crying. They nibbled and gnawed through the stem of the leaf until it broke free, and off it floated downstream, carrying Thumbelina away from the toads.",
+          "sfx": "splash"
         },
         {
           "voice": "storyteller",
@@ -71,8 +71,8 @@
         },
         {
           "voice": "storyteller",
-          "sfx": "buzz",
-          "text": "But then, oh no. An enormous cockchafer came buzzing through the air. He caught Thumbelina around the waist with his claws and carried her up into a tall tree, while her leaf went floating on down the river without her."
+          "text": "But then, oh no. An enormous cockchafer came buzzing through the air. He caught Thumbelina around the waist with his claws and carried her up into a tall tree, while her leaf went floating on down the river without her.",
+          "sfx": "buzz"
         },
         {
           "voice": "storyteller",
@@ -86,8 +86,8 @@
       "lines": [
         {
           "voice": "storyteller",
-          "sfx": "wind",
-          "text": "Then autumn came, and after autumn came winter, and with winter came the cold. The flowers folded themselves away, the birds flew south, and poor Thumbelina shivered and shivered. Her clothes were in rags. She was such a tiny thing, and she was so cold."
+          "text": "Then autumn came, and after autumn came winter, and with winter came the cold. The flowers folded themselves away, the birds flew south, and poor Thumbelina shivered and shivered. Her clothes were in rags. She was such a tiny thing, and she was so cold.",
+          "sfx": "wind"
         },
         {
           "voice": "storyteller",
@@ -111,8 +111,8 @@
         },
         {
           "voice": "storyteller",
-          "sfx": "chirp",
-          "text": "And then, from high above her. Tweet tweet. Tweet tweet. A bird came swooping down, quick as anything, and it was the swallow. Her own swallow, alive and glad, and he had come back for her."
+          "text": "And then, from high above her. Tweet tweet. Tweet tweet. A bird came swooping down, quick as anything, and it was the swallow. Her own swallow, alive and glad, and he had come back for her.",
+          "sfx": "chirp"
         }
       ]
     },
@@ -126,8 +126,8 @@
         },
         {
           "voice": "storyteller",
-          "sfx": "wingflap",
-          "text": "So Thumbelina climbed onto the swallow's back, nestled her cheek against his feathers, and up he rose. Over the woods and the frozen fields, over the mountains and the clouds, higher and higher and higher, all the way to the warm countries."
+          "text": "So Thumbelina climbed onto the swallow's back, nestled her cheek against his feathers, and up he rose. Over the woods and the frozen fields, over the mountains and the clouds, higher and higher and higher, all the way to the warm countries.",
+          "sfx": "wingflap"
         },
         {
           "voice": "storyteller",
@@ -139,8 +139,8 @@
         },
         {
           "voice": "storyteller",
-          "sfx": "sparkle",
-          "text": "And Thumbelina looked at the king, and at the sunshine dancing on the lake, and she said, yes. Yes, with all her heart. The fairies brought her a pair of wings of her very own, shimmering like moonlight on water, and the swallow sang his happiest song as he circled once above them all, and flew home to tell everybody the news."
+          "text": "And Thumbelina looked at the king, and at the sunshine dancing on the lake, and she said, yes. Yes, with all her heart. The fairies brought her a pair of wings of her very own, shimmering like moonlight on water, and the swallow sang his happiest song as he circled once above them all, and flew home to tell everybody the news.",
+          "sfx": "sparkle"
         },
         {
           "voice": "storyteller",
@@ -149,8 +149,5 @@
       ]
     }
   ],
-  "publish": {
-    "pub_date": null,
-    "explicit": false
-  }
+  "music": true
 }
