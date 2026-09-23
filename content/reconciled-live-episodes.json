@@ -1,0 +1,16 @@
+{
+  "note": "These ten episodes were already published to production R2 while the GitHub repository manifest was behind. Their private source scripts are not in this repository. Exact ID and slug pairs are frozen here so the manifest can be reconciled without deleting live content or publishing private transcripts. New episodes still require blueprints.",
+  "reconciled_at": "2026-09-23",
+  "episodes": [
+    {"id": 425, "slug": "deployco-takehome-convfinqa-agent-drive"},
+    {"id": 426, "slug": "macquarie-screen-first-ninety-seconds"},
+    {"id": 427, "slug": "quantium-screen-first-ninety-seconds"},
+    {"id": 428, "slug": "macquarie-screen-fast-answers"},
+    {"id": 429, "slug": "quantium-screen-production-ai-story"},
+    {"id": 430, "slug": "macquarie-screen-fifteen-minute-mock"},
+    {"id": 431, "slug": "quantium-screen-thirty-minute-mock"},
+    {"id": 432, "slug": "future-investing-01-the-world-taking-shape"},
+    {"id": 433, "slug": "future-investing-02-who-keeps-the-profit"},
+    {"id": 434, "slug": "future-investing-03-being-early-without-overpaying"}
+  ]
+}

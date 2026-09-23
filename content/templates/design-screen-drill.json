@@ -1,0 +1,21 @@
+{
+  "name": "design-screen-drill",
+  "title": "Fifteen-minute system design rehearsal",
+  "description": "A compressed rehearsal of a fifteen-minute design conversation, with answer-aloud pauses and one uninterrupted final answer. It is not a literal interview timer.",
+  "voices": {
+    "interviewer": "interviewer",
+    "candidate": "candidate",
+    "narrator": "narrator"
+  },
+  "target_minutes": [8, 12],
+  "authoring_brief": "Open with a concrete customer-visible failure. Play a realistic fifteen-minute interview in compressed audio: the candidate asks useful questions, states a measurable contract, gives an API and data flow, and adapts to exactly two changed requirements. The interviewer pushes back on a plausible incomplete answer. No candidate monologue exceeds about two hundred words. Insert a real pause after at least two prompts so the listener answers before the model response. End with one uninterrupted, concise interview answer and a three-beat recall cue. The scenarios are original practice, not predictions of an employer's questions or production architecture.",
+  "sections": [
+    {"id": "cold-open", "title": "The customer consequence", "required": true, "target_minutes": 0.7, "brief": "Start with the customer-visible failure before naming a technology."},
+    {"id": "requirements", "title": "Ask, then bound the problem", "required": true, "target_minutes": 1.5, "brief": "Interviewer poses the problem. Candidate asks two or three high-value clarifications, then repeats the contract."},
+    {"id": "baseline", "title": "The first workable design", "required": true, "target_minutes": 3, "brief": "Concrete API, tables or keys, and one write and read flow. Tie choices to requirements."},
+    {"id": "change-one", "title": "First change", "required": true, "target_minutes": 2, "brief": "Interviewer introduces a failure or changed constraint. Let the listener answer aloud, then candidate repairs the exact broken invariant."},
+    {"id": "change-two", "title": "Second change", "required": true, "target_minutes": 2, "brief": "A different pressure tests adaptation. Name the customer impact and tradeoff."},
+    {"id": "replay", "title": "Say the whole answer", "required": true, "target_minutes": 2.5, "brief": "A single uninterrupted candidate answer in a few spoken beats, suitable for shadowing aloud."},
+    {"id": "close", "title": "Recall without the script", "required": true, "target_minutes": 0.7, "brief": "Ask the listener to retrieve three anchors, leave a real pause, then give a brief cue and next action."}
+  ]
+}
