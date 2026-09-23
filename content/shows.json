@@ -1,6 +1,33 @@
 {
   "schema": 1,
   "shows": {
+    "atlassian-design-screen": {
+      "title": "Atlassian System Design Rehearsals",
+      "description": "Original fifteen-minute design practice: interviewer and candidate conversations, answer-aloud pauses, and compact model answers. These are not known Atlassian interview questions.",
+      "mono": "AT",
+      "icon": "🎙️",
+      "default_template": "design-screen-drill",
+      "order": -4,
+      "featured": true
+    },
+    "macquarie-screen": {
+      "title": "Macquarie AI Engineer Screen",
+      "description": "Rehearsal for the short Macquarie recruiter call: the opening, the role-title clarification, fast factual answers, and the complete fifteen-minute conversation.",
+      "mono": "MQ",
+      "icon": "📞",
+      "default_template": "interview-rehearsal",
+      "order": -3,
+      "featured": true
+    },
+    "quantium-screen": {
+      "title": "Quantium Full Stack AI Screen",
+      "description": "Rehearsal for the Quantium Senior Full Stack AI Engineer conversation: motivation, production AI evidence, consulting fit, values, and the complete thirty-minute screen.",
+      "mono": "QT",
+      "icon": "🧭",
+      "default_template": "interview-rehearsal",
+      "order": -2,
+      "featured": true
+    },
     "deployco-screen": {
       "title": "The DeployCo Screen",
       "description": "The recruiter screen at the OpenAI Deployment Company, Thursday 20 August. Who is asking, what she can actually judge, and every answer said out loud before you have to say it.",

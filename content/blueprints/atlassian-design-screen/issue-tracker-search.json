@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "slug": "atlassian-design-issue-tracker-search",
+  "show": "atlassian-design-screen",
+  "template": "design-screen-drill",
+  "title": "Issue Tracker: Immediate Reads, Delayed Search",
+  "description": "An interviewer and candidate design a tenant-isolated issue tracker. Rehearse create and read APIs, transactional search indexing, safe query caching, permission revocation, edit conflicts, and an indexing outage. Original practice, not a known Atlassian interview question.",
+  "keywords": ["Atlassian", "system design", "search indexing", "authorization", "optimistic concurrency", "outbox"],
+  "voices": {},
+  "board": {"tabs": [
+    {"title": "Ask", "content": "Which read is immediate? How stale may search be? How current must permissions be?"},
+    {"title": "Flow", "content": "Authorize create → issue + search outbox transaction → immediate direct GET from primary → asynchronous indexer → search candidates → current authorization → content."},
+    {"title": "Recall", "content": "Database owns truth. Search may lag ten seconds. Cached IDs never grant access. Stale edit gets a version conflict. Index outage does not block issue creation."}
+  ]},
+  "sections": [
+    {
+      "id": "cold-open",
+      "title": "Created, but missing from search",
+      "lines": [
+        {"voice": "interviewer", "text": "A user creates an issue. The direct link works immediately, but a search for its title finds nothing. Is that a bug?"},
+        {"voice": "candidate", "text": "That depends on the stated freshness contract. Immediate direct reads and slightly delayed full-text search can be a sound design."},
+        {"voice": "narrator", "text": "This is original practice, not a known interview question. Listen for three paths: the authoritative write, the direct read, and the derived search result."}
+      ]
+    },
+    {
+      "id": "requirements",
+      "title": "Ask, then bound the problem",
+      "lines": [
+        {"voice": "interviewer", "text": "Design a multi-tenant issue tracker. Users create issues and comments, list issues by project, and run full-text search."},
+        {"voice": "candidate", "text": "Which read needs immediate consistency? Does the author need to see a successful create through the direct issue URL?"},
+        {"voice": "interviewer", "text": "Yes. The author's direct read must show the successful write immediately. Search may lag by ten seconds."},
+        {"voice": "candidate", "text": "How strict is tenant isolation, and do permissions vary within a tenant or project?"},
+        {"voice": "interviewer", "text": "Tenants must never see each other's data. A user also needs current permission for the project or issue."},
+        {"voice": "candidate", "text": "I will keep the database authoritative, make search a derived view with a ten-second target, and check authorization before returning protected issue content."},
+        {"voice": "narrator", "text": "Pause. State what may lag and what may not: direct read, search result, and permission decision.", "pause_after": 10}
+      ]
+    },
+    {
+      "id": "baseline",
+      "title": "The first workable design",
+      "lines": [
+        {"voice": "interviewer", "text": "Give me the API, tables, and a create flow. Avoid listing databases without telling me what the customer experiences."},
+        {"voice": "candidate", "text": "The create endpoint is post issues. The browser sends project, summary, description, and optional assignee. A short-lived user token identifies the author and active tenant. A tenant name in the URL is routing context, not proof of access."},
+        {"voice": "candidate", "text": "The server checks membership and project permission, then inserts the issue. The response includes the issue ID, version one, and a direct location. A tenant-scoped idempotency key can make a repeated create return the original issue instead of making a duplicate."},
+        {"voice": "candidate", "text": "My baseline tables are tenant, user, tenant membership, project, issue, comment, and search outbox. Issue identity includes tenant ID and issue ID. Comments are separate rows keyed by tenant and comment ID, not a growing list inside the issue row."},
+        {"voice": "candidate", "text": "Project listing uses a tenant-and-project filter with update time and issue ID as a stable cursor. That is a better fit for changing data than an unbounded offset scan."},
+        {"voice": "interviewer", "text": "Walk me from create to search. What commits together?"},
+        {"voice": "candidate", "text": "The issue row and a search-index outbox event commit in one transaction. After commit, I return created. The author's direct get issue request reads the transactional primary, so the issue is visible immediately."},
+        {"voice": "candidate", "text": "An indexer consumes the outbox asynchronously and updates full-text search. Search can lag for up to ten seconds during normal operation. I measure indexing delay and show a user-facing delay state if that promise is missed."},
+        {"voice": "interviewer", "text": "You cache popular searches. What exactly is in the cache?"},
+        {"voice": "candidate", "text": "I would cache tenant-scoped query candidates, such as issue IDs and ranking scores. The key includes tenant, normalized query, filters, sort, and cursor. The cache is never an authorization grant. Before returning issue text, the API checks current access and hydrates only allowed IDs."},
+        {"voice": "narrator", "text": "Your turn. Say the write and two read paths: issue plus outbox; direct read from primary; search through the delayed index.", "pause_after": 12}
+      ]
+    },
+    {
+      "id": "change-one",
+      "title": "First change: permission revoked",
+      "lines": [
+        {"voice": "interviewer", "text": "A cached result still contains an issue. The user loses permission, then searches again. What must happen on that next request?", "pause_after": 10},
+        {"voice": "candidate", "text": "The issue content must not be returned. I authenticate first, obtain candidate IDs from cache or index, then check current authoritative permission before fetching or exposing protected fields. Cache invalidation helps, but a missed invalidation cannot become a security breach."},
+        {"voice": "interviewer", "text": "If filtering removes half the first page, do you return a half-empty page?"},
+        {"voice": "candidate", "text": "I can over-fetch bounded candidate batches until I fill the page or reach a cap. I keep the cursor tied to search order and make that cap explicit, so one query cannot scan indefinitely."}
+      ]
+    },
+    {
+      "id": "change-two",
+      "title": "Second change: index unavailable",
+      "lines": [
+        {"voice": "interviewer", "text": "The search index stops accepting updates for thirty minutes. Does issue creation fail?", "pause_after": 10},
+        {"voice": "candidate", "text": "No. Issue creation depends on the transactional database and durable outbox, not the search index. Direct reads and project lists continue. Search results become stale, and I show that status rather than implying freshness."},
+        {"voice": "interviewer", "text": "What if an old indexing message arrives after a newer one when the indexer recovers?"},
+        {"voice": "candidate", "text": "Index updates carry the issue version and only replace older indexed versions. The indexer drains the outbox with retries, and a reconciliation scan can repair any missing entries. Search can recover without losing accepted writes."},
+        {"voice": "interviewer", "text": "Two users also edit version seven at once. How do you avoid one silently overwriting the other?"},
+        {"voice": "candidate", "text": "Each patch carries the version it read. The database updates only when the stored version still matches. The winner creates version eight; the other receives a conflict or precondition failure and can merge against the new state."}
+      ]
+    },
+    {
+      "id": "replay",
+      "title": "Say the whole answer",
+      "lines": [
+        {"voice": "interviewer", "text": "Give me the design in one uninterrupted answer. Tell me where consistency differs."},
+        {"voice": "candidate", "text": "I would build a tenant-scoped transactional issue store with separate search indexing. The user token identifies the author and active tenant. The create API checks project permission, commits the issue and an indexing outbox event together, then returns the issue ID and version."},
+        {"voice": "candidate", "text": "A direct issue read uses the authoritative primary so the author's successful write is visible immediately. Project listing uses a stable cursor on update time and issue ID. The asynchronous indexer builds full-text search, which may lag by the agreed ten seconds."},
+        {"voice": "candidate", "text": "Search caches hold tenant-scoped candidate IDs, not permission decisions. Each request checks current access before returning protected text. Concurrent edits use an expected-version precondition and return a conflict when stale. If indexing fails, writes continue, the outbox accumulates, users see search as delayed, and versioned replay restores the index."},
+        {"voice": "candidate", "text": "The tradeoff is a second, eventually consistent read model. That buys efficient full-text search without making a fragile index part of the authoritative write transaction. I would monitor outbox age, index lag, authorization denials, and direct-read consistency."}
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Recall without the script",
+      "lines": [
+        {"voice": "narrator", "text": "Three anchors. Which store owns truth? What is allowed to lag? Where is permission checked when cached search results return?", "pause_after": 12},
+        {"voice": "narrator", "text": "The transactional database owns truth. The search index may lag. Authorization is checked after candidate retrieval and before protected content leaves the API."}
+      ]
+    }
+  ]
+}

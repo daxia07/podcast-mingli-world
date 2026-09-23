@@ -450,15 +450,17 @@ def gate_new_episodes_have_blueprints(
     manifest: dict,
     *,
     legacy_path: str | Path = "content/legacy-episodes.json",
+    reconciled_path: str | Path = "content/reconciled-live-episodes.json",
     blueprint_root: str | Path = "content/blueprints",
 ) -> list[Finding]:
     """Every episode published from now on must have a blueprint.
 
     This is what keeps the content system from decaying back into one-off
     scripts. The 157 episodes that predate it are grandfathered by id in
-    `content/legacy-episodes.json`; anything new has to come through
-    `build_episode.py`, which means it has been gated, has a chapter track and
-    has a transcript.
+    `content/legacy-episodes.json`. A second frozen list holds exact ID and
+    slug pairs already published to R2 during a repository divergence. Anything
+    new has to come through `build_episode.py`, which means it has been gated,
+    has a chapter track and has a transcript.
     """
     legacy = Path(legacy_path)
     if not legacy.exists():
@@ -475,6 +477,14 @@ def gate_new_episodes_have_blueprints(
     except (OSError, json.JSONDecodeError) as exc:
         return [Finding("blueprint_required", ERROR, f"{legacy_path}: {exc}")]
 
+    try:
+        reconciled = {
+            entry["id"]: entry["slug"]
+            for entry in json.loads(Path(reconciled_path).read_text(encoding="utf-8")).get("episodes", [])
+        }
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        return [Finding("blueprint_required", ERROR, f"{reconciled_path}: {exc}")]
+
     have: set[int] = set()
     for path in Path(blueprint_root).rglob("*.json"):
         try:
@@ -487,7 +497,9 @@ def gate_new_episodes_have_blueprints(
     out = []
     for ep in manifest.get("episodes", []):
         eid = ep.get("id")
-        if eid in grandfathered or eid in have:
+        if eid in grandfathered or eid in have or (
+            eid in reconciled and reconciled[eid] == ep.get("slug")
+        ):
             continue
         out.append(
             Finding(
