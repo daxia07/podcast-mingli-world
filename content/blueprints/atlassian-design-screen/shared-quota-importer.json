@@ -1,99 +1,243 @@
 {
   "schema": 1,
+  "id": 438,
   "slug": "atlassian-design-shared-quota-importer",
   "show": "atlassian-design-screen",
   "template": "design-screen-drill",
   "title": "Import Jobs: Fair Queues and Ambiguous Effects",
   "description": "A short mock design interview about multi-tenant imports through one downstream API quota. Practise durable acceptance, fair scheduling, shared rate control, Retry-After, uncertain outcomes, and honest job status. Original practice, not a known Atlassian interview question.",
-  "keywords": ["Atlassian", "system design", "job scheduler", "rate limiting", "fairness", "idempotency"],
+  "keywords": [
+    "Atlassian",
+    "system design",
+    "job scheduler",
+    "rate limiting",
+    "fairness",
+    "idempotency"
+  ],
   "voices": {},
-  "board": {"tabs": [
-    {"title": "Ask", "content": "What is one item? Is quota global? Does downstream support idempotency or authoritative lookup?"},
-    {"title": "Flow", "content": "Authenticate + idempotent job acceptance → durable items → tenant-fair scheduler → shared quota grant + concurrency cap → downstream call → item and job status."},
-    {"title": "Recall", "content": "A 429 delay is a minimum; do not sleep on the worker. Timeout after create is outcome unknown without a safe retry contract. If limiter authority is down, pause unsafe calls."}
-  ]},
   "sections": [
     {
       "id": "cold-open",
       "title": "Did it create the record?",
       "lines": [
-        {"voice": "interviewer", "text": "A worker asks a downstream service to create a customer. The request times out. Did the customer get created?"},
-        {"voice": "candidate", "text": "We do not know. The service may have committed the create while its reply was lost. A blind retry may duplicate the action."},
-        {"voice": "narrator", "text": "This is original practice, not a known interview question. Listen for the exact point where an outcome becomes ambiguous."}
+        {
+          "voice": "interviewer",
+          "text": "A worker asks a downstream service to create a customer. The request times out. Did the customer get created?"
+        },
+        {
+          "voice": "candidate",
+          "text": "We do not know. The service may have committed the create while its reply was lost. A blind retry may duplicate the action."
+        },
+        {
+          "voice": "narrator",
+          "text": "This is original practice, not a known interview question. Listen for the exact point where an outcome becomes ambiguous."
+        }
       ]
     },
     {
       "id": "requirements",
       "title": "Ask, then bound the problem",
       "lines": [
-        {"voice": "interviewer", "text": "Design an importer for many tenants. Accepted jobs must eventually run. Every worker calls one downstream API with a shared quota. Customers need progress."},
-        {"voice": "candidate", "text": "What is the unit of work? Does one job contain many independent items, and can each item be retried separately?"},
-        {"voice": "interviewer", "text": "Yes. A job may contain a handful or one hundred thousand items. Each item creates or updates one downstream customer record."},
-        {"voice": "candidate", "text": "Does the downstream API support idempotency keys or a lookup by our client reference? That controls how we handle uncertain timeouts."},
-        {"voice": "interviewer", "text": "Assume it supports a stable idempotency key. We will discuss what changes when it does not."},
-        {"voice": "candidate", "text": "Is the quota shared globally across our service, and is strict enforcement required when a limiter is unreachable?"},
-        {"voice": "interviewer", "text": "Yes. Use an illustrative limit of one hundred calls per second across all workers. Never knowingly exceed it."},
-        {"voice": "candidate", "text": "I will separate job admission, fair work scheduling, quota grants, downstream effects, and customer-visible item status. The one hundred-per-second limit is a training assumption."},
-        {"voice": "narrator", "text": "Pause. What would you clarify before drawing workers? Say the work unit, retry contract, and quota scope.", "pause_after": 10}
+        {
+          "voice": "interviewer",
+          "text": "Design an importer for many tenants. Accepted jobs must eventually run. Every worker calls one downstream API with a shared quota. Customers need progress."
+        },
+        {
+          "voice": "candidate",
+          "text": "What is the unit of work? Does one job contain many independent items, and can each item be retried separately?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Yes. A job may contain a handful or one hundred thousand items. Each item creates or updates one downstream customer record."
+        },
+        {
+          "voice": "candidate",
+          "text": "Does the downstream API support idempotency keys or a lookup by our client reference? That controls how we handle uncertain timeouts."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Assume it supports a stable idempotency key. We will discuss what changes when it does not."
+        },
+        {
+          "voice": "candidate",
+          "text": "Is the quota shared globally across our service, and is strict enforcement required when a limiter is unreachable?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Yes. Use an illustrative limit of one hundred calls per second across all workers. Never knowingly exceed it."
+        },
+        {
+          "voice": "candidate",
+          "text": "I will separate job admission, fair work scheduling, quota grants, downstream effects, and customer-visible item status. The one hundred-per-second limit is a training assumption."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause. What would you clarify before drawing workers? Say the work unit, retry contract, and quota scope.",
+          "pause_after": 10.0
+        }
       ]
     },
     {
       "id": "baseline",
       "title": "The first workable design",
       "lines": [
-        {"voice": "interviewer", "text": "Give me your admission API and the path from a submitted batch to a completed customer action."},
-        {"voice": "candidate", "text": "Post imports accepts a tenant-authenticated request and a client idempotency key. I validate the payload, compare its fingerprint with any previous use of that key, and durably create a job plus initial item work. Then I return accepted with a job ID and status URL."},
-        {"voice": "candidate", "text": "The job row stores tenant, job ID, request fingerprint, status, counts, and timestamps. Item rows store stable item IDs, state, attempts, next attempt time, downstream reference, and last error. The unique submission key is tenant plus idempotency key."},
-        {"voice": "interviewer", "text": "What if the same key arrives with a different batch?"},
-        {"voice": "candidate", "text": "I reject it as a conflict. The same key and same payload return the original job, even if that job is still running. A key records caller intent, not completed processing."},
-        {"voice": "candidate", "text": "I split large jobs into bounded chunks and keep logical per-tenant queues. A round-robin or weighted-fair scheduler gives small tenants a share while a large import still progresses. It caps per-tenant and global work in flight."},
-        {"voice": "candidate", "text": "Before each downstream call, a worker obtains an atomic grant from a shared limiter. Autoscaling from ten to fifty workers changes concurrency capacity but cannot increase the global call rate above one hundred per second."},
-        {"voice": "interviewer", "text": "Is a calls-per-second limit enough if the downstream sometimes takes thirty seconds to respond?"},
-        {"voice": "candidate", "text": "No. I also cap in-flight calls. Slow responses can accumulate connections and memory even when the admission rate is legal. A rate cap controls starts; a concurrency cap controls unfinished work."},
-        {"voice": "candidate", "text": "The job-status endpoint reports queued, running, delayed, complete, and needs-verification counts. It shows an item-level reason and next attempt time for delays. The customer can distinguish waiting from failure."},
-        {"voice": "narrator", "text": "Your turn. Say the flow: accept durably, schedule fairly, acquire a shared grant, call safely, and update visible progress.", "pause_after": 12}
+        {
+          "voice": "interviewer",
+          "text": "Give me your admission API and the path from a submitted batch to a completed customer action."
+        },
+        {
+          "voice": "candidate",
+          "text": "Post imports accepts a tenant-authenticated request and a client idempotency key. I validate the payload, compare its fingerprint with any previous use of that key, and durably create a job plus initial item work. Then I return accepted with a job ID and status URL."
+        },
+        {
+          "voice": "candidate",
+          "text": "The job row stores tenant, job ID, request fingerprint, status, counts, and timestamps. Item rows store stable item IDs, state, attempts, next attempt time, downstream reference, and last error. The unique submission key is tenant plus idempotency key."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What if the same key arrives with a different batch?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I reject it as a conflict. The same key and same payload return the original job, even if that job is still running. A key records caller intent, not completed processing."
+        },
+        {
+          "voice": "candidate",
+          "text": "I split large jobs into bounded chunks and keep logical per-tenant queues. A round-robin or weighted-fair scheduler gives small tenants a share while a large import still progresses. It caps per-tenant and global work in flight."
+        },
+        {
+          "voice": "candidate",
+          "text": "Before each downstream call, a worker obtains an atomic grant from a shared limiter. Autoscaling from ten to fifty workers changes concurrency capacity but cannot increase the global call rate above one hundred per second."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Is a calls-per-second limit enough if the downstream sometimes takes thirty seconds to respond?"
+        },
+        {
+          "voice": "candidate",
+          "text": "No. I also cap in-flight calls. Slow responses can accumulate connections and memory even when the admission rate is legal. A rate cap controls starts; a concurrency cap controls unfinished work."
+        },
+        {
+          "voice": "candidate",
+          "text": "The job-status endpoint reports queued, running, delayed, complete, and needs-verification counts. It shows an item-level reason and next attempt time for delays. The customer can distinguish waiting from failure."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your turn. Say the flow: accept durably, schedule fairly, acquire a shared grant, call safely, and update visible progress.",
+          "pause_after": 12.0
+        }
       ]
     },
     {
       "id": "change-one",
       "title": "First change: a long throttle",
       "lines": [
-        {"voice": "interviewer", "text": "The downstream API returns too many requests and says retry after one hundred twenty seconds. What happens to the item and the other workers?", "pause_after": 10},
-        {"voice": "candidate", "text": "I persist the item as delayed with a next-attempt time no earlier than one hundred twenty seconds away. I release the worker and its lease rather than sleeping there. Backoff and jitter may delay longer, but never shorten the stated minimum."},
-        {"voice": "interviewer", "text": "Do you freeze every tenant?"},
-        {"voice": "candidate", "text": "Only if that response limits the shared global quota. If the limit is for one tenant or endpoint, I pause that dimension and let unrelated work continue. I keep the retry budget bounded and show the delay in job status."}
+        {
+          "voice": "interviewer",
+          "text": "The downstream API returns too many requests and says retry after one hundred twenty seconds. What happens to the item and the other workers?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "I persist the item as delayed with a next-attempt time no earlier than one hundred twenty seconds away. I release the worker and its lease rather than sleeping there. Backoff and jitter may delay longer, but never shorten the stated minimum."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Do you freeze every tenant?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Only if that response limits the shared global quota. If the limit is for one tenant or endpoint, I pause that dimension and let unrelated work continue. I keep the retry budget bounded and show the delay in job status."
+        }
       ]
     },
     {
       "id": "change-two",
       "title": "Second change: lost reply",
       "lines": [
-        {"voice": "interviewer", "text": "The downstream created a customer record, but our worker timed out before its reply arrived. What key will a retry use?", "pause_after": 10},
-        {"voice": "candidate", "text": "The same stable key derived from tenant, job, and item. The downstream must remember that key long enough and reject a changed payload under the same key. I would verify those contract details instead of assuming a header name creates safety."},
-        {"voice": "interviewer", "text": "Now imagine the downstream offers neither an idempotency key nor a result lookup."},
-        {"voice": "candidate", "text": "Then this item's outcome is unknown. Logging the timeout cannot make a create safe to repeat. I stop its automatic retry and show needs verification. Other items continue. Once an authoritative lookup or human reconciliation confirms absence, I can retry."},
-        {"voice": "interviewer", "text": "And if the shared limiter itself is unreachable?"},
-        {"voice": "candidate", "text": "I delay new downstream calls unless workers hold preallocated safe capacity. Job submission and status reads may still work. Customers see downstream processing paused, not a false claim that their jobs failed."}
+        {
+          "voice": "interviewer",
+          "text": "The downstream created a customer record, but our worker timed out before its reply arrived. What key will a retry use?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "The same stable key derived from tenant, job, and item. The downstream must remember that key long enough and reject a changed payload under the same key. I would verify those contract details instead of assuming a header name creates safety."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Now imagine the downstream offers neither an idempotency key nor a result lookup."
+        },
+        {
+          "voice": "candidate",
+          "text": "Then this item's outcome is unknown. Logging the timeout cannot make a create safe to repeat. I stop its automatic retry and show needs verification. Other items continue. Once an authoritative lookup or human reconciliation confirms absence, I can retry."
+        },
+        {
+          "voice": "interviewer",
+          "text": "And if the shared limiter itself is unreachable?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I delay new downstream calls unless workers hold preallocated safe capacity. Job submission and status reads may still work. Customers see downstream processing paused, not a false claim that their jobs failed."
+        }
       ]
     },
     {
       "id": "replay",
       "title": "Say the whole answer",
       "lines": [
-        {"voice": "interviewer", "text": "Give me the complete design. Include the one failure that a queue alone cannot solve."},
-        {"voice": "candidate", "text": "I would accept each import through a tenant-authenticated API with a tenant-scoped idempotency key. The server validates the request, stores a durable job and item records, then returns a job ID. Repeating the same request returns the same job; reusing its key for different input is a conflict."},
-        {"voice": "candidate", "text": "I would break large imports into bounded chunks, schedule tenants fairly, and cap both per-tenant and global work in flight. Every worker gets an atomic grant from the shared quota limiter immediately before calling downstream. Adding workers improves capacity only when the quota and downstream latency permit it."},
-        {"voice": "candidate", "text": "A too-many-requests response delays the affected quota dimension for at least the downstream minimum, with safe bounded retries and jitter. Each customer action carries one stable downstream idempotency key. If the reply is lost, the same key makes a retry safe only if the downstream contract supports it."},
-        {"voice": "candidate", "text": "Without such a contract or authoritative lookup, I mark that item outcome unknown and stop automatic retries. The status API explains queued, running, delayed, needs verification, and completed work. I monitor per-tenant oldest work age, quota grants, retry volume, uncertain outcomes, and completion latency."}
+        {
+          "voice": "interviewer",
+          "text": "Give me the complete design. Include the one failure that a queue alone cannot solve."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would accept each import through a tenant-authenticated API with a tenant-scoped idempotency key. The server validates the request, stores a durable job and item records, then returns a job ID. Repeating the same request returns the same job; reusing its key for different input is a conflict."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would break large imports into bounded chunks, schedule tenants fairly, and cap both per-tenant and global work in flight. Every worker gets an atomic grant from the shared quota limiter immediately before calling downstream. Adding workers improves capacity only when the quota and downstream latency permit it."
+        },
+        {
+          "voice": "candidate",
+          "text": "A too-many-requests response delays the affected quota dimension for at least the downstream minimum, with safe bounded retries and jitter. Each customer action carries one stable downstream idempotency key. If the reply is lost, the same key makes a retry safe only if the downstream contract supports it."
+        },
+        {
+          "voice": "candidate",
+          "text": "Without such a contract or authoritative lookup, I mark that item outcome unknown and stop automatic retries. The status API explains queued, running, delayed, needs verification, and completed work. I monitor per-tenant oldest work age, quota grants, retry volume, uncertain outcomes, and completion latency."
+        }
       ]
     },
     {
       "id": "close",
       "title": "Recall without the script",
       "lines": [
-        {"voice": "narrator", "text": "Three anchors. How do you stop a huge tenant from starving a small one? How do fifty workers share one quota? What does a timeout after create mean?", "pause_after": 12},
-        {"voice": "narrator", "text": "Fair tenant scheduling. One atomic quota authority. A timeout can mean an unknown effect, so retry only under a safe downstream contract."}
+        {
+          "voice": "narrator",
+          "text": "Three anchors. How do you stop a huge tenant from starving a small one? How do fifty workers share one quota? What does a timeout after create mean?",
+          "pause_after": 12.0
+        },
+        {
+          "voice": "narrator",
+          "text": "Fair tenant scheduling. One atomic quota authority. A timeout can mean an unknown effect, so retry only under a safe downstream contract."
+        }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Ask",
+        "content": "What is one item? Is quota global? Does downstream support idempotency or authoritative lookup?"
+      },
+      {
+        "title": "Flow",
+        "content": "Authenticate + idempotent job acceptance → durable items → tenant-fair scheduler → shared quota grant + concurrency cap → downstream call → item and job status."
+      },
+      {
+        "title": "Recall",
+        "content": "A 429 delay is a minimum; do not sleep on the worker. Timeout after create is outcome unknown without a safe retry contract. If limiter authority is down, pause unsafe calls."
+      }
+    ]
+  }
 }

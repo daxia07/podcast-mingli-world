@@ -1,102 +1,255 @@
 {
   "schema": 1,
+  "id": 435,
   "slug": "atlassian-design-approval-audit-workflow",
   "show": "atlassian-design-screen",
   "template": "design-screen-drill",
   "title": "Approvals: One Decision, One Audit Trail",
   "description": "An interviewer and candidate design a multi-tenant approval workflow. Rehearse version preconditions, current authorization, atomic audit and outbox records, duplicate notifications, and regional failover. Original practice, not a known Atlassian interview question.",
-  "keywords": ["Atlassian", "system design", "approval workflow", "audit", "authorization", "regional failover"],
+  "keywords": [
+    "Atlassian",
+    "system design",
+    "approval workflow",
+    "audit",
+    "authorization",
+    "regional failover"
+  ],
   "voices": {},
-  "board": {"tabs": [
-    {"title": "Ask", "content": "When does approval take effect? One final decision? Current permission? Audit scope? RTO and RPO?"},
-    {"title": "Flow", "content": "Authenticated reviewer + expected version → check current permission → conditional pending/version transition → target change + decision + audit + outbox in one transaction → confirm."},
-    {"title": "Recall", "content": "Stale reviewer gets a conflict. Revoked reviewer gets denied. Outbox repairs notification gaps. RPO zero requires off-region durable commit before success and a fenced single writer."}
-  ]},
   "sections": [
     {
       "id": "cold-open",
       "title": "Two reviewers, opposite clicks",
       "lines": [
-        {"voice": "interviewer", "text": "Alice approves a proposal. Bob still has the old page open and clicks reject. Which decision is real?"},
-        {"voice": "candidate", "text": "Only one final decision can commit. Bob must see the new state and a conflict, not silently overwrite Alice."},
-        {"voice": "narrator", "text": "This is original practice, not a known interview question. Every design choice protects one sentence: the decision and its audit record agree."}
+        {
+          "voice": "interviewer",
+          "text": "Alice approves a proposal. Bob still has the old page open and clicks reject. Which decision is real?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Only one final decision can commit. Bob must see the new state and a conflict, not silently overwrite Alice."
+        },
+        {
+          "voice": "narrator",
+          "text": "This is original practice, not a known interview question. Every design choice protects one sentence: the decision and its audit record agree."
+        }
       ]
     },
     {
       "id": "requirements",
       "title": "Ask, then bound the problem",
       "lines": [
-        {"voice": "interviewer", "text": "Design an approval workflow. Reviewers approve or reject proposed changes. Only authorized reviewers may act, and every successful decision has an audit record."},
-        {"voice": "candidate", "text": "Does approval make the change effective immediately, or does another process apply it later?"},
-        {"voice": "interviewer", "text": "Immediately. Rejection leaves the target resource unchanged. A proposal receives one final decision."},
-        {"voice": "candidate", "text": "Are review permissions tied to current access to that resource? And should revocation take effect for a user who left an old page open?"},
-        {"voice": "interviewer", "text": "Yes. Current access determines whether the submitted decision is allowed."},
-        {"voice": "candidate", "text": "What must the reviewer see after a successful submission, and what scale should I assume?"},
-        {"voice": "interviewer", "text": "The reviewer sees the confirmed result immediately. Assume one thousand tenants and around one hundred thousand proposals per day. These are exercise numbers."},
-        {"voice": "candidate", "text": "I will assume the proposal, target resource, permission record, and audit log share one transactional database. If they do not, immediate application requires a different consistency contract."},
-        {"voice": "narrator", "text": "Pause. State the three hard rules: one final decision, current permission, and an audit record for every accepted decision.", "pause_after": 10}
+        {
+          "voice": "interviewer",
+          "text": "Design an approval workflow. Reviewers approve or reject proposed changes. Only authorized reviewers may act, and every successful decision has an audit record."
+        },
+        {
+          "voice": "candidate",
+          "text": "Does approval make the change effective immediately, or does another process apply it later?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Immediately. Rejection leaves the target resource unchanged. A proposal receives one final decision."
+        },
+        {
+          "voice": "candidate",
+          "text": "Are review permissions tied to current access to that resource? And should revocation take effect for a user who left an old page open?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Yes. Current access determines whether the submitted decision is allowed."
+        },
+        {
+          "voice": "candidate",
+          "text": "What must the reviewer see after a successful submission, and what scale should I assume?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "The reviewer sees the confirmed result immediately. Assume one thousand tenants and around one hundred thousand proposals per day. These are exercise numbers."
+        },
+        {
+          "voice": "candidate",
+          "text": "I will assume the proposal, target resource, permission record, and audit log share one transactional database. If they do not, immediate application requires a different consistency contract."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause. State the three hard rules: one final decision, current permission, and an audit record for every accepted decision.",
+          "pause_after": 10.0
+        }
       ]
     },
     {
       "id": "baseline",
       "title": "The first workable design",
       "lines": [
-        {"voice": "interviewer", "text": "Show the API and data model. Then walk me through an approval while Bob is also looking at the proposal."},
-        {"voice": "candidate", "text": "I would expose a pending-proposals list, a proposal detail read, and a post decision endpoint under the proposal ID. The decision body says approve or reject, with an optional reason. The request carries the version the reviewer saw, such as an If-Match precondition."},
-        {"voice": "candidate", "text": "The authenticated token identifies the reviewer and tenant. The server derives those values; it does not trust a claimed author in the request body. Every query scopes by tenant and checks resource access."},
-        {"voice": "candidate", "text": "The proposal row holds tenant, proposal ID, target resource ID, proposed change, status, version, and decision metadata. The audit table is append-only. An outbox table holds notification intent. A unique final-decision constraint protects the proposal from duplicate final audit rows."},
-        {"voice": "interviewer", "text": "What exactly happens in the transaction?"},
-        {"voice": "candidate", "text": "I check current review permission and require the proposal to be pending at the expected version. For approval, I apply the proposed resource change. I then set the final proposal state, append the audit row, and insert an outbox notification. Those writes commit or roll back together."},
-        {"voice": "candidate", "text": "Alice's request wins the conditional update and gets a confirmed response. Bob's old version updates no row. He receives a conflict with the current state, and his rejected request does not become a second successful decision."},
-        {"voice": "interviewer", "text": "Why not just check the proposal state in application code before saving?"},
-        {"voice": "candidate", "text": "Two requests could both read pending. The expected-version and pending-state predicate must be enforced atomically by the database. A local process lock would not protect requests on another server."},
-        {"voice": "candidate", "text": "After commit, an outbox publisher sends the submitter's in-app notification. The reviewer reads the committed decision directly, so notification delay never changes what decision succeeded."},
-        {"voice": "narrator", "text": "Your turn. Say the transaction without looking: permission, pending version, target change, final state, audit row, outbox row.", "pause_after": 12}
+        {
+          "voice": "interviewer",
+          "text": "Show the API and data model. Then walk me through an approval while Bob is also looking at the proposal."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would expose a pending-proposals list, a proposal detail read, and a post decision endpoint under the proposal ID. The decision body says approve or reject, with an optional reason. The request carries the version the reviewer saw, such as an If-Match precondition."
+        },
+        {
+          "voice": "candidate",
+          "text": "The authenticated token identifies the reviewer and tenant. The server derives those values; it does not trust a claimed author in the request body. Every query scopes by tenant and checks resource access."
+        },
+        {
+          "voice": "candidate",
+          "text": "The proposal row holds tenant, proposal ID, target resource ID, proposed change, status, version, and decision metadata. The audit table is append-only. An outbox table holds notification intent. A unique final-decision constraint protects the proposal from duplicate final audit rows."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What exactly happens in the transaction?"
+        },
+        {
+          "voice": "candidate",
+          "text": "I check current review permission and require the proposal to be pending at the expected version. For approval, I apply the proposed resource change. I then set the final proposal state, append the audit row, and insert an outbox notification. Those writes commit or roll back together."
+        },
+        {
+          "voice": "candidate",
+          "text": "Alice's request wins the conditional update and gets a confirmed response. Bob's old version updates no row. He receives a conflict with the current state, and his rejected request does not become a second successful decision."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why not just check the proposal state in application code before saving?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Two requests could both read pending. The expected-version and pending-state predicate must be enforced atomically by the database. A local process lock would not protect requests on another server."
+        },
+        {
+          "voice": "candidate",
+          "text": "After commit, an outbox publisher sends the submitter's in-app notification. The reviewer reads the committed decision directly, so notification delay never changes what decision succeeded."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your turn. Say the transaction without looking: permission, pending version, target change, final state, audit row, outbox row.",
+          "pause_after": 12.0
+        }
       ]
     },
     {
       "id": "change-one",
       "title": "First change: revoked access",
       "lines": [
-        {"voice": "interviewer", "text": "Bob opened the page while authorized. His review permission is revoked before he clicks. His token is still valid. What happens?", "pause_after": 10},
-        {"voice": "candidate", "text": "The token proves identity, not current permission. I check his authoritative review access at submission and reject the decision if it has been revoked. His old page grants nothing."},
-        {"voice": "interviewer", "text": "Permission changes between the check and commit. Is a transaction by itself enough?"},
-        {"voice": "candidate", "text": "Not under every isolation level. If permissions share the database, I lock the relevant permission row, or use a serializable transaction, and have revocation coordinate on that same record. Whichever operation commits first defines the order."},
-        {"voice": "candidate", "text": "If permission lives in another service, I cannot promise that ordering with a simple remote check. I would clarify the revocation freshness contract and choose an authoritative mechanism that meets it."}
+        {
+          "voice": "interviewer",
+          "text": "Bob opened the page while authorized. His review permission is revoked before he clicks. His token is still valid. What happens?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "The token proves identity, not current permission. I check his authoritative review access at submission and reject the decision if it has been revoked. His old page grants nothing."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Permission changes between the check and commit. Is a transaction by itself enough?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Not under every isolation level. If permissions share the database, I lock the relevant permission row, or use a serializable transaction, and have revocation coordinate on that same record. Whichever operation commits first defines the order."
+        },
+        {
+          "voice": "candidate",
+          "text": "If permission lives in another service, I cannot promise that ordering with a simple remote check. I would clarify the revocation freshness contract and choose an authoritative mechanism that meets it."
+        }
       ]
     },
     {
       "id": "change-two",
       "title": "Second change: a region fails",
       "lines": [
-        {"voice": "interviewer", "text": "The active region fails just after we acknowledged an approval. What recovery requirements do you ask for before naming a standby?", "pause_after": 10},
-        {"voice": "candidate", "text": "Recovery time objective: how long may decisions be unavailable? Recovery point objective: how much acknowledged state may disappear? Also, may notifications lag while the decision record remains safe?"},
-        {"voice": "interviewer", "text": "Assume ten minutes to resume, and zero loss of acknowledged decisions and audit records."},
-        {"voice": "candidate", "text": "Then I report success only after the decision transaction is durably committed to an off-region data replica. That transaction includes the resource change, proposal state, audit, and outbox. If off-region durability cannot be confirmed, I cannot safely acknowledge success."},
-        {"voice": "interviewer", "text": "The old region is still running but partitioned. Could both sides accept opposite decisions?"},
-        {"voice": "candidate", "text": "Only a current write leader may commit. Quorum-backed leader election and fencing at storage reject a stale leader. A higher term helps identify leadership, but the actual write path must enforce it. Notification delivery may catch up after failover."},
-        {"voice": "interviewer", "text": "What if the notification publisher sent a message, then crashed before marking it sent?"},
-        {"voice": "candidate", "text": "It can send again. The consumer deduplicates using the stable outbox event ID when creating the in-app notification. That gives duplicate-safe effects under at-least-once delivery, not a claim of exactly-once transport."}
+        {
+          "voice": "interviewer",
+          "text": "The active region fails just after we acknowledged an approval. What recovery requirements do you ask for before naming a standby?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "Recovery time objective: how long may decisions be unavailable? Recovery point objective: how much acknowledged state may disappear? Also, may notifications lag while the decision record remains safe?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Assume ten minutes to resume, and zero loss of acknowledged decisions and audit records."
+        },
+        {
+          "voice": "candidate",
+          "text": "Then I report success only after the decision transaction is durably committed to an off-region data replica. That transaction includes the resource change, proposal state, audit, and outbox. If off-region durability cannot be confirmed, I cannot safely acknowledge success."
+        },
+        {
+          "voice": "interviewer",
+          "text": "The old region is still running but partitioned. Could both sides accept opposite decisions?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Only a current write leader may commit. Quorum-backed leader election and fencing at storage reject a stale leader. A higher term helps identify leadership, but the actual write path must enforce it. Notification delivery may catch up after failover."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What if the notification publisher sent a message, then crashed before marking it sent?"
+        },
+        {
+          "voice": "candidate",
+          "text": "It can send again. The consumer deduplicates using the stable outbox event ID when creating the in-app notification. That gives duplicate-safe effects under at-least-once delivery, not a claim of exactly-once transport."
+        }
       ]
     },
     {
       "id": "replay",
       "title": "Say the whole answer",
       "lines": [
-        {"voice": "interviewer", "text": "Now give me your complete answer in roughly ninety seconds. Keep the customer and audit contract visible."},
-        {"voice": "candidate", "text": "I would model each proposal as a tenant-scoped resource with a pending status and version. The decision API accepts approve or reject plus the version the reviewer saw. Authentication identifies the reviewer and tenant; the server checks current permission on the target resource."},
-        {"voice": "candidate", "text": "In one database transaction, I require pending state and the expected version, apply the proposed change if approved, record the final proposal state, append the audit row, and insert an outbox notification. The reviewer sees the committed result immediately. A competing stale decision gets a conflict and never overwrites it."},
-        {"voice": "candidate", "text": "The outbox publisher retries notifications, and the consumer deduplicates by stable event ID. A crash between decision commit and notification delivery leaves an outbox row to recover. Revoked permission is checked at mutation time, with transaction ordering if the permission record shares the database."},
-        {"voice": "candidate", "text": "For zero loss of acknowledged decisions during region failure, I wait for durable off-region commit before returning success. A standby resumes under a single fenced leader. The tradeoff is added write latency and possible write unavailability during a cross-region partition. I would measure conflicts, denied decisions, audit completeness, outbox age, and failover time."}
+        {
+          "voice": "interviewer",
+          "text": "Now give me your complete answer in roughly ninety seconds. Keep the customer and audit contract visible."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would model each proposal as a tenant-scoped resource with a pending status and version. The decision API accepts approve or reject plus the version the reviewer saw. Authentication identifies the reviewer and tenant; the server checks current permission on the target resource."
+        },
+        {
+          "voice": "candidate",
+          "text": "In one database transaction, I require pending state and the expected version, apply the proposed change if approved, record the final proposal state, append the audit row, and insert an outbox notification. The reviewer sees the committed result immediately. A competing stale decision gets a conflict and never overwrites it."
+        },
+        {
+          "voice": "candidate",
+          "text": "The outbox publisher retries notifications, and the consumer deduplicates by stable event ID. A crash between decision commit and notification delivery leaves an outbox row to recover. Revoked permission is checked at mutation time, with transaction ordering if the permission record shares the database."
+        },
+        {
+          "voice": "candidate",
+          "text": "For zero loss of acknowledged decisions during region failure, I wait for durable off-region commit before returning success. A standby resumes under a single fenced leader. The tradeoff is added write latency and possible write unavailability during a cross-region partition. I would measure conflicts, denied decisions, audit completeness, outbox age, and failover time."
+        }
       ]
     },
     {
       "id": "close",
       "title": "Recall without the script",
       "lines": [
-        {"voice": "narrator", "text": "Three anchors. What stops opposite decisions? What ties audit to approval? What makes an acknowledged decision survive region loss?", "pause_after": 12},
-        {"voice": "narrator", "text": "Atomic pending-and-version update. One transaction for decision, audit, and outbox. Durable off-region commit before success, with one fenced writer."}
+        {
+          "voice": "narrator",
+          "text": "Three anchors. What stops opposite decisions? What ties audit to approval? What makes an acknowledged decision survive region loss?",
+          "pause_after": 12.0
+        },
+        {
+          "voice": "narrator",
+          "text": "Atomic pending-and-version update. One transaction for decision, audit, and outbox. Durable off-region commit before success, with one fenced writer."
+        }
       ]
     }
-  ]
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Ask",
+        "content": "When does approval take effect? One final decision? Current permission? Audit scope? RTO and RPO?"
+      },
+      {
+        "title": "Flow",
+        "content": "Authenticated reviewer + expected version → check current permission → conditional pending/version transition → target change + decision + audit + outbox in one transaction → confirm."
+      },
+      {
+        "title": "Recall",
+        "content": "Stale reviewer gets a conflict. Revoked reviewer gets denied. Outbox repairs notification gaps. RPO zero requires off-region durable commit before success and a fenced single writer."
+      }
+    ]
+  }
 }

@@ -1,62 +1,139 @@
 {
   "schema": 1,
+  "id": 437,
   "slug": "atlassian-design-jira-dashboard-updates",
   "show": "atlassian-design-screen",
   "template": "design-screen-drill",
   "title": "Jira Dashboard: The Acknowledgment Boundary",
   "description": "A compressed rehearsal of a fifteen-minute design conversation about Jira webhooks and a customer dashboard. Practise requirements, durable acceptance, duplicate and out-of-order events, fair scheduling, and a concise final answer. Original practice, not a known Atlassian interview question.",
-  "keywords": ["Atlassian", "Jira", "system design", "webhooks", "idempotency", "dashboard"],
-  "voices": {},
-  "sources": [
-    {"type": "official_docs", "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/", "used_for": ["tenant-scoped webhook retry identifier and duplicate delivery"]}
+  "keywords": [
+    "Atlassian",
+    "Jira",
+    "system design",
+    "webhooks",
+    "idempotency",
+    "dashboard"
   ],
-  "board": {"tabs": [
-    {"title": "Ask", "content": "Read-only or write-back? Freshness target? Missed-event repair? Tenant and event scale?"},
-    {"title": "Flow", "content": "Authenticate tenant → durable inbox → acknowledge → fair worker → conditional issue version + inbox status + outbox in one transaction → push invalidation → browser refetch."},
-    {"title": "Recall", "content": "Duplicate: unique tenant and event ID. Out of order: only newer source state. Worker crash: harmless redelivery. Noisy tenant: fair scheduling and per-tenant backlog age."}
-  ]},
+  "voices": {},
   "sections": [
     {
       "id": "cold-open",
       "title": "The update that vanished",
       "lines": [
-        {"voice": "interviewer", "text": "A Jira issue changes status. Our webhook endpoint returns success. Thirty seconds later, the customer dashboard still shows the old status. What happened?"},
-        {"voice": "candidate", "text": "The endpoint may have acknowledged before it stored the event. A process crash then erased work Jira believed we accepted."},
-        {"voice": "narrator", "text": "This is original practice, not a known interview question. Listen once, then say the answer aloud without the script."}
+        {
+          "voice": "interviewer",
+          "text": "A Jira issue changes status. Our webhook endpoint returns success. Thirty seconds later, the customer dashboard still shows the old status. What happened?"
+        },
+        {
+          "voice": "candidate",
+          "text": "The endpoint may have acknowledged before it stored the event. A process crash then erased work Jira believed we accepted."
+        },
+        {
+          "voice": "narrator",
+          "text": "This is original practice, not a known interview question. Listen once, then say the answer aloud without the script."
+        }
       ]
     },
     {
       "id": "requirements",
       "title": "Ask, then bound the problem",
       "lines": [
-        {"voice": "interviewer", "text": "Design a service that receives Jira issue updates and keeps a customer dashboard current. You have fifteen minutes."},
-        {"voice": "candidate", "text": "I will establish the customer contract first. Is this dashboard read-only, or can users edit issues back into Jira?"},
-        {"voice": "interviewer", "text": "Read-only. Jira owns the issue state. Show the signed-in user's assigned issues on a web dashboard."},
-        {"voice": "candidate", "text": "What freshness and recovery do you need? If a webhook is missed, is eventual repair acceptable?"},
-        {"voice": "interviewer", "text": "Ordinary updates should appear within thirty seconds. Missed updates must eventually be repaired. Tenant data must remain isolated."},
-        {"voice": "candidate", "text": "And the expected scale? I only need enough to justify the intake and worker design."},
-        {"voice": "interviewer", "text": "Assume one thousand tenants, two hundred events a second on average, and brief ten-times bursts. Those are invented exercise numbers."},
-        {"voice": "candidate", "text": "I will design around one thousand tenants, a two-thousand-per-second burst, and thirty-second normal freshness. I will separate durable intake, state application, and browser refresh."},
-        {"voice": "narrator", "text": "Pause here. Say those three requirements back in your own words: scope, freshness, and recovery.", "pause_after": 10}
+        {
+          "voice": "interviewer",
+          "text": "Design a service that receives Jira issue updates and keeps a customer dashboard current. You have fifteen minutes."
+        },
+        {
+          "voice": "candidate",
+          "text": "I will establish the customer contract first. Is this dashboard read-only, or can users edit issues back into Jira?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Read-only. Jira owns the issue state. Show the signed-in user's assigned issues on a web dashboard."
+        },
+        {
+          "voice": "candidate",
+          "text": "What freshness and recovery do you need? If a webhook is missed, is eventual repair acceptable?"
+        },
+        {
+          "voice": "interviewer",
+          "text": "Ordinary updates should appear within thirty seconds. Missed updates must eventually be repaired. Tenant data must remain isolated."
+        },
+        {
+          "voice": "candidate",
+          "text": "And the expected scale? I only need enough to justify the intake and worker design."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Assume one thousand tenants, two hundred events a second on average, and brief ten-times bursts. Those are invented exercise numbers."
+        },
+        {
+          "voice": "candidate",
+          "text": "I will design around one thousand tenants, a two-thousand-per-second burst, and thirty-second normal freshness. I will separate durable intake, state application, and browser refresh."
+        },
+        {
+          "voice": "narrator",
+          "text": "Pause here. Say those three requirements back in your own words: scope, freshness, and recovery.",
+          "pause_after": 10.0
+        }
       ]
     },
     {
       "id": "baseline",
       "title": "The first workable design",
       "lines": [
-        {"voice": "interviewer", "text": "Show me the API and the data model. Then walk one Jira update all the way to the customer's screen."},
-        {"voice": "candidate", "text": "I need a webhook intake endpoint, an assigned-issues read endpoint, and a processing-status endpoint for support and operations."},
-        {"voice": "candidate", "text": "For the browser, I would expose get my issues with a bounded limit and opaque cursor. Authentication identifies the tenant and user. The cursor follows update time plus issue ID, so equal timestamps have a stable tie-breaker."},
-        {"voice": "candidate", "text": "The core rows are an inbox event, a current issue view, and a notification outbox. Inbox uniqueness is tenant ID plus event ID. Issue identity is tenant ID plus issue ID. The issue view stores the assignee, status, summary, and source version."},
-        {"voice": "candidate", "text": "I would confirm whether the source supplies a trustworthy monotonic issue version. If not, the worker fetches current Jira issue state before materializing the view. Receipt order alone is not source order."},
-        {"voice": "interviewer", "text": "Why does the inbox exist if you already have a queue?"},
-        {"voice": "candidate", "text": "It records what we accepted and gives duplicates a stable identity. I could use a durable queue as the acceptance store, but then its contract must give the same durability and deduplication guarantees. I am choosing an inbox because the acceptance boundary is easy to explain."},
-        {"voice": "candidate", "text": "On receipt, I authenticate the webhook, derive the trusted tenant, validate the event, and insert the inbox row durably. Only after that insert commits do I return HTTP success to Jira."},
-        {"voice": "candidate", "text": "A worker reads accepted events. It applies a source version only if newer than the version stored for that tenant and issue. In one transaction, it updates the issue view, marks the inbox event processed, and inserts an outbox invalidation."},
-        {"voice": "candidate", "text": "An outbox publisher sends an invalidation through Server-Sent Events or WebSocket. The browser refetches the authoritative issue list. A reconnect-time fetch and slow safety polling cover missed push messages."},
-        {"voice": "interviewer", "text": "What does the customer see during normal operation?"},
-        {"voice": "candidate", "text": "A changed issue appears within the thirty-second target. They can continue reading during a temporary push disconnect, then catch up by refetching. I would measure source-to-visible latency, not just worker throughput."},
-        {"voice": "narrator", "text": "Your turn. Say the write path in one breath: trusted tenant, durable inbox, acknowledgment, conditional update, outbox, browser refetch.", "pause_after": 12}
+        {
+          "voice": "interviewer",
+          "text": "Show me the API and the data model. Then walk one Jira update all the way to the customer's screen."
+        },
+        {
+          "voice": "candidate",
+          "text": "I need a webhook intake endpoint, an assigned-issues read endpoint, and a processing-status endpoint for support and operations."
+        },
+        {
+          "voice": "candidate",
+          "text": "For the browser, I would expose get my issues with a bounded limit and opaque cursor. Authentication identifies the tenant and user. The cursor follows update time plus issue ID, so equal timestamps have a stable tie-breaker."
+        },
+        {
+          "voice": "candidate",
+          "text": "The core rows are an inbox event, a current issue view, and a notification outbox. Inbox uniqueness is tenant ID plus event ID. Issue identity is tenant ID plus issue ID. The issue view stores the assignee, status, summary, and source version."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would confirm whether the source supplies a trustworthy monotonic issue version. If not, the worker fetches current Jira issue state before materializing the view. Receipt order alone is not source order."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Why does the inbox exist if you already have a queue?"
+        },
+        {
+          "voice": "candidate",
+          "text": "It records what we accepted and gives duplicates a stable identity. I could use a durable queue as the acceptance store, but then its contract must give the same durability and deduplication guarantees. I am choosing an inbox because the acceptance boundary is easy to explain."
+        },
+        {
+          "voice": "candidate",
+          "text": "On receipt, I authenticate the webhook, derive the trusted tenant, validate the event, and insert the inbox row durably. Only after that insert commits do I return HTTP success to Jira."
+        },
+        {
+          "voice": "candidate",
+          "text": "A worker reads accepted events. It applies a source version only if newer than the version stored for that tenant and issue. In one transaction, it updates the issue view, marks the inbox event processed, and inserts an outbox invalidation."
+        },
+        {
+          "voice": "candidate",
+          "text": "An outbox publisher sends an invalidation through Server-Sent Events or WebSocket. The browser refetches the authoritative issue list. A reconnect-time fetch and slow safety polling cover missed push messages."
+        },
+        {
+          "voice": "interviewer",
+          "text": "What does the customer see during normal operation?"
+        },
+        {
+          "voice": "candidate",
+          "text": "A changed issue appears within the thirty-second target. They can continue reading during a temporary push disconnect, then catch up by refetching. I would measure source-to-visible latency, not just worker throughput."
+        },
+        {
+          "voice": "narrator",
+          "text": "Your turn. Say the write path in one breath: trusted tenant, durable inbox, acknowledgment, conditional update, outbox, browser refetch.",
+          "pause_after": 12.0
+        }
       ]
     },
     {
@@ -64,42 +141,124 @@
       "title": "First change: Jira retries",
       "factual": true,
       "lines": [
-        {"voice": "interviewer", "text": "We saved an event, but Jira lost our acknowledgment and sent the same webhook again. What happens?", "pause_after": 10},
-        {"voice": "candidate", "text": "Jira's retry identifier is stable across retries and scoped within a tenant. I insert with a unique tenant-and-event key. On conflict, I return success for the already accepted event and create no second job."},
-        {"voice": "interviewer", "text": "The worker commits the issue update and crashes before acknowledging its queue message. Is this exactly once?"},
-        {"voice": "candidate", "text": "No. The queue may redeliver. The committed inbox status and conditional version check make the repeat harmless. The worker then acknowledges the redelivery. The outbox publisher can also duplicate an invalidation, so the browser treats it as a refetch signal."},
-        {"voice": "interviewer", "text": "Version forty-three arrives before version forty-two. Would you park forty-three?"},
-        {"voice": "candidate", "text": "Only if those are deltas that require strict sequence. If each event contains a complete state snapshot, I apply forty-three and discard forty-two as stale. If the source has no trustworthy version, I fetch current Jira state and reconcile."}
+        {
+          "voice": "interviewer",
+          "text": "We saved an event, but Jira lost our acknowledgment and sent the same webhook again. What happens?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "Jira's retry identifier is stable across retries and scoped within a tenant. I insert with a unique tenant-and-event key. On conflict, I return success for the already accepted event and create no second job."
+        },
+        {
+          "voice": "interviewer",
+          "text": "The worker commits the issue update and crashes before acknowledging its queue message. Is this exactly once?"
+        },
+        {
+          "voice": "candidate",
+          "text": "No. The queue may redeliver. The committed inbox status and conditional version check make the repeat harmless. The worker then acknowledges the redelivery. The outbox publisher can also duplicate an invalidation, so the browser treats it as a refetch signal."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Version forty-three arrives before version forty-two. Would you park forty-three?"
+        },
+        {
+          "voice": "candidate",
+          "text": "Only if those are deltas that require strict sequence. If each event contains a complete state snapshot, I apply forty-three and discard forty-two as stale. If the source has no trustworthy version, I fetch current Jira state and reconcile."
+        }
       ]
     },
     {
       "id": "change-two",
       "title": "Second change: a noisy tenant",
       "lines": [
-        {"voice": "interviewer", "text": "One tenant now fills the backlog. Smaller tenants miss the thirty-second target. What changes?", "pause_after": 10},
-        {"voice": "candidate", "text": "I schedule work by tenant, not one shared first-in-first-out line. Per-tenant queues or logical partitions feed a round-robin or weighted-fair scheduler. I cap work in flight per tenant and globally, while allowing unused capacity to be borrowed."},
-        {"voice": "interviewer", "text": "Could we simply make the queue larger?"},
-        {"voice": "candidate", "text": "A larger queue stores a burst but does not increase sustained throughput. If arrivals keep exceeding capacity, backlog age grows. I would protect Jira and the database with rate and concurrency limits, then surface delay honestly."},
-        {"voice": "candidate", "text": "I would watch oldest event age per tenant, p95 and p99 source-to-visible latency, retry rate, dead letters, outbox age, and reconciliation repairs. A global average can hide one starved tenant."}
+        {
+          "voice": "interviewer",
+          "text": "One tenant now fills the backlog. Smaller tenants miss the thirty-second target. What changes?",
+          "pause_after": 10.0
+        },
+        {
+          "voice": "candidate",
+          "text": "I schedule work by tenant, not one shared first-in-first-out line. Per-tenant queues or logical partitions feed a round-robin or weighted-fair scheduler. I cap work in flight per tenant and globally, while allowing unused capacity to be borrowed."
+        },
+        {
+          "voice": "interviewer",
+          "text": "Could we simply make the queue larger?"
+        },
+        {
+          "voice": "candidate",
+          "text": "A larger queue stores a burst but does not increase sustained throughput. If arrivals keep exceeding capacity, backlog age grows. I would protect Jira and the database with rate and concurrency limits, then surface delay honestly."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would watch oldest event age per tenant, p95 and p99 source-to-visible latency, retry rate, dead letters, outbox age, and reconciliation repairs. A global average can hide one starved tenant."
+        }
       ]
     },
     {
       "id": "replay",
       "title": "Say the whole answer",
       "lines": [
-        {"voice": "interviewer", "text": "You have ninety seconds. Give me the complete design and the main tradeoff."},
-        {"voice": "candidate", "text": "This is a read-only Jira dashboard for one thousand tenants. Normal issue changes should be visible within thirty seconds, and missed changes must eventually be repaired. I would expose a Jira webhook endpoint, a paginated my-issues read endpoint, and processing status."},
-        {"voice": "candidate", "text": "The webhook authenticates its source and tenant, validates the event, and stores a tenant-scoped event ID in a durable inbox before returning success. A tenant-aware scheduler sends work to bounded workers. Each worker applies only a newer issue version and commits the issue view, inbox status, and notification outbox in one transaction."},
-        {"voice": "candidate", "text": "The outbox publisher sends a browser invalidation; the browser refetches its authorized assigned-issues view. Duplicate deliveries and worker redelivery become harmless through unique event identity, processed state, and conditional versions. Periodic Jira reconciliation repairs missed webhooks, and reconnect fetches repair missed browser notifications."},
-        {"voice": "candidate", "text": "I would monitor per-tenant backlog age and source-to-visible latency, not just queue depth. Fair scheduling prevents a heavy tenant from starving small tenants. The tradeoff is extra durable storage and asynchronous complexity in return for a clear acceptance guarantee and recoverable customer freshness."}
+        {
+          "voice": "interviewer",
+          "text": "You have ninety seconds. Give me the complete design and the main tradeoff."
+        },
+        {
+          "voice": "candidate",
+          "text": "This is a read-only Jira dashboard for one thousand tenants. Normal issue changes should be visible within thirty seconds, and missed changes must eventually be repaired. I would expose a Jira webhook endpoint, a paginated my-issues read endpoint, and processing status."
+        },
+        {
+          "voice": "candidate",
+          "text": "The webhook authenticates its source and tenant, validates the event, and stores a tenant-scoped event ID in a durable inbox before returning success. A tenant-aware scheduler sends work to bounded workers. Each worker applies only a newer issue version and commits the issue view, inbox status, and notification outbox in one transaction."
+        },
+        {
+          "voice": "candidate",
+          "text": "The outbox publisher sends a browser invalidation; the browser refetches its authorized assigned-issues view. Duplicate deliveries and worker redelivery become harmless through unique event identity, processed state, and conditional versions. Periodic Jira reconciliation repairs missed webhooks, and reconnect fetches repair missed browser notifications."
+        },
+        {
+          "voice": "candidate",
+          "text": "I would monitor per-tenant backlog age and source-to-visible latency, not just queue depth. Fair scheduling prevents a heavy tenant from starving small tenants. The tradeoff is extra durable storage and asynchronous complexity in return for a clear acceptance guarantee and recoverable customer freshness."
+        }
       ]
     },
     {
       "id": "close",
       "title": "Recall without the script",
       "lines": [
-        {"voice": "narrator", "text": "Close the transcript. What are the three invariants? When may we acknowledge, when may we overwrite, and how does a small tenant keep moving?", "pause_after": 12},
-        {"voice": "narrator", "text": "Answer: acknowledge after durable acceptance; apply only newer source state; schedule fairly by tenant. Replay this episode and say those lines before the candidate does."}
+        {
+          "voice": "narrator",
+          "text": "Close the transcript. What are the three invariants? When may we acknowledge, when may we overwrite, and how does a small tenant keep moving?",
+          "pause_after": 12.0
+        },
+        {
+          "voice": "narrator",
+          "text": "Answer: acknowledge after durable acceptance; apply only newer source state; schedule fairly by tenant. Replay this episode and say those lines before the candidate does."
+        }
+      ]
+    }
+  ],
+  "board": {
+    "tabs": [
+      {
+        "title": "Ask",
+        "content": "Read-only or write-back? Freshness target? Missed-event repair? Tenant and event scale?"
+      },
+      {
+        "title": "Flow",
+        "content": "Authenticate tenant → durable inbox → acknowledge → fair worker → conditional issue version + inbox status + outbox in one transaction → push invalidation → browser refetch."
+      },
+      {
+        "title": "Recall",
+        "content": "Duplicate: unique tenant and event ID. Out of order: only newer source state. Worker crash: harmless redelivery. Noisy tenant: fair scheduling and per-tenant backlog age."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "type": "official_docs",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+      "used_for": [
+        "tenant-scoped webhook retry identifier and duplicate delivery"
       ]
     }
   ]

@@ -6932,6 +6932,103 @@
       ]
     },
     {
+      "id": 435,
+      "slug": "atlassian-design-approval-audit-workflow",
+      "title": "Approvals: One Decision, One Audit Trail",
+      "description": "An interviewer and candidate design a multi-tenant approval workflow. Rehearse version preconditions, current authorization, atomic audit and outbox records, duplicate notifications, and regional failover. Original practice, not a known Atlassian interview question.",
+      "duration": "9:01",
+      "file_size_bytes": 4335213,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-approval-audit-workflow.mp3?v=d149dc7d",
+      "filename": "atlassian-design-approval-audit-workflow.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "approval workflow",
+        "audit",
+        "authorization",
+        "regional failover"
+      ]
+    },
+    {
+      "id": 436,
+      "slug": "atlassian-design-issue-tracker-search",
+      "title": "Issue Tracker: Immediate Reads, Delayed Search",
+      "description": "An interviewer and candidate design a tenant-isolated issue tracker. Rehearse create and read APIs, transactional search indexing, safe query caching, permission revocation, edit conflicts, and an indexing outage. Original practice, not a known Atlassian interview question.",
+      "duration": "8:06",
+      "file_size_bytes": 3890925,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-issue-tracker-search.mp3?v=85abef75",
+      "filename": "atlassian-design-issue-tracker-search.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "search indexing",
+        "authorization",
+        "optimistic concurrency",
+        "outbox"
+      ]
+    },
+    {
+      "id": 437,
+      "slug": "atlassian-design-jira-dashboard-updates",
+      "title": "Jira Dashboard: The Acknowledgment Boundary",
+      "description": "A compressed rehearsal of a fifteen-minute design conversation about Jira webhooks and a customer dashboard. Practise requirements, durable acceptance, duplicate and out-of-order events, fair scheduling, and a concise final answer. Original practice, not a known Atlassian interview question.",
+      "duration": "8:58",
+      "file_size_bytes": 4305453,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-jira-dashboard-updates.mp3?v=4779e80c",
+      "filename": "atlassian-design-jira-dashboard-updates.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "Jira",
+        "system design",
+        "webhooks",
+        "idempotency",
+        "dashboard"
+      ],
+      "sources": [
+        {
+          "type": "official_docs",
+          "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+          "used_for": [
+            "tenant-scoped webhook retry identifier and duplicate delivery"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 438,
+      "slug": "atlassian-design-shared-quota-importer",
+      "title": "Import Jobs: Fair Queues and Ambiguous Effects",
+      "description": "A short mock design interview about multi-tenant imports through one downstream API quota. Practise durable acceptance, fair scheduling, shared rate control, Retry-After, uncertain outcomes, and honest job status. Original practice, not a known Atlassian interview question.",
+      "duration": "8:21",
+      "file_size_bytes": 4013997,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-shared-quota-importer.mp3?v=857d863f",
+      "filename": "atlassian-design-shared-quota-importer.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "job scheduler",
+        "rate limiting",
+        "fairness",
+        "idempotency"
+      ]
+    },
+    {
       "id": 450,
       "title": "Behavioral: Why Leaving + Biggest Weakness",
       "description": "TTS-generated practice episode for behavioral interview preparation.",
@@ -7639,7 +7736,12 @@
       "featured": true,
       "default_template": "design-screen-drill",
       "archived": false,
-      "episode_ids": []
+      "episode_ids": [
+        435,
+        436,
+        437,
+        438
+      ]
     }
   }
 }
