@@ -1,8 +1,245 @@
 {
   "version": 1,
   "updated": "2026-10-02",
-  "refresh": "Curated launch edition. New sources require evidence review before publication.",
+  "refresh": "Reviewed launch edition: 2026 current sources and historical context. Daily candidate discovery never auto-publishes claims.",
   "cards": [
+    {
+      "id": "huang-inference-2026",
+      "title": "Useful intelligence per watt",
+      "tags": [
+        "Infrastructure",
+        "Product"
+      ],
+      "summary": "Huang frames inference around constrained power, token throughput and response speed.",
+      "lens": "Conditional outlook",
+      "interpretation": "If inference demand grows, system efficiency may matter as much as model capability. This is not a guaranteed market outcome.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Measure cost per successful task alongside latency and quality. Study inference serving.",
+      "source": {
+        "speaker": "Jensen Huang",
+        "role": "NVIDIA founder and CEO",
+        "title": "NVIDIA GTC Keynote 2026",
+        "date": "2026-03-16",
+        "dateLabel": "Event date",
+        "url": "https://www.youtube.com/watch?v=jw_o0xr8MWU&t=3668s",
+        "evidence": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81595/",
+        "locator": "Publisher automated transcript anchor 01:01:08; 01:01:08\u201301:02:24 discusses inference trade-offs. YouTube alignment and clip end unverified.",
+        "context": "NVIDIA vendor keynote. Commercial incentives matter; automated transcript may contain errors."
+      },
+      "quality": {
+        "useful": 5.0,
+        "novel": 4.9,
+        "credible": 4.6,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "wang-feedback-2026",
+      "title": "The agent opportunity is the feedback loop",
+      "tags": [
+        "Agents",
+        "Product",
+        "Data"
+      ],
+      "summary": "Wang describes agents improving measurable outcomes through repeated feedback and coordination.",
+      "lens": "Conditional outlook",
+      "interpretation": "A workflow with measurable feedback may suit a bounded agent loop. Internal results do not establish workforce-replacement outcomes.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Pick one measurable workflow. Define success and failure, then compare a bounded loop against a baseline.",
+      "source": {
+        "speaker": "Alexandr Wang",
+        "role": "Meta superintelligence lab leader; Scale AI founder at the time",
+        "title": "This is a Once-in-a-Civilization Opportunity",
+        "date": "2026-07-29",
+        "dateLabel": "Publisher transcript date",
+        "url": "https://www.youtube.com/watch?v=sJ4VJWycX9M&t=1611s",
+        "evidence": "https://www.ycrootaccess.com/p/alexandr-wang-building-a-frontier",
+        "locator": "Publisher chapter 26:51: The Biggest Opportunity in AI Today. Exact claim onset and clip end unverified.",
+        "context": "Y Combinator interview with Garry Tan. Internal Meta anecdotes are not independent benchmarks. Recording day and exact video upload date unverified."
+      },
+      "quality": {
+        "useful": 4.95,
+        "novel": 4.8500000000000005,
+        "credible": 4.6,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "amodei-adoption-2026",
+      "title": "Capability and adoption run on different clocks",
+      "tags": [
+        "Strategy",
+        "Product",
+        "Infrastructure"
+      ],
+      "summary": "Amodei distinguishes technical capability forecasts from uncertain economic adoption and compute-investment timing.",
+      "lens": "Our interpretation",
+      "interpretation": "A model milestone alone is weak evidence for a revenue timeline. His capability timelines are forecasts.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Investigate procurement, integration, trust and workflow barriers before assuming benchmark gains create demand.",
+      "source": {
+        "speaker": "Dario Amodei",
+        "role": "Anthropic CEO at the time",
+        "title": "We are near the end of the exponential",
+        "date": "2026-02-13",
+        "dateLabel": "Publisher episode date",
+        "url": "https://www.youtube.com/watch?v=n1E9IZfvGMA&t=2780s",
+        "evidence": "https://www.dwarkesh.com/p/dario-amodei-2",
+        "locator": "Publisher chapter 46:20, compute-investment discussion. Exact short-clip boundaries unverified.",
+        "context": "Dwarkesh challenges aggressive AI timelines and cautious compute commitments. Recording date undisclosed in inspected evidence."
+      },
+      "quality": {
+        "useful": 4.9,
+        "novel": 4.800000000000001,
+        "credible": 4.6,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "karpathy-autonomy-2025",
+      "title": "Build an autonomy dial",
+      "tags": [
+        "Agents",
+        "Product",
+        "Learning"
+      ],
+      "summary": "Karpathy describes powerful but fallible LLMs and partially autonomous products that keep people in the loop.",
+      "lens": "Our interpretation",
+      "interpretation": "A visible review loop may create dependable value. This is a design hypothesis to test, not a performance guarantee.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Prototype draft, review and execute modes. Measure review time and accepted results.",
+      "source": {
+        "speaker": "Andrej Karpathy",
+        "role": "AI researcher and educator; former Tesla AI director",
+        "title": "Software Is Changing (Again)",
+        "date": "2025-06-18",
+        "dateLabel": "Video publication date",
+        "url": "https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s",
+        "evidence": "https://www.youtube.com/watch?v=LCEmiRjPEtQ",
+        "locator": "Official chapter 18:22: partial autonomy. Publisher description and speaker notes inspected; full transcript not inspected.",
+        "context": "Y Combinator AI Startup School, San Francisco, June 17, 2025. Conceptual product-design talk; no exact clip range claimed."
+      },
+      "quality": {
+        "useful": 4.85,
+        "novel": 4.75,
+        "credible": 4.2,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "ng-concrete-2025",
+      "title": "Make the idea concrete before making it fast",
+      "tags": [
+        "Building",
+        "Product",
+        "Learning"
+      ],
+      "summary": "Ng emphasizes concrete product ideas and human judgment as AI accelerates implementation.",
+      "lens": "Our interpretation",
+      "interpretation": "Faster building increases the value of choosing and testing the right problem. No universal productivity multiplier follows.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Write a specific user, task and success criterion before prototyping. Combine implementation with customer discovery.",
+      "source": {
+        "speaker": "Andrew Ng",
+        "role": "DeepLearning.AI and AI Fund founder",
+        "title": "Building Faster with AI",
+        "date": "2025-07-10",
+        "dateLabel": "Video publication date",
+        "url": "https://www.youtube.com/watch?v=RNJCfif1dPY&t=292s",
+        "evidence": "https://www.youtube.com/watch?v=RNJCfif1dPY",
+        "locator": "Official chapter 04:52: Concrete Ideas for Faster Execution. Description and chapters inspected; full transcript not inspected.",
+        "context": "Startup School talk. Official video description identifies June 17, 2025 as event date. Exact clip boundaries unverified."
+      },
+      "quality": {
+        "useful": 4.8,
+        "novel": 4.7,
+        "credible": 4.2,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "fei-spatial-2025",
+      "title": "The next interface may be the physical world",
+      "tags": [
+        "Robotics",
+        "Learning",
+        "World models"
+      ],
+      "summary": "Li argues for intelligence that models the three-dimensional world, beyond language.",
+      "lens": "Conditional outlook",
+      "interpretation": "Spatial systems could create opportunities beyond chat. Reliability, timelines and commercial winners remain uncertain.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Explore vision, geometry and simulation. Test a narrow spatial task against real-world ground truth.",
+      "source": {
+        "speaker": "Fei-Fei Li",
+        "role": "Stanford professor and World Labs co-founder at the time",
+        "title": "Spatial Intelligence is the Next Frontier in AI",
+        "date": "2025-07-01",
+        "dateLabel": "Video publication date",
+        "url": "https://www.youtube.com/watch?v=_PioN-CpOP0&t=860s",
+        "evidence": "https://www.youtube.com/watch?v=_PioN-CpOP0",
+        "locator": "Official chapter 14:20: Why Spatial Intelligence Is Harder Than Language. Description inspected; full transcript not inspected.",
+        "context": "Y Combinator fireside discussion, San Francisco, June 16, 2025 according to official description. Li has a commercial interest in spatial AI."
+      },
+      "quality": {
+        "useful": 4.75,
+        "novel": 4.65,
+        "credible": 4.2,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
+    {
+      "id": "hassabis-evaluation-2025",
+      "title": "A brilliant answer is not general intelligence",
+      "tags": [
+        "Evaluation",
+        "Product",
+        "Learning"
+      ],
+      "summary": "Hassabis emphasizes broad, consistent capability and novel discoveries when discussing his criteria for AGI.",
+      "lens": "Our interpretation",
+      "interpretation": "A strong demonstration does not establish reliable performance across a whole workflow. Test gaps as well as highlights.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Build evaluations around failure modes, domain coverage and distribution shift.",
+      "source": {
+        "speaker": "Demis Hassabis",
+        "role": "Google DeepMind co-founder and CEO at the time",
+        "title": "Lex Fridman Podcast #475",
+        "date": "2025-07-23",
+        "dateLabel": "Video publication date",
+        "url": "https://www.youtube.com/watch?v=-HzgcbRXUK8&t=3186s",
+        "evidence": "https://lexfridman.com/demis-hassabis-2-transcript",
+        "locator": "Publisher transcript anchors 53:06 and 55:14 onward. Video alignment and clip end unverified.",
+        "context": "Personal criteria for AGI in a long interview, not a universally agreed definition. Recording date not verified."
+      },
+      "quality": {
+        "useful": 4.7,
+        "novel": 4.6000000000000005,
+        "credible": 4.6,
+        "influence": 4.8
+      },
+      "reviewed": "2026-10-02",
+      "format": "Original summary card",
+      "seconds": 35
+    },
     {
       "id": "compute",
       "title": "Compute is a system, not just a chip",

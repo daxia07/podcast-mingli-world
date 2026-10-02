@@ -1,0 +1,28 @@
+# Video · Mingli
+
+A mobile-first vertical feed of short, original AI idea summaries. The companion follows the podcast’s vanilla JavaScript / Cloudflare Pages architecture and does not change its runtime, R2 contents or source checkout.
+
+14 reviewed cards cover Jensen Huang, Alexandr Wang, Dario Amodei, Andrej Karpathy, Andrew Ng, Fei-Fei Li and Demis Hassabis. Current 2026 sources are mixed with dated historical context. Cards paraphrase inspected publisher evidence; they do not impersonate speakers, host video or reproduce full transcripts. Source dialogs label the evidence limits and open official videos or publishers. Chapter links are not verified clip boundaries. External video playback has not been tested.
+
+## Use and verify
+
+- `npm run dev` serves `site/` at http://localhost:4173.
+- `npm test` runs five model tests.
+- `npm run validate` checks unique IDs, provenance and HTTPS URLs.
+- `node scripts/browser-test.mjs` uses the installed headless Chrome and bundled Playwright runtime on this Mac. Evidence goes to `evidence/`.
+- `python3 scripts/refresh.py` discovers review candidates from NVIDIA and TED’s official feeds with no key. It never auto-publishes new factual claims.
+
+Swipe/scroll vertically, use arrow keys or next/previous buttons. Like or select “Less like this”; save to Read later or create named collections. Collections return to the exact idea. Preferences, saved cards, reading time and skips use this browser’s localStorage. There is no account or cross-device sync. Storage failures show a session-only notice. Export and reset are available in Preferences.
+
+Ranking uses editorial usefulness, novelty, credibility and influence, plus bounded explicit topic/like/save/less feedback and a small capped active-reading signal. Rapid skips reduce topic preference. Hidden/unfocused tabs, dialogs, paused measurement and time beyond 45 seconds without interaction do not accrue dwell. Explicit feedback is stronger than dwell. New Discover sessions and the next button reorder upcoming ideas; swiping keeps the session stable to avoid jumping cards under a reader.
+
+## Infrastructure and refresh
+
+Remote companion: `/Users/ding/projects/video-mingli-world` on `agent`.
+A dedicated `world.mingli.video.refresh` LaunchAgent is installed on that host, runs at load and every 86400 seconds, and writes private editorial candidate/status files to its `data/` directory. No listener data or credentials are used. Failures preserve the last successful queue. Humans/agents must verify speaker, source, date and gist before editing `site/content.json` and deploying.
+
+Static hosting needs only `site/`. `wrangler.toml` targets a separate `video-mingli-world` Pages project. There is no service worker, avoiding stale personal-state shells. Hosting headers disable third-party requests, frame embedding of this site, camera, microphone and geolocation. External source links open only after user action.
+
+The proposed release checkout in `deployment-ci/` is an isolated branch of the existing repository. It adds only a companion folder and a companion-only CI workflow, preserving existing files. Its push is blocked pending approval; see RELEASE.md. The original podcast checkout has not been edited.
+
+Design used the frontend-design skill: quiet navy/cool-blue reader, Avenir/system type, speaker monograms rather than invented portraits, and a full-screen idea as the opening experience. Local environment and podcast ingestion guidance informed the architecture and rights limits.
