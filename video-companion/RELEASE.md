@@ -10,9 +10,9 @@ Unit/model checks: five passed. Content validation: 14 IDs, complete provenance,
 
 Review loops fixed small-screen content clipping, an upcoming-queue recommendation bug that excluded feedback on already-viewed cards, and idle-time measurement. Small-height cards grow vertically so all controls remain reachable; there is no horizontal overflow. Dwell pauses for dialogs, background/unfocused tabs and idle periods beyond 45 seconds.
 
-## Active discovery, distinct from live publication
+## Manual discovery; recurring configuration paused
 
-On `agent`, `/Users/ding/projects/video-mingli-world/scripts/refresh.py` is run by a dedicated LaunchAgent `world.mingli.video.refresh` at load and every 86400 seconds. The first run returned exit 0 with both official feeds successful and 14 editorial candidates. It writes private candidate/status files in the companion directory. It does not auto-author or publish claims. The website feed remains the reviewed curated edition until a source-backed editorial update is deployed.
+On `agent`, `/Users/ding/projects/video-mingli-world/scripts/refresh.py` is available manually. The newly created LaunchAgent `world.mingli.video.refresh` is unloaded and disabled pending scope approval; its preserved configuration specifies run-at-load and every 86400 seconds. The first run returned exit 0 with both official feeds successful and 14 editorial candidates. It writes private candidate/status files in the companion directory. It does not auto-author or publish claims. The website feed remains the reviewed curated edition until a source-backed editorial update is deployed.
 
 ## Deployment blocker and approval required
 
@@ -33,3 +33,9 @@ Earlier automatic review also rejected broad deployment-host credential/config i
 - Remote isolated companion: `agent:/Users/ding/projects/video-mingli-world`
 - Proposed release: `deployment-ci/`, local branch `video-companion-release`
 - Evidence: `evidence/`
+
+## Updated authorized scope
+
+The user explicitly approved the companion-only CI/hosting/DNS release, with matching simple authentication, playable video and persisted metrics/progress. This supersedes the earlier missing-authorization blocker for one retry of the same push; it does not reenable discovery. Implementation now includes seven official YouTube preview players and a private server-backed owner profile in a separate R2 bucket. All assets/profile endpoints are gated. Auth calls only the podcast’s existing HTTPS login/session routes and does not copy its credential constants or secret into the companion.
+
+Local checks after changes: 11 model/auth/profile tests, 14-card metadata validation, credential-literal/static-bundle scan and all feed acceptance interactions behind authenticated fixture passed. Live acceptance and external player checks are required after deployment; none should be inferred from fixture success. Any initial source-inspection redaction limitations are not a basis for claiming credentials were never displayed; current bundle/config/log checks avoid printing credential or token values.

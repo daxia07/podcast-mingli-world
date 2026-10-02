@@ -34,7 +34,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "jw_o0xr8MWU",
+        "start": 3668,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "wang-feedback-2026",
@@ -68,7 +74,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "sJ4VJWycX9M",
+        "start": 1611,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "amodei-adoption-2026",
@@ -102,7 +114,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "n1E9IZfvGMA",
+        "start": 2780,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "karpathy-autonomy-2025",
@@ -136,7 +154,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "LCEmiRjPEtQ",
+        "start": 1102,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "ng-concrete-2025",
@@ -170,7 +194,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "RNJCfif1dPY",
+        "start": 292,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "fei-spatial-2025",
@@ -204,7 +234,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "_PioN-CpOP0",
+        "start": 860,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "hassabis-evaluation-2025",
@@ -238,7 +274,13 @@
       },
       "reviewed": "2026-10-02",
       "format": "Original summary card",
-      "seconds": 35
+      "seconds": 35,
+      "video": {
+        "id": "-HzgcbRXUK8",
+        "start": 3186,
+        "end": null,
+        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+      }
     },
     {
       "id": "compute",
