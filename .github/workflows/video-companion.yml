@@ -1,0 +1,35 @@
+name: Video companion release
+on:
+  push:
+    branches: [video-companion-release]
+    paths: ['video-companion/**', '.github/workflows/video-companion.yml']
+jobs:
+  deploy-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test and validate companion
+        working-directory: video-companion
+        run: npm test && npm run validate
+      - name: Create isolated Pages project if needed
+        working-directory: video-companion
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
+        run: |
+          node scripts/provision.mjs
+      - name: Deploy companion only
+        working-directory: video-companion
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
+        run: npx wrangler@4 pages deploy site --project-name video-mingli-world --branch main
+      - name: Connect requested domain
+        working-directory: video-companion
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
+        run: node scripts/provision.mjs domain
