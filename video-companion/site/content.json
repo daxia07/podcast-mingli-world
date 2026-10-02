@@ -244,15 +244,15 @@
     },
     {
       "id": "hassabis-evaluation-2025",
-      "title": "A brilliant answer is not general intelligence",
+      "title": "Consistency is part of intelligence",
       "tags": [
         "Evaluation",
         "Product",
         "Learning"
       ],
-      "summary": "Hassabis emphasizes broad, consistent capability and novel discoveries when discussing his criteria for AGI.",
+      "summary": "Hassabis argues that his AGI standard requires consistent capability, rather than brilliance on some tasks and serious flaws on others.",
       "lens": "Our interpretation",
-      "interpretation": "A strong demonstration does not establish reliable performance across a whole workflow. Test gaps as well as highlights.",
+      "interpretation": "Test an entire workflow\u2019s weak spots, not only its strongest demonstration. This applies his personal AGI criterion as an editorial product lesson.",
       "opportunityLabel": "Practical experiment \u00b7 our suggestion",
       "opportunity": "Build evaluations around failure modes, domain coverage and distribution shift.",
       "source": {
@@ -263,13 +263,13 @@
         "dateLabel": "Video publication date",
         "url": "https://www.youtube.com/watch?v=-HzgcbRXUK8&t=3186s",
         "evidence": "https://lexfridman.com/demis-hassabis-2-transcript",
-        "locator": "Publisher transcript anchors 53:06 and 55:14 onward. Video alignment and clip end unverified.",
+        "locator": "Publisher transcript, 53:06 complete paragraph on consistent capabilities, ending before the next paragraph at 53:28. Reviewed against the primary timestamped text.",
         "context": "Personal criteria for AGI in a long interview, not a universally agreed definition. Recording date not verified."
       },
       "quality": {
-        "useful": 4.7,
-        "novel": 4.6000000000000005,
-        "credible": 4.6,
+        "useful": 5,
+        "novel": 4.8,
+        "credible": 4.8,
         "influence": 4.8
       },
       "reviewed": "2026-10-02",
@@ -278,8 +278,9 @@
       "video": {
         "id": "-HzgcbRXUK8",
         "start": 3186,
-        "end": null,
-        "boundary": "Publisher chapter/transcript anchor, not a verified clip range"
+        "end": 3208,
+        "boundary": "Transcript-reviewed complete paragraph: 53:06\u201353:28; end is the next paragraph timestamp. Source seek alignment remains approximate.",
+        "reviewedMoment": true
       }
     },
     {
