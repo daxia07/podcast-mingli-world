@@ -13,6 +13,20 @@ def catalogue():
 
 
 class PreservationTests(unittest.TestCase):
+    def test_rebuilding_feed_preserves_original_publication_dates_without_changing_records(self):
+        from scripts.lib import manifest
+        from xml.etree import ElementTree
+        data = catalogue()
+        before = copy.deepcopy(data['episodes'])
+        date = 'Thu, 24 Sep 2026 11:21:48 +1000'
+        data['rss_pub_dates'] = {'1': date}
+        data['episodes'].append({'id': 2, 'file_url': 'https://podcast.example/episodes/new.mp3'})
+        feed = ElementTree.fromstring(manifest.generate_rss(data)).findall('channel/item')
+        original = next(item for item in feed if item.findtext('guid').endswith('/one.mp3'))
+        self.assertEqual(original.findtext('pubDate'), date)
+        self.assertEqual(data['episodes'][:1], before)
+        self.assertEqual(len(feed), 2)
+
     def test_stale_checkout_cannot_remove_a_published_episode(self):
         remote = catalogue()
         local = copy.deepcopy(remote)

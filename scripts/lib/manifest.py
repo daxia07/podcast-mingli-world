@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import json
 import os
-from email.utils import format_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from xml.dom import minidom
@@ -226,7 +226,14 @@ def generate_rss(manifest: dict) -> str:
         guid.text = ep.get("file_url", "").split("?")[0]
         guid.set("isPermaLink", "true")
 
-        SubElement(item, "pubDate").text = _pub_date(ep.get("date", ""))
+        pinned_date = manifest.get('rss_pub_dates', {}).get(str(ep.get('id')))
+        if pinned_date is not None:
+            # Legacy entries without a date must not appear newly published on
+            # every feed rebuild. Keep the captured RFC 822 value separately
+            # so existing episode records remain byte-for-byte equivalent.
+            if not isinstance(pinned_date, str) or parsedate_to_datetime(pinned_date).tzinfo is None:
+                raise ValueError('RSS publication date must include a timezone')
+        SubElement(item, "pubDate").text = pinned_date or _pub_date(ep.get("date", ""))
         SubElement(item, "itunes:duration").text = ep.get("duration", "")
 
         if isinstance(ep.get("id"), int):

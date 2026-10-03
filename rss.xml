@@ -254,7 +254,7 @@
       <itunes:summary>A short mock design interview about multi-tenant imports through one downstream API quota. Practise durable acceptance, fair scheduling, shared rate control, Retry-After, uncertain outcomes, and honest job status. Original practice, not a known Atlassian interview question.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/atlassian-design-shared-quota-importer.mp3?v=857d863f" length="4013997" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/atlassian-design-shared-quota-importer.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:21</itunes:duration>
       <itunes:episode>438</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/atlassian-design-shared-quota-importer.vtt" type="text/vtt" language="en"/>
@@ -266,7 +266,7 @@
       <itunes:summary>A compressed rehearsal of a fifteen-minute design conversation about Jira webhooks and a customer dashboard. Practise requirements, durable acceptance, duplicate and out-of-order events, fair scheduling, and a concise final answer. Original practice, not a known Atlassian interview question.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/atlassian-design-jira-dashboard-updates.mp3?v=4779e80c" length="4305453" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/atlassian-design-jira-dashboard-updates.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:58</itunes:duration>
       <itunes:episode>437</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/atlassian-design-jira-dashboard-updates.vtt" type="text/vtt" language="en"/>
@@ -278,7 +278,7 @@
       <itunes:summary>An interviewer and candidate design a tenant-isolated issue tracker. Rehearse create and read APIs, transactional search indexing, safe query caching, permission revocation, edit conflicts, and an indexing outage. Original practice, not a known Atlassian interview question.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/atlassian-design-issue-tracker-search.mp3?v=85abef75" length="3890925" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/atlassian-design-issue-tracker-search.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:06</itunes:duration>
       <itunes:episode>436</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/atlassian-design-issue-tracker-search.vtt" type="text/vtt" language="en"/>
@@ -290,7 +290,7 @@
       <itunes:summary>An interviewer and candidate design a multi-tenant approval workflow. Rehearse version preconditions, current authorization, atomic audit and outbox records, duplicate notifications, and regional failover. Original practice, not a known Atlassian interview question.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/atlassian-design-approval-audit-workflow.mp3?v=d149dc7d" length="4335213" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/atlassian-design-approval-audit-workflow.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:01</itunes:duration>
       <itunes:episode>435</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/atlassian-design-approval-audit-workflow.vtt" type="text/vtt" language="en"/>
@@ -302,7 +302,7 @@
       <itunes:summary>A valuation thought experiment, four possible futures, and a practical research programme. Distinguish learning early, building early and investing early. Prepared 8 September 2026. Part 3 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/future-investing-03-being-early-without-overpaying.mp3?v=89bf269f" length="5548460" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/future-investing-03-being-early-without-overpaying.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:33</itunes:duration>
       <itunes:episode>434</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/future-investing-03-being-early-without-overpaying.vtt" type="text/vtt" language="en"/>
@@ -314,7 +314,7 @@
       <itunes:summary>From AI workflows and electrical infrastructure to care, robotics and water: compare the customer economics, recurring revenue and failure conditions. Prepared 8 September 2026. Part 2 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/future-investing-02-who-keeps-the-profit.mp3?v=51da918c" length="5249324" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/future-investing-02-who-keeps-the-profit.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:56</itunes:duration>
       <itunes:episode>433</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/future-investing-02-who-keeps-the-profit.vtt" type="text/vtt" language="en"/>
@@ -326,7 +326,7 @@
       <itunes:summary>A research map of AI, electricity, ageing and resilience. Six structural changes, their economic connections, and why a world-changing technology can still disappoint investors. Prepared 8 September 2026. Part 1 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/future-investing-01-the-world-taking-shape.mp3?v=cebbb874" length="4970924" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/future-investing-01-the-world-taking-shape.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:21</itunes:duration>
       <itunes:episode>432</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/future-investing-01-the-world-taking-shape.vtt" type="text/vtt" language="en"/>
@@ -338,7 +338,7 @@
       <itunes:summary>The complete Quantium fit conversation played end to end: opening, motivation, production AI, full-stack depth, ambiguity, consulting gap, values, logistics, and questions about the team and interview process.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/quantium-screen-thirty-minute-mock.mp3?v=08a70dbc" length="6341420" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/quantium-screen-thirty-minute-mock.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>13:12</itunes:duration>
       <itunes:episode>431</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/quantium-screen-thirty-minute-mock.vtt" type="text/vtt" language="en"/>
@@ -350,7 +350,7 @@
       <itunes:summary>The complete Macquarie recruiter call played end to end, with a compact introduction, role motivation, logistics, an honest technology boundary, title clarification, and two questions for the panel handoff.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/macquarie-screen-fifteen-minute-mock.mp3?v=7a15ed01" length="4187180" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/macquarie-screen-fifteen-minute-mock.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:43</itunes:duration>
       <itunes:episode>430</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/macquarie-screen-fifteen-minute-mock.vtt" type="text/vtt" language="en"/>
@@ -362,7 +362,7 @@
       <itunes:summary>The security-remediation platform as a two-minute interview story, followed by the full-stack proof, the honest consulting gap, and the evidence behind Quantium's values of care, impact, and shared capability.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/quantium-screen-production-ai-story.mp3?v=22e6d771" length="4336748" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/quantium-screen-production-ai-story.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:02</itunes:duration>
       <itunes:episode>429</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/quantium-screen-production-ai-story.vtt" type="text/vtt" language="en"/>
@@ -374,7 +374,7 @@
       <itunes:summary>The short recruiter answers most likely to fill the Macquarie call: current role, work rights, AI usage, technical fit, notice, hybrid work, salary, gaps, and next steps.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/macquarie-screen-fast-answers.mp3?v=6df4e1e8" length="4306220" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/macquarie-screen-fast-answers.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:58</itunes:duration>
       <itunes:episode>428</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/macquarie-screen-fast-answers.vtt" type="text/vtt" language="en"/>
@@ -386,7 +386,7 @@
       <itunes:summary>A focused opening for Sun's Quantium conversation, followed by why Consulting Engineering, why this move, and how to connect production AI evidence to Quantium's purpose and values without reciting the website.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/quantium-screen-first-ninety-seconds.mp3?v=22ebb8e5" length="4200620" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/quantium-screen-first-ninety-seconds.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:45</itunes:duration>
       <itunes:episode>427</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/quantium-screen-first-ninety-seconds.vtt" type="text/vtt" language="en"/>
@@ -398,7 +398,7 @@
       <itunes:summary>A concise opening for Aaron's recruiter call, followed by why Macquarie, why this move, and the exact clarification that keeps the AI Engineer title aligned with the original application.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/macquarie-screen-first-ninety-seconds.mp3?v=5cd60509" length="4378028" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/macquarie-screen-first-ninety-seconds.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:07</itunes:duration>
       <itunes:episode>426</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/macquarie-screen-first-ninety-seconds.vtt" type="text/vtt" language="en"/>
@@ -410,7 +410,7 @@
       <itunes:summary>The Tomoro ConvFinQA take-home as a four-evening agent-driven build: the replay gate that makes scoring testable, grounding split into veto and signal, one variable per run, and the five measurement traps that cost real points.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-convfinqa-agent-drive.mp3?v=89d759d3" length="7248620" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-convfinqa-agent-drive.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>15:06</itunes:duration>
       <itunes:episode>425</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-convfinqa-agent-drive.vtt" type="text/vtt" language="en"/>
@@ -422,7 +422,7 @@
       <itunes:summary>Thumbelina, born from a tulip no bigger than a thumb, carried away by a toad, rescued by golden fishes, and finally flown to the warm countries by the swallow she saved. Told slowly and gently, for drifting off to sleep.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/thumbelina.mp3?v=2850c5ed" length="3082221" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/thumbelina.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:25</itunes:duration>
       <itunes:episode>424</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/thumbelina.vtt" type="text/vtt" language="en"/>
@@ -434,7 +434,7 @@
       <itunes:summary>The coding test is not LeetCode, there is no AI environment, and Python fundamentals are what they say they want. Here is the seven day plan built around those constraints.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-seven-day-prep.mp3?v=fd362155" length="6092973" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-seven-day-prep.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:41</itunes:duration>
       <itunes:episode>423</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-seven-day-prep.vtt" type="text/vtt" language="en"/>
@@ -446,7 +446,7 @@
       <itunes:summary>Natural language to SQL using locally hosted models: schema-aware prompting, read-only database roles, benchmark notebooks measuring accuracy, and the security architecture preventing arbitrary query execution.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-text-to-sql.mp3?v=f0dd1d1d" length="5208621" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-text-to-sql.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:51</itunes:duration>
       <itunes:episode>422</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-text-to-sql.vtt" type="text/vtt" language="en"/>
@@ -458,7 +458,7 @@
       <itunes:summary>A production scheduler for plastic bottle manufacturing: purchase orders queued FIFO, per-line capacity constraints, material availability windows, ETA computation, and a five-state fulfillment model that makes status readable.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-supply-chain.mp3?v=7bbdde7e" length="5088813" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-supply-chain.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:36</itunes:duration>
       <itunes:episode>421</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-supply-chain.vtt" type="text/vtt" language="en"/>
@@ -470,7 +470,7 @@
       <itunes:summary>A two-pass workflow turning sales call transcripts into structured CRM payloads and grounded follow-up emails: forced tool use, Pydantic validation, MEDDIC fields with confidence levels, and why the email can only read the JSON.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-sales-transcript-crm.mp3?v=49c10a09" length="5036781" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-sales-transcript-crm.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:29</itunes:duration>
       <itunes:episode>420</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-sales-transcript-crm.vtt" type="text/vtt" language="en"/>
@@ -482,7 +482,7 @@
       <itunes:summary>An inbound voice agent for freight brokerages: carriers call in, the system vets them, searches loads, negotiates rates, and books. Real-time voice UX, tool calling under latency constraints, and the ethics of autonomous pricing.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-freight-voice-agent.mp3?v=e2d12484" length="5089389" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-freight-voice-agent.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:36</itunes:duration>
       <itunes:episode>419</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-freight-voice-agent.vtt" type="text/vtt" language="en"/>
@@ -494,7 +494,7 @@
       <itunes:summary>Enterprise client onboarding through CSV feed validation: canonical mapping, reject-warn-autocorrect classification, idempotent re-ingestion, and the follow-up email that builds trust while surfacing problems.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-feed-validation.mp3?v=4001c79c" length="4928493" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-feed-validation.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:16</itunes:duration>
       <itunes:episode>418</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-feed-validation.vtt" type="text/vtt" language="en"/>
@@ -506,7 +506,7 @@
       <itunes:summary>A multi-stage document-to-HTML conversion pipeline: drag-and-drop upload, topic grouping, staged processing with progress tracking, error recovery, concurrent batches, and rate limiting that keeps external APIs alive.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-document-pipeline.mp3?v=db4c3a6c" length="4992429" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-document-pipeline.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:24</itunes:duration>
       <itunes:episode>417</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-document-pipeline.vtt" type="text/vtt" language="en"/>
@@ -518,7 +518,7 @@
       <itunes:summary>A retrieval-augmented decision support system for clinical prior authorization: policy PDFs, patient charts, structured verdicts with inline citations, and the safety architecture that keeps hallucination out of medicine.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-clinical-rag.mp3?v=a78da693" length="6104685" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-clinical-rag.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:43</itunes:duration>
       <itunes:episode>416</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-clinical-rag.vtt" type="text/vtt" language="en"/>
@@ -530,7 +530,7 @@
       <itunes:summary>A conversational assessment recommender using stateless architecture: TF-IDF retrieval, two-call routing and generation, self-describing replies as memory, and the null-versus-empty distinction that makes API contracts honest.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-assessment-recommender.mp3?v=b59ea206" length="5790381" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-assessment-recommender.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:03</itunes:duration>
       <itunes:episode>415</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-assessment-recommender.vtt" type="text/vtt" language="en"/>
@@ -542,7 +542,7 @@
       <itunes:summary>A detailed teaching walkthrough of the Acme Cloud support-assistant rehearsal: messy policy documents, section-level BM25, provider-neutral generation, citations, refusals, clarification behavior, offline evals, and the production plan.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-support-assistant.mp3?v=946d866e" length="11274285" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-support-assistant.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>23:29</itunes:duration>
       <itunes:episode>414</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-support-assistant.vtt" type="text/vtt" language="en"/>
@@ -554,7 +554,7 @@
       <itunes:summary>A detailed teaching walkthrough of the Marlow and Co catalog-search take-home: customer framing, BM25 retrieval, the MCP contract, refusal behavior, golden-set evals, the cold grader's findings, production gaps, and the next decisions.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-takehome-catalog-search.mp3?v=5327aa54" length="12068973" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-takehome-catalog-search.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>25:08</itunes:duration>
       <itunes:episode>413</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-takehome-catalog-search.vtt" type="text/vtt" language="en"/>
@@ -566,7 +566,7 @@
       <itunes:summary>Fan-out that finds your rate limit, retries that double-charge, caches that serve yesterday, and the checkpoint table nobody planned for.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/langgraph-04-what-breaks-in-production.mp3?v=c1a6050d" length="4121133" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/langgraph-04-what-breaks-in-production.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:35</itunes:duration>
       <itunes:episode>412</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/langgraph-04-what-breaks-in-production.vtt" type="text/vtt" language="en"/>
@@ -688,7 +688,7 @@
       <itunes:summary>One line of setup buys memory, crash recovery, human approval and time travel. Plus the re-execution rule that causes duplicate charges.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/langgraph-03-checkpoints-and-the-pause.mp3?v=490062a6" length="4248237" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/langgraph-03-checkpoints-and-the-pause.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:50</itunes:duration>
       <itunes:episode>400</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/langgraph-03-checkpoints-and-the-pause.vtt" type="text/vtt" language="en"/>
@@ -700,7 +700,7 @@
       <itunes:summary>The state schema is the design. Reducers are where the real bugs live, and parallel branches are why they exist.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/langgraph-02-state-and-reducers.mp3?v=23a9f57b" length="4299885" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/langgraph-02-state-and-reducers.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:57</itunes:duration>
       <itunes:episode>399</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/langgraph-02-state-and-reducers.vtt" type="text/vtt" language="en"/>
@@ -712,7 +712,7 @@
       <itunes:summary>The agent loop everyone writes first, the four things it cannot do, and what a graph gives you instead.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/langgraph-01-why-a-graph.mp3?v=57e871f2" length="4613997" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/langgraph-01-why-a-graph.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:36</itunes:duration>
       <itunes:episode>398</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/langgraph-01-why-a-graph.vtt" type="text/vtt" language="en"/>
@@ -724,7 +724,7 @@
       <itunes:summary>Thirty minutes played end to end with no commentary. Every answer from the series, in the order a real recruiter call runs, including the interruptions.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-full-mock.mp3?v=5afeadc8" length="8099949" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-full-mock.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>16:52</itunes:duration>
       <itunes:episode>397</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-full-mock.vtt" type="text/vtt" language="en"/>
@@ -736,7 +736,7 @@
       <itunes:summary>Six minutes at the end belong to you. Which three questions to ask a recruiter rather than an engineer, and how to read what comes back.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-your-questions.mp3?v=ed9437fc" length="3684141" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-your-questions.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>7:40</itunes:duration>
       <itunes:episode>396</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-your-questions.vtt" type="text/vtt" language="en"/>
@@ -748,7 +748,7 @@
       <itunes:summary>The same job in the same city is advertised three times, and he applied to the cheapest. The middle advert pays ninety-five thousand more, and his own pack told him to skip it. One question, asked early, that puts the money back on the table.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-two-bands.mp3?v=f8e2669f" length="4271853" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-two-bands.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:53</itunes:duration>
       <itunes:episode>395</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-two-bands.vtt" type="text/vtt" language="en"/>
@@ -760,7 +760,7 @@
       <itunes:summary>Four months of production, no fine-tuning, no Spark, no billable consulting and no reporting line. Each one named before she has to ask, in the words that make naming it a strength.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-the-gaps.mp3?v=65899a5b" length="3984429" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-the-gaps.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:18</itunes:duration>
       <itunes:episode>394</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-the-gaps.vtt" type="text/vtt" language="en"/>
@@ -772,7 +772,7 @@
       <itunes:summary>The only technical test in a recruiter screen is whether she can retell your work. Three versions of the security platform, at thirty seconds, two minutes, and under follow-up.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-explain-it-plainly.mp3?v=5610b021" length="3825837" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-explain-it-plainly.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>7:58</itunes:duration>
       <itunes:episode>393</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-explain-it-plainly.vtt" type="text/vtt" language="en"/>
@@ -784,7 +784,7 @@
       <itunes:summary>The question this screen exists to filter on. Not why OpenAI, but why customer-facing technical work, in a way that would be false about a pure engineering job.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-why-forward-deployed.mp3?v=3fcee240" length="3907437" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-why-forward-deployed.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:08</itunes:duration>
       <itunes:episode>392</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-why-forward-deployed.vtt" type="text/vtt" language="en"/>
@@ -796,7 +796,7 @@
       <itunes:summary>Tell me about yourself, answered in ninety seconds, then pulled apart move by move. Plus the harder one underneath it: why are you leaving.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-first-ninety-seconds.mp3?v=23b22920" length="4005741" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-first-ninety-seconds.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:20</itunes:duration>
       <itunes:episode>391</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-first-ninety-seconds.vtt" type="text/vtt" language="en"/>
@@ -808,7 +808,7 @@
       <itunes:summary>A ten billion dollar joint venture, an acquisition that closed in July and a second one that has not, and the Australian team you would be joining. Everything checkable, as of the eighteenth of August.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-what-deployco-is.mp3?v=1f6a52b5" length="4720749" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-what-deployco-is.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:50</itunes:duration>
       <itunes:episode>390</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-what-deployco-is.vtt" type="text/vtt" language="en"/>
@@ -820,7 +820,7 @@
       <itunes:summary>What the first call at the OpenAI Deployment Company is actually for, who Isabelle Atack is, and the three requisitions behind one job that decide how much it pays.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/deployco-screen-thirty-minutes.mp3?v=2783077b" length="4453677" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/deployco-screen-thirty-minutes.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>9:16</itunes:duration>
       <itunes:episode>389</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/deployco-screen-thirty-minutes.vtt" type="text/vtt" language="en"/>
@@ -832,7 +832,7 @@
       <itunes:summary>The depth episode under the largest domain. What each inference parameter actually changes, the prompt techniques by name, and the three prompt attacks the exam expects you to tell apart.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-prompting-and-inference.mp3?v=de298566" length="4869933" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-prompting-and-inference.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:08</itunes:duration>
       <itunes:episode>388</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-prompting-and-inference.vtt" type="text/vtt" language="en"/>
@@ -844,7 +844,7 @@
       <itunes:summary>Twenty percent, and the only domain where the correct answer is allowed to be worse. Purchase models, storage classes and their minimum durations, and the transfer charge that dwarfs the compute.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-domain4-cost-optimized.mp3?v=d04dab09" length="5534253" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-domain4-cost-optimized.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:31</itunes:duration>
       <itunes:episode>387</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-domain4-cost-optimized.vtt" type="text/vtt" language="en"/>
@@ -856,7 +856,7 @@
       <itunes:summary>Twenty four percent. The exam never asks which service is fastest. It hands you an access pattern in two sentences and expects the family that fits it: compute, storage, database, and the four places a cache can live.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-domain3-high-performing.mp3?v=3b488946" length="5450157" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-domain3-high-performing.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:21</itunes:duration>
       <itunes:episode>386</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-domain3-high-performing.vtt" type="text/vtt" language="en"/>
@@ -868,7 +868,7 @@
       <itunes:summary>Twenty six percent. Two numbers decide every answer in this domain, the standby that serves nobody, and why a queue is a resilience control rather than a performance one.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-domain2-resilient.mp3?v=661789c3" length="5280429" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-domain2-resilient.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:00</itunes:duration>
       <itunes:episode>385</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-domain2-resilient.vtt" type="text/vtt" language="en"/>
@@ -880,7 +880,7 @@
       <itunes:summary>Eighteen percent, from the edge inward. Which layer sees which attack, encryption between nodes, and the content the new exam version added that nobody else is teaching: guardrails for a generative model, and the ways one gets attacked.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-domain3-infrastructure-security.mp3?v=90f9a649" length="5706861" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-domain3-infrastructure-security.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:53</itunes:duration>
       <itunes:episode>384</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-domain3-infrastructure-security.vtt" type="text/vtt" language="en"/>
@@ -892,7 +892,7 @@
       <itunes:summary>Eighteen percent, and most of it is one service. Why an administrator with full permissions still cannot decrypt, what a grant is really for, imported key material, and the rotation everybody misunderstands.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-domain5-data-protection.mp3?v=725b5e57" length="5667885" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-domain5-data-protection.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:48</itunes:duration>
       <itunes:episode>383</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-domain5-data-protection.vtt" type="text/vtt" language="en"/>
@@ -904,7 +904,7 @@
       <itunes:summary>Fourteen percent. The alarm has already gone off. Isolation before termination, why deactivating a key does not stop the attacker, and the sessions you cannot revoke by revoking anything.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-domain2-incident-response.mp3?v=94742f7e" length="5383149" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-domain2-incident-response.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:12</itunes:duration>
       <itunes:episode>382</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-domain2-incident-response.vtt" type="text/vtt" language="en"/>
@@ -916,7 +916,7 @@
       <itunes:summary>Sixteen percent. Seven services all claim to detect something, and the exam never asks which is best. It asks which one would have seen this particular event, and every wrong answer detects something real.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-domain1-detection.mp3?v=94c0d9f0" length="5537517" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-domain1-detection.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:32</itunes:duration>
       <itunes:episode>381</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-domain1-detection.vtt" type="text/vtt" language="en"/>
@@ -928,7 +928,7 @@
       <itunes:summary>The selection criteria the exam expects you to weigh, the metrics with strange names and what each one is for, and why accuracy is the most misleading number in machine learning.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-evaluation-and-model-choice.mp3?v=579cbc8c" length="4825005" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-evaluation-and-model-choice.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>10:03</itunes:duration>
       <itunes:episode>380</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-evaluation-and-model-choice.vtt" type="text/vtt" language="en"/>
@@ -940,7 +940,7 @@
       <itunes:summary>The largest domain, twenty percent. Five kinds of policy have an opinion about one request, and the exam wants to know what survives. Evaluation order, permission boundaries, and the deny you cannot see.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-domain4-identity-access.mp3?v=35813ae5" length="5681901" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-domain4-identity-access.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:50</itunes:duration>
       <itunes:episode>379</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-domain4-identity-access.vtt" type="text/vtt" language="en"/>
@@ -952,7 +952,7 @@
       <itunes:summary>At cluster scale, hardware failure stops being an incident and becomes a rate. The arithmetic of checkpointing, why more often is not obviously better, and what managed resilience actually changes.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-training-at-scale.mp3?v=8f2f5f17" length="5728173" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-training-at-scale.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:55</itunes:duration>
       <itunes:episode>378</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-training-at-scale.vtt" type="text/vtt" language="en"/>
@@ -964,7 +964,7 @@
       <itunes:summary>Serving economics from first principles. Why utilisation beats every other optimisation, what latency really costs you in throughput, and the honest comparison between renting a model and running one.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-serving-and-cost.mp3?v=047d2ec3" length="5859117" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-serving-and-cost.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:12</itunes:duration>
       <itunes:episode>377</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-serving-and-cost.vtt" type="text/vtt" language="en"/>
@@ -976,7 +976,7 @@
       <itunes:summary>Why a cluster runs at the speed of its worst machine, what an all-reduce actually costs, and the hundredfold gap between the wire and local memory.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-network.mp3?v=04aa0365" length="6023853" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-network.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:32</itunes:duration>
       <itunes:episode>376</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-network.vtt" type="text/vtt" language="en"/>
@@ -988,7 +988,7 @@
       <itunes:summary>A model that serves on one machine can need dozens to train. The arithmetic behind that, why the optimiser costs more than the weights, and what quantisation actually buys.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-memory.mp3?v=875ff6f2" length="5940525" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-memory.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:22</itunes:duration>
       <itunes:episode>375</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-memory.vtt" type="text/vtt" language="en"/>
@@ -1000,7 +1000,7 @@
       <itunes:summary>Compute, memory, network, storage. Why the headline petaflops number is almost never what limits you, and the one ratio that explains the whole machine.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-four-bottlenecks.mp3?v=16c8b28d" length="5752941" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-four-bottlenecks.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:59</itunes:duration>
       <itunes:episode>374</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-four-bottlenecks.vtt" type="text/vtt" language="en"/>
@@ -1012,7 +1012,7 @@
       <itunes:summary>Graphics processors, Trainium and Inferentia. What genuinely differs, what the price-performance claim means, and the honest case for paying more to stay on the familiar one.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/ai-infra-accelerators.mp3?v=a21e38e9" length="5889837" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/ai-infra-accelerators.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:16</itunes:duration>
       <itunes:episode>373</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/ai-infra-accelerators.vtt" type="text/vtt" language="en"/>
@@ -1024,7 +1024,7 @@
       <itunes:summary>The night-before episode. Nine pairs of AWS services that will appear in the same question, and the single word that separates each one.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-service-discriminators.mp3?v=6eb4709f" length="5750637" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-service-discriminators.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:58</itunes:duration>
       <itunes:episode>372</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-service-discriminators.vtt" type="text/vtt" language="en"/>
@@ -1036,7 +1036,7 @@
       <itunes:summary>The machine learning engineer exam has a deadline on it. Where the marks are, why the biggest domain is not modelling, and whether to sit the beta instead.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-exam-map.mp3?v=9d47d683" length="5362989" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-exam-map.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:10</itunes:duration>
       <itunes:episode>371</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-exam-map.vtt" type="text/vtt" language="en"/>
@@ -1048,7 +1048,7 @@
       <itunes:summary>Drift you cannot see without labels, the four things Model Monitor actually watches, rightsizing an inference fleet, and the security questions that decide a quarter of the exam.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-domain4-monitoring-security.mp3?v=296b88dd" length="5501037" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-domain4-monitoring-security.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:27</itunes:duration>
       <itunes:episode>370</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-domain4-monitoring-security.vtt" type="text/vtt" language="en"/>
@@ -1060,7 +1060,7 @@
       <itunes:summary>The four ways SageMaker serves a model and how to tell them apart in one sentence, the orchestrators that overlap, and the deployment strategies the exam expects by name.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-domain3-deployment-orchestration.mp3?v=ec3cdaa1" length="5539245" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-domain3-deployment-orchestration.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:32</itunes:duration>
       <itunes:episode>369</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-domain3-deployment-orchestration.vtt" type="text/vtt" language="en"/>
@@ -1072,7 +1072,7 @@
       <itunes:summary>Choosing an approach, training it, and judging whether it worked. When not to train at all, why accuracy is the most dangerous metric on the exam, and the tuning strategy that is almost always the right answer.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-domain2-model-development.mp3?v=c579d71b" length="5651949" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-domain2-model-development.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:46</itunes:duration>
       <itunes:episode>368</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-domain2-model-development.vtt" type="text/vtt" language="en"/>
@@ -1084,7 +1084,7 @@
       <itunes:summary>Data preparation is the largest domain on the exam. File formats that decide your bill, the four transform tools that overlap, and why the same feature computed twice is the classic production failure.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mla-c01-domain1-data-preparation.mp3?v=d0864267" length="5419821" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mla-c01-domain1-data-preparation.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:17</itunes:duration>
       <itunes:episode>367</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/mla-c01-domain1-data-preparation.vtt" type="text/vtt" language="en"/>
@@ -1096,7 +1096,7 @@
       <itunes:summary>Sixty five questions, fifty of them scored, and four domains that are nothing like equal. Where forty hours of study should actually go.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-exam-map.mp3?v=0cafb0a0" length="5780973" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-exam-map.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:02</itunes:duration>
       <itunes:episode>366</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-exam-map.vtt" type="text/vtt" language="en"/>
@@ -1108,7 +1108,7 @@
       <itunes:summary>The second half of the security domain: public and private subnets, the two firewall objects everyone confuses, endpoints, and encryption at rest and in transit.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-domain1-network-data.mp3?v=bfc88c36" length="5460333" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-domain1-network-data.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:22</itunes:duration>
       <itunes:episode>365</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-domain1-network-data.vtt" type="text/vtt" language="en"/>
@@ -1120,7 +1120,7 @@
       <itunes:summary>Identity, roles and cross-account access. What happens when an identity policy and a resource policy say different things, and why the answer changes across an account boundary.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/saa-c03-domain1-identity.mp3?v=b91de4ec" length="5961645" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/saa-c03-domain1-identity.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>12:25</itunes:duration>
       <itunes:episode>364</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/saa-c03-domain1-identity.vtt" type="text/vtt" language="en"/>
@@ -1132,7 +1132,7 @@
       <itunes:summary>The Security Specialty exam was rewritten in December twenty twenty five. Six domains, seven hundred and fifty to pass, and a list of topics AWS deleted that you may still be studying.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/scs-c03-exam-map.mp3?v=9d038382" length="5679213" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/scs-c03-exam-map.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>11:49</itunes:duration>
       <itunes:episode>363</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/scs-c03-exam-map.vtt" type="text/vtt" language="en"/>
@@ -1144,7 +1144,7 @@
       <itunes:summary>Code mode: the model writes JavaScript that calls tools, executed in an embedded V8 — and why that changes the economics of an agent.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-07-code-mode.mp3?v=a87f9b0f" length="2462637" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-07-code-mode.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:07</itunes:duration>
       <itunes:episode>362</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-07-code-mode.vtt" type="text/vtt" language="en"/>
@@ -1156,7 +1156,7 @@
       <itunes:summary>Append-only JSON Lines, a scanner that reads backwards, and why resuming an agent is a reconstruction problem rather than a load.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-06-sessions-are-event-logs.mp3?v=97247eec" length="2620269" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-06-sessions-are-event-logs.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:27</itunes:duration>
       <itunes:episode>361</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-06-sessions-are-event-logs.vtt" type="text/vtt" language="en"/>
@@ -1168,7 +1168,7 @@
       <itunes:summary>A second model that reviews the agent's own actions, judged against a written security policy, failing closed on every error path.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-05-the-guardian.mp3?v=9b07ad6b" length="2788653" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-05-the-guardian.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:48</itunes:duration>
       <itunes:episode>360</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-05-the-guardian.vtt" type="text/vtt" language="en"/>
@@ -1180,7 +1180,7 @@
       <itunes:summary>Compaction as a first-class lifecycle with hooks and triggers, and why history should never be a plain list.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-04-context-is-a-budget.mp3?v=e1f50388" length="2612205" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-04-context-is-a-budget.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:26</itunes:duration>
       <itunes:episode>359</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-04-context-is-a-budget.vtt" type="text/vtt" language="en"/>
@@ -1192,7 +1192,7 @@
       <itunes:summary>Approval as a three-valued decision, defence in depth, and the hardlink case that explains why policy alone is never enough.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-03-permission-is-the-product.mp3?v=8818193c" length="2535021" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-03-permission-is-the-product.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:16</itunes:duration>
       <itunes:episode>358</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-03-permission-is-the-product.vtt" type="text/vtt" language="en"/>
@@ -1204,7 +1204,7 @@
       <itunes:summary>Why Codex keeps every tool's schema in a separate file from its implementation, and what that separation buys.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-02-tools-are-interfaces.mp3?v=57beeab6" length="2523117" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-02-tools-are-interfaces.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:15</itunes:duration>
       <itunes:episode>357</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-02-tools-are-interfaces.vtt" type="text/vtt" language="en"/>
@@ -1216,7 +1216,7 @@
       <itunes:summary>What a production agent loop actually contains, and why the while-loop-plus-tools mental model falls apart immediately.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agents-01-the-shape.mp3?v=f5f25022" length="2631981" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agents-01-the-shape.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:28</itunes:duration>
       <itunes:episode>356</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agents-01-the-shape.vtt" type="text/vtt" language="en"/>
@@ -1228,7 +1228,7 @@
       <itunes:summary>Model, infrastructure, or application: which layer keeps the margin, and what a real moat looks like when everyone can call the same API.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agentic-03-where-value-accrues.mp3?v=0cb7eadd" length="2681709" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agentic-03-where-value-accrues.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:35</itunes:duration>
       <itunes:episode>355</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agentic-03-where-value-accrues.vtt" type="text/vtt" language="en"/>
@@ -1240,7 +1240,7 @@
       <itunes:summary>Depreciation schedules, off-balance-sheet leases, and circular financing: the three arguments the skeptics actually make.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agentic-02-the-bear-case.mp3?v=4ce952fe" length="2917101" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agentic-02-the-bear-case.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:04</itunes:duration>
       <itunes:episode>354</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agentic-02-the-bear-case.vtt" type="text/vtt" language="en"/>
@@ -1252,7 +1252,7 @@
       <itunes:summary>What the agentic AI market actually is in numbers, and the single gap that explains most of the disagreement about it.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/agentic-01-the-map.mp3?v=296652af" length="2498541" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/agentic-01-the-map.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:12</itunes:duration>
       <itunes:episode>353</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/agentic-01-the-map.vtt" type="text/vtt" language="en"/>
@@ -1494,7 +1494,7 @@
       <itunes:summary>The night-before drill: every pair of AWS AI services the exam confuses, and the one line that separates them.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-service-discriminators.mp3?v=2892a7c7" length="3131373" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-service-discriminators.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:31</itunes:duration>
       <itunes:episode>329</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-service-discriminators.vtt" type="text/vtt" language="en"/>
@@ -1506,7 +1506,7 @@
       <itunes:summary>How the AI Practitioner exam is actually built: sixty-five questions, five domains, and where the marks really are.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-exam-map.mp3?v=6232ca22" length="2857005" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-exam-map.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:57</itunes:duration>
       <itunes:episode>328</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-exam-map.vtt" type="text/vtt" language="en"/>
@@ -1518,7 +1518,7 @@
       <itunes:summary>The final fourteen percent: IAM, encryption, data protection, and who is responsible for what.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-domain5-security-governance.mp3?v=70bec1ed" length="3135597" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-domain5-security-governance.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:31</itunes:duration>
       <itunes:episode>327</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-domain5-security-governance.vtt" type="text/vtt" language="en"/>
@@ -1530,7 +1530,7 @@
       <itunes:summary>Fourteen percent, and the cheapest marks on the paper: bias, fairness, transparency, and the AWS tooling for each.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-domain4-responsible-ai.mp3?v=e533fcad" length="3177837" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-domain4-responsible-ai.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:37</itunes:duration>
       <itunes:episode>326</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-domain4-responsible-ai.vtt" type="text/vtt" language="en"/>
@@ -1542,7 +1542,7 @@
       <itunes:summary>The largest domain at twenty eight percent: prompt engineering, RAG, fine tuning, agents, and how to choose between them.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-domain3-applications-foundation-models.mp3?v=5152c765" length="3209901" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-domain3-applications-foundation-models.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:41</itunes:duration>
       <itunes:episode>325</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-domain3-applications-foundation-models.vtt" type="text/vtt" language="en"/>
@@ -1554,7 +1554,7 @@
       <itunes:summary>Twenty four percent of the exam: tokens, embeddings, foundation models, and what Amazon Bedrock actually is.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-domain2-genai-fundamentals.mp3?v=f74e5345" length="3238509" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-domain2-genai-fundamentals.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:44</itunes:duration>
       <itunes:episode>324</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-domain2-genai-fundamentals.vtt" type="text/vtt" language="en"/>
@@ -1566,7 +1566,7 @@
       <itunes:summary>Twenty percent of the exam: the vocabulary, the learning types, and the AWS services that do the classic AI jobs.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/aif-c01-domain1-ai-ml-fundamentals.mp3?v=be0c7f25" length="3570093" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/aif-c01-domain1-ai-ml-fundamentals.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>7:26</itunes:duration>
       <itunes:episode>323</itunes:episode>
       <podcast:transcript url="https://podcast.mingli.world/transcripts/aif-c01-domain1-ai-ml-fundamentals.vtt" type="text/vtt" language="en"/>
@@ -1808,7 +1808,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — claim, lease, workers. Source: applications/airwallex/interview-speeches/speech-job_scheduler.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-job_scheduler.mp3" length="2222828" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-job_scheduler.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:37</itunes:duration>
       <itunes:episode>213</itunes:episode>
     </item>
@@ -1818,7 +1818,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — hot path hold, dedupe. Source: applications/airwallex/interview-speeches/speech-q6.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q6.mp3" length="1702892" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q6.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>3:32</itunes:duration>
       <itunes:episode>212</itunes:episode>
     </item>
@@ -1828,7 +1828,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — item idempotency, rate limits. Source: applications/airwallex/interview-speeches/speech-q8.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q8.mp3" length="2049836" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q8.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:16</itunes:duration>
       <itunes:episode>211</itunes:episode>
     </item>
@@ -1838,7 +1838,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — case workflow, AI≠truth. Source: applications/airwallex/interview-speeches/speech-q11.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q11.mp3" length="1763948" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q11.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>3:40</itunes:duration>
       <itunes:episode>210</itunes:episode>
     </item>
@@ -1848,7 +1848,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — home cell, fence, HA vs C. Source: applications/airwallex/interview-speeches/speech-q12.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q12.mp3" length="2169644" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q12.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:31</itunes:duration>
       <itunes:episode>209</itunes:episode>
     </item>
@@ -1858,7 +1858,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — indicative vs executable. Source: applications/airwallex/interview-speeches/speech-q3.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q3.mp3" length="1808492" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q3.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>3:46</itunes:duration>
       <itunes:episode>208</itunes:episode>
     </item>
@@ -1868,7 +1868,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — hard then soft, fail closed. Source: applications/airwallex/interview-speeches/speech-q5.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q5.mp3" length="1943468" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q5.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:02</itunes:duration>
       <itunes:episode>207</itunes:episode>
     </item>
@@ -1878,7 +1878,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — match, case, repair journals. Source: applications/airwallex/interview-speeches/speech-q7.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q7.mp3" length="1978604" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q7.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:07</itunes:duration>
       <itunes:episode>206</itunes:episode>
     </item>
@@ -1888,7 +1888,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — untrusted planner, policy tiers. Source: applications/airwallex/interview-speeches/speech-q10.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q10.mp3" length="2352428" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q10.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>4:53</itunes:duration>
       <itunes:episode>205</itunes:episode>
     </item>
@@ -1898,7 +1898,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — outbox, backoff, SSRF. Source: applications/airwallex/interview-speeches/speech-q9.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q9.mp3" length="2415980" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q9.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:01</itunes:duration>
       <itunes:episode>204</itunes:episode>
     </item>
@@ -1908,7 +1908,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — idempotent accept, bulkheads. Source: applications/airwallex/interview-speeches/speech-q2.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q2.mp3" length="2624684" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q2.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:28</itunes:duration>
       <itunes:episode>203</itunes:episode>
     </item>
@@ -1918,7 +1918,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — state machine, unknown timeout. Source: applications/airwallex/interview-speeches/speech-q1.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q1.mp3" length="2607404" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q1.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>5:25</itunes:duration>
       <itunes:episode>202</itunes:episode>
     </item>
@@ -1928,7 +1928,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — journal SoT, outbox. Source: applications/airwallex/interview-speeches/speech-q4l.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q4l.mp3" length="2998892" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q4l.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>6:14</itunes:duration>
       <itunes:episode>201</itunes:episode>
     </item>
@@ -1938,7 +1938,7 @@
       <itunes:summary>Agenda-aligned ~10 minute monologue for Airwallex system design prep. 10-min agenda speech — Raft, SM, dedup, CQRS. Source: applications/airwallex/interview-speeches/speech-q4w.md</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/awx-speech-q4w.mp3" length="4279340" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/awx-speech-q4w.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>8:54</itunes:duration>
       <itunes:episode>200</itunes:episode>
     </item>
@@ -2038,7 +2038,7 @@
       <itunes:summary>LLM as untrusted planner, never the authorization layer. Tiered action model (Tier 0-3), deterministic policy engine, tool allowlists, server-generated payment intents with canonical summaries, prompt injection defense (6 layers), RAG for documentation, permissioned APIs for account data, step-up authentication for money movement, cross-tenant isolation at infrastructure level.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-financial-ai-assistant.mp3" length="8541932" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-financial-ai-assistant.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>17:47</itunes:duration>
       <itunes:episode>87</itunes:episode>
     </item>
@@ -2048,7 +2048,7 @@
       <itunes:summary>Transactional outbox pattern for guaranteed event creation, at-least-once delivery with merchant deduplication, per-endpoint queues for tenant isolation, HMAC-signed payloads with timestamp, SSRF protection (DNS rebinding, private IP blocks, redirect limits), exponential backoff with jitter, event replay, and event-list API for recovery.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-webhook-delivery.mp3" length="8100716" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-webhook-delivery.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>16:52</itunes:duration>
       <itunes:episode>86</itunes:episode>
     </item>
@@ -2058,7 +2058,7 @@
       <itunes:summary>Million-row batch processing with streaming validation, deterministic item keys for idempotency, partner-sharded work queues with rate limits, lease-based worker claims, aggregate funding reservation, partial cancellation semantics, and downloadable results. All-or-nothing for validation/funding, independent per-item execution.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-bulk-payouts.mp3" length="8029868" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-bulk-payouts.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>16:43</itunes:duration>
       <itunes:episode>85</itunes:episode>
     </item>
@@ -2068,7 +2068,7 @@
       <itunes:summary>Reconciliation as a continuous control system, not a nightly report. Immutable evidence ingestion, multi-phase matching algorithm (exact reference then fuzzy candidates), aggregate balance control, exception case management, safe repairs via compensating journals. Zero tolerance for unexplained money differences.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-reconciliation.mp3" length="7435628" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-reconciliation.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>15:29</itunes:duration>
       <itunes:episode>84</itunes:episode>
     </item>
@@ -2078,7 +2078,7 @@
       <itunes:summary>Authorization hold lifecycle, atomic check-and-reserve, deduplication by network transaction ID, clearing matching, partial clearing and incremental authorizations, disputes, stand-in mode with bounded offline limits, and card controls. 150ms SLA for real-time authorization decisions.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-card-issuing.mp3" length="7552940" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-card-issuing.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>15:44</itunes:duration>
       <itunes:episode>83</itunes:episode>
     </item>
@@ -2088,7 +2088,7 @@
       <itunes:summary>Immutable double-entry journal as source of truth, balance projections for reads, atomic reserve/settle/release flows, optimistic concurrency with version checks, FX conversion with balanced legs per currency, rounding entries, and balance rebuild from journal replay. Covers the same fundamentals as Airwallex's core ledger system.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/mock-v2-mock-wallet-ledger.mp3" length="8602604" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/mock-v2-mock-wallet-ledger.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>17:55</itunes:duration>
       <itunes:episode>82</itunes:episode>
     </item>
@@ -2098,7 +2098,7 @@
       <itunes:summary>Multi-jurisdiction KYC, fuzzy name matching (double metaphone + Levenshtein), risk scoring, ongoing monitoring, GDPR pseudonymization, KYC GenAI for false positive reduction, 5-min auto-approval.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-kyc-onboarding.mp3" length="9623276" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-kyc-onboarding.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>20:02</itunes:duration>
       <itunes:episode>81</itunes:episode>
     </item>
@@ -2108,7 +2108,7 @@
       <itunes:summary>Client-generated idempotency keys, Redis for speed + PostgreSQL for truth, same-transaction atomicity, unique constraint dedup, saga step idempotency, background reaper for stale records.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-idempotent-api.mp3" length="9560492" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-idempotent-api.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>19:54</itunes:duration>
       <itunes:episode>80</itunes:episode>
     </item>
@@ -2118,7 +2118,7 @@
       <itunes:summary>WebSocket price streaming, sub-100ms end-to-end, best bid/ask aggregation across providers, backpressure throttling, indicative vs tradeable rates, rate audit trail for regulators.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-fx-pricing.mp3" length="11498156" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-fx-pricing.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>23:57</itunes:duration>
       <itunes:episode>79</itunes:episode>
     </item>
@@ -2128,7 +2128,7 @@
       <itunes:summary>Active-active reads, leader-per-entity writes, synchronous replication, RPO &lt;1min, RTO &lt;5min, data sovereignty per jurisdiction, split-brain prevention, chaos engineering drills.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-multi-region.mp3" length="12685100" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-multi-region.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>26:25</itunes:duration>
       <itunes:episode>78</itunes:episode>
     </item>
@@ -2138,7 +2138,7 @@
       <itunes:summary>Deep Q&amp;A covering the 12 Airwallex interview topics — 5 generic plus 7 domain-specific. For each: killer questions interviewers ask, structured answers that score, common mistakes that lose points, and cross-cutting patterns like RESHADED.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-sdqa.mp3" length="17883116" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-sdqa.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>37:15</itunes:duration>
       <itunes:episode>77</itunes:episode>
     </item>
@@ -2148,7 +2148,7 @@
       <itunes:summary>Every number you need for system design interviews, organized around 12 real interview problems. Power numbers, latency defaults, throughput benchmarks, fintech-specific numbers, and how to derive any number from first principles when you forget.</itunes:summary>
       <enclosure url="https://podcast.mingli.world/episodes/sd-boe.mp3" length="17240300" type="audio/mpeg"/>
       <guid isPermaLink="true">https://podcast.mingli.world/episodes/sd-boe.mp3</guid>
-      <pubDate>Sat, 03 Oct 2026 09:59:04 +1000</pubDate>
+      <pubDate>Thu, 24 Sep 2026 11:21:48 +1000</pubDate>
       <itunes:duration>35:54</itunes:duration>
       <itunes:episode>76</itunes:episode>
     </item>

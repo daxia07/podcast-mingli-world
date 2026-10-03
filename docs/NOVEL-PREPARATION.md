@@ -96,7 +96,7 @@ against the shared audio. The coordinated app-shell version is 30.
 
 ## Verification
 
-The source suite currently passes 90 Node and 132 Python tests, including real
+The source suite currently passes 90 Node and 133 Python tests, including real
 codec, resumable-cache, targeted-retry, exact-evidence and stale-publish checks.
 Tests use synthetic codec fixtures where appropriate, and never make hidden
 production writes. Use Node 20 or newer.
@@ -107,3 +107,5 @@ normal sign-in, all three actual chapter entries, playback, seeking, 1.1×,
 next chapter, persisted progress/resume, HTTP 206, full deployed artifact hashes,
 and unchanged original catalogue records. Publication and acceptance status
 are recorded separately from immutable render receipts.
+
+Authenticated production acceptance passed on 2026-10-03 with actual deployed MP3s, without media substitution. Desktop and phone-sized screenshots were inspected. All three complete media, VTT, chapter and original text hashes matched; seeking, resume, 1.1×, next chapter, progress persistence and HTTP 206 passed. Original feed dates are pinned in top-level `rss_pub_dates` to preserve history without modifying any original episode record.

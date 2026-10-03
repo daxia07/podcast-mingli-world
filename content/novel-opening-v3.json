@@ -1,5 +1,5 @@
 {
-  "status": "Three exact V3 opening audio chapters published to the existing R2 catalogue; integrated site deployment and production browser acceptance pending.",
+  "status": "Three exact V3 opening chapters published; authenticated production playback and artifact/source hash checks passed. Full novel remains unfinished.",
   "working_title": "向后兼容",
   "source_sha256": "33271a5148c6b78542c949aa71e859fe7eeb922d80f70e89d6d709dcf09d7d4f",
   "chapters": [
@@ -44,6 +44,16 @@
     }
   ],
   "listening": "not performed; disclosed objective review passed for all 59 exact chunks",
-  "published": false,
-  "audio_published": true
+  "published": true,
+  "audio_published": true,
+  "verified_at": "2026-10-03T00:14:02.276Z",
+  "production_acceptance": {
+    "browser": "154.0.8037.95",
+    "playback": true,
+    "seek_resume_speed_next": true,
+    "byte_ranges_206": true,
+    "original_text_hashes_match": true,
+    "all_old_episode_and_show_records_equal": true,
+    "listening_performed": false
+  }
 }

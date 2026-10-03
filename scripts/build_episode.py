@@ -252,6 +252,7 @@ def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, 
 
     candidate = deepcopy(manifest)
     manifest_mod.add_or_update(candidate, entry)
+    candidate.setdefault('rss_pub_dates', {}).setdefault(str(bp.id), manifest_mod._pub_date(entry.get('date', '')))
     try:
         manifest_mod.attach_to_playlist(candidate, bp.show, bp.id)
     except KeyError as exc:
