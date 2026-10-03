@@ -1,41 +1,51 @@
-# Release status — 2026-10-02
+# Release evidence
 
-## Implemented and checked locally
+Verified requested URL: **https://video.mingli.world**. Existing podcast credentials are required. DNS alone was not treated as readiness: HTTPS, protected assets, existing-auth login and actual embedded playback were tested on that URL.
 
-Isolated static companion in `site/`, using inspected podcast architecture: vanilla ES modules and Cloudflare Pages, no build step. 14 original source-backed summary cards include 2026 sources and historical context. Explicit provenance, date type, role at event, evidence limits, commercial context, interpretations, conditional outlooks and practical experiments are visible in Source & context.
+## Delivered architecture
 
-Likes, named collections, exact-card return, reload persistence, topic choices, skips and bounded foreground dwell personalize recommendations. State stays in this browser, with export/reset and clear disclosure of no account sync. No third-party analytics or public interaction API exists.
+Separate Cloudflare Pages project `video-mingli-world`, Pages Functions guarding all assets, separate private R2 bucket `video-mingli-world-state`, vanilla ES modules. No video downloads/rehosting, full transcripts, third-party app analytics, new credentials/grants, paid plan or podcast production/catalogue changes. Original footage streams directly from official YouTube embeds after user action.
 
-Unit/model checks: five passed. Content validation: 14 IDs, complete provenance, HTTPS links. Headless Chrome tests cover mobile feed, like/save, named collections, return, reload, source context, gesture/navigation, skips/dwell, topic and dwell controls, and 320/390/1440 layouts. See `evidence/browser-results.json` and screenshots. This is emulated-browser testing; no physical phone or external video playback has been tested.
+Seven real playable source references, covering Jensen Huang, Alexandr Wang, Dario Amodei, Andrej Karpathy, Andrew Ng, Fei-Fei Li and Demis Hassabis. One 22-second complete paragraph is transcript-reviewed (Demis 53:06–53:28, primary Lex Fridman timestamped transcript). Six are honest 45-second anchor previews requiring further editorial boundary review. All 14 original analyses remain protected metadata; do not describe them as 14 videos or 14 reviewed clips.
 
-Review loops fixed small-screen content clipping, an upcoming-queue recommendation bug that excluded feedback on already-viewed cards, and idle-time measurement. Small-height cards grow vertically so all controls remain reachable; there is no horizontal overflow. Dwell pauses for dialogs, background/unfocused tabs and idle periods beyond 45 seconds.
+Simple authentication delegates to the existing podcast endpoints, with a host-only opaque secure cookie. All paths are gated; auth outages fail closed. One private owner profile provides cross-device likes, collections, preferences, source position/watch metrics, completion and observed availability/quality. It does not create separate per-user identities. Browser caching is disclosed as a fallback, not account durability.
 
-## Manual discovery; recurring configuration paused
+## Passed checks
 
-On `agent`, `/Users/ding/projects/video-mingli-world/scripts/refresh.py` is available manually. The newly created LaunchAgent `world.mingli.video.refresh` is unloaded and disabled pending scope approval; its preserved configuration specifies run-at-load and every 86400 seconds. The first run returned exit 0 with both official feeds successful and 14 editorial candidates. It writes private candidate/status files in the companion directory. It does not auto-author or publish claims. The website feed remains the reviewed curated edition until a source-backed editorial update is deployed.
+- 11 model/auth/profile tests, including rejected stale writes and CDN weak-ETag regression.
+- 14-analysis evidence/HTTPS validation; static-bundle credential/token scan.
+- Authenticated local feed checks: like, save, named collection, exact return, reload, real touch gesture, skips/dwell, recommendation effect, source context, opt-out, 320/390/1440 layouts and no runtime errors.
+- Requested-domain live checks: unauthenticated private assets/profile denied; existing-auth login; no-store responses; actual footage; player progress after reload and independent authenticated context; logout/relogin; next stops previous player; original-context link; mobile/desktop layout.
+- Live source matrix: all seven sources played; each emitted quality `large` in this logged-out-provider headless session. This is observed provider output, not an HD guarantee.
+- Actual UI likes, named collection and topic preference read from the private server by an independent login. Test-only preferences restored.
+- Complete reviewed paragraph actually played and stopped at its transcript boundary.
+- Provider unavailable-reference probe produced embed restriction code 150 and the explanatory source fallback, without persisting fake data or bypassing restrictions.
+- Separate deployed touch check passed: native touch scroll 0→716, card 2/7. The earlier combined matrix's final swipe assertion failed after its unavailable-player probe; retain that evidence rather than hiding it. A cleaner combined rerun is recorded separately when completed.
 
-## Deployment blocker and approval required
+The live test caught a real issue missed by fixtures: CDN compression produced weak HTTP ETags, which caused false conditional-write conflicts and prevented browser progress from syncing. Fixed using explicit profile-version headers plus legacy normalization, preserving real stale-write protection. Independent-session persistence then passed.
 
-No live companion URL exists yet. The requested destination is **https://video.mingli.world**; it must not be presented as live.
+## Limits
 
-Existing host Pages CLI can list projects but cannot create/deploy without `CLOUDFLARE_API_TOKEN` in the non-interactive environment. This Mac’s GitHub authorization is valid when network access is granted, and the existing `daxia07/podcast-mingli-world` CI has the `CLOUDFLARE_API_TOKEN` secret. Secret values were never copied or exposed.
+Physical-phone testing, other regions/provider-login states and guaranteed HD are unrun. Six preview-only items still need coherent editorial ends. App login does not sign into YouTube. Source providers control restrictions/quality and can change availability. One owner profile is shared across authenticated devices; simultaneous stale edits are rejected with a visible reload prompt. Watch state is periodically saved; an abrupt close can lose the most recent seconds while local cache remains.
 
-A concrete proposed CI release is staged in `deployment-ci/` on local branch `video-companion-release`. It only adds `video-companion/` and `.github/workflows/video-companion.yml`; existing podcast files are unchanged. The companion workflow creates a separate Pages project, deploys only companion static assets, then requests association of `video.mingli.world` and creates only that CNAME if absent. It stops if an incompatible record exists. It does not touch podcast R2, its Pages project, master branch or workflow. Whether the existing token has DNS scope is still unknown.
+## Hosting, auth and rollback
 
-**Automatic approval review rejected the push**: “Pushing this branch modifies the existing podcast repository and triggers a privileged CI workflow that can create Cloudflare resources and DNS records; that conflicts with the explicit instruction not to alter the existing podcast and exceeds authorization for deployment.” No push, CI run, Pages creation or DNS write occurred. The concrete next approval is permission to push this additive isolated branch and run this companion-only workflow using the existing CI secret, including only the requested hostname’s domain association/CNAME. Alternatively, an explicitly authorized separate existing credential route is needed. No new paid service, credential, permission change or unrelated infrastructure is proposed.
+Authoritative NS: dns17.hichina.com / dns18.hichina.com. Existing Aliyun owner route created only `video.mingli.world CNAME video-mingli-world.pages.dev`, TTL 600, record ID 2106158590498654208. Pages association and TLS are verified. The first CI DNS attempt wrongly assumed a Cloudflare zone; that was removed, with no added credential scopes.
 
-Earlier automatic review also rejected broad deployment-host credential/config inspection as a potential secret exposure, and rejected a progress message to the parent thread because the delegated request prohibited user-facing updates. Both actions were stopped; no workaround was attempted. The normal final-task result can notify the parent.
+CI runs and deployment commits are attached in release evidence. The podcast checkout's working files, original workflow, Pages project and R2 catalogue were not modified. An early accepted push targeted the local source clone's origin and created only an additive companion branch ref; origin was corrected to canonical GitHub before CI publication.
 
-## Delivery locations
+Rollback: use the companion Pages project's rollback to a prior **authenticated** deployment or publish a gated maintenance version through its isolated branch. Never disable middleware or roll back to public static hosting. Preserve the private R2 profile bucket. If removing the companion hostname is requested, the existing Aliyun owner helper can remove only the above newly created CNAME by its receipt ID; do not touch other records or the podcast project. No rollback has been performed.
 
-- Local source: `/Users/daxia/Documents/Codex/2026-10-02/task-5`
-- Static deploy directory: `site/`
-- Remote isolated companion: `agent:/Users/ding/projects/video-mingli-world`
-- Proposed release: `deployment-ci/`, local branch `video-companion-release`
-- Evidence: `evidence/`
+Discovery remains manual. Newly created `world.mingli.video.refresh` on `agent` is unloaded and disabled across login; its plist and first successful 14-candidate run are preserved. No new recurring notifications/messaging, paid API or automatic production-feed publication exists.
 
-## Updated authorized scope
+## Final state and held candidate
 
-The user explicitly approved the companion-only CI/hosting/DNS release, with matching simple authentication, playable video and persisted metrics/progress. This supersedes the earlier missing-authorization blocker for one retry of the same push; it does not reenable discovery. Implementation now includes seven official YouTube preview players and a private server-backed owner profile in a separate R2 bucket. All assets/profile endpoints are gated. Auth calls only the podcast’s existing HTTPS login/session routes and does not copy its credential constants or secret into the companion.
+Currently deployed commit: `72c22e534ae10cee02aeb3978840109dfc78f7cd`; successful CI https://github.com/daxia07/podcast-mingli-world/actions/runs/37076409183.
 
-Local checks after changes: 11 model/auth/profile tests, 14-card metadata validation, credential-literal/static-bundle scan and all feed acceptance interactions behind authenticated fixture passed. Live acceptance and external player checks are required after deployment; none should be inferred from fixture success. Any initial source-inspection redaction limitations are not a basis for claiming credentials were never displayed; current bundle/config/log checks avoid printing credential or token values.
+The combined source matrix again retained its final swipe failure after an unavailable probe on the final card and a Discover reset. It is not reported as a full matrix pass. The specific resilience requirement was then verified in the SAME live session: provider error 150 → accessible Next → card 2/7 → native touch swipe → card 3/7, scroll 0→716→1432, without reload/context reset, with original context still available. See `live-error-recovery.json` and screenshots. All seven real source playback checks, reviewed-boundary stop and independent UI state persistence passed.
+
+Automatic review rejected the last combined check/copy/commit/push command before execution, citing the stale AGENTS deployment block and absence of approval despite the explicit human approval relayed earlier. No retry or workaround followed. Exact command arguments/reason are in `evidence/final-approval-rejection.json`. This holds only the later local replay/status/reset refinements and final docs; the tested authenticated video release above remains live. A separate progress-message action was also rejected under the no-user-facing-updates instruction; final task delivery is the supported parent notification.
+
+## Integrated phone/recency candidate — not published
+
+See RECENCY-REVIEW.md. Four reviewed fresh ideas from three official videos were added locally; original dates are explicit. All four played and stopped at reviewed boundaries in the isolated phone fixture. Source/profile Functions and binding remain unchanged. Source-date/ranking tests, migration/collection-return acceptance, phone layouts and retained interaction checks are recorded in evidence. The source matrix after edition integration exposed a navigation reset bug: CSS smooth scrolling continued while rebuilding an edition, so Next could skip ahead. An explicit instant scroll reset plus observation of current geometry fixed it; same-session provider-error recovery passed afterward. The proposal replaces conditional provisioning CI steps with read-only existing-resource preflight; it has not been pushed or run.

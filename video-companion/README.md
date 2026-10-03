@@ -1,38 +1,44 @@
 # Video · Mingli
 
-A mobile-first vertical feed of short, original AI idea summaries. The companion follows the podcast’s vanilla JavaScript / Cloudflare Pages architecture and does not change its runtime, R2 contents or source checkout.
+Currently deployed: https://video.mingli.world — sign in with the existing podcast account. The phone/recency candidate below is isolated and unpublished.
 
-14 reviewed cards cover Jensen Huang, Alexandr Wang, Dario Amodei, Andrej Karpathy, Andrew Ng, Fei-Fei Li and Demis Hassabis. Current 2026 sources are mixed with dated historical context. Cards paraphrase inspected publisher evidence; they do not impersonate speakers, host video or reproduce full transcripts. Source dialogs label the evidence limits and open official videos or publishers. Chapter links are not verified clip boundaries. External video playback has not been tested.
+A private mobile-first swipe feed of seven official YouTube sources from influential AI leaders, with original analysis. Footage remains on YouTube. The app hosts metadata and analysis, and stores a single private owner's progress/preferences in a separate R2 bucket. It follows the podcast's vanilla ES module + Cloudflare Pages architecture; podcast files/runtime/catalogue are unchanged.
 
-## Use and verify
+The first fresh-profile idea is a complete transcript-reviewed Demis Hassabis paragraph at 53:06–53:28. Six other playable items are clearly labeled 45-second previews from evidenced chapter/transcript anchors; those ends are reader preview limits, not reviewed excerpt boundaries. Original source/context links, publication/date type, speaker role, evidence limits, commercial context, editorial interpretations and practical experiments are visible. All 14 original editorial analyses remain in protected metadata; seven have verified playable source references and appear in the video feed.
 
-- `npm run dev` serves `site/` at http://localhost:4173.
-- `npm test` runs five model tests.
-- `npm run validate` checks unique IDs, provenance and HTTPS URLs.
-- `node scripts/browser-test.mjs` uses the installed headless Chrome and bundled Playwright runtime on this Mac. Evidence goes to `evidence/`.
-- `python3 scripts/refresh.py` discovers review candidates from NVIDIA and TED’s official feeds with no key. It never auto-publishes new factual claims.
+## Authentication and private state
 
-Swipe/scroll vertically, use arrow keys or next/previous buttons. Like or select “Less like this”; save to Read later or create named collections. Collections return to the exact idea. Preferences, saved cards, reading time and skips use this browser’s localStorage. There is no account or cross-device sync. Storage failures show a session-only notice. Export and reset are available in Preferences.
+Server middleware delegates to the podcast's existing HTTPS login/session endpoints. Owner credentials and signing secrets are not copied into this app or its static bundles. The companion stores an opaque host-only HttpOnly/Secure cookie and protects every static asset and profile endpoint. Auth fails closed when the upstream is unavailable. Sign-out clears only the companion cookie, preserving podcast sessions; the upstream scheme is stateless, without separate device/session identities.
 
-Ranking uses editorial usefulness, novelty, credibility and influence, plus bounded explicit topic/like/save/less feedback and a small capped active-reading signal. Rapid skips reduce topic preference. Hidden/unfocused tabs, dialogs, paused measurement and time beyond 45 seconds without interaction do not accrue dwell. Explicit feedback is stronger than dwell. New Discover sessions and the next button reorder upcoming ideas; swiping keeps the session stable to avoid jumping cards under a reader.
+Likes, named collections, topics, skips/dwell, actual player position/watch time, preview completion, source availability/errors and supported quality events sync to a private owner profile in `video-mingli-world-state`. This is one owner, not a multi-user account system. Browser storage is a local fallback/cache; Preferences displays sync state. The last card and source position resume across authenticated devices. Conflicting stale writes are rejected rather than silently overwriting another device. A dedicated profile version header avoids CDN compression changing HTTP ETags. Export/reset are available in Preferences.
 
-## Infrastructure and refresh
+Recommendations emphasize editorial usefulness, novelty, credibility, relevance and influence. Explicit feedback outweighs bounded reading/watch signals. Background/unfocused reading, dialogs, paused measurement and inactivity beyond 45 seconds do not add dwell. Raw views are not a ranking input.
 
-Remote companion: `/Users/ding/projects/video-mingli-world` on `agent`.
-A dedicated `world.mingli.video.refresh` LaunchAgent configuration is preserved on that host but is unloaded and disabled pending scope approval. Its configured cadence is run-at-load and every 86400 seconds. Manual discovery remains available and writes private editorial candidate/status files to `data/`. No listener data or credentials are used. Failures preserve the last successful queue. Humans/agents must verify speaker, source, date and gist before editing `site/content.json` and deploying.
+## Official playback
 
-Static hosting needs only `site/`. `wrangler.toml` targets a separate `video-mingli-world` Pages project. There is no service worker, avoiding stale personal-state shells. Hosting headers disable third-party requests, frame embedding of this site, camera, microphone and geolocation. External source links open only after user action.
+The YouTube privacy-enhanced player loads only after Play. Its controls remain unobstructed; swipe beside the player or use next/previous buttons. Only one player exists at a time; it pauses when hidden or less than half visible. Reviewed boundaries and preview limits are guarded while restoring source position. Availability starts unknown and is updated by real player events. Errors and provider restrictions are explained with original-source access; they are not bypassed.
 
-The proposed release checkout in `deployment-ci/` is an isolated branch of the existing repository. It adds only a companion folder and a companion-only CI workflow, preserving existing files. Its push is blocked pending approval; see RELEASE.md. The original podcast checkout has not been edited.
+Only the supported playback-quality-change event is recorded. No HD guarantee, unsupported quality getter/setter or forced-quality picker is used. YouTube controls region, age, source-account login, quality and embedding availability, and receives requests when you choose playback. The app has no third-party analytics or public interaction feed.
 
-Design used the frontend-design skill: quiet navy/cool-blue reader, Avenir/system type, speaker monograms rather than invented portraits, and a full-screen idea as the opening experience. Local environment and podcast ingestion guidance informed the architecture and rights limits.
+## Run and verify
 
-## Authenticated video release
+- `npm test`: model, authentication and private-profile tests.
+- `npm run validate`: 14 IDs, evidence fields and HTTPS source checks.
+- `npm run dev`: local static UI demonstration only; does not reproduce production authentication/storage.
+- `node scripts/test-server.mjs`: isolated authenticated local fixture on localhost:4174, with test-only credentials and in-memory profile storage.
+- `TEST_BASE=http://localhost:4174 TEST_AUTH_FIXTURE=1 node scripts/browser-test.mjs`: mobile feed regression using installed headless Chrome/Playwright on this Mac.
+- Live acceptance scripts use the existing original auth source only in memory; never output credentials/tokens. `verify-live.mjs` is read-only when a profile exists. Browser/matrix results and screenshots are in `evidence/`.
 
-The updated release presents seven verified-source YouTube embeds, loaded only after Play; all 14 editorial analyses remain in the protected metadata archive. Each player previews 45 seconds from an evidenced publisher chapter/transcript anchor. That end is an app preview limit, not a reviewed excerpt boundary. Footage stays on YouTube; there are no downloaded/rehosted talks.
+## Release and discovery
 
-Server-side middleware delegates sign-in and session validation to the podcast’s existing supported HTTPS endpoints. It stores only an opaque host-only HttpOnly/Secure companion cookie, blocks every feed asset before authentication, and fails closed when upstream auth is unavailable. No signing secret or owner credential is embedded in this app. This creates a dependency on podcast authentication availability; companion logout clears the companion cookie without changing podcast sessions.
+Source: this workspace. Release repository: `deployment-ci/`, canonical origin https://github.com/daxia07/podcast-mingli-world.git, isolated branch `video-companion-release`. CI touches only the new companion and its workflow. It uses the existing CI token without new grants/credentials or a paid plan. A separate Pages project and private R2 bucket serve this app. Aliyun/HiChina is the domain's authoritative DNS provider; the existing owner helper created only the requested CNAME to video-mingli-world.pages.dev. Cloudflare Pages association/TLS and real HTTPS access are verified.
 
-A separate private `video-mingli-world-state` R2 bucket stores one owner profile behind the same middleware: likes, collections, topic preferences, card dwell/skips, actual player position/watch seconds, preview completion, observed source quality events and availability/error state. An ETag guard rejects concurrent stale writes. Browser storage is a fallback, not cross-device durability. Sync status is displayed in Preferences. This simple authentication identifies a single owner, not separate users.
+`python3 scripts/refresh.py` remains available manually. It discovers candidates from official NVIDIA/TED feeds without a key and never auto-publishes claims. Its newly created recurring LaunchAgent on `agent` is unloaded and disabled, with configuration and first-run evidence preserved. Publication does not reenable it.
 
-YouTube controls provider login, region, age, embed permission and quality. Availability begins unknown. Successful playback or a player error updates observed state. Only supported playback-quality events are recorded; no forced HD or unsupported quality picker is used. The player contacts YouTube when requested and pauses when hidden or less than half visible. Controls remain outside the iframe. The discovery schedule stays disabled.
+## Held phone + recency candidate (October 3)
+
+The live seven-item seed has no source from the last 30 days. Its displayed dates are 66–472 days old; one is a transcript publication rather than a verified original-video date. Editorial ingestion on October 2 did not make those sources fresh.
+
+The candidate has four reviewed fresh ideas from three official video sources: Sam Altman at DevDay (September 29 original event; upload date unknown), Noam Brown (September 17 original episode publication), and John Schulman/Beren Millidge (September 11 original panel publication). Dates and age are visible on the phone. The 30-day Fresh edition gives strongest priority to the last seven days, with usefulness/credibility gates and bounded feedback. Recent (90 days), Evergreen (older) and unknown-original-date editions are separate. Crawl/review/repost dates cannot reset age; uncompleted events do not qualify. Existing state/IDs are retained; saved archive items still return exactly.
+
+One snap stage occupies each ordinary portrait dynamic viewport, with large official player, thumb controls and expandable gist/source details. The source controls stay unobstructed. Horizontal talks remain letterboxed. Playback starts after Play; mobile/provider autoplay limits still apply. Physical-phone/Safari/safe-area rendering remains unverified. See PHONE-REVIEW.md and RECENCY-REVIEW.md for evidence and the concrete deploy-only approval plan.

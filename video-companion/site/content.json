@@ -1,8 +1,198 @@
 {
   "version": 1,
-  "updated": "2026-10-02",
-  "refresh": "Reviewed launch edition: 2026 current sources and historical context. Daily candidate discovery never auto-publishes claims.",
+  "updated": "2026-10-03",
+  "refresh": "Manual reviewed candidate. Original source dates determine freshness; ingestion/review dates never reset it. Recurring discovery is disabled.",
   "cards": [
+    {
+      "id": "altman-feedback-devday-2026",
+      "title": "Build where users want to work",
+      "tags": [
+        "Product",
+        "Building",
+        "Agents"
+      ],
+      "summary": "Altman describes expanding Codex across operating systems, parallel work and phones in response to user requests.",
+      "lens": "Editorial interpretation",
+      "interpretation": "Distribution and workflow fit can matter alongside model capability. Product announcements still need real-world testing.",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "opportunity": "Ask users where a task breaks across devices; test one small workflow improvement.",
+      "source": {
+        "speaker": "Sam Altman",
+        "role": "OpenAI CEO",
+        "title": "OpenAI DevDay 2026 keynote",
+        "date": "2026-09-29",
+        "dateLabel": "Original event date; YouTube publication date unverified",
+        "originalDate": "2026-09-29",
+        "originalDateType": "Original event date",
+        "dateBasis": "event",
+        "publicationDate": null,
+        "dateEvidence": "https://openai.com/index/devday-2026-recap/",
+        "url": "https://www.youtube.com/watch?v=Fls_onRviPM&t=50s",
+        "evidence": "https://openai.com/index/devday-2026-recap/",
+        "locator": "Official OpenAI keynote 00:50–01:18; complete list of user-requested workflow/platform expansions, before the next announcement.",
+        "context": "Vendor keynote. Original event date is verified; upload date is unknown. Official channel identity checked through YouTube metadata. Announced capabilities are the company’s claims.",
+        "eventDate": "2026-09-29",
+        "eventStatus": "completed"
+      },
+      "quality": {
+        "useful": 4.5,
+        "novel": 4.4,
+        "credible": 4.5,
+        "influence": 4.9
+      },
+      "reviewed": "2026-10-03",
+      "format": "Original summary card",
+      "seconds": 28,
+      "video": {
+        "id": "Fls_onRviPM",
+        "start": 50,
+        "end": 78,
+        "reviewedMoment": true,
+        "boundary": "Complete product-feedback examples/list; checked in official player captions, before the next announcement",
+        "reviewMethod": "Bounded official-caption inspection and primary event recap; caption errors and approximate seeks remain possible"
+      }
+    },
+    {
+      "lens": "Editorial interpretation",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "reviewed": "2026-10-03",
+      "format": "Original summary card",
+      "seconds": 42,
+      "id": "brown-parallel-latency-2026",
+      "title": "Parallel agents trade cost for latency",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Evaluation"
+      ],
+      "summary": "Brown explains that parallel agents can shorten reasoning latency, while sharing less context than a single serial thinker.",
+      "interpretation": "More agents are a trade-off, not a free speedup. Evaluate coordination overhead and task quality.",
+      "opportunity": "Compare one and four agents on the same bounded task; measure total tokens, completion time and verified quality.",
+      "source": {
+        "speaker": "Noam Brown",
+        "role": "OpenAI researcher working on multi-agent systems, as introduced by the publisher",
+        "title": "Dwarkesh Podcast · Agent swarms, alignment, & recursive self-improvement",
+        "date": "2026-09-17",
+        "dateLabel": "Original episode publication date",
+        "originalDate": "2026-09-17",
+        "originalDateType": "Original episode publication date",
+        "dateEvidence": "https://www.dwarkesh.com/p/noam-brown",
+        "url": "https://www.youtube.com/watch?v=6AgOfiZOWiY&t=86s",
+        "evidence": "https://www.dwarkesh.com/p/noam-brown",
+        "locator": "Official player 01:26–02:08; Complete latency/parallelism sentence block, including its efficiency qualification.",
+        "context": "Researcher describes his employer’s work in a sponsored interview. Recording date not supplied. This does not independently validate all lab claims.",
+        "dateBasis": "publication",
+        "publicationDate": "2026-09-17"
+      },
+      "quality": {
+        "useful": 4.8,
+        "novel": 4.7,
+        "credible": 4.5,
+        "influence": 4.5
+      },
+      "video": {
+        "id": "6AgOfiZOWiY",
+        "start": 86,
+        "end": 128,
+        "reviewedMoment": true,
+        "boundary": "Complete latency/parallelism sentence block, including its efficiency qualification; publisher transcript plus bounded official-player caption review, 2026-10-03",
+        "reviewMethod": "Primary publisher transcript and bounded official captions; seeks approximate, no transcript/media hosted"
+      }
+    },
+    {
+      "lens": "Editorial interpretation",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "reviewed": "2026-10-03",
+      "format": "Original summary card",
+      "seconds": 65,
+      "id": "schulman-judgment-bottleneck-2026",
+      "title": "More code can leave the bottleneck intact",
+      "tags": [
+        "Evaluation",
+        "Building",
+        "Product"
+      ],
+      "summary": "Schulman says weak judgment and self-checking can still bottleneck research, even when models generate much more code.",
+      "interpretation": "Measure accepted outcomes and review effort rather than output volume. This is a researcher’s assessment, not a productivity guarantee.",
+      "opportunity": "Track accepted changes, corrections and review minutes for one agent-assisted task.",
+      "source": {
+        "speaker": "John Schulman",
+        "role": "Thinking Machines chief scientist; OpenAI cofounder, per publisher",
+        "title": "Dwarkesh Podcast · AI researchers debate recursive self-improvement",
+        "date": "2026-09-11",
+        "dateLabel": "Original episode publication date",
+        "originalDate": "2026-09-11",
+        "originalDateType": "Original episode publication date",
+        "dateEvidence": "https://www.dwarkesh.com/p/john-beren-charlie",
+        "url": "https://www.youtube.com/watch?v=PrSf7IOYu-I&t=108s",
+        "evidence": "https://www.dwarkesh.com/p/john-beren-charlie",
+        "locator": "Official player 01:48–02:53; Complete first Schulman response, ending before the next speaker.",
+        "context": "Sponsored research-company panel; answer addresses a hypothetical failure of rapid progress. Recording date unknown.",
+        "dateBasis": "publication",
+        "publicationDate": "2026-09-11"
+      },
+      "quality": {
+        "useful": 4.8,
+        "novel": 4.5,
+        "credible": 4.6,
+        "influence": 4.8
+      },
+      "video": {
+        "id": "PrSf7IOYu-I",
+        "start": 108,
+        "end": 173,
+        "reviewedMoment": true,
+        "boundary": "Complete first Schulman response, ending before the next speaker; publisher transcript plus bounded official-player caption review, 2026-10-03",
+        "reviewMethod": "Primary publisher transcript and bounded official captions; seeks approximate, no transcript/media hosted"
+      }
+    },
+    {
+      "lens": "Editorial interpretation",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "reviewed": "2026-10-03",
+      "format": "Original summary card",
+      "seconds": 48,
+      "id": "millidge-generalization-gap-2026",
+      "title": "Benchmark success may leave a real-world gap",
+      "tags": [
+        "Evaluation",
+        "Product",
+        "Agents"
+      ],
+      "summary": "Millidge considers a persistent gap between benchmark performance and real-world generalization, while saying he regards that scenario as unlikely.",
+      "interpretation": "A skeptical scenario is useful for testing, but should not be mistaken for the speaker’s central forecast.",
+      "opportunity": "Test one benchmark-winning workflow on varied real tasks and record where it fails.",
+      "source": {
+        "speaker": "Beren Millidge",
+        "role": "Zyphra CTO, as introduced by the publisher",
+        "title": "Dwarkesh Podcast · AI researchers debate recursive self-improvement",
+        "date": "2026-09-11",
+        "dateLabel": "Original episode publication date",
+        "originalDate": "2026-09-11",
+        "originalDateType": "Original episode publication date",
+        "dateEvidence": "https://www.dwarkesh.com/p/john-beren-charlie",
+        "url": "https://www.youtube.com/watch?v=PrSf7IOYu-I&t=60s",
+        "evidence": "https://www.dwarkesh.com/p/john-beren-charlie",
+        "locator": "Official player 01:00–01:48; Complete first Millidge response, retaining his unlikely-scenario qualification.",
+        "context": "Sponsored panel. Host asks why rapid progress could fail; speaker calls this scenario unlikely. Recording date unknown.",
+        "dateBasis": "publication",
+        "publicationDate": "2026-09-11"
+      },
+      "quality": {
+        "useful": 4.6,
+        "novel": 4.5,
+        "credible": 4.4,
+        "influence": 4.1
+      },
+      "video": {
+        "id": "PrSf7IOYu-I",
+        "start": 60,
+        "end": 108,
+        "reviewedMoment": true,
+        "boundary": "Complete first Millidge response, retaining his unlikely-scenario qualification; publisher transcript plus bounded official-player caption review, 2026-10-03",
+        "reviewMethod": "Primary publisher transcript and bounded official captions; seeks approximate, no transcript/media hosted"
+      }
+    },
     {
       "id": "huang-inference-2026",
       "title": "Useful intelligence per watt",
@@ -13,7 +203,7 @@
       "summary": "Huang frames inference around constrained power, token throughput and response speed.",
       "lens": "Conditional outlook",
       "interpretation": "If inference demand grows, system efficiency may matter as much as model capability. This is not a guaranteed market outcome.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Measure cost per successful task alongside latency and quality. Study inference serving.",
       "source": {
         "speaker": "Jensen Huang",
@@ -23,8 +213,15 @@
         "dateLabel": "Event date",
         "url": "https://www.youtube.com/watch?v=jw_o0xr8MWU&t=3668s",
         "evidence": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81595/",
-        "locator": "Publisher automated transcript anchor 01:01:08; 01:01:08\u201301:02:24 discusses inference trade-offs. YouTube alignment and clip end unverified.",
-        "context": "NVIDIA vendor keynote. Commercial incentives matter; automated transcript may contain errors."
+        "locator": "Publisher automated transcript anchor 01:01:08; 01:01:08–01:02:24 discusses inference trade-offs. YouTube alignment and clip end unverified.",
+        "context": "NVIDIA vendor keynote. Commercial incentives matter; automated transcript may contain errors.",
+        "originalDate": "2026-03-16",
+        "originalDateType": "Event date",
+        "dateEvidence": "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-s81595/",
+        "dateBasis": "event",
+        "publicationDate": null,
+        "eventDate": "2026-03-16",
+        "eventStatus": "completed"
       },
       "quality": {
         "useful": 5.0,
@@ -53,7 +250,7 @@
       "summary": "Wang describes agents improving measurable outcomes through repeated feedback and coordination.",
       "lens": "Conditional outlook",
       "interpretation": "A workflow with measurable feedback may suit a bounded agent loop. Internal results do not establish workforce-replacement outcomes.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Pick one measurable workflow. Define success and failure, then compare a bounded loop against a baseline.",
       "source": {
         "speaker": "Alexandr Wang",
@@ -64,7 +261,13 @@
         "url": "https://www.youtube.com/watch?v=sJ4VJWycX9M&t=1611s",
         "evidence": "https://www.ycrootaccess.com/p/alexandr-wang-building-a-frontier",
         "locator": "Publisher chapter 26:51: The Biggest Opportunity in AI Today. Exact claim onset and clip end unverified.",
-        "context": "Y Combinator interview with Garry Tan. Internal Meta anecdotes are not independent benchmarks. Recording day and exact video upload date unverified."
+        "context": "Y Combinator interview with Garry Tan. Internal Meta anecdotes are not independent benchmarks. Recording day and exact video upload date unverified.",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null,
+        "transcriptPublicationDate": "2026-07-29"
       },
       "quality": {
         "useful": 4.95,
@@ -93,7 +296,7 @@
       "summary": "Amodei distinguishes technical capability forecasts from uncertain economic adoption and compute-investment timing.",
       "lens": "Our interpretation",
       "interpretation": "A model milestone alone is weak evidence for a revenue timeline. His capability timelines are forecasts.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Investigate procurement, integration, trust and workflow barriers before assuming benchmark gains create demand.",
       "source": {
         "speaker": "Dario Amodei",
@@ -104,7 +307,12 @@
         "url": "https://www.youtube.com/watch?v=n1E9IZfvGMA&t=2780s",
         "evidence": "https://www.dwarkesh.com/p/dario-amodei-2",
         "locator": "Publisher chapter 46:20, compute-investment discussion. Exact short-clip boundaries unverified.",
-        "context": "Dwarkesh challenges aggressive AI timelines and cautious compute commitments. Recording date undisclosed in inspected evidence."
+        "context": "Dwarkesh challenges aggressive AI timelines and cautious compute commitments. Recording date undisclosed in inspected evidence.",
+        "originalDate": "2026-02-13",
+        "originalDateType": "Publisher episode date",
+        "dateEvidence": "https://www.dwarkesh.com/p/dario-amodei-2",
+        "dateBasis": "publication",
+        "publicationDate": "2026-02-13"
       },
       "quality": {
         "useful": 4.9,
@@ -133,7 +341,7 @@
       "summary": "Karpathy describes powerful but fallible LLMs and partially autonomous products that keep people in the loop.",
       "lens": "Our interpretation",
       "interpretation": "A visible review loop may create dependable value. This is a design hypothesis to test, not a performance guarantee.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Prototype draft, review and execute modes. Measure review time and accepted results.",
       "source": {
         "speaker": "Andrej Karpathy",
@@ -144,7 +352,12 @@
         "url": "https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s",
         "evidence": "https://www.youtube.com/watch?v=LCEmiRjPEtQ",
         "locator": "Official chapter 18:22: partial autonomy. Publisher description and speaker notes inspected; full transcript not inspected.",
-        "context": "Y Combinator AI Startup School, San Francisco, June 17, 2025. Conceptual product-design talk; no exact clip range claimed."
+        "context": "Y Combinator AI Startup School, San Francisco, June 17, 2025. Conceptual product-design talk; no exact clip range claimed.",
+        "originalDate": "2025-06-18",
+        "originalDateType": "Video publication date",
+        "dateEvidence": "https://www.youtube.com/watch?v=LCEmiRjPEtQ",
+        "dateBasis": "publication",
+        "publicationDate": "2025-06-18"
       },
       "quality": {
         "useful": 4.85,
@@ -173,7 +386,7 @@
       "summary": "Ng emphasizes concrete product ideas and human judgment as AI accelerates implementation.",
       "lens": "Our interpretation",
       "interpretation": "Faster building increases the value of choosing and testing the right problem. No universal productivity multiplier follows.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Write a specific user, task and success criterion before prototyping. Combine implementation with customer discovery.",
       "source": {
         "speaker": "Andrew Ng",
@@ -184,7 +397,12 @@
         "url": "https://www.youtube.com/watch?v=RNJCfif1dPY&t=292s",
         "evidence": "https://www.youtube.com/watch?v=RNJCfif1dPY",
         "locator": "Official chapter 04:52: Concrete Ideas for Faster Execution. Description and chapters inspected; full transcript not inspected.",
-        "context": "Startup School talk. Official video description identifies June 17, 2025 as event date. Exact clip boundaries unverified."
+        "context": "Startup School talk. Official video description identifies June 17, 2025 as event date. Exact clip boundaries unverified.",
+        "originalDate": "2025-07-10",
+        "originalDateType": "Video publication date",
+        "dateEvidence": "https://www.youtube.com/watch?v=RNJCfif1dPY",
+        "dateBasis": "publication",
+        "publicationDate": "2025-07-10"
       },
       "quality": {
         "useful": 4.8,
@@ -213,7 +431,7 @@
       "summary": "Li argues for intelligence that models the three-dimensional world, beyond language.",
       "lens": "Conditional outlook",
       "interpretation": "Spatial systems could create opportunities beyond chat. Reliability, timelines and commercial winners remain uncertain.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Explore vision, geometry and simulation. Test a narrow spatial task against real-world ground truth.",
       "source": {
         "speaker": "Fei-Fei Li",
@@ -224,7 +442,12 @@
         "url": "https://www.youtube.com/watch?v=_PioN-CpOP0&t=860s",
         "evidence": "https://www.youtube.com/watch?v=_PioN-CpOP0",
         "locator": "Official chapter 14:20: Why Spatial Intelligence Is Harder Than Language. Description inspected; full transcript not inspected.",
-        "context": "Y Combinator fireside discussion, San Francisco, June 16, 2025 according to official description. Li has a commercial interest in spatial AI."
+        "context": "Y Combinator fireside discussion, San Francisco, June 16, 2025 according to official description. Li has a commercial interest in spatial AI.",
+        "originalDate": "2025-07-01",
+        "originalDateType": "Video publication date",
+        "dateEvidence": "https://www.youtube.com/watch?v=_PioN-CpOP0",
+        "dateBasis": "publication",
+        "publicationDate": "2025-07-01"
       },
       "quality": {
         "useful": 4.75,
@@ -252,8 +475,8 @@
       ],
       "summary": "Hassabis argues that his AGI standard requires consistent capability, rather than brilliance on some tasks and serious flaws on others.",
       "lens": "Our interpretation",
-      "interpretation": "Test an entire workflow\u2019s weak spots, not only its strongest demonstration. This applies his personal AGI criterion as an editorial product lesson.",
-      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "interpretation": "Test an entire workflow’s weak spots, not only its strongest demonstration. This applies his personal AGI criterion as an editorial product lesson.",
+      "opportunityLabel": "Practical experiment · our suggestion",
       "opportunity": "Build evaluations around failure modes, domain coverage and distribution shift.",
       "source": {
         "speaker": "Demis Hassabis",
@@ -264,7 +487,12 @@
         "url": "https://www.youtube.com/watch?v=-HzgcbRXUK8&t=3186s",
         "evidence": "https://lexfridman.com/demis-hassabis-2-transcript",
         "locator": "Publisher transcript, 53:06 complete paragraph on consistent capabilities, ending before the next paragraph at 53:28. Reviewed against the primary timestamped text.",
-        "context": "Personal criteria for AGI in a long interview, not a universally agreed definition. Recording date not verified."
+        "context": "Personal criteria for AGI in a long interview, not a universally agreed definition. Recording date not verified.",
+        "originalDate": "2025-07-23",
+        "originalDateType": "Video publication date",
+        "dateEvidence": "https://lexfridman.com/demis-hassabis-2-transcript",
+        "dateBasis": "publication",
+        "publicationDate": "2025-07-23"
       },
       "quality": {
         "useful": 5,
@@ -279,7 +507,7 @@
         "id": "-HzgcbRXUK8",
         "start": 3186,
         "end": 3208,
-        "boundary": "Transcript-reviewed complete paragraph: 53:06\u201353:28; end is the next paragraph timestamp. Source seek alignment remains approximate.",
+        "boundary": "Transcript-reviewed complete paragraph: 53:06–53:28; end is the next paragraph timestamp. Source seek alignment remains approximate.",
         "reviewedMoment": true
       }
     },
@@ -304,7 +532,12 @@
         "url": "https://www.nvidia.com/en-us/on-demand/session/gtc24-s62542/",
         "evidence": "https://blogs.nvidia.com/blog/2024-gtc-keynote/",
         "context": "Company keynote announcing commercial NVIDIA products. Vendor claims and projections are not independent benchmarks.",
-        "locator": "The Next Generation of Accelerated Computing"
+        "locator": "The Next Generation of Accelerated Computing",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.8,
@@ -337,7 +570,12 @@
         "url": "https://www.nvidia.com/en-us/on-demand/session/gtc24-s62542/",
         "evidence": "https://blogs.nvidia.com/blog/2024-gtc-keynote/",
         "context": "Company keynote announcing commercial NVIDIA products. Vendor claims and projections are not independent benchmarks.",
-        "locator": "A New Way to Create Software"
+        "locator": "A New Way to Create Software",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.7299999999999995,
@@ -370,7 +608,12 @@
         "url": "https://www.nvidia.com/en-us/on-demand/session/gtc24-s62542/",
         "evidence": "https://blogs.nvidia.com/blog/2024-gtc-keynote/",
         "context": "Company keynote announcing commercial NVIDIA products. Vendor claims and projections are not independent benchmarks.",
-        "locator": "Omniverse Brings AI to the Physical World / Robotics"
+        "locator": "Omniverse Brings AI to the Physical World / Robotics",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.66,
@@ -402,8 +645,13 @@
         "dateLabel": "Publisher posting date",
         "url": "https://learn.scale.com/public/videos/opening-remarks",
         "evidence": "https://learn.scale.com/public/videos/opening-remarks",
-        "context": "Scale-hosted conference introduction. This historical forecast predates today\u2019s models. Wang had a commercial interest in annotation services.",
-        "locator": "Transcript: high-quality datasets and annotation"
+        "context": "Scale-hosted conference introduction. This historical forecast predates today’s models. Wang had a commercial interest in annotation services.",
+        "locator": "Transcript: high-quality datasets and annotation",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.59,
@@ -435,8 +683,13 @@
         "dateLabel": "Publisher posting date",
         "url": "https://learn.scale.com/public/videos/opening-remarks",
         "evidence": "https://learn.scale.com/public/videos/opening-remarks",
-        "context": "Scale-hosted conference introduction. This historical forecast predates today\u2019s models. Wang had a commercial interest in annotation services.",
-        "locator": "Transcript: core resources and emerging capabilities"
+        "context": "Scale-hosted conference introduction. This historical forecast predates today’s models. Wang had a commercial interest in annotation services.",
+        "locator": "Transcript: core resources and emerging capabilities",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.52,
@@ -457,7 +710,7 @@
       ],
       "summary": "The keynote summary describes pretrained models and task-specific tuning as routes for enterprises without in-house model expertise.",
       "lens": "Our interpretation",
-      "interpretation": "A pretrained model can reduce the starting cost. Owning evaluation and domain context remains your team\u2019s responsibility.",
+      "interpretation": "A pretrained model can reduce the starting cost. Owning evaluation and domain context remains your team’s responsibility.",
       "opportunityLabel": "Product experiment",
       "opportunity": "Choose one costly repeatable task; test the baseline before considering fine-tuning.",
       "source": {
@@ -469,7 +722,12 @@
         "url": "https://learn.scale.com/public/videos/transformx-2022-keynote-product-announcements",
         "evidence": "https://learn.scale.com/public/videos/transformx-2022-keynote-product-announcements",
         "context": "TransformX product keynote. Gist checked against the publisher summary, not a timestamped transcript. Scale promotes its own services.",
-        "locator": "Publisher summary: pretrained models and tuning"
+        "locator": "Publisher summary: pretrained models and tuning",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.45,
@@ -502,7 +760,12 @@
         "url": "https://www.ted.com/talks/fei_fei_li_with_spatial_intelligence_ai_will_understand_the_real_world",
         "evidence": "https://www.ted.com/talks/fei_fei_li_with_spatial_intelligence_ai_will_understand_the_real_world",
         "context": "TED research vision. Demonstrations do not establish general-purpose robot reliability or a deployment timeline.",
-        "locator": "Official TED description"
+        "locator": "Official TED description",
+        "originalDate": null,
+        "originalDateType": "Original publication date unverified",
+        "dateEvidence": null,
+        "dateBasis": "unknown",
+        "publicationDate": null
       },
       "quality": {
         "useful": 4.38,

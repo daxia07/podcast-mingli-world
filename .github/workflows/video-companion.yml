@@ -14,13 +14,13 @@ jobs:
       - name: Test and validate companion
         working-directory: video-companion
         run: npm test && npm run validate && node scripts/private-bundle-scan.mjs
-      - name: Create isolated Pages project if needed
+      - name: Verify existing companion resources
         working-directory: video-companion
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
         run: |
-          node scripts/provision.mjs
+          node scripts/preflight-existing.mjs
       - name: Deploy companion only
         working-directory: video-companion
         env:
@@ -32,12 +32,6 @@ jobs:
         env:
           VIDEO_BASE_URL: https://video-mingli-world.pages.dev
         run: node scripts/verify-live.mjs
-      - name: Connect requested domain
-        working-directory: video-companion
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: '0629de91516b2b363d1215708eaa5332'
-        run: node scripts/provision.mjs domain
       - name: Verify protected production endpoints
         working-directory: video-companion
         env:
