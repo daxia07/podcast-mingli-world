@@ -1,0 +1,17 @@
+{
+  "name": "mandarin-novel",
+  "title": "普通话小说原文朗读",
+  "description": "One source-faithful chapter with original scene boundaries. Local preset narration; no inserted recap or ending.",
+  "target_minutes": [10, 25],
+  "authoring_brief": "Preserve the selected source exactly. Scene marks become pauses; bounded chunks retain source hashes. No new opening, explanation, recap, invented ending, voice clone or music. The first collection is only three opening chapters. Timing estimates count Han characters; final VTT and chapters use measured audio. Listening must confirm names, omissions, repetition and comfort.",
+  "sections": [
+    {"id":"scene-01","title":"片段 1","required":true},
+    {"id":"scene-02","title":"片段 2"},
+    {"id":"scene-03","title":"片段 3"},
+    {"id":"scene-04","title":"片段 4"},
+    {"id":"scene-05","title":"片段 5"},
+    {"id":"scene-06","title":"片段 6"},
+    {"id":"scene-07","title":"片段 7"},
+    {"id":"scene-08","title":"片段 8"}
+  ]
+}

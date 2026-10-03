@@ -14,6 +14,11 @@ PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 def _run(*args):
     """Run wrangler CLI from the project directory."""
     cmd = ["npx", "wrangler"] + list(args)
+    # Isolated releases can use Wrangler's native existing-host auth file.
+    # Its contents are neither parsed here nor copied into the release tree.
+    env_file = os.environ.get("WRANGLER_ENV_FILE")
+    if env_file:
+        cmd.extend(["--env-file", env_file])
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=PROJECT_DIR)
     if result.returncode != 0:
         raise RuntimeError(f"wrangler failed: {result.stderr[:500]}")

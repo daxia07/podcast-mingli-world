@@ -1,0 +1,237 @@
+{
+  "schema": 1,
+  "status": "local review proposal; not published",
+  "rule": "Group exact full audio URLs only. Rank transcript/chapter availability, populated title/description/slug/date/duration/source fields, description length capped at 500, then smallest ID. This selects a display label, not a verified transcript or audio title.",
+  "preservation": "Every original record, ID, URL, playlist membership, RSS item, saved progress and queue identity remains intact. Restore aliases per device; undo removes only that visibility override.",
+  "manifest_sha256": "310a15843d8405bd0c2e102dfc576884681410cbf7a235eb64758d29105b6c4a",
+  "groups": [
+    {
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-05.mp3",
+      "canonical_id": 3,
+      "alias_ids": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "records": [
+        {
+          "id": 2,
+          "title": "What clicked for me was... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -2
+          ],
+          "record_sha256": "bb1fde423c81e36c423baff494fe4b92b107bf20886496d16da64768a789492f"
+        },
+        {
+          "id": 3,
+          "title": "The way I see it is... — STAR-LA Framework",
+          "score": [
+            0,
+            6,
+            500,
+            -3
+          ],
+          "record_sha256": "5b4858e368377d216c353cffc1e112eec9093ed12d58d248f3edfe6630e86766"
+        },
+        {
+          "id": 4,
+          "title": "That said... — Three Ways to Say I Don't Know",
+          "score": [
+            0,
+            6,
+            499,
+            -4
+          ],
+          "record_sha256": "f45eaa5f46643edc840e8d1766f6cde47ed8d12f988dd399dfc072310a81f908"
+        },
+        {
+          "id": 5,
+          "title": "What I'd really highlight is... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            500,
+            -5
+          ],
+          "record_sha256": "2def809a56b3d3e8c78051ddb0d17a99c1ef185c5dd6102ad75bb914dbd4c73b"
+        },
+        {
+          "id": 6,
+          "title": "To put a finer point on it... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            500,
+            -6
+          ],
+          "record_sha256": "3e36cb67f45e6289abea2810f29cd730a4f4eb71327afa0d4993f00e4c2d21a6"
+        },
+        {
+          "id": 7,
+          "title": "I haven't worked directly with that. What I can tell you is... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            499,
+            -7
+          ],
+          "record_sha256": "7989c36e7e717b3dd7d91aeaea5439cb909a5d86cdb203b76f1c7606a283a17f"
+        },
+        {
+          "id": 8,
+          "title": "This resulted in... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            500,
+            -8
+          ],
+          "record_sha256": "9d78498f2f08ebb34a2ef44c5acb2ce2e3b65c91f4a69363398a991b3f141f6a"
+        },
+        {
+          "id": 9,
+          "title": "To give you a concrete example... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            500,
+            -9
+          ],
+          "record_sha256": "87309d19ea0f678b154496bf5d5b959a00d544579e4f3d6a7af6045552bf1018"
+        },
+        {
+          "id": 10,
+          "title": "That's a great question. Let me think about that for a moment. — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -10
+          ],
+          "record_sha256": "a3a7dea2a47e1426ce4444f611742ebe7560984b5bdcb45e3581a118246299b0"
+        },
+        {
+          "id": 11,
+          "title": "What clicked for me was... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -11
+          ],
+          "record_sha256": "c6e602dcc211bbeeb91b9e8d09d5558d2f71051e3cef803ec995b1cfb2b3379e"
+        },
+        {
+          "id": 12,
+          "title": "What I'm really looking for is... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -12
+          ],
+          "record_sha256": "5973e175f151d0a9beb3eb432998ba12285c7fcc3f092fcfe3e9f04a1702697b"
+        }
+      ]
+    },
+    {
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-06.mp3",
+      "canonical_id": 13,
+      "alias_ids": [
+        1,
+        14
+      ],
+      "records": [
+        {
+          "id": 1,
+          "title": "The Way I See It — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            184,
+            -1
+          ],
+          "record_sha256": "798f45f17050a26791154a2c160d4c68c3cfe5b93b1147bb4f17180a9ff09419"
+        },
+        {
+          "id": 13,
+          "title": "Over time I became the... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -13
+          ],
+          "record_sha256": "ae4cbae691dbe8e6f4d451159f70fb7cb37066124b3ca78ca19f4615618431ba"
+        },
+        {
+          "id": 14,
+          "title": "The way I see it is... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -14
+          ],
+          "record_sha256": "14e8acbefc127f7ac679de1fb430fe1a33ed56add95b546fbcb11aadb308c1ee"
+        }
+      ]
+    },
+    {
+      "file_url": "https://podcast.mingli.world/episodes/2026-07-07.mp3",
+      "canonical_id": 15,
+      "alias_ids": [
+        16
+      ],
+      "records": [
+        {
+          "id": 15,
+          "title": "What clicked for me was... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -15
+          ],
+          "record_sha256": "01d80f4ca91573c1ba72aacb4d39a472f04e443d9fde290bf703efeca3323ce3"
+        },
+        {
+          "id": 16,
+          "title": "What I'm really looking for is... — 4-Second Pause Protocol",
+          "score": [
+            0,
+            6,
+            498,
+            -16
+          ],
+          "record_sha256": "470b80d25cacda8b1a6f1a45791bc0fb7f8db5d251d79fbf9125dcc0b25c49f6"
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "2": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 3,
+    "10": 3,
+    "11": 3,
+    "12": 3,
+    "1": 13,
+    "14": 13,
+    "16": 15
+  }
+}

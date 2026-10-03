@@ -131,6 +131,7 @@ def synthesize(
     workdir: str | Path | None = None,
     rate: str | None = None,
     progress=print,
+    model_dir=None,
 ) -> Timeline:
     """Render `bp` to `out_path` and return the Timeline of what was produced.
 
@@ -138,6 +139,14 @@ def synthesize(
     and its metadata can never disagree — they come from the same measurement.
     """
     require_tools()
+
+    if bp.language.startswith('zh') or bp.tts:
+        from .local_mandarin import synthesize as mandarin_synthesize, MandarinError
+        try:
+            return mandarin_synthesize(bp, out_path, workdir=workdir or Path(out_path).parent / (bp.slug + '-chunks'),
+                                      model_dir=model_dir, progress=progress)
+        except (MandarinError, OSError, ValueError) as exc:
+            raise SynthError(str(exc)) from exc
 
     # Imported here: edge_tts is a heavy optional dependency and the caller may
     # only want the pure helpers above.

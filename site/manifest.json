@@ -6261,9 +6261,9 @@
       "slug": "thumbelina",
       "title": "Thumbelina — A Bedtime Story",
       "description": "Thumbelina, born from a tulip no bigger than a thumb, carried away by a toad, rescued by golden fishes, and finally flown to the warm countries by the swallow she saved. Told slowly and gently, for drifting off to sleep.",
-      "duration": "6:22",
-      "file_size_bytes": 3059565,
-      "file_url": "https://podcast.mingli.world/episodes/thumbelina.mp3?v=c10d2079",
+      "duration": "6:25",
+      "file_size_bytes": 3082221,
+      "file_url": "https://podcast.mingli.world/episodes/thumbelina.mp3?v=2850c5ed",
       "filename": "thumbelina.mp3",
       "playlist": "bedtime-stories",
       "source": "tts",
@@ -6275,6 +6275,830 @@
         "bedtime story",
         "hans christian andersen"
       ]
+    },
+    {
+      "id": 425,
+      "slug": "deployco-takehome-convfinqa-agent-drive",
+      "title": "ConvFinQA Take-Home, Driven By Agents",
+      "description": "The Tomoro ConvFinQA take-home as a four-evening agent-driven build: the replay gate that makes scoring testable, grounding split into veto and signal, one variable per run, and the five measurement traps that cost real points.",
+      "duration": "15:06",
+      "file_size_bytes": 7248620,
+      "file_url": "https://podcast.mingli.world/episodes/deployco-takehome-convfinqa-agent-drive.mp3?v=89d759d3",
+      "filename": "deployco-takehome-convfinqa-agent-drive.mp3",
+      "playlist": "deployco-takehome",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "ConvFinQA",
+        "coding agents",
+        "evaluation",
+        "financial QA",
+        "take-home"
+      ]
+    },
+    {
+      "id": 426,
+      "slug": "macquarie-screen-first-ninety-seconds",
+      "title": "The First Ninety Seconds",
+      "description": "A concise opening for Aaron's recruiter call, followed by why Macquarie, why this move, and the exact clarification that keeps the AI Engineer title aligned with the original application.",
+      "duration": "9:07",
+      "file_size_bytes": 4378028,
+      "file_url": "https://podcast.mingli.world/episodes/macquarie-screen-first-ninety-seconds.mp3?v=5cd60509",
+      "filename": "macquarie-screen-first-ninety-seconds.mp3",
+      "playlist": "macquarie-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Macquarie",
+        "AI Engineer",
+        "recruiter screen",
+        "tell me about yourself",
+        "motivation"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "macquarie-ai-enablement-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-software-engineer-ai-enablement-at-macquarie-group-4347668318",
+          "title": "Senior Software Engineer, AI Enablement",
+          "used_for": [
+            "the backend engineering focus",
+            "the Banking and Financial Services team",
+            "the agentic AI ecosystem"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "macquarie-purpose",
+          "url": "https://www.macquarie.com/au/en/about.html",
+          "title": "Macquarie Group, About",
+          "used_for": [
+            "the purpose and company context"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-evidence",
+          "title": "Mingxia Li verified career evidence",
+          "used_for": [
+            "employment dates",
+            "production AI work",
+            "impact figures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 427,
+      "slug": "quantium-screen-first-ninety-seconds",
+      "title": "The First Ninety Seconds",
+      "description": "A focused opening for Sun's Quantium conversation, followed by why Consulting Engineering, why this move, and how to connect production AI evidence to Quantium's purpose and values without reciting the website.",
+      "duration": "8:45",
+      "file_size_bytes": 4200620,
+      "file_url": "https://podcast.mingli.world/episodes/quantium-screen-first-ninety-seconds.mp3?v=22ebb8e5",
+      "filename": "quantium-screen-first-ninety-seconds.mp3",
+      "playlist": "quantium-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Quantium",
+        "Senior Full Stack AI Engineer",
+        "tell me about yourself",
+        "why Quantium",
+        "motivation"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "quantium-full-stack-ai-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-full-stack-ai-engineer-at-quantium-4456151356",
+          "title": "Senior Full Stack AI Engineer",
+          "used_for": [
+            "Consulting Engineering team",
+            "proof of concept to production ownership",
+            "full-stack and client-facing requirements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-values",
+          "url": "https://quantium.com/about-us-values/",
+          "title": "Quantium purpose and values",
+          "used_for": [
+            "move fast with care",
+            "drive for impact",
+            "balance tomorrow with today"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-about",
+          "url": "https://quantium.com/about-us/",
+          "title": "Quantium, About us",
+          "used_for": [
+            "company model and industry partnerships"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-evidence",
+          "title": "Mingxia Li verified career evidence",
+          "used_for": [
+            "career history",
+            "production AI work",
+            "impact figures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 428,
+      "slug": "macquarie-screen-fast-answers",
+      "title": "The Fast Answers",
+      "description": "The short recruiter answers most likely to fill the Macquarie call: current role, work rights, AI usage, technical fit, notice, hybrid work, salary, gaps, and next steps.",
+      "duration": "8:58",
+      "file_size_bytes": 4306220,
+      "file_url": "https://podcast.mingli.world/episodes/macquarie-screen-fast-answers.mp3?v=6df4e1e8",
+      "filename": "macquarie-screen-fast-answers.mp3",
+      "playlist": "macquarie-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Macquarie",
+        "recruiter questions",
+        "work rights",
+        "notice period",
+        "salary expectations"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "macquarie-ai-enablement-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-software-engineer-ai-enablement-at-macquarie-group-4347668318",
+          "title": "Senior Software Engineer, AI Enablement",
+          "used_for": [
+            "role requirements",
+            "hybrid work",
+            "technical fit"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "macquarie-annual-report-2026",
+          "url": "https://www.macquarie.com/assets/macq/investor/results-and-presentations/2026/macquarie-group-fy26-annual-report.pdf",
+          "title": "Macquarie Group Annual Report 2026",
+          "used_for": [
+            "responsible AI governance",
+            "human oversight and monitoring"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-email-response",
+          "title": "Verified recruiter response sent by Mingxia Li",
+          "used_for": [
+            "employment status",
+            "notice period",
+            "work rights",
+            "location and work preferences"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 429,
+      "slug": "quantium-screen-production-ai-story",
+      "title": "The Production AI Story",
+      "description": "The security-remediation platform as a two-minute interview story, followed by the full-stack proof, the honest consulting gap, and the evidence behind Quantium's values of care, impact, and shared capability.",
+      "duration": "9:02",
+      "file_size_bytes": 4336748,
+      "file_url": "https://podcast.mingli.world/episodes/quantium-screen-production-ai-story.mp3?v=22e6d771",
+      "filename": "quantium-screen-production-ai-story.mp3",
+      "playlist": "quantium-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Quantium",
+        "production AI",
+        "SecGate",
+        "client-facing",
+        "full stack"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "quantium-full-stack-ai-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-full-stack-ai-engineer-at-quantium-4456151356",
+          "title": "Senior Full Stack AI Engineer",
+          "used_for": [
+            "production AI delivery",
+            "full-stack ownership",
+            "consulting mindset and autonomy"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-production-conditions",
+          "url": "https://quantium.com/five-conditions-that-predict-whether-your-ai-agent-will-reach-production/",
+          "title": "Five conditions that predict whether an AI agent will reach production",
+          "used_for": [
+            "process boundaries",
+            "verifiable outcomes",
+            "baseline value measures",
+            "user confidence and regulatory fit"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-gemini-practice",
+          "url": "https://quantium.com/quantium-launches-gemini-enterprise-practice-in-partnership-with-google-cloud/",
+          "title": "Quantium launches Gemini Enterprise practice",
+          "used_for": [
+            "production agent focus",
+            "multi-platform client delivery"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-evidence",
+          "title": "Mingxia Li verified career evidence",
+          "used_for": [
+            "security platform design and outcomes",
+            "full-stack systems",
+            "stakeholder and client work"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 430,
+      "slug": "macquarie-screen-fifteen-minute-mock",
+      "title": "The Fifteen-Minute Mock",
+      "description": "The complete Macquarie recruiter call played end to end, with a compact introduction, role motivation, logistics, an honest technology boundary, title clarification, and two questions for the panel handoff.",
+      "duration": "8:43",
+      "file_size_bytes": 4187180,
+      "file_url": "https://podcast.mingli.world/episodes/macquarie-screen-fifteen-minute-mock.mp3?v=7a15ed01",
+      "filename": "macquarie-screen-fifteen-minute-mock.mp3",
+      "playlist": "macquarie-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Macquarie",
+        "full mock interview",
+        "AI Engineer",
+        "phone screen",
+        "Aaron"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "macquarie-ai-enablement-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-software-engineer-ai-enablement-at-macquarie-group-4347668318",
+          "title": "Senior Software Engineer, AI Enablement",
+          "used_for": [
+            "team and role scope",
+            "technical requirements"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "macquarie-q-launch",
+          "url": "https://www.macquarie.com/au/en/about/news/2026/macquarie-reimagines-customer-focused-banking-with-launch-of-q.html",
+          "title": "Macquarie launches Q",
+          "used_for": [
+            "the current customer-facing AI example"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "macquarie-principles",
+          "url": "https://www.macquarie.com/au/en/about/what-we-stand-for.html",
+          "title": "Macquarie purpose and principles",
+          "used_for": [
+            "opportunity, accountability and integrity"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-evidence",
+          "title": "Mingxia Li verified career evidence",
+          "used_for": [
+            "all candidate experience and impact claims"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 431,
+      "slug": "quantium-screen-thirty-minute-mock",
+      "title": "The Thirty-Minute Mock",
+      "description": "The complete Quantium fit conversation played end to end: opening, motivation, production AI, full-stack depth, ambiguity, consulting gap, values, logistics, and questions about the team and interview process.",
+      "duration": "13:12",
+      "file_size_bytes": 6341420,
+      "file_url": "https://podcast.mingli.world/episodes/quantium-screen-thirty-minute-mock.mp3?v=08a70dbc",
+      "filename": "quantium-screen-thirty-minute-mock.mp3",
+      "playlist": "quantium-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Quantium",
+        "full mock interview",
+        "Senior Full Stack AI Engineer",
+        "Consulting Engineering",
+        "Sun"
+      ],
+      "sources": [
+        {
+          "type": "job",
+          "id": "quantium-full-stack-ai-role",
+          "url": "https://au.linkedin.com/jobs/view/senior-full-stack-ai-engineer-at-quantium-4456151356",
+          "title": "Senior Full Stack AI Engineer",
+          "used_for": [
+            "all role expectations and team framing"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-values",
+          "url": "https://quantium.com/about-us-values/",
+          "title": "Quantium purpose and values",
+          "used_for": [
+            "purpose and values questions"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-gemini-practice",
+          "url": "https://quantium.com/quantium-launches-gemini-enterprise-practice-in-partnership-with-google-cloud/",
+          "title": "Quantium launches Gemini Enterprise practice",
+          "used_for": [
+            "the multi-platform practice question"
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "quantium-home",
+          "url": "https://quantium.com/",
+          "title": "Quantium enterprise AI",
+          "used_for": [
+            "commercial outcomes and capability transfer"
+          ]
+        },
+        {
+          "type": "candidate",
+          "id": "candidate-evidence",
+          "title": "Mingxia Li verified career evidence",
+          "used_for": [
+            "all candidate experience and impact claims"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 432,
+      "slug": "future-investing-01-the-world-taking-shape",
+      "title": "Investing in 2036 · Part 1 — The World Taking Shape",
+      "description": "A research map of AI, electricity, ageing and resilience. Six structural changes, their economic connections, and why a world-changing technology can still disappoint investors. Prepared 8 September 2026. Part 1 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html",
+      "duration": "10:21",
+      "file_size_bytes": 4970924,
+      "file_url": "https://podcast.mingli.world/episodes/future-investing-01-the-world-taking-shape.mp3?v=cebbb874",
+      "filename": "future-investing-01-the-world-taking-shape.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "long-term investing",
+        "2036",
+        "AI",
+        "electricity",
+        "ageing",
+        "climate adaptation",
+        "resilience"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "iea-ai-2026",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "title": "IEA: Key Questions on Energy and AI, 2026",
+          "used_for": [
+            "numbers"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "iea-grid-2026",
+          "url": "https://www.iea.org/reports/electricity-2026/grids",
+          "title": "IEA: Electricity 2026, Grids",
+          "used_for": [
+            "numbers",
+            "mechanism",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "un-population",
+          "url": "https://www.un.org/development/desa/pd/world-population-prospects-2024",
+          "title": "UN: World Population Prospects 2024",
+          "used_for": [
+            "numbers"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "nber-productivity",
+          "url": "https://www.nber.org/system/files/working_papers/w31161/w31161.pdf",
+          "title": "NBER: Generative AI at Work, revised November 2023",
+          "used_for": [
+            "numbers"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "worldbank-water",
+          "url": "https://www.worldbank.org/en/topic/water/publication/ccdr-water-sector-synthesis",
+          "title": "World Bank: CCDR Water Sector Synthesis, 2025",
+          "used_for": [
+            "mechanism"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "wto-fragmentation",
+          "url": "https://www.wto.org/english/res_e/reser_e/ersd202310_e.htm",
+          "title": "WTO: Is the Global Economy Fragmenting?",
+          "used_for": [
+            "mechanism",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "companion-report",
+          "url": "https://podcast.mingli.world/reports/investing-2026-2036.html",
+          "title": "Investing in the World Taking Shape — 8 September 2026; original scenarios and illustrative calculations",
+          "used_for": [
+            "companion report",
+            "original research framework",
+            "illustrative calculations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 433,
+      "slug": "future-investing-02-who-keeps-the-profit",
+      "title": "Investing in 2036 · Part 2 — Who Keeps the Profit?",
+      "description": "From AI workflows and electrical infrastructure to care, robotics and water: compare the customer economics, recurring revenue and failure conditions. Prepared 8 September 2026. Part 2 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html",
+      "duration": "10:56",
+      "file_size_bytes": 5249324,
+      "file_url": "https://podcast.mingli.world/episodes/future-investing-02-who-keeps-the-profit.mp3?v=51da918c",
+      "filename": "future-investing-02-who-keeps-the-profit.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "investing",
+        "business models",
+        "moats",
+        "care",
+        "robotics",
+        "water",
+        "cash flow"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "servicenow-2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm",
+          "title": "ServiceNow 2025 Form 10-K",
+          "used_for": [
+            "mechanism",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "vertiv-2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+          "title": "Vertiv 2025 Form 10-K",
+          "used_for": [
+            "mechanism",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "who-workforce",
+          "url": "https://apps.who.int/gb/ebwha/pdf_files/EB156/B156_15-en.pdf",
+          "title": "WHO Health and care workforce, 20 December 2024",
+          "used_for": [
+            "numbers"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "ifr-china",
+          "url": "https://ifr.org/downloads/press_docs/2025-09-25-IFR_press_release_China_in_English.pdf",
+          "title": "IFR China industrial robots, 25 September 2025",
+          "used_for": [
+            "numbers",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "fda-semaglutide",
+          "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-reduce-risk-serious-heart-problems-specifically-adults-obesity-or",
+          "title": "FDA cardiovascular indication announcement, 8 March 2024",
+          "used_for": [
+            "numbers"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "essential-utilities",
+          "url": "https://www.sec.gov/Archives/edgar/data/78128/000007812826000050/wtrg-20251231x10k.htm",
+          "title": "Essential Utilities 2025 Form 10-K",
+          "used_for": [
+            "mechanism",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "asml-2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011377/asml-2025xannualxreportx.htm",
+          "title": "ASML 2025 Annual Report",
+          "used_for": [
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "nist-profile",
+          "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+          "title": "NIST Generative AI Profile, July 2024",
+          "used_for": [
+            "mechanism"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "companion-report",
+          "url": "https://podcast.mingli.world/reports/investing-2026-2036.html",
+          "title": "Investing in the World Taking Shape — 8 September 2026; original scenarios and illustrative calculations",
+          "used_for": [
+            "companion report",
+            "original research framework",
+            "illustrative calculations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 434,
+      "slug": "future-investing-03-being-early-without-overpaying",
+      "title": "Investing in 2036 · Part 3 — Being Early Without Overpaying",
+      "description": "A valuation thought experiment, four possible futures, and a practical research programme. Distinguish learning early, building early and investing early. Prepared 8 September 2026. Part 3 of 3. Full report: https://podcast.mingli.world/reports/investing-2026-2036.html",
+      "duration": "11:33",
+      "file_size_bytes": 5548460,
+      "file_url": "https://podcast.mingli.world/episodes/future-investing-03-being-early-without-overpaying.mp3?v=89bf269f",
+      "filename": "future-investing-03-being-early-without-overpaying.mp3",
+      "playlist": "agentic-ai-investing",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "valuation",
+        "investing",
+        "diversification",
+        "scenarios",
+        "early involvement",
+        "research",
+        "2036"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "id": "moneysmart-plan",
+          "url": "https://moneysmart.gov.au/how-to-invest/develop-an-investing-plan",
+          "title": "ASIC Moneysmart: Develop an investing plan",
+          "used_for": [
+            "signals",
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "moneysmart-diversification",
+          "url": "https://moneysmart.gov.au/how-to-invest/diversification",
+          "title": "ASIC Moneysmart: Diversification",
+          "used_for": [
+            "mechanism",
+            "signals"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "esa-space",
+          "url": "https://www.esa.int/About_Us/Business_with_ESA/ESA_releases_2026_Space_Economy_Report",
+          "title": "ESA Space Economy Report 2026, 13 July 2026",
+          "used_for": [
+            "bear"
+          ]
+        },
+        {
+          "type": "web",
+          "id": "companion-report",
+          "url": "https://podcast.mingli.world/reports/investing-2026-2036.html",
+          "title": "Investing in the World Taking Shape — 8 September 2026; original scenarios and illustrative calculations",
+          "used_for": [
+            "companion report",
+            "original research framework",
+            "illustrative calculations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 435,
+      "slug": "atlassian-design-approval-audit-workflow",
+      "title": "Approvals: One Decision, One Audit Trail",
+      "description": "An interviewer and candidate design a multi-tenant approval workflow. Rehearse version preconditions, current authorization, atomic audit and outbox records, duplicate notifications, and regional failover. Original practice, not a known Atlassian interview question.",
+      "duration": "9:01",
+      "file_size_bytes": 4335213,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-approval-audit-workflow.mp3?v=d149dc7d",
+      "filename": "atlassian-design-approval-audit-workflow.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "approval workflow",
+        "audit",
+        "authorization",
+        "regional failover"
+      ]
+    },
+    {
+      "id": 436,
+      "slug": "atlassian-design-issue-tracker-search",
+      "title": "Issue Tracker: Immediate Reads, Delayed Search",
+      "description": "An interviewer and candidate design a tenant-isolated issue tracker. Rehearse create and read APIs, transactional search indexing, safe query caching, permission revocation, edit conflicts, and an indexing outage. Original practice, not a known Atlassian interview question.",
+      "duration": "8:06",
+      "file_size_bytes": 3890925,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-issue-tracker-search.mp3?v=85abef75",
+      "filename": "atlassian-design-issue-tracker-search.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "search indexing",
+        "authorization",
+        "optimistic concurrency",
+        "outbox"
+      ]
+    },
+    {
+      "id": 437,
+      "slug": "atlassian-design-jira-dashboard-updates",
+      "title": "Jira Dashboard: The Acknowledgment Boundary",
+      "description": "A compressed rehearsal of a fifteen-minute design conversation about Jira webhooks and a customer dashboard. Practise requirements, durable acceptance, duplicate and out-of-order events, fair scheduling, and a concise final answer. Original practice, not a known Atlassian interview question.",
+      "duration": "8:58",
+      "file_size_bytes": 4305453,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-jira-dashboard-updates.mp3?v=4779e80c",
+      "filename": "atlassian-design-jira-dashboard-updates.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "Jira",
+        "system design",
+        "webhooks",
+        "idempotency",
+        "dashboard"
+      ],
+      "sources": [
+        {
+          "type": "official_docs",
+          "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+          "used_for": [
+            "tenant-scoped webhook retry identifier and duplicate delivery"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 438,
+      "slug": "atlassian-design-shared-quota-importer",
+      "title": "Import Jobs: Fair Queues and Ambiguous Effects",
+      "description": "A short mock design interview about multi-tenant imports through one downstream API quota. Practise durable acceptance, fair scheduling, shared rate control, Retry-After, uncertain outcomes, and honest job status. Original practice, not a known Atlassian interview question.",
+      "duration": "8:21",
+      "file_size_bytes": 4013997,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-design-shared-quota-importer.mp3?v=857d863f",
+      "filename": "atlassian-design-shared-quota-importer.mp3",
+      "playlist": "atlassian-design-screen",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "Atlassian",
+        "system design",
+        "job scheduler",
+        "rate limiting",
+        "fairness",
+        "idempotency"
+      ]
+    },
+    {
+      "id": 439,
+      "slug": "opening-v3-ch01",
+      "title": "第一章 · 还没有收到",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "13:35",
+      "file_size_bytes": 6521516,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch01.mp3?v=b757bf40",
+      "filename": "opening-v3-ch01.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch01.html"
+    },
+    {
+      "id": 440,
+      "slug": "opening-v3-ch02",
+      "title": "第二章 · 借来的时间",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "16:32",
+      "file_size_bytes": 7942892,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch02.mp3?v=de8a5a4e",
+      "filename": "opening-v3-ch02.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch02.html"
+    },
+    {
+      "id": 441,
+      "slug": "opening-v3-ch03",
+      "title": "第三章 · 题目之外",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "19:27",
+      "file_size_bytes": 9338540,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch03.mp3?v=151f96dc",
+      "filename": "opening-v3-ch03.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch03.html"
     },
     {
       "id": 450,
@@ -6435,6 +7259,176 @@
       "playlist": "infosec-interview",
       "source": "tts",
       "slug": "infosec-zero-trust-api"
+    },
+    {
+      "id": 500,
+      "date": "2026-09-24",
+      "title": "Your 60-Second Introduction",
+      "description": "Introduce yourself through one coherent present-to-future story rather than listing your resume. Focus: Financial backend, applied AI, context agent, trusted data, Atlassian scale.",
+      "duration": "3:19",
+      "duration_seconds": 198.62,
+      "file_size_bytes": 1191788,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-01-sixty-second-introduction.mp3?v=abe0f03dae5a",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-01-sixty-second-introduction",
+      "archived": false
+    },
+    {
+      "id": 501,
+      "date": "2026-09-24",
+      "title": "Why Atlassian and This Backend Role",
+      "description": "Explain why Atlassian is a deliberate choice and why a general senior backend role still fits your direction. Focus: Connect the data thesis to backend reliability without pretending the role is assigned to an AI team.",
+      "duration": "2:20",
+      "duration_seconds": 140.21,
+      "file_size_bytes": 841292,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-02-why-atlassian-role.mp3?v=0190aae57706",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-02-why-atlassian-role",
+      "archived": false
+    },
+    {
+      "id": 502,
+      "date": "2026-09-24",
+      "title": "Resume Deep Dive: The Design-Phase Agent",
+      "description": "Explain the recent AI project as an engineering system with evidence and boundaries. Focus: Problem, sources, output, adoption, and a clear limit.",
+      "duration": "2:32",
+      "duration_seconds": 151.85,
+      "file_size_bytes": 911132,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-03-ai-agent-deep-dive.mp3?v=fd04e503d691",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-03-ai-agent-deep-dive",
+      "archived": false
+    },
+    {
+      "id": 503,
+      "date": "2026-09-24",
+      "title": "Resume Deep Dive: A Negative Corporate-Action Reversal",
+      "description": "Tell a concise production story about validation and calculation logic in Tax Analyser. Focus: Describe a data edge case without blaming the data or overstating the outcome.",
+      "duration": "2:12",
+      "duration_seconds": 131.5,
+      "file_size_bytes": 789020,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-04-tax-data-edge-case.mp3?v=3e132af14bc1",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-04-tax-data-edge-case",
+      "archived": false
+    },
+    {
+      "id": 504,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Safe Retry After a Timeout",
+      "description": "A create request times out after the server may have committed. Explain the complete retry contract. Focus: Intent key, atomic claim, stored outcome, concurrent duplicate, changed payload.",
+      "duration": "2:27",
+      "duration_seconds": 146.83,
+      "file_size_bytes": 881036,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-05-idempotent-retry.mp3?v=76383cb7d145",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-05-idempotent-retry",
+      "archived": false
+    },
+    {
+      "id": 505,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Authentication Is Not Authorization",
+      "description": "An authenticated user supplies another tenant's issue ID. Explain the resource check. Focus: Principal, tenant, resource, action, and safe lookup boundaries.",
+      "duration": "2:18",
+      "duration_seconds": 138.17,
+      "file_size_bytes": 829052,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-06-tenant-authorization.mp3?v=1b58ecea0142",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-06-tenant-authorization",
+      "archived": false
+    },
+    {
+      "id": 506,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Queue Races and Lock Scope",
+      "description": "Explain two common concurrency mistakes and the guarantees that are actually needed. Focus: An observation is not a reservation; a process lock is not a distributed lock.",
+      "duration": "2:26",
+      "duration_seconds": 145.7,
+      "file_size_bytes": 874268,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-07-races-and-lock-scope.mp3?v=90e4f617cbe3",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-07-races-and-lock-scope",
+      "archived": false
+    },
+    {
+      "id": 507,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Consistency, Cache Freshness, and Backpressure",
+      "description": "Answer three rapid backend questions with one example and one boundary each. Focus: Tie each mechanism to a user-visible consequence and a limitation.",
+      "duration": "2:41",
+      "duration_seconds": 160.99,
+      "file_size_bytes": 965996,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-08-consistency-cache-backpressure.mp3?v=89b300f48f4c",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-08-consistency-cache-backpressure",
+      "archived": false
+    },
+    {
+      "id": 508,
+      "date": "2026-09-24",
+      "title": "Know the Screen and Recover Cleanly",
+      "description": "Rehearse the real first-screen contract and a twenty-second handoff from unfinished code. Focus: Confirmed timing, no-AI setup, working baseline, and the hard switch.",
+      "duration": "2:27",
+      "duration_seconds": 147.19,
+      "file_size_bytes": 883196,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-09-screen-process-and-recovery.mp3?v=9a650a21dd8e",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-09-screen-process-and-recovery",
+      "archived": false
+    },
+    {
+      "id": 509,
+      "date": "2026-09-24",
+      "title": "Mixed Mock and Your Closing Question",
+      "description": "Pause after every prompt, answer aloud, and compare only after committing to your response. Focus: Five short answers without hints, then one informed question for the engineer.",
+      "duration": "3:36",
+      "duration_seconds": 216.22,
+      "file_size_bytes": 1297340,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-10-mixed-mock-and-close.mp3?v=425158b62ef9",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-10-mixed-mock-and-close",
+      "archived": false
     }
   ],
   "playlists": {
@@ -6774,7 +7768,10 @@
       "episode_ids": [
         353,
         354,
-        355
+        355,
+        432,
+        433,
+        434
       ]
     },
     "building-agents": {
@@ -6925,7 +7922,8 @@
         419,
         420,
         421,
-        422
+        422,
+        425
       ]
     },
     "bedtime-stories": {
@@ -6940,6 +7938,361 @@
       "episode_ids": [
         424
       ]
+    },
+    "macquarie-screen": {
+      "title": "Macquarie AI Engineer Screen",
+      "description": "Rehearsal for the short Macquarie recruiter call: the opening, the role-title clarification, fast factual answers, and the complete fifteen-minute conversation.",
+      "icon": "📞",
+      "mono": "MQ",
+      "order": -3,
+      "featured": true,
+      "default_template": "interview-rehearsal",
+      "archived": false,
+      "episode_ids": [
+        426,
+        428,
+        430
+      ]
+    },
+    "quantium-screen": {
+      "title": "Quantium Full Stack AI Screen",
+      "description": "Rehearsal for the Quantium Senior Full Stack AI Engineer conversation: motivation, production AI evidence, consulting fit, values, and the complete thirty-minute screen.",
+      "icon": "🧭",
+      "mono": "QT",
+      "order": -2,
+      "featured": true,
+      "default_template": "interview-rehearsal",
+      "archived": false,
+      "episode_ids": [
+        427,
+        429,
+        431
+      ]
+    },
+    "atlassian-design-screen": {
+      "title": "Atlassian System Design Rehearsals",
+      "description": "Original fifteen-minute design practice: interviewer and candidate conversations, answer-aloud pauses, and compact model answers. These are not known Atlassian interview questions.",
+      "icon": "🎙️",
+      "mono": "AT",
+      "order": -4,
+      "featured": true,
+      "default_template": "design-screen-drill",
+      "archived": false,
+      "episode_ids": [
+        437,
+        436,
+        438,
+        435
+      ]
+    },
+    "atlassian-intro-qa": {
+      "title": "Atlassian Introduction & Backend Q&A",
+      "description": "Spoken rehearsals for the 60-second introduction, resume follow-ups, backend fundamentals, and the fixed transition in the first technical screen.",
+      "icon": "🎯",
+      "mono": "AT",
+      "order": -2,
+      "featured": true,
+      "default_template": "interview-rehearsal",
+      "archived": false,
+      "episode_ids": [
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509
+      ]
+    },
+    "novel-opening-v3": {
+      "title": "向后兼容 · 开篇三章",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3，Serena 普通话朗读。暂用书名《向后兼容》，本合集仅含三章开篇，完整长篇尚未完成。",
+      "icon": "📖",
+      "mono": "回声",
+      "order": 0,
+      "featured": true,
+      "default_template": "mandarin-novel",
+      "archived": false,
+      "episode_ids": [
+        439,
+        440,
+        441
+      ],
+      "language": "zh-CN",
+      "status": "three-chapter-opening",
+      "draft_chapters": []
     }
+  },
+  "display_aliases": {
+    "2": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 3,
+    "10": 3,
+    "11": 3,
+    "12": 3,
+    "1": 13,
+    "14": 13,
+    "16": 15
+  },
+  "rss_pub_dates": {
+    "1": "Mon, 06 Jul 2026 06:00:00 +1000",
+    "2": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "3": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "4": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "5": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "6": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "7": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "8": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "9": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "10": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "11": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "12": "Sun, 05 Jul 2026 06:00:00 +1000",
+    "13": "Mon, 06 Jul 2026 06:00:00 +1000",
+    "14": "Mon, 06 Jul 2026 06:00:00 +1000",
+    "15": "Tue, 07 Jul 2026 06:00:00 +1000",
+    "16": "Tue, 07 Jul 2026 06:00:00 +1000",
+    "17": "Wed, 08 Jul 2026 06:00:00 +1000",
+    "18": "Wed, 08 Jul 2026 06:00:00 +1000",
+    "19": "Wed, 08 Jul 2026 06:00:00 +1000",
+    "20": "Thu, 09 Jul 2026 06:00:00 +1000",
+    "21": "Fri, 10 Jul 2026 06:00:00 +1000",
+    "22": "Sat, 11 Jul 2026 06:00:00 +1000",
+    "23": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "24": "Mon, 13 Jul 2026 06:00:00 +1000",
+    "25": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "26": "Wed, 15 Jul 2026 06:00:00 +1000",
+    "27": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "28": "Fri, 17 Jul 2026 06:00:00 +1000",
+    "49": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "50": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "51": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "52": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "53": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "54": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "55": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "56": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "57": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "58": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "59": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "60": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "61": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "62": "Sun, 12 Jul 2026 06:00:00 +1000",
+    "63": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "64": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "65": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "66": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "67": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "68": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "69": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "70": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "71": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "72": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "73": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "74": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "75": "Tue, 14 Jul 2026 06:00:00 +1000",
+    "76": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "77": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "78": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "79": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "80": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "81": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "82": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "83": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "84": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "85": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "86": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "87": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "88": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "89": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "90": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "91": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "92": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "93": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "94": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "95": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "96": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "200": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "201": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "202": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "203": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "204": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "205": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "206": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "207": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "208": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "209": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "210": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "211": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "212": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "213": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "300": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "301": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "302": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "303": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "304": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "305": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "306": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "307": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "308": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "309": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "310": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "311": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "312": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "313": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "314": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "315": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "316": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "317": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "318": "Mon, 20 Jul 2026 06:00:00 +1000",
+    "319": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "320": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "321": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "322": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "323": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "324": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "325": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "326": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "327": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "328": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "329": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "330": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "331": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "332": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "333": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "334": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "335": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "336": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "337": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "338": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "339": "Tue, 21 Jul 2026 06:00:00 +1000",
+    "340": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "341": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "342": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "343": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "344": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "345": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "346": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "347": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "348": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "349": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "350": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "351": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "352": "Wed, 22 Jul 2026 06:00:00 +1000",
+    "353": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "354": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "355": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "356": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "357": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "358": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "359": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "360": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "361": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "362": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "363": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "364": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "365": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "366": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "367": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "368": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "369": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "370": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "371": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "372": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "373": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "374": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "375": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "376": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "377": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "378": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "379": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "380": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "381": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "382": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "383": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "384": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "385": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "386": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "387": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "388": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "389": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "390": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "391": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "392": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "393": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "394": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "395": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "396": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "397": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "398": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "399": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "400": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "401": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "402": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "403": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "404": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "405": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "406": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "407": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "408": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "409": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "410": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "411": "Thu, 16 Jul 2026 06:00:00 +1000",
+    "412": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "413": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "414": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "415": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "416": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "417": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "418": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "419": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "420": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "421": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "422": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "423": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "424": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "425": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "426": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "427": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "428": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "429": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "430": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "431": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "432": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "433": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "434": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "435": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "436": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "437": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "438": "Thu, 24 Sep 2026 11:21:48 +1000",
+    "439": "Sat, 03 Oct 2026 09:59:04 +1000",
+    "440": "Sat, 03 Oct 2026 09:59:04 +1000",
+    "441": "Sat, 03 Oct 2026 09:59:04 +1000",
+    "450": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "451": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "452": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "453": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "454": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "460": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "461": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "462": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "463": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "464": "Thu, 30 Jul 2026 06:00:00 +1000",
+    "500": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "501": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "502": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "503": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "504": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "505": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "506": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "507": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "508": "Thu, 24 Sep 2026 06:00:00 +1000",
+    "509": "Thu, 24 Sep 2026 06:00:00 +1000"
   }
 }

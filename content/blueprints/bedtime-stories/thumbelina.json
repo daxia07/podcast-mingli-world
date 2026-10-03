@@ -15,8 +15,6 @@
   "voices": {
     "storyteller": "estimation"
   },
-  "music": true,
-  "rate": "-15%",
   "sections": [
     {
       "id": "beginning",
@@ -133,5 +131,6 @@
       ]
     }
   ],
-  "music": true
+  "music": true,
+  "rate": "-15%"
 }

@@ -29,6 +29,35 @@ from scripts.lib import gates as gates_mod
 from scripts.lib import manifest as manifest_mod
 
 
+def preservation_errors(local: dict, remote: dict | None) -> list[str]:
+    """Refuse a stale checkout that would remove published identities or URLs.
+
+    Archiving changes visibility metadata; it must not delete records. Rebuilds
+    may update a cache-busting query string while retaining the published path.
+    """
+    if not isinstance(remote, dict) or not isinstance(remote.get("episodes"), list):
+        return ["the current remote episode catalogue could not be verified"]
+    remote_shows = remote.get("playlists")
+    if not isinstance(remote_shows, dict):
+        return ["the current remote show catalogue could not be verified"]
+
+    local_episodes = {ep.get("id"): ep for ep in local.get("episodes", [])}
+    errors = []
+    for ep in remote["episodes"]:
+        episode_id = ep.get("id")
+        if episode_id is None or episode_id not in local_episodes:
+            errors.append(f"published episode {episode_id!r} is absent locally")
+            continue
+        before = str(ep.get("file_url") or "").split("?", 1)[0]
+        after = str(local_episodes[episode_id].get("file_url") or "").split("?", 1)[0]
+        if before and before != after:
+            errors.append(f"published episode {episode_id!r} would change its audio URL")
+    for show_id in remote_shows:
+        if show_id not in local.get("playlists", {}):
+            errors.append(f"published show {show_id!r} is absent locally")
+    return errors
+
+
 def main(argv: list[str]) -> int:
     dry = "--dry-run" in argv
 
@@ -56,9 +85,16 @@ def main(argv: list[str]) -> int:
 
     try:
         remote = r2.get_json("manifest.json")
-    except Exception as exc:  # first run, or R2 unreachable
-        print(f"  could not read the remote manifest ({exc}); will upload anyway")
-        remote = None
+    except Exception:
+        print("ERROR: could not read the remote manifest; refusing to overwrite it", file=sys.stderr)
+        return 1
+
+    losses = preservation_errors(local, remote)
+    if losses:
+        for message in losses:
+            print(f"ERROR: {message}", file=sys.stderr)
+        print("ERROR: reconcile the current live catalogue before syncing; nothing uploaded", file=sys.stderr)
+        return 1
 
     if remote == local:
         print("  R2 already matches — nothing to do")

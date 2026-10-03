@@ -135,5 +135,41 @@
       }
     ],
     "tutorPath": "/session?conceptId=two-sum-deep-drill&mode=learn"
+  },
+  "435": {
+    "title": "Approvals: One Decision, One Audit Trail",
+    "problem": "Design an authorized, auditable approval workflow",
+    "sections": [
+      {"id": "ask", "title": "Ask first", "body": ["When does approval take effect?", "Can there be only one final decision?", "What are the current-permission, audit, RTO, and RPO requirements?"]},
+      {"id": "flow", "title": "Say the flow", "body": ["Authenticated reviewer sends the expected version.", "Check current permission; conditionally transition the pending version.", "Commit the target change, decision, audit record, and outbox together, then confirm."]},
+      {"id": "recall", "title": "Recall under pressure", "body": ["Stale reviewer: conflict. Revoked reviewer: deny.", "Outbox repairs notification gaps.", "RPO zero needs off-region durable commit before success and a fenced single writer."]}
+    ]
+  },
+  "436": {
+    "title": "Issue Tracker: Immediate Reads, Delayed Search",
+    "problem": "Design issue creation and full-text search with tenant isolation",
+    "sections": [
+      {"id": "ask", "title": "Ask first", "body": ["Which read must be immediate?", "How stale may search be?", "How current must permissions be?"]},
+      {"id": "flow", "title": "Say the flow", "body": ["Authorize create; commit the issue and search outbox together.", "Serve the author's direct GET from authoritative storage.", "Index asynchronously; search returns candidates, then current authorization filters content."]},
+      {"id": "recall", "title": "Recall under pressure", "body": ["Database owns truth; search may lag ten seconds.", "Cached IDs never grant access.", "Stale edits get version conflicts; index outages do not block issue creation."]}
+    ]
+  },
+  "437": {
+    "title": "Jira Dashboard: The Acknowledgment Boundary",
+    "problem": "Keep a customer dashboard current from Jira issue updates",
+    "sections": [
+      {"id": "ask", "title": "Ask first", "body": ["Read-only or write-back?", "Freshness target and missed-event repair?", "Tenant and event scale?"]},
+      {"id": "flow", "title": "Say the flow", "body": ["Authenticate tenant; durably store the inbox event before acknowledging.", "A fair worker conditionally applies newer issue state and commits inbox status plus outbox.", "Push an invalidation; the browser refetches authoritative data."]},
+      {"id": "recall", "title": "Recall under pressure", "body": ["Duplicate: unique tenant and event identity.", "Out of order: apply only newer source state.", "Worker crash: harmless redelivery. Noisy tenant: fair scheduling and backlog-age metric."]}
+    ]
+  },
+  "438": {
+    "title": "Import Jobs: Fair Queues and Ambiguous Effects",
+    "problem": "Import changes under a shared downstream API quota",
+    "sections": [
+      {"id": "ask", "title": "Ask first", "body": ["What is one job item?", "Is the quota global or tenant-scoped?", "Does downstream support idempotency or authoritative lookup?"]},
+      {"id": "flow", "title": "Say the flow", "body": ["Authenticate and idempotently accept durable jobs and items.", "Schedule fairly by tenant; obtain a shared quota grant and cap concurrency.", "Call downstream; record item and job progress."]},
+      {"id": "recall", "title": "Recall under pressure", "body": ["A 429 delay is a minimum; do not sleep on the worker.", "Timeout after create means outcome unknown without a safe retry contract.", "If limiter authority is unavailable, pause unsafe calls."]}
+    ]
   }
 }

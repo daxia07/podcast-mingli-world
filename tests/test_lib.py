@@ -507,6 +507,9 @@ class TestBlueprintRequiredGate(unittest.TestCase):
         self.root = Path(self.tmp.name)
         (self.root / "bp").mkdir()
         (self.root / "legacy.json").write_text(json.dumps({"ids": [1, 2]}))
+        (self.root / "reconciled.json").write_text(
+            json.dumps({"episodes": [{"id": 8, "slug": "already-live"}]})
+        )
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -515,6 +518,7 @@ class TestBlueprintRequiredGate(unittest.TestCase):
         return gates_mod.gate_new_episodes_have_blueprints(
             manifest,
             legacy_path=self.root / "legacy.json",
+            reconciled_path=self.root / "reconciled.json",
             blueprint_root=self.root / "bp",
         )
 
@@ -531,10 +535,17 @@ class TestBlueprintRequiredGate(unittest.TestCase):
         (self.root / "bp" / "x.json").write_text(json.dumps({"id": 9, "slug": "x"}))
         self.assertEqual(self._run({"episodes": [{"id": 9}]}), [])
 
+    def test_reconciled_live_episode_requires_exact_id_and_slug(self):
+        self.assertEqual(self._run({"episodes": [{"id": 8, "slug": "already-live"}]}), [])
+        findings = self._run({"episodes": [{"id": 8, "slug": "different"}]})
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0].level, gates_mod.ERROR)
+
     def test_missing_legacy_file_warns_rather_than_blocking(self):
         findings = gates_mod.gate_new_episodes_have_blueprints(
             {"episodes": [{"id": 9}]},
             legacy_path=self.root / "nope.json",
+            reconciled_path=self.root / "reconciled.json",
             blueprint_root=self.root / "bp",
         )
         self.assertEqual(findings[0].level, gates_mod.WARN)
