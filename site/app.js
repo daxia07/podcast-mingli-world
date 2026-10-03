@@ -94,8 +94,8 @@
   var queuePos = -1;
   var current = null;
   var solutionsOn = false;
-  var speeds = [1, 1.25, 1.5, 0.85];
-  var speedIdx = 0;
+  var speeds = [1, 1.1, 1.25, 1.5, 0.85];
+  var speedIdx = Math.max(0, speeds.indexOf(loadJSON("pod_speed", 1)));
   var finished = loadJSON("pod_finished", {});
   var progress = loadJSON("pod_progress", {});
 
@@ -179,9 +179,6 @@
     var ordered = [];
 
     playlists.forEach(function (p) {
-      // Archived shows stay in the manifest (and in the RSS feed) but are
-      // hidden everywhere in the app.
-      if (p.archived) return;
       var existing = SHOW_META[p.id] || {};
       SHOW_META[p.id] = {
         title: p.title || existing.title || p.id,
@@ -191,6 +188,8 @@
         icon: p.icon || existing.icon || "",
         featured: p.featured != null ? !!p.featured : !!existing.featured,
       };
+      // Retain archived metadata so a device-local restore has its proper title.
+      if (window.Shelf ? !window.Shelf.showVisible(p) : p.archived) return;
       ordered.push({
         id: p.id,
         // Shows without an explicit order keep their old hardcoded position.
@@ -218,6 +217,7 @@
   }
 
   window.addEventListener("shelf:change", function () {
+    adoptShowsFromManifest();
     var active = document.querySelector("#libSeg .seg-btn.on");
     renderLibrary(active ? active.dataset.lib : "shows");
     renderHome();
@@ -248,6 +248,19 @@
     );
   }
 
+  function draftChaptersForShow(id) {
+    var pl = playlistsById()[id];
+    if (!pl || (window.Shelf ? !window.Shelf.showVisible(pl) : pl.archived)) return [];
+    return (pl.draft_chapters || []).filter(function (chapter) {
+      return chapter.status === 'text-ready-audio-pending' && /^\/novel\/[a-z0-9-]+\.html$/.test(chapter.reader_url || '');
+    });
+  }
+
+  function showCount(id, count) {
+    var drafts = draftChaptersForShow(id).length;
+    return count ? count + ' episodes' + (drafts ? ' · ' + drafts + ' texts ready' : '') : drafts + ' 章原文 · 音频待制作';
+  }
+
   function episodesForShow(showId) {
     var pl = null;
     for (var i = 0; i < playlists.length; i++) {
@@ -260,7 +273,7 @@
     var list = [];
     if (pl && pl.episode_ids && pl.episode_ids.length) {
       list = episodes.filter(function (ep) {
-        return pl.episode_ids.indexOf(ep.id) !== -1 && !ep.archived;
+        return pl.episode_ids.indexOf(ep.id) !== -1;
       });
       list.sort(function (a, b) {
         return pl.episode_ids.indexOf(a.id) - pl.episode_ids.indexOf(b.id);
@@ -271,13 +284,13 @@
     }
     // Also include episodes that tag this show (unshelves SD eps missing from ids)
     episodes.forEach(function (ep) {
-      if (ep.archived || byId[ep.id]) return;
+      if (byId[ep.id]) return;
       if (epShowId(ep) === showId) {
         list.push(ep);
         byId[ep.id] = true;
       }
     });
-    return list;
+    return visibleEpisodes(list);
   }
 
   function epSrc(ep) {
@@ -350,13 +363,7 @@
     // falling back to the original three.
     FEATURED_SHOWS.forEach(function (id) {
       var eps = episodesForShow(id);
-      if (!eps.length && id === "system-design") {
-        // Unshelve: still show SD if any episode maps via tip/theme
-        eps = episodes.filter(function (ep) {
-          return !ep.archived && epShowId(ep) === "system-design";
-        });
-      }
-      if (!eps.length) return;
+      if (!eps.length && !draftChaptersForShow(id).length) return;
       var m = showMeta(id);
       var pl = playlists.filter(function (p) {
         return p.id === id;
@@ -376,17 +383,17 @@
         '</div><div class="n">' +
         esc(title) +
         '</div><div class="c">' +
-        Math.max(eps.length, (pl && pl.episode_ids && pl.episode_ids.length) || 0) +
-        " episodes</div></div>";
+        showCount(id, eps.length) + "</div></div>";
     });
     var order = SHOW_ORDER.slice();
     playlists.forEach(function (p) {
       if (order.indexOf(p.id) === -1) order.push(p.id);
     });
     order.forEach(function (id) {
+      if (FEATURED_SHOWS.indexOf(id) >= 0) return;
       if (id === "coding-prep" || id === "coding-youtube" || id === "system-design") return;
       var eps = episodesForShow(id);
-      if (!eps.length) return;
+      if (!eps.length && !draftChaptersForShow(id).length) return;
       var m = showMeta(id);
       var title = (playlists.filter(function (p) {
         return p.id === id;
@@ -399,8 +406,7 @@
         '</div><div class="n">' +
         esc(title) +
         '</div><div class="c">' +
-        eps.length +
-        " episodes</div></div>";
+        showCount(id, eps.length) + "</div></div>";
     });
     row.innerHTML = html || '<div class="empty">No shows yet</div>';
     row.querySelectorAll(".show-card").forEach(function (el) {
@@ -463,6 +469,8 @@
           " · " +
           (ep.duration || "—") +
           "</div>" +
+          (/^\/novel\/[a-z0-9-]+\.html$/.test(ep.reader_url || '')
+            ? '<a class="ep-reader" href="' + escAttr(ep.reader_url) + '">阅读原文</a>' : '') +
           (board
             ? '<span class="ep-badge">Solution board</span>'
             : "") +
@@ -477,7 +485,7 @@
       .join("");
     el.querySelectorAll(".ep-card").forEach(function (card) {
       card.addEventListener("click", function (e) {
-        if (e.target.closest(".ep-play")) return;
+        if (e.target.closest(".ep-play, a")) return;
         var ep = byId(+card.dataset.id);
         if (ep) playEpisode(ep);
       });
@@ -501,6 +509,9 @@
   // ——— library ———
   /** The one view that deliberately shows what everything else hides. */
   function renderShelved(el) {
+    var aliases = episodes.filter(function (e) {
+      return window.Shelf && window.Shelf.aliasOf(e.id) != null && !window.Shelf.isAliasRestored(e.id);
+    });
     var shelvedEps = episodes.filter(function (e) {
       return window.Shelf && window.Shelf.isShelved(e.id);
     });
@@ -509,7 +520,7 @@
       return p.archived && !window.Shelf.isShowRestored(p.id);
     });
 
-    if (!shelvedEps.length && !archivedShows.length) {
+    if (!shelvedEps.length && !archivedShows.length && !aliases.length) {
       el.innerHTML =
         '<div class="empty">Nothing shelved.<br><span class="empty-sub">' +
         'Swipe an episode left to put it here.</span></div>';
@@ -517,6 +528,15 @@
     }
 
     var html = "";
+
+    if (aliases.length) {
+      html += '<h2 class="section-label">Other entries for the same audio</h2><p class="empty-sub">Original titles, links and listening history are preserved. Restore any entry on this device.</p>';
+      aliases.forEach(function (ep) {
+        html += '<div class="ep-swipe" data-alias="' + ep.id + '"><button type="button" class="ep-action restore" aria-label="Restore original entry">Restore</button>' +
+          '<div class="ep-card"><div class="ep-num">' + ep.id + '</div><div class="ep-body"><div class="ep-title">' + esc(ep.title) + '</div>' +
+          '<div class="ep-meta">Same audio as entry ' + window.Shelf.aliasOf(ep.id) + '</div><a href="' + escAttr(ep.file_url) + '">Original audio</a></div></div></div>';
+      });
+    }
 
     if (archivedShows.length) {
       html += '<h2 class="section-label">Archived shows</h2>';
@@ -546,6 +566,7 @@
   function renderLibrary(mode) {
     document.querySelectorAll("#libSeg .seg-btn").forEach(function (b) {
       b.classList.toggle("on", b.dataset.lib === mode);
+      b.setAttribute('aria-pressed', b.dataset.lib === mode ? 'true' : 'false');
     });
     var el = document.getElementById("libraryList");
 
@@ -568,7 +589,7 @@
     });
     order.forEach(function (id) {
       var eps = episodesForShow(id);
-      if (!eps.length) return;
+      if (!eps.length && !draftChaptersForShow(id).length) return;
       var m = showMeta(id);
       var pl = playlists.filter(function (p) {
         return p.id === id;
@@ -581,8 +602,7 @@
         '</div><div class="lib-info"><div class="lib-name">' +
         esc((pl && pl.title) || m.title) +
         '</div><div class="lib-sub">' +
-        eps.length +
-        " episodes</div></div></div>";
+        showCount(id, eps.length) + "</div></div></div>";
     });
     el.innerHTML = html || '<div class="empty">No shows</div>';
     el.querySelectorAll(".lib-row").forEach(function (row) {
@@ -614,6 +634,20 @@
     document.getElementById("showTitle").textContent =
       (pl && pl.title) || m.title;
     renderEpList(document.getElementById("showEpisodes"), eps);
+    var drafts = draftChaptersForShow(id);
+    if (drafts.length) {
+      var target = document.getElementById('showEpisodes');
+      if (!eps.length) target.innerHTML = '';
+      drafts.forEach(function (chapter) {
+        target.insertAdjacentHTML('beforeend', '<article class="draft-chapter"><span class="ep-badge">原文已备 · 正式音频待制作</span><h3>' + esc(chapter.title) +
+          '</h3><a href="' + escAttr(chapter.reader_url) + '">阅读完整原文 →</a></article>');
+      });
+    }
+    document.getElementById('showPlayAll').disabled = !eps.length;
+    document.getElementById('showQueueAll').disabled = !eps.length;
+    document.getElementById('showPlayAll').hidden = !eps.length;
+    document.getElementById('showQueueAll').hidden = !eps.length;
+    document.getElementById('showListHeading').textContent = drafts.length && !eps.length ? '原文目录' : 'Episodes';
     document.getElementById("showPlayAll").onclick = function () {
       if (!eps.length) return;
       queue = eps.slice();
@@ -630,6 +664,21 @@
   document.getElementById("showBack").onclick = function () {
     document.getElementById("showDetail").hidden = true;
   };
+
+  function openLinkedEpisode(search) {
+    var value = new URLSearchParams(search).get('episode');
+    if (!/^[1-9][0-9]*$/.test(value || '')) return false;
+    var ep = byId(Number(value));
+    if (!ep || !visibleEpisodes([ep]).length) return false;
+    openShow(epShowId(ep));
+    var row = document.querySelector('#showEpisodes .ep-card[data-id="' + ep.id + '"]');
+    if (row) {
+      row.setAttribute('tabindex', '-1');
+      row.focus();
+      row.scrollIntoView({block:'center'});
+    }
+    return true;
+  }
 
   // ——— search ———
   //
@@ -956,10 +1005,19 @@
   };
   document.getElementById("btnPrev").onclick = playPrev;
 
+  function applyPlaybackSpeed() {
+    // defaultPlaybackRate preserves the chosen rate when the media source changes.
+    audio.defaultPlaybackRate = speeds[speedIdx];
+    audio.playbackRate = speeds[speedIdx];
+    var button = document.getElementById("btnSpeed");
+    button.textContent = speeds[speedIdx] + "×";
+    button.setAttribute("aria-label", "Playback speed " + speeds[speedIdx] + " times");
+  }
+  applyPlaybackSpeed();
   document.getElementById("btnSpeed").onclick = function () {
     speedIdx = (speedIdx + 1) % speeds.length;
-    audio.playbackRate = speeds[speedIdx];
-    this.textContent = speeds[speedIdx] + "×";
+    applyPlaybackSpeed();
+    saveJSON("pod_speed", speeds[speedIdx]);
   };
 
   function playNext() {
@@ -1148,6 +1206,7 @@
   ])
     .then(function (pair) {
       var d = pair[0];
+      if (window.Shelf) window.Shelf.setAliases(d.display_aliases || {});
       solutions = pair[1] || {};
       episodes = (d.episodes || []).map(function (ep) {
         if (!ep.file_url) {
@@ -1168,6 +1227,7 @@
           });
       adoptShowsFromManifest();
       renderHome();
+      openLinkedEpisode(window.location.search);
     })
     .catch(function () {
       toast("Failed to load podcast data");

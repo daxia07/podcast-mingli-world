@@ -1,0 +1,49 @@
+{
+  "status": "Three exact V3 opening audio chapters published to the existing R2 catalogue; integrated site deployment and production browser acceptance pending.",
+  "working_title": "向后兼容",
+  "source_sha256": "33271a5148c6b78542c949aa71e859fe7eeb922d80f70e89d6d709dcf09d7d4f",
+  "chapters": [
+    {
+      "slug": "opening-v3-ch01",
+      "source_sha256": "8fe67ec740c61663cc069fafe2be47a0c8178710aa01d4dabaeaa684c45b82c9",
+      "chunks": 15,
+      "scene_sections": 4,
+      "estimated_minutes": 13.18,
+      "audio_status": "rendered and passed disclosed objective review",
+      "lexical_source_alignment": "pass",
+      "id": 439,
+      "duration_seconds": 815.16,
+      "mp3_sha256": "278d58d3b66cb509a9fcd395226753e174a11a04ad1085d4e27e887e25e7459f",
+      "file_size_bytes": 6521516
+    },
+    {
+      "slug": "opening-v3-ch02",
+      "source_sha256": "830f59df018e5850bc63b9260be07ca93fff00e9158243022f5ffdff1dc17772",
+      "chunks": 21,
+      "scene_sections": 8,
+      "estimated_minutes": 18.07,
+      "audio_status": "rendered and passed disclosed objective review",
+      "lexical_source_alignment": "pass",
+      "id": 440,
+      "duration_seconds": 992.832,
+      "mp3_sha256": "5c5579367b70d9754cd881d9ef2d760815a83d556f06af48cfc0821c20d10714",
+      "file_size_bytes": 7942892
+    },
+    {
+      "slug": "opening-v3-ch03",
+      "source_sha256": "cf10a0d90d2511313ec1577e8bf87bedf7c79323872fa7298bb1248f6c569f4e",
+      "chunks": 23,
+      "scene_sections": 8,
+      "estimated_minutes": 19.93,
+      "audio_status": "rendered and passed disclosed objective review",
+      "lexical_source_alignment": "pass",
+      "id": 441,
+      "duration_seconds": 1167.288,
+      "mp3_sha256": "b3174706f0205e4db39948a23cded7d3b5087286d4d38b5d8c294946b4f6b1ca",
+      "file_size_bytes": 9338540
+    }
+  ],
+  "listening": "not performed; disclosed objective review passed for all 59 exact chunks",
+  "published": false,
+  "audio_published": true
+}

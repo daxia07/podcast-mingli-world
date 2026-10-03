@@ -113,6 +113,7 @@ def apply_shows(manifest: dict, shows: dict) -> dict:
     for show_id, show in shows.get("shows", {}).items():
         existing = playlists.get(show_id, {})
         playlists[show_id] = {
+            **existing,
             "title": show["title"],
             "description": show.get("description", ""),
             "icon": show.get("icon", ""),
@@ -123,6 +124,9 @@ def apply_shows(manifest: dict, shows: dict) -> dict:
             "archived": bool(show.get("archived")),
             "episode_ids": existing.get("episode_ids", []),
         }
+        for key in ('language', 'status', 'draft_chapters'):
+            if key in show:
+                playlists[show_id][key] = show[key]
 
     # A show removed from shows.json should disappear from the manifest too,
     # otherwise deleted shows linger as empty tiles in the app.
@@ -144,6 +148,16 @@ def apply_shows(manifest: dict, shows: dict) -> dict:
         elif ep.get("archived"):
             del ep["archived"]
 
+    return manifest
+
+
+def register_show(manifest: dict, show_id: str, show: dict) -> dict:
+    """Register one new show without rewriting any published show or episode."""
+    if show_id in manifest.get('playlists', {}):
+        raise ValueError(f'show {show_id} already exists; use a reviewed update')
+    temporary = {'episodes':[], 'playlists':{}}
+    apply_shows(temporary, {'shows':{show_id:show}})
+    manifest.setdefault('playlists', {})[show_id] = temporary['playlists'][show_id]
     return manifest
 
 
@@ -183,7 +197,7 @@ def generate_rss(manifest: dict) -> str:
     SubElement(channel, "title").text = manifest.get("title", "Daily Interview English")
     SubElement(channel, "link").text = BASE_URL
     SubElement(channel, "description").text = manifest.get("description", "")
-    SubElement(channel, "language").text = "en"
+    SubElement(channel, "language").text = manifest.get('language', 'en')
 
     author = manifest.get("author", "Daily Interview English")
     SubElement(channel, "itunes:author").text = author
@@ -223,7 +237,7 @@ def generate_rss(manifest: dict) -> str:
             node = SubElement(item, "podcast:transcript")
             node.set("url", transcript_url)
             node.set("type", "text/vtt")
-            node.set("language", "en")
+            node.set("language", ep.get('language', 'en'))
 
         chapters_url = _artifact_url("chapters", ep)
         if chapters_url:

@@ -1,0 +1,12 @@
+{
+  "approved": false,
+  "reviewer": "",
+  "reviewed_at": "",
+  "mp3_sha256": "",
+  "source_sha256": "",
+  "open_issues": [
+    "Listen to the exact final MP3 for omitted or repeated phrases, 陈默/周启/罗宁/回声 and the literal aqi/local label.",
+    "Confirm chapter heading, 亮两下, 本轮采集已结束, long-form comfort, pauses and scene transitions.",
+    "ASR, source hashes and successful decoding do not count as listening approval."
+  ]
+}

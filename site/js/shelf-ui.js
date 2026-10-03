@@ -131,7 +131,11 @@
     var showId = row.dataset.show;
     var wasShelved = row.dataset.shelved === '1';
 
-    if (showId) {
+    if (row.dataset.alias) {
+      var aliasId = row.dataset.alias;
+      Shelf.setAliasRestored(aliasId, true);
+      announce('Original entry restored', function () { Shelf.setAliasRestored(aliasId, false); });
+    } else if (showId) {
       // A show row in the Shelved tab: restore the whole show.
       Shelf.setShowRestored(showId, true);
       announce('Show restored', function () {

@@ -14,6 +14,7 @@ dependency either, which keeps the pipeline importable on a bare runner.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -79,6 +80,9 @@ class Blueprint:
     audio: str = "synth"  # "synth" | "existing" (migrated episodes)
     music: bool = False  # story-audio bed mixed under the voice
     rate: str | None = None  # edge-tts speaking rate, e.g. "-15%" for sleepy
+    language: str = "en"
+    tts: dict = field(default_factory=dict)
+    source_document: dict = field(default_factory=dict)
     path: Path | None = None
 
     # -- derived ------------------------------------------------------------
@@ -91,7 +95,7 @@ class Blueprint:
 
     def estimate_seconds(self) -> float:
         """Rough spoken duration, including the gaps the builder inserts."""
-        speech = self.word_count() / WORDS_PER_MINUTE * 60.0
+        speech = sum(self.section_speech_seconds(s) for s in self.sections)
         gaps = (
             max(self.line_count() - 1, 0) * GAP_BETWEEN_LINES
             + max(len(self.sections) - 1, 0) * GAP_BETWEEN_SECTIONS
@@ -100,6 +104,15 @@ class Blueprint:
             line.pause_after for section in self.sections for line in section.lines
         )
         return speech + gaps + explicit
+
+    def section_speech_seconds(self, section: Section) -> float:
+        if self.language.startswith('zh'):
+            text = ' '.join(line.text for line in section.lines)
+            # Audition-derived planning only, never a measured duration.
+            han = len(re.findall(r'[\u3400-\u9fff]', text))
+            latin = len(re.findall(r'[A-Za-z0-9]+', text))
+            return han / 162 * 60 + latin / WORDS_PER_MINUTE * 60
+        return section.word_count() / WORDS_PER_MINUTE * 60
 
     def estimate_minutes(self) -> float:
         return self.estimate_seconds() / 60.0
@@ -111,7 +124,7 @@ class Blueprint:
     def to_dict(self) -> dict:
         out = {
             "schema": self.schema,
-            "id": self.id,
+            **({"id": self.id} if self.id is not None else {}),
             "slug": self.slug,
             "show": self.show,
             "template": self.template,
@@ -150,6 +163,12 @@ class Blueprint:
             out["music"] = True
         if self.rate:
             out["rate"] = self.rate
+        if self.language != 'en':
+            out['language'] = self.language
+        if self.tts:
+            out['tts'] = self.tts
+        if self.source_document:
+            out['source_document'] = self.source_document
         return out
 
 
@@ -253,6 +272,9 @@ def from_dict(data: dict, path: Path | None = None) -> Blueprint:
         audio=str(data.get("audio", "synth")),
         music=bool(data.get("music", False)),
         rate=(str(data["rate"]) if data.get("rate") else None),
+        language=str(data.get('language', 'en')),
+        tts=dict(data.get('tts') or {}),
+        source_document=dict(data.get('source_document') or {}),
         path=path,
     )
 

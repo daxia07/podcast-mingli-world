@@ -20,7 +20,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
+from copy import deepcopy
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -47,11 +49,13 @@ def fail(message: str) -> None:
 def print_plan(bp: Blueprint, template: dict | None) -> None:
     print(f"\n  {bp.title}")
     print(f"  show={bp.show}  template={bp.template}  slug={bp.slug}  id={bp.id or 'unallocated'}")
-    print(f"  {bp.line_count()} lines, {bp.word_count()} words, ~{bp.estimate_minutes():.1f} min\n")
+    count = (str(sum(len(re.findall(r'[\u3400-\u9fff]', line.text)) for section in bp.sections for line in section.lines)) + ' Han characters'
+             if bp.language.startswith('zh') else str(bp.word_count()) + ' words')
+    print(f"  {bp.line_count()} chunks, {count}, ~{bp.estimate_minutes():.1f} min (estimate)\n")
 
     width = max(len(s.id) for s in bp.sections)
     for section in bp.sections:
-        est = section.word_count() / 145 * 60
+        est = bp.section_speech_seconds(section)
         target = f" (target {section.target_minutes}m)" if section.target_minutes else ""
         flag = " [factual]" if section.factual else ""
         print(
@@ -81,7 +85,16 @@ def run_gates(bp: Blueprint, manifest: dict, force: bool) -> None:
 
 def allocate(bp: Blueprint, manifest: dict) -> None:
     if bp.id is None:
-        bp.id = ids_mod.next_id(manifest)
+        # Completed local builds reserve IDs too; --no-publish does not yet
+        # append to the live catalogue, so repeated builds otherwise collide.
+        reservations = deepcopy(manifest)
+        known = {ep['id'] for ep in reservations.get('episodes', [])}
+        for path in Path('content/blueprints').rglob('*.json'):
+            item = json.loads(path.read_text())
+            if item.get('id') is not None and item['id'] not in known:
+                reservations.setdefault('episodes', []).append({'id':item['id']})
+                known.add(item['id'])
+        bp.id = ids_mod.next_id(reservations)
         print(f"  allocated id {bp.id}")
     if not ids_mod.is_valid_slug(bp.slug):
         fail(f"invalid slug {bp.slug!r}")
@@ -96,23 +109,38 @@ def build(args: argparse.Namespace) -> int:
     print(f"=== build_episode: {bp.slug} ===")
     manifest = manifest_mod.load()
 
+    if getattr(args, 'publish_built', False):
+        if args.dry_run or args.no_publish:
+            fail('--publish-built cannot be combined with --dry-run or --no-publish')
+        return publish_built(bp, manifest, args)
+
     run_gates(bp, manifest, args.force)
-    allocate(bp, manifest)
     print_plan(bp, gates_mod.load_template(bp.template))
 
     if args.dry_run:
         print("  dry run — no audio synthesised, nothing uploaded")
         return 0
 
+    # --force may override editorial warnings; never source alignment.
+    if bp.language.startswith('zh') or bp.tts:
+        from scripts.lib.local_mandarin import validate_source
+        try:
+            validate_source(bp)
+        except (ValueError, OSError) as exc:
+            fail(str(exc))
+    allocate(bp, manifest)
+
     # Imported here so --dry-run works on a machine with no ffmpeg installed.
     from scripts.lib import synth as synth_mod
 
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    mp3_path = DATA_DIR / f"{bp.slug}.mp3"
+    output_dir = Path(getattr(args, 'output_dir', None) or DATA_DIR)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    mp3_path = output_dir / f"{bp.slug}.mp3"
 
     print("  synthesising...")
     try:
-        timeline = synth_mod.synthesize(bp, mp3_path)
+        timeline = synth_mod.synthesize(bp, mp3_path,
+            workdir=getattr(args, 'workdir', None), model_dir=getattr(args, 'model_dir', None))
     except synth_mod.SynthError as exc:
         fail(str(exc))
 
@@ -124,8 +152,8 @@ def build(args: argparse.Namespace) -> int:
     vtt = transcript_mod.build(timeline)
     has_chapters = bool(chapters_mod.build(timeline))
 
-    (DATA_DIR / f"{bp.slug}.chapters.json").write_text(chapter_doc, encoding="utf-8")
-    (DATA_DIR / f"{bp.slug}.vtt").write_text(vtt, encoding="utf-8")
+    (output_dir / f"{bp.slug}.chapters.json").write_text(chapter_doc, encoding="utf-8")
+    (output_dir / f"{bp.slug}.vtt").write_text(vtt, encoding="utf-8")
 
     duration = f"{int(timeline.total // 60)}:{int(timeline.total % 60):02d}"
     print(f"  {duration}  {size / 1e6:.1f} MB  chapters={'yes' if has_chapters else 'no'}")
@@ -135,7 +163,45 @@ def build(args: argparse.Namespace) -> int:
         save(bp)
         return 0
 
-    return publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters)
+    return publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters,
+                   listening_review=getattr(args, 'listening_review', None))
+
+
+def publish_built(bp, manifest, args):
+    """Publish exact locally reviewed Mandarin artifacts on an existing publisher.
+
+    The publishing host needs ffmpeg and its existing storage access, not a
+    second speech model or a copied account credential. No synthesis occurs.
+    """
+    from scripts.lib.local_mandarin import validate_source, require_listening_review
+    from scripts.lib.timeline import Timeline, TimedLine, TimedSection, flatten
+    if not bp.language.startswith('zh') or bp.id is None:
+        fail('--publish-built requires an allocated Mandarin blueprint')
+    run_gates(bp, manifest, False)
+    folder = Path(getattr(args, 'output_dir', None) or DATA_DIR)
+    path = folder / f'{bp.slug}.mp3'
+    try:
+        validate_source(bp)
+        require_listening_review(bp, path, getattr(args, 'listening_review', None))
+        receipt = json.loads(path.with_suffix('.build.json').read_text())
+        raw = receipt['timeline']
+        timeline = Timeline([TimedLine(**line) for line in raw['lines']],
+            [TimedSection(**section) for section in raw['sections']], raw['total'])
+        if [line.text for line in timeline.lines] != [line.text for _, _, line in flatten(bp)]:
+            fail('built timeline does not preserve every source chunk')
+        chapter_doc = chapters_mod.dumps(timeline, title=bp.title)
+        vtt = transcript_mod.build(timeline)
+        if ((folder / f'{bp.slug}.chapters.json').read_text() != chapter_doc
+                or (folder / f'{bp.slug}.vtt').read_text() != vtt):
+            fail('built chapter or transcript sidecar changed after rendering')
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        fail(str(exc))
+    size = path.stat().st_size
+    if size < MIN_MP3_BYTES:
+        fail('built MP3 is unexpectedly small')
+    duration = f'{int(timeline.total // 60)}:{int(timeline.total % 60):02d}'
+    return publish(bp, manifest, path, chapter_doc, vtt, timeline, duration, size,
+        bool(chapters_mod.build(timeline)), listening_review=getattr(args, 'listening_review', None))
 
 
 def _content_hash(path, length: int = 8) -> str:
@@ -148,17 +214,14 @@ def _content_hash(path, length: int = 8) -> str:
     return digest.hexdigest()[:length]
 
 
-def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters) -> int:
-    from scripts.lib import r2  # wrangler-backed; needs CLOUDFLARE_API_TOKEN
-
-    print("  uploading...")
-    r2.upload(f"episodes/{bp.slug}.mp3", str(mp3_path))
-    r2.upload_bytes(f"transcripts/{bp.slug}.vtt", vtt.encode("utf-8"))
-    if has_chapters:
-        r2.upload_bytes(f"chapters/{bp.slug}.json", chapter_doc.encode("utf-8"))
-    if bp.board:
-        r2.upload_json(f"boards/{bp.slug}.json", bp.board)
-
+def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, has_chapters, *, listening_review=None) -> int:
+    if bp.language.startswith('zh') or bp.tts:
+        from scripts.lib.local_mandarin import validate_source, require_listening_review
+        try:
+            validate_source(bp)
+            require_listening_review(bp, mp3_path, listening_review)
+        except (ValueError, OSError) as exc:
+            fail(str(exc))
     entry = {
         "id": bp.id,
         "slug": bp.slug,
@@ -177,21 +240,52 @@ def publish(bp, manifest, mp3_path, chapter_doc, vtt, timeline, duration, size, 
         "has_chapters": has_chapters,
         "keywords": bp.keywords,
     }
+    if bp.language != 'en':
+        entry['language'] = bp.language
+    reader_url = bp.source_document.get('reader_url')
+    if reader_url:
+        if not re.fullmatch(r'/novel/[a-z0-9-]+\.html', reader_url):
+            fail('reader URL must identify a local novel HTML page')
+        entry['reader_url'] = reader_url
     if bp.sources:
         entry["sources"] = bp.sources
 
-    manifest_mod.add_or_update(manifest, entry)
-    manifest_mod.attach_to_playlist(manifest, bp.show, bp.id)
+    candidate = deepcopy(manifest)
+    manifest_mod.add_or_update(candidate, entry)
+    try:
+        manifest_mod.attach_to_playlist(candidate, bp.show, bp.id)
+    except KeyError as exc:
+        fail(str(exc))
+    show = candidate['playlists'][bp.show]
+    if show.get('draft_chapters'):
+        show['draft_chapters'] = [chapter for chapter in show['draft_chapters'] if chapter.get('slug') != bp.slug]
 
-    findings = [f for f in gates_mod.run_manifest(manifest) if f.level == gates_mod.ERROR]
+    findings = [f for f in gates_mod.run_manifest(candidate) + gates_mod.gate_show_registry(candidate) if f.level == gates_mod.ERROR]
     if findings:
         for finding in findings:
             print(f"  {finding}")
         fail("manifest would be invalid after this publish — not uploading it")
 
-    r2.upload_json("manifest.json", manifest)
-    r2.upload_bytes("rss.xml", manifest_mod.generate_rss(manifest).encode("utf-8"))
-    manifest_mod.save_local(manifest)
+    from scripts.lib import r2
+    from scripts.sync_manifest import preservation_errors
+    try:
+        remote = r2.get_json('manifest.json')
+        losses = preservation_errors(candidate, remote)
+    except Exception:
+        fail('current remote catalogue could not be verified; nothing uploaded')
+    if losses:
+        fail('; '.join(losses))
+    print("  uploading...")
+    r2.upload(f"episodes/{bp.slug}.mp3", str(mp3_path))
+    r2.upload_bytes(f"transcripts/{bp.slug}.vtt", vtt.encode("utf-8"))
+    if has_chapters:
+        r2.upload_bytes(f"chapters/{bp.slug}.json", chapter_doc.encode("utf-8"))
+    if bp.board:
+        r2.upload_json(f"boards/{bp.slug}.json", bp.board)
+
+    r2.upload_json("manifest.json", candidate)
+    r2.upload_bytes("rss.xml", manifest_mod.generate_rss(candidate).encode("utf-8"))
+    manifest_mod.save_local(candidate)
     save(bp)
 
     print(f"  published #{bp.id} {bp.title}")
@@ -204,6 +298,12 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="gates + plan only")
     parser.add_argument("--no-publish", action="store_true", help="build audio locally, don't upload")
     parser.add_argument("--force", action="store_true", help="build despite gate errors")
+    parser.add_argument('--model-dir', help='existing pinned local model snapshot; never downloaded automatically')
+    parser.add_argument('--workdir', help='persistent chunk cache directory')
+    parser.add_argument('--output-dir', help='local build outputs; defaults to data/')
+    parser.add_argument('--publish-built', action='store_true', help='publish exact reviewed Mandarin build artifacts without loading a speech model')
+    parser.add_argument('--audio-review', '--listening-review', dest='listening_review',
+        help='explicit listening or disclosed objective review bound to final MP3/source hashes; never generated by the builder')
     return build(parser.parse_args())
 
 

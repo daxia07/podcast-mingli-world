@@ -132,7 +132,15 @@ def gate_tts_safety(bp: Blueprint) -> list[Finding]:
     out = []
     for section in bp.sections:
         for i, line in enumerate(section.lines):
-            out.extend(_findings_for_text(line.text, f"{section.id}.lines[{i}]", level))
+            text = line.text
+            if bp.language.startswith('zh') or bp.tts:
+                from .local_mandarin import spoken_text
+                try:
+                    text = spoken_text(bp, text)
+                except (ValueError, TypeError) as exc:
+                    out.append(Finding('tts_safety', ERROR, str(exc)))
+                    continue
+            out.extend(_findings_for_text(text, f"{section.id}.lines[{i}]", level))
     return out
 
 
@@ -274,6 +282,12 @@ def run_blueprint(
     findings += gate_claims(bp)
     findings += gate_board(bp)
     findings += gate_story_audio(bp)
+    if bp.language.startswith('zh') or bp.tts:
+        from .local_mandarin import validate_source
+        try:
+            validate_source(bp)
+        except (ValueError, OSError, TypeError) as exc:
+            findings.append(Finding('mandarin_source', ERROR, str(exc)))
     if manifest is not None:
         findings += gate_id_unique(bp, manifest)
     return findings
@@ -315,6 +329,12 @@ DATE_PREFIXED = re.compile(r"/episodes/\d{4}-\d{2}-\d{2}-[a-z]")
 
 def run_manifest(manifest: dict) -> list[Finding]:
     out: list[Finding] = []
+    from .catalogue import validate_aliases
+    try:
+        if 'display_aliases' in manifest:
+            validate_aliases(manifest)
+    except (ValueError, KeyError, TypeError) as exc:
+        out.append(Finding('display_aliases', ERROR, str(exc)))
     episodes = manifest.get("episodes", [])
 
     seen: dict[int, str] = {}

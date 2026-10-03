@@ -1,4 +1,11 @@
 /* Mingli Podcast — editorial studio UI */
+.draft-chapter { border: 1px solid var(--line); border-radius: 16px; padding: 22px; margin: 12px 0; background: var(--bg-elevated); }
+.draft-chapter h3 { line-height: 1.5; margin: 14px 0; }
+.draft-chapter a, .novel-reader a { color: var(--accent); text-underline-offset: 4px; }
+.novel-reader { max-width: 760px; margin: 0 auto; padding: 36px 24px 80px; }
+.novel-reader h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.45; }
+.novel-reader p { margin: 20px 0; color: var(--ink-2); }
+.novel-reader pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 2; margin-top: 32px; }
 :root {
   --bg: #f7f6f3;
   --bg-elevated: #ffffff;
@@ -1537,6 +1544,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   z-index: 0;
 }
 .ep-action.restore { background: var(--success); }
+.ep-swipe[data-alias] > .ep-card, .ep-swipe[data-show] > .ep-card { margin-right: 104px; min-height: 96px; }
 .ep-action:active { filter: brightness(0.92); }
 
 .ep-swipe > .ep-card {

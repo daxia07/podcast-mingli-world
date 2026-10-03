@@ -108,6 +108,17 @@ test('showVisible follows the archived flag and the local override', async () =>
   assert.equal(Shelf.showVisible(PLAYLISTS['airwallex-domain']), true);
 });
 
+test('exact-media alias restoration preserves all unrelated local playback/history state',async()=>{
+  const {Shelf,store}=await load();const episode={id:4,playlist:'coding-prep'};
+  store.set('pod_progress','{"4":123,"lastId":4}');store.set('pod_queue','[4,500]');
+  Shelf.setAliases({'4':3});assert.equal(Shelf.episodeVisible(episode,PLAYLISTS),false);
+  Shelf.setAliasRestored(4,true);assert.equal(Shelf.episodeVisible(episode,PLAYLISTS),true);
+  assert.equal(store.get('pod_progress'),'{"4":123,"lastId":4}');assert.equal(store.get('pod_queue'),'[4,500]');
+  Shelf.setShelved(4,true);assert.equal(Shelf.episodeVisible(episode,PLAYLISTS),false);
+  Shelf.setShelved(4,false);Shelf.setAliasRestored(4,false);assert.equal(Shelf.episodeVisible(episode,PLAYLISTS),false);
+  Shelf.setAliases({});assert.equal(Shelf.episodeVisible(episode,PLAYLISTS),true,'removing proposal restores all records');
+});
+
 // --- gesture --------------------------------------------------------------
 
 test('a short drag springs back closed', async () => {

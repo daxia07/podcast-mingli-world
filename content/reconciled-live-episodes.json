@@ -1,16 +1,86 @@
 {
-  "note": "These ten episodes were already published to production R2 while the GitHub repository manifest was behind. Their private source scripts are not in this repository. Exact ID and slug pairs are frozen here so the manifest can be reconciled without deleting live content or publishing private transcripts. New episodes still require blueprints.",
-  "reconciled_at": "2026-09-23",
+  "note": "Exact ID/slug pairs already published while Git lagged behind R2. Source scripts are owned elsewhere. This list preserves existing content; genuinely new episodes still require blueprints.",
+  "reconciled_at": "2026-10-02",
   "episodes": [
-    {"id": 425, "slug": "deployco-takehome-convfinqa-agent-drive"},
-    {"id": 426, "slug": "macquarie-screen-first-ninety-seconds"},
-    {"id": 427, "slug": "quantium-screen-first-ninety-seconds"},
-    {"id": 428, "slug": "macquarie-screen-fast-answers"},
-    {"id": 429, "slug": "quantium-screen-production-ai-story"},
-    {"id": 430, "slug": "macquarie-screen-fifteen-minute-mock"},
-    {"id": 431, "slug": "quantium-screen-thirty-minute-mock"},
-    {"id": 432, "slug": "future-investing-01-the-world-taking-shape"},
-    {"id": 433, "slug": "future-investing-02-who-keeps-the-profit"},
-    {"id": 434, "slug": "future-investing-03-being-early-without-overpaying"}
+    {
+      "id": 425,
+      "slug": "deployco-takehome-convfinqa-agent-drive"
+    },
+    {
+      "id": 426,
+      "slug": "macquarie-screen-first-ninety-seconds"
+    },
+    {
+      "id": 427,
+      "slug": "quantium-screen-first-ninety-seconds"
+    },
+    {
+      "id": 428,
+      "slug": "macquarie-screen-fast-answers"
+    },
+    {
+      "id": 429,
+      "slug": "quantium-screen-production-ai-story"
+    },
+    {
+      "id": 430,
+      "slug": "macquarie-screen-fifteen-minute-mock"
+    },
+    {
+      "id": 431,
+      "slug": "quantium-screen-thirty-minute-mock"
+    },
+    {
+      "id": 432,
+      "slug": "future-investing-01-the-world-taking-shape"
+    },
+    {
+      "id": 433,
+      "slug": "future-investing-02-who-keeps-the-profit"
+    },
+    {
+      "id": 434,
+      "slug": "future-investing-03-being-early-without-overpaying"
+    },
+    {
+      "id": 500,
+      "slug": "atlassian-intro-qa-01-sixty-second-introduction"
+    },
+    {
+      "id": 501,
+      "slug": "atlassian-intro-qa-02-why-atlassian-role"
+    },
+    {
+      "id": 502,
+      "slug": "atlassian-intro-qa-03-ai-agent-deep-dive"
+    },
+    {
+      "id": 503,
+      "slug": "atlassian-intro-qa-04-tax-data-edge-case"
+    },
+    {
+      "id": 504,
+      "slug": "atlassian-intro-qa-05-idempotent-retry"
+    },
+    {
+      "id": 505,
+      "slug": "atlassian-intro-qa-06-tenant-authorization"
+    },
+    {
+      "id": 506,
+      "slug": "atlassian-intro-qa-07-races-and-lock-scope"
+    },
+    {
+      "id": 507,
+      "slug": "atlassian-intro-qa-08-consistency-cache-backpressure"
+    },
+    {
+      "id": 508,
+      "slug": "atlassian-intro-qa-09-screen-process-and-recovery"
+    },
+    {
+      "id": 509,
+      "slug": "atlassian-intro-qa-10-mixed-mock-and-close"
+    }
   ]
 }

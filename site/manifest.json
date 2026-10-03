@@ -7029,6 +7029,78 @@
       ]
     },
     {
+      "id": 439,
+      "slug": "opening-v3-ch01",
+      "title": "第一章 · 还没有收到",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "13:35",
+      "file_size_bytes": 6521516,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch01.mp3?v=b757bf40",
+      "filename": "opening-v3-ch01.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch01.html"
+    },
+    {
+      "id": 440,
+      "slug": "opening-v3-ch02",
+      "title": "第二章 · 借来的时间",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "16:32",
+      "file_size_bytes": 7942892,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch02.mp3?v=de8a5a4e",
+      "filename": "opening-v3-ch02.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch02.html"
+    },
+    {
+      "id": 441,
+      "slug": "opening-v3-ch03",
+      "title": "第三章 · 题目之外",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+      "duration": "19:27",
+      "file_size_bytes": 9338540,
+      "file_url": "https://podcast.mingli.world/episodes/opening-v3-ch03.mp3?v=151f96dc",
+      "filename": "opening-v3-ch03.mp3",
+      "playlist": "novel-opening-v3",
+      "source": "tts",
+      "has_transcript": true,
+      "has_chapters": true,
+      "keywords": [
+        "科幻小说",
+        "开篇 V3",
+        "陈默",
+        "周启",
+        "罗宁",
+        "回声"
+      ],
+      "language": "zh-CN",
+      "reader_url": "/novel/opening-v3-ch03.html"
+    },
+    {
       "id": 450,
       "title": "Behavioral: Why Leaving + Biggest Weakness",
       "description": "TTS-generated practice episode for behavioral interview preparation.",
@@ -7187,6 +7259,176 @@
       "playlist": "infosec-interview",
       "source": "tts",
       "slug": "infosec-zero-trust-api"
+    },
+    {
+      "id": 500,
+      "date": "2026-09-24",
+      "title": "Your 60-Second Introduction",
+      "description": "Introduce yourself through one coherent present-to-future story rather than listing your resume. Focus: Financial backend, applied AI, context agent, trusted data, Atlassian scale.",
+      "duration": "3:19",
+      "duration_seconds": 198.62,
+      "file_size_bytes": 1191788,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-01-sixty-second-introduction.mp3?v=abe0f03dae5a",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-01-sixty-second-introduction",
+      "archived": false
+    },
+    {
+      "id": 501,
+      "date": "2026-09-24",
+      "title": "Why Atlassian and This Backend Role",
+      "description": "Explain why Atlassian is a deliberate choice and why a general senior backend role still fits your direction. Focus: Connect the data thesis to backend reliability without pretending the role is assigned to an AI team.",
+      "duration": "2:20",
+      "duration_seconds": 140.21,
+      "file_size_bytes": 841292,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-02-why-atlassian-role.mp3?v=0190aae57706",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-02-why-atlassian-role",
+      "archived": false
+    },
+    {
+      "id": 502,
+      "date": "2026-09-24",
+      "title": "Resume Deep Dive: The Design-Phase Agent",
+      "description": "Explain the recent AI project as an engineering system with evidence and boundaries. Focus: Problem, sources, output, adoption, and a clear limit.",
+      "duration": "2:32",
+      "duration_seconds": 151.85,
+      "file_size_bytes": 911132,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-03-ai-agent-deep-dive.mp3?v=fd04e503d691",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-03-ai-agent-deep-dive",
+      "archived": false
+    },
+    {
+      "id": 503,
+      "date": "2026-09-24",
+      "title": "Resume Deep Dive: A Negative Corporate-Action Reversal",
+      "description": "Tell a concise production story about validation and calculation logic in Tax Analyser. Focus: Describe a data edge case without blaming the data or overstating the outcome.",
+      "duration": "2:12",
+      "duration_seconds": 131.5,
+      "file_size_bytes": 789020,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-04-tax-data-edge-case.mp3?v=3e132af14bc1",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-04-tax-data-edge-case",
+      "archived": false
+    },
+    {
+      "id": 504,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Safe Retry After a Timeout",
+      "description": "A create request times out after the server may have committed. Explain the complete retry contract. Focus: Intent key, atomic claim, stored outcome, concurrent duplicate, changed payload.",
+      "duration": "2:27",
+      "duration_seconds": 146.83,
+      "file_size_bytes": 881036,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-05-idempotent-retry.mp3?v=76383cb7d145",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-05-idempotent-retry",
+      "archived": false
+    },
+    {
+      "id": 505,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Authentication Is Not Authorization",
+      "description": "An authenticated user supplies another tenant's issue ID. Explain the resource check. Focus: Principal, tenant, resource, action, and safe lookup boundaries.",
+      "duration": "2:18",
+      "duration_seconds": 138.17,
+      "file_size_bytes": 829052,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-06-tenant-authorization.mp3?v=1b58ecea0142",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-06-tenant-authorization",
+      "archived": false
+    },
+    {
+      "id": 506,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Queue Races and Lock Scope",
+      "description": "Explain two common concurrency mistakes and the guarantees that are actually needed. Focus: An observation is not a reservation; a process lock is not a distributed lock.",
+      "duration": "2:26",
+      "duration_seconds": 145.7,
+      "file_size_bytes": 874268,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-07-races-and-lock-scope.mp3?v=90e4f617cbe3",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-07-races-and-lock-scope",
+      "archived": false
+    },
+    {
+      "id": 507,
+      "date": "2026-09-24",
+      "title": "Backend Q&A: Consistency, Cache Freshness, and Backpressure",
+      "description": "Answer three rapid backend questions with one example and one boundary each. Focus: Tie each mechanism to a user-visible consequence and a limitation.",
+      "duration": "2:41",
+      "duration_seconds": 160.99,
+      "file_size_bytes": 965996,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-08-consistency-cache-backpressure.mp3?v=89b300f48f4c",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-08-consistency-cache-backpressure",
+      "archived": false
+    },
+    {
+      "id": 508,
+      "date": "2026-09-24",
+      "title": "Know the Screen and Recover Cleanly",
+      "description": "Rehearse the real first-screen contract and a twenty-second handoff from unfinished code. Focus: Confirmed timing, no-AI setup, working baseline, and the hard switch.",
+      "duration": "2:27",
+      "duration_seconds": 147.19,
+      "file_size_bytes": 883196,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-09-screen-process-and-recovery.mp3?v=9a650a21dd8e",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-09-screen-process-and-recovery",
+      "archived": false
+    },
+    {
+      "id": 509,
+      "date": "2026-09-24",
+      "title": "Mixed Mock and Your Closing Question",
+      "description": "Pause after every prompt, answer aloud, and compare only after committing to your response. Focus: Five short answers without hints, then one informed question for the engineer.",
+      "duration": "3:36",
+      "duration_seconds": 216.22,
+      "file_size_bytes": 1297340,
+      "file_url": "https://podcast.mingli.world/episodes/atlassian-intro-qa-10-mixed-mock-and-close.mp3?v=425158b62ef9",
+      "playlist": "atlassian-intro-qa",
+      "playlist_ids": [
+        "atlassian-intro-qa"
+      ],
+      "source": "original-practice",
+      "slug": "atlassian-intro-qa-10-mixed-mock-and-close",
+      "archived": false
     }
   ],
   "playlists": {
@@ -7742,6 +7984,61 @@
         438,
         435
       ]
+    },
+    "atlassian-intro-qa": {
+      "title": "Atlassian Introduction & Backend Q&A",
+      "description": "Spoken rehearsals for the 60-second introduction, resume follow-ups, backend fundamentals, and the fixed transition in the first technical screen.",
+      "icon": "🎯",
+      "mono": "AT",
+      "order": -2,
+      "featured": true,
+      "default_template": "interview-rehearsal",
+      "archived": false,
+      "episode_ids": [
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509
+      ]
+    },
+    "novel-opening-v3": {
+      "title": "向后兼容 · 开篇三章",
+      "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3，Serena 普通话朗读。暂用书名《向后兼容》，本合集仅含三章开篇，完整长篇尚未完成。",
+      "icon": "📖",
+      "mono": "回声",
+      "order": 0,
+      "featured": true,
+      "default_template": "mandarin-novel",
+      "archived": false,
+      "episode_ids": [
+        439,
+        440,
+        441
+      ],
+      "language": "zh-CN",
+      "status": "three-chapter-opening",
+      "draft_chapters": []
     }
+  },
+  "display_aliases": {
+    "2": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 3,
+    "10": 3,
+    "11": 3,
+    "12": 3,
+    "1": 13,
+    "14": 13,
+    "16": 15
   }
 }

@@ -19,6 +19,8 @@
 
   var KEY_EPISODES = 'pod_shelved';
   var KEY_SHOWS = 'pod_shows_shown';
+  var KEY_ALIASES = 'pod_aliases_shown';
+  var displayAliases = {};
 
   // Gesture thresholds, in pixels of horizontal travel.
   var REVEAL_AT = 56;      // past this, the action button stays open
@@ -58,6 +60,15 @@
   // ——— show overrides ———
 
   function shownShows() { return read(KEY_SHOWS); }
+  function setAliases(aliases) { displayAliases = aliases && typeof aliases === 'object' ? aliases : {}; }
+  function aliasOf(id) { return displayAliases[String(id)]; }
+  function isAliasRestored(id) { return !!read(KEY_ALIASES)[String(id)]; }
+  function setAliasRestored(id, on) {
+    var map = read(KEY_ALIASES);
+    if (on) map[String(id)] = 1;
+    else delete map[String(id)];
+    write(KEY_ALIASES, map);
+  }
 
   function isShowRestored(showId) { return !!shownShows()[String(showId)]; }
 
@@ -82,6 +93,7 @@
   function episodeVisible(ep, playlistsById) {
     if (!ep) return false;
     if (isShelved(ep.id)) return false;
+    if (aliasOf(ep.id) != null && !isAliasRestored(ep.id)) return false;
 
     var playlist = playlistsById && playlistsById[ep.playlist];
     if (playlist && playlist.archived && !isShowRestored(ep.playlist)) return false;
@@ -128,6 +140,10 @@
   }
 
   global.Shelf = {
+    setAliases: setAliases,
+    aliasOf: aliasOf,
+    isAliasRestored: isAliasRestored,
+    setAliasRestored: setAliasRestored,
     isShelved: isShelved,
     setShelved: setShelved,
     shelvedEpisodes: shelvedEpisodes,

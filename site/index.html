@@ -19,7 +19,7 @@ if(dark){var m=document.querySelector('meta[name="theme-color"]');if(m)m.content
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/artwork-192.png">
 <meta name="apple-mobile-web-app-title" content="Mingli">
-<link rel="stylesheet" href="/style.css?v=28">
+<link rel="stylesheet" href="/style.css?v=30">
 </head>
 <body>
 <div class="app" id="app">
@@ -117,7 +117,7 @@ if(dark){var m=document.querySelector('meta[name="theme-color"]');if(m)m.content
           <button type="button" class="btn-ghost" id="showQueueAll">Add to queue</button>
         </div>
       </div>
-      <h2 class="section-label">Episodes</h2>
+      <h2 class="section-label" id="showListHeading">Episodes</h2>
       <div id="showEpisodes" class="ep-list"></div>
     </div>
   </section>
@@ -272,14 +272,14 @@ if(dark){var m=document.querySelector('meta[name="theme-color"]');if(m)m.content
 
 <div class="toast" id="toast"></div>
 <div class="shelf-toast" id="shelfToast"></div>
-<script src="/js/theme.js?v=28"></script>
-<script src="/js/search.js?v=28"></script>
-<script src="/js/shelf.js?v=28"></script>
-<script src="/js/vtt.js?v=28"></script>
-<script src="/js/chapters.js?v=28"></script>
-<script src="/app.js?v=28"></script>
-<script src="/js/player-ui.js?v=28"></script>
-<script src="/js/shelf-ui.js?v=28"></script>
+<script src="/js/theme.js?v=30"></script>
+<script src="/js/search.js?v=30"></script>
+<script src="/js/shelf.js?v=30"></script>
+<script src="/js/vtt.js?v=30"></script>
+<script src="/js/chapters.js?v=30"></script>
+<script src="/app.js?v=30"></script>
+<script src="/js/player-ui.js?v=30"></script>
+<script src="/js/shelf-ui.js?v=30"></script>
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(function () {});
