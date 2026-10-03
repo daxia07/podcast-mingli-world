@@ -55,8 +55,14 @@ class CatalogueTests(unittest.TestCase):
         self.assertTrue(catalogue.validate_aliases(candidate))
         self.assertEqual(len(candidate['display_aliases']),13)
         from xml.etree import ElementTree
-        self.assertEqual(len(ElementTree.fromstring(manifest.generate_rss(candidate)).findall('channel/item')),249,
-                         'display aliases must not remove RSS records')
+        feed = ElementTree.fromstring(manifest.generate_rss(candidate)).findall('channel/item')
+        self.assertEqual(len(feed), len(candidate['episodes']),
+            'display aliases must not remove RSS records, including newly published chapters')
+        from collections import Counter
+        captured = ElementTree.fromstring(manifest.generate_rss(snapshot)).findall('channel/item')
+        identity = lambda item: (item.findtext('guid'), item.findtext('title'), item.find('enclosure').get('url'))
+        self.assertFalse(Counter(map(identity, captured)) - Counter(map(identity, feed)),
+            'every original RSS item must survive with its title, identity and audio URL')
 
     def test_register_show_never_rewrites_published_records(self):
         m=self.sample();before=copy.deepcopy(m)
