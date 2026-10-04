@@ -1,0 +1,552 @@
+{
+  "checks": [
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "metrics": {
+        "overflow": 0,
+        "media": {
+          "x": 8,
+          "y": 76,
+          "width": 246,
+          "height": 270,
+          "top": 76,
+          "right": 254,
+          "bottom": 346,
+          "left": 8
+        },
+        "caption": {
+          "x": 8,
+          "y": 350,
+          "width": 304,
+          "height": 164,
+          "top": 350,
+          "right": 312,
+          "bottom": 514,
+          "left": 8
+        },
+        "footer": {
+          "x": 0,
+          "y": 518,
+          "width": 320,
+          "height": 50,
+          "top": 518,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "controls": [
+          {
+            "name": "Play 55 second moment",
+            "height": 270
+          },
+          {
+            "name": "Show viewing controls",
+            "height": 0
+          },
+          {
+            "name": "Like",
+            "height": 45
+          },
+          {
+            "name": "Save",
+            "height": 45
+          },
+          {
+            "name": "Full gist & source",
+            "height": 45
+          },
+          {
+            "name": "Less like this",
+            "height": 45
+          },
+          {
+            "name": "Different topic",
+            "height": 44
+          },
+          {
+            "name": "More like this",
+            "height": 44
+          },
+          {
+            "name": "Why this idea?",
+            "height": 0
+          }
+        ]
+      },
+      "posters": [
+        {
+          "src": "./posters/qy8Gr27yLMk.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Silicon Valley Girl: Start Building With AI Before You Feel Ready"
+        },
+        {
+          "src": "./posters/Fls_onRviPM.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for OpenAI DevDay 2026 keynote"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/6AgOfiZOWiY.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · Agent swarms, alignment, & recursive self-improvement"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/40VeVfYBGis.jpg",
+          "loaded": false,
+          "alt": "Publisher cover for Denoised: GPT-6 Astra in Blender and video editing"
+        }
+      ]
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "metrics": {
+        "overflow": 0,
+        "media": {
+          "x": 8,
+          "y": 83,
+          "width": 316,
+          "height": 514,
+          "top": 83,
+          "right": 324,
+          "bottom": 597,
+          "left": 8
+        },
+        "caption": {
+          "x": 8,
+          "y": 602,
+          "width": 374,
+          "height": 180,
+          "top": 602,
+          "right": 382,
+          "bottom": 782,
+          "left": 8
+        },
+        "footer": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 56,
+          "top": 788,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "controls": [
+          {
+            "name": "Play 55 second moment",
+            "height": 514
+          },
+          {
+            "name": "Show viewing controls",
+            "height": 0
+          },
+          {
+            "name": "Like",
+            "height": 52
+          },
+          {
+            "name": "Save",
+            "height": 52
+          },
+          {
+            "name": "Full gist & source",
+            "height": 52
+          },
+          {
+            "name": "Less like this",
+            "height": 52
+          },
+          {
+            "name": "Different topic",
+            "height": 44
+          },
+          {
+            "name": "More like this",
+            "height": 44
+          },
+          {
+            "name": "Why this idea?",
+            "height": 0
+          }
+        ]
+      },
+      "posters": [
+        {
+          "src": "./posters/qy8Gr27yLMk.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Silicon Valley Girl: Start Building With AI Before You Feel Ready"
+        },
+        {
+          "src": "./posters/Fls_onRviPM.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for OpenAI DevDay 2026 keynote"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/6AgOfiZOWiY.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · Agent swarms, alignment, & recursive self-improvement"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/40VeVfYBGis.jpg",
+          "loaded": false,
+          "alt": "Publisher cover for Denoised: GPT-6 Astra in Blender and video editing"
+        }
+      ]
+    },
+    {
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "metrics": {
+        "overflow": 0,
+        "media": {
+          "x": 369,
+          "y": 83,
+          "width": 644,
+          "height": 570,
+          "top": 83,
+          "right": 1013,
+          "bottom": 653,
+          "left": 369
+        },
+        "caption": {
+          "x": 369,
+          "y": 658,
+          "width": 702,
+          "height": 180,
+          "top": 658,
+          "right": 1071,
+          "bottom": 838,
+          "left": 369
+        },
+        "footer": {
+          "x": 0,
+          "y": 844,
+          "width": 1440,
+          "height": 56,
+          "top": 844,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "controls": [
+          {
+            "name": "Play 55 second moment",
+            "height": 570
+          },
+          {
+            "name": "Show viewing controls",
+            "height": 0
+          },
+          {
+            "name": "Like",
+            "height": 52
+          },
+          {
+            "name": "Save",
+            "height": 52
+          },
+          {
+            "name": "Full gist & source",
+            "height": 52
+          },
+          {
+            "name": "Less like this",
+            "height": 52
+          },
+          {
+            "name": "Different topic",
+            "height": 44
+          },
+          {
+            "name": "More like this",
+            "height": 44
+          },
+          {
+            "name": "Why this idea?",
+            "height": 0
+          }
+        ]
+      },
+      "posters": [
+        {
+          "src": "./posters/qy8Gr27yLMk.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Silicon Valley Girl: Start Building With AI Before You Feel Ready"
+        },
+        {
+          "src": "./posters/Fls_onRviPM.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for OpenAI DevDay 2026 keynote"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/6AgOfiZOWiY.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · Agent swarms, alignment, & recursive self-improvement"
+        },
+        {
+          "src": "./posters/PrSf7IOYu-I.jpg",
+          "loaded": true,
+          "alt": "Publisher cover for Dwarkesh Podcast · AI researchers debate recursive self-improvement"
+        },
+        {
+          "src": "./posters/40VeVfYBGis.jpg",
+          "loaded": false,
+          "alt": "Publisher cover for Denoised: GPT-6 Astra in Blender and video editing"
+        }
+      ]
+    },
+    {
+      "right": "1 / 6 · Fresh",
+      "boosts": {
+        "Agents": 1,
+        "Product": 1,
+        "Industry": 1
+      }
+    },
+    {
+      "left": "1 / 6 · Fresh",
+      "boosts": {
+        "Data": -0.5,
+        "Industry": -0.5,
+        "Agents": -0.5,
+        "Product": -0.5
+      }
+    },
+    "Diagonal avoided topic feedback",
+    {
+      "vertical": "2 / 6 · Fresh"
+    },
+    {
+      "nativeFeedbackQueue": {
+        "actual": [
+          "daoud-3d-editing-gap-2026",
+          "schulman-judgment-bottleneck-2026",
+          "millidge-generalization-gap-2026"
+        ],
+        "expected": [
+          "daoud-3d-editing-gap-2026",
+          "schulman-judgment-bottleneck-2026",
+          "millidge-generalization-gap-2026"
+        ],
+        "index": 2,
+        "active": "brown-parallel-latency-2026",
+        "position": "3 / 6 · Fresh"
+      }
+    },
+    {
+      "optionalSource": 1
+    },
+    {
+      "played": {
+        "previewCompleted": false,
+        "availability": "playable in this session",
+        "errorCode": null,
+        "position": 1305.8986248550416,
+        "duration": 1814.101,
+        "observedQuality": "large",
+        "qualityObservedAt": "2026-10-04T22:19:06.443Z",
+        "lastChecked": "2026-10-04T22:19:06.910Z",
+        "activeWatchSeconds": 6
+      }
+    },
+    {
+      "controlsInitiallyHidden": true,
+      "initialFocus": null,
+      "initialPlayerState": 1
+    },
+    "Provider iframe swipe excluded from app topic feedback",
+    {
+      "controlsRevealed": true
+    },
+    {
+      "shortRevealedControls": {
+        "stage": {
+          "x": 8,
+          "y": 76,
+          "width": 304,
+          "height": 222,
+          "top": 76,
+          "right": 312,
+          "bottom": 298,
+          "left": 8
+        },
+        "caption": {
+          "x": 8,
+          "y": 302,
+          "width": 304,
+          "height": 164,
+          "top": 302,
+          "right": 312,
+          "bottom": 466,
+          "left": 8
+        },
+        "buttons": [
+          {
+            "label": "Show viewing controls",
+            "rect": {
+              "x": 260,
+              "y": 76,
+              "width": 52,
+              "height": 44,
+              "top": 76,
+              "right": 312,
+              "bottom": 120,
+              "left": 260
+            }
+          },
+          {
+            "label": "Like",
+            "rect": {
+              "x": 260,
+              "y": 122,
+              "width": 52,
+              "height": 44,
+              "top": 122,
+              "right": 312,
+              "bottom": 166,
+              "left": 260
+            }
+          },
+          {
+            "label": "Save",
+            "rect": {
+              "x": 260,
+              "y": 166,
+              "width": 52,
+              "height": 44,
+              "top": 166,
+              "right": 312,
+              "bottom": 210,
+              "left": 260
+            }
+          },
+          {
+            "label": "Full gist & source",
+            "rect": {
+              "x": 260,
+              "y": 210,
+              "width": 52,
+              "height": 44,
+              "top": 210,
+              "right": 312,
+              "bottom": 254,
+              "left": 260
+            }
+          },
+          {
+            "label": "Less like this",
+            "rect": {
+              "x": 260,
+              "y": 254,
+              "width": 52,
+              "height": 44,
+              "top": 254,
+              "right": 312,
+              "bottom": 298,
+              "left": 260
+            }
+          }
+        ]
+      }
+    },
+    {
+      "controlsTimedHide": true,
+      "focused": null
+    },
+    {
+      "captionRevealTimedHide": true
+    },
+    {
+      "keyboardFocusControlsRetained": true
+    },
+    {
+      "keyboardBlurControlsExpire": true
+    },
+    "Action control swipe excluded from topic feedback",
+    {
+      "focusAfterLike": null,
+      "controlsHideAfterLike": true
+    },
+    {
+      "boundary": {
+        "previewCompleted": true,
+        "availability": "playable in this session",
+        "errorCode": null,
+        "position": 1354.9891518149873,
+        "duration": 1815,
+        "observedQuality": "large",
+        "qualityObservedAt": "2026-10-04T22:19:06.443Z",
+        "lastChecked": "2026-10-04T22:19:31.254Z",
+        "activeWatchSeconds": 25,
+        "sourceCompleted": false
+      },
+      "playerState": 0
+    },
+    {
+      "iframesAfterNext": 0
+    },
+    {
+      "replay": {
+        "position": 1301.0480360801087,
+        "state": 1
+      },
+      "start": 1300,
+      "end": 1355
+    },
+    {
+      "errors": []
+    }
+  ],
+  "issues": [],
+  "scope": "Isolated intercepted owner profile; no server profile writes or reset",
+  "assetHashes": {
+    "app.js": {
+      "served": "0db981eae85c2c642fad7a3dffc164293950951ada3543d441df9d9e532542dc",
+      "workspace": "0db981eae85c2c642fad7a3dffc164293950951ada3543d441df9d9e532542dc"
+    },
+    "style.css": {
+      "served": "ef9061917523a9a38a77834634209884d546090ca3549dd7934e5503b45a35f6",
+      "workspace": "ef9061917523a9a38a77834634209884d546090ca3549dd7934e5503b45a35f6"
+    },
+    "content.json": {
+      "served": "4e9fd8bd5e8a2aaf628264e83a1e7449c27bb4b9f55d7484f782d47d94418bca",
+      "workspace": "4e9fd8bd5e8a2aaf628264e83a1e7449c27bb4b9f55d7484f782d47d94418bca"
+    },
+    "posters/provenance.json": {
+      "served": "54cba278d7824b495ff2c954ca6866d630404e027ba4feedaa0c20014db32988",
+      "workspace": "54cba278d7824b495ff2c954ca6866d630404e027ba4feedaa0c20014db32988"
+    }
+  }
+}

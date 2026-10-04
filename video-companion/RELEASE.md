@@ -16,3 +16,7 @@ Rollback only to an authenticated companion deployment, preserving private R2 ow
 ## October 5 daily curation — video-curation-20261005
 
 Adds one independently reviewed Greg Brockman moment, 21:40–22:35 (55s), from the September 30 Silicon Valley Girl episode. Actual player boundaries replace chapter navigation anchors. Company-context anecdote, human chief-of-staff qualification and HubSpot sponsorship are explicit; interpretation and experiment remain separate. Existing IDs, player, ranking, authentication, private profile, resources and deploy-only CI are unchanged. Hash receipt is in data/curation-20261005. Local application ledger is not a deployment receipt. Physical iPhone/Safari remains unverified.
+
+## Source-cover and viewing-controls UI follow-up
+
+Accurate publisher cover thumbnails replace blank green-button cards. A compact white Watch affordance yields to actual bounded playback; app feedback controls hide while footage plays and can be revealed by tap or keyboard. The provider retains native playback controls. Poster provenance is recorded, same-origin delivery preserves the existing CSP and protected route. This UI release is separate from the October 5 one-moment editorial addition. No catalogue, ranking, authentication, owner profile, deployment workflow or resources are changed by the UI release.

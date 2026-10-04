@@ -1,0 +1,13 @@
+{
+  "playable": 14,
+  "uniqueSources": 12,
+  "issues": [],
+  "hashes": {
+    "app.js": "0db981eae85c2c642fad7a3dffc164293950951ada3543d441df9d9e532542dc",
+    "style.css": "ef9061917523a9a38a77834634209884d546090ca3549dd7934e5503b45a35f6",
+    "content.json": "4e9fd8bd5e8a2aaf628264e83a1e7449c27bb4b9f55d7484f782d47d94418bca",
+    "posters/provenance.json": "54cba278d7824b495ff2c954ca6866d630404e027ba4feedaa0c20014db32988"
+  },
+  "reviewScriptSHA256": "47ae591826c64efce29a2590775bfe2567240a3b91745d73f86adfff94141d77",
+  "finalReview": "independent-covers-controls-review.json"
+}
