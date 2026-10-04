@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "id": "brockman-enterprise-context-2026",
+      "title": "Useful agents need your company context",
+      "tags": [
+        "Data",
+        "Industry",
+        "Agents",
+        "Product"
+      ],
+      "summary": "Brockman says his agent answers company questions and queries business metrics, giving his human chief of staff more leverage.",
+      "lens": "Editorial interpretation",
+      "interpretation": "The integration layer may matter as much as the model: useful answers require access to the right records and definitions. This is a company insider\u2019s anecdote, not a benchmark of accuracy or productivity.",
+      "opportunityLabel": "Practical experiment \u00b7 our suggestion",
+      "opportunity": "Choose one internal metric with a known answer. On already authorized data, compare the agent\u2019s query, sources and definitions with the existing analyst answer before broadening the workflow.",
+      "source": {
+        "speaker": "Greg Brockman",
+        "role": "OpenAI co-founder; former Stripe CTO",
+        "title": "Silicon Valley Girl: Start Building With AI Before You Feel Ready",
+        "date": "2026-09-30",
+        "dateLabel": "Original episode publication; YouTube upload date unverified",
+        "originalDate": "2026-09-30",
+        "originalDateType": "Original episode publication",
+        "dateBasis": "publication",
+        "publicationDate": "2026-09-30",
+        "dateEvidence": "https://marinamogilko.co/episode/qy8Gr27yLMk/",
+        "url": "https://www.youtube.com/watch?v=qy8Gr27yLMk&t=1300s",
+        "evidence": "https://marinamogilko.co/episode/qy8Gr27yLMk/",
+        "locator": "Original video21:40\u201322:35: host\u2019s enterprise-context question and Brockman\u2019s complete answer, including human chief-of-staff qualification and data-warehouse examples. Publisher20:59/21:54 chapters are navigation aids and differ from these reviewed video boundaries.",
+        "context": "Interview with an OpenAI co-founder promoting his company\u2019s capabilities. Publisher episode date September30 is verified; recording and YouTube upload dates are unverified. The episode includes a HubSpot sponsorship. Reported personal experience and past Stripe comparison are not independent accuracy, cost or productivity measurements."
+      },
+      "quality": {
+        "useful": 4.5,
+        "novel": 4.1,
+        "credible": 4.3,
+        "influence": 4.7
+      },
+      "reviewed": "2026-10-05",
+      "format": "Original summary card",
+      "seconds": 55,
+      "video": {
+        "id": "qy8Gr27yLMk",
+        "start": 1300,
+        "end": 1355,
+        "reviewedMoment": true,
+        "boundary": "Complete enterprise-context question and answer: ends after the Stripe-query comparison and closing assessment, before the next token-usage question. Checked against bounded official captions and primary speaker-labelled text; exact seeks may be approximate.",
+        "reviewMethod": "Primary publisher identity/date/speaker-labelled evidence plus actual official-player bounded caption and independent clip-boundary review; no full transcript or footage downloaded or hosted."
+      }
+    }
+  ]
+}

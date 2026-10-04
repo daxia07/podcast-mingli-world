@@ -9,5 +9,15 @@
     ],
     "checked": "2026-10-04T11:50:53.898Z",
     "publication": "Local editorial update only; tests, independent phone review and existing companion CI required"
+  },
+  {
+    "runId": "video-curation-20261005",
+    "candidateSha256": "cb2b07c3e7285229213a5e141302d3896f926e3baa1d261a252eb4bb42d69e45",
+    "reviewer": "/root/oct5_candidate_review",
+    "cardIds": [
+      "brockman-enterprise-context-2026"
+    ],
+    "checked": "2026-10-04T22:02:55.579Z",
+    "publication": "Local editorial update only; tests, independent phone review and existing companion CI required"
   }
 ]

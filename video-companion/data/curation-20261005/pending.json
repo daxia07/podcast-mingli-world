@@ -1,0 +1,33 @@
+{
+  "runId": "video-curation-20261005",
+  "ownInspectedLeads": 4,
+  "parentResearcherInspectedLeads": 6,
+  "combinedInspectedLeads": 10,
+  "pending": [
+    {
+      "source": "https://www.wired.com/video/watch/big-interview-timnit-gebru",
+      "date": "2026-09-30",
+      "reason": "Primary date and transcript available, supported YouTube reference/exact bounded playback unavailable. No new provider implementation in daily content run."
+    },
+    {
+      "source": "https://www.democracynow.org/2026/10/1/timnit_gebru_ai",
+      "date": "2026-10-01",
+      "reason": "Primary date/guest verified, no matching supported video reference in public embed/link metadata; search video may be older. Hold identity/boundaries."
+    },
+    {
+      "source": "https://www.youtube.com/watch?v=fHEIw5CcN5U",
+      "date": "2026-10-01",
+      "reason": "Official upload date and bounded captions verified; presenter uncredited and demo insight overlaps existing launch coverage. Hold for a stronger distinct idea."
+    }
+  ],
+  "parentPending": [
+    "Runway September30 summit: full talks not yet available",
+    "Palisade September29 B1ZQHAzAS6g: no verified end",
+    "Moonshots298: dates/timing unresolved",
+    "Gates Ezra September29 A_156w0aYtU: secondary transcript only"
+  ],
+  "notification": "None sent by worker; parent owns user delivery",
+  "acceptedCardIds": [
+    "brockman-enterprise-context-2026"
+  ]
+}

@@ -11,3 +11,8 @@ Verification required before claiming release: npm tests/content/private-bundle 
 Daily curation is approved but parent-owned. `evidence/oct4-schedule-config.json` records the disabled/unloaded historical agent service and push-only CI. DAILY-CURATION.md defines a single daily task, notification only for meaningful new reviewed ideas, primary-date/coherent-boundary review gates, idempotent batch interface and pending sources. Do not activate a duplicate schedule. Video feed is not parked: the earlier parking instruction referred to the Chinese-learning app.
 
 Rollback only to an authenticated companion deployment, preserving private R2 owner state and podcast. Baseline0c89239 deployment https://e536061d.video-mingli-world.pages.dev and CI https://github.com/daxia07/podcast-mingli-world/actions/runs/37107337144 remain the prior verified fallback. Never remove auth or revert to public static hosting.
+
+
+## October 5 daily curation — video-curation-20261005
+
+Adds one independently reviewed Greg Brockman moment, 21:40–22:35 (55s), from the September 30 Silicon Valley Girl episode. Actual player boundaries replace chapter navigation anchors. Company-context anecdote, human chief-of-staff qualification and HubSpot sponsorship are explicit; interpretation and experiment remain separate. Existing IDs, player, ranking, authentication, private profile, resources and deploy-only CI are unchanged. Hash receipt is in data/curation-20261005. Local application ledger is not a deployment receipt. Physical iPhone/Safari remains unverified.

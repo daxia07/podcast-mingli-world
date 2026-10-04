@@ -1,0 +1,45 @@
+{
+  "runId": "video-curation-20261005",
+  "reviewer": "/root/oct5_candidate_review",
+  "candidateSha256": "cb2b07c3e7285229213a5e141302d3896f926e3baa1d261a252eb4bb42d69e45",
+  "reviewedCardIds": [
+    "brockman-enterprise-context-2026"
+  ],
+  "accepted": true,
+  "findings": [
+    "Independently opened primary publisher episode page: September 30, 2026 publication, Greg Brockman attribution, OpenAI co-founder and former Stripe CTO role, linked source video qy8Gr27yLMk, and HubSpot sponsorship confirmed. Recording and YouTube upload dates remain explicitly unverified.",
+    "Independently inspected only bounded official-player captions near 1297 through 1356 and actual footage. At 1300.20 the host begins the company-context question; Brockman then describes enterprise context, retains the human chief-of-staff qualification, explains data-warehouse metrics, and contrasts his past Stripe query workflow. At 1354.12 the closing assessment remains; by 1356.13 the host starts the different token-usage question. The proposed 1300\u20131355 interval is a coherent 55-second question-and-answer moment with approximate provider seek alignment.",
+    "Publisher 20:59 and 21:54 chapter labels are navigation aids and do not prove the reviewed boundaries. Candidate correctly uses observed original video 21:40\u201322:35 and discloses the discrepancy.",
+    "Summary is a supported paraphrase. Integration-layer interpretation and small authorized-data comparison experiment are separately labeled. Commercial anecdote is qualified; no independent productivity, accuracy or investment promise is made.",
+    "Compared current reviewed catalogue: existing Altman introduction is a broad ongoing-agent ambition, whereas this moment adds specific company-record access, analyst-query examples and a human augmentation qualification. No existing source-video/interval/idea duplicate found.",
+    "Original September 30 publication is five days before the October 5 curation date, eligible for seven-day priority without resetting its source date."
+  ],
+  "evidence": {
+    "primaryPublisher": "https://marinamogilko.co/episode/qy8Gr27yLMk/",
+    "officialPlayer": "https://www.youtube.com/watch?v=qy8Gr27yLMk&t=1300s",
+    "method": "Headless Chromium through localhost fixture with /api/profile intercepted; official YouTube-nocookie iframe/captions, bounded seeks only; no full transcript/media download, no live profile writes.",
+    "observedTimes": [
+      1297.949128,
+      1300.200669,
+      1301.123204,
+      1306.131538,
+      1311.096495,
+      1316.130653,
+      1321.128694,
+      1326.098561,
+      1331.13059,
+      1336.100526,
+      1341.111764,
+      1346.123783,
+      1351.130897,
+      1354.119446,
+      1356.127199
+    ],
+    "screenshot": "data/curation-20261005/independent-boundary-player.png"
+  },
+  "limitations": [
+    "Official auto-caption wording and provider seeks may be approximate; caption buffers can retain the previous phrase at a boundary.",
+    "This independent editorial review is not the app-specific end-stop acceptance test, physical-phone test, live deployment verification or independent benchmark of speaker claims.",
+    "Quality scores are editorial prioritization judgments, not independently measured quantities."
+  ]
+}
