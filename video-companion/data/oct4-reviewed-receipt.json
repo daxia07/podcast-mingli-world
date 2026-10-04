@@ -1,0 +1,15 @@
+{
+  "runId": "video-curation-20261004",
+  "reviewer": "primary-source curator plus independent headless phone reviewer",
+  "candidateSha256": "23ceb31c47d8fc72d580f157c58bd497e2d36857f51be9d36803d92e59d48a45",
+  "reviewedCardIds": [
+    "altman-ongoing-dots-2026",
+    "daoud-3d-editing-gap-2026"
+  ],
+  "evidence": [
+    "evidence/independent-redesign-review.json",
+    "evidence/fresh-playback-results.json",
+    "official DevDay bounded caption inspection and primary publisher recap",
+    "VP Land primary publication/transcript plus bounded official playback"
+  ]
+}

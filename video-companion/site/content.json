@@ -1,8 +1,57 @@
 {
   "version": 1,
-  "updated": "2026-10-03",
-  "refresh": "Manual reviewed candidate. Original source dates determine freshness; ingestion/review dates never reset it. Recurring discovery is disabled.",
+  "updated": "2026-10-04",
+  "refresh": "Daily curation approved; scheduling owned by parent task. Discovery LaunchAgent remains disabled; candidates require primary date, attribution, coherent boundaries and independent review before publication.",
   "cards": [
+    {
+      "id": "altman-ongoing-dots-2026",
+      "title": "From answering prompts to ongoing responsibility",
+      "tags": [
+        "Agents",
+        "Product",
+        "Industry"
+      ],
+      "summary": "Altman introduces Dots as agents intended to know what matters to a user and act without a fresh prompt for every task.",
+      "lens": "Editorial interpretation",
+      "interpretation": "Ongoing responsibility changes the product question: when should an agent act, interrupt or ask? This is a vendor vision, not independent evidence of reliable autonomy.",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "opportunity": "Try one reversible responsibility with a clear success check. Record useful outcomes, avoidable interruptions and moments needing permission before expanding its scope.",
+      "source": {
+        "speaker": "Sam Altman",
+        "role": "OpenAI CEO",
+        "title": "OpenAI DevDay 2026 keynote",
+        "date": "2026-09-29",
+        "dateLabel": "Original event date; YouTube publication date unverified",
+        "originalDate": "2026-09-29",
+        "originalDateType": "Original event date",
+        "dateBasis": "event",
+        "publicationDate": null,
+        "dateEvidence": "https://openai.com/index/devday-2026-recap/",
+        "url": "https://www.youtube.com/watch?v=Fls_onRviPM&t=128s",
+        "evidence": "https://openai.com/index/devday-2026-recap/",
+        "locator": "Official OpenAI keynote 02:08–02:58: ambition for ongoing assistance, Dots introduction, ending at the demo handoff.",
+        "context": "Vendor launch keynote; original event September 29, upload date unknown. A product aspiration and announcement, not proof of autonomous reliability. The separate October 1 demo remains a pending lead until its clip boundaries are reviewed.",
+        "eventDate": "2026-09-29",
+        "eventStatus": "completed"
+      },
+      "quality": {
+        "useful": 4.5,
+        "novel": 4.4,
+        "credible": 4.5,
+        "influence": 4.9
+      },
+      "reviewed": "2026-10-04",
+      "format": "Original summary card",
+      "seconds": 50,
+      "video": {
+        "id": "Fls_onRviPM",
+        "start": 128,
+        "end": 178,
+        "reviewedMoment": true,
+        "boundary": "Complete ambition/agent-introduction block from the more-ambitious transition through demo handoff; bounded official captions checked October 4. Caption errors and approximate seeks remain possible.",
+        "reviewMethod": "Bounded official-caption inspection and primary event recap; caption errors and approximate seeks remain possible"
+      }
+    },
     {
       "id": "altman-feedback-devday-2026",
       "title": "Build where users want to work",
@@ -194,6 +243,54 @@
       }
     },
     {
+      "id": "daoud-3d-editing-gap-2026",
+      "title": "A 3D leap does not prove a video-editing leap",
+      "tags": [
+        "AI video",
+        "3D / Blender",
+        "Industry",
+        "Models"
+      ],
+      "summary": "Joey Daoud contrasts promising 3D work with video-editing tests that did not improve shot selection or timeline assembly in his own trials.",
+      "lens": "Editorial interpretation",
+      "interpretation": "A striking demo in one tool does not establish equal usefulness in another. Workflow-specific judgment, interfaces and evaluation still matter. This small creator test is a counterview, not a controlled benchmark.",
+      "opportunityLabel": "Practical experiment · our suggestion",
+      "opportunity": "Test a 3D scene and a short edit separately against your own quality checklist. Log finishing time and mistakes; compare useful output rather than demo impressiveness.",
+      "source": {
+        "speaker": "Joey Daoud",
+        "role": "VP Land / Denoised host and creative-technology producer",
+        "title": "Denoised: GPT-6 Astra in Blender and video editing",
+        "date": "2026-09-10",
+        "dateLabel": "Original episode publication",
+        "originalDate": "2026-09-10",
+        "originalDateType": "Original episode publication",
+        "dateBasis": "publication",
+        "publicationDate": "2026-09-10",
+        "dateEvidence": "https://www.vp-land.com/stories/we-let-openais-new-gpt-6-astra-rebuild-miami-and-lax-in-blender-from-text-prompts",
+        "url": "https://www.youtube.com/watch?v=40VeVfYBGis&t=918s",
+        "evidence": "https://www.vp-land.com/stories/we-let-openais-new-gpt-6-astra-rebuild-miami-and-lax-in-blender-from-text-prompts",
+        "locator": "15:18–16:10; complete comparison of 3D improvements with shot selection, footage analysis and timeline assembly, before the Resolve discussion. Publisher transcript reviewed by independent curator; official target playback/captions checked.",
+        "context": "Creator discussion and firsthand anecdotal testing, not independent accuracy or cost audit. The earlier Miami Blender build ran for 26 hours and still needed finishing/optimization; no instant-city claim. Host publishes a creative-technology newsletter and may benefit from attention to these tools."
+      },
+      "quality": {
+        "useful": 4.5,
+        "novel": 4.4,
+        "credible": 4,
+        "influence": 3.2
+      },
+      "reviewed": "2026-10-04",
+      "format": "Original summary card",
+      "seconds": 52,
+      "video": {
+        "id": "40VeVfYBGis",
+        "start": 918,
+        "end": 970,
+        "reviewedMoment": true,
+        "boundary": "Complete 15:18–16:10 video-editing counterview, ending before next topic. Independently reviewed primary publisher transcript; actual target embed tested.",
+        "reviewMethod": "Primary publisher transcript reviewed by curator plus bounded official player caption/playback inspection; no transcript or footage hosted"
+      }
+    },
+    {
       "id": "huang-inference-2026",
       "title": "Useful intelligence per watt",
       "tags": [
@@ -224,7 +321,7 @@
         "eventStatus": "completed"
       },
       "quality": {
-        "useful": 5.0,
+        "useful": 5,
         "novel": 4.9,
         "credible": 4.6,
         "influence": 4.8

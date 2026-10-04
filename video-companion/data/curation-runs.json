@@ -1,0 +1,13 @@
+[
+  {
+    "runId": "video-curation-20261004",
+    "candidateSha256": "23ceb31c47d8fc72d580f157c58bd497e2d36857f51be9d36803d92e59d48a45",
+    "reviewer": "primary-source curator plus independent headless phone reviewer",
+    "cardIds": [
+      "altman-ongoing-dots-2026",
+      "daoud-3d-editing-gap-2026"
+    ],
+    "checked": "2026-10-04T11:50:53.898Z",
+    "publication": "Local editorial update only; tests, independent phone review and existing companion CI required"
+  }
+]
