@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-06",
+  "source_base": "b05436c32f41f41fbdb1327ff148bff856f2f219",
+  "voice": "Uncle_Fu",
+  "model_revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+  "runtime": {
+    "mlx-audio": "0.5.7",
+    "mlx": "0.32.3"
+  },
+  "final_gain_db": -1,
+  "local_tests": {
+    "python": 135,
+    "node": 90,
+    "manifest_gates": "pass"
+  },
+  "catalogue_count": 252,
+  "unrelated_episode_records_unchanged": 249,
+  "unrelated_search_entries_unchanged": true,
+  "manuscripts_and_readers_unchanged": true,
+  "rollback_retained": true,
+  "new_paid_speech_calls": 0,
+  "review_limitation": "Offline ASR and codec/source checks; no human listening or pronunciation/comfort signoff.",
+  "episodes": [
+    {
+      "id": 439,
+      "slug": "opening-v3-ch01",
+      "mp3_sha256": "36efc2723a2a291b4a3c8c00a66936d2e5d6af58e4e87f6efd257f2d34c900ae",
+      "bytes": 8235308,
+      "timeline_seconds": 1029.3399999999995,
+      "source_sha256": "8fe67ec740c61663cc069fafe2be47a0c8178710aa01d4dabaeaa684c45b82c9",
+      "units": 22,
+      "clipped_samples": 0,
+      "decoded_peak_dbfs": -1.4985295522323197,
+      "review_mode": "objective",
+      "listening_performed": false
+    },
+    {
+      "id": 440,
+      "slug": "opening-v3-ch02",
+      "mp3_sha256": "3f11aa639666f4a98c58f7c0a9b0d3d8ed1f294c2e0a7a0ff49146e0c09e12a8",
+      "bytes": 10932524,
+      "timeline_seconds": 1366.5099999999995,
+      "source_sha256": "830f59df018e5850bc63b9260be07ca93fff00e9158243022f5ffdff1dc17772",
+      "units": 25,
+      "clipped_samples": 0,
+      "decoded_peak_dbfs": -1.8517289117472238,
+      "review_mode": "objective",
+      "listening_performed": false
+    },
+    {
+      "id": 441,
+      "slug": "opening-v3-ch03",
+      "mp3_sha256": "6f9dc5ad9f9a60ee01c8540e7d21ed67a0d511ea329661a2f2aca2f1b9abaeea",
+      "bytes": 12335468,
+      "timeline_seconds": 1541.8699999999994,
+      "source_sha256": "cf10a0d90d2511313ec1577e8bf87bedf7c79323872fa7298bb1248f6c569f4e",
+      "units": 33,
+      "clipped_samples": 0,
+      "decoded_peak_dbfs": -2.1493300572811216,
+      "review_mode": "objective",
+      "listening_performed": false
+    }
+  ]
+}

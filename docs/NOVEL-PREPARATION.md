@@ -5,11 +5,11 @@ completion of these three audio chapters, and publication on the existing
 `podcast.mingli.world`. This is **开篇三章**, with the provisional title
 **向后兼容**. It is not a completed 23-chapter novel. Older editions remain intact.
 
-| Chapter | Source chunks | Scene sections | Episode |
+| Chapter | Synthesis units | Scene sections | Episode |
 |---|---:|---:|---:|
-| 还没有收到 | 15 | 4 | 439 |
-| 借来的时间 | 21 | 8 | 440 |
-| 题目之外 | 23 | 8 | 441 |
+| 还没有收到 | 22 | 4 | 439 |
+| 借来的时间 | 25 | 8 | 440 |
+| 题目之外 | 33 | 8 | 441 |
 
 Original chapter text and the complete opening are in
 `content/sources/novel-opening-v3/`. Exact text downloads and HTML readers are
@@ -19,9 +19,14 @@ The setting is 2004; the characters are 陈默、周启、罗宁 and 回声.
 ## Narration and review
 
 The offline production adapter uses Qwen3-TTS 1.7B CustomVoice MLX 4-bit,
-revision `f35faf19b0cc2160865af64ecf0f22f83d335135`, preset Serena,
+revision `f35faf19b0cc2160865af64ecf0f22f83d335135`, preset Uncle_Fu (stock male voice),
 temperature 0.7, base seed 142, mlx-audio 0.5.7 and mlx 0.32.3. It uses the
 existing local model snapshot without paid APIs, accounts, or voice cloning.
+
+The 2026-10-06 Uncle Fu update retains the exact three manuscripts and IDs.
+Synthesis units were divided at existing paragraph and sentence boundaries to
+resolve truncated dialogue and terminal words. Verified unaffected PCM was
+reused by exact source/settings/audio identity.
 
 Source and spoken text are separate. Documented speech adaptations retain the
 manuscript: a pause in 本轮采集，已结束, bounded ellipsis punctuation,
@@ -36,7 +41,9 @@ release package; no rejected take is silently substituted into a final chapter.
 
 Measured PCM chunks and pauses are assembled once and encoded as **48 kHz mono
 64 kbps MP3**. Strict full decoding, actual frame uniformity, and encoder drift
-below 150 ms are checked. VTT and chapter timestamps use that measured timeline.
+below 150 ms are checked. These three blueprints attenuate the final encoder
+input by 1 dB to prevent lossy-decoder overshoot, without changing cached PCM or
+timestamps; `final_encoding` records that attenuation and assembled PCM hash. VTT and chapter timestamps use that measured timeline.
 
 There is no audio-listening tool in this execution environment. An objective
 review must explicitly record `listening_performed: false`, the method and its
@@ -64,7 +71,7 @@ chapters before using the existing publisher. The builder never grants approval.
 ## Catalogue and source preservation
 
 Production is Cloudflare Pages `podcast-landing` with R2
-`podcast-mingli-world`. The snapshot has 249 episodes and 26 shows, ten more
+`podcast-mingli-world`. The original V3 snapshot had 249 episodes and 26 shows, ten more
 episodes than the source base. All 249 records and all 26 shows, including IDs
 500–509, are preserved exactly. Only the three new episodes and their collection
 are added. Recheck the current live catalogue immediately before release.
@@ -96,7 +103,7 @@ against the shared audio. The coordinated app-shell version is 30.
 
 ## Verification
 
-The source suite currently passes 90 Node and 133 Python tests, including real
+The source suite currently passes 90 Node and 135 Python tests, including real
 codec, resumable-cache, targeted-retry, exact-evidence and stale-publish checks.
 Tests use synthetic codec fixtures where appropriate, and never make hidden
 production writes. Use Node 20 or newer.
@@ -109,3 +116,16 @@ and unchanged original catalogue records. Publication and acceptance status
 are recorded separately from immutable render receipts.
 
 Authenticated production acceptance passed on 2026-10-03 with actual deployed MP3s, without media substitution. Desktop and phone-sized screenshots were inspected. All three complete media, VTT, chapter and original text hashes matched; seeking, resume, 1.1×, next chapter, progress persistence and HTTP 206 passed. Original feed dates are pinned in top-level `rss_pub_dates` to preserve history without modifying any original episode record.
+
+## October 6 stock male voice release
+
+The approved Uncle Fu update was generated offline on Agent Mini and published
+through the existing Cloudflare publisher. IDs 439, 440 and 441 now run 17:09,
+22:46 and 25:41. The catalogue still has 252 entries: the other 249 episode
+records, show membership, original feed dates, manuscripts and HTML readers
+are unchanged. The complete search index was rebuilt from chapter/transcript
+artifacts; all unrelated indexed moments are identical to the prior version.
+`NOVEL-UNCLEFU-RELEASE.json` records exact source/audio hashes and objective QA.
+All three decoded recordings have zero clipped samples. Earlier recordings and
+sidecars are retained in the release workspace for rollback. Live acceptance
+and deployment receipts are saved separately after verification.

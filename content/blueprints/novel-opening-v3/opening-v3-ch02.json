@@ -5,7 +5,7 @@
   "show": "novel-opening-v3",
   "template": "mandarin-novel",
   "title": "第二章 · 借来的时间",
-  "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+  "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Uncle Fu 普通话男声朗读。本集属于三章开篇，完整长篇尚未完成。",
   "keywords": [
     "科幻小说",
     "开篇 V3",
@@ -144,7 +144,27 @@
         },
         {
           "voice": "narrator",
-          "text": "屏幕上没有问候，只有四个坐标。\n\n周启把它们画回输入图像。\n\n薄片的缺口没被框住。框落在旁边的纸条上。\n\n纸上原本写着：先看这里，编号别弄反。\n\n那个框很窄，只罩住了“这里”。",
+          "text": "屏幕上没有问候，只有四个坐标。",
+          "pause_after": 0.5
+        },
+        {
+          "voice": "narrator",
+          "text": "周启把它们画回输入图像。",
+          "pause_after": 0.5
+        },
+        {
+          "voice": "narrator",
+          "text": "薄片的缺口没被框住。框落在旁边的纸条上。",
+          "pause_after": 0.5
+        },
+        {
+          "voice": "narrator",
+          "text": "纸上原本写着：先看这里，编号别弄反。",
+          "pause_after": 0.5
+        },
+        {
+          "voice": "narrator",
+          "text": "那个框很窄，只罩住了“这里”。",
           "pause_after": 0.5
         }
       ]
@@ -155,13 +175,37 @@
     "engine": "qwen-mlx",
     "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
     "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
-    "preset": "Serena",
+    "preset": "Uncle_Fu",
     "temperature": 0.7,
     "seed": 142,
     "chunk_seed_overrides": {
-      "f06e2f0a4e04e6a0095fc6fc5adad87d02ede1ccad907dbfa0d00fb992d4c4f3": 20261015,
-      "ac98cc2330102658a99ece445d70bd434538fda92a3c57c0cdcde34ef2ad8eb8": 20261021
-    }
+      "e5afecc12021cb9334339e4bc433d5e716b9431b5e103c48ae16583ff968b8f7": 142,
+      "673b38f722f367e38c24222d60b28d22bfc4747d161195df05939670a8a2e25f": 143,
+      "b5938985ffb8a3adc87b1730cdde0c7fca4650d53b3597b350d8cd18220a6e70": 144,
+      "20013bd0450ab50db27c368019a8b581f0c8c0ae4da343af18311c0529944310": 145,
+      "03d28ebb89803c2f8151c66d9fc4e773f47e054697230e7f411db0894fef6cb0": 146,
+      "d13b904c3d229051e9c5e8180366d2e9fc17ee25fb3668128b220986acf053b2": 147,
+      "237cfbc60b2878de10ff96a2a507e5963a396777b1bbed51122f2586196fd157": 148,
+      "54c63f4a3cc52a02f9e4c9c7e2832d9cedc84b79d47ae460be64770fb8663d10": 149,
+      "0cde3c44db458b308c05d21c8fa385e8944c13d351bd7b5810c4bd4fc016b61e": 150,
+      "1e34b18523220189a7677d2677838f1667fb46e947f7472886c764e6aa21340a": 151,
+      "181e6d126eb99b2f4ad9c935c3ff57b665005c1fb5d9d3e302f76e4042ae41a8": 152,
+      "cb8703528edc367fb16f274e20a95621c90fa95d136155a32d2b7b2ea52b1410": 153,
+      "cdecbf0806619e09dcb94a8162ca6f6680fc5e31bf689ba403ab937a935f1680": 154,
+      "f06e2f0a4e04e6a0095fc6fc5adad87d02ede1ccad907dbfa0d00fb992d4c4f3": 155,
+      "1b5e6838355842d6c606ae0a77d87c45e3c33b38939585add074d35d1b45c69b": 156,
+      "7091b071300a76ca740bdaa2710ad167006271f3c9cc84bcffc659bb65993648": 157,
+      "fce995227616f6e116b5cf6477f411cedd4ee524f5b26afe07737fd019b95f2d": 2616,
+      "8dca3c41a2051357b3525d97a63935f7dad49bb23bd3b313f3dcdae41eccc426": 159,
+      "4a2b624d5957174ea9910b2c01531a8747c2dc972e6a0992bad01b35cc540be6": 2618,
+      "ac98cc2330102658a99ece445d70bd434538fda92a3c57c0cdcde34ef2ad8eb8": 161,
+      "eff9028dcaaef74935ec7d46760bea6345d65591959442483a01eb6223676142": 294020,
+      "a8749f557b613a69ab4e9a029be31406ee136f2071b3d1fcfc9b1e73f50ed92c": 294021,
+      "2c9cb2f30f6a84c23531418c00f96e542b448ca64d9918e939e82ad0cf9f3a96": 294022,
+      "799a7b315161ceadd049a901096cdf66d7db5bc6e0367bf750b7436590f76893": 294023,
+      "2d5b1e5d7c8b13f1fae34bb1ed2d5157701fa85a5bde740b3e0fc4f26b6ee189": 2821
+    },
+    "final_gain_db": -1.0
   },
   "source_document": {
     "path": "content/sources/novel-opening-v3/opening-v3-ch02.txt",

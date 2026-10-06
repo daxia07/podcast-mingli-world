@@ -5,6 +5,7 @@ import json
 import math
 import shutil
 import struct
+import subprocess
 import tempfile
 import unittest
 import wave
@@ -55,6 +56,15 @@ class MandarinTests(MandarinFixture):
         self.bp.tts['literal_readings'][0]['spoken']='A different label'
         with self.assertRaises(M.MandarinError):M.spoken_text(self.bp,'`aqi/local`。')
 
+    def test_final_gain_rejects_amplification_and_nonfinite_values(self):
+        self.bp.tts['final_gain_db'] = -1
+        M.validate_source(self.bp, self.root)
+        for gain in [1, -13, float('nan'), 'quiet', True]:
+            changed = deepcopy(self.bp)
+            changed.tts['final_gain_db'] = gain
+            with self.assertRaises(M.MandarinError):
+                M.validate_source(changed, self.root)
+
     def test_all_three_canonical_blueprints_align_and_reserve_distinct_ids(self):
         paths=sorted(Path('content/blueprints/novel-opening-v3').glob('*.json'))
         self.assertEqual(len(paths),3)
@@ -62,7 +72,6 @@ class MandarinTests(MandarinFixture):
             bp=blueprint.load(path);M.validate_source(bp)
             self.assertGreater(bp.estimate_minutes(),10)
             self.assertLess(bp.estimate_minutes(),25)
-        self.assertEqual(sum(blueprint.load(p).line_count() for p in paths),59)
         ids=[blueprint.load(p).id for p in paths if blueprint.load(p).id is not None]
         self.assertEqual(len(ids),len(set(ids)))
 
@@ -124,6 +133,24 @@ class MandarinCodecTests(MandarinFixture):
         self.bp.tts['chunk_seed_overrides']={M.text_sha(self.bp.sections[0].lines[1].text):888}
         calls=[];self.render(self.factory(calls))
         self.assertEqual(calls,['周启拔掉了线。'])
+
+    def test_final_headroom_attenuates_encoded_audio_without_regenerating_pcm(self):
+        def rms(path):
+            data = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', str(path), '-f', 'f32le', '-'])
+            samples = [x[0] for x in struct.iter_unpack('<f', data)]
+            return math.sqrt(sum(x*x for x in samples) / len(samples))
+        self.render(self.factory([]))
+        path = self.root/'result.mp3'
+        before = json.loads(path.with_suffix('.build.json').read_text())
+        before_rms = rms(path)
+        self.bp.tts['final_gain_db'] = -1
+        calls = []
+        self.render(self.factory(calls))
+        after = json.loads(path.with_suffix('.build.json').read_text())
+        self.assertEqual(calls, [])
+        self.assertEqual([c['pcm_sha256'] for c in before['chunks']], [c['pcm_sha256'] for c in after['chunks']])
+        self.assertEqual(after['final_encoding']['gain_db'], -1)
+        self.assertAlmostEqual(20*math.log10(rms(path)/before_rms), -1, delta=0.15)
 
     def test_objective_review_is_explicit_complete_and_bound_to_evidence(self):
         self.render(self.factory([]));path=self.root/'result.mp3'

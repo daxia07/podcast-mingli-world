@@ -5,7 +5,7 @@
   "show": "novel-opening-v3",
   "template": "mandarin-novel",
   "title": "第三章 · 题目之外",
-  "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Serena 普通话朗读。本集属于三章开篇，完整长篇尚未完成。",
+  "description": "2004 年，陈默、周启、罗宁与回声。2026 年 9 月 27 日开篇 V3 原文，Uncle Fu 普通话男声朗读。本集属于三章开篇，完整长篇尚未完成。",
   "keywords": [
     "科幻小说",
     "开篇 V3",
@@ -40,7 +40,27 @@
         },
         {
           "voice": "narrator",
-          "text": "“还可能有认字。”\n\n“对。”\n\n“你现在到底想试什么？”\n\n陈默低头看输入图。\n\n他想起自己以前似乎很习惯发截图。报错、表格、流程图，有时懒得打字，直接截过去，过一会儿就能得到回应。\n\n那种习惯没有告诉他原理，只给了他一个方向。\n\n他把图片上的字改了。\n\n这张纸要剪成两半。\n\n周启读完，抬头看他。\n\n“你是想让它……”\n\n他没把后半句说出来。\n\n两人看着那块旧屏幕。\n\n几分钟以后，结果到了。\n\n剪刀。"
+          "text": "“还可能有认字。”\n\n“对。”\n\n“你现在到底想试什么？”"
+        },
+        {
+          "voice": "narrator",
+          "text": "陈默低头看输入图。\n\n他想起自己以前似乎很习惯发截图。报错、表格、流程图，有时懒得打字，直接截过去，过一会儿就能得到回应。\n\n那种习惯没有告诉他原理，只给了他一个方向。\n\n他把图片上的字改了。\n\n这张纸要剪成两半。"
+        },
+        {
+          "voice": "narrator",
+          "text": "周启读完，抬头看他。"
+        },
+        {
+          "voice": "narrator",
+          "text": "“你是想让它……”"
+        },
+        {
+          "voice": "narrator",
+          "text": "他没把后半句说出来。\n\n两人看着那块旧屏幕。\n\n几分钟以后，结果到了。"
+        },
+        {
+          "voice": "narrator",
+          "text": "剪刀。"
         }
       ]
     },
@@ -130,7 +150,23 @@
         },
         {
           "voice": "narrator",
-          "text": "周启这才收东西，走到门口又回来，把借给他的那本书从包里拿出来。\n\n“这个你留着。我在家也不会看。”\n\n陈默接过来。\n\n梦里那张折起来的计划纸，一瞬间又出现在眼前。他差点叫住周启，问他们后来是不是还一起做过什么。\n\n最后只是说：“回来一起吃饭。”\n\n“你请那顿还没算完？”\n\n“这次另请。”\n\n周启笑着挥挥手，走了。"
+          "text": "周启这才收东西，走到门口又回来，把借给他的那本书从包里拿出来。"
+        },
+        {
+          "voice": "narrator",
+          "text": "“这个你留着。我在家也不会看。”"
+        },
+        {
+          "voice": "narrator",
+          "text": "陈默接过来。\n\n梦里那张折起来的计划纸，一瞬间又出现在眼前。他差点叫住周启，问他们后来是不是还一起做过什么。\n\n最后只是说：“回来一起吃饭。”"
+        },
+        {
+          "voice": "narrator",
+          "text": "“你请那顿还没算完？”\n\n“这次另请。”"
+        },
+        {
+          "voice": "narrator",
+          "text": "周启笑着挥挥手，走了。"
         }
       ]
     },
@@ -148,7 +184,11 @@
         },
         {
           "voice": "narrator",
-          "text": "参数、输入、输出，他能够查。这个目录由谁命名，为什么到了这里，里面的程序是不是自己隐约记得的伙伴，仍然没有答案。\n\n他没有在索引旁边写“阿七已找到”。\n\n只写了：需要核对来源。\n\n然后他打开一张空白图片，打上一个问题。\n\n你认识我吗？\n\n下面排了三个选择。\n\n认识。不认识。不知道。\n\n鼠标停在保存按钮上，很久没动。\n\n它甚至还不知道他是谁。这个问题没有新的身份信息，只有他希望得到答案的愿望。"
+          "text": "参数、输入、输出，他能够查。"
+        },
+        {
+          "voice": "narrator",
+          "text": "这个目录由谁命名，为什么到了这里，里面的程序是不是自己隐约记得的伙伴，仍然没有答案。\n\n他没有在索引旁边写“阿七已找到”。\n\n只写了：需要核对来源。\n\n然后他打开一张空白图片，打上一个问题。\n\n你认识我吗？\n\n下面排了三个选择。\n\n认识。不认识。不知道。\n\n鼠标停在保存按钮上，很久没动。\n\n它甚至还不知道他是谁。这个问题没有新的身份信息，只有他希望得到答案的愿望。"
         },
         {
           "voice": "narrator",
@@ -163,7 +203,7 @@
     "engine": "qwen-mlx",
     "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
     "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
-    "preset": "Serena",
+    "preset": "Uncle_Fu",
     "temperature": 0.7,
     "seed": 142,
     "literal_readings": [
@@ -174,18 +214,53 @@
       }
     ],
     "chunk_seed_overrides": {
-      "c8605016f55a9cb0a0af159e0134048cfd8c8e97a121dfed4e02974d735a012d": 20261002,
-      "670de2599d6c203cf6351145c70222de92929d2641b55bf1bce71d05b4814687": 20261005,
-      "bc1ae2717f6f50503d2ff61e53cbfdfd1b0a089d12c9085080f2dbdeff829dbf": 20261104,
-      "6f501231bd4294b643d88f4dca505f08604f2a60e667afe5a6d4f023f5a740ab": 20261115
+      "c8605016f55a9cb0a0af159e0134048cfd8c8e97a121dfed4e02974d735a012d": 2700,
+      "140b9b1ca9dd5e4c4b67c71fc8542b0a9441e278830ca7ab4e034eab5275f8b5": 143,
+      "bc1ae2717f6f50503d2ff61e53cbfdfd1b0a089d12c9085080f2dbdeff829dbf": 144,
+      "53d0ae017b597ba5a2f4cc8ee477a1b90fb07ed8541d06c6017265eeb068f484": 280303,
+      "776494b44dc4676ae354f54981490a45912ce895bfb10a51fe2935dab674ce41": 293004,
+      "aeee670e625298052f77a4afe09c7f5b06d62abfd954657686f71892c655de2f": 293005,
+      "10df7c1edba6aba2b39871081805f9fa6b3e754c5302ddf7b08fd42a2b7fe114": 280305,
+      "c682cff8654c165f3749326cdbdd9b5a27b4a95b55df8dddc6a09072e07101d3": 293007,
+      "e7a1d8e4d74e84be1825112ccc06679cceef7bc681679fff02b204e2fd2cc9dd": 293008,
+      "3a0d15d599d2213b606ca8d4d5b71b98243a5cca92de150cd82579396df566e4": 146,
+      "8233d021cfe36f0e03317e738dac550c194724a5b6b042e66b816ceb110adc6b": 147,
+      "7d2ba91e9f19478fb6418ea029f58256e0fd1c5a77648d68deb0aa2334479ffc": 2706,
+      "c966458283275a12e6739279b7dd0e9edb03ef680cb6799fef2f90fc5f022311": 149,
+      "c72543323826361b40913affe5228621e12cca5da5452d72ea029374fb6f0876": 150,
+      "407de766b3ffe72638a0e0d03c1bdddefad48955dd2838b2fb56fae59ee28332": 151,
+      "ae0e4564cfa7eee82c0e0fa1a6ce0ed86f8a839515e7ff8a6e172bc1be451b31": 152,
+      "3fedd7a7cad5c8b36bfcba616eae70addc67e62e0a9305d1ece64766d42338c1": 153,
+      "61805b1106dcce2d604a7800926902c06c8c096d35075f46d1c0ed4c74e341e3": 154,
+      "6f501231bd4294b643d88f4dca505f08604f2a60e667afe5a6d4f023f5a740ab": 155,
+      "786460141233cfbd1e5d19f42486a5486f1d11b3978a83b4dd3fa485d784817b": 156,
+      "d7d5e53281981688d46e2a5991c03cf5378dd6e14273135599ac202b81577001": 157,
+      "f25ca6e03d6b6c8e0b314bad720e96b6b05da7a0f3847e143e5f3434f17e796d": 158,
+      "2de9dbe4df43dafc0b5d21420527c3ee4ec735a2375b3a2853aa387f273c66de": 159,
+      "baae89ea1fa16e5cc10402b1a7b212c4949157138038a83f604629dc3346f2e4": 280321,
+      "c58d16c9ae8d976ab41b1adbf4800d242aa6c2749c265af1559748bc9bf0ad50": 280322,
+      "cd9a2f9ab50ecb95147aa2b2cc321b3c1085ce79af1e4978a92018758cab4e46": 280323,
+      "9d3d62516771a17135d60783068f91e8a3ce86d192d60972d8ecacfe566fa426": 280324,
+      "a14b6a1a84a1dd0834502831c9370dc1a20032d20d4842ca656249586e25fdb5": 280325,
+      "7997467f13f721cc8d1d9688295ad58f298e9dadbb1d4b9461deb819b1aca757": 161,
+      "6b01ac65cc33735b45e589dfcd7e9d9f9bca62d2cfcf6d505c07182672cc7c55": 162,
+      "ca749463a099e45f7a09165468b711d544ab9d4f0ba6340f602818559044d7f2": 300030,
+      "69428c9622fe274f0c84d0a79034509fb5441279050e8047e9d6d72930a150b6": 293031,
+      "8d795b5aed7d2f5ac40f96256e25d9e0b366de73695099dd8a18bdf84657c26a": 164
     },
     "punctuation_overrides": [
       {
         "source": "“你是想让它……”",
         "spoken": "“你是想让它。”",
         "reason": "Bound a trailing ellipsis after the initial generation hit the truncation guard; no source words change."
+      },
+      {
+        "source": "参数、输入、输出，他能够查。",
+        "spoken": "参数。输入。输出。他能够查。",
+        "reason": "Retain every source word; separate the three-item list to prevent the middle term being dropped by synthesis."
       }
-    ]
+    ],
+    "final_gain_db": -1.0
   },
   "source_document": {
     "path": "content/sources/novel-opening-v3/opening-v3-ch03.txt",

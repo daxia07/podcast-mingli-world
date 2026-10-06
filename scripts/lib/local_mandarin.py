@@ -87,6 +87,9 @@ def spoken_text(bp, text):
 
 def validate_source(bp, root=ROOT):
     settings(bp)
+    gain = bp.tts.get('final_gain_db', 0)
+    if type(gain) not in (int, float) or not math.isfinite(gain) or not -12 <= gain <= 0:
+        raise MandarinError('final encoding gain must be finite attenuation between -12 and 0 dB')
     source = bp.source_document
     relative = source.get('path', '')
     path = (Path(root) / relative).resolve()
@@ -243,8 +246,9 @@ def synthesize(bp, out_path, *, workdir, model_dir=None, progress=print, backend
     if abs(verify_pcm(assembled) - timeline.total) > len(paths)/RATE:
         raise MandarinError('assembled PCM does not match every source chunk and pause')
     temporary_mp3 = out_path.with_suffix('.partial.mp3')
+    gain = bp.tts.get('final_gain_db', 0)
     command(['ffmpeg','-y','-v','error','-xerror','-i',str(assembled),'-ar',str(RATE),'-ac','1',
-        '-c:a','libmp3lame','-b:a','64k','-id3v2_version','3',str(temporary_mp3)])
+        '-af',f'volume={gain}dB','-c:a','libmp3lame','-b:a','64k','-id3v2_version','3',str(temporary_mp3)])
     actual = verify_mp3(temporary_mp3)
     if abs(actual - timeline.total) > 0.15:
         raise MandarinError('final encoder duration drift exceeds 150 ms')
@@ -257,6 +261,7 @@ def synthesize(bp, out_path, *, workdir, model_dir=None, progress=print, backend
         raise MandarinError('timeline calibration failed')
     temporary_mp3.replace(out_path)
     report = {'schema':1,'mp3_sha256':sha(out_path),'source_document':bp.source_document,
+        'final_encoding':{'gain_db':gain,'assembled_pcm_sha256':sha(assembled)},
         'blueprint_sha256':text_sha(json.dumps(bp.to_dict(),ensure_ascii=False,sort_keys=True)),
         'chunks':records,'timeline':asdict(timeline),'audio_validation':'pass','listening':'pending',
         'published':False,'note':'Source alignment and decoding do not prove pronunciation or comfort.'}
