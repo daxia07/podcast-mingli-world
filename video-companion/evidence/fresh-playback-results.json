@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "id": "brockman-enterprise-context-2026",
+      "originalDate": "2026-09-30",
+      "start": 1300,
+      "end": 1355,
+      "played": true,
+      "completion": true,
+      "position": 1354.8721190190736,
+      "quality": "large"
+    },
+    {
+      "id": "altman-ongoing-dots-2026",
+      "originalDate": "2026-09-29",
+      "start": 128,
+      "end": 178,
+      "played": true,
+      "completion": true,
+      "position": 177.9702800667572,
+      "quality": "large"
+    },
+    {
+      "id": "brown-parallel-latency-2026",
+      "originalDate": "2026-09-17",
+      "start": 86,
+      "end": 128,
+      "played": true,
+      "completion": true,
+      "position": 127.93498309536743,
+      "quality": "large"
+    },
+    {
+      "id": "schulman-judgment-bottleneck-2026",
+      "originalDate": "2026-09-11",
+      "start": 108,
+      "end": 173,
+      "played": true,
+      "completion": true,
+      "position": 172.92036604386902,
+      "quality": "large"
+    },
+    {
+      "id": "millidge-generalization-gap-2026",
+      "originalDate": "2026-09-11",
+      "start": 60,
+      "end": 108,
+      "played": true,
+      "completion": true,
+      "position": 107.91762099046326,
+      "quality": "large"
+    },
+    {
+      "id": "daoud-3d-editing-gap-2026",
+      "originalDate": "2026-09-10",
+      "start": 918,
+      "end": 970,
+      "played": true,
+      "completion": true,
+      "position": 969.8126858588562,
+      "quality": "large"
+    }
+  ],
+  "scope": "Isolated phone candidate with real official footage; no live profile writes"
+}

@@ -1,0 +1,19 @@
+{
+  "passed": [
+    "6 evergreen playable cards retained; fresh edition tested separately",
+    "like changes state",
+    "save to default collection",
+    "collection returns to exact saved idea",
+    "named collection create and save",
+    "reload preserves likes and named collection",
+    "source attribution context evidence and editorial separation",
+    "real touch scroll gesture advances first idea",
+    "next and active queue navigation",
+    "active dwell and quick skips persisted",
+    "explicit topics and dwell opt-out",
+    "320/390/1440 layouts no horizontal or card overflow",
+    "no JavaScript runtime errors"
+  ],
+  "errors": [],
+  "date": "2026-10-06T07:34:10.106Z"
+}

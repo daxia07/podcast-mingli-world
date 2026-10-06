@@ -1,0 +1,788 @@
+{
+  "mode": "Independent deterministic provider stub; does not establish real YouTube playback",
+  "checks": [
+    {
+      "name": "unobstructed-320x568",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 320,
+          "h": 568
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "media": {
+          "x": 0,
+          "y": 109,
+          "width": 320,
+          "height": 200,
+          "top": 109,
+          "right": 320,
+          "bottom": 309,
+          "left": 0
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 264,
+              "y": 509,
+              "width": 44,
+              "height": 51,
+              "top": 509,
+              "right": 308,
+              "bottom": 560,
+              "left": 264
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "revealed-unobstructed-320",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 320,
+          "h": 568
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "media": {
+          "x": 0,
+          "y": 109,
+          "width": 320,
+          "height": 200,
+          "top": 109,
+          "right": 320,
+          "bottom": 309,
+          "left": 0
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 264,
+              "y": 509,
+              "width": 44,
+              "height": 51,
+              "top": 509,
+              "right": 308,
+              "bottom": 560,
+              "left": 264
+            }
+          },
+          {
+            "name": "Clear screen",
+            "r": {
+              "x": 24,
+              "y": 368,
+              "width": 48,
+              "height": 52,
+              "top": 368,
+              "right": 72,
+              "bottom": 420,
+              "left": 24
+            }
+          },
+          {
+            "name": "Like",
+            "r": {
+              "x": 80,
+              "y": 368,
+              "width": 48,
+              "height": 52,
+              "top": 368,
+              "right": 128,
+              "bottom": 420,
+              "left": 80
+            }
+          },
+          {
+            "name": "Save",
+            "r": {
+              "x": 136,
+              "y": 368,
+              "width": 48,
+              "height": 52,
+              "top": 368,
+              "right": 184,
+              "bottom": 420,
+              "left": 136
+            }
+          },
+          {
+            "name": "Full gist & source",
+            "r": {
+              "x": 192,
+              "y": 368,
+              "width": 48,
+              "height": 52,
+              "top": 368,
+              "right": 240,
+              "bottom": 420,
+              "left": 192
+            }
+          },
+          {
+            "name": "Less like this",
+            "r": {
+              "x": 248,
+              "y": 368,
+              "width": 48,
+              "height": 52,
+              "top": 368,
+              "right": 296,
+              "bottom": 420,
+              "left": 248
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unobstructed-390x844",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 390,
+          "h": 844
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "media": {
+          "x": 0,
+          "y": 237.3125,
+          "width": 390,
+          "height": 219.375,
+          "top": 237.3125,
+          "right": 390,
+          "bottom": 456.6875,
+          "left": 0
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 334,
+              "y": 785,
+              "width": 44,
+              "height": 51,
+              "top": 785,
+              "right": 378,
+              "bottom": 836,
+              "left": 334
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "revealed-unobstructed-390",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 390,
+          "h": 844
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "media": {
+          "x": 0,
+          "y": 237.3125,
+          "width": 390,
+          "height": 219.375,
+          "top": 237.3125,
+          "right": 390,
+          "bottom": 456.6875,
+          "left": 0
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 334,
+              "y": 785,
+              "width": 44,
+              "height": 51,
+              "top": 785,
+              "right": 378,
+              "bottom": 836,
+              "left": 334
+            }
+          },
+          {
+            "name": "Clear screen",
+            "r": {
+              "x": 59,
+              "y": 644,
+              "width": 48,
+              "height": 52,
+              "top": 644,
+              "right": 107,
+              "bottom": 696,
+              "left": 59
+            }
+          },
+          {
+            "name": "Like",
+            "r": {
+              "x": 115,
+              "y": 644,
+              "width": 48,
+              "height": 52,
+              "top": 644,
+              "right": 163,
+              "bottom": 696,
+              "left": 115
+            }
+          },
+          {
+            "name": "Save",
+            "r": {
+              "x": 171,
+              "y": 644,
+              "width": 48,
+              "height": 52,
+              "top": 644,
+              "right": 219,
+              "bottom": 696,
+              "left": 171
+            }
+          },
+          {
+            "name": "Full gist & source",
+            "r": {
+              "x": 227,
+              "y": 644,
+              "width": 48,
+              "height": 52,
+              "top": 644,
+              "right": 275,
+              "bottom": 696,
+              "left": 227
+            }
+          },
+          {
+            "name": "Less like this",
+            "r": {
+              "x": 283,
+              "y": 644,
+              "width": 48,
+              "height": 52,
+              "top": 644,
+              "right": 331,
+              "bottom": 696,
+              "left": 283
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unobstructed-844x390",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 844,
+          "h": 390
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "top": 0,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "media": {
+          "x": 174.890625,
+          "y": 56,
+          "width": 494.21875,
+          "height": 278,
+          "top": 56,
+          "right": 669.109375,
+          "bottom": 334,
+          "left": 174.890625
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 788,
+              "y": 339,
+              "width": 44,
+              "height": 51,
+              "top": 339,
+              "right": 832,
+              "bottom": 390,
+              "left": 788
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "revealed-unobstructed-844",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 844,
+          "h": 390
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "top": 0,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "media": {
+          "x": 174.890625,
+          "y": 56,
+          "width": 494.21875,
+          "height": 278,
+          "top": 56,
+          "right": 669.109375,
+          "bottom": 334,
+          "left": 174.890625
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 788,
+              "y": 339,
+              "width": 44,
+              "height": 51,
+              "top": 339,
+              "right": 832,
+              "bottom": 390,
+              "left": 788
+            }
+          },
+          {
+            "name": "Clear screen",
+            "r": {
+              "x": 523,
+              "y": 0,
+              "width": 44,
+              "height": 44,
+              "top": 0,
+              "right": 567,
+              "bottom": 44,
+              "left": 523
+            }
+          },
+          {
+            "name": "Like",
+            "r": {
+              "x": 567,
+              "y": 0,
+              "width": 44,
+              "height": 44,
+              "top": 0,
+              "right": 611,
+              "bottom": 44,
+              "left": 567
+            }
+          },
+          {
+            "name": "Save",
+            "r": {
+              "x": 611,
+              "y": 0,
+              "width": 44,
+              "height": 44,
+              "top": 0,
+              "right": 655,
+              "bottom": 44,
+              "left": 611
+            }
+          },
+          {
+            "name": "Full gist & source",
+            "r": {
+              "x": 655,
+              "y": 0,
+              "width": 44,
+              "height": 44,
+              "top": 0,
+              "right": 699,
+              "bottom": 44,
+              "left": 655
+            }
+          },
+          {
+            "name": "Less like this",
+            "r": {
+              "x": 699,
+              "y": 0,
+              "width": 44,
+              "height": 44,
+              "top": 0,
+              "right": 743,
+              "bottom": 44,
+              "left": 699
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unobstructed-1440x900",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 1440,
+          "h": 900
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "top": 0,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "media": {
+          "x": 195.5625,
+          "y": 80,
+          "width": 1048.875,
+          "height": 590,
+          "top": 80,
+          "right": 1244.4375,
+          "bottom": 670,
+          "left": 195.5625
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 1384,
+              "y": 841,
+              "width": 44,
+              "height": 51,
+              "top": 841,
+              "right": 1428,
+              "bottom": 892,
+              "left": 1384
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "revealed-unobstructed-1440",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 1440,
+          "h": 900
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "top": 0,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "media": {
+          "x": 195.5625,
+          "y": 80,
+          "width": 1048.875,
+          "height": 590,
+          "top": 80,
+          "right": 1244.4375,
+          "bottom": 670,
+          "left": 195.5625
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 1384,
+              "y": 841,
+              "width": 44,
+              "height": 51,
+              "top": 841,
+              "right": 1428,
+              "bottom": 892,
+              "left": 1384
+            }
+          },
+          {
+            "name": "Clear screen",
+            "r": {
+              "x": 564,
+              "y": 700,
+              "width": 48,
+              "height": 52,
+              "top": 700,
+              "right": 612,
+              "bottom": 752,
+              "left": 564
+            }
+          },
+          {
+            "name": "Like",
+            "r": {
+              "x": 630,
+              "y": 700,
+              "width": 48,
+              "height": 52,
+              "top": 700,
+              "right": 678,
+              "bottom": 752,
+              "left": 630
+            }
+          },
+          {
+            "name": "Save",
+            "r": {
+              "x": 696,
+              "y": 700,
+              "width": 48,
+              "height": 52,
+              "top": 700,
+              "right": 744,
+              "bottom": 752,
+              "left": 696
+            }
+          },
+          {
+            "name": "Full gist & source",
+            "r": {
+              "x": 762,
+              "y": 700,
+              "width": 48,
+              "height": 52,
+              "top": 700,
+              "right": 810,
+              "bottom": 752,
+              "left": 762
+            }
+          },
+          {
+            "name": "Less like this",
+            "r": {
+              "x": 828,
+              "y": 700,
+              "width": 48,
+              "height": 52,
+              "top": 700,
+              "right": 876,
+              "bottom": 752,
+              "left": 828
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "dialog destroys iframe",
+      "pass": true
+    },
+    {
+      "name": "dialog close requires explicit resume",
+      "pass": true
+    },
+    {
+      "name": "resume preserves saved position",
+      "pass": true,
+      "detail": {
+        "saved": 1305
+      }
+    },
+    {
+      "name": "after-like-debug",
+      "detail": {
+        "iframes": 1,
+        "players": [
+          {
+            "destroyed": true,
+            "stack": "Error\n    at Player.destroy (<anonymous>:2:620)\n    at stop (http://127.0.0.1:4174/js/player.js:5:78)\n    at settle (http://127.0.0.1:4174/app.js:12:47)\n    at discover (http://127.0.0.1:4174/app.js:36:27)\n    at $.onclick (http://127.0.0.1:4174/app.js:37:64)"
+          },
+          {
+            "destroyed": true,
+            "stack": "Error\n    at Player.destroy (<anonymous>:2:620)\n    at stop (http://127.0.0.1:4174/js/player.js:5:78)\n    at settle (http://127.0.0.1:4174/app.js:12:47)\n    at discover (http://127.0.0.1:4174/app.js:36:27)\n    at $.onclick (http://127.0.0.1:4174/app.js:37:64)"
+          },
+          {
+            "destroyed": true,
+            "stack": "Error\n    at Player.destroy (<anonymous>:2:620)\n    at stop (http://127.0.0.1:4174/js/player.js:5:78)\n    at settle (http://127.0.0.1:4174/app.js:12:47)\n    at discover (http://127.0.0.1:4174/app.js:36:27)\n    at $.onclick (http://127.0.0.1:4174/app.js:37:64)"
+          },
+          {
+            "destroyed": true,
+            "stack": "Error\n    at Player.destroy (<anonymous>:2:620)\n    at stop (http://127.0.0.1:4174/js/player.js:5:78)\n    at settle (http://127.0.0.1:4174/app.js:12:47)\n    at discover (http://127.0.0.1:4174/app.js:36:27)\n    at $.onclick (http://127.0.0.1:4174/app.js:37:64)"
+          },
+          {
+            "destroyed": true,
+            "stack": "Error\n    at Player.destroy (<anonymous>:2:620)\n    at stop (http://127.0.0.1:4174/js/player.js:5:78)\n    at settle (http://127.0.0.1:4174/app.js:12:47)\n    at sheet (http://127.0.0.1:4174/app.js:27:22)\n    at context (http://127.0.0.1:4174/app.js:29:38)\n    at $.onclick (http://127.0.0.1:4174/app.js:32:860)"
+          },
+          {}
+        ],
+        "card": "brockman-enterprise-context-2026",
+        "position": "1 / 6 · Fresh"
+      }
+    },
+    {
+      "name": "like persists existing schema",
+      "pass": true
+    },
+    {
+      "name": "clear screen retains reveal",
+      "pass": true,
+      "detail": {
+        "viewport": {
+          "w": 390,
+          "h": 844
+        },
+        "card": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "media": {
+          "x": 0,
+          "y": 237.3125,
+          "width": 390,
+          "height": 219.375,
+          "top": 237.3125,
+          "right": 390,
+          "bottom": 456.6875,
+          "left": 0
+        },
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "buttons": [
+          {
+            "name": "Show viewing controls",
+            "r": {
+              "x": 334,
+              "y": 785,
+              "width": 44,
+              "height": 51,
+              "top": 785,
+              "right": 378,
+              "bottom": 836,
+              "left": 334
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "keyboard focus prevents fade",
+      "pass": true
+    },
+    {
+      "name": "bounded clip completed",
+      "pass": true
+    },
+    {
+      "name": "same-card replay available",
+      "pass": true
+    },
+    {
+      "name": "completed replay returns beginning",
+      "pass": true,
+      "detail": {
+        "replay": 1300,
+        "saved": 1305,
+        "cfg": {
+          "start": 1305,
+          "end": 1355
+        }
+      }
+    },
+    {
+      "name": "navigation destroys player",
+      "pass": true
+    },
+    {
+      "name": "provider touch excludes app preference",
+      "pass": true
+    },
+    {
+      "name": "control touch excludes app preference",
+      "pass": true
+    },
+    {
+      "name": "diagonal excludes app preference",
+      "pass": true
+    },
+    {
+      "name": "owned surface horizontal gesture changes preference",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "issues": []
+}
